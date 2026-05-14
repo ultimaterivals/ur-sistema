@@ -1791,6 +1791,64 @@
     }
     // ────────────────────────────────────────────────────────────────────────
 
+    async function importInscricoesSupabase(){
+      const intg = state.integrations || {};
+      const url = intg.supabase?.url; const key = intg.supabase?.key;
+      if(!url || !key) return toast('Configure o Supabase em Configurações antes de importar.');
+      toast('Buscando inscrições...');
+      try {
+        const res = await fetch(`${url}/rest/v1/ur_inscricoes?status=eq.pendente&imported=eq.false&order=submitted_at.desc`, {
+          headers:{'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json'}
+        });
+        if(!res.ok) return toast('Erro ao buscar inscrições: '+res.status);
+        const rows = await res.json();
+        if(!rows.length) return toast('Nenhuma inscrição pendente encontrada.');
+        // Mapear campos da tabela ur_inscricoes → atleta do sistema
+        const catMap = {DM:'DM',DF:'DF',DX:'DX',QM:'QM',QF:'QF',QX:'QX'};
+        let added=0, skipped=0;
+        const existing = new Set(state.athletes.map(a=>a.name.toLowerCase().trim()));
+        const idsToMark = [];
+        for(const r of rows){
+          if(!r.name || r.name.length<2){ skipped++; continue; }
+          if(existing.has(r.name.toLowerCase().trim())){ skipped++; idsToMark.push(r.id); continue; }
+          const parsedCats = (() => { try{ return JSON.parse(r.categories||'[]'); }catch(e){ return []; } })();
+          const parsedDays = (() => { try{ return JSON.parse(r.days||'[]'); }catch(e){ return []; } })();
+          const parsedShifts = (() => { try{ return JSON.parse(r.shifts||'[]'); }catch(e){ return []; } })();
+          const parsedMods = (() => { try{ return JSON.parse(r.modalities||'[]'); }catch(e){ return []; } })();
+          const mapLvl = s => { const n=Number(s); if(!n||n<=0)return'NI'; if(n<=2)return'NI'; if(n<=3)return'N1'; if(n<=4)return'N2'; return'N3'; };
+          state.athletes.push({
+            id:uid(), name:r.name, mediaName:r.media_name||'',
+            gender:r.gender||'', birth:r.birth||'', document:r.cpf||'',
+            contact:r.phone||'', email:r.email||'', city:r.city||'',
+            emergency:r.emergency||'', position:r.position||'Universal',
+            level:mapLvl(r.tech_score), practiceYears:r.practice_years||'',
+            tournamentExperience:!!r.tournament_exp, physicalScore:String(r.phys_score||''),
+            acceptsRelocation:!!r.accepts_reloc, medicalRestriction:r.medical_restriction||'',
+            imageAuth:!!r.image_auth, paymentStatus:!!r.payment_status,
+            desiredModalities:parsedCats.length?parsedCats:parsedMods,
+            desiredDays:parsedDays, desiredShifts:parsedShifts,
+            desiredPairPositions:[], teamId:'',
+            notes:r.medical_restriction?'Restrição: '+r.medical_restriction:'',
+            pts:0,coins:0,wins:0,losses:0,presences:0,streak:0,mvps:0,fairplays:0,
+            stats:{aces:0,attacks:0,attackAttempts:0,serveAttempts:0,blocks:0,digs:0,points:0,assists:0,run3:0,run5:0,clutch:0,comeback:0},
+            history:[]
+          });
+          existing.add(r.name.toLowerCase().trim());
+          idsToMark.push(r.id); added++;
+        }
+        saveState();
+        // Marcar como importado no Supabase
+        if(idsToMark.length){
+          await fetch(`${url}/rest/v1/ur_inscricoes?id=in.(${idsToMark.join(',')})`, {
+            method:'PATCH', headers:{'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json','Prefer':'return=minimal'},
+            body:JSON.stringify({imported:true, imported_at:new Date().toISOString(), status:'aprovado'})
+          });
+        }
+        toast(`${added} atleta(s) importado(s) das inscrições.${skipped?' '+skipped+' já existia(m).':''}`);
+        render();
+      } catch(e){ console.error(e); toast('Erro: '+e.message); }
+    }
+
     function renderAthletes(){
       const editingAthlete = athleteById(editingAthleteId);
       const athleteList = athletesByTeamFilter();
@@ -1827,6 +1885,7 @@
             <input id="athleteSearch" placeholder="🔍 Buscar por nome..." style="flex:1;min-width:140px;max-width:240px;padding:6px 10px;font-size:12px" oninput="filterAthleteList(this.value)">
             <select id="athleteTeamFilter" style="max-width:200px;padding:6px 8px;font-size:11px"><option value="all">Todas as equipes</option><option value="undefined"${selected("undefined",currentAthleteTeamFilter)}>Sem equipe</option>${state.teams.map(t=>`<option value="${t.id}"${selected(t.id,currentAthleteTeamFilter)}>${esc(t.name)}</option>`).join("")}</select>
             <label class="btn" style="cursor:pointer;font-size:11px;padding:5px 10px;white-space:nowrap" title="Importar atletas direto da Planilha Mestre UR (.xlsx)">📊 Importar .xlsx<input type="file" id="xlsxImportInput" accept=".xlsx" style="display:none"></label>
+            <button class="btn" id="importInscricoesBtn" style="font-size:11px;padding:5px 10px;white-space:nowrap" title="Buscar inscrições pendentes do Supabase">📋 Inscrições pendentes</button>
           </div>
           <div class="list" id="athleteList">${athleteList.length ? athleteList.map((a,i)=>athleteManageRow(a,i)).join("") : `<div class="empty">Nenhum atleta cadastrado. Use o formulário acima para adicionar.</div>`}</div>
         </div>
@@ -1834,6 +1893,7 @@
       document.getElementById("athleteForm").onsubmit = addAthlete;
       document.getElementById("athleteTeamFilter").onchange = e => {currentAthleteTeamFilter = e.target.value; renderAthletes();};
       document.getElementById("xlsxImportInput").onchange = e => { handleXLSXImport(e.target.files[0]); e.target.value=""; };
+      document.getElementById("importInscricoesBtn").onclick = () => importInscricoesSupabase();
       window.filterAthleteList = function(q){
         const term = q.toLowerCase().trim();
         document.querySelectorAll("#athleteList .row").forEach(row=>{

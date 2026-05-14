@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Inscrição — Ultimate Rivals</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0a0a;--surface:#111;--card:#161616;--border:#222;
+    --gold:#f5c518;--gold2:#e6b800;--text:#f0f0f0;--muted:#666;
+    --green:#4caf50;--red:#f44;--blue:#4a9eff;
+    --radius:14px;--font:'Inter',system-ui,sans-serif;
+  }
+  body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;padding-bottom:40px}
+
+  /* ── Header ── */
+  .header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;text-align:center;position:sticky;top:0;z-index:100}
+  .header-logo{font-size:28px;margin-bottom:2px}
+  .header-title{font-size:17px;font-weight:800;color:var(--gold);letter-spacing:1.5px}
+  .header-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+  /* ── Progress ── */
+  .progress-wrap{background:var(--surface);padding:14px 20px;border-bottom:1px solid var(--border)}
+  .progress-steps{display:flex;gap:6px;margin-bottom:10px;justify-content:center;flex-wrap:wrap}
+  .step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--border);color:var(--muted);transition:all .3s;flex-shrink:0}
+  .step-dot.active{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.1)}
+  .step-dot.done{border-color:var(--green);background:var(--green);color:#000}
+  .progress-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:2px;transition:width .4s ease}
+  .progress-label{text-align:center;font-size:11px;color:var(--muted);margin-top:6px}
+
+  /* ── Container ── */
+  .container{max-width:600px;margin:0 auto;padding:20px 16px}
+
+  /* ── Step ── */
+  .step{display:none;animation:fadeIn .3s ease}
+  .step.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .step-header{margin-bottom:24px}
+  .step-icon{font-size:36px;margin-bottom:8px}
+  .step-title{font-size:22px;font-weight:800;margin-bottom:4px}
+  .step-desc{font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* ── Card ── */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+  .card-title{font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+
+  /* ── Fields ── */
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+  .field label .req{color:var(--gold)}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 14px;background:#0f0f0f;border:1.5px solid var(--border);
+    border-radius:10px;color:var(--text);font-size:14px;font-family:var(--font);
+    transition:border .2s,box-shadow .2s;outline:none;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,197,24,.1)}
+  .field textarea{resize:vertical;min-height:80px}
+  .field select option{background:#1a1a1a}
+  .field.error input,.field.error select,.field.error textarea{border-color:var(--red)}
+  .field-err{font-size:11px;color:var(--red);margin-top:4px;display:none}
+  .field.error .field-err{display:block}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field-row .field{margin-bottom:0}
+
+  /* ── Rating Stars ── */
+  .rating-wrap{display:flex;flex-direction:column;gap:8px}
+  .rating-stars{display:flex;gap:8px}
+  .star-btn{width:44px;height:44px;border-radius:10px;border:1.5px solid var(--border);background:#0f0f0f;color:var(--muted);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+  .star-btn.active{border-color:var(--gold);background:rgba(245,197,24,.15);color:var(--gold)}
+  .rating-label{font-size:12px;color:var(--muted);min-height:18px}
+
+  /* ── Checkboxes chips ── */
+  .chip-group{display:flex;flex-wrap:wrap;gap:8px}
+  .chip-opt{display:none}
+  .chip-label{padding:9px 14px;border-radius:8px;border:1.5px solid var(--border);font-size:13px;cursor:pointer;transition:all .2s;user-select:none;background:#0f0f0f;color:var(--muted)}
+  .chip-opt:checked + .chip-label{border-color:var(--gold);background:rgba(245,197,24,.12);color:var(--gold);font-weight:600}
+
+  /* ── Toggle (Sim/Não) ── */
+  .toggle-group{display:flex;gap:8px}
+  .toggle-opt{display:none}
+  .toggle-label{flex:1;padding:12px;text-align:center;border-radius:10px;border:1.5px solid var(--border);font-size:14px;cursor:pointer;transition:all .2s;background:#0f0f0f;color:var(--muted);font-weight:600}
+  .toggle-opt:checked + .toggle-label{border-color:var(--gold);background:rgba(245,197,24,.12);color:var(--gold)}
+  .toggle-opt.yes-opt:checked + .toggle-label{border-color:var(--green);background:rgba(76,175,80,.12);color:var(--green)}
+  .toggle-opt.no-opt:checked + .toggle-label{border-color:var(--red);background:rgba(255,68,68,.08);color:#f88}
+
+  /* ── Conditional sections ── */
+  .conditional{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+  .conditional.show{display:block}
+
+  /* ── Score display ── */
+  .score-descriptions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .score-desc{font-size:10px;padding:3px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+
+  /* ── Buttons ── */
+  .btn-row{display:flex;gap:10px;margin-top:24px}
+  .btn{padding:14px 20px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;font-family:var(--font);flex:1}
+  .btn-primary{background:var(--gold);color:#000}
+  .btn-primary:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(245,197,24,.3)}
+  .btn-secondary{background:var(--surface);color:var(--text);border:1.5px solid var(--border)}
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+  /* ── Summary confirm ── */
+  .summary-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);gap:12px}
+  .summary-row:last-child{border-bottom:none}
+  .summary-key{font-size:12px;color:var(--muted);min-width:120px}
+  .summary-val{font-size:13px;text-align:right;font-weight:600;word-break:break-word}
+
+  /* ── Success screen ── */
+  .success{display:none;text-align:center;padding:40px 20px;animation:fadeIn .5s ease}
+  .success.show{display:block}
+  .success-icon{font-size:72px;margin-bottom:16px}
+  .success-title{font-size:26px;font-weight:800;color:var(--gold);margin-bottom:8px}
+  .success-sub{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:24px}
+  .success-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:20px;text-align:left}
+
+  /* ── Config panel ── */
+  .config-panel{background:#0d0d0d;border:1px dashed #2a2a2a;border-radius:10px;padding:14px;margin-bottom:20px;font-size:12px;color:var(--muted)}
+  .config-panel summary{cursor:pointer;color:var(--muted);font-weight:600;list-style:none}
+  .config-panel summary::before{content:"⚙️ "}
+  .config-panel .field{margin-bottom:8px}
+  .config-panel input{font-size:12px;padding:8px 10px}
+
+  /* ── Terms ── */
+  .term-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}
+  .term-item:last-child{border-bottom:none}
+  .term-check{width:22px;height:22px;accent-color:var(--gold);flex-shrink:0;margin-top:1px;cursor:pointer}
+  .term-text{font-size:13px;color:var(--muted);line-height:1.5;cursor:pointer}
+  .term-text strong{color:var(--text)}
+
+  /* ── Responsive ── */
+  @media(max-width:400px){
+    .field-row{grid-template-columns:1fr}
+    .rating-stars .star-btn{width:38px;height:38px;font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- CONFIG (admin only — Supabase credentials) -->
+<script>
+  const UR_CONFIG = {
+    supabaseUrl: localStorage.getItem('ur_insc_url') || '',
+    supabaseKey: localStorage.getItem('ur_insc_key') || ''
+  };
+</script>
+
+<div class="header">
+  <div class="header-logo">⚡</div>
+  <div class="header-title">ULTIMATE RIVALS</div>
+  <div class="header-sub">Ficha de Inscrição · Temporada 2026</div>
+</div>
+
+<div class="progress-wrap" id="progressWrap">
+  <div class="progress-steps" id="progressSteps"></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel"></div>
+</div>
+
+<div class="container">
+
+  <!-- ── CONFIG PANEL (admin) ── -->
+  <details class="config-panel" id="configPanel">
+    <summary>Configuração Supabase (somente admin)</summary>
+    <div style="margin-top:12px">
+      <div class="field"><label>Supabase URL</label><input id="cfgUrl" placeholder="https://xxxx.supabase.co" oninput="saveConfig()"></div>
+      <div class="field"><label>Anon Key</label><input id="cfgKey" type="password" placeholder="eyJ..." oninput="saveConfig()"></div>
+      <small id="cfgStatus" style="color:var(--green)"></small>
+    </div>
+  </details>
+
+  <!-- ══════════════════════════════════════
+       STEP 1 — IDENTIFICAÇÃO
+  ══════════════════════════════════════ -->
+  <div class="step active" id="step-1">
+    <div class="step-header">
+      <div class="step-icon">👤</div>
+      <div class="step-title">Identificação</div>
+      <div class="step-desc">Vamos começar com seus dados pessoais. Todos os campos com <span style="color:var(--gold)">*</span> são obrigatórios.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📋 Dados Pessoais</div>
+      <div class="field" id="f-name">
+        <label>Nome Completo <span class="req">*</span></label>
+        <input id="name" placeholder="Seu nome completo" autocomplete="name">
+        <div class="field-err">Nome é obrigatório</div>
+      </div>
+      <div class="field">
+        <label>Apelido / Nome de mídia</label>
+        <input id="mediaName" placeholder="Como quer ser chamado em transmissões e ranking">
+      </div>
+      <div class="field-row">
+        <div class="field" id="f-gender">
+          <label>Gênero <span class="req">*</span></label>
+          <select id="gender">
+            <option value="">Selecione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="X">Prefiro não informar</option>
+          </select>
+          <div class="field-err">Selecione o gênero</div>
+        </div>
+        <div class="field" id="f-birth">
+          <label>Data de Nascimento <span class="req">*</span></label>
+          <input id="birth" type="date" max="2010-12-31" min="1950-01-01">
+          <div class="field-err">Data inválida</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>CPF</label>
+        <input id="cpf" placeholder="000.000.000-00" maxlength="14" oninput="maskCpf(this)">
+      </div>
+      <div class="field">
+        <label>Link da foto de perfil <span style="color:var(--muted);font-weight:400;text-transform:none">(opcional)</span></label>
+        <input id="photoUrl" type="url" placeholder="https://drive.google.com/... ou link de foto">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📱 Redes Sociais</div>
+      <div class="field">
+        <label>Instagram <span style="color:var(--muted);font-weight:400;text-transform:none">(opcional)</span></label>
+        <input id="instagram" placeholder="@seuperfil">
+      </div>
+      <div class="field">
+        <label>Como conheceu o Ultimate Rivals?</label>
+        <select id="howFound">
+          <option value="">Selecione</option>
+          <option>Instagram</option>
+          <option>Indicação de amigo(a)</option>
+          <option>WhatsApp / Grupo</option>
+          <option>TikTok</option>
+          <option>Google / Pesquisa</option>
+          <option>Evento presencial</option>
+          <option>Outro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="nextStep(1)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STEP 2 — CONTATO
+  ══════════════════════════════════════ -->
+  <div class="step" id="step-2">
+    <div class="step-header">
+      <div class="step-icon">📱</div>
+      <div class="step-title">Contato e Localização</div>
+      <div class="step-desc">Informações de contato e polo onde você quer jogar.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📞 Contato</div>
+      <div class="field" id="f-phone">
+        <label>WhatsApp <span class="req">*</span></label>
+        <input id="phone" type="tel" placeholder="(31) 9 0000-0000" oninput="maskPhone(this)">
+        <div class="field-err">WhatsApp é obrigatório</div>
+      </div>
+      <div class="field" id="f-email">
+        <label>E-mail <span class="req">*</span></label>
+        <input id="email" type="email" placeholder="seuemail@exemplo.com">
+        <div class="field-err">E-mail inválido</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📍 Localização</div>
+      <div class="field" id="f-city">
+        <label>Cidade / Polo UR <span class="req">*</span></label>
+        <select id="city">
+          <option value="">Selecione sua cidade</option>
+          <option>Belo Horizonte</option>
+          <option>Contagem</option>
+          <option>Betim</option>
+          <option>Outro</option>
+        </select>
+        <div class="field-err">Selecione a cidade</div>
+      </div>
+      <div class="field">
+        <label>Bairro <span style="color:var(--muted);font-weight:400;text-transform:none">(opcional)</span></label>
+        <input id="neighborhood" placeholder="Seu bairro">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚨 Emergência</div>
+      <div class="field" id="f-emergency">
+        <label>Contato de Emergência <span class="req">*</span></label>
+        <input id="emergency" placeholder="Nome completo e telefone — Ex.: Maria Silva | (31) 99999-8888">
+        <div class="field-err">Informe um contato de emergência</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep(2)">← Voltar</button>
+      <button class="btn btn-primary" onclick="nextStep(2)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STEP 3 — EXPERIÊNCIA
+  ══════════════════════════════════════ -->
+  <div class="step" id="step-3">
+    <div class="step-header">
+      <div class="step-icon">🏐</div>
+      <div class="step-title">Experiência no Vôlei</div>
+      <div class="step-desc">Nos conte sobre seu nível de jogo para formarmos equipes equilibradas.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏆 Posição e Experiência</div>
+      <div class="field-row">
+        <div class="field" id="f-position">
+          <label>Posição Principal <span class="req">*</span></label>
+          <select id="position">
+            <option value="">Selecione</option>
+            <option>Universal</option>
+            <option>Levantador(a)</option>
+            <option>Ponteiro(a)</option>
+            <option>Central</option>
+            <option>Oposto(a)</option>
+            <option>Libero</option>
+          </select>
+          <div class="field-err">Selecione a posição</div>
+        </div>
+        <div class="field">
+          <label>Posição Secundária</label>
+          <select id="positionSecondary">
+            <option value="">Nenhuma</option>
+            <option>Universal</option>
+            <option>Levantador(a)</option>
+            <option>Ponteiro(a)</option>
+            <option>Central</option>
+            <option>Oposto(a)</option>
+            <option>Libero</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Tempo de prática no vôlei <span class="req">*</span></label>
+        <select id="practiceYears">
+          <option value="">Selecione</option>
+          <option>Menos de 6 meses</option>
+          <option>6 meses a 1 ano</option>
+          <option>1 a 2 anos</option>
+          <option>3 a 5 anos</option>
+          <option>5 a 10 anos</option>
+          <option>Mais de 10 anos</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Já disputou torneios organizados? <span class="req">*</span></label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="tourExp" id="tourExpY" value="true">
+          <label class="toggle-label" for="tourExpY">✅ Sim</label>
+          <input class="toggle-opt no-opt" type="radio" name="tourExp" id="tourExpN" value="false" checked>
+          <label class="toggle-label" for="tourExpN">❌ Não</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐ Autoavaliação</div>
+      <div class="field">
+        <label>Nível Técnico <span class="req">*</span></label>
+        <div class="rating-wrap">
+          <div class="rating-stars" id="techStars"></div>
+          <div class="rating-label" id="techLabel">Toque para avaliar</div>
+        </div>
+        <div class="score-descriptions">
+          <div class="score-desc">1 — Iniciante</div>
+          <div class="score-desc">2 — Básico</div>
+          <div class="score-desc">3 — Intermediário</div>
+          <div class="score-desc">4 — Avançado</div>
+          <div class="score-desc">5 — Elite</div>
+        </div>
+      </div>
+      <div class="field" style="margin-top:16px">
+        <label>Intensidade Física / Condicionamento <span class="req">*</span></label>
+        <div class="rating-wrap">
+          <div class="rating-stars" id="physStars"></div>
+          <div class="rating-label" id="physLabel">Toque para avaliar</div>
+        </div>
+        <div class="score-descriptions">
+          <div class="score-desc">1 — Leve</div>
+          <div class="score-desc">2 — Moderado</div>
+          <div class="score-desc">3 — Regular</div>
+          <div class="score-desc">4 — Intenso</div>
+          <div class="score-desc">5 — Atleta</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🔄 Realocação de Nível</div>
+      <div class="field">
+        <label>Aceita ser avaliado e realocado após UR Play? <span class="req">*</span></label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="acceptsReloc" id="relocY" value="true" checked>
+          <label class="toggle-label" for="relocY">✅ Sim, aceito</label>
+          <input class="toggle-opt no-opt" type="radio" name="acceptsReloc" id="relocN" value="false">
+          <label class="toggle-label" for="relocN">❌ Não aceito</label>
+        </div>
+        <div style="font-size:11px;color:var(--muted);margin-top:8px">A realocação garante equipes mais equilibradas e jogos mais justos para todos.</div>
+      </div>
+      <div class="field">
+        <label>Disponibilidade para jogar <span class="req">*</span></label>
+        <select id="weeklyAvail">
+          <option value="">Selecione</option>
+          <option>Semanalmente</option>
+          <option>A cada 2 semanas</option>
+          <option>Mensalmente</option>
+          <option>Eventualmente / quando possível</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep(3)">← Voltar</button>
+      <button class="btn btn-primary" onclick="nextStep(3)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STEP 4 — DISPONIBILIDADE
+  ══════════════════════════════════════ -->
+  <div class="step" id="step-4">
+    <div class="step-header">
+      <div class="step-icon">📅</div>
+      <div class="step-title">Disponibilidade e Preferências</div>
+      <div class="step-desc">Escolha as modalidades, categorias e horários que combinam com você.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏐 Modalidades Desejadas</div>
+      <div class="field">
+        <label>Em qual(is) modalidade(s) quer participar? <span class="req">*</span></label>
+        <div class="chip-group">
+          <input class="chip-opt" type="checkbox" id="modUrPlay" value="UR Play"><label class="chip-label" for="modUrPlay">⚡ UR Play</label>
+          <input class="chip-opt" type="checkbox" id="modUrSeries" value="UR Series"><label class="chip-label" for="modUrSeries">🏆 UR Series</label>
+          <input class="chip-opt" type="checkbox" id="modChampion" value="UR Championship"><label class="chip-label" for="modChampion">🥇 UR Championship</label>
+          <input class="chip-opt" type="checkbox" id="modTreino" value="Treino UR"><label class="chip-label" for="modTreino">🎯 Treino UR</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏅 Categorias Desejadas</div>
+      <div class="field">
+        <label>Selecione todas que desejar <span class="req">*</span></label>
+        <div class="chip-group">
+          <input class="chip-opt" type="checkbox" id="catDM" value="DM"><label class="chip-label" for="catDM">👨‍👨‍👦 Dupla Masc.</label>
+          <input class="chip-opt" type="checkbox" id="catDF" value="DF"><label class="chip-label" for="catDF">👩‍👩‍👦 Dupla Fem.</label>
+          <input class="chip-opt" type="checkbox" id="catDX" value="DX"><label class="chip-label" for="catDX">🤝 Dupla Mista</label>
+          <input class="chip-opt" type="checkbox" id="catQM" value="QM"><label class="chip-label" for="catQM">👨‍👨‍👦‍👦 Quarteto Masc.</label>
+          <input class="chip-opt" type="checkbox" id="catQF" value="QF"><label class="chip-label" for="catQF">👩‍👩‍👦‍👦 Quarteto Fem.</label>
+          <input class="chip-opt" type="checkbox" id="catQX" value="QX"><label class="chip-label" for="catQX">🌟 Quarteto Misto</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📆 Dias e Horários</div>
+      <div class="field">
+        <label>Melhor(es) dia(s) para jogar <span class="req">*</span></label>
+        <div class="chip-group">
+          <input class="chip-opt" type="checkbox" id="day1" value="1"><label class="chip-label" for="day1">Seg</label>
+          <input class="chip-opt" type="checkbox" id="day2" value="2"><label class="chip-label" for="day2">Ter</label>
+          <input class="chip-opt" type="checkbox" id="day3" value="3"><label class="chip-label" for="day3">Qua</label>
+          <input class="chip-opt" type="checkbox" id="day4" value="4"><label class="chip-label" for="day4">Qui</label>
+          <input class="chip-opt" type="checkbox" id="day5" value="5"><label class="chip-label" for="day5">Sex</label>
+          <input class="chip-opt" type="checkbox" id="day6" value="6"><label class="chip-label" for="day6">Sáb</label>
+          <input class="chip-opt" type="checkbox" id="day0" value="0"><label class="chip-label" for="day0">Dom</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Turno preferido <span class="req">*</span></label>
+        <div class="chip-group">
+          <input class="chip-opt" type="checkbox" id="shManha" value="Manha"><label class="chip-label" for="shManha">🌅 Manhã</label>
+          <input class="chip-opt" type="checkbox" id="shTarde" value="Tarde"><label class="chip-label" for="shTarde">☀️ Tarde</label>
+          <input class="chip-opt" type="checkbox" id="shNoite" value="Noite"><label class="chip-label" for="shNoite">🌙 Noite</label>
+          <input class="chip-opt" type="checkbox" id="shFds" value="Fim de semana"><label class="chip-label" for="shFds">🎉 Fim de semana</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Polo preferido para jogar</label>
+        <select id="preferredPolo">
+          <option value="">Tanto faz</option>
+          <option>Belo Horizonte</option>
+          <option>Contagem</option>
+          <option>Betim</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep(4)">← Voltar</button>
+      <button class="btn btn-primary" onclick="nextStep(4)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STEP 5 — EQUIPE
+  ══════════════════════════════════════ -->
+  <div class="step" id="step-5">
+    <div class="step-header">
+      <div class="step-icon">👥</div>
+      <div class="step-title">Equipe e Parceiros</div>
+      <div class="step-desc">Você já tem dupla ou grupo formado? Nos diga para facilitar a organização.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🤝 Equipe Atual</div>
+      <div class="field">
+        <label>Já faz parte de alguma equipe no UR?</label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="hasTeam" id="hasTeamY" value="true" onchange="toggleConditional('cond-team',true)">
+          <label class="toggle-label" for="hasTeamY">✅ Sim</label>
+          <input class="toggle-opt no-opt" type="radio" name="hasTeam" id="hasTeamN" value="false" checked onchange="toggleConditional('cond-team',false)">
+          <label class="toggle-label" for="hasTeamN">❌ Não</label>
+        </div>
+        <div class="conditional" id="cond-team">
+          <div class="field">
+            <label>Nome da Equipe</label>
+            <input id="teamName" placeholder="Nome da sua equipe no UR">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏐 Dupla</div>
+      <div class="field">
+        <label>Tem parceiro(a) de dupla definido(a)?</label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="hasPartner" id="hasPartnerY" value="true" onchange="toggleConditional('cond-partner',true)">
+          <label class="toggle-label" for="hasPartnerY">✅ Sim</label>
+          <input class="toggle-opt no-opt" type="radio" name="hasPartner" id="hasPartnerN" value="false" checked onchange="toggleConditional('cond-partner',false)">
+          <label class="toggle-label" for="hasPartnerN">❌ Não / Quero ser alocado</label>
+        </div>
+        <div class="conditional" id="cond-partner">
+          <div class="field">
+            <label>Nome do(a) parceiro(a)</label>
+            <input id="partnerName" placeholder="Nome completo do(a) parceiro(a)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏆 Quarteto</div>
+      <div class="field">
+        <label>Tem grupo de 4 definido para jogar em quarteto?</label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="hasQuartet" id="hasQuartetY" value="true" onchange="toggleConditional('cond-quartet',true)">
+          <label class="toggle-label" for="hasQuartetY">✅ Sim</label>
+          <input class="toggle-opt no-opt" type="radio" name="hasQuartet" id="hasQuartetN" value="false" checked onchange="toggleConditional('cond-quartet',false)">
+          <label class="toggle-label" for="hasQuartetN">❌ Não</label>
+        </div>
+        <div class="conditional" id="cond-quartet">
+          <div class="field">
+            <label>Nome(s) dos demais integrantes</label>
+            <textarea id="quartetMembers" placeholder="Ex.: João Silva, Ana Costa, Pedro Lima"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep(5)">← Voltar</button>
+      <button class="btn btn-primary" onclick="nextStep(5)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       STEP 6 — SAÚDE E TERMOS
+  ══════════════════════════════════════ -->
+  <div class="step" id="step-6">
+    <div class="step-header">
+      <div class="step-icon">🏥</div>
+      <div class="step-title">Saúde e Termos</div>
+      <div class="step-desc">Quase lá! Informações de saúde e confirmação dos termos.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏥 Saúde e Segurança</div>
+      <div class="field">
+        <label>Possui lesão, restrição médica ou condição relevante?</label>
+        <div class="toggle-group">
+          <input class="toggle-opt yes-opt" type="radio" name="hasMedical" id="hasMedicalY" value="true" onchange="toggleConditional('cond-medical',true)">
+          <label class="toggle-label" for="hasMedicalY">⚠️ Sim</label>
+          <input class="toggle-opt no-opt" type="radio" name="hasMedical" id="hasMedicalN" value="false" checked onchange="toggleConditional('cond-medical',false)">
+          <label class="toggle-label" for="hasMedicalN">✅ Não</label>
+        </div>
+        <div class="conditional" id="cond-medical">
+          <div class="field">
+            <label>Descreva a restrição ou lesão</label>
+            <textarea id="medicalRestriction" placeholder="Ex.: Lesão no joelho esquerdo — evitar saltos forçados. Tendinite no ombro direito."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Tipo Sanguíneo <span style="color:var(--muted);font-weight:400;text-transform:none">(opcional)</span></label>
+          <select id="bloodType">
+            <option value="">Não sei / prefiro não informar</option>
+            <option>A+</option><option>A-</option>
+            <option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option>
+            <option>O+</option><option>O-</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tem plano de saúde?</label>
+          <select id="healthPlan">
+            <option value="">Prefiro não informar</option>
+            <option>Sim</option>
+            <option>Não</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">👕 Uniforme</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Tamanho da camiseta <span class="req">*</span></label>
+          <select id="shirtSize">
+            <option value="">Selecione</option>
+            <option>PP</option><option>P</option><option>M</option>
+            <option>G</option><option>GG</option><option>XG</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Número desejado <span style="color:var(--muted);font-weight:400;text-transform:none">(1–99)</span></label>
+          <input id="shirtNumber" type="number" min="1" max="99" placeholder="Ex.: 10">
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅ Termos e Confirmações</div>
+      <div class="term-item">
+        <input class="term-check" type="checkbox" id="termImage">
+        <label class="term-text" for="termImage">
+          <strong>Autorização de Imagem —</strong> Autorizo o uso da minha imagem, voz e nome em fotos, vídeos e transmissões durante eventos do Ultimate Rivals, para fins institucionais, promocionais e comerciais, sem limitação de território ou prazo.
+        </label>
+      </div>
+      <div class="term-item">
+        <input class="term-check" type="checkbox" id="termInfo" required>
+        <label class="term-text" for="termInfo">
+          <strong>Veracidade das Informações —</strong> Declaro que todas as informações fornecidas são verdadeiras e assumo responsabilidade por qualquer inexatidão.
+        </label>
+      </div>
+      <div class="term-item">
+        <input class="term-check" type="checkbox" id="termCommit" required>
+        <label class="term-text" for="termCommit">
+          <strong>Compromisso de Participação —</strong> Caso inscrito, comprometo-me a comparecer no horário definido e comunicar ausências com antecedência mínima de 24 horas.
+        </label>
+      </div>
+      <div class="term-item">
+        <input class="term-check" type="checkbox" id="termRules" required>
+        <label class="term-text" for="termRules">
+          <strong>Regras do Ultimate Rivals —</strong> Li e concordo com as regras de conduta e participação do Ultimate Rivals, incluindo respeito a todos os atletas e à organização.
+        </label>
+      </div>
+    </div>
+
+    <div id="submitErr" style="color:var(--red);font-size:13px;text-align:center;margin-top:8px;display:none"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep(6)">← Voltar</button>
+      <button class="btn btn-primary" id="submitBtn" onclick="submitForm()">⚡ Enviar Inscrição</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SUCCESS SCREEN
+  ══════════════════════════════════════ -->
+  <div class="success" id="successScreen">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Inscrição Enviada!</div>
+    <div class="success-sub" id="successMsg">Sua inscrição foi recebida com sucesso. Nossa equipe entrará em contato em breve pelo WhatsApp!</div>
+    <div class="success-card" id="successSummary"></div>
+    <div style="margin-top:20px;font-size:12px;color:var(--muted)">Guarde este comprovante. Em caso de dúvidas, entre em contato via Instagram <strong>@ultimaterivals</strong></div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ─── CONFIG ───────────────────────────────────────────────
+function saveConfig(){
+  const url = document.getElementById('cfgUrl').value.trim();
+  const key = document.getElementById('cfgKey').value.trim();
+  UR_CONFIG.supabaseUrl = url; UR_CONFIG.supabaseKey = key;
+  localStorage.setItem('ur_insc_url', url);
+  localStorage.setItem('ur_insc_key', key);
+  document.getElementById('cfgStatus').textContent = url ? '✓ Configuração salva' : '';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const u = localStorage.getItem('ur_insc_url')||'';
+  const k = localStorage.getItem('ur_insc_key')||'';
+  document.getElementById('cfgUrl').value = u;
+  document.getElementById('cfgKey').value = k;
+  if(u) document.getElementById('cfgStatus').textContent = '✓ Supabase configurado';
+  buildStars('techStars','techLabel','techScore',['','Iniciante','Básico','Intermediário','Avançado','Elite']);
+  buildStars('physStars','physLabel','physScore',['','Leve','Moderado','Regular','Intenso','Atleta']);
+  updateProgress(1);
+});
+
+// ─── STEPS ───────────────────────────────────────────────
+const STEPS = [
+  {n:1,icon:'👤',label:'Identificação'},
+  {n:2,icon:'📱',label:'Contato'},
+  {n:3,icon:'🏐',label:'Experiência'},
+  {n:4,icon:'📅',label:'Disponibilidade'},
+  {n:5,icon:'👥',label:'Equipe'},
+  {n:6,icon:'🏥',label:'Saúde & Termos'}
+];
+let currentStep = 1;
+
+function updateProgress(n){
+  const dots = document.getElementById('progressSteps');
+  dots.innerHTML = STEPS.map(s=>`<div class="step-dot ${s.n<n?'done':s.n===n?'active':''}">${s.n<n?'✓':s.icon}</div>`).join('');
+  document.getElementById('progressFill').style.width = ((n-1)/(STEPS.length-1)*100)+'%';
+  document.getElementById('progressLabel').textContent = STEPS[n-1].label + ` — Passo ${n} de ${STEPS.length}`;
+}
+
+function showStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step-'+n)?.classList.add('active');
+  updateProgress(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+  currentStep = n;
+}
+
+function prevStep(n){ showStep(n-1); }
+
+function nextStep(n){
+  if(!validateStep(n)) return;
+  showStep(n+1);
+}
+
+// ─── VALIDATION ───────────────────────────────────────────
+function validateStep(n){
+  let ok = true;
+  const require = (id, fieldId) => {
+    const el = document.getElementById(id);
+    const f = document.getElementById(fieldId||'f-'+id);
+    const empty = !el || !el.value.trim();
+    if(f) f.classList.toggle('error', empty);
+    if(empty) ok = false;
+  };
+  if(n===1){
+    require('name');
+    require('gender');
+    require('birth');
+  }
+  if(n===2){
+    require('phone');
+    require('city');
+    require('emergency');
+    const emailEl = document.getElementById('email');
+    const emailF = document.getElementById('f-email');
+    const emailOk = emailEl && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value);
+    if(emailF) emailF.classList.toggle('error', !emailOk);
+    if(!emailOk) ok = false;
+  }
+  if(n===3){
+    require('position','f-position');
+    if(!window.techScore || window.techScore<1){ ok=false; toast('Avalie seu nível técnico'); }
+    if(!window.physScore || window.physScore<1){ ok=false; toast('Avalie seu condicionamento físico'); }
+  }
+  if(n===6){
+    const terms = ['termInfo','termCommit','termRules'];
+    const unchecked = terms.filter(id=>!document.getElementById(id).checked);
+    if(unchecked.length){ ok=false; document.getElementById('submitErr').style.display='block'; document.getElementById('submitErr').textContent='Confirme todos os termos obrigatórios para continuar.'; }
+    else { document.getElementById('submitErr').style.display='none'; }
+  }
+  if(!ok) window.scrollTo({top:0,behavior:'smooth'});
+  return ok;
+}
+
+// ─── STARS ───────────────────────────────────────────────
+window.techScore = 0; window.physScore = 0;
+function buildStars(containerId, labelId, varName, labels){
+  const c = document.getElementById(containerId);
+  for(let i=1;i<=5;i++){
+    const btn = document.createElement('button');
+    btn.className='star-btn'; btn.type='button'; btn.textContent='★';
+    btn.onclick=()=>{
+      window[varName]=i;
+      c.querySelectorAll('.star-btn').forEach((b,j)=>b.classList.toggle('active',j<i));
+      document.getElementById(labelId).textContent = labels[i] || '';
+    };
+    c.appendChild(btn);
+  }
+}
+
+// ─── CONDITIONAL ─────────────────────────────────────────
+function toggleConditional(id, show){ document.getElementById(id).classList.toggle('show', show); }
+
+// ─── MASKS ───────────────────────────────────────────────
+function maskPhone(el){
+  let v=el.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>10) v=v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/,'($1) $2 $3-$4');
+  else if(v.length>6) v=v.replace(/^(\d{2})(\d{4})(\d+)/,'($1) $2-$3');
+  else if(v.length>2) v=v.replace(/^(\d{2})(\d+)/,'($1) $2');
+  el.value=v;
+}
+function maskCpf(el){
+  let v=el.value.replace(/\D/g,'').slice(0,11);
+  if(v.length>9) v=v.replace(/^(\d{3})(\d{3})(\d{3})(\d+)/,'$1.$2.$3-$4');
+  else if(v.length>6) v=v.replace(/^(\d{3})(\d{3})(\d+)/,'$1.$2.$3');
+  else if(v.length>3) v=v.replace(/^(\d{3})(\d+)/,'$1.$2');
+  el.value=v;
+}
+
+// ─── HELPERS ─────────────────────────────────────────────
+function checkedValues(name){ return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e=>e.value); }
+function chipValues(ids){ return ids.filter(id=>document.getElementById(id)?.checked).map(id=>document.getElementById(id).value); }
+function toast(msg){ const t=document.createElement('div'); t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;z-index:9999;border:1px solid #333'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2500); }
+
+// ─── COLLECT ─────────────────────────────────────────────
+function collectData(){
+  const g = id => (document.getElementById(id)?.value||'').trim();
+  const radio = name => (document.querySelector(`input[name="${name}"]:checked`)?.value)||'false';
+  return {
+    name:            g('name'),
+    media_name:      g('mediaName'),
+    gender:          g('gender'),
+    birth:           g('birth'),
+    cpf:             g('cpf'),
+    photo_url:       g('photoUrl'),
+    instagram:       g('instagram'),
+    how_found:       g('howFound'),
+    phone:           g('phone').replace(/\D/g,''),
+    email:           g('email'),
+    city:            g('city'),
+    neighborhood:    g('neighborhood'),
+    emergency:       g('emergency'),
+    position:        g('position'),
+    position_secondary: g('positionSecondary'),
+    practice_years:  g('practiceYears'),
+    tournament_exp:  radio('tourExp')==='true',
+    tech_score:      window.techScore||0,
+    phys_score:      window.physScore||0,
+    accepts_reloc:   radio('acceptsReloc')==='true',
+    weekly_avail:    g('weeklyAvail'),
+    modalities:      JSON.stringify(chipValues(['modUrPlay','modUrSeries','modChampion','modTreino'])),
+    categories:      JSON.stringify(chipValues(['catDM','catDF','catDX','catQM','catQF','catQX'])),
+    days:            JSON.stringify(chipValues(['day0','day1','day2','day3','day4','day5','day6'])),
+    shifts:          JSON.stringify(chipValues(['shManha','shTarde','shNoite','shFds'])),
+    preferred_polo:  g('preferredPolo'),
+    has_team:        radio('hasTeam')==='true',
+    team_name:       g('teamName'),
+    has_partner:     radio('hasPartner')==='true',
+    partner_name:    g('partnerName'),
+    has_quartet:     radio('hasQuartet')==='true',
+    medical_restriction: g('medicalRestriction'),
+    blood_type:      g('bloodType'),
+    shirt_size:      g('shirtSize'),
+    shirt_number:    g('shirtNumber'),
+    image_auth:      document.getElementById('termImage').checked,
+    payment_status:  false,
+    status:          'pendente'
+  };
+}
+
+// ─── SUBMIT ───────────────────────────────────────────────
+async function submitForm(){
+  if(!validateStep(6)) return;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled=true; btn.textContent='Enviando...';
+  const data = collectData();
+
+  // Salvar local como fallback
+  const all = JSON.parse(localStorage.getItem('ur_inscricoes_local')||'[]');
+  all.push({...data, submitted_at: new Date().toISOString()});
+  localStorage.setItem('ur_inscricoes_local', JSON.stringify(all));
+
+  // Tentar Supabase
+  let online = false;
+  if(UR_CONFIG.supabaseUrl && UR_CONFIG.supabaseKey){
+    try{
+      const res = await fetch(`${UR_CONFIG.supabaseUrl}/rest/v1/ur_inscricoes`, {
+        method:'POST', headers:{
+          'Content-Type':'application/json',
+          'apikey': UR_CONFIG.supabaseKey,
+          'Authorization': 'Bearer ' + UR_CONFIG.supabaseKey,
+          'Prefer': 'return=minimal'
+        }, body: JSON.stringify(data)
+      });
+      online = res.ok || res.status===201;
+    }catch(e){ console.warn('Supabase offline, salvo localmente.', e); }
+  }
+
+  showSuccess(data, online);
+}
+
+function showSuccess(data, online){
+  document.querySelectorAll('.step').forEach(s=>s.style.display='none');
+  document.getElementById('progressWrap').style.display='none';
+  const sc = document.getElementById('successScreen');
+  sc.classList.add('show');
+  document.getElementById('successMsg').textContent = `Olá, ${data.name.split(' ')[0]}! Sua inscrição foi ${online?'enviada para o servidor':'salva localmente'} com sucesso. Nossa equipe entrará em contato pelo WhatsApp (${formatPhone(data.phone)}) em breve.`;
+  const cats = JSON.parse(data.categories||'[]');
+  const days = JSON.parse(data.days||'[]');
+  const catLabels = {DM:'Dupla Masc.',DF:'Dupla Fem.',DX:'Dupla Mista',QM:'Quarteto Masc.',QF:'Quarteto Fem.',QX:'Quarteto Misto'};
+  const dayLabels = {0:'Dom',1:'Seg',2:'Ter',3:'Qua',4:'Qui',5:'Sex',6:'Sáb'};
+  document.getElementById('successSummary').innerHTML = `
+    <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px">📋 Resumo da Inscrição</div>
+    ${row('Nome', data.name)}
+    ${row('Posição', data.position)}
+    ${row('Nível Técnico', '⭐'.repeat(data.tech_score||0)+` (${data.tech_score}/5)`)}
+    ${row('Categorias', cats.map(c=>catLabels[c]||c).join(', ')||'—')}
+    ${row('Dias', days.map(d=>dayLabels[d]).join(', ')||'—')}
+    ${row('Polo', data.city)}
+    ${row('Status', online?'<span style="color:var(--green)">✓ Enviado</span>':'<span style="color:var(--gold)">⚠ Salvo localmente</span>')}
+  `;
+}
+function row(k,v){ return `<div class="summary-row"><span class="summary-key">${k}</span><span class="summary-val">${v}</span></div>`; }
+function formatPhone(p){ return p.length===11?`(${p.slice(0,2)}) ${p.slice(2,7)}-${p.slice(7)}`:p; }
+</script>
+</body>
+</html>
