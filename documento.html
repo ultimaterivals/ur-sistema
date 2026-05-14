@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultimate Rivals — Documento Oficial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #07080c;
+  --dark: #0d0e15;
+  --panel: #131420;
+  --line: #1e1d2a;
+  --gold: #c9a84c;
+  --gold-2: #ffd84d;
+  --gold-3: #ffe27a;
+  --white: #f0ece0;
+  --muted: #7a7690;
+  --green: #2ecc71;
+  --radius: 12px;
+  --font-h: 'Barlow Condensed', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 40px;
+  background: rgba(7,8,12,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,210,31,.08);
+  transition: background .3s;
+}
+.nav-logo {
+  font-family: var(--font-h); font-size: 22px; font-weight: 900;
+  color: var(--gold-2); letter-spacing: .1em;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255,210,31,.2), rgba(255,210,31,.06));
+  border: 1px solid rgba(255,210,31,.35);
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 900; color: var(--gold-2);
+}
+.nav-links { display: flex; gap: 6px; }
+.nav-link {
+  padding: 6px 14px; border-radius: 7px; font-size: 12px; font-weight: 600;
+  color: var(--muted); text-decoration: none; letter-spacing: .05em;
+  transition: all .15s; font-family: var(--font-h); text-transform: uppercase;
+}
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,.05); }
+.nav-cta {
+  padding: 8px 18px; border-radius: 8px; font-size: 12px; font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: var(--black); text-decoration: none; font-family: var(--font-h);
+  letter-spacing: .06em; text-transform: uppercase; transition: all .2s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,210,31,.3); }
+
+/* ── SECTIONS ── */
+section { position: relative; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+.container-sm { max-width: 800px; margin: 0 auto; padding: 0 40px; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(255,210,31,.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(21,60,100,.1) 0%, transparent 50%),
+    var(--black);
+  padding-top: 80px;
+  overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; bottom: -60px; right: -20px;
+  font-family: var(--font-h); font-size: clamp(120px, 18vw, 280px);
+  font-weight: 900; color: rgba(255,210,31,.028);
+  letter-spacing: -.02em; line-height: 1; user-select: none;
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: var(--font-h); font-size: 13px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 30px; height: 2px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: var(--font-h); font-size: clamp(52px, 8vw, 96px);
+  font-weight: 900; line-height: .95; letter-spacing: -.01em;
+  color: var(--white); margin-bottom: 8px;
+}
+.hero-title span { color: var(--gold-2); }
+.hero-subtitle {
+  font-family: var(--font-h); font-size: clamp(20px, 3vw, 30px);
+  font-weight: 300; color: var(--muted); letter-spacing: .04em;
+  margin-bottom: 32px;
+}
+.hero-manifesto {
+  font-size: 16px; font-weight: 400; line-height: 1.7;
+  color: rgba(240,236,224,.75); max-width: 560px;
+  margin-bottom: 40px; font-style: italic;
+  border-left: 3px solid var(--gold); padding-left: 20px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 10px; font-size: 14px; font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: var(--black); text-decoration: none; font-family: var(--font-h);
+  letter-spacing: .06em; text-transform: uppercase; transition: all .2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(255,210,31,.35); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  border: 1px solid rgba(255,255,255,.2); color: var(--white);
+  text-decoration: none; font-family: var(--font-h);
+  letter-spacing: .06em; text-transform: uppercase; transition: all .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.35); }
+.hero-numbers {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  margin-top: 72px; background: var(--line); border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--line);
+}
+.hero-num {
+  background: rgba(255,255,255,.025); padding: 24px 20px; text-align: center;
+}
+.hero-num-val {
+  font-family: var(--font-h); font-size: 38px; font-weight: 900;
+  color: var(--gold-2); line-height: 1; display: block;
+}
+.hero-num-lbl {
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted); margin-top: 6px; display: block;
+}
+
+/* ── SECTION HEADER ── */
+.section-header { margin-bottom: 56px; }
+.section-tag {
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+.section-title {
+  font-family: var(--font-h); font-size: clamp(36px, 5vw, 58px);
+  font-weight: 900; line-height: 1.0; letter-spacing: -.01em; color: var(--white);
+}
+.section-title em { color: var(--gold-2); font-style: normal; }
+.section-desc {
+  font-size: 15px; color: rgba(240,236,224,.65); max-width: 540px;
+  line-height: 1.75; margin-top: 16px;
+}
+
+/* ── PROBLEM / SOLUTION ── */
+#problem {
+  padding: 120px 0;
+  background: linear-gradient(180deg, var(--black) 0%, #0a0b12 100%);
+}
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.problem-list { display: flex; flex-direction: column; gap: 20px; }
+.problem-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px; border-radius: 10px;
+  border: 1px solid var(--line); background: rgba(255,255,255,.02);
+  transition: border-color .2s;
+}
+.problem-item:hover { border-color: rgba(255,80,80,.25); }
+.problem-icon {
+  width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+  background: rgba(255,80,80,.12); border: 1px solid rgba(255,80,80,.2);
+  display: grid; place-items: center; font-size: 18px;
+}
+.problem-item h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.problem-item p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ── PILLARS ── */
+#pillars { padding: 120px 0; background: #09090f; }
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.pillar {
+  padding: 32px 28px;
+  background: linear-gradient(160deg, #141525, #0f1018);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  transition: all .25s; cursor: default; position: relative; overflow: hidden;
+}
+.pillar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--pillar-color, var(--gold));
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.pillar:hover { transform: translateY(-4px); border-color: rgba(255,210,31,.2); }
+.pillar:hover::before { transform: scaleX(1); }
+.pillar-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+.pillar-name {
+  font-family: var(--font-h); font-size: 20px; font-weight: 800;
+  color: var(--white); letter-spacing: .04em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.pillar-tag {
+  display: inline-block; margin-top: 16px; padding: 3px 10px; border-radius: 5px;
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(255,255,255,.06); color: var(--muted);
+}
+
+/* ── HOW IT WORKS ── */
+#how { padding: 120px 0; background: var(--black); }
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 28px; top: 28px; bottom: 28px;
+  width: 2px; background: linear-gradient(180deg, var(--gold), transparent);
+}
+.tl-item {
+  display: flex; gap: 36px; align-items: flex-start; padding-bottom: 44px;
+  cursor: pointer;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-marker {
+  width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
+  border: 2px solid var(--line); background: var(--dark);
+  display: grid; place-items: center; font-size: 22px;
+  position: relative; z-index: 1; transition: all .2s;
+}
+.tl-item:hover .tl-marker {
+  border-color: var(--gold); background: rgba(255,210,31,.08);
+  box-shadow: 0 0 20px rgba(255,210,31,.15);
+}
+.tl-content { flex: 1; padding-top: 10px; }
+.tl-label {
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 6px;
+}
+.tl-title {
+  font-family: var(--font-h); font-size: 24px; font-weight: 900;
+  color: var(--white); margin-bottom: 8px; letter-spacing: .02em;
+}
+.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.tl-details {
+  margin-top: 16px; display: none;
+  background: rgba(255,255,255,.03); border: 1px solid var(--line);
+  border-radius: 9px; padding: 16px;
+}
+.tl-item.open .tl-details { display: block; }
+.tl-details-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px;
+}
+.tl-detail-card {
+  background: rgba(255,255,255,.04); border-radius: 8px; padding: 12px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.tl-detail-val {
+  font-family: var(--font-h); font-size: 24px; font-weight: 900; color: var(--gold-2);
+}
+.tl-detail-lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tl-toggle {
+  margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--gold);
+  font-family: var(--font-h); letter-spacing: .06em; cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* ── MODEL ── */
+#model { padding: 120px 0; background: #09090f; }
+.model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.revenue-stream {
+  padding: 28px; border-radius: var(--radius);
+  background: linear-gradient(160deg, #141525, #0f1018);
+  border: 1px solid var(--line);
+  cursor: pointer; transition: all .2s;
+}
+.revenue-stream:hover { border-color: rgba(255,210,31,.3); transform: translateY(-2px); }
+.rs-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+}
+.rs-icon {
+  width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 20px;
+  background: rgba(255,210,31,.1); border: 1px solid rgba(255,210,31,.2);
+}
+.rs-name {
+  font-family: var(--font-h); font-size: 18px; font-weight: 800;
+  color: var(--white); text-transform: uppercase; letter-spacing: .04em;
+}
+.rs-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.rs-items { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.rs-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: rgba(240,236,224,.7);
+}
+.rs-item::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+
+/* ── SPONSORSHIP ── */
+#sponsor { padding: 120px 0; background: var(--black); }
+.cota-tabs {
+  display: flex; gap: 6px; margin-bottom: 40px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--line);
+  border-radius: 10px; padding: 5px;
+}
+.cota-tab {
+  flex: 1; padding: 10px 16px; border-radius: 7px; border: none;
+  background: transparent; color: var(--muted); font-size: 13px; font-weight: 700;
+  font-family: var(--font-h); text-transform: uppercase; letter-spacing: .06em;
+  cursor: pointer; transition: all .15s;
+}
+.cota-tab.active { background: var(--gold-2); color: var(--black); }
+.cota-panel { display: none; }
+.cota-panel.active { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start; }
+.cota-badge {
+  padding: 40px 32px; border-radius: 16px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cota-badge::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--cota-bg); opacity: .12;
+}
+.cota-badge-tier {
+  font-family: var(--font-h); font-size: 13px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--cota-color); margin-bottom: 12px; position: relative;
+}
+.cota-badge-name {
+  font-family: var(--font-h); font-size: 46px; font-weight: 900;
+  color: var(--cota-color); line-height: 1; letter-spacing: .02em;
+  position: relative;
+}
+.cota-badge-price {
+  margin-top: 16px; font-family: var(--font-h); position: relative;
+}
+.cota-badge-price span {
+  font-size: 13px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .08em; display: block; margin-bottom: 4px;
+}
+.cota-badge-price strong {
+  font-size: 36px; font-weight: 900; color: var(--white); display: block;
+}
+.cota-badge-price em { font-size: 13px; color: var(--muted); font-style: normal; }
+.cota-benefits { display: flex; flex-direction: column; gap: 10px; }
+.cota-benefit {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px; border-radius: 9px;
+  background: rgba(255,255,255,.03); border: 1px solid var(--line);
+}
+.cota-check {
+  width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+  background: rgba(46,204,113,.15); border: 1px solid rgba(46,204,113,.3);
+  display: grid; place-items: center; font-size: 11px;
+}
+.cota-benefit-text h4 { font-size: 13px; font-weight: 700; color: var(--white); }
+.cota-benefit-text p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── SEASON ── */
+#season { padding: 120px 0; background: #09090f; }
+.season-calendar {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  margin-top: 40px;
+}
+.cal-month {
+  border-radius: var(--radius); border: 1px solid var(--line);
+  overflow: hidden; transition: all .2s;
+}
+.cal-month:hover { border-color: rgba(255,210,31,.25); transform: translateY(-3px); }
+.cal-month-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(255,210,31,.1), rgba(255,210,31,.03));
+  border-bottom: 1px solid var(--line);
+}
+.cal-month-name {
+  font-family: var(--font-h); font-size: 20px; font-weight: 900;
+  color: var(--gold-2); text-transform: uppercase; letter-spacing: .06em;
+}
+.cal-month-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cal-month-body { padding: 16px 20px; background: rgba(255,255,255,.02); }
+.cal-event {
+  display: flex; align-items: center; gap: 10px; padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.cal-event:last-child { border-bottom: 0; }
+.cal-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  background: var(--dot-color, var(--gold));
+}
+.cal-event-text { font-size: 12px; color: rgba(240,236,224,.75); }
+.cal-event-week { font-size: 11px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+
+/* ── DIFFERENTIALS ── */
+#diff { padding: 120px 0; background: var(--black); }
+.diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.diff-card {
+  padding: 32px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: rgba(255,255,255,.02);
+  display: flex; gap: 20px; transition: all .2s;
+}
+.diff-card:hover { border-color: rgba(255,210,31,.2); background: rgba(255,210,31,.03); }
+.diff-num {
+  font-family: var(--font-h); font-size: 52px; font-weight: 900;
+  color: rgba(255,210,31,.12); line-height: 1; flex-shrink: 0;
+  width: 60px; text-align: right;
+}
+.diff-body h3 {
+  font-family: var(--font-h); font-size: 18px; font-weight: 800;
+  color: var(--white); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px;
+}
+.diff-body p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── QUOTE ── */
+#quote {
+  padding: 120px 0; text-align: center;
+  background: radial-gradient(ellipse at center, rgba(255,210,31,.06), transparent 60%);
+}
+.quote-mark {
+  font-family: var(--font-h); font-size: 100px; font-weight: 900;
+  color: rgba(255,210,31,.15); line-height: 0.6; display: block; margin-bottom: 20px;
+}
+.quote-text {
+  font-family: var(--font-h); font-size: clamp(26px, 4vw, 44px);
+  font-weight: 700; color: var(--white); line-height: 1.25; letter-spacing: .01em;
+  max-width: 760px; margin: 0 auto 32px;
+}
+.quote-text em { color: var(--gold-2); font-style: normal; }
+.quote-author {
+  font-size: 13px; color: var(--muted); letter-spacing: .08em;
+}
+
+/* ── ABOUT FOUNDER ── */
+#founder { padding: 100px 0; background: #09090f; }
+.founder-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
+.founder-card {
+  aspect-ratio: 3/4; border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255,210,31,.1), rgba(255,210,31,.03));
+  border: 1px solid rgba(255,210,31,.2);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; text-align: center; padding: 32px;
+}
+.founder-initials {
+  font-family: var(--font-h); font-size: 72px; font-weight: 900;
+  color: var(--gold-2); line-height: 1;
+}
+.founder-name {
+  font-family: var(--font-h); font-size: 22px; font-weight: 800;
+  color: var(--white); letter-spacing: .04em;
+}
+.founder-role { font-size: 13px; color: var(--muted); }
+.founder-values { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.founder-value {
+  padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
+  font-family: var(--font-h); letter-spacing: .06em; text-transform: uppercase;
+  background: rgba(255,210,31,.1); color: var(--gold); border: 1px solid rgba(255,210,31,.2);
+}
+.founder-text { font-size: 15px; color: rgba(240,236,224,.75); line-height: 1.8; }
+.founder-text strong { color: var(--white); font-weight: 700; }
+.founder-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
+}
+.founder-stat { text-align: center; }
+.founder-stat-val {
+  font-family: var(--font-h); font-size: 32px; font-weight: 900; color: var(--gold-2);
+}
+.founder-stat-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+/* ── CTA ── */
+#cta {
+  padding: 120px 0; text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,210,31,.12), transparent 60%),
+    var(--black);
+}
+.cta-title {
+  font-family: var(--font-h); font-size: clamp(40px, 6vw, 72px);
+  font-weight: 900; line-height: 1.0; color: var(--white); letter-spacing: -.01em;
+  margin-bottom: 16px;
+}
+.cta-title em { color: var(--gold-2); font-style: normal; }
+.cta-sub {
+  font-size: 16px; color: var(--muted); max-width: 500px; margin: 0 auto 40px; line-height: 1.65;
+}
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.cta-contact {
+  display: flex; gap: 40px; justify-content: center; margin-top: 56px;
+  flex-wrap: wrap;
+}
+.contact-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 600; }
+.contact-value { font-size: 15px; font-weight: 600; color: var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--line); padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--black); flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: var(--font-h); font-size: 18px; font-weight: 900; color: var(--gold-2); letter-spacing: .1em; }
+.footer-copy { font-size: 12px; color: var(--muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-link { font-size: 12px; color: var(--muted); text-decoration: none; }
+.footer-link:hover { color: var(--white); }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ── DIVIDER ── */
+.gold-divider {
+  width: 48px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-2), var(--gold));
+  margin: 20px 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .container, .container-sm { padding: 0 20px; }
+  #hero, #problem, #pillars, #how, #model, #sponsor, #season, #diff, #quote, #founder, #cta { padding: 80px 0; }
+  .problem-grid, .model-grid, .cota-panel.active, .founder-grid { grid-template-columns: 1fr; }
+  .pillars-grid, .hero-numbers, .season-calendar, .diff-grid { grid-template-columns: 1fr; }
+  .tl-details-grid { grid-template-columns: 1fr 1fr; }
+  .cota-tabs { flex-wrap: wrap; }
+  .hero-bg-text { display: none; }
+}
+
+/* ── PRINT ── */
+@media print {
+  nav, .nav-cta { display: none; }
+  body { background: #fff; color: #000; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">UR</div>
+    ULTIMATE RIVALS
+  </div>
+  <div class="nav-links">
+    <a href="#problem" class="nav-link">O Problema</a>
+    <a href="#pillars" class="nav-link">Ecossistema</a>
+    <a href="#model" class="nav-link">Modelo</a>
+    <a href="#sponsor" class="nav-link">Patrocínio</a>
+    <a href="#season" class="nav-link">Calendário</a>
+    <a href="#cta" class="nav-link">Contato</a>
+  </div>
+  <a href="#cta" class="nav-cta">Quero participar →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Documento Oficial — Temporada 01 · 2025</div>
+    <h1 class="hero-title">O ESPORTE<br><span>AMADOR</span><br>NUNCA MAIS<br>SERÁ O MESMO.</h1>
+    <p class="hero-subtitle">Belo Horizonte · Contagem · Betim</p>
+    <p class="hero-manifesto">
+      "O Ultimate Rivals nasce para formar pessoas e atletas capazes de romper limitações,
+      vencer batalhas internas e performar em níveis que antes pareciam inatingíveis.
+      Somos mais que uma liga. Somos um laboratório de alta performance."
+    </p>
+    <div class="hero-actions">
+      <a href="#model" class="btn-primary">Ver modelo de negócio →</a>
+      <a href="#sponsor" class="btn-ghost">Cotas de patrocínio</a>
+    </div>
+    <div class="hero-numbers">
+      <div class="hero-num">
+        <span class="hero-num-val" data-target="3">0</span>
+        <span class="hero-num-lbl">Cidades</span>
+      </div>
+      <div class="hero-num">
+        <span class="hero-num-val" data-target="6">0</span>
+        <span class="hero-num-lbl">Categorias</span>
+      </div>
+      <div class="hero-num">
+        <span class="hero-num-val" data-target="12">0</span>
+        <span class="hero-num-lbl">Semanas / temporada</span>
+      </div>
+      <div class="hero-num">
+        <span class="hero-num-val">R$ 6,5k+</span>
+        <span class="hero-num-lbl">Em premiações</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bg-text">UR</div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="section-header reveal">
+        <div class="section-tag">O Diagnóstico</div>
+        <h2 class="section-title">O sistema<br><em>falhou</em><br>com os atletas.</h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">
+          O esporte amador no Brasil tem talento de sobra. O que falta é estrutura, continuidade e reconhecimento real. O UR surge para resolver isso.
+        </p>
+      </div>
+      <div class="problem-list">
+        <div class="problem-item reveal reveal-delay-1">
+          <div class="problem-icon">🔀</div>
+          <div>
+            <h4>Eventos isolados, sem continuidade</h4>
+            <p>Torneios acontecem sem conexão. Cada evento é um recomeço. Não há jornada, histórico nem progressão entre competições.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-2">
+          <div class="problem-icon">📊</div>
+          <div>
+            <h4>Sem ranking real nem histórico do atleta</h4>
+            <p>O esforço de cada atleta desaparece após cada evento. Não existe dado, métrica ou registro que acompanhe sua evolução.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-3">
+          <div class="problem-icon">⚖️</div>
+          <div>
+            <h4>Jogos desequilibrados e frustração</h4>
+            <p>Sem nivelamento técnico, atletas de diferentes habilidades competem entre si. Isso gera frustração, abandono e perda de talentos.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-4">
+          <div class="problem-icon">💼</div>
+          <div>
+            <h4>Pouco valor percebido por patrocinadores</h4>
+            <p>Sem dados, ranking ou mídia estruturada, é impossível comprovar ROI. Marcas não investem no que não conseguem mensurar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; max-width:600px; margin: 0 auto 56px">
+      <div class="section-tag" style="justify-content:center">O Ecossistema</div>
+      <h2 class="section-title">6 pilares.<br><em>Um sistema vivo.</em></h2>
+      <p class="section-desc" style="max-width:100%; text-align:center">Cada elemento do UR se conecta para criar uma jornada contínua de desenvolvimento e competição.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar reveal" style="--pillar-color:#ffd84d">
+        <span class="pillar-icon">⚡</span>
+        <div class="pillar-name">UR Play</div>
+        <p class="pillar-desc">Porta de entrada do ecossistema. Jogos semanais organizados por nível em quadras parceiras em BH, Contagem e Betim. Gera presença, dados, pontos e ranking.</p>
+        <span class="pillar-tag">Base do sistema</span>
+      </div>
+      <div class="pillar reveal reveal-delay-1" style="--pillar-color:#4a9eff">
+        <span class="pillar-icon">📊</span>
+        <div class="pillar-name">Ranking & Pontuação</div>
+        <p class="pillar-desc">Sistema contínuo de pontos individuais e por equipe. Presença, vitórias, aces, bloqueios, MVP — tudo conta. Transparente, meritocrático e público.</p>
+        <span class="pillar-tag">Motor de engajamento</span>
+      </div>
+      <div class="pillar reveal reveal-delay-2" style="--pillar-color:#a78bfa">
+        <span class="pillar-icon">🏆</span>
+        <div class="pillar-name">Torneios UR</div>
+        <p class="pillar-desc">Mini Torneios mensais, Torneio Oficial por trimestre e Virada de Ranking — o grande evento de encerramento com premiações em dinheiro.</p>
+        <span class="pillar-tag">Ápice competitivo</span>
+      </div>
+      <div class="pillar reveal reveal-delay-3" style="--pillar-color:#2ecc71">
+        <span class="pillar-icon">🎯</span>
+        <div class="pillar-name">Nivelamento Técnico</div>
+        <p class="pillar-desc">N5 Hunter Iniciante · N4 Hunter · N3 Hunter Experiente · N2 Hunter Elite · N1 Hunter Lenda. Avaliação em 4 eixos: técnico, comportamental, físico e engajamento. Revisão trimestral garantindo jogos justos.</p>
+        <span class="pillar-tag">Justiça competitiva</span>
+      </div>
+      <div class="pillar reveal reveal-delay-4" style="--pillar-color:#f59e0b">
+        <span class="pillar-icon">🪙</span>
+        <div class="pillar-name">UR Coins</div>
+        <p class="pillar-desc">Moeda interna do ecossistema. Ganha participando, vencendo e engajando. Troca por produtos, serviços, experiências e vantagens no UR Market.</p>
+        <span class="pillar-tag">Economia interna</span>
+      </div>
+      <div class="pillar reveal" style="--pillar-color:#ec4899">
+        <span class="pillar-icon">🎬</span>
+        <div class="pillar-name">Mídia & Entretenimento</div>
+        <p class="pillar-desc">Transmissões, highlights, bastidores, documentários e storytelling oficial. Atletas se tornam protagonistas. Conteúdo que atrai e retém patrocinadores.</p>
+        <span class="pillar-tag">Visibilidade & impacto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items:start">
+      <div class="section-header reveal" style="position:sticky; top:100px">
+        <div class="section-tag">Como funciona</div>
+        <h2 class="section-title">Jornada do<br><em>atleta.</em></h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">Do primeiro jogo ao pódio final — uma jornada estruturada com dados, métricas e reconhecimento real.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal" onclick="toggleTl(this)">
+          <div class="tl-marker">📋</div>
+          <div class="tl-content">
+            <div class="tl-label">Passo 1</div>
+            <div class="tl-title">Inscrição & Nivelamento</div>
+            <p class="tl-desc">Formulário oficial, aceite de regulamento e participação no primeiro UR Play para avaliação e definição de nível (N5 a N1).</p>
+            <div class="tl-toggle">↓ Ver detalhes</div>
+            <div class="tl-details">
+              <p style="font-size:13px;color:var(--muted)">O nivelamento acontece de forma natural no primeiro UR Play. A coordenação observa 4 eixos:</p>
+              <div class="tl-details-grid">
+                <div class="tl-detail-card"><div class="tl-detail-val">4</div><div class="tl-detail-lbl">Eixos avaliados</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">5</div><div class="tl-detail-lbl">Níveis disponíveis</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">0%</div><div class="tl-detail-lbl">Pressão de julgamento</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-1" onclick="toggleTl(this)">
+          <div class="tl-marker">⚡</div>
+          <div class="tl-content">
+            <div class="tl-label">Semanal</div>
+            <div class="tl-title">UR Play — Jogos semanais</div>
+            <p class="tl-desc">Partidas organizadas por nível em BH, Contagem e Betim. Cada presença, vitória e destaque gera pontos e UR Coins automaticamente.</p>
+            <div class="tl-toggle">↓ Ver detalhes</div>
+            <div class="tl-details">
+              <div class="tl-details-grid">
+                <div class="tl-detail-card"><div class="tl-detail-val">R$25</div><div class="tl-detail-lbl">Avulso / por dia</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">R$100</div><div class="tl-detail-lbl">Mensalidade</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">2h</div><div class="tl-detail-lbl">Duração média</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-2" onclick="toggleTl(this)">
+          <div class="tl-marker">🏅</div>
+          <div class="tl-content">
+            <div class="tl-label">Mensal</div>
+            <div class="tl-title">Mini Torneios</div>
+            <p class="tl-desc">Eventos rápidos mensais com 6 a 8 equipes, premiação em UR Coins + kit UR, e impacto direto no ranking da temporada.</p>
+            <div class="tl-toggle">↓ Ver detalhes</div>
+            <div class="tl-details">
+              <div class="tl-details-grid">
+                <div class="tl-detail-card"><div class="tl-detail-val">R$40</div><div class="tl-detail-lbl">Inscrição por atleta</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">R$500</div><div class="tl-detail-lbl">Premiação total</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">6–8</div><div class="tl-detail-lbl">Equipes / evento</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-3" onclick="toggleTl(this)">
+          <div class="tl-marker">🏆</div>
+          <div class="tl-content">
+            <div class="tl-label">Trimestral</div>
+            <div class="tl-title">UR Series — Torneio Oficial</div>
+            <p class="tl-desc">Principal competição da temporada. Fase de grupos + eliminatórias, cobertura midiática, transmissão ao vivo e premiação em dinheiro.</p>
+            <div class="tl-toggle">↓ Ver detalhes</div>
+            <div class="tl-details">
+              <div class="tl-details-grid">
+                <div class="tl-detail-card"><div class="tl-detail-val">R$100</div><div class="tl-detail-lbl">Inscrição por atleta</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">R$1.000</div><div class="tl-detail-lbl">Premiação total</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val">8</div><div class="tl-detail-lbl">Equipes por nível</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item reveal reveal-delay-4" onclick="toggleTl(this)">
+          <div class="tl-marker">🎖️</div>
+          <div class="tl-content">
+            <div class="tl-label">Encerramento</div>
+            <div class="tl-title">Virada de Ranking</div>
+            <p class="tl-desc">Grande evento de encerramento do trimestre com cerimônia, repasse de prêmios, MVP da temporada e anúncio da próxima temporada.</p>
+            <div class="tl-toggle">↓ Ver premiações</div>
+            <div class="tl-details">
+              <div class="tl-details-grid">
+                <div class="tl-detail-card"><div class="tl-detail-val" style="font-size:20px">R$1.500</div><div class="tl-detail-lbl">1º Ranking Geral</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val" style="font-size:20px">R$1.000</div><div class="tl-detail-lbl">MVP da temporada</div></div>
+                <div class="tl-detail-card"><div class="tl-detail-val" style="font-size:20px">R$1.000</div><div class="tl-detail-lbl">2º e 3º lugares</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL -->
+<section id="model">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; max-width:600px; margin:0 auto 56px">
+      <div class="section-tag" style="justify-content:center">Modelo de Negócio</div>
+      <h2 class="section-title">Receita<br><em>antifrágil.</em></h2>
+      <p class="section-desc" style="max-width:100%;text-align:center">O UR não depende de uma única fonte. São 5 frentes de receita independentes que se reforçam mutuamente.</p>
+    </div>
+    <div class="model-grid">
+      <div class="revenue-stream reveal">
+        <div class="rs-header">
+          <div class="rs-icon">👤</div>
+          <div class="rs-name">Atletas & Equipes</div>
+        </div>
+        <p class="rs-desc">Receita recorrente e previsível gerada pelos próprios participantes da comunidade esportiva.</p>
+        <div class="rs-items">
+          <div class="rs-item">UR Play avulso — R$25/dia</div>
+          <div class="rs-item">UR Play mensal — R$100/mês</div>
+          <div class="rs-item">CT UR (treinos) — R$180/mês</div>
+          <div class="rs-item">Inscrições em Mini Torneios — R$40/atleta</div>
+          <div class="rs-item">Torneio Oficial — R$100/atleta</div>
+          <div class="rs-item">Pacotes trimestrais com desconto</div>
+        </div>
+      </div>
+      <div class="revenue-stream reveal reveal-delay-1">
+        <div class="rs-header">
+          <div class="rs-icon">🏢</div>
+          <div class="rs-name">Patrocínios & Cotas</div>
+        </div>
+        <p class="rs-desc">Marcas locais, regionais e nacionais com acesso a uma comunidade esportiva qualificada e mensurável.</p>
+        <div class="rs-items">
+          <div class="rs-item">Cota Master (Naming Rights) — exclusividade total</div>
+          <div class="rs-item">Cota Ouro — visibilidade em uniformes + transmissões</div>
+          <div class="rs-item">Cota Prata — banners, redes sociais e eventos</div>
+          <div class="rs-item">Cota Apoio — presença em evento específico</div>
+          <div class="rs-item">Patrocínio pontual de torneios</div>
+          <div class="rs-item">Conteúdos e posts patrocinados</div>
+        </div>
+      </div>
+      <div class="revenue-stream reveal reveal-delay-2">
+        <div class="rs-header">
+          <div class="rs-icon">🏟️</div>
+          <div class="rs-name">Quadras Parceiras</div>
+        </div>
+        <p class="rs-desc">Centros esportivos e arenas que se beneficiam do fluxo recorrente de atletas organizados pelo UR.</p>
+        <div class="rs-items">
+          <div class="rs-item">Taxa de parceria institucional</div>
+          <div class="rs-item">Uso da metodologia UR</div>
+          <div class="rs-item">Aumento de fluxo e ocupação recorrente</div>
+          <div class="rs-item">Valorização da marca local</div>
+        </div>
+      </div>
+      <div class="revenue-stream reveal reveal-delay-3">
+        <div class="rs-header">
+          <div class="rs-icon">🎬</div>
+          <div class="rs-name">Mídia & Conteúdo</div>
+        </div>
+        <p class="rs-desc">Monetização do ecossistema de mídia próprio — transmissões, conteúdo patrocinado e futuramente licenciamento.</p>
+        <div class="rs-items">
+          <div class="rs-item">Transmissões ao vivo patrocinadas</div>
+          <div class="rs-item">Conteúdo editorial patrocinado</div>
+          <div class="rs-item">Programas fixos (séries, documentários)</div>
+          <div class="rs-item">Licenciamento de formatos futuramente</div>
+        </div>
+      </div>
+      <div class="revenue-stream reveal" style="grid-column:1/-1">
+        <div class="rs-header">
+          <div class="rs-icon">🪙</div>
+          <div class="rs-name">UR Market — Economia Interna</div>
+        </div>
+        <p class="rs-desc">Marketplace interno movido por UR Coins que integra atletas, patrocinadores e parceiros numa economia fechada e mensurável. Produtos, serviços, experiências e kits oficiais circulam gerando dados e receita para todos os participantes.</p>
+        <div class="rs-items" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+          <div class="rs-item">Equipamentos e vestuário UR</div>
+          <div class="rs-item">Suplementos e parceiros de saúde</div>
+          <div class="rs-item">Experiências exclusivas (VIP, tours)</div>
+          <div class="rs-item">Kits e brindes temáticos</div>
+          <div class="rs-item">Serviços de performance</div>
+          <div class="rs-item">Produtos de parceiros via UR Coins</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORSHIP -->
+<section id="sponsor">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; max-width:600px; margin:0 auto 40px">
+      <div class="section-tag" style="justify-content:center">Para marcas</div>
+      <h2 class="section-title">Cotas de<br><em>Patrocínio.</em></h2>
+      <p class="section-desc" style="max-width:100%;text-align:center">Acesso real a uma comunidade esportiva engajada, com dados, mídia e métricas de retorno.</p>
+    </div>
+    <div class="cota-tabs reveal">
+      <button class="cota-tab active" onclick="selectCota(this, 'master')">⭐ Master</button>
+      <button class="cota-tab" onclick="selectCota(this, 'ouro')">🥇 Ouro</button>
+      <button class="cota-tab" onclick="selectCota(this, 'prata')">🥈 Prata</button>
+      <button class="cota-tab" onclick="selectCota(this, 'apoio')">🤝 Apoio</button>
+    </div>
+
+    <div id="cota-master" class="cota-panel active reveal">
+      <div class="cota-badge" style="--cota-bg:var(--gold-2);--cota-color:var(--gold-2);background:linear-gradient(160deg,rgba(255,216,77,.08),rgba(255,216,77,.02));border:1px solid rgba(255,216,77,.25)">
+        <div class="cota-badge-tier">Cota Master</div>
+        <div class="cota-badge-name">NAMING<br>RIGHTS</div>
+        <div class="cota-badge-price">
+          <span>Investimento trimestral</span>
+          <strong>A negociar</strong>
+          <em>Exclusividade total de categoria</em>
+        </div>
+      </div>
+      <div class="cota-benefits">
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Naming rights do torneio / ranking</h4><p>Seu nome no torneio oficial e no ranking da temporada inteira.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Logo principal em toda comunicação</h4><p>Uniforme, banners, redes sociais, transmissões, materiais institucionais.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Ativações exclusivas em eventos</h4><p>Estande fixo em todos os eventos, distribuição de produtos, experiências de marca.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Conteúdo mensal exclusivo</h4><p>Posts, reels e stories com sua marca integrada ao storytelling oficial do UR.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Relatórios mensais de performance</h4><p>Dados de alcance, impressões, engajamento e presença de marca.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Presença nas transmissões ao vivo</h4><p>Menção e logo em todas as transmissões de UR Play e torneios.</p></div></div>
+      </div>
+    </div>
+
+    <div id="cota-ouro" class="cota-panel">
+      <div class="cota-badge" style="--cota-color:#ffd84d;background:linear-gradient(160deg,rgba(255,210,31,.07),rgba(255,210,31,.02));border:1px solid rgba(255,210,31,.2)">
+        <div class="cota-badge-tier">Cota Ouro</div>
+        <div class="cota-badge-name">OFICIAL</div>
+        <div class="cota-badge-price">
+          <span>Investimento trimestral</span>
+          <strong>A negociar</strong>
+          <em>Alta visibilidade · Sem exclusividade</em>
+        </div>
+      </div>
+      <div class="cota-benefits">
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Logo em uniformes dos atletas</h4><p>Presença física em todos os jogos e eventos da temporada.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Banners em quadras parceiras</h4><p>Exposição visual nos locais de competição em BH, Contagem e Betim.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Menções em transmissões</h4><p>Agradecimento e logo exibidos nas transmissões ao vivo de eventos.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Posts dedicados nas redes sociais</h4><p>Mínimo de 4 publicações mensais com integração da marca.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Estande em eventos principais</h4><p>Presença física nos Mini Torneios e UR Series da temporada.</p></div></div>
+      </div>
+    </div>
+
+    <div id="cota-prata" class="cota-panel">
+      <div class="cota-badge" style="--cota-color:#c0c0d0;background:linear-gradient(160deg,rgba(192,192,208,.07),rgba(192,192,208,.02));border:1px solid rgba(192,192,208,.2)">
+        <div class="cota-badge-tier">Cota Prata</div>
+        <div class="cota-badge-name">APOIADOR</div>
+        <div class="cota-badge-price">
+          <span>Investimento trimestral</span>
+          <strong>A negociar</strong>
+          <em>Visibilidade moderada</em>
+        </div>
+      </div>
+      <div class="cota-benefits">
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Logo no site e materiais digitais UR</h4><p>Presença na identidade digital oficial do projeto durante a temporada.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Banner em eventos regionais</h4><p>Visibilidade em 1 evento principal por mês na cidade de atuação.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Posts mensais nas redes sociais</h4><p>2 publicações mensais com menção à marca e link para o parceiro.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Integração no UR Market</h4><p>Possibilidade de inserir produtos ou serviços no marketplace interno com UR Coins.</p></div></div>
+      </div>
+    </div>
+
+    <div id="cota-apoio" class="cota-panel">
+      <div class="cota-badge" style="--cota-color:#cd7f32;background:linear-gradient(160deg,rgba(205,127,50,.07),rgba(205,127,50,.02));border:1px solid rgba(205,127,50,.2)">
+        <div class="cota-badge-tier">Patrocínio Pontual</div>
+        <div class="cota-badge-name">EVENTO</div>
+        <div class="cota-badge-price">
+          <span>Por evento ou torneio</span>
+          <strong>A negociar</strong>
+          <em>Visibilidade concentrada no evento</em>
+        </div>
+      </div>
+      <div class="cota-benefits">
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Logo nos materiais do evento</h4><p>Cartazes, faixas, comunicação digital do evento patrocinado.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Menção durante o evento</h4><p>Agradecimento ao vivo e nas mídias de divulgação pós-evento.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Anúncios no UR Play durante o evento</h4><p>Visibilidade nos canais ativos durante o período do torneio.</p></div></div>
+        <div class="cota-benefit"><div class="cota-check">✓</div><div class="cota-benefit-text"><h4>Flexibilidade de entrada</h4><p>Ideal para marcas que queiram testar o ecossistema antes de um compromisso maior.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASON -->
+<section id="season">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; max-width:600px; margin:0 auto 16px">
+      <div class="section-tag" style="justify-content:center">Estrutura da Temporada</div>
+      <h2 class="section-title">Calendário<br><em>Oficial T01.</em></h2>
+      <p class="section-desc" style="max-width:100%;text-align:center">12 semanas de competição contínua. Trimestre iniciado em Maio 2025.</p>
+    </div>
+    <div class="season-calendar">
+      <div class="cal-month reveal">
+        <div class="cal-month-header">
+          <div class="cal-month-name">Maio</div>
+          <div class="cal-month-sub">Semanas 1–4 · Lançamento</div>
+        </div>
+        <div class="cal-month-body">
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#ffd84d"></div>
+            <span class="cal-event-text">Início oficial do UR Play</span>
+            <span class="cal-event-week">S1</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#4a9eff"></div>
+            <span class="cal-event-text">Nivelamento dos atletas</span>
+            <span class="cal-event-week">S1–S2</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#a78bfa"></div>
+            <span class="cal-event-text">Publicação do ranking inicial</span>
+            <span class="cal-event-week">S3</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#2ecc71"></div>
+            <span class="cal-event-text">Mini Torneio #1</span>
+            <span class="cal-event-week">S4</span>
+          </div>
+        </div>
+      </div>
+      <div class="cal-month reveal reveal-delay-1">
+        <div class="cal-month-header">
+          <div class="cal-month-name">Junho</div>
+          <div class="cal-month-sub">Semanas 5–8 · Intensificação</div>
+        </div>
+        <div class="cal-month-body">
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#ffd84d"></div>
+            <span class="cal-event-text">UR Play contínuo — 3 cidades</span>
+            <span class="cal-event-week">S5–S7</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#f59e0b"></div>
+            <span class="cal-event-text">Abertura do CT UR</span>
+            <span class="cal-event-week">S5</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#2ecc71"></div>
+            <span class="cal-event-text">Mini Torneio #2</span>
+            <span class="cal-event-week">S8</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#4a9eff"></div>
+            <span class="cal-event-text">Atualização do ranking</span>
+            <span class="cal-event-week">S8</span>
+          </div>
+        </div>
+      </div>
+      <div class="cal-month reveal reveal-delay-2">
+        <div class="cal-month-header" style="background:linear-gradient(135deg,rgba(255,210,31,.18),rgba(255,210,31,.06));">
+          <div class="cal-month-name" style="color:var(--gold-2)">Julho</div>
+          <div class="cal-month-sub">Semanas 9–12 · Clímax</div>
+        </div>
+        <div class="cal-month-body">
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#ffd84d"></div>
+            <span class="cal-event-text">UR Play final + classificatórias</span>
+            <span class="cal-event-week">S9</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#ec4899"></div>
+            <span class="cal-event-text">UR Series — Torneio Oficial</span>
+            <span class="cal-event-week">S10</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#ffd84d"></div>
+            <span class="cal-event-text">Semifinais e grande Final</span>
+            <span class="cal-event-week">S11</span>
+          </div>
+          <div class="cal-event">
+            <div class="cal-dot" style="--dot-color:#2ecc71"></div>
+            <span class="cal-event-text">🏆 Virada de Ranking + Premiações</span>
+            <span class="cal-event-week">S12</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:32px;padding:28px;background:rgba(255,210,31,.05);border:1px solid rgba(255,210,31,.15);border-radius:var(--radius);display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center">
+      <div><div style="font-family:var(--font-h);font-size:32px;font-weight:900;color:var(--gold-2)">3</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Cidades</div></div>
+      <div><div style="font-family:var(--font-h);font-size:32px;font-weight:900;color:var(--gold-2)">5</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Níveis</div></div>
+      <div><div style="font-family:var(--font-h);font-size:32px;font-weight:900;color:var(--gold-2)">6</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Categorias</div></div>
+      <div><div style="font-family:var(--font-h);font-size:32px;font-weight:900;color:var(--gold-2)">R$6,5k+</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Em premiações</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS -->
+<section id="diff">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto 56px">
+      <div class="section-tag" style="justify-content:center">Diferenciais</div>
+      <h2 class="section-title">O que ninguém<br><em>faz igual.</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <div class="diff-num">01</div>
+        <div class="diff-body">
+          <h3>Ecossistema contínuo</h3>
+          <p>Enquanto o mercado entrega eventos isolados, o UR entrega método, dados, histórico, progressão e economia interna — tudo conectado em uma jornada viva.</p>
+        </div>
+      </div>
+      <div class="diff-card reveal reveal-delay-1">
+        <div class="diff-num">02</div>
+        <div class="diff-body">
+          <h3>Nivelamento obrigatório</h3>
+          <p>Sistema justo e transparente com 5 níveis (N5 ao N1) avaliados em 4 eixos. Atletas competem com quem é igual, não quem é mais forte.</p>
+        </div>
+      </div>
+      <div class="diff-card reveal reveal-delay-2">
+        <div class="diff-num">03</div>
+        <div class="diff-body">
+          <h3>Dados para patrocinadores</h3>
+          <p>Ranking, presença, estatísticas por atleta, alcance de mídia e engajamento mensurável. ROI comprovável — diferente de qualquer torneio amador do Brasil.</p>
+        </div>
+      </div>
+      <div class="diff-card reveal reveal-delay-3">
+        <div class="diff-num">04</div>
+        <div class="diff-body">
+          <h3>Economia interna proprietária</h3>
+          <p>UR Coins criam retenção, engajamento e receita sem depender de anunciantes externos. A comunidade se monetiza por dentro.</p>
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-num">05</div>
+        <div class="diff-body">
+          <h3>Mídia e storytelling próprios</h3>
+          <p>O UR não terceiriza sua narrativa. Produz conteúdo oficial, transmissões ao vivo, documentários e highlights que transformam atletas em protagonistas.</p>
+        </div>
+      </div>
+      <div class="diff-card reveal reveal-delay-1">
+        <div class="diff-num">06</div>
+        <div class="diff-body">
+          <h3>Desenvolvimento humano primeiro</h3>
+          <p>Antes do atleta, existe a pessoa. Mentalidade, disciplina, propósito e liderança são trabalhados dentro do ecossistema — não apenas esporte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <div class="container-sm">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">O problema nunca foi falta de talento. O problema sempre foi <em>falta de estrutura.</em></p>
+    <p class="quote-author">— Manifesto Ultimate Rivals</p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-card reveal">
+        <div class="founder-initials">MW</div>
+        <div class="founder-name">Matheus Walker</div>
+        <div class="founder-role">Fundador & Estrategista</div>
+        <div class="founder-values">
+          <span class="founder-value">Visão</span>
+          <span class="founder-value">Execução</span>
+          <span class="founder-value">Propósito</span>
+          <span class="founder-value">Liderança</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-tag">O fundador</div>
+        <h2 style="font-family:var(--font-h);font-size:38px;font-weight:900;color:var(--white);line-height:1.05;margin:12px 0">
+          Empreendedor.<br><span style="color:var(--gold-2)">Estrategista.</span><br>Arquiteto de ecossistemas.
+        </h2>
+        <div class="gold-divider"></div>
+        <p class="founder-text" style="margin-top:20px">
+          Matheus Walker criou o Ultimate Rivals a partir da <strong>observação de um problema estrutural real</strong> no esporte amador brasileiro. Ele não construiu um torneio — construiu um sistema. Um ecossistema onde cada elemento tem função clara no desenvolvimento humano e cada decisão é orientada por dados, metodologia e propósito.
+          <br><br>
+          Sua visão é <strong>tornar o UR o maior hub formador de atletas, equipes e profissionais de impacto do Brasil</strong> — referência em disciplina, caráter, inovação e competitividade. Com ambição de expansão nacional e internacional.
+        </p>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="founder-stat-val">T01</div>
+            <div class="founder-stat-lbl">Temporada ativa</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-val">3</div>
+            <div class="founder-stat-lbl">Cidades</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-val">∞</div>
+            <div class="founder-stat-lbl">Potencial de escala</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center">Próximo passo</div>
+      <h2 class="cta-title">Seja parte<br>do <em>movimento.</em></h2>
+      <p class="cta-sub">Patrocinadores, quadras parceiras, atletas ou investidores — o UR tem uma porta de entrada para cada perfil.</p>
+      <div class="cta-buttons">
+        <a href="mailto:contato@ultimaterivals.com" class="btn-primary">📧 Falar com o fundador →</a>
+        <a href="#model" class="btn-ghost">Ver modelo de negócio</a>
+      </div>
+      <div class="cta-contact">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">contato@ultimaterivals.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">A confirmar</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Localização</span>
+          <span class="contact-value">BH · Contagem · Betim · MG</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@ultimaterivals</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ULTIMATE RIVALS</div>
+  <div class="footer-copy">© 2025 Ultimate Rivals · Todos os direitos reservados · Documento Oficial T01</div>
+  <div class="footer-links">
+    <a href="#hero" class="footer-link">Início</a>
+    <a href="#model" class="footer-link">Modelo</a>
+    <a href="#sponsor" class="footer-link">Patrocínio</a>
+    <a href="#cta" class="footer-link">Contato</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// Counter animation
+const counters = document.querySelectorAll('[data-target]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.target;
+    let current = 0;
+    const step = target / 40;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.round(current);
+      if(current >= target) clearInterval(timer);
+    }, 30);
+    countObserver.unobserve(el);
+  });
+}, { threshold: .5 });
+counters.forEach(el => countObserver.observe(el));
+
+// Timeline toggle
+function toggleTl(item) {
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+  const toggle = item.querySelector('.tl-toggle');
+  if(toggle) toggle.textContent = item.classList.contains('open') ? '↑ Fechar' : '↓ Ver detalhes';
+}
+
+// Cota tabs
+function selectCota(btn, id) {
+  document.querySelectorAll('.cota-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cota-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('cota-' + id).classList.add('active');
+}
+
+// Pillar hover color
+document.querySelectorAll('.pillar').forEach(p => {
+  const color = getComputedStyle(p).getPropertyValue('--pillar-color');
+  p.addEventListener('mouseenter', () => { p.style.boxShadow = `0 12px 40px ${color}18`; });
+  p.addEventListener('mouseleave', () => { p.style.boxShadow = ''; });
+});
+
+// Sticky nav opacity
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50 ? 'rgba(7,8,12,.96)' : 'rgba(7,8,12,.85)';
+});
+</script>
+</body>
+</html>

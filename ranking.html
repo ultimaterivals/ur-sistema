@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultimate Rivals | Ranking do Atleta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#050507;--panel:#111218;--card:#171822;--line:#2d2818;
+      --gold:#c9a84c;--gold2:#ffd84d;--white:#f5efdd;--muted:#9c927a;
+      --green:#9ee6a5;--blue:#9fc7ff;--red:#ff9b9b;--shadow:0 24px 70px rgba(0,0,0,.48);
+      --display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--body:'Inter','Segoe UI',Arial,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{min-height:100vh;color:var(--white);font-family:var(--body);line-height:1.68;overflow-x:hidden;background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.18),transparent 42%),radial-gradient(ellipse at 88% 22%,rgba(159,199,255,.08),transparent 36%),linear-gradient(180deg,#08090d 0%,#030405 100%)}
+    a{color:inherit}button{font:inherit}
+    .wrap{width:min(1160px,calc(100% - 32px));margin:0 auto}
+    .top{position:fixed;inset:0 0 auto;z-index:40;background:rgba(5,5,7,.88);border-bottom:1px solid rgba(255,210,31,.14);backdrop-filter:blur(18px)}
+    .top-inner{height:74px;display:flex;align-items:center;gap:14px}
+    .logo-box{width:60px;height:50px;border-radius:10px;border:1px solid rgba(255,210,31,.36);display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,210,31,.16),rgba(255,210,31,.04));overflow:hidden;flex:0 0 auto}
+    .logo-box img{width:54px;height:44px;object-fit:contain;display:block}
+    .brand strong{display:block;font-family:var(--display);font-size:24px;line-height:1;color:var(--gold2);font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .brand span{display:block;color:var(--muted);font-size:12px;margin-top:3px;letter-spacing:.04em}
+    .nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+    .nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-family:var(--display);font-weight:900;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
+    .nav a:hover{color:var(--white);background:rgba(255,255,255,.055)}
+    .nav .cta{color:#050507;background:linear-gradient(135deg,var(--gold2),var(--gold));margin-left:6px}
+    .hero{min-height:100vh;display:flex;align-items:center;padding:116px 0 64px;position:relative;overflow:hidden}
+    .hero::after{content:"RK";position:absolute;right:-35px;bottom:-118px;font-family:var(--display);font-size:min(430px,52vw);font-weight:900;line-height:1;color:rgba(255,216,77,.04);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--gold2);font-family:var(--display);font-size:13px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold2)}
+    h1{font-family:var(--display);font-size:clamp(52px,8vw,102px);line-height:.88;font-weight:900;letter-spacing:0;text-transform:uppercase;max-width:720px}
+    h1 em,h2 em{font-style:normal;color:var(--gold2)}
+    .lead{max-width:650px;margin-top:22px;font-size:18px;line-height:1.76;color:rgba(245,239,221,.8)}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 20px;border-radius:9px;text-decoration:none;cursor:pointer;transition:.18s ease;font-family:var(--display);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);color:var(--white)}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(255,216,77,.42)}
+    .btn.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#050507;border-color:transparent;box-shadow:0 14px 34px rgba(255,210,31,.18)}
+    .panel-hero{border:1px solid rgba(255,210,31,.2);border-radius:20px;padding:18px;background:linear-gradient(160deg,rgba(255,210,31,.1),rgba(255,255,255,.035));box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .logo-stage{height:166px;border:1px solid rgba(255,210,31,.14);border-radius:15px;display:grid;place-items:center;background:rgba(0,0,0,.2);position:relative;z-index:1}
+    .logo-stage img{width:min(250px,78%);max-height:136px;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+    .hero-stats{display:grid;gap:10px;margin-top:12px;position:relative;z-index:1}
+    .hstat{display:grid;grid-template-columns:94px 1fr;gap:12px;align-items:center;padding:14px;border-radius:12px;background:rgba(5,5,7,.5);border:1px solid rgba(255,255,255,.08)}
+    .hstat b{font-family:var(--display);font-size:34px;color:var(--gold2);line-height:1}
+    .hstat span{font-size:13px;color:var(--muted)}
+    .hstat strong{display:block;color:var(--white);font-size:14px}
+    section{padding:88px 0}
+    section.alt{background:rgba(255,255,255,.026)}
+    .sec-head{max-width:840px;margin-bottom:36px}
+    .tag{display:flex;gap:9px;align-items:center;margin-bottom:10px;color:var(--gold2);font-family:var(--display);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .tag::before{content:"";width:24px;height:2px;background:var(--gold2)}
+    h2{font-family:var(--display);font-size:clamp(36px,5vw,62px);line-height:.96;text-transform:uppercase;color:var(--white);letter-spacing:0}
+    .sec-desc{margin-top:14px;color:rgba(245,239,221,.72);font-size:16px;max-width:760px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#0a0b10);border-radius:14px;padding:24px;box-shadow:0 16px 36px rgba(0,0,0,.18)}
+    .card h3{font-family:var(--display);font-size:27px;line-height:1;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+    .card p{color:rgba(245,239,221,.74);font-size:14px}
+    .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pillar{min-height:260px;position:relative;overflow:hidden}
+    .pillar::after{content:attr(data-id);position:absolute;right:14px;bottom:-16px;font-family:var(--display);font-size:82px;font-weight:900;color:rgba(255,216,77,.055);line-height:1}
+    .pillar small{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:900}
+    .pillar h3{font-size:32px;margin-top:8px}
+    .table{width:100%;border-collapse:collapse;font-size:14px}
+    .table th,.table td{padding:13px 10px;border-bottom:1px solid rgba(255,255,255,.075);text-align:left;vertical-align:top}
+    .table th{font-family:var(--display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .table td:first-child{color:var(--white);font-weight:800}
+    .score{font-family:var(--display);font-size:23px;font-weight:900;color:var(--gold2)}
+    .note{border-left:4px solid var(--gold2);background:rgba(255,210,31,.075);border-radius:0 9px 9px 0;padding:16px 18px;color:#eadfbf;font-size:14px}
+    .pill-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+    .pill{border:1px solid rgba(255,210,31,.22);background:rgba(255,210,31,.065);border-radius:999px;padding:6px 9px;color:#ead99d;font-size:12px;font-weight:800}
+    .rank-ladder{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.08)}
+    .ladder-row{display:grid;grid-template-columns:90px 1fr 260px;gap:24px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+    .ladder-num{font-family:var(--display);font-size:30px;font-weight:900;color:var(--gold2);line-height:1}
+    .ladder-row h3{font-family:var(--display);font-size:26px;text-transform:uppercase;line-height:1;color:var(--white);margin-bottom:6px}
+    .ladder-row p{color:rgba(245,239,221,.74);font-size:14px}
+    .ladder-row aside{border-radius:10px;padding:12px 13px;background:rgba(255,210,31,.065);border:1px solid rgba(255,210,31,.15);color:#eadfb1;font-size:13px;font-weight:800}
+    .checklist label{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.075);color:rgba(245,239,221,.8);cursor:pointer}
+    .checklist input{margin-top:5px;accent-color:var(--gold2)}
+    .progress{height:9px;background:#08090d;border:1px solid rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin:14px 0 8px}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:.2s}
+    details{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.026);border-radius:11px;padding:17px 18px;margin-bottom:10px}
+    summary{cursor:pointer;font-weight:900;color:var(--white)}
+    details p{color:var(--muted);margin-top:10px;font-size:14px}
+    .cta-band{border:1px solid rgba(255,210,31,.25);border-radius:20px;padding:44px;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;box-shadow:var(--shadow);background:radial-gradient(ellipse at 20% 0%,rgba(255,216,77,.2),transparent 42%),linear-gradient(160deg,#17120a,#08090d)}
+    .cta-band h2{font-size:clamp(36px,5vw,64px)}
+    .cta-band p{margin-top:12px;color:rgba(245,239,221,.74);max-width:700px}
+    footer{padding:30px 0 42px;color:var(--muted);text-align:center;font-size:12px}
+    .fade{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fade.show{opacity:1;transform:none}
+    @media(max-width:980px){.nav a:not(.cta){display:none}.hero-grid,.pillar-grid,.cta-band{grid-template-columns:1fr}.ladder-row{grid-template-columns:76px 1fr}.ladder-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
+    @media(max-width:640px){.top-inner{height:auto;min-height:72px;padding:10px 0;flex-wrap:wrap}.nav{width:100%;margin-left:0}.nav .cta{width:100%;text-align:center}.hero{padding-top:144px}.grid{display:block}.card{margin-bottom:12px}.ladder-row{display:block}.ladder-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}.cta-band{padding:26px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="logo-box" href="#inicio" aria-label="Ultimate Rivals"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></a>
+      <div class="brand"><strong>Ultimate Rivals</strong><span>Ranking do Atleta</span></div>
+      <nav class="nav" aria-label="Navegação">
+        <a href="#logica">Lógica</a><a href="#pontuar">Pontuação</a><a href="#tipos">Tipos</a><a href="#desempate">Desempate</a><a href="#faq">FAQ</a>
+        <a class="cta" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="fade">
+          <div class="eyebrow">Documento do atleta · Ranking UR</div>
+          <h1>Ranking claro. <em>Disputa viva.</em></h1>
+          <p class="lead">O ranking do Ultimate Rivals existe para transformar participação, desempenho e evolução em uma disputa visível. Ele mostra quem aparece, quem vence, quem decide, quem evolui e quem constrói história durante o trimestre.</p>
+          <div class="hero-actions">
+            <a class="btn gold" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Entrar no ranking</a>
+            <a class="btn" href="#pontuar">Como pontuar</a>
+            <button class="btn" id="copyLink">Copiar inscrição</button>
+          </div>
+        </div>
+        <aside class="panel-hero fade">
+          <div class="logo-stage"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></div>
+          <div class="hero-stats">
+            <div class="hstat"><b>Base</b><span><strong>Presença e constância</strong>Nada é obrigatório, mas quem participa mais tem mais chances de pontuar.</span></div>
+            <div class="hstat"><b>Jogo</b><span><strong>Resultado e fundamentos</strong>Vitórias, pontos, aces, bloqueios, defesas, assistências e destaques.</span></div>
+            <div class="hstat"><b>Nível</b><span><strong>Comparação justa</strong>Ranking geral existe, mas o nível protege a disputa entre atletas parecidos.</span></div>
+            <div class="hstat"><b>R$</b><span><strong>Virada de Ranking</strong>O ranking ajuda a definir reconhecimento, chamadas e repasses financeiros do ciclo.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="logica" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Lógica do ranking</div>
+          <h2>O ranking não é só uma tabela. <em>É uma narrativa.</em></h2>
+          <p class="sec-desc">A tabela precisa gerar interesse e também confiança. O atleta precisa entender por que subiu, por que caiu, o que precisa melhorar e quais caminhos tem para chegar mais forte à Virada de Ranking.</p>
+        </div>
+        <div class="pillar-grid">
+          <div class="card pillar fade" data-id="01"><small>Presença</small><h3>Aparecer conta</h3><p>Participar é opcional, mas presença cria histórico. Quem aparece mais tem mais oportunidades de somar pontos, coins, vitórias e dados técnicos.</p></div>
+          <div class="card pillar fade" data-id="02"><small>Performance</small><h3>Jogar bem conta</h3><p>O ranking valoriza resultado, mas também fundamentos. O atleta pode ganhar relevância pelo impacto dentro do jogo, não apenas pelo placar final.</p></div>
+          <div class="card pillar fade" data-id="03"><small>Evolução</small><h3>Melhorar conta</h3><p>O sistema observa progresso. Atletas que evoluem tecnicamente, taticamente e em postura podem ganhar reconhecimento no ciclo.</p></div>
+          <div class="card pillar fade" data-id="04"><small>Conduta</small><h3>Postura conta</h3><p>Fair play, pontualidade, respeito e responsabilidade com chamadas ajudam a proteger a experiência coletiva e a credibilidade do ranking.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pontuar">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Como pontuar</div>
+          <h2>Todo atleta precisa saber <em>onde ganha pontos.</em></h2>
+          <p class="sec-desc">Os valores podem ser ajustados pela organização no sistema, mas a lógica central deve ser comunicada com clareza: presença dá base, resultado acelera, fundamentos diferenciam, destaques impulsionam e conduta protege a disputa.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-8 fade">
+            <h3>Mapa de pontuação</h3>
+            <table class="table">
+              <thead><tr><th>Frente</th><th>O que pode contar</th><th>Por que importa</th></tr></thead>
+              <tbody>
+                <tr><td>Presença</td><td>Check-in em UR Play, torneios, CTs e eventos oficiais.</td><td><span class="score">Base</span></td></tr>
+                <tr><td>Resultado</td><td>Vitórias, sets vencidos, classificação, final, campanha e título.</td><td><span class="score">Subida</span></td></tr>
+                <tr><td>Fundamentos</td><td>Pontos marcados, aces, ataques, bloqueios, defesas e assistências.</td><td><span class="score">Impacto</span></td></tr>
+                <tr><td>Destaques</td><td>MVP, fair play, missões, viradas, clutch e sequências de pontos.</td><td><span class="score">Bônus</span></td></tr>
+                <tr><td>CT e evolução</td><td>Presença em treino, evolução observada e destaque técnico.</td><td><span class="score">Progresso</span></td></tr>
+                <tr><td>Conduta</td><td>Cartões, abandono, atitude antiesportiva ou faltas sem aviso podem afetar prioridade e pontuação.</td><td><span class="score">Controle</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card span-4 fade">
+            <h3>Regra de ouro</h3>
+            <p>Nada é obrigatório. O atleta pode participar no ritmo possível. Mas ranking é oportunidade acumulada: quanto mais participa, mais chances tem de ser visto, pontuar, ganhar coins, entrar em chamadas melhores e chegar forte à Virada.</p>
+            <div class="note" style="margin-top:16px">Participação não garante premiação. Ela aumenta oportunidade. Resultado, técnica, postura e constância definem o peso real da campanha.</div>
+            <div class="pill-row"><span class="pill">Presença</span><span class="pill">Resultado</span><span class="pill">Técnica</span><span class="pill">Postura</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tipos" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Tipos de ranking</div>
+          <h2>Uma tabela só não conta <em>a história inteira.</em></h2>
+          <p class="sec-desc">O ecossistema UR pode trabalhar com rankings diferentes para dar clareza ao atleta e gerar mais narrativas durante o trimestre.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-4 fade"><h3>Ranking geral</h3><p>Mostra todos os atletas do ciclo ordenados pela pontuação acumulada. É a tabela principal de visibilidade e pode orientar chamadas, destaques e Virada.</p></div>
+          <div class="card span-4 fade"><h3>Ranking por nível</h3><p>Compara atletas N1, N2, N3, N4, N5 e NI dentro de faixas mais justas. Ajuda a evitar que atletas iniciantes sejam medidos contra atletas de nível superior.</p></div>
+          <div class="card span-4 fade"><h3>Ranking por evento</h3><p>Separa desempenho em UR Play, mini torneio, torneio oficial, séries e CT. Mostra quem se destaca em cada ambiente.</p></div>
+          <div class="card span-4 fade"><h3>Ranking técnico</h3><p>Destaca fundamentos: maior pontuador, saque, ataque, bloqueio, defesa, assistência, viradas, clutch e MVPs.</p></div>
+          <div class="card span-4 fade"><h3>Ranking de equipe</h3><p>Valoriza campanhas coletivas. Pode considerar vitórias, sets, saldo de pontos, presença da base e desempenho em torneios.</p></div>
+          <div class="card span-4 fade"><h3>Ranking de evolução</h3><p>Mostra atletas que cresceram no ciclo, mesmo que ainda não estejam no topo geral. Isso gera motivação e justiça narrativa.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="subir">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Como subir</div>
+          <h2>O caminho é simples. <em>Executar é que separa.</em></h2>
+        </div>
+        <div class="rank-ladder">
+          <div class="ladder-row fade"><div class="ladder-num">1</div><div><h3>Confirme e compareça</h3><p>O atleta que aparece cria base. Presença constante melhora leitura da organização e amplia oportunidades de jogo.</p></div><aside>Sem presença, não existe histórico.</aside></div>
+          <div class="ladder-row fade"><div class="ladder-num">2</div><div><h3>Ganhe jogos possíveis</h3><p>Vitórias e campanhas consistentes movem ranking. Não precisa vencer tudo, mas precisa competir com seriedade.</p></div><aside>Resultado acelera a subida.</aside></div>
+          <div class="ladder-row fade"><div class="ladder-num">3</div><div><h3>Gere impacto técnico</h3><p>Ace, bloqueio, defesa, ataque, assistência e pontos decisivos ajudam a diferenciar atletas com campanhas parecidas.</p></div><aside>Fundamento evita ranking cego.</aside></div>
+          <div class="ladder-row fade"><div class="ladder-num">4</div><div><h3>Cuide da postura</h3><p>Respeito, comunicação, pontualidade e fair play mantêm o ambiente forte. Conduta ruim pode custar prioridade e pontos.</p></div><aside>Postura também ranqueia.</aside></div>
+          <div class="ladder-row fade"><div class="ladder-num">5</div><div><h3>Chegue vivo na Virada</h3><p>A Virada de Ranking é o fechamento do ciclo. Quem chega com histórico forte tem mais chances de reconhecimento, repasses e destaque.</p></div><aside>O trimestre premia construção.</aside></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="desempate" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Desempate e transparência</div>
+          <h2>Quando a disputa aperta, <em>a regra precisa estar clara.</em></h2>
+          <p class="sec-desc">O desempate evita ruído no momento mais sensível: fechamento de ranking, torneios e repasses. A organização deve comunicar critérios antes das fases decisivas.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-7 fade">
+            <h3>Ordem recomendada de desempate</h3>
+            <table class="table">
+              <thead><tr><th>Ordem</th><th>Critério</th><th>Uso</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Vitórias</td><td>Quem venceu mais tem vantagem.</td></tr>
+                <tr><td>2</td><td>Saldo de pontos</td><td>Diferença entre pontos feitos e sofridos.</td></tr>
+                <tr><td>3</td><td>Pontos pró</td><td>Quem produziu mais pontos fica à frente.</td></tr>
+                <tr><td>4</td><td>Confronto direto</td><td>Resultado entre os empatados, quando existir.</td></tr>
+                <tr><td>5</td><td>Decisão da organização</td><td>Usado apenas quando os critérios anteriores não resolvem.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card span-5 fade">
+            <h3>Clareza para repasses</h3>
+            <p>Se o ranking estiver ligado a repasses financeiros, o atleta precisa saber antes: quais rankings pagam, quais posições recebem, se é individual ou por equipe, como desempata e quando o pagamento será feito.</p>
+            <div class="note" style="margin-top:16px">Regra de confiança: ninguém deve descobrir o critério depois do resultado. Critério bom é critério publicado antes.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="virada">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Ranking e Virada</div>
+          <h2>A tabela vira <em>acontecimento.</em></h2>
+          <p class="sec-desc">A Virada de Ranking é quando o sistema deixa de ser só acompanhamento e vira fechamento de temporada: reconhecimento, revisão de níveis, repasses, histórias e abertura do próximo ciclo.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-3 fade"><h3>Atletas</h3><p>Melhores colocados, MVPs, destaques técnicos, evolução e presença podem receber reconhecimento ou repasses conforme regulamento.</p></div>
+          <div class="card span-3 fade"><h3>Equipes</h3><p>Campanhas coletivas podem gerar chamadas, premiações ou repasses por equipe, especialmente em torneios e ranking coletivo.</p></div>
+          <div class="card span-3 fade"><h3>Níveis</h3><p>O ranking ajuda a revisar quem sobe, mantém ou precisa ser reposicionado para preservar equilíbrio competitivo.</p></div>
+          <div class="card span-3 fade"><h3>Próximo ciclo</h3><p>O fechamento cria metas novas. O atleta sai sabendo onde está e o que precisa fazer no trimestre seguinte.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="atleta" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Checklist do atleta</div>
+          <h2>Antes de cobrar a tabela, <em>entenda sua parte.</em></h2>
+        </div>
+        <div class="grid">
+          <div class="card span-6 fade">
+            <h3>Estou pronto para ranquear?</h3>
+            <div class="checklist" id="checklist">
+              <label><input type="checkbox"><span>Entendi que participação não é obrigatória, mas aumenta minhas oportunidades.</span></label>
+              <label><input type="checkbox"><span>Sei que presença, resultado, fundamentos e conduta podem influenciar minha posição.</span></label>
+              <label><input type="checkbox"><span>Entendi que posso aparecer em ranking geral, por nível, por evento, técnico ou por equipe.</span></label>
+              <label><input type="checkbox"><span>Vou acompanhar atualizações e avisar se encontrar erro de registro.</span></label>
+              <label><input type="checkbox"><span>Entendi que repasses financeiros dependem de regulamento publicado antes da etapa.</span></label>
+            </div>
+            <div class="progress"><div class="bar" id="bar"></div></div>
+            <p id="progressText" style="color:var(--muted);font-size:13px">0% pronto para entender o ranking</p>
+          </div>
+          <div class="card span-6 fade">
+            <h3>Mensagem para atletas</h3>
+            <p id="shareText">O Ranking UR transforma presença, resultado, fundamentos, evolução e conduta em uma disputa clara. Nada é obrigatório, mas quanto mais o atleta participa, mais chances tem de pontuar, ganhar coins, aparecer nas tabelas e chegar forte à Virada de Ranking. Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</p>
+            <div class="hero-actions"><button class="btn gold" id="copyShare">Copiar mensagem</button><a class="btn" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever agora</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="sec-head fade"><div class="tag">Perguntas frequentes</div><h2>Dúvidas comuns sobre <em>ranking.</em></h2></div>
+        <div class="grid">
+          <div class="span-7">
+            <details class="fade" open><summary>Preciso jogar todos os eventos para ranquear?</summary><p>Não. Nada é obrigatório. Mas cada evento é uma oportunidade de somar presença, resultado, coins e estatísticas. Quem joga mais tem mais chances de construir posição.</p></details>
+            <details class="fade"><summary>Posso subir mesmo sem ser campeão?</summary><p>Sim. Títulos ajudam, mas ranking também considera presença, fundamentos, evolução, MVP, fair play, desempenho técnico e constância.</p></details>
+            <details class="fade"><summary>Ranking geral e ranking por nível são diferentes?</summary><p>Sim. O geral mostra a tabela completa. O ranking por nível compara atletas em faixas mais justas, como N1, N2, N3, N4, N5 e NI.</p></details>
+            <details class="fade"><summary>O ranking define repasse financeiro?</summary><p>Pode definir, se o regulamento do ciclo disser isso. Os critérios de repasse precisam ser publicados antes da fase decisiva.</p></details>
+            <details class="fade"><summary>E se houver erro no meu registro?</summary><p>O atleta deve avisar a organização com clareza, informando evento, data, partida e qual dado parece incorreto. Correções devem preservar histórico e transparência.</p></details>
+          </div>
+          <div class="card span-5 fade">
+            <h3>Resumo final</h3>
+            <p>O Ranking UR cria interesse porque transforma o trimestre em disputa acompanhável. Ele cria clareza porque mostra quais ações importam. E cria justiça porque permite comparar presença, resultado, técnica, nível e evolução.</p>
+            <div class="note" style="margin-top:16px">Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Ultimate Rivals | Ranking do Atleta | Inscrição: https://forms.gle/RrtKcxpQyJpoTxrg7</div></footer>
+
+  <script>
+    const FORM_LINK = "https://forms.gle/RrtKcxpQyJpoTxrg7";
+    function copy(text){ navigator.clipboard.writeText(text).then(() => alert("Copiado.")); }
+    document.getElementById("copyLink").addEventListener("click", () => copy(FORM_LINK));
+    document.getElementById("copyShare").addEventListener("click", () => copy(document.getElementById("shareText").textContent.trim()));
+    const checks = [...document.querySelectorAll("#checklist input")];
+    const bar = document.getElementById("bar");
+    const progressText = document.getElementById("progressText");
+    function updateProgress(){
+      const done = checks.filter(c => c.checked).length;
+      const pct = Math.round((done / checks.length) * 100);
+      bar.style.width = pct + "%";
+      progressText.textContent = pct + "% pronto para entender o ranking";
+    }
+    checks.forEach(c => c.addEventListener("change", updateProgress));
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add("show");
+    }), {threshold:.12});
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

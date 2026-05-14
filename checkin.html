@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultimate Rivals - Inscricao e Check-in</title>
+  <style>
+    :root{
+      --ink:#08090d;--panel:#171923;--panel2:#11131a;--gold:#c9a84c;--gold2:#ffd84d;
+      --line:#39343d;--muted:#b7ad94;--txt:#f5f0df;--green:#65d887;--red:#ff7b7b;--blue:#8dccff;
+      --shadow:0 16px 38px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;color:var(--txt);
+      background:radial-gradient(circle at 16% 0%,rgba(255,216,77,.16),transparent 28%),linear-gradient(135deg,#06070b,#151720 55%,#08090d);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .shell{width:min(1220px,calc(100% - 28px));margin:0 auto;padding:18px 0 32px}
+    .topbar{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#08090d,#171923 62%,#2a2108);border:1px solid rgba(255,216,77,.2);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+    .mark{width:58px;height:48px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,216,77,.34);display:grid;place-items:center;overflow:hidden;flex:0 0 auto}
+    .mark img{width:54px;height:44px;object-fit:contain;display:block}
+    .brand strong{display:block;color:var(--gold2);font-size:15px;letter-spacing:.08em}
+    .brand span{display:block;color:rgba(255,255,255,.58);font-size:12px;margin-top:2px}
+    .top-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .tabs{display:flex;gap:2px;overflow-x:auto;margin:14px 0;border-bottom:2px solid var(--gold)}
+    .tab{border:0;background:transparent;color:var(--muted);padding:10px 13px;font-size:13px;font-weight:800;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-2px}
+    .tab.active{color:var(--gold2);border-bottom-color:var(--gold)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .panel{background:linear-gradient(180deg,#1b1d26,#151720);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+    .panel h2,.panel h3{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .panel h2:before,.panel h3:before{content:"";width:4px;height:15px;border-radius:2px;background:var(--gold);display:inline-block}
+    .metrics{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;margin-bottom:12px}
+    .metric{background:var(--ink);border:1px solid rgba(255,216,77,.14);border-radius:9px;padding:13px 14px}
+    .metric span{display:block;color:rgba(255,255,255,.45);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+    .metric strong{display:block;color:var(--gold2);font-size:24px;margin-top:2px}
+    .form{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;align-items:end}
+    .field{display:flex;flex-direction:column;gap:5px;grid-column:span 3}.field.wide{grid-column:span 6}.field.full{grid-column:span 12}.field.small{grid-column:span 2}
+    label{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+    input,select,textarea{width:100%;border:1px solid var(--line);background:#101219;color:var(--txt);border-radius:8px;min-height:38px;padding:8px 10px;outline:none}
+    textarea{min-height:84px;resize:vertical} option{background:#101219;color:var(--txt)}
+    input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.16)}
+    .btn{border:1px solid var(--line);background:#101219;color:var(--txt);border-radius:8px;min-height:38px;padding:8px 12px;font-weight:900;font-size:13px}
+    .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--gold2)}.btn.gold{background:var(--gold);border-color:var(--gold);color:#0b0c12}.btn.danger{color:var(--red);border-color:#6b2b2b}.btn.small{min-height:30px;padding:5px 9px;font-size:12px}
+    .list{display:flex;flex-direction:column;gap:8px}.row{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#12141c;border-radius:9px;padding:10px;min-width:0}
+    .row.gold{border-color:var(--gold);background:linear-gradient(135deg,rgba(255,216,77,.18),rgba(255,255,255,.03))}
+    .avatar{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;background:var(--ink);color:var(--gold2);font-weight:950;flex:0 0 auto}
+    .grow{flex:1;min-width:0}.title{font-weight:950;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sub{font-size:12px;color:var(--muted);margin-top:2px}
+    .score{font-weight:950;font-size:15px;text-align:right;min-width:64px}.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+    .chip{display:inline-flex;align-items:center;border-radius:6px;padding:3px 7px;font-size:11px;font-weight:900;background:#26242b;color:var(--muted)}
+    .chip.green{background:#12381f;color:var(--green)}.chip.blue{background:#12314d;color:var(--blue)}.chip.gold{background:#3f3211;color:var(--gold2)}.chip.red{background:#451616;color:var(--red)}
+    .empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px;background:rgba(255,255,255,.04)}
+    table{width:100%;border-collapse:separate;border-spacing:0 6px}.table-wrap{overflow-x:auto}
+    th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;text-align:left;color:rgba(255,255,255,.6);background:var(--ink);padding:8px}
+    td{background:#12141c;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px;font-size:13px}
+    th:first-child,td:first-child{border-radius:8px 0 0 8px}th:last-child,td:last-child{border-radius:0 8px 8px 0}
+    .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--gold2);border:1px solid var(--gold);padding:10px 16px;border-radius:9px;font-weight:900;box-shadow:var(--shadow);z-index:20;display:none}.toast.show{display:block}
+    .hidden{display:none!important}.view:not(.hidden){animation:rise .22s ease both}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:920px){.metrics{grid-template-columns:repeat(2,1fr)}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:span 12}.field,.field.wide,.field.small{grid-column:span 12}.topbar{align-items:flex-start;flex-wrap:wrap}.top-actions{width:100%;margin-left:0;justify-content:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="mark"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></div>
+      <div class="brand"><strong>ULTIMATE RIVALS</strong><span>Sistema de inscricao, pagamento, termo e check-in</span></div>
+      <div class="top-actions">
+        <button class="btn small gold" id="seedBtn">Dados exemplo</button>
+        <button class="btn small" id="exportBtn">Exportar CSV</button>
+        <button class="btn small danger" id="clearBtn">Zerar</button>
+      </div>
+    </header>
+    <nav class="tabs" id="tabs"></nav>
+    <main>
+      <section id="view-dashboard" class="view"></section>
+      <section id="view-event" class="view hidden"></section>
+      <section id="view-inscriptions" class="view hidden"></section>
+      <section id="view-checkin" class="view hidden"></section>
+      <section id="view-payments" class="view hidden"></section>
+      <section id="view-pending" class="view hidden"></section>
+      <section id="view-public" class="view hidden"></section>
+      <section id="view-tutorials" class="view hidden"></section>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    const STORAGE_KEY = "ultimate-rivals-inscricao-checkin-v1";
+    const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+    const tabs = [["dashboard","Painel"],["event","Evento"],["inscriptions","Inscricoes"],["checkin","Check-in"],["payments","Pagamentos"],["pending","Pendencias"],["public","Publico"],["tutorials","Tutoriais"]];
+    let currentTab = "dashboard";
+    let state = loadState();
+
+    function baseEvent(){return {name:"UR Play",date:"",location:"",capacity:48,price:60,pixKey:"",notes:"Jogos rapidos, ranking UR e check-in obrigatorio."}}
+    function loadState(){try{const raw=localStorage.getItem(STORAGE_KEY);if(raw)return normalize(JSON.parse(raw));}catch(e){} return normalize({event:baseEvent(),people:[],payments:[],checkins:[]});}
+    function normalize(data){return {event:{...baseEvent(),...(data.event||{})},people:data.people||[],payments:data.payments||[],checkins:data.checkins||[]};}
+    function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}
+    function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2400)}
+    function esc(v){return String(v??"").replace(/[&<>"']/g,s=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[s]))}
+    function money(v){return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+    function initials(name){return (name||"?").trim().split(/\s+/).slice(0,2).map(p=>p[0]).join("").toUpperCase()}
+    function person(id){return state.people.find(p=>p.id===id)}
+    function paidAmount(id){return state.payments.filter(p=>p.personId===id).reduce((s,p)=>s+Number(p.amount||0),0)}
+    function isPaid(p){return paidAmount(p.id) >= Number(p.price||state.event.price||0)}
+    function checkedIn(id){return state.checkins.some(c=>c.personId===id)}
+    function statusChip(p){
+      if(checkedIn(p.id)) return '<span class="chip green">Check-in feito</span>';
+      if(!isPaid(p)) return '<span class="chip red">Pagamento pendente</span>';
+      if(!p.waiver) return '<span class="chip red">Termo pendente</span>';
+      return '<span class="chip gold">Pronto para check-in</span>';
+    }
+    function render(){save();renderTabs();renderDashboard();renderEvent();renderInscriptions();renderCheckin();renderPayments();renderPending();renderPublic();renderTutorials();document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden"));document.getElementById("view-"+currentTab).classList.remove("hidden");}
+    function renderTabs(){document.getElementById("tabs").innerHTML=tabs.map(([id,label])=>`<button class="tab ${currentTab===id?"active":""}" data-tab="${id}">${label}</button>`).join("");document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{currentTab=b.dataset.tab;render();});}
+    function metrics(){
+      const total=state.people.length, paid=state.people.filter(isPaid).length, terms=state.people.filter(p=>p.waiver).length, cin=state.people.filter(p=>checkedIn(p.id)).length, revenue=state.payments.reduce((s,p)=>s+Number(p.amount||0),0);
+      return {total,paid,terms,cin,revenue,open:Math.max(Number(state.event.capacity||0)-total,0)};
+    }
+    function metric(label,value){return `<div class="metric"><span>${label}</span><strong>${value}</strong></div>`}
+    function renderDashboard(){
+      const m=metrics();
+      document.getElementById("view-dashboard").innerHTML=`
+        <div class="metrics">${metric("Inscritos",m.total)}${metric("Pagos",m.paid)}${metric("Termos",m.terms)}${metric("Check-ins",m.cin)}${metric("Receita",money(m.revenue))}</div>
+        <div class="grid">
+          <div class="panel span-7"><h2>Fila operacional</h2><div class="list">${state.people.length?state.people.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(personRow).join(""):`<div class="empty">Nenhuma inscricao ainda.</div>`}</div></div>
+          <div class="panel span-5"><h2>Evento</h2><div class="list">
+            <div class="row"><div class="avatar">UR</div><div class="grow"><div class="title">${esc(state.event.name)}</div><div class="sub">${esc(state.event.date||"Data a definir")} | ${esc(state.event.location||"Local a definir")}</div></div></div>
+            <div class="row"><div class="grow"><div class="title">Vagas restantes</div><div class="sub">Capacidade configurada: ${state.event.capacity}</div></div><div class="score">${m.open}</div></div>
+            <div class="row"><div class="grow"><div class="title">Ticket base</div><div class="sub">Valor usado em novas inscricoes</div></div><div class="score">${money(state.event.price)}</div></div>
+          </div></div>
+        </div>`;
+    }
+    function personRow(p){
+      return `<div class="row ${checkedIn(p.id)?"gold":""}"><div class="avatar">${initials(p.name)}</div><div class="grow"><div class="title">${esc(p.name)}</div><div class="chips">${statusChip(p)}<span class="chip blue">${esc(p.category||"Categoria")}</span><span class="chip">${esc(p.level||"Nivel")}</span></div><div class="sub">${esc(p.phone||"sem telefone")} | ${esc(p.teamMode||"")}</div></div><div class="score">${money(paidAmount(p.id))}<div class="sub">de ${money(p.price)}</div></div></div>`;
+    }
+    function renderEvent(){
+      document.getElementById("view-event").innerHTML=`
+        <div class="panel"><h2>Configurar evento</h2>
+          <form class="form" id="eventForm">
+            <div class="field wide"><label>Nome do evento</label><input id="evName" value="${esc(state.event.name)}"></div>
+            <div class="field"><label>Data</label><input id="evDate" type="date" value="${esc(state.event.date)}"></div>
+            <div class="field wide"><label>Local</label><input id="evLocation" value="${esc(state.event.location)}"></div>
+            <div class="field small"><label>Capacidade</label><input id="evCapacity" type="number" value="${state.event.capacity}"></div>
+            <div class="field small"><label>Valor</label><input id="evPrice" type="number" value="${state.event.price}"></div>
+            <div class="field wide"><label>Chave Pix</label><input id="evPix" value="${esc(state.event.pixKey)}"></div>
+            <div class="field full"><label>Observacoes</label><textarea id="evNotes">${esc(state.event.notes)}</textarea></div>
+            <button class="btn primary" type="submit">Salvar evento</button>
+          </form>
+        </div>`;
+      document.getElementById("eventForm").onsubmit=e=>{e.preventDefault();state.event={name:evName.value.trim(),date:evDate.value,location:evLocation.value.trim(),capacity:Number(evCapacity.value||0),price:Number(evPrice.value||0),pixKey:evPix.value.trim(),notes:evNotes.value.trim()};toast("Evento salvo.");render();};
+    }
+    function renderInscriptions(){
+      document.getElementById("view-inscriptions").innerHTML=`
+        <div class="grid"><div class="panel span-5"><h2>Nova inscricao</h2>
+          <form class="form" id="personForm">
+            <div class="field wide"><label>Nome</label><input id="pName" required placeholder="Nome completo"></div>
+            <div class="field"><label>Telefone</label><input id="pPhone" placeholder="WhatsApp"></div>
+            <div class="field"><label>Email</label><input id="pEmail" type="email"></div>
+            <div class="field"><label>Nivel</label><select id="pLevel"><option>NI · Indefinido</option><option>N5 · Hunter Iniciante</option><option>N4 · Hunter</option><option selected>N3 · Hunter Experiente</option><option>N2 · Hunter Elite</option><option>N1 · Hunter Lenda</option></select></div>
+            <div class="field"><label>Categoria</label><select id="pCategory"><option>Dupla Masculina</option><option>Dupla Feminina</option><option>Dupla Mista</option><option>Quarteto</option><option>Avulso</option></select></div>
+            <div class="field"><label>Formato</label><select id="pTeamMode"><option>Equipe formada</option><option>Jogador avulso</option><option>Reserva</option></select></div>
+            <div class="field"><label>Equipe desejada</label><input id="pTeam" placeholder="Opcional"></div>
+            <div class="field small"><label>Valor</label><input id="pPrice" type="number" value="${state.event.price}"></div>
+            <div class="field"><label>Termo</label><select id="pWaiver"><option value="false">Pendente</option><option value="true">Aceito</option></select></div>
+            <div class="field full"><label>Observacao</label><textarea id="pNotes" placeholder="Restricoes, parceiro de dupla, pagamento combinado..."></textarea></div>
+            <button class="btn primary" type="submit">Cadastrar inscrito</button>
+          </form></div>
+          <div class="panel span-7"><h2>Inscritos</h2><div class="list">${state.people.length?state.people.map(personManageRow).join(""):`<div class="empty">Cadastre o primeiro atleta.</div>`}</div></div></div>`;
+      document.getElementById("personForm").onsubmit=addPerson;
+      document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{state.people=state.people.filter(p=>p.id!==b.dataset.remove);state.payments=state.payments.filter(p=>p.personId!==b.dataset.remove);state.checkins=state.checkins.filter(c=>c.personId!==b.dataset.remove);render();});
+      document.querySelectorAll("[data-toggle-waiver]").forEach(b=>b.onclick=()=>{const p=person(b.dataset.toggleWaiver);if(p){p.waiver=!p.waiver;render();}});
+    }
+    function personManageRow(p){return `<div class="row"><div class="avatar">${initials(p.name)}</div><div class="grow"><div class="title">${esc(p.name)}</div><div class="chips">${statusChip(p)}<span class="chip">${esc(p.teamMode)}</span></div><div class="sub">${esc(p.category)} | ${esc(p.team||"sem equipe")} | ID ${p.code}</div></div><button class="btn small" data-toggle-waiver="${p.id}">${p.waiver?"Termo OK":"Aceitar termo"}</button><button class="btn small danger" data-remove="${p.id}">Remover</button></div>`}
+    function addPerson(e){e.preventDefault();const name=pName.value.trim();if(!name)return;const p={id:uid(),code:"UR-"+Math.floor(10000+Math.random()*89999),name,phone:pPhone.value.trim(),email:pEmail.value.trim(),level:pLevel.value,category:pCategory.value,teamMode:pTeamMode.value,team:pTeam.value.trim(),price:Number(pPrice.value||state.event.price||0),waiver:pWaiver.value==="true",notes:pNotes.value.trim(),createdAt:new Date().toISOString()};state.people.push(p);toast("Inscricao cadastrada.");render();}
+    function renderCheckin(){
+      const ready=state.people.filter(p=>isPaid(p)&&p.waiver&&!checkedIn(p.id));
+      document.getElementById("view-checkin").innerHTML=`
+        <div class="grid"><div class="panel span-5"><h2>Check-in rapido</h2>
+          <div class="form"><div class="field full"><label>Buscar por nome ou codigo</label><input id="checkSearch" placeholder="Digite para filtrar"></div></div>
+          <div class="sub" style="margin-top:8px">Somente atletas pagos e com termo aceito devem fazer check-in.</div>
+        </div><div class="panel span-7"><h2>Prontos para entrada</h2><div class="list" id="checkList">${ready.length?ready.map(checkRow).join(""):`<div class="empty">Nenhum atleta pronto para check-in.</div>`}</div></div></div>`;
+      document.querySelectorAll("[data-checkin]").forEach(b=>b.onclick=()=>doCheckin(b.dataset.checkin));
+      document.getElementById("checkSearch").oninput=e=>filterCheck(e.target.value);
+    }
+    function checkRow(p){return `<div class="row"><div class="avatar">${initials(p.name)}</div><div class="grow"><div class="title">${esc(p.name)}</div><div class="sub">${p.code} | ${esc(p.category)} | ${esc(p.teamMode)}</div></div><button class="btn gold" data-checkin="${p.id}">Confirmar entrada</button></div>`}
+    function filterCheck(q){q=q.toLowerCase();document.getElementById("checkList").innerHTML=state.people.filter(p=>isPaid(p)&&p.waiver&&!checkedIn(p.id)&&(p.name.toLowerCase().includes(q)||p.code.toLowerCase().includes(q))).map(checkRow).join("")||`<div class="empty">Nenhum resultado.</div>`;document.querySelectorAll("[data-checkin]").forEach(b=>b.onclick=()=>doCheckin(b.dataset.checkin));}
+    function doCheckin(id){if(!checkedIn(id)){state.checkins.push({id:uid(),personId:id,time:new Date().toISOString()});toast("Check-in confirmado.");render();}}
+    function renderPayments(){
+      document.getElementById("view-payments").innerHTML=`
+        <div class="grid"><div class="panel span-5"><h2>Registrar pagamento</h2>
+          <form class="form" id="payForm"><div class="field full"><label>Atleta</label><select id="payPerson"><option value="">Selecione</option>${state.people.map(p=>`<option value="${p.id}">${esc(p.name)} - falta ${money(Math.max((p.price||0)-paidAmount(p.id),0))}</option>`).join("")}</select></div><div class="field"><label>Valor</label><input id="payAmount" type="number" value="${state.event.price}"></div><div class="field"><label>Metodo</label><select id="payMethod"><option>Pix</option><option>Cartao</option><option>Dinheiro</option><option>Cortesia</option></select></div><div class="field full"><label>Comprovante/obs.</label><input id="payNote"></div><button class="btn primary" type="submit">Registrar</button></form>
+        </div><div class="panel span-7"><h2>Pagamentos</h2><div class="list">${state.payments.length?state.payments.map(payRow).join(""):`<div class="empty">Nenhum pagamento registrado.</div>`}</div></div></div>`;
+      document.getElementById("payForm").onsubmit=e=>{e.preventDefault();if(!payPerson.value)return toast("Selecione atleta.");state.payments.unshift({id:uid(),personId:payPerson.value,amount:Number(payAmount.value||0),method:payMethod.value,note:payNote.value.trim(),date:new Date().toISOString()});toast("Pagamento registrado.");render();};
+    }
+    function payRow(p){const a=person(p.personId);return `<div class="row"><div class="avatar">$</div><div class="grow"><div class="title">${esc(a?.name||"Atleta removido")}</div><div class="sub">${esc(p.method)} | ${esc(p.note||"sem obs.")}</div></div><div class="score">${money(p.amount)}</div></div>`}
+    function renderPending(){
+      const pend=state.people.filter(p=>!isPaid(p)||!p.waiver||!checkedIn(p.id));
+      document.getElementById("view-pending").innerHTML=`<div class="panel"><h2>Pendencias</h2><div class="list">${pend.length?pend.map(p=>`<div class="row"><div class="avatar">${initials(p.name)}</div><div class="grow"><div class="title">${esc(p.name)}</div><div class="chips">${!isPaid(p)?'<span class="chip red">Pagamento</span>':''}${!p.waiver?'<span class="chip red">Termo</span>':''}${!checkedIn(p.id)?'<span class="chip gold">Check-in</span>':''}</div><div class="sub">${p.code} | ${esc(p.phone)}</div></div></div>`).join(""):`<div class="empty">Tudo certo por enquanto.</div>`}</div></div>`;
+    }
+    function renderPublic(){
+      const confirmed=state.people.filter(p=>isPaid(p)&&p.waiver);
+      document.getElementById("view-public").innerHTML=`<div class="grid"><div class="panel span-5"><h2>Informacoes ao atleta</h2><div class="list"><div class="row gold"><div class="avatar">UR</div><div class="grow"><div class="title">${esc(state.event.name)}</div><div class="sub">${esc(state.event.date||"Data a confirmar")} | ${esc(state.event.location||"Local a confirmar")}</div></div></div><div class="row"><div class="grow"><div class="title">Chave Pix</div><div class="sub">${esc(state.event.pixKey||"A definir")}</div></div></div><div class="row"><div class="grow"><div class="title">Observacoes</div><div class="sub">${esc(state.event.notes)}</div></div></div></div></div><div class="panel span-7"><h2>Confirmados</h2><div class="list">${confirmed.length?confirmed.map(p=>`<div class="row"><div class="avatar">${initials(p.name)}</div><div class="grow"><div class="title">${esc(p.name)}</div><div class="sub">${esc(p.category)} | ${esc(p.teamMode)}</div></div>${checkedIn(p.id)?'<span class="chip green">presente</span>':'<span class="chip gold">confirmado</span>'}</div>`).join(""):`<div class="empty">Nenhum confirmado ainda.</div>`}</div></div></div>`;
+    }
+    function renderTutorials(){document.getElementById("view-tutorials").innerHTML=`<div class="grid"><div class="panel span-6"><h2>Antes do evento</h2><div class="list"><div class="row"><div class="avatar">1</div><div class="grow"><div class="title">Configure o evento</div><div class="sub">Defina data, local, capacidade, valor e Pix.</div></div></div><div class="row"><div class="avatar">2</div><div class="grow"><div class="title">Cadastre inscritos</div><div class="sub">Registre categoria, nivel, formato e termo.</div></div></div><div class="row"><div class="avatar">3</div><div class="grow"><div class="title">Controle pagamentos</div><div class="sub">Use a aba Pagamentos para Pix, dinheiro, cartao ou cortesia.</div></div></div></div></div><div class="panel span-6"><h2>No dia</h2><div class="list"><div class="row"><div class="avatar">4</div><div class="grow"><div class="title">Abra Check-in</div><div class="sub">Busque por nome ou codigo UR.</div></div></div><div class="row"><div class="avatar">5</div><div class="grow"><div class="title">Resolva pendencias</div><div class="sub">Pendencias mostra quem falta pagar, aceitar termo ou entrar.</div></div></div><div class="row"><div class="avatar">6</div><div class="grow"><div class="title">Exporte CSV</div><div class="sub">Salve a base para planilha, prestação de contas e sistema principal.</div></div></div></div></div></div>`}
+    function exportCsv(){const rows=[["Codigo","Nome","Telefone","Email","Nivel","Categoria","Formato","Equipe","Valor","Pago","Termo","Check-in","Observacao"]];state.people.forEach(p=>rows.push([p.code,p.name,p.phone,p.email,p.level,p.category,p.teamMode,p.team,p.price,paidAmount(p.id),p.waiver?"Sim":"Nao",checkedIn(p.id)?"Sim":"Nao",p.notes]));download("ur-inscricoes-checkin.csv",rows.map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(";")).join("\n"))}
+    function download(name,content){const blob=new Blob([content],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href)}
+    function seed(){if(state.people.length&&!confirm("Substituir dados atuais por uma base exemplo?"))return;state.people=[];state.payments=[];state.checkins=[];["Ana Costa","Bruno Lima","Carol Reis","Diego Alves","Erika Melo","Felipe Rocha","Gi Lima","Henrique Torres"].forEach((name,i)=>{const p={id:uid(),code:"UR-"+(12000+i),name,phone:"(00) 90000-000"+i,email:"",level:i%3===0?"N1 · Hunter Lenda":i%2===0?"N3 · Hunter Experiente":"N5 · Hunter Iniciante",category:i%2?"Dupla Masculina":"Dupla Mista",teamMode:i%3===0?"Jogador avulso":"Equipe formada",team:i%3===0?"":"Equipe "+(i+1),price:state.event.price,waiver:i!==2,notes:"",createdAt:new Date().toISOString()};state.people.push(p);if(i!==3)state.payments.push({id:uid(),personId:p.id,amount:p.price,method:"Pix",note:"exemplo",date:new Date().toISOString()});if(i<3)state.checkins.push({id:uid(),personId:p.id,time:new Date().toISOString()});});toast("Base exemplo carregada.");save();render()}
+    document.getElementById("seedBtn").onclick=seed;document.getElementById("exportBtn").onclick=exportCsv;document.getElementById("clearBtn").onclick=()=>{if(confirm("Zerar inscricoes e check-ins?")){localStorage.removeItem(STORAGE_KEY);state=loadState();render();}};
+    render();
+  </script>
+</body>
+</html>

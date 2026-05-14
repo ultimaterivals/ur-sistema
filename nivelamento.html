@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultimate Rivals | Nivelamento do Atleta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--black:#050507;--panel:#111218;--card:#171822;--line:#2d2818;--gold:#c9a84c;--gold2:#ffd84d;--white:#f5efdd;--muted:#9c927a;--green:#9ee6a5;--blue:#9fc7ff;--red:#ff9b9b;--shadow:0 24px 70px rgba(0,0,0,.48);--display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--body:'Inter','Segoe UI',Arial,sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{min-height:100vh;color:var(--white);font-family:var(--body);line-height:1.68;overflow-x:hidden;background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.18),transparent 42%),radial-gradient(ellipse at 88% 22%,rgba(159,199,255,.08),transparent 36%),linear-gradient(180deg,#08090d 0%,#030405 100%)}
+    a{color:inherit}button{font:inherit}.wrap{width:min(1160px,calc(100% - 32px));margin:0 auto}
+    .top{position:fixed;inset:0 0 auto;z-index:40;background:rgba(5,5,7,.88);border-bottom:1px solid rgba(255,210,31,.14);backdrop-filter:blur(18px)}
+    .top-inner{height:74px;display:flex;align-items:center;gap:14px}.logo-box{width:60px;height:50px;border-radius:10px;border:1px solid rgba(255,210,31,.36);display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,210,31,.16),rgba(255,210,31,.04));overflow:hidden;flex:0 0 auto}.logo-box img{width:54px;height:44px;object-fit:contain;display:block}
+    .brand strong{display:block;font-family:var(--display);font-size:24px;line-height:1;color:var(--gold2);font-weight:900;letter-spacing:.08em;text-transform:uppercase}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:3px;letter-spacing:.04em}
+    .nav{margin-left:auto;display:flex;gap:4px;align-items:center}.nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-family:var(--display);font-weight:900;font-size:12px;letter-spacing:.07em;text-transform:uppercase}.nav a:hover{color:var(--white);background:rgba(255,255,255,.055)}.nav .cta{color:#050507;background:linear-gradient(135deg,var(--gold2),var(--gold));margin-left:6px}
+    .hero{min-height:100vh;display:flex;align-items:center;padding:116px 0 64px;position:relative;overflow:hidden}.hero::after{content:"N";position:absolute;right:0;bottom:-130px;font-family:var(--display);font-size:min(500px,55vw);font-weight:900;line-height:1;color:rgba(255,216,77,.04);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative;z-index:1}.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--gold2);font-family:var(--display);font-size:13px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.eyebrow::before{content:"";width:34px;height:2px;background:var(--gold2)}
+    h1{font-family:var(--display);font-size:clamp(52px,8vw,102px);line-height:.88;font-weight:900;letter-spacing:0;text-transform:uppercase;max-width:720px}h1 em,h2 em{font-style:normal;color:var(--gold2)}.lead{max-width:650px;margin-top:22px;font-size:18px;line-height:1.76;color:rgba(245,239,221,.8)}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:12px 20px;border-radius:9px;text-decoration:none;cursor:pointer;transition:.18s ease;font-family:var(--display);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);color:var(--white)}.btn:hover{transform:translateY(-2px);border-color:rgba(255,216,77,.42)}.btn.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#050507;border-color:transparent;box-shadow:0 14px 34px rgba(255,210,31,.18)}
+    .panel-hero{border:1px solid rgba(255,210,31,.2);border-radius:20px;padding:18px;background:linear-gradient(160deg,rgba(255,210,31,.1),rgba(255,255,255,.035));box-shadow:var(--shadow);position:relative;overflow:hidden}.logo-stage{height:166px;border:1px solid rgba(255,210,31,.14);border-radius:15px;display:grid;place-items:center;background:rgba(0,0,0,.2);position:relative;z-index:1}.logo-stage img{width:min(250px,78%);max-height:136px;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+    .hero-stats{display:grid;gap:10px;margin-top:12px;position:relative;z-index:1}.hstat{display:grid;grid-template-columns:94px 1fr;gap:12px;align-items:center;padding:14px;border-radius:12px;background:rgba(5,5,7,.5);border:1px solid rgba(255,255,255,.08)}.hstat b{font-family:var(--display);font-size:34px;color:var(--gold2);line-height:1}.hstat span{font-size:13px;color:var(--muted)}.hstat strong{display:block;color:var(--white);font-size:14px}
+    section{padding:88px 0}section.alt{background:rgba(255,255,255,.026)}.sec-head{max-width:840px;margin-bottom:36px}.tag{display:flex;gap:9px;align-items:center;margin-bottom:10px;color:var(--gold2);font-family:var(--display);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.tag::before{content:"";width:24px;height:2px;background:var(--gold2)}h2{font-family:var(--display);font-size:clamp(36px,5vw,62px);line-height:.96;text-transform:uppercase;color:var(--white);letter-spacing:0}.sec-desc{margin-top:14px;color:rgba(245,239,221,.72);font-size:16px;max-width:760px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#0a0b10);border-radius:14px;padding:24px;box-shadow:0 16px 36px rgba(0,0,0,.18)}.card h3{font-family:var(--display);font-size:27px;line-height:1;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}.card p{color:rgba(245,239,221,.74);font-size:14px}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .level-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.level{min-height:310px;position:relative;overflow:hidden}.level::after{content:attr(data-id);position:absolute;right:14px;bottom:-16px;font-family:var(--display);font-size:82px;font-weight:900;color:rgba(255,216,77,.055);line-height:1}.level small{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:900}.level h3{font-size:34px;margin-top:8px}.level ul,.rules ul{list-style:none;display:grid;gap:9px;margin-top:16px}.level li,.rules li{color:rgba(245,239,221,.74);font-size:13px}.level li::before,.rules li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold2);margin-right:9px}
+    .flow{display:grid;gap:0;border-top:1px solid rgba(255,255,255,.08)}.flow-row{display:grid;grid-template-columns:90px 1fr 260px;gap:24px;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.08)}.flow-num{font-family:var(--display);font-size:30px;font-weight:900;color:var(--gold2);line-height:1}.flow-row h3{font-family:var(--display);font-size:26px;text-transform:uppercase;line-height:1;color:var(--white);margin-bottom:6px}.flow-row p{color:rgba(245,239,221,.74);font-size:14px}.flow-row aside{border-radius:10px;padding:12px 13px;background:rgba(255,210,31,.065);border:1px solid rgba(255,210,31,.15);color:#eadfb1;font-size:13px;font-weight:800}
+    .table{width:100%;border-collapse:collapse;font-size:14px}.table th,.table td{padding:13px 10px;border-bottom:1px solid rgba(255,255,255,.075);text-align:left;vertical-align:top}.table th{font-family:var(--display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.table td:first-child{color:var(--white);font-weight:800}.score{font-family:var(--display);font-size:23px;font-weight:900;color:var(--gold2)}
+    .note{border-left:4px solid var(--gold2);background:rgba(255,210,31,.075);border-radius:0 9px 9px 0;padding:16px 18px;color:#eadfbf;font-size:14px}.pill-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.pill{border:1px solid rgba(255,210,31,.22);background:rgba(255,210,31,.065);border-radius:999px;padding:6px 9px;color:#ead99d;font-size:12px;font-weight:800}
+    .checklist label{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.075);color:rgba(245,239,221,.8);cursor:pointer}.checklist input{margin-top:5px;accent-color:var(--gold2)}.progress{height:9px;background:#08090d;border:1px solid rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin:14px 0 8px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:.2s}
+    details{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.026);border-radius:11px;padding:17px 18px;margin-bottom:10px}summary{cursor:pointer;font-weight:900;color:var(--white)}details p{color:var(--muted);margin-top:10px;font-size:14px}footer{padding:30px 0 42px;color:var(--muted);text-align:center;font-size:12px}.fade{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fade.show{opacity:1;transform:none}
+    @media(max-width:980px){.nav a:not(.cta){display:none}.hero-grid,.level-grid{grid-template-columns:1fr}.flow-row{grid-template-columns:76px 1fr}.flow-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
+    @media(max-width:640px){.top-inner{height:auto;min-height:72px;padding:10px 0;flex-wrap:wrap}.nav{width:100%;margin-left:0}.nav .cta{width:100%;text-align:center}.hero{padding-top:144px}.grid{display:block}.card{margin-bottom:12px}.flow-row{display:block}.flow-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="logo-box" href="#inicio" aria-label="Ultimate Rivals"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></a>
+      <div class="brand"><strong>Ultimate Rivals</strong><span>Nivelamento do Atleta</span></div>
+      <nav class="nav" aria-label="Navegação">
+        <a href="#logica">Lógica</a><a href="#niveis">Níveis</a><a href="#avaliacao">Avaliação</a><a href="#mudanca">Mudança</a><a href="#faq">FAQ</a>
+        <a class="cta" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="fade">
+          <div class="eyebrow">Documento do atleta · Nivelamento UR</div>
+          <h1>Nível não é rótulo. <em>É justiça de jogo.</em></h1>
+          <p class="lead">O nivelamento do Ultimate Rivals existe para criar partidas equilibradas, proteger atletas em desenvolvimento, desafiar atletas avançados e dar clareza sobre evolução. O objetivo não é julgar o atleta, é colocá-lo no ambiente certo para competir melhor.</p>
+          <div class="hero-actions">
+            <a class="btn gold" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Entrar no sistema</a>
+            <a class="btn" href="#niveis">Ver níveis</a>
+            <button class="btn" id="copyLink">Copiar inscrição</button>
+          </div>
+        </div>
+        <aside class="panel-hero fade">
+          <div class="logo-stage"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></div>
+          <div class="hero-stats">
+            <div class="hstat"><b>NI</b><span><strong>Indefinido</strong>Atleta novo ou ainda sem leitura suficiente dentro do UR.</span></div>
+            <div class="hstat"><b>N5</b><span><strong>Hunter Iniciante</strong>Primeiros passos no ecossistema. Aprendendo fundamentos, ambiente protegido.</span></div>
+            <div class="hstat"><b>N4</b><span><strong>Hunter</strong>Competidor em formação, participando regularmente e disputando primeiros torneios.</span></div>
+            <div class="hstat"><b>N3</b><span><strong>Hunter Experiente</strong>Atleta ativo e consistente. Fundamentos consolidados, disputa Mini Torneios.</span></div>
+            <div class="hstat"><b>N2</b><span><strong>Hunter Elite</strong>Alto nível técnico e competitivo. Disputa UR Series, lidera jogos e está no topo do ranking.</span></div>
+            <div class="hstat"><b>N1</b><span><strong>Hunter Lenda</strong>Ícone do ecossistema. Performance máxima, referência técnica e mental para toda a comunidade UR.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="logica" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Por que nivelar</div>
+          <h2>Jogo equilibrado gera <em>mais vontade de voltar.</em></h2>
+          <p class="sec-desc">Quando níveis muito diferentes se misturam sem critério, alguém deixa de evoluir: o iniciante se frustra, o avançado não é desafiado e a rodada perde qualidade. O nivelamento organiza isso.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-3 fade"><h3>Segurança</h3><p>Reduz jogos desequilibrados, evita exposição desnecessária e melhora a experiência de quem está começando.</p></div>
+          <div class="card span-3 fade"><h3>Desafio</h3><p>Coloca atletas fortes contra desafios compatíveis, evitando que o jogo fique fácil ou sem intensidade.</p></div>
+          <div class="card span-3 fade"><h3>Evolução</h3><p>Mostra para o atleta onde ele está e o que precisa melhorar para subir de nível.</p></div>
+          <div class="card span-3 fade"><h3>Justiça</h3><p>Ajuda ranking, torneios e chamadas a compararem atletas em contextos mais parecidos.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="niveis">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Níveis UR</div>
+          <h2>Seis status para organizar <em>a jornada do atleta.</em></h2>
+        </div>
+        <div class="level-grid" style="grid-template-columns:repeat(3,1fr)">
+          <article class="card level fade" data-id="NI"><small>Indefinido</small><h3>NI</h3><p>Atleta novo ou ainda sem dados suficientes no sistema.</p><ul><li>Primeiros jogos no UR</li><li>Cadastro recente</li><li>Necessita observação prática</li><li>Pode ser definido após UR Play ou CT</li></ul></article>
+          <article class="card level fade" data-id="N5"><small>Hunter Iniciante</small><h3>N5</h3><p>Primeiros passos no ecossistema. Aprendendo fundamentos em ambiente protegido.</p><ul><li>Fundamentos em construção</li><li>Oscilação natural de jogo</li><li>Precisa de repertório competitivo</li><li>Grande margem de evolução</li></ul></article>
+          <article class="card level fade" data-id="N4"><small>Hunter</small><h3>N4</h3><p>Competidor em formação. Já participa de UR Play regularmente e está disputando os primeiros torneios.</p><ul><li>Presença crescente nos eventos</li><li>Fundamentos em desenvolvimento</li><li>Primeiros torneios disputados</li><li>Evolução observável por ciclo</li></ul></article>
+          <article class="card level fade" data-id="N3"><small>Hunter Experiente</small><h3>N3</h3><p>Atleta ativo e consistente. Fundamentos consolidados, disputa Mini Torneios com competitividade real.</p><ul><li>Boa leitura de jogo</li><li>Fundamentos mais consolidados</li><li>Regularidade em partidas</li><li>Consegue competir em ritmo alto</li></ul></article>
+          <article class="card level fade" data-id="N2"><small>Hunter Elite</small><h3>N2</h3><p>Alto nível técnico e competitivo. Disputa UR Series, lidera jogos e está no topo do ranking.</p><ul><li>Alto impacto em jogo</li><li>Tomada de decisão rápida</li><li>Disputa UR Series com destaque</li><li>Lidera jogos e pontuação</li></ul></article>
+          <article class="card level fade" data-id="N1"><small>Hunter Lenda</small><h3>N1</h3><p>Ícone do ecossistema. Performance máxima, referência técnica e mental para toda a comunidade UR.</p><ul><li>Rendimento técnico máximo</li><li>Controle emocional e liderança</li><li>Referência competitiva do ciclo</li><li>Performance e mentalidade de elite</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="avaliacao" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Como avaliar</div>
+          <h2>O nível nasce da soma entre <em>olho e dado.</em></h2>
+          <p class="sec-desc">O sistema considera resultado, técnica, presença, comportamento e evolução observada. O ideal é evitar decisões por uma única partida.</p>
+        </div>
+        <div class="grid">
+          <div class="card span-7 fade">
+            <h3>Eixos de avaliação</h3>
+            <table class="table">
+              <thead><tr><th>Eixo</th><th>O que observa</th><th>Impacto</th></tr></thead>
+              <tbody>
+                <tr><td>Técnico</td><td>Saque, recepção, defesa, ataque, bloqueio, controle, erro não forçado e repertório.</td><td><span class="score">Base</span></td></tr>
+                <tr><td>Tático</td><td>Leitura de jogo, posicionamento, escolha de bola, comunicação e adaptação.</td><td><span class="score">Inteligência</span></td></tr>
+                <tr><td>Resultado</td><td>Vitórias, campanhas, regularidade, impacto em momentos decisivos e desempenho contra níveis próximos.</td><td><span class="score">Competição</span></td></tr>
+                <tr><td>Presença</td><td>Frequência, compromisso com chamadas, participação em UR Play, torneios e CTs.</td><td><span class="score">Constância</span></td></tr>
+                <tr><td>Comportamento</td><td>Fair play, respeito, postura em pressão, responsabilidade e colaboração.</td><td><span class="score">Confiança</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card span-5 fade rules">
+            <h3>O que não deve definir sozinho</h3>
+            <p>Uma partida isolada pode enganar. O atleta pode estar cansado, nervoso, lesionado ou em uma equipe desequilibrada.</p>
+            <ul><li>Um jogo muito bom</li><li>Um jogo muito ruim</li><li>Opinião de adversário isolado</li><li>Resultado sem contexto</li><li>Nome, fama ou amizade</li></ul>
+            <div class="note" style="margin-top:16px">Regra de confiança: nível bom é aquele que explica a experiência real de jogo, não apenas a impressão de um dia.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mudanca">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Subir, manter ou descer</div>
+          <h2>Mudar de nível é parte <em>do processo.</em></h2>
+          <p class="sec-desc">Subir não é prêmio eterno e descer não é punição. O objetivo é manter jogos justos e criar evolução real.</p>
+        </div>
+        <div class="flow">
+          <div class="flow-row fade"><div class="flow-num">NI</div><div><h3>Definir nível inicial</h3><p>Após primeiras participações, a organização deixa de tratar o atleta como indefinido e posiciona em N5, N4, N3, N2 ou N1.</p></div><aside>Primeira leitura prática.</aside></div>
+          <div class="flow-row fade"><div class="flow-num">↑</div><div><h3>Subir de nível</h3><p>Acontece quando o atleta domina o nível atual, tem resultado, mostra técnica superior, presença e maturidade competitiva.</p></div><aside>Evolução comprovada.</aside></div>
+          <div class="flow-row fade"><div class="flow-num">=</div><div><h3>Manter nível</h3><p>Quando o atleta está competitivo dentro da própria faixa, ainda com desafios reais e jogos equilibrados.</p></div><aside>Não é estagnação.</aside></div>
+          <div class="flow-row fade"><div class="flow-num">↓</div><div><h3>Descer de nível</h3><p>Pode acontecer por desequilíbrio claro, baixa performance consistente, retorno de lesão, ausência longa ou necessidade de segurança.</p></div><aside>Não é vergonha.</aside></div>
+          <div class="flow-row fade"><div class="flow-num">VR</div><div><h3>Virada de Ranking</h3><p>Momento principal de revisão do ciclo, quando ranking, presença, evolução e leitura da organização ajudam a reposicionar atletas.</p></div><aside>Fechamento oficial.</aside></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="regras" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Regras de clareza</div>
+          <h2>Nivelamento precisa ser firme, <em>mas transparente.</em></h2>
+        </div>
+        <div class="grid">
+          <div class="card span-4 fade"><h3>Comparação por nível</h3><p>Subidas e descidas devem considerar o desempenho do atleta dentro do próprio nível, evitando comparações injustas entre N1, N2, N3, N4 e N5.</p></div>
+          <div class="card span-4 fade"><h3>Observação contínua</h3><p>Quanto mais o atleta participa, mais dados a organização tem para avaliar. Nada é obrigatório, mas frequência melhora a leitura.</p></div>
+          <div class="card span-4 fade"><h3>Correção excepcional</h3><p>Em casos de desequilíbrio evidente, segurança ou erro de cadastro, a organização pode ajustar o nível antes da Virada.</p></div>
+          <div class="card span-12 fade">
+            <h3>Mensagem central para o atleta</h3>
+            <p>O nível não define seu valor como atleta. Ele define o melhor ambiente para você competir agora. Se você evoluir, o sistema deve abrir caminho para subir. Se o jogo estiver pesado demais, ajustar nível pode proteger sua evolução e a qualidade da rodada.</p>
+            <div class="pill-row"><span class="pill">Nível é contexto</span><span class="pill">Evolução muda tudo</span><span class="pill">Presença gera leitura</span><span class="pill">Justiça melhora o jogo</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="atleta">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div class="tag">Checklist do atleta</div>
+          <h2>Antes de questionar seu nível, <em>entenda sua jornada.</em></h2>
+        </div>
+        <div class="grid">
+          <div class="card span-6 fade">
+            <h3>Estou pronto para ser avaliado?</h3>
+            <div class="checklist" id="checklist">
+              <label><input type="checkbox"><span>Entendi que NI significa em avaliação, não inferioridade.</span></label>
+              <label><input type="checkbox"><span>Entendi que N1, N2, N3, N4 e N5 existem para equilibrar jogos.</span></label>
+              <label><input type="checkbox"><span>Sei que resultado, técnica, presença, evolução e comportamento influenciam o nível.</span></label>
+              <label><input type="checkbox"><span>Entendi que nada é obrigatório, mas participar mais melhora a leitura da organização.</span></label>
+              <label><input type="checkbox"><span>Entendi que subir ou descer pode acontecer para proteger a qualidade do jogo.</span></label>
+            </div>
+            <div class="progress"><div class="bar" id="bar"></div></div>
+            <p id="progressText" style="color:var(--muted);font-size:13px">0% pronto para entender o nivelamento</p>
+          </div>
+          <div class="card span-6 fade">
+            <h3>Mensagem para atletas</h3>
+            <p id="shareText">O nivelamento UR organiza atletas em NI, N5 (Hunter Iniciante), N4 (Hunter), N3 (Hunter Experiente), N2 (Hunter Elite) e N1 (Hunter Lenda) para criar jogos mais justos. O nível não é rótulo: é uma fotografia do momento do atleta. Resultado, técnica, presença, evolução e comportamento influenciam a avaliação. Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</p>
+            <div class="hero-actions"><button class="btn gold" id="copyShare">Copiar mensagem</button><a class="btn" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever agora</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="alt">
+      <div class="wrap">
+        <div class="sec-head fade"><div class="tag">Perguntas frequentes</div><h2>Dúvidas comuns sobre <em>nível.</em></h2></div>
+        <div class="grid">
+          <div class="span-7">
+            <details class="fade" open><summary>NI é um nível ruim?</summary><p>Não. NI significa indefinido. É usado para atleta novo ou sem dados suficientes. Depois de observar jogos e participação, a organização define N5, N4, N3, N2 ou N1.</p></details>
+            <details class="fade"><summary>Posso pedir revisão de nível?</summary><p>Sim. O ideal é pedir com argumentos objetivos: jogos, resultados, evolução, contexto e disponibilidade para nova observação.</p></details>
+            <details class="fade"><summary>Posso subir no meio do trimestre?</summary><p>Pode acontecer em casos claros, mas a revisão principal costuma ocorrer na Virada de Ranking para proteger consistência e evitar mudanças por emoção.</p></details>
+            <details class="fade"><summary>Descer de nível é punição?</summary><p>Não. Pode ser ajuste de segurança, ritmo, retorno de lesão ou equilíbrio. O objetivo é melhorar a experiência do atleta e do grupo.</p></details>
+            <details class="fade"><summary>Quem decide o nível?</summary><p>A organização decide com base em observação, dados, ranking, presença e contexto. O atleta pode dialogar, mas a decisão precisa preservar o equilíbrio coletivo.</p></details>
+          </div>
+          <div class="card span-5 fade">
+            <h3>Resumo final</h3>
+            <p>O nivelamento é o mecanismo que protege o jogo. Ele organiza atletas, melhora chamadas, evita distorções no ranking e cria uma trilha real de evolução. Quanto mais o atleta participa, mais justa tende a ser sua leitura.</p>
+            <div class="note" style="margin-top:16px">Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Ultimate Rivals | Nivelamento do Atleta | Inscrição: https://forms.gle/RrtKcxpQyJpoTxrg7</div></footer>
+
+  <script>
+    const FORM_LINK = "https://forms.gle/RrtKcxpQyJpoTxrg7";
+    function copy(text){ navigator.clipboard.writeText(text).then(() => alert("Copiado.")); }
+    document.getElementById("copyLink").addEventListener("click", () => copy(FORM_LINK));
+    document.getElementById("copyShare").addEventListener("click", () => copy(document.getElementById("shareText").textContent.trim()));
+    const checks = [...document.querySelectorAll("#checklist input")];
+    const bar = document.getElementById("bar");
+    const progressText = document.getElementById("progressText");
+    function updateProgress(){
+      const done = checks.filter(c => c.checked).length;
+      const pct = Math.round((done / checks.length) * 100);
+      bar.style.width = pct + "%";
+      progressText.textContent = pct + "% pronto para entender o nivelamento";
+    }
+    checks.forEach(c => c.addEventListener("change", updateProgress));
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if(entry.isIntersecting) entry.target.classList.add("show");
+    }), {threshold:.12});
+    document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
