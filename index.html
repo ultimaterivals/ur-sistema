@@ -1131,6 +1131,14 @@
         <div class="field"><label>Documento</label><input id="${prefix}Document" placeholder="Opcional" value="${esc(a.document || "")}"></div>
         <div class="field wide"><label>Emergencia</label><input id="${prefix}Emergency" placeholder="Contato de emergencia" value="${esc(a.emergency || "")}"></div>
         <div class="field wide"><label>Observacoes</label><input id="${prefix}Notes" placeholder="Restricoes, preferencias, pendencias" value="${esc(a.notes || "")}"></div>
+        <div class="field"><label>Email</label><input id="${prefix}Email" type="email" placeholder="email@exemplo.com" value="${esc(a.email || "")}"></div>
+        <div class="field"><label>Nome de mídia</label><input id="${prefix}MediaName" placeholder="Como aparece no ranking/transmissão" value="${esc(a.mediaName || "")}"></div>
+        <div class="field small"><label>Anos de prática</label><input id="${prefix}PracticeYears" placeholder="Ex.: 3 anos" value="${esc(a.practiceYears || "")}"></div>
+        <div class="field small"><label>Avaliação física</label><input id="${prefix}PhysicalScore" placeholder="1–5" value="${esc(a.physicalScore || "")}"></div>
+        <div class="field wide"><label>Restrição médica / lesão</label><input id="${prefix}MedicalRestriction" placeholder="Descreva lesões ou limitações" value="${esc(a.medicalRestriction || "")}"></div>
+        <div class="field small"><label>Experiência torneios</label><select id="${prefix}TournamentExp"><option value="">-</option><option value="true"${a.tournamentExperience===true||a.tournamentExperience==='true'?' selected':''}>Sim</option><option value="false"${a.tournamentExperience===false&&a.tournamentExperience!==''?' selected':''}>Não</option></select></div>
+        <div class="field small"><label>Autoriza imagem</label><select id="${prefix}ImageAuth"><option value="">-</option><option value="true"${a.imageAuth===true||a.imageAuth==='true'?' selected':''}>Sim</option><option value="false"${a.imageAuth===false&&a.imageAuth!==''?' selected':''}>Não</option></select></div>
+        <div class="field small"><label>Pagamento</label><select id="${prefix}Payment"><option value="">Pendente</option><option value="true"${a.paymentStatus===true||a.paymentStatus==='true'?' selected':''}>Pago</option><option value="false"${a.paymentStatus===false&&a.paymentStatus!==''?' selected':''}>Não pago</option></select></div>
       `;
     }
     function athletePayload(prefix){
@@ -1149,7 +1157,15 @@
         birth:document.getElementById(prefix+"Birth").value,
         document:document.getElementById(prefix+"Document").value.trim(),
         emergency:document.getElementById(prefix+"Emergency").value.trim(),
-        notes:document.getElementById(prefix+"Notes").value.trim()
+        notes:document.getElementById(prefix+"Notes").value.trim(),
+        email:document.getElementById(prefix+"Email")?.value.trim()||"",
+        mediaName:document.getElementById(prefix+"MediaName")?.value.trim()||"",
+        practiceYears:document.getElementById(prefix+"PracticeYears")?.value.trim()||"",
+        physicalScore:document.getElementById(prefix+"PhysicalScore")?.value.trim()||"",
+        medicalRestriction:document.getElementById(prefix+"MedicalRestriction")?.value.trim()||"",
+        tournamentExperience:document.getElementById(prefix+"TournamentExp")?.value==="true",
+        imageAuth:document.getElementById(prefix+"ImageAuth")?.value==="true",
+        paymentStatus:document.getElementById(prefix+"Payment")?.value==="true"
       };
     }
     function athleteOptions(selectedId=""){
@@ -1685,11 +1701,17 @@
       }
       const fc=pat=>Object.entries(hdrs).find(([,h])=>pat.test(h))?.[0];
       const C={
-        name:fc(/Nome Completo/i), phone:fc(/WhatsApp/i), email:fc(/^Email$/i),
-        birth:fc(/Nascimento/i), cpf:fc(/^CPF$/i), city:fc(/Cidade/i),
-        pos:fc(/Posi/i), tech:fc(/cnica/i), cats:fc(/Categorias desejadas/i),
-        days:fc(/melhor dia/i), shift:fc(/^Turno$/i), team:fc(/Nome da Equipe/i),
+        name:fc(/Nome Completo/i), mediaName:fc(/mídias|midia|transmiss/i),
+        phone:fc(/WhatsApp/i), email:fc(/^Email$/i), emailAlt:fc(/ENDEREÇO DE EMAIL/i),
+        birth:fc(/Nascimento/i), cpf:fc(/^CPF$/i), city:fc(/Cidade|Polo/i),
+        pos:fc(/Posi/i), tech:fc(/técnica geral|cnica geral/i), phys:fc(/física|fisica|Intensidade/i),
+        cats:fc(/Categorias desejadas/i), days:fc(/melhor dia/i), shift:fc(/^Turno$/i),
+        team:fc(/Nome da Equipe/i), hasTeam:fc(/faz parte de alguma equipe/i),
         mod:fc(/Modalidade de Participa/i), emerg:fc(/Emerg/i),
+        practiceYears:fc(/Tempo de prática|tempo de pratica/i),
+        tournamentExp:fc(/disputou torneios/i), acceptsReloc:fc(/realocado/i),
+        medicalRestr:fc(/lesão|lesao|restrição médica|restricao medica/i),
+        imageAuth:fc(/uso da minha imagem/i), payment:fc(/realizado o pagamento/i),
       };
       const mapPos=p=>{
         if(/Ponta/i.test(p))return 'Ponteiro(a)';
@@ -1703,6 +1725,10 @@
       const mapGnd=c=>{const f=/Fem/i.test(c),m=/Masc/i.test(c);return f&&!m?'F':m&&!f?'M':'';};
       const xlDate=s=>{const d=parseFloat(s);if(!d||d<1)return '';const b=new Date(1899,11,30);b.setDate(b.getDate()+d);return b.toISOString().slice(0,10);};
       const g=(cells,col)=>col?(cells[col]||''):'';
+      const mapDays=t=>{const m={dom:0,seg:1,'ter':2,qua:3,qui:4,sex:5,sab:6,segunda:1,'terça':2,terca:2,quarta:3,quinta:4,sexta:5,sábado:6,sabado:6,domingo:0};return[...new Set(t.toLowerCase().split(/[,;/\s]+/).map(d=>m[d.slice(0,3)]).filter(d=>d!==undefined))].map(String);};
+      const mapShifts=t=>{const s=[];if(/manh/i.test(t))s.push('Manha');if(/tard/i.test(t))s.push('Tarde');if(/noit/i.test(t))s.push('Noite');if(/fim|semana/i.test(t))s.push('Fim de semana');return s;};
+      const mapCats=t=>{const ids=[];if(/dupla.*masc|masc.*dupla/i.test(t))ids.push('DM');if(/dupla.*fem|fem.*dupla/i.test(t))ids.push('DF');if(/dupla.*mist|mist.*dupla|DX/i.test(t))ids.push('DX');if(/quart.*masc|masc.*quart/i.test(t))ids.push('QM');if(/quart.*fem|fem.*quart/i.test(t))ids.push('QF');if(/quart.*mist|mist.*quart|QX/i.test(t))ids.push('QX');return ids;};
+      const yesNo=t=>/sim|yes|true|1/i.test(t);
       const imported=[];
       for(const row of rows){
         if(row.getAttribute('r')==='1')continue;
@@ -1712,18 +1738,32 @@
         if(name.length<2)continue;
         let phone=g(cells,C.phone).replace(/\D/g,'');
         if(phone.length>11)phone=phone.slice(-11);
-        const cats=g(cells,C.cats);
+        const rawCats=g(cells,C.cats);
+        const rawMod=g(cells,C.mod);
+        const mappedCats=mapCats(rawCats);
+        const mappedDays=mapDays(g(cells,C.days));
+        const mappedShifts=mapShifts(g(cells,C.shift));
         imported.push({
           id:uid(), name,
-          level:mapLvl(g(cells,C.tech)), gender:mapGnd(cats),
+          mediaName:g(cells,C.mediaName),
+          level:mapLvl(g(cells,C.tech)), gender:mapGnd(rawCats),
           position:mapPos(g(cells,C.pos)), contact:phone,
           city:g(cells,C.city), birth:xlDate(g(cells,C.birth)),
           document:g(cells,C.cpf).replace(/[^\d.\-]/g,''),
           emergency:g(cells,C.emerg),
-          notes:'Importado da Planilha UR. Mod: '+g(cells,C.mod)+' | Cats: '+cats,
-          desiredModalities:g(cells,C.mod), desiredDays:g(cells,C.days),
-          desiredShifts:g(cells,C.shift), desiredPairPositions:'', teamId:'',
-          email:g(cells,C.email),
+          email:g(cells,C.email)||g(cells,C.emailAlt),
+          practiceYears:g(cells,C.practiceYears),
+          tournamentExperience:yesNo(g(cells,C.tournamentExp)),
+          physicalScore:g(cells,C.phys),
+          acceptsRelocation:yesNo(g(cells,C.acceptsReloc)),
+          medicalRestriction:g(cells,C.medicalRestr),
+          imageAuth:yesNo(g(cells,C.imageAuth)),
+          paymentStatus:yesNo(g(cells,C.payment)),
+          desiredModalities:mappedCats.length?mappedCats:(rawMod?[rawMod]:[]),
+          desiredDays:mappedDays,
+          desiredShifts:mappedShifts,
+          desiredPairPositions:[], teamId:'',
+          notes:g(cells,C.medicalRestr)?'Restrição: '+g(cells,C.medicalRestr):'',
           pts:0,coins:0,wins:0,losses:0,presences:0,streak:0,mvps:0,fairplays:0,
           stats:{aces:0,attacks:0,attackAttempts:0,serveAttempts:0,blocks:0,digs:0,points:0,assists:0,run3:0,run5:0,clutch:0,comeback:0},
           history:[]
