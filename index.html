@@ -539,9 +539,32 @@
     .cat-bar-label{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
     .cat-bar-label span:first-child{color:var(--muted);font-weight:700}
     .cat-bar-label span:last-child{color:#e8e3d4;font-weight:800}
+  /* ── LOGIN WALL ─────────────────────────────────────────────────── */
+  #login-wall{position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:'Inter',sans-serif}
+  #login-wall .lw-box{background:#161616;border:1px solid #2a2a2a;border-radius:20px;padding:44px 36px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 64px #000a}
+  #login-wall .lw-logo{font-size:52px;margin-bottom:6px}
+  #login-wall .lw-title{font-size:22px;font-weight:800;color:#f5c518;letter-spacing:1px;margin-bottom:4px}
+  #login-wall .lw-sub{font-size:12px;color:#555;margin-bottom:32px}
+  #login-wall input{width:100%;padding:13px 16px;background:#0f0f0f;border:1px solid #2a2a2a;border-radius:10px;color:#fff;font-size:14px;margin-bottom:10px;box-sizing:border-box;outline:none;transition:border .2s}
+  #login-wall input:focus{border-color:#f5c518}
+  #login-wall .lw-err{color:#ff6b6b;font-size:12px;min-height:18px;margin-bottom:10px}
+  #login-wall .lw-btn{width:100%;padding:13px;background:#f5c518;color:#000;border:none;border-radius:10px;font-weight:800;font-size:14px;cursor:pointer;letter-spacing:.5px;transition:opacity .2s}
+  #login-wall .lw-btn:hover{opacity:.88}
   </style>
 </head>
 <body>
+  <!-- LOGIN WALL -->
+  <div id="login-wall">
+    <div class="lw-box">
+      <div class="lw-logo">⚡</div>
+      <div class="lw-title">ULTIMATE RIVALS</div>
+      <div class="lw-sub">Sistema de Gestão · Acesso Restrito</div>
+      <input id="lw-user" type="text" placeholder="Usuário" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('lw-pass').focus()">
+      <input id="lw-pass" type="password" placeholder="Senha" autocomplete="current-password" onkeydown="if(event.key==='Enter')_urDoLogin()">
+      <div class="lw-err" id="lw-err"></div>
+      <button class="lw-btn" onclick="_urDoLogin()">Entrar</button>
+    </div>
+  </div>
   <div class="app">
     <div class="shell">
       <header class="topbar">
@@ -6471,7 +6494,37 @@
       };
       reader.readAsText(file);
     };
-    render();
+    // ═══════════════════════════════════════════════════════════
+    // LOGIN / AUTH
+    // ═══════════════════════════════════════════════════════════
+    const _urUsers = {
+      "admin": "ur2025",        // usuário: admin | senha: ur2025
+      "ultimaterivals": "volei@2025"  // usuário: ultimaterivals | senha: volei@2025
+    };
+    const _urAuthKey = "ur_authed_v1";
+    function _urDoLogin(){
+      const u = (document.getElementById("lw-user")?.value||"").trim().toLowerCase();
+      const p = document.getElementById("lw-pass")?.value||"";
+      if(_urUsers[u] && _urUsers[u]===p){
+        sessionStorage.setItem(_urAuthKey,"1");
+        document.getElementById("login-wall").style.display="none";
+      } else {
+        const err = document.getElementById("lw-err");
+        if(err){ err.textContent="Usuário ou senha incorretos."; setTimeout(()=>{err.textContent=""},3000); }
+        document.getElementById("lw-pass").value="";
+      }
+    }
+    function urLogout(){
+      sessionStorage.removeItem(_urAuthKey);
+      location.reload();
+    }
+    // Check auth on load
+    if(sessionStorage.getItem(_urAuthKey)==="1"){
+      document.getElementById("login-wall").style.display="none";
+      render();
+    } else {
+      setTimeout(()=>document.getElementById("lw-user")?.focus(),100);
+    }
   </script>
 </body>
 </html>
