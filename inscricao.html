@@ -135,7 +135,77 @@
     .field-row{grid-template-columns:1fr}
     .rating-stars .star-btn{width:38px;height:38px;font-size:16px}
   }
+
+  /* ── Barlow Condensed para títulos UR ── */
+  .ur-brand { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* ── Header hero gradiente ── */
+  .header {
+    background: linear-gradient(135deg, #0a0a0a 0%, #161616 40%, #1a1500 100%);
+    border-bottom: 1px solid rgba(245,197,24,.25);
+    padding: 20px 20px 16px;
+    text-align: center;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 24px rgba(0,0,0,.5);
+  }
+  .header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px; }
+  .header-bolt { font-size: 32px; filter: drop-shadow(0 0 8px rgba(245,197,24,.6)); }
+  .header-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 900; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,197,24,.3); }
+  .header-sub { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: 1px; text-transform: uppercase; }
+  .header-season { display: inline-block; background: rgba(245,197,24,.12); border: 1px solid rgba(245,197,24,.25); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; padding: 3px 10px; border-radius: 20px; margin-top: 6px; }
+
+  /* ── Guide boxes (mini tooltips) ── */
+  .guide-wrap { margin-top: 10px; }
+  .guide-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; background: rgba(245,197,24,.07); border: 1px solid rgba(245,197,24,.2); border-radius: 8px; padding: 7px 12px; transition: all .2s; width: 100%; text-align: left; }
+  .guide-toggle:hover { background: rgba(245,197,24,.12); }
+  .guide-toggle .gt-icon { font-size: 14px; }
+  .guide-toggle .gt-arrow { margin-left: auto; transition: transform .2s; }
+  .guide-toggle.open .gt-arrow { transform: rotate(180deg); }
+  .guide-box { display: none; margin-top: 8px; background: #0c0c0c; border: 1px solid rgba(245,197,24,.15); border-radius: 10px; padding: 14px; }
+  .guide-box.show { display: block; animation: fadeIn .2s ease; }
+  .guide-item { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+  .guide-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .guide-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .guide-text { font-size: 12px; line-height: 1.5; }
+  .guide-text strong { color: var(--gold); display: block; margin-bottom: 2px; }
+  .guide-text span { color: rgba(255,255,255,.55); }
+
+  /* ── Melhorias nos cards ── */
+  .card { background: linear-gradient(135deg, #161616, #111); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.3); }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+  /* ── Step header melhorado ── */
+  .step-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: .5px; }
+  .step-icon { font-size: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 6px rgba(245,197,24,.3)); }
+
+  /* ── Chip labels com descrição ── */
+  .chip-label-wrap { display: flex; flex-direction: column; }
+  .chip-label-name { font-weight: 700; }
+  .chip-label-desc { font-size: 10px; opacity: .65; margin-top: 1px; }
+
+  /* ── Botão submit dourado ── */
+  #submitBtn { background: linear-gradient(135deg, #f5c518, #e6a800); color: #000; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; letter-spacing: 1px; box-shadow: 0 4px 20px rgba(245,197,24,.35); }
+  #submitBtn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(245,197,24,.5); }
+
+  /* ── Success melhorada ── */
+  .success-icon { font-size: 80px; filter: drop-shadow(0 0 20px rgba(245,197,24,.5)); }
+  .success-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: 1px; }
+  .success-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(76,175,80,.12); border: 1px solid rgba(76,175,80,.4); color: #4caf50; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+  .btn-export { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); color: #e0e0e0; font-size: 13px; padding: 11px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all .2s; margin-top: 8px; width: 100%; }
+  .btn-export:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── Progress melhorado ── */
+  .step-dot { width: 32px; height: 32px; font-size: 11px; }
+  .step-dot.active { box-shadow: 0 0 0 3px rgba(245,197,24,.2); }
 </style>
+<meta property="og:title" content="Inscrição — Ultimate Rivals 2026">
+<meta property="og:description" content="Ficha de inscrição oficial da liga de vôlei de praia Ultimate Rivals. Preencha e garanta sua vaga!">
+<meta property="og:image" content="https://ur-sistema.vercel.app/og-image.jpg">
+<meta property="og:url" content="https://ur-sistema.vercel.app/inscricao.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ur-sistema.vercel.app/inscricao.html">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -148,9 +218,12 @@
 </script>
 
 <div class="header">
-  <div class="header-logo">⚡</div>
-  <div class="header-title">ULTIMATE RIVALS</div>
-  <div class="header-sub">Ficha de Inscrição · Temporada 2026</div>
+  <div class="header-logo-wrap">
+    <span class="header-bolt">⚡</span>
+    <span class="header-title">ULTIMATE RIVALS</span>
+  </div>
+  <div class="header-sub">Liga de Vôlei de Praia</div>
+  <div class="header-season">🏐 Ficha de Inscrição · Temporada 2026</div>
 </div>
 
 <div class="progress-wrap" id="progressWrap">
@@ -342,6 +415,38 @@
           </select>
         </div>
       </div>
+      <div class="guide-wrap">
+        <button type="button" class="guide-toggle" onclick="toggleGuide('guide-positions')">
+          <span class="gt-icon">📖</span> Guia de Posições — qual é a sua?
+          <span class="gt-arrow">▼</span>
+        </button>
+        <div class="guide-box" id="guide-positions">
+          <div class="guide-item">
+            <span class="guide-icon">🌐</span>
+            <div class="guide-text"><strong>Universal</strong><span>Joga em todas as posições. Ideal para iniciantes ou quem tem versatilidade total.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">🧠</span>
+            <div class="guide-text"><strong>Levantador(a)</strong><span>Distribui as bolas para o ataque. É o "cérebro" da equipe. Exige visão de jogo e passes precisos.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">💥</span>
+            <div class="guide-text"><strong>Ponteiro(a)</strong><span>Atacante pelas pontas. Responsável por recepção e ataques laterais. Muita corrida e salto.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">🧱</span>
+            <div class="guide-text"><strong>Central</strong><span>Especialista em bloqueio e ataques rápidos pelo meio da rede. Exige explosão e salto alto.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">⚡</span>
+            <div class="guide-text"><strong>Oposto(a)</strong><span>Principal atacante da equipe. Fica oposto ao levantador. Potência máxima no ataque.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">🛡️</span>
+            <div class="guide-text"><strong>Libero</strong><span>Especialista em defesa e recepção. Usa colete diferente. Não pode atacar acima da rede.</span></div>
+          </div>
+        </div>
+      </div>
       <div class="field">
         <label>Tempo de prática no vôlei <span class="req">*</span></label>
         <select id="practiceYears">
@@ -373,12 +478,33 @@
           <div class="rating-stars" id="techStars"></div>
           <div class="rating-label" id="techLabel">Toque para avaliar</div>
         </div>
-        <div class="score-descriptions">
-          <div class="score-desc">1 — Iniciante</div>
-          <div class="score-desc">2 — Básico</div>
-          <div class="score-desc">3 — Intermediário</div>
-          <div class="score-desc">4 — Avançado</div>
-          <div class="score-desc">5 — Elite</div>
+        <div class="guide-wrap" style="margin-top:10px">
+          <button type="button" class="guide-toggle" onclick="toggleGuide('guide-tech')">
+            <span class="gt-icon">⭐</span> Critérios de cada nível técnico
+            <span class="gt-arrow">▼</span>
+          </button>
+          <div class="guide-box" id="guide-tech">
+            <div class="guide-item">
+              <span class="guide-icon">⭐</span>
+              <div class="guide-text"><strong>Nível 1 — Iniciante</strong><span>Nunca jogou ou começou há menos de 6 meses. Ainda aprendendo as regras básicas. Saque por baixo.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">⭐⭐</span>
+              <div class="guide-text"><strong>Nível 2 — Básico</strong><span>Consegue fazer rally curto. Conhece as posições. Saque por cima simples mas inconstante.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">⭐⭐⭐</span>
+              <div class="guide-text"><strong>Nível 3 — Intermediário</strong><span>Treina com regularidade. Domina saque, passe e ataque simples. Entende táticas básicas de jogo.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">⭐⭐⭐⭐</span>
+              <div class="guide-text"><strong>Nível 4 — Avançado</strong><span>3+ anos de prática. Técnica consistente em todos os fundamentos. Já participou de ligas ou campeonatos.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">⭐⭐⭐⭐⭐</span>
+              <div class="guide-text"><strong>Nível 5 — Elite</strong><span>Jogou competitivo, ligas federadas ou alto nível. Referência técnica dentro de quadra. Rendimento consistente.</span></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="field" style="margin-top:16px">
@@ -387,12 +513,33 @@
           <div class="rating-stars" id="physStars"></div>
           <div class="rating-label" id="physLabel">Toque para avaliar</div>
         </div>
-        <div class="score-descriptions">
-          <div class="score-desc">1 — Leve</div>
-          <div class="score-desc">2 — Moderado</div>
-          <div class="score-desc">3 — Regular</div>
-          <div class="score-desc">4 — Intenso</div>
-          <div class="score-desc">5 — Atleta</div>
+        <div class="guide-wrap" style="margin-top:10px">
+          <button type="button" class="guide-toggle" onclick="toggleGuide('guide-phys')">
+            <span class="gt-icon">💪</span> Critérios de condicionamento físico
+            <span class="gt-arrow">▼</span>
+          </button>
+          <div class="guide-box" id="guide-phys">
+            <div class="guide-item">
+              <span class="guide-icon">🚶</span>
+              <div class="guide-text"><strong>Nível 1 — Sedentário</strong><span>Pouca atividade física no dia a dia. Pode se cansar facilmente em jogos mais longos.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🚴</span>
+              <div class="guide-text"><strong>Nível 2 — Leve</strong><span>Faz caminhadas ou atividades leves. Aguenta rallys curtos mas precisa de mais pausa entre jogos.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🏃</span>
+              <div class="guide-text"><strong>Nível 3 — Regular</strong><span>Pratica atividade física 2-3x por semana. Bom fôlego para um dia inteiro de jogos com pausas normais.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🏋️</span>
+              <div class="guide-text"><strong>Nível 4 — Intenso</strong><span>Treina com regularidade e intensidade. Boa resistência, explosão e recuperação rápida entre sets.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🏅</span>
+              <div class="guide-text"><strong>Nível 5 — Atleta</strong><span>Condicionamento de atleta profissional. Alta performance física, explosão e resistência excepcionais.</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -447,6 +594,30 @@
           <input class="chip-opt" type="checkbox" id="modChampion" value="UR Championship"><label class="chip-label" for="modChampion">🥇 UR Championship</label>
           <input class="chip-opt" type="checkbox" id="modTreino" value="Treino UR"><label class="chip-label" for="modTreino">🎯 Treino UR</label>
         </div>
+        <div class="guide-wrap" style="margin-top:10px">
+          <button type="button" class="guide-toggle" onclick="toggleGuide('guide-modalities')">
+            <span class="gt-icon">📋</span> O que é cada modalidade UR?
+            <span class="gt-arrow">▼</span>
+          </button>
+          <div class="guide-box" id="guide-modalities">
+            <div class="guide-item">
+              <span class="guide-icon">⚡</span>
+              <div class="guide-text"><strong>UR Play — Liga Semanal</strong><span>Jogos toda semana com ranking e pontuação acumulada. Formato leve e festivo. Ideal para jogar regularmente e fazer networking. Equipes sorteadas ou formadas na hora.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🏆</span>
+              <div class="guide-text"><strong>UR Series — Torneio Mensal</strong><span>Torneio eliminatório com chaveamento. Grupos + playoffs + final, tudo no mesmo dia. Premiação para os finalistas.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🥇</span>
+              <div class="guide-text"><strong>UR Championship — Mega Torneio</strong><span>O maior evento da temporada. Chaveamento completo, transmissão ao vivo, cerimônia de premiação e troféu. Acontece semestralmente.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🎯</span>
+              <div class="guide-text"><strong>Treino UR — Desenvolvimento</strong><span>Sessões de treino técnico sem compromisso competitivo. Foco em fundamentos, drills e evolução. Sem ranking ou pontuação.</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -461,6 +632,38 @@
           <input class="chip-opt" type="checkbox" id="catQM" value="QM"><label class="chip-label" for="catQM">👨‍👨‍👦‍👦 Quarteto Masc.</label>
           <input class="chip-opt" type="checkbox" id="catQF" value="QF"><label class="chip-label" for="catQF">👩‍👩‍👦‍👦 Quarteto Fem.</label>
           <input class="chip-opt" type="checkbox" id="catQX" value="QX"><label class="chip-label" for="catQX">🌟 Quarteto Misto</label>
+        </div>
+        <div class="guide-wrap" style="margin-top:10px">
+          <button type="button" class="guide-toggle" onclick="toggleGuide('guide-cats')">
+            <span class="gt-icon">🏅</span> Entenda os formatos de disputa
+            <span class="gt-arrow">▼</span>
+          </button>
+          <div class="guide-box" id="guide-cats">
+            <div class="guide-item">
+              <span class="guide-icon">👨‍👨‍👦</span>
+              <div class="guide-text"><strong>DM — Dupla Masculina</strong><span>2 atletas do gênero masculino. Quadra reduzida, jogo rápido. Muita velocidade e potência de ataque.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">👩‍👩‍👦</span>
+              <div class="guide-text"><strong>DF — Dupla Feminina</strong><span>2 atletas do gênero feminino. Prioriza técnica, consistência e inteligência tática.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🤝</span>
+              <div class="guide-text"><strong>DX — Dupla Mista</strong><span>1 atleta masculino + 1 feminino. O formato mais popular do UR. Muito estratégico e colaborativo.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">👨‍👨‍👦‍👦</span>
+              <div class="guide-text"><strong>QM — Quarteto Masculino</strong><span>4 atletas masculinos (2x2 com rodízio ou 4x4 dependendo do evento). Jogo mais coletivo e tático.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">👩‍👩‍👦‍👦</span>
+              <div class="guide-text"><strong>QF — Quarteto Feminino</strong><span>4 atletas femininas. Muito técnico, com foco em defesa coletiva e construção de jogadas.</span></div>
+            </div>
+            <div class="guide-item">
+              <span class="guide-icon">🌟</span>
+              <div class="guide-text"><strong>QX — Quarteto Misto</strong><span>Mix de gênero com 4 atletas. Formato festivo e inclusivo. Muito divertido e competitivo ao mesmo tempo.</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -684,11 +887,16 @@
        SUCCESS SCREEN
   ══════════════════════════════════════ -->
   <div class="success" id="successScreen">
-    <div class="success-icon">🎉</div>
+    <div class="success-icon">🏐</div>
     <div class="success-title">Inscrição Enviada!</div>
-    <div class="success-sub" id="successMsg">Sua inscrição foi recebida com sucesso. Nossa equipe entrará em contato em breve pelo WhatsApp!</div>
+    <div class="success-badge">✅ Cadastro confirmado na temporada 2026</div>
+    <div class="success-sub" id="successMsg">Sua ficha foi recebida com sucesso! Nossa equipe do <strong style="color:var(--gold)">Ultimate Rivals</strong> analisará e entrará em contato pelo WhatsApp em breve.</div>
     <div class="success-card" id="successSummary"></div>
-    <div style="margin-top:20px;font-size:12px;color:var(--muted)">Guarde este comprovante. Em caso de dúvidas, entre em contato via Instagram <strong>@ultimaterivals</strong></div>
+    <button class="btn-export" id="exportCsvBtn" onclick="exportToCsv()">📥 Baixar comprovante em CSV</button>
+    <div style="margin-top:20px;font-size:12px;color:var(--muted)">
+      Dúvidas? Fale conosco no Instagram
+      <a href="https://instagram.com/ultimaterivals" target="_blank" style="color:var(--gold);text-decoration:none"> @ultimaterivals</a>
+    </div>
   </div>
 
 </div><!-- /container -->
@@ -929,6 +1137,45 @@ function showSuccess(data, online){
 }
 function row(k,v){ return `<div class="summary-row"><span class="summary-key">${k}</span><span class="summary-val">${v}</span></div>`; }
 function formatPhone(p){ return p.length===11?`(${p.slice(0,2)}) ${p.slice(2,7)}-${p.slice(7)}`:p; }
+
+// ─── GUIDE TOGGLES ───────────────────────────────────
+function toggleGuide(id) {
+  const box = document.getElementById(id);
+  const btn = box?.previousElementSibling;
+  if (!box) return;
+  const isOpen = box.classList.contains('show');
+  box.classList.toggle('show', !isOpen);
+  if (btn) btn.classList.toggle('open', !isOpen);
+}
+
+// ─── EXPORT CSV ───────────────────────────────────────
+function collectFormData(){ return collectData(); }
+function exportToCsv() {
+  const d = collectFormData();
+  const headers = ['Nome','Apelido','Gênero','Nascimento','CPF','Instagram','WhatsApp','Email','Cidade','Bairro','Emergência','Posição','Posição Secundária','Tempo de Prática','Experiência Torneios','Nível Técnico','Nível Físico','Aceita Realocação','Disponibilidade','Modalidades','Categorias','Dias','Turnos','Polo Preferido','Tem Equipe','Equipe','Tem Dupla','Parceiro','Restrição Médica','Tipo Sanguíneo','Tamanho Camiseta','Número Camiseta','Como Conheceu','Autoriza Imagem','Data Inscrição'];
+  const row = [
+    d.name, d.media_name, d.gender, d.birth, d.cpf, d.instagram,
+    d.phone, d.email, d.city, d.neighborhood, d.emergency,
+    d.position, d.position_secondary, d.practice_years,
+    d.tournament_exp ? 'Sim' : 'Não',
+    d.tech_score, d.phys_score,
+    d.accepts_reloc ? 'Sim' : 'Não', d.weekly_avail,
+    d.modalities, d.categories, d.days, d.shifts, d.preferred_polo,
+    d.has_team ? 'Sim' : 'Não', d.team_name || '',
+    d.has_partner ? 'Sim' : 'Não', d.partner_name || '',
+    d.medical_restriction || '', d.blood_type || '',
+    d.shirt_size || '', d.shirt_number || '', d.how_found || '',
+    d.image_auth ? 'Sim' : 'Não',
+    new Date().toLocaleString('pt-BR')
+  ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`);
+
+  const csv = '﻿' + headers.join(';') + '\n' + row.join(';');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `UR_Inscricao_${(d.name || 'atleta').replace(/\s/g,'_')}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
 </script>
 </body>
 </html>
