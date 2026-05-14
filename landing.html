@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultimate Rivals — Liga de Vôlei de Praia | BH</title>
+<meta name="description" content="A liga de vôlei de praia mais vibrante de Belo Horizonte. Duplas e quartetos, todos os níveis. Inscreva-se agora!">
+<meta property="og:title" content="Ultimate Rivals — Liga de Vôlei de Praia">
+<meta property="og:description" content="Duplas e quartetos. Todos os níveis. Comunidade, ranking, transmissão ao vivo. Inscreva-se na temporada 2026!">
+<meta property="og:image" content="https://ur-sistema.vercel.app/logo-ur.png">
+<meta property="og:url" content="https://ur-sistema.vercel.app/landing.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ur-sistema.vercel.app/landing.html">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07080d;--surface:#0f1018;--card:#13141e;--border:rgba(255,255,255,.07);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#e6a800;
+  --green:#4caf50;--text:#e8e3d4;--muted:rgba(255,255,255,.38);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,8,13,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:30px;filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,216,77,.4));opacity:.9}
+.nav-logo span{font-family:var(--display);font-size:20px;font-weight:900;color:var(--gold);letter-spacing:2px}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:8px 18px;border-radius:8px;text-decoration:none;font-family:var(--display);letter-spacing:.5px;transition:all .2s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,216,77,.35)}
+@media(max-width:600px){.nav-links{display:none}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(255,216,77,.12),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(255,100,50,.06),transparent 50%)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:20px;text-transform:uppercase}
+.hero-title{font-family:var(--display);font-size:clamp(52px,12vw,100px);font-weight:900;line-height:.95;letter-spacing:-1px;margin-bottom:8px}
+.hero-title .line1{color:var(--text)}
+.hero-title .line2{color:var(--gold);-webkit-text-stroke:0px;text-shadow:0 0 40px rgba(255,216,77,.4)}
+.hero-sub{font-size:clamp(15px,3vw,19px);color:var(--muted);max-width:520px;margin:16px auto 36px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-hero-primary{background:linear-gradient(135deg,var(--gold),var(--gold3));color:#000;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:.5px;padding:16px 36px;border-radius:12px;text-decoration:none;transition:all .25s;box-shadow:0 6px 24px rgba(255,216,77,.3)}
+.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(255,216,77,.45)}
+.btn-hero-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--text);font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:12px;text-decoration:none;transition:all .25s}
+.btn-hero-secondary:hover{border-color:rgba(255,216,77,.5);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
+.stat{text-align:center}
+.stat-num{font-family:var(--display);font-size:36px;font-weight:900;color:var(--gold);line-height:1}
+.stat-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:4px}
+
+/* ── SECTIONS ── */
+section{padding:80px 20px;max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:var(--display);font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.05;margin-bottom:16px}
+.section-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:40px}
+
+/* ── MODALITIES GRID ── */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.mod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s;cursor:default}
+.mod-card:hover{border-color:rgba(255,216,77,.35);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.mod-icon{font-size:36px;margin-bottom:14px}
+.mod-name{font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);margin-bottom:6px;letter-spacing:.5px}
+.mod-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.mod-tag{display:inline-block;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.8px;padding:3px 8px;border-radius:6px;margin-top:12px;text-transform:uppercase}
+
+/* ── HOW IT WORKS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.step-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px 24px}
+.step-num{font-family:var(--display);font-size:56px;font-weight:900;color:rgba(255,216,77,.12);line-height:1;margin-bottom:8px}
+.step-title{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:.3px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── LEVELS ── */
+.levels-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.level-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+.level-stars{font-size:18px;margin-bottom:8px;letter-spacing:2px}
+.level-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px}
+.level-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* ── COMMUNITY CTA ── */
+.community{text-align:center;padding:80px 20px;background:linear-gradient(135deg,rgba(255,216,77,.07),rgba(255,100,50,.04));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.community .section-title{margin:0 auto 12px}
+.community .section-sub{margin:0 auto 32px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-wpp{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.1);border:1.5px solid rgba(37,211,102,.4);color:#25d366;font-family:var(--display);font-size:18px;font-weight:900;padding:15px 28px;border-radius:12px;text-decoration:none;transition:all .25s;letter-spacing:.3px}
+.btn-wpp:hover{background:rgba(37,211,102,.18);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,.2)}
+.btn-insc{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold3));color:#000;font-family:var(--display);font-size:18px;font-weight:900;padding:15px 28px;border-radius:12px;text-decoration:none;transition:all .25s;letter-spacing:.3px}
+.btn-insc:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,216,77,.4)}
+
+/* ── FORMAT CARDS ── */
+.format-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.format-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;transition:all .25s}
+.format-card:hover{border-color:rgba(255,216,77,.3);transform:translateY(-3px)}
+.format-icon{font-size:28px;margin-bottom:10px}
+.format-name{font-family:var(--display);font-size:17px;font-weight:900;color:var(--gold);margin-bottom:4px;letter-spacing:.3px}
+.format-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 20px;text-align:center}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
+.footer-logo img{height:28px;filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,216,77,.3));opacity:.7}
+.footer-logo span{font-family:var(--display);font-size:18px;font-weight:900;color:var(--muted);letter-spacing:2px}
+footer p{font-size:12px;color:var(--muted);line-height:1.8}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ── INSTAGRAM LINK BANNER ── */
+.ig-banner{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:16px;padding:28px 24px;text-align:center;margin:0 auto 40px;max-width:560px}
+.ig-banner p{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:4px}
+.ig-banner a{display:inline-block;margin-top:10px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-family:var(--display);font-size:17px;font-weight:900;padding:10px 24px;border-radius:10px;text-decoration:none}
+.ig-banner a:hover{background:rgba(255,255,255,.25)}
+.ig-url{font-family:monospace;font-size:14px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:8px;color:#fff;margin-top:8px;display:inline-block;letter-spacing:.5px}
+
+@media(max-width:600px){
+  .hero-stats{gap:24px}
+  .stat-num{font-size:28px}
+  section{padding:60px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo-ur.png" alt="UR" onerror="this.style.display='none'">
+    <span>ULTIMATE RIVALS</span>
+  </div>
+  <div class="nav-links">
+    <a href="#modalidades">Modalidades</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#niveis">Níveis</a>
+    <a href="#comunidade">Comunidade</a>
+    <a class="nav-cta" href="inscricao.html">⚡ Inscreva-se</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-badge">🏐 Temporada 2026 · Belo Horizonte</div>
+  <h1 class="hero-title">
+    <div class="line1">ULTIMATE</div>
+    <div class="line2">RIVALS</div>
+  </h1>
+  <p class="hero-sub">A liga de vôlei de praia mais vibrante de BH. Duplas e quartetos para todos os níveis — do iniciante ao elite. Jogue, evolua, compita.</p>
+  <div class="hero-btns">
+    <a href="inscricao.html" class="btn-hero-primary">⚡ Garantir minha vaga</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-hero-secondary">💬 Entrar na Comunidade</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">2×2</div><div class="stat-label">Duplas</div></div>
+    <div class="stat"><div class="stat-num">4×4</div><div class="stat-label">Quartetos</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Níveis</div></div>
+    <div class="stat"><div class="stat-num">BH</div><div class="stat-label">Polo</div></div>
+  </div>
+</div>
+
+<!-- ── MODALIDADES ── -->
+<section id="modalidades">
+  <div class="section-label">O que oferecemos</div>
+  <h2 class="section-title">Modalidades<br><span style="color:var(--gold)">Ultimate Rivals</span></h2>
+  <p class="section-sub">Escolha como quer jogar. Cada formato tem sua identidade, seu ritmo e sua competitividade.</p>
+  <div class="mod-grid">
+    <div class="mod-card">
+      <div class="mod-icon">⚡</div>
+      <div class="mod-name">UR Play</div>
+      <div class="mod-desc">Liga semanal com ranking e pontuação acumulada. O formato ideal para quem quer jogar toda semana, evoluir e fazer parte de uma comunidade ativa.</div>
+      <div class="mod-tag">Semanal</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🏆</div>
+      <div class="mod-name">UR Series</div>
+      <div class="mod-desc">Torneios mensais eliminatórios com chaveamento. Grupos + playoffs + final no mesmo dia. Premiação para os finalistas.</div>
+      <div class="mod-tag">Mensal</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🥇</div>
+      <div class="mod-name">UR Championship</div>
+      <div class="mod-desc">O maior evento da temporada. Chaveamento completo, transmissão ao vivo, cerimônia de premiação e troféu. O palco dos melhores.</div>
+      <div class="mod-tag">Semestral</div>
+    </div>
+    <div class="mod-card">
+      <div class="mod-icon">🎯</div>
+      <div class="mod-name">Treino UR</div>
+      <div class="mod-desc">Sessões de treino técnico conduzidas por profissionais. Sem ranqueamento — foco total em fundamentos e evolução técnica.</div>
+      <div class="mod-tag">Desenvolvimento</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORMATOS ── -->
+<section>
+  <div class="section-label">Categorias de disputa</div>
+  <h2 class="section-title">Duplas e<br><span style="color:var(--gold)">Quartetos</span></h2>
+  <p class="section-sub">Seis categorias diferentes. Há um formato perfeito para você.</p>
+  <div class="format-grid">
+    <div class="format-card">
+      <div class="format-icon">👨‍👨‍👦</div>
+      <div class="format-name">DM</div>
+      <div class="format-desc">Dupla Masculina<br>2×2 · Homens</div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">👩‍👩‍👦</div>
+      <div class="format-name">DF</div>
+      <div class="format-desc">Dupla Feminina<br>2×2 · Mulheres</div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">🤝</div>
+      <div class="format-name">DX</div>
+      <div class="format-desc">Dupla Mista<br>2×2 · Misto</div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">👨‍👨‍👦‍👦</div>
+      <div class="format-name">QM</div>
+      <div class="format-desc">Quarteto Masc.<br>4×4 · Homens</div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">👩‍👩‍👦‍👦</div>
+      <div class="format-name">QF</div>
+      <div class="format-desc">Quarteto Fem.<br>4×4 · Mulheres</div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">🌟</div>
+      <div class="format-name">QX</div>
+      <div class="format-desc">Quarteto Misto<br>4×4 · Mix</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO FUNCIONA ── -->
+<section id="como-funciona">
+  <div class="section-label">Simples assim</div>
+  <h2 class="section-title">Como<br><span style="color:var(--gold)">Funciona</span></h2>
+  <p class="section-sub">Do zero ao jogo em 4 passos.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Preencha a ficha</div>
+      <div class="step-desc">Inscrição online em 5 minutos. Informe seu nível, disponibilidade e categorias de interesse.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Nivelamento</div>
+      <div class="step-desc">Você participa de uma sessão de avaliação para ser alocado no grupo certo — jogos equilibrados e justos.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Jogue e pontue</div>
+      <div class="step-desc">Participe das rodadas do UR Play, acumule pontos no ranking e suba de nível naturalmente.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-title">Compita nos torneios</div>
+      <div class="step-desc">Com ranking estabelecido, dispute as UR Series e o Championship com transmissão ao vivo e premiação.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NÍVEIS ── -->
+<section id="niveis">
+  <div class="section-label">Todos são bem-vindos</div>
+  <h2 class="section-title">Do iniciante<br><span style="color:var(--gold)">ao Elite</span></h2>
+  <p class="section-sub">Cinco níveis técnicos garantem que você sempre jogue com e contra pessoas do mesmo patamar.</p>
+  <div class="levels-wrap">
+    <div class="level-card">
+      <div class="level-stars">⭐</div>
+      <div class="level-name">N1 — Iniciante</div>
+      <div class="level-desc">Menos de 6 meses. Aprendendo fundamentos e regras básicas.</div>
+    </div>
+    <div class="level-card">
+      <div class="level-stars">⭐⭐</div>
+      <div class="level-name">N2 — Básico</div>
+      <div class="level-desc">Consegue manter rally. Saque por cima inconstante. Noções de posicionamento.</div>
+    </div>
+    <div class="level-card">
+      <div class="level-stars">⭐⭐⭐</div>
+      <div class="level-name">N3 — Intermediário</div>
+      <div class="level-desc">Treina regularmente. Domina saque, passe e ataque simples. Entende táticas.</div>
+    </div>
+    <div class="level-card">
+      <div class="level-stars">⭐⭐⭐⭐</div>
+      <div class="level-name">N4 — Avançado</div>
+      <div class="level-desc">Técnica consistente. Já disputou ligas ou campeonatos. 3+ anos de prática.</div>
+    </div>
+    <div class="level-card">
+      <div class="level-stars">⭐⭐⭐⭐⭐</div>
+      <div class="level-name">N5 — Elite</div>
+      <div class="level-desc">Atleta competitivo. Ligas federadas ou alto nível. Referência técnica em quadra.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM SHARING GUIDE ── -->
+<section>
+  <div class="section-label">Para o Instagram</div>
+  <h2 class="section-title">Como<br><span style="color:var(--gold)">Compartilhar</span></h2>
+  <p class="section-sub">Guia rápido para divulgar o link de inscrição no Instagram.</p>
+  <div class="ig-banner">
+    <p style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">📌 Link na Bio</p>
+    <p>Cole este link na bio do perfil @ultimaterivals:</p>
+    <div class="ig-url">ur-sistema.vercel.app/inscricao.html</div>
+    <a href="inscricao.html">Ver página de inscrição →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:800px;margin:0 auto">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:24px;margin-bottom:10px">📸</div>
+      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">Stories com Link Sticker</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">Poste um flyer nos Stories → adicione o adesivo de link → cole <code style="background:#1a1a2e;padding:2px 6px;border-radius:4px;font-size:11px">ur-sistema.vercel.app/inscricao.html</code></div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:24px;margin-bottom:10px">🖼️</div>
+      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">Post no Feed</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">Poste o flyer de inscrição no feed. Na legenda escreva: <em style="color:var(--text)">"Link na bio para se inscrever 👆"</em> e direcione para o link.</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:24px;margin-bottom:10px">💬</div>
+      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">WhatsApp e Grupos</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6">Envie o link direto: <code style="background:#1a1a2e;padding:2px 6px;border-radius:4px;font-size:11px">ur-sistema.vercel.app/inscricao.html</code> com uma foto do evento ou arte gráfica.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY CTA ── -->
+<div class="community" id="comunidade">
+  <div style="max-width:640px;margin:0 auto">
+    <div class="section-label" style="text-align:center">Faça parte</div>
+    <h2 class="section-title">Pronto para<br><span style="color:var(--gold)">jogar?</span></h2>
+    <p class="section-sub" style="text-align:center">Inscreva-se agora na temporada 2026 ou entre na nossa comunidade do WhatsApp para ficar por dentro de tudo.</p>
+    <div class="cta-btns">
+      <a href="inscricao.html" class="btn-insc">⚡ Fazer Inscrição</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">💬 Comunidade UR</a>
+    </div>
+    <p style="margin-top:24px;font-size:12px;color:var(--muted)">Dúvidas? Fale com a gente no Instagram <a href="https://instagram.com/ultimaterivals" target="_blank" style="color:var(--gold)">@ultimaterivals</a></p>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo-ur.png" alt="UR" onerror="this.style.display='none'">
+    <span>ULTIMATE RIVALS</span>
+  </div>
+  <p>
+    Liga de Vôlei de Praia · Belo Horizonte · Temporada 2026<br>
+    <a href="inscricao.html">Inscrição</a> ·
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">Comunidade WhatsApp</a> ·
+    <a href="https://instagram.com/ultimaterivals" target="_blank">Instagram</a>
+  </p>
+  <p style="margin-top:12px;font-size:11px;opacity:.4">© 2026 Ultimate Rivals. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
