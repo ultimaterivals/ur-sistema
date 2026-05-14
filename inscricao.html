@@ -148,8 +148,9 @@
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 4px 24px rgba(0,0,0,.5);
   }
-  .header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px; }
+  .header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 6px; }
   .header-bolt { font-size: 32px; filter: drop-shadow(0 0 8px rgba(245,197,24,.6)); }
+  .header-logo-img { height: 44px; width: auto; filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.1); }
   .header-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 900; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,197,24,.3); }
   .header-sub { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: 1px; text-transform: uppercase; }
   .header-season { display: inline-block; background: rgba(245,197,24,.12); border: 1px solid rgba(245,197,24,.25); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; padding: 3px 10px; border-radius: 20px; margin-top: 6px; }
@@ -206,6 +207,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ur-sistema.vercel.app/inscricao.html">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -219,7 +221,8 @@
 
 <div class="header">
   <div class="header-logo-wrap">
-    <span class="header-bolt">⚡</span>
+    <img src="logo-ur.png" alt="Ultimate Rivals" class="header-logo-img" onerror="this.style.display='none';document.getElementById('hbolt').style.display='inline'">
+    <span class="header-bolt" id="hbolt" style="display:none">⚡</span>
     <span class="header-title">ULTIMATE RIVALS</span>
   </div>
   <div class="header-sub">Liga de Vôlei de Praia</div>
@@ -393,12 +396,18 @@
           <label>Posição Principal <span class="req">*</span></label>
           <select id="position">
             <option value="">Selecione</option>
-            <option>Universal</option>
-            <option>Levantador(a)</option>
-            <option>Ponteiro(a)</option>
-            <option>Central</option>
-            <option>Oposto(a)</option>
-            <option>Libero</option>
+            <optgroup label="── Duplas (2×2) ──">
+              <option>Bloqueador(a)</option>
+              <option>Defensor(a)</option>
+            </optgroup>
+            <optgroup label="── Quartetos (4×4) e Polivalente ──">
+              <option>Universal</option>
+              <option>Levantador(a)</option>
+              <option>Ponteiro(a)</option>
+              <option>Central</option>
+              <option>Oposto(a)</option>
+              <option>Libero</option>
+            </optgroup>
           </select>
           <div class="field-err">Selecione a posição</div>
         </div>
@@ -406,12 +415,18 @@
           <label>Posição Secundária</label>
           <select id="positionSecondary">
             <option value="">Nenhuma</option>
-            <option>Universal</option>
-            <option>Levantador(a)</option>
-            <option>Ponteiro(a)</option>
-            <option>Central</option>
-            <option>Oposto(a)</option>
-            <option>Libero</option>
+            <optgroup label="── Duplas (2×2) ──">
+              <option>Bloqueador(a)</option>
+              <option>Defensor(a)</option>
+            </optgroup>
+            <optgroup label="── Quartetos (4×4) e Polivalente ──">
+              <option>Universal</option>
+              <option>Levantador(a)</option>
+              <option>Ponteiro(a)</option>
+              <option>Central</option>
+              <option>Oposto(a)</option>
+              <option>Libero</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -421,29 +436,39 @@
           <span class="gt-arrow">▼</span>
         </button>
         <div class="guide-box" id="guide-positions">
-          <div class="guide-item">
-            <span class="guide-icon">🌐</span>
-            <div class="guide-text"><strong>Universal</strong><span>Joga em todas as posições. Ideal para iniciantes ou quem tem versatilidade total.</span></div>
-          </div>
-          <div class="guide-item">
-            <span class="guide-icon">🧠</span>
-            <div class="guide-text"><strong>Levantador(a)</strong><span>Distribui as bolas para o ataque. É o "cérebro" da equipe. Exige visão de jogo e passes precisos.</span></div>
-          </div>
-          <div class="guide-item">
-            <span class="guide-icon">💥</span>
-            <div class="guide-text"><strong>Ponteiro(a)</strong><span>Atacante pelas pontas. Responsável por recepção e ataques laterais. Muita corrida e salto.</span></div>
-          </div>
+          <div style="font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(245,197,24,.2)">🏖️ Duplas (2×2) — Vôlei de Praia</div>
           <div class="guide-item">
             <span class="guide-icon">🧱</span>
-            <div class="guide-text"><strong>Central</strong><span>Especialista em bloqueio e ataques rápidos pelo meio da rede. Exige explosão e salto alto.</span></div>
-          </div>
-          <div class="guide-item">
-            <span class="guide-icon">⚡</span>
-            <div class="guide-text"><strong>Oposto(a)</strong><span>Principal atacante da equipe. Fica oposto ao levantador. Potência máxima no ataque.</span></div>
+            <div class="guide-text"><strong>Bloqueador(a)</strong><span>Fica na rede. Responsável por bloquear e atacar. Precisa de explosão no salto e braços fortes. Posição mais comum no vôlei de praia.</span></div>
           </div>
           <div class="guide-item">
             <span class="guide-icon">🛡️</span>
-            <div class="guide-text"><strong>Libero</strong><span>Especialista em defesa e recepção. Usa colete diferente. Não pode atacar acima da rede.</span></div>
+            <div class="guide-text"><strong>Defensor(a)</strong><span>Fica no fundo da quadra. Especialista em recepção e defesa. Exige agilidade, leitura de jogo e braços firmes na manchete.</span></div>
+          </div>
+          <div style="font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin:10px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(245,197,24,.2)">🏐 Quartetos (4×4) e Polivalente</div>
+          <div class="guide-item">
+            <span class="guide-icon">🌐</span>
+            <div class="guide-text"><strong>Universal</strong><span>Joga bem em todas as posições. Ideal para iniciantes, polivalentes ou quem ainda está descobrindo seu papel em quadra.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">🧠</span>
+            <div class="guide-text"><strong>Levantador(a)</strong><span>Distribui as bolas para o ataque com precisão. "Cérebro" da equipe. Exige visão de jogo, inteligência tática e toque consistente.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">💥</span>
+            <div class="guide-text"><strong>Ponteiro(a)</strong><span>Atacante pelas pontas da rede. Responsável por recepção e ataques diagonais ou paralelos. Precisa de corrida, salto e potência.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">⬆️</span>
+            <div class="guide-text"><strong>Central</strong><span>Ataca pelo meio com velocidade (bola rápida / pipe). Realiza bloqueio central. Exige timing, explosão e salto alto.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">⚡</span>
+            <div class="guide-text"><strong>Oposto(a)</strong><span>Principal atacante da equipe — fica oposto ao levantador. Responde pela maioria dos pontos de ataque. Potência e variedade de golpes.</span></div>
+          </div>
+          <div class="guide-item">
+            <span class="guide-icon">🤿</span>
+            <div class="guide-text"><strong>Libero</strong><span>Especialista em defesa e recepção. Veste colete diferente. Não pode sacar, atacar acima da rede nem bloquear. Controle e reflexo são essenciais.</span></div>
           </div>
         </div>
       </div>
@@ -892,7 +917,8 @@
     <div class="success-badge">✅ Cadastro confirmado na temporada 2026</div>
     <div class="success-sub" id="successMsg">Sua ficha foi recebida com sucesso! Nossa equipe do <strong style="color:var(--gold)">Ultimate Rivals</strong> analisará e entrará em contato pelo WhatsApp em breve.</div>
     <div class="success-card" id="successSummary"></div>
-    <button class="btn-export" id="exportCsvBtn" onclick="exportToCsv()">📥 Baixar comprovante em CSV</button>
+    <button class="btn-export" id="exportCsvBtn" onclick="exportToExcel()">📥 Baixar comprovante Excel (.xlsx)</button>
+    <button class="btn-export" onclick="exportToCsv()" style="margin-top:6px">📄 Baixar comprovante CSV</button>
     <div style="margin-top:20px;font-size:12px;color:var(--muted)">
       Dúvidas? Fale conosco no Instagram
       <a href="https://instagram.com/ultimaterivals" target="_blank" style="color:var(--gold);text-decoration:none"> @ultimaterivals</a>
@@ -1115,6 +1141,7 @@ async function submitForm(){
 }
 
 function showSuccess(data, online){
+  autoSaveToSheet(data);  // salva na planilha acumulativa (localStorage)
   document.querySelectorAll('.step').forEach(s=>s.style.display='none');
   document.getElementById('progressWrap').style.display='none';
   const sc = document.getElementById('successScreen');
@@ -1150,31 +1177,81 @@ function toggleGuide(id) {
 
 // ─── EXPORT CSV ───────────────────────────────────────
 function collectFormData(){ return collectData(); }
+// ─── DADOS DO FORMULÁRIO COMO ARRAY DE LINHA ────────────────
+const XLSX_HEADERS = ['Nome','Apelido/Mídia','Gênero','Nascimento','CPF','Instagram','WhatsApp','Email','Cidade','Bairro','Emergência','Posição Principal','Posição Secundária','Tempo de Prática','Exp. Torneios','Nível Técnico (1-5)','Nível Físico (1-5)','Aceita Realocação','Disponibilidade','Modalidades','Categorias','Dias','Turnos','Polo Preferido','Tem Equipe','Equipe','Tem Dupla','Parceiro(a)','Quarteto Definido','Restrição Médica','Tipo Sanguíneo','Camiseta','Nº Camiseta','Como Conheceu','Autoriza Imagem','Status','Data Inscrição'];
+
+function buildRowData(d) {
+  const yn = v => v ? 'Sim' : 'Não';
+  const arr = v => Array.isArray(v) ? v.join(', ') : (typeof v === 'string' ? v.replace(/[\[\]"]/g,'') : v||'');
+  return [
+    d.name||'', d.media_name||'', d.gender||'', d.birth||'', d.cpf||'',
+    d.instagram||'', d.phone||'', d.email||'', d.city||'', d.neighborhood||'',
+    d.emergency||'', d.position||'', d.position_secondary||'',
+    d.practice_years||'', yn(d.tournament_exp),
+    d.tech_score||'', d.phys_score||'',
+    yn(d.accepts_reloc), d.weekly_avail||'',
+    arr(d.modalities), arr(d.categories), arr(d.days), arr(d.shifts),
+    d.preferred_polo||'', yn(d.has_team), d.team_name||'',
+    yn(d.has_partner), d.partner_name||'', yn(d.has_quartet),
+    d.medical_restriction||'', d.blood_type||'',
+    d.shirt_size||'', d.shirt_number||'', d.how_found||'',
+    yn(d.image_auth), 'Pendente',
+    new Date().toLocaleString('pt-BR')
+  ];
+}
+
+// ─── EXPORT EXCEL (.xlsx) COM SHEETJS ───────────────────────
+function exportToExcel() {
+  if (typeof XLSX === 'undefined') { alert('SheetJS não carregado. Use o export CSV.'); return; }
+  const d = collectFormData();
+  const row = buildRowData(d);
+
+  // Carregar planilha acumulativa do localStorage
+  const STORE_KEY = 'ur_inscricoes_xlsx';
+  let allRows = [];
+  try { allRows = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch(e) {}
+  allRows.push(row);
+  localStorage.setItem(STORE_KEY, JSON.stringify(allRows));
+
+  // Criar workbook
+  const wb = XLSX.utils.book_new();
+  const wsData = [XLSX_HEADERS, ...allRows];
+  const ws = XLSX.utils.aoa_to_sheet(wsData);
+
+  // Larguras das colunas
+  ws['!cols'] = XLSX_HEADERS.map((h,i) => ({ wch: [30,20,10,12,15,18,18,28,18,18,30,18,18,16,14,8,8,14,18,25,25,15,15,15,10,20,10,20,10,25,12,10,10,18,14,10,20][i]||15 }));
+
+  // Estilo cabeçalho (negrito)
+  XLSX_HEADERS.forEach((_,i) => {
+    const cell = XLSX.utils.encode_cell({r:0, c:i});
+    if (ws[cell]) ws[cell].s = { font: { bold: true }, fill: { fgColor: { rgb: 'F5C518' } } };
+  });
+
+  XLSX.utils.book_append_sheet(wb, ws, 'Inscrições UR');
+  const fname = `UR_Inscricoes_${new Date().toISOString().slice(0,10)}.xlsx`;
+  XLSX.writeFile(wb, fname);
+}
+
+// ─── EXPORT CSV (fallback) ───────────────────────────────────
 function exportToCsv() {
   const d = collectFormData();
-  const headers = ['Nome','Apelido','Gênero','Nascimento','CPF','Instagram','WhatsApp','Email','Cidade','Bairro','Emergência','Posição','Posição Secundária','Tempo de Prática','Experiência Torneios','Nível Técnico','Nível Físico','Aceita Realocação','Disponibilidade','Modalidades','Categorias','Dias','Turnos','Polo Preferido','Tem Equipe','Equipe','Tem Dupla','Parceiro','Restrição Médica','Tipo Sanguíneo','Tamanho Camiseta','Número Camiseta','Como Conheceu','Autoriza Imagem','Data Inscrição'];
-  const row = [
-    d.name, d.media_name, d.gender, d.birth, d.cpf, d.instagram,
-    d.phone, d.email, d.city, d.neighborhood, d.emergency,
-    d.position, d.position_secondary, d.practice_years,
-    d.tournament_exp ? 'Sim' : 'Não',
-    d.tech_score, d.phys_score,
-    d.accepts_reloc ? 'Sim' : 'Não', d.weekly_avail,
-    d.modalities, d.categories, d.days, d.shifts, d.preferred_polo,
-    d.has_team ? 'Sim' : 'Não', d.team_name || '',
-    d.has_partner ? 'Sim' : 'Não', d.partner_name || '',
-    d.medical_restriction || '', d.blood_type || '',
-    d.shirt_size || '', d.shirt_number || '', d.how_found || '',
-    d.image_auth ? 'Sim' : 'Não',
-    new Date().toLocaleString('pt-BR')
-  ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`);
-
-  const csv = '﻿' + headers.join(';') + '\n' + row.join(';');
+  const row = buildRowData(d);
+  const csv = '﻿' + XLSX_HEADERS.join(';') + '\n' + row.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = `UR_Inscricao_${(d.name || 'atleta').replace(/\s/g,'_')}.csv`;
-  a.click(); URL.revokeObjectURL(url);
+  a.href = URL.createObjectURL(blob);
+  a.download = `UR_Inscricao_${(d.name||'atleta').replace(/\s+/g,'_')}.csv`;
+  a.click();
+}
+
+// ─── AUTO-EXPORT AO ENVIAR ─────────────────────────────────
+function autoSaveToSheet(d) {
+  // Salva linha na planilha acumulativa no localStorage
+  const STORE_KEY = 'ur_inscricoes_xlsx';
+  let allRows = [];
+  try { allRows = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch(e) {}
+  allRows.push(buildRowData(d));
+  localStorage.setItem(STORE_KEY, JSON.stringify(allRows));
 }
 </script>
 </body>
