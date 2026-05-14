@@ -5023,6 +5023,38 @@
       document.getElementById("finReportCopy").onclick=()=>{navigator.clipboard?.writeText(text);toast("Relatório copiado!");};
       document.getElementById("finReportWpp").onclick=()=>{window.open("https://wa.me/?text="+encodeURIComponent(text.slice(0,1500)),"_blank");};
     }
+    function showEditPlanModal(planId){
+      const plan = state.finance.subscriptionPlans.find(p=>p.id===planId);
+      if(!plan) return;
+      document.getElementById("editPlanModal")?.remove();
+      const overlay = document.createElement("div");
+      overlay.className = "modal-overlay"; overlay.id = "editPlanModal";
+      overlay.innerHTML = `<div class="modal" style="max-width:440px">
+        <h2 style="margin-bottom:18px">✏️ Editar Plano</h2>
+        <div class="form">
+          <div class="field full"><label>Nome do plano</label><input id="editPlanName" value="${esc(plan.name)}"></div>
+          <div class="field small"><label>Preço R$</label><input id="editPlanPrice" type="number" min="0" step="0.01" value="${plan.price}"></div>
+          <div class="field full"><label>Descrição</label><input id="editPlanDesc" placeholder="Benefícios incluídos" value="${esc(plan.description||'')}"></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:18px">
+          <button class="btn primary" id="saveEditPlanBtn" style="flex:1">💾 Salvar alterações</button>
+          <button class="btn" id="cancelEditPlanBtn">Cancelar</button>
+        </div>
+      </div>`;
+      document.body.appendChild(overlay);
+      overlay.onclick = e => { if(e.target===overlay) overlay.remove(); };
+      document.getElementById("cancelEditPlanBtn").onclick = () => overlay.remove();
+      document.getElementById("editPlanName").focus();
+      document.getElementById("saveEditPlanBtn").onclick = () => {
+        const name = document.getElementById("editPlanName").value.trim();
+        const price = parseFloat(document.getElementById("editPlanPrice").value);
+        const desc = document.getElementById("editPlanDesc").value.trim();
+        if(!name || isNaN(price) || price<=0) return toast("Preencha nome e preço válido.");
+        plan.name = name; plan.price = price; plan.description = desc;
+        saveState(); overlay.remove(); toast("Plano atualizado ✓"); render();
+      };
+    }
+
     function renderFinanceiro(){
       const el = document.getElementById("view-financeiro");
       if(!el) return;
@@ -5083,10 +5115,13 @@
           <div class="panel span-6">
             <h2>Planos de Assinatura</h2>
             <div class="list">${f.subscriptionPlans.map(p=>`
-              <div class="row">
-                <div class="grow"><div class="title">${esc(p.name)}</div><div class="sub">${esc(p.description)}</div></div>
-                <div class="score">${brl(p.price)}<div class="sub">${p.active?"Ativo":"Pausado"}</div></div>
-              </div>`).join("")}
+              <div class="row" style="gap:6px">
+                <div class="grow"><div class="title">${esc(p.name)}</div><div class="sub">${esc(p.description||"")}</div></div>
+                <div class="score" style="min-width:70px">${brl(p.price)}<div class="sub" style="color:${p.active?"#4caf50":"var(--muted)"}">${p.active?"Ativo":"Pausado"}</div></div>
+                <button class="btn icon" data-edit-plan="${p.id}" title="Editar plano" style="padding:5px 8px;font-size:13px">✏️</button>
+                <button class="btn icon" data-toggle-plan="${p.id}" title="${p.active?"Pausar":"Ativar"}" style="padding:5px 8px;font-size:13px">${p.active?"⏸":"▶"}</button>
+                <button class="btn icon" data-delete-plan="${p.id}" title="Excluir plano" style="padding:5px 8px;font-size:13px;color:#f65">🗑</button>
+              </div>`).join("")||'<div class="empty">Nenhum plano cadastrado.</div>'}
             </div>
             <div class="form" style="margin-top:10px">
               <div class="field"><label>Plano</label><input id="subPlanName" placeholder="Nome do plano"></div>
@@ -5205,6 +5240,21 @@
       document.querySelectorAll("[data-remove-sponsor]").forEach(btn=>btn.onclick=()=>{
         state.finance.sponsors=state.finance.sponsors.filter(s=>s.id!==btn.dataset.removeSponsor);
         render();
+      });
+      // Editar / Pausar / Excluir planos de assinatura
+      document.querySelectorAll("[data-edit-plan]").forEach(btn=>btn.onclick=()=>{
+        showEditPlanModal(btn.dataset.editPlan);
+      });
+      document.querySelectorAll("[data-toggle-plan]").forEach(btn=>btn.onclick=()=>{
+        const plan=state.finance.subscriptionPlans.find(p=>p.id===btn.dataset.togglePlan);
+        if(plan){ plan.active=!plan.active; saveState(); toast(plan.active?"Plano ativado ✓":"Plano pausado."); render(); }
+      });
+      document.querySelectorAll("[data-delete-plan]").forEach(btn=>btn.onclick=()=>{
+        const plan=state.finance.subscriptionPlans.find(p=>p.id===btn.dataset.deletePlan);
+        if(!plan) return;
+        if(!confirm(`Excluir o plano "${plan.name}"?\nEsta ação não pode ser desfeita.`)) return;
+        state.finance.subscriptionPlans=state.finance.subscriptionPlans.filter(p=>p.id!==btn.dataset.deletePlan);
+        saveState(); toast("Plano excluído."); render();
       });
       bindTxFilter();
     }
@@ -6508,6 +6558,7 @@
       if(_urUsers[u] && _urUsers[u]===p){
         sessionStorage.setItem(_urAuthKey,"1");
         document.getElementById("login-wall").style.display="none";
+        render();
       } else {
         const err = document.getElementById("lw-err");
         if(err){ err.textContent="Usuário ou senha incorretos."; setTimeout(()=>{err.textContent=""},3000); }
