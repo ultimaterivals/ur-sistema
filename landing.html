@@ -4,70 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ultimate Rivals — Liga de Vôlei de Praia | BH</title>
-<meta name="description" content="O ecossistema esportivo mais inovador de BH. Duplas e Quartetos. Mentalidade Hunter. Temporada 2026.">
+<meta name="description" content="Eleve o jogo, supere seus limites. Liga de vôlei de praia em BH. Duplas e Quartetos. Temporada 2026.">
 <meta property="og:title" content="Ultimate Rivals — Liga de Vôlei de Praia BH">
-<meta property="og:description" content="Competição. Formação. Entretenimento. Seja um Hunter. Temporada 2026.">
+<meta property="og:description" content="Eleve o jogo, supere seus limites. Temporada 2026 aberta.">
 <meta property="og:image" content="logo-ur-3d.png">
 <meta property="og:type" content="website">
-<!--
-  ════════════════════════════════════════════════════
-  KINGS LEAGUE — PADRÕES DE DESIGN ARMAZENADOS
-  ════════════════════════════════════════════════════
-  Referência: kingsleague.pro/en/brazil
-  Observações capturadas em 14/05/2026:
-
-  LAYOUT:
-  - Double navigation: top country selector + main nav
-  - Sticky nav com blur backdrop
-  - "Ao vivo" button: pill vermelho com ponto pulsante
-  - Playoff bracket visual: quartas / semis / final conectados
-  - Team cards: escudo redondo + cor de acento lateral
-  - Match cards: logo equipe + placar + cor time (borda esquerda colorida)
-
-  TIPOGRAFIA:
-  - Display: condensed bold uppercase (semelhante a Barlow Condensed)
-  - Body: sans-serif leve
-  - Números de placar: muito grandes, monoespaçados
-
-  CORES:
-  - Background: #0a0a0c (quase preto)
-  - Primary accent: #f5c518 (amarelo/ouro) — mesmo UR
-  - Cards: #111115 com borda sutil
-  - Live pill: #cc0000
-
-  ICONOGRAFIA (screenshot coletado):
-  - Coleção de ícones circulares dark navy + gold
-  - Ícones de esportes: voleibol, troféu, medalha, ranking, etc.
-  - Estilo: filled circle + ícone dourado interno + borda gradiente
-
-  CARDS DE ATLETAS / EQUIPES:
-  - Paralelogramo levemente inclinado (-5deg a -8deg)
-  - Silhueta do atleta em PNG com fundo transparente
-  - Número do jogador grande no fundo (opacidade baixa)
-  - Barra de cor da equipe na parte inferior
-  - Nome + posição em texto sobre gradiente escuro
-
-  SEÇÃO BRACKET:
-  - Cards horizontais com times e placar
-  - Conectados por linhas SVG
-  - Fase atual destacada
-  - Background com textura poligonal sutil
-
-  ELEMENTOS GEOMÉTRICOS:
-  - Polígonos no fundo (clip-path)
-  - Linhas diagonais decorativas
-  - Hexágonos em padrão de malha
-  - Gradientes radiais de destaque
-  ════════════════════════════════════════════════════
--->
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07080d;--surface:#0b0c14;--card:#10111c;--card2:#14152000;--border:rgba(255,255,255,.07);
+  --bg:#07080d;--surface:#0b0c13;--card:#10111b;--border:rgba(255,255,255,.07);
   --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.3);
-  --navy:#0d1040;--navy2:#111540;
-  --red:#e84040;--green:#3ddc84;--orange:#ff7a20;
   --text:#edeade;--muted:rgba(255,255,255,.42);--muted2:rgba(255,255,255,.2);
   --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
 }
@@ -76,234 +23,250 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:h
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* ══ TICKER ══ */
-.ticker{background:var(--gold);height:36px;overflow:hidden;display:flex;align-items:center;position:relative;z-index:1001}
-.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 30s linear infinite}
+/* ── TICKER ── */
+.ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
 .ticker-inner:hover{animation-play-state:paused}
-.ticker-item{font-family:var(--display);font-size:13px;font-weight:800;color:#000;letter-spacing:.9px;text-transform:uppercase;padding:0 28px}
-.ticker-sep{color:rgba(0,0,0,.35);font-size:16px;line-height:1}
+.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
+.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ══ NAV ══ */
-nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,13,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:8px}
-.nav-logo img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.4))}
-.nav-links{display:flex;gap:30px}
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:1000;background:rgba(7,8,13,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
 .nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
 .nav-links a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.live-pill{display:flex;align-items:center;gap:6px;background:rgba(232,64,64,.15);border:1px solid rgba(232,64,64,.4);color:#ff6b6b;font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;font-family:var(--display);letter-spacing:1px;text-transform:uppercase}
-.live-dot{width:6px;height:6px;background:#e84040;border-radius:50%;animation:blink 1.4s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase}
-.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
-@media(max-width:768px){.nav-links,.live-pill,.nav-season{display:none}}
+@media(max-width:780px){.nav-links{display:none}.nav-season{display:none}}
 
-/* ══ HERO ══ */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:
-  radial-gradient(ellipse 120% 70% at 50% -5%,rgba(255,216,77,.14),transparent 55%),
-  radial-gradient(ellipse 60% 50% at 85% 85%,rgba(200,80,0,.08),transparent 50%),
-  var(--bg)}
-/* Hexagon grid background */
-.hero-hex{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1' d='M28 0 L56 14.4 L56 85.6 L28 100 L0 85.6 L0 14.4 Z'/%3E%3C/svg%3E");background-size:56px 100px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 20%,transparent 70%)}
-/* Diagonal geometric shapes */
-.hero-deco{position:absolute;top:0;right:0;width:40%;height:100%;overflow:hidden;pointer-events:none;opacity:.06}
-.hero-deco::before{content:'';position:absolute;top:-10%;right:-5%;width:600px;height:600px;background:var(--gold);clip-path:polygon(30% 0%,100% 0%,70% 100%,0% 100%)}
-.hero-deco::after{content:'';position:absolute;top:20%;right:5%;width:400px;height:400px;background:var(--gold);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);opacity:.5}
+/* ── HERO — fundo de quadra de areia ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:70px 20px 60px;
+  position:relative;overflow:hidden;
+}
+/* Camada 1: textura de areia */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-color:#1c1508;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");
+  background-size:300px 300px;
+  opacity:.7;
+}
+/* Camada 2: linhas da quadra de areia */
+.hero-court{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    /* linha central (rede) */
+    linear-gradient(transparent calc(50% - .5px), rgba(255,255,255,.07) calc(50% - .5px), rgba(255,255,255,.07) calc(50% + .5px), transparent calc(50% + .5px)),
+    /* linha de ataque esquerda */
+    linear-gradient(transparent calc(30% - .5px), rgba(255,255,255,.04) calc(30% - .5px), rgba(255,255,255,.04) calc(30% + .5px), transparent calc(30% + .5px)),
+    /* linha de ataque direita */
+    linear-gradient(transparent calc(70% - .5px), rgba(255,255,255,.04) calc(70% - .5px), rgba(255,255,255,.04) calc(70% + .5px), transparent calc(70% + .5px)),
+    /* bordas verticais da quadra */
+    linear-gradient(90deg, transparent 12%, rgba(255,255,255,.04) 12%, rgba(255,255,255,.04) 12.3%, transparent 12.3%),
+    linear-gradient(90deg, transparent 87.7%, rgba(255,255,255,.04) 87.7%, rgba(255,255,255,.04) 88%, transparent 88%);
+}
+/* Camada 3: overlay escuro para legibilidade */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 65% at 50% 0%, rgba(255,216,77,.12), transparent 55%),
+    linear-gradient(to bottom, rgba(7,8,13,.55) 0%, rgba(7,8,13,.72) 60%, rgba(7,8,13,.92) 100%);
+}
 .hero-content{position:relative;z-index:2;max-width:860px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:22px;text-transform:uppercase;font-family:var(--display)}
-.hero-badge span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s infinite}
-.hero-logo{width:140px;margin:0 auto 18px;filter:drop-shadow(0 0 28px rgba(255,216,77,.55)) drop-shadow(0 0 60px rgba(255,216,77,.2))}
-.hero-title{font-family:var(--display);font-size:clamp(58px,15vw,124px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase;margin-bottom:4px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:28px;text-transform:uppercase;font-family:var(--display)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+
+/* Logos lado a lado no hero */
+.hero-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
+.hero-logos img{height:100px;filter:drop-shadow(0 0 28px rgba(255,216,77,.45))}
+.hero-logos .hl-hunter{height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))}
+.hero-logos-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.18),transparent)}
+
+.hero-title{font-family:var(--display);font-size:clamp(60px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase}
 .hero-title .t1{color:#fff}
-.hero-title .t2{color:var(--gold);text-shadow:0 0 80px rgba(255,216,77,.45)}
-.hero-sub-line{font-family:var(--display);font-size:clamp(15px,3vw,21px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
-.hero-divider{width:56px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
-.hero-desc{font-size:clamp(13px,2vw,16px);color:var(--muted);max-width:480px;margin:0 auto 36px;line-height:1.7}
+.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.45)}
+.hero-tag{font-family:var(--display);font-size:clamp(14px,2.5vw,20px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
+.hero-bordao{font-family:var(--display);font-size:clamp(18px,3.5vw,28px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
 .btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 42px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
-.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 34px;border-radius:10px;transition:all .25s;text-transform:uppercase}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:10px;transition:all .25s;text-transform:uppercase}
 .btn-ghost:hover{border-color:rgba(255,216,77,.6);color:var(--gold)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:560px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.h-stat{padding:18px 0;text-align:center;border-right:1px solid var(--border);background:rgba(255,255,255,.02)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:520px;margin:0 auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(7,8,13,.5)}
+.h-stat{padding:16px 0;text-align:center;border-right:1px solid var(--border)}
 .h-stat:last-child{border-right:none}
-.h-stat-n{font-family:var(--display);font-size:34px;font-weight:900;color:var(--gold);line-height:1}
+.h-stat-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
 .h-stat-l{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
 
-/* ══ SECTION BASE ══ */
-.sec{padding:88px 20px;max-width:1100px;margin:0 auto}
+/* ── SECTION BASE ── */
+.sec{padding:84px 20px;max-width:1100px;margin:0 auto}
 .sec-alt{background:var(--surface)}
-.sec-alt .sec{padding:88px 20px}
-.sec-alt .sec{max-width:1100px;margin:0 auto}
-.s-eyebrow{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;font-family:var(--display);display:flex;align-items:center;gap:10px}
-.s-eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.3),transparent);max-width:80px}
-.s-title{font-family:var(--display);font-size:clamp(34px,6vw,54px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
-.s-body{font-size:15px;color:var(--muted);max-width:540px;line-height:1.72}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
+.s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
+.s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
 
-/* ══ CIRCULAR SPORT ICONS (Kings League style) ══ */
-.sport-icon-ring{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;flex-shrink:0}
-.sport-icon-ring::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 0deg,var(--gold) 0%,transparent 45%,transparent 55%,var(--gold) 100%);opacity:.6}
-.sport-icon-ring::after{content:'';position:absolute;inset:0;border-radius:50%;background:inherit}
-.sir-navy{background:radial-gradient(circle at 35% 30%,#1a2060,#080c30)}
-.sir-dark{background:radial-gradient(circle at 35% 30%,#1a1040,#08041a)}
-.sir-fire{background:radial-gradient(circle at 35% 30%,#301010,#140808)}
-.sir-green{background:radial-gradient(circle at 35% 30%,#0d2810,#040f06)}
-.sport-icon-ring svg{width:38px;height:38px;position:relative;z-index:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+/* ── ÍCONES CIRCULARES ── */
+.icon-circle{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;font-size:30px;
+  position:relative;flex-shrink:0;
+}
+.icon-circle::before{
+  content:'';position:absolute;inset:-2px;border-radius:50%;
+  background:conic-gradient(from 180deg, var(--gold) 0deg, rgba(255,216,77,.15) 90deg, rgba(255,216,77,.15) 270deg, var(--gold) 360deg);
+  opacity:.55;
+}
+.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
+.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
+.ic-fire{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500)}
+.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
 
-/* PILAR CARDS */
-.pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.pilar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.4),transparent);opacity:0;transition:opacity .3s}
-.pilar-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.5)}
-.pilar-card:hover::before{opacity:1}
-.pilar-card h3{font-family:var(--display);font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+/* ── PILARES ── */
+.pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
+.pilar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
+.pilar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.pilar-card h3{font-family:var(--display);font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
 .pilar-card p{font-size:13px;color:var(--muted);line-height:1.67}
 
-/* ══ GEOMETRIC ATHLETE CARDS (Kings League player card style) ══ */
-.atletas-section{padding:88px 0;overflow:hidden;background:linear-gradient(180deg,var(--surface) 0%,#08090e 100%)}
-.atletas-header{max-width:1100px;margin:0 auto 48px;padding:0 20px}
-.atletas-grid{display:flex;gap:0;justify-content:center;padding:0 20px}
-@media(max-width:900px){.atletas-grid{flex-wrap:wrap;gap:16px;padding:0 16px}}
-.atleta-card{width:240px;min-height:340px;flex-shrink:0;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s;margin:0 -4px}
-.atleta-card:hover{transform:scale(1.06) translateY(-8px);z-index:10}
-.atleta-card-inner{height:100%;background:var(--card);clip-path:polygon(8% 0%,100% 0%,92% 100%,0% 100%);position:relative;overflow:hidden}
-.atleta-bg-num{position:absolute;bottom:-20px;right:-10px;font-family:var(--display);font-size:160px;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
-.atleta-gradient{position:absolute;inset:0;pointer-events:none}
-.atleta-silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:170px;height:auto}
-.atleta-color-bar{position:absolute;bottom:0;left:0;right:0;height:4px}
-.atleta-info{position:absolute;bottom:16px;left:0;right:0;text-align:center;padding:0 16px;z-index:2}
-.atleta-pos{font-size:9px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;font-family:var(--display)}
-.atleta-name{font-family:var(--display);font-size:18px;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px}
+/* ── HUNTERS ── */
+.hunters-wrap{
+  background:linear-gradient(135deg,#0a0600,#100900,#080500);
+  border:1px solid rgba(255,216,77,.15);
+  border-radius:16px;overflow:hidden;position:relative;
+}
+/* Fundo de areia sutil nos hunters */
+.hunters-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size:200px 200px;opacity:.8;
+}
+.hunters-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:700px){.hunters-inner{grid-template-columns:1fr}}
+.hunters-left{padding:52px 48px;position:relative;z-index:1}
+@media(max-width:700px){.hunters-left{padding:32px 22px}}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
+.hunters-title{font-family:var(--display);font-size:clamp(36px,5.5vw,58px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.hunters-title span{color:var(--gold)}
+.hunters-bordao{font-family:var(--display);font-size:clamp(14px,2vw,18px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+.hunters-desc{font-size:14px;color:rgba(255,255,255,.48);line-height:1.72;max-width:400px;margin-bottom:28px;border-left:2px solid rgba(255,216,77,.25);padding-left:14px}
+.traits{display:flex;flex-direction:column;gap:10px}
+.trait{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.72);font-weight:500}
+.trait-i{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.hunters-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
+@media(max-width:700px){.hunters-right{padding:0 22px 32px}}
+.hunter-logo{width:260px;max-width:80vw;filter:drop-shadow(0 0 30px rgba(255,200,0,.45)) drop-shadow(0 0 70px rgba(255,120,0,.18));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* ══ FORMAT CARDS (match-card style) ══ */
-.format-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:640px){.format-duo{grid-template-columns:1fr}}
-.fmt-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all .3s}
-.fmt-card:hover{border-color:rgba(255,216,77,.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.fmt-top{height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.fmt-top svg{width:64px;height:64px;filter:drop-shadow(0 0 16px rgba(255,216,77,.4))}
-.fmt-duplas-bg{background:linear-gradient(135deg,#08112a,#0a1840);position:relative}
-.fmt-quartetos-bg{background:linear-gradient(135deg,#180a06,#2a1008);position:relative}
-.fmt-geo{position:absolute;inset:0;overflow:hidden;opacity:.12}
-.fmt-body{background:var(--card);padding:22px}
-.fmt-tag{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;opacity:.7}
+/* ── FORMATOS ── */
+.fmt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
+.fmt-card:hover{border-color:rgba(255,216,77,.28);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+.fmt-top{height:110px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ft-d{background:linear-gradient(135deg,#080f22,#0a1540)}
+.ft-q{background:linear-gradient(135deg,#180900,#2a1200)}
+.fmt-top .icon-circle{margin:0}
+/* Linhas de quadra no card de formato */
+.fmt-court-lines{position:absolute;inset:0;opacity:.08}
+.fmt-body{padding:22px}
+.fmt-tag{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;opacity:.7;font-family:var(--display)}
 .fmt-card h3{font-family:var(--display);font-size:24px;font-weight:900;text-transform:uppercase;margin-bottom:8px}
-.fmt-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
-.fmt-tags{display:flex;flex-wrap:wrap;gap:6px}
-.ftag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.55);padding:3px 10px;border-radius:20px;font-weight:600}
+.fmt-card p{font-size:13px;color:var(--muted);line-height:1.62;margin-bottom:14px}
+.ftags{display:flex;flex-wrap:wrap;gap:6px}
+.ftag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.5);padding:3px 10px;border-radius:20px;font-weight:600}
 
-/* ══ STEPS ══ */
-.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.steps-row::before{content:'';position:absolute;top:40px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.35) 10%,rgba(255,216,77,.35) 90%,transparent)}
-@media(max-width:860px){.steps-row{grid-template-columns:1fr 1fr}.steps-row::before{display:none}}
-@media(max-width:480px){.steps-row{grid-template-columns:1fr}}
-.step{padding:24px 18px;text-align:center}
-.step-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--display);font-size:20px;font-weight:900;background:radial-gradient(circle at 35% 30%,#2a1c00,#110c00);border:2px solid rgba(255,216,77,.45);box-shadow:0 0 20px rgba(255,216,77,.15);color:var(--gold);position:relative;z-index:1}
-.step h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
-.step p{font-size:13px;color:var(--muted);line-height:1.6}
+/* ── STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps::before{content:'';position:absolute;top:38px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.3) 10%,rgba(255,216,77,.3) 90%,transparent)}
+@media(max-width:800px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.step{padding:22px 16px;text-align:center}
+.step-n{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:var(--display);font-size:20px;font-weight:900;background:radial-gradient(circle at 38%32%,#2a1a00,#100900);border:2px solid rgba(255,216,77,.4);box-shadow:0 0 18px rgba(255,216,77,.12);color:var(--gold);position:relative;z-index:1}
+.step h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
+.step p{font-size:13px;color:var(--muted);line-height:1.62}
 
-/* ══ PRÓXIMA RODADA (match card KL style) ══ */
-.rodada-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:700px;margin:0 auto}
-.rodada-header{background:linear-gradient(135deg,#0d1840,#080c28);padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
-.rodada-label{font-family:var(--display);font-size:12px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase}
-.rodada-date{font-size:13px;color:var(--muted);font-weight:600}
-.rodada-match{padding:28px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
-.team-side{text-align:center}
-.team-shield{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:32px;border:2px solid var(--border)}
-.ts-gold{background:radial-gradient(circle,#2a1c00,#0f0900);border-color:rgba(255,216,77,.4)}
-.ts-dark{background:radial-gradient(circle,#0d1540,#060a1c);border-color:rgba(100,140,255,.3)}
-.team-name{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.team-tag{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px}
-.vs-block{text-align:center}
-.vs-text{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
-.vs-sub{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-top:4px}
-.rodada-footer{padding:16px 28px;background:rgba(0,0,0,.2);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.rf-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600}
-.rf-item svg{width:14px;height:14px;color:var(--gold)}
-
-/* ══ LEVELS ══ */
-.lvl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+/* ── NÍVEIS ── */
+.lvl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 @media(max-width:860px){.lvl-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.lvl-grid{grid-template-columns:1fr 1fr}}
-.lvl-card{border-radius:12px;padding:20px 14px;text-align:center;background:var(--card);border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
-.lvl-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.4)}
-.lvl-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 12px 12px}
+.lvl{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 14px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+.lvl:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.4)}
+.lvl::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
 .lv1::after{background:linear-gradient(90deg,#444,#777)}
 .lv2::after{background:linear-gradient(90deg,#1b5e20,#43a047)}
 .lv3::after{background:linear-gradient(90deg,#0d47a1,#1976d2)}
 .lv4::after{background:linear-gradient(90deg,#4a148c,#8e24aa)}
 .lv5::after{background:linear-gradient(90deg,var(--gold3),var(--gold))}
-.lv5{border-color:rgba(255,216,77,.2);background:linear-gradient(160deg,rgba(255,216,77,.06),var(--card))}
-.lvl-badge{font-family:var(--display);font-size:38px;font-weight:900;line-height:1;margin-bottom:6px}
-.lv1 .lvl-badge{color:#777}
-.lv2 .lvl-badge{color:#43a047}
-.lv3 .lvl-badge{color:#1e88e5}
-.lv4 .lvl-badge{color:#9c27b0}
-.lv5 .lvl-badge{color:var(--gold);text-shadow:0 0 20px rgba(255,216,77,.4)}
-.lvl-name{font-family:var(--display);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.lv5{border-color:rgba(255,216,77,.18);background:linear-gradient(160deg,rgba(255,216,77,.05),var(--card))}
+.lvl-n{font-family:var(--display);font-size:36px;font-weight:900;line-height:1;margin-bottom:5px}
+.lv1 .lvl-n{color:#777}
+.lv2 .lvl-n{color:#43a047}
+.lv3 .lvl-n{color:#1e88e5}
+.lv4 .lvl-n{color:#9c27b0}
+.lv5 .lvl-n{color:var(--gold);text-shadow:0 0 18px rgba(255,216,77,.4)}
+.lvl-nome{font-family:var(--display);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
 .lvl-desc{font-size:11px;color:var(--muted);line-height:1.55}
 
-/* ══ ECO CARDS ══ */
-.eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:600px){.eco-grid{grid-template-columns:1fr}}
+/* ── ECOSISTEMA ── */
 .eco-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
 .eco-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-3px)}
-.eco-ico{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
-.eco-ico::before{content:'';position:absolute;inset:-1px;border-radius:13px;background:conic-gradient(from 0deg,rgba(255,216,77,.5),transparent 40%,transparent 60%,rgba(255,216,77,.5));opacity:.5}
-.eco-ico svg{width:24px;height:24px;position:relative;z-index:1}
 .eco-card h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px}
 .eco-card p{font-size:13px;color:var(--muted);line-height:1.62}
 
-/* ══ HUNTERS ══ */
-.hunters-wrap{background:linear-gradient(135deg,#090500,#100800,#080400);border:1px solid rgba(255,140,0,.18);border-radius:18px;overflow:hidden;position:relative}
-.hunters-hex{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath fill='none' stroke='%23ff8c00' stroke-width='1' d='M28 0 L56 14.4 L56 85.6 L28 100 L0 85.6 L0 14.4 Z'/%3E%3C/svg%3E");background-size:56px 100px}
-.hunters-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
-@media(max-width:700px){.hunters-inner{grid-template-columns:1fr}}
-.hunters-left{padding:52px 48px;position:relative;z-index:1}
-@media(max-width:700px){.hunters-left{padding:32px 24px}}
-.h-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.32);color:#ffaa00;font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
-.hunters-title{font-family:var(--display);font-size:clamp(38px,6vw,62px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:4px}
-.hunters-title em{font-style:normal;color:#ffaa00}
-.hunters-quote{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin:16px 0 28px;max-width:400px;border-left:2px solid rgba(255,140,0,.3);padding-left:14px}
-.hunter-traits{display:flex;flex-direction:column;gap:11px}
-.trait{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500}
-.trait-ico{width:32px;height:32px;border-radius:8px;background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
-.hunters-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
-@media(max-width:700px){.hunters-right{padding:0 24px 32px}}
-.hunter-logo{width:270px;max-width:80vw;filter:drop-shadow(0 0 36px rgba(255,140,0,.45)) drop-shadow(0 0 80px rgba(255,60,0,.18));animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-14px) rotate(1deg)}}
-
-/* ══ CTA ══ */
-.cta-sec{background:linear-gradient(135deg,#08060000,#100d00,#08060000);border-top:1px solid rgba(255,216,77,.13);border-bottom:1px solid rgba(255,216,77,.13);padding:96px 20px;text-align:center;position:relative;overflow:hidden}
-.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(255,216,77,.11) 0%,transparent 60%);pointer-events:none}
-.cta-sec h2{font-family:var(--display);font-size:clamp(42px,9vw,82px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
-.cta-sec h2 em{font-style:normal;color:var(--gold)}
-.cta-sec p{font-size:16px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.7;position:relative;z-index:1}
+/* ── CTA ── */
+.cta-sec{
+  padding:96px 20px;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));
+  border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12);
+}
+/* Fundo de areia na CTA */
+.cta-sec::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
 .btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
 .btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
 
-/* ══ FOOTER ══ */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:36px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-logo{display:flex;align-items:center;gap:9px}
-.footer-logo img{height:30px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
-.footer-logo span{font-family:var(--display);font-size:15px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap}
-.footer-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
-.footer-links a:hover{color:var(--gold)}
-.footer-copy{font-size:11px;color:var(--muted2)}
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos .fh{height:26px;filter:drop-shadow(0 0 5px rgba(255,140,0,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2)}
 
-/* ══ GRIDS ══ */
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:540px){.g3{grid-template-columns:1fr}}
-
-/* ══ FADE-UP ANIMATION ══ */
-.fu{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.fu.vis{opacity:1;transform:translateY(0)}
+/* ── FADE UP ── */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
@@ -311,61 +274,67 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-item">⚡ Temporada T01 · 2026 — Inscrições Abertas</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🐺 Hunters UR — Mentalidade Campeã</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🏆 Ranking · Draft · UR Coins</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">📍 Belo Horizonte — MG</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">⚡ Temporada T01 · 2026 — Inscrições Abertas</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🐺 Hunters UR — Mentalidade Campeã</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">🏆 Ranking · Draft · UR Coins</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">📍 Belo Horizonte — MG</span><span class="ticker-sep">·</span>
+    <span class="ti">⚡ Temporada T01 · 2026 — Inscrições Abertas</span><span class="ts">|</span>
+    <span class="ti">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ts">|</span>
+    <span class="ti">🐺 Hunters UR — Eleve o Jogo, Supere seus Limites</span><span class="ts">|</span>
+    <span class="ti">🏆 Ranking · Draft · UR Coins</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG</span><span class="ts">|</span>
+    <span class="ti">⚡ Temporada T01 · 2026 — Inscrições Abertas</span><span class="ts">|</span>
+    <span class="ti">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ts">|</span>
+    <span class="ti">🐺 Hunters UR — Eleve o Jogo, Supere seus Limites</span><span class="ts">|</span>
+    <span class="ti">🏆 Ranking · Draft · UR Coins</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG</span><span class="ts">|</span>
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="logo-ur-3d.png" alt="UR" onerror="this.outerHTML='<span style=\'font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold)\'>⚡UR</span>'">
+  <div class="nav-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <div class="nav-sep"></div>
+    <img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'">
   </div>
   <div class="nav-links">
-    <a href="#pilares">Liga</a>
+    <a href="#liga">A Liga</a>
     <a href="#hunters">Hunters</a>
     <a href="#modalidades">Modalidades</a>
     <a href="#niveis">Níveis</a>
     <a href="#ecossistema">Ecossistema</a>
   </div>
   <div class="nav-right">
-    <div class="live-pill"><span class="live-dot"></span>T01 · 2026</div>
-    <span class="nav-season">Inscrições Abertas</span>
+    <span class="nav-season">T01 · 2026</span>
     <a href="UR_Inscricao_Atleta.html" class="nav-cta">⚡ Inscreva-se</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-hex"></div>
-  <div class="hero-deco"></div>
+  <div class="hero-court"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content fu">
-    <div class="hero-badge"><span></span>Temporada T01 · 2026 · BH</div>
-    <img src="logo-ur-3d.png" alt="Ultimate Rivals" class="hero-logo"
-         onerror="this.style.display='none'">
+    <div class="hero-badge">Temporada T01 · 2026 · Belo Horizonte</div>
+
+    <!-- Logos UR + Hunter lado a lado -->
+    <div class="hero-logos">
+      <img src="logo-ur-3d.png" alt="Ultimate Rivals" onerror="this.style.display='none'">
+      <div class="hero-logos-divider"></div>
+      <img src="logo-hunter.png" alt="Hunters UR" class="hl-hunter" onerror="this.style.display='none'">
+    </div>
+
     <h1 class="hero-title">
       <div class="t1">ULTIMATE</div>
       <div class="t2">RIVALS</div>
     </h1>
-    <p class="hero-sub-line">Liga de Vôlei de Praia · Belo Horizonte</p>
+    <p class="hero-tag">Liga de Vôlei de Praia · BH</p>
     <div class="hero-divider"></div>
-    <p class="hero-desc">O ecossistema esportivo que une competição de alto nível, formação de atletas e entretenimento. Seja parte da liga.</p>
+    <p class="hero-bordao">"Eleve o jogo, supere seus limites."</p>
     <div class="hero-btns">
       <a href="UR_Inscricao_Atleta.html" class="btn-gold">⚡ Garantir minha vaga</a>
       <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-ghost">💬 Comunidade UR</a>
     </div>
     <div class="hero-stats">
       <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">Níveis</div></div>
-      <div class="h-stat"><div class="h-stat-n">2+</div><div class="h-stat-l">Formatos</div></div>
+      <div class="h-stat"><div class="h-stat-n">2</div><div class="h-stat-l">Formatos</div></div>
       <div class="h-stat"><div class="h-stat-n">BH</div><div class="h-stat-l">Cidade</div></div>
       <div class="h-stat"><div class="h-stat-n">T01</div><div class="h-stat-l">Temporada</div></div>
     </div>
@@ -374,344 +343,111 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 
 <div class="divider"></div>
 
-<!-- PILARES — ícones circulares estilo liga -->
-<div id="pilares" class="sec fu">
-  <div style="margin-bottom:52px">
-    <div class="s-eyebrow">O que é o Ultimate Rivals</div>
+<!-- A LIGA — pilares com ícones limpos -->
+<div id="liga" class="sec fu">
+  <div style="margin-bottom:48px">
+    <div class="s-label">O que é o Ultimate Rivals</div>
     <h2 class="s-title">Mais do que<br>um torneio</h2>
-    <p class="s-body">Um ecossistema que integra competição, desenvolvimento humano e entretenimento. Tudo conectado.</p>
+    <p class="s-body">Um ecossistema que une competição real, formação de atletas e entretenimento. Tudo integrado, nada isolado.</p>
   </div>
   <div class="g3">
-
-    <!-- Competição -->
     <div class="pilar-card fu">
-      <div class="sport-icon-ring sir-navy">
-        <svg viewBox="0 0 48 48" fill="none">
-          <!-- Troféu 3D -->
-          <defs>
-            <radialGradient id="tg1" cx="40%" cy="30%"><stop offset="0%" stop-color="#ffe87a"/><stop offset="100%" stop-color="#a06800"/></radialGradient>
-          </defs>
-          <path d="M24 34v6M18 40h12" stroke="url(#tg1)" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M14 8h20v14a10 10 0 01-20 0V8z" fill="url(#tg1)" opacity=".9"/>
-          <path d="M14 12H8a6 6 0 006 6M34 12h6a6 6 0 01-6 6" stroke="url(#tg1)" stroke-width="2.5" stroke-linecap="round"/>
-          <ellipse cx="24" cy="8" rx="10" ry="2.5" fill="url(#tg1)" opacity=".6"/>
-        </svg>
-      </div>
+      <div class="icon-circle ic-gold">🏆</div>
       <h3>Competição</h3>
-      <p>Torneios oficiais com sistema de draft, ranking individual e premiações. Cada etapa é um espetáculo de alto nível.</p>
+      <p>Torneios oficiais com draft, ranking e premiações. Formato equilibrado, nível técnico real. Cada etapa é uma final.</p>
     </div>
-
-    <!-- Formação -->
     <div class="pilar-card fu">
-      <div class="sport-icon-ring sir-dark">
-        <svg viewBox="0 0 48 48" fill="none">
-          <defs>
-            <radialGradient id="fg1" cx="40%" cy="30%"><stop offset="0%" stop-color="#7eb8ff"/><stop offset="100%" stop-color="#1a4e8a"/></radialGradient>
-          </defs>
-          <!-- Atleta estilizado -->
-          <circle cx="24" cy="12" r="5" fill="url(#fg1)"/>
-          <path d="M24 17v10M18 20l6 4 6-4M19 27l-3 8M29 27l3 8" stroke="url(#fg1)" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- Raio de evolução -->
-          <path d="M34 8l-4 6h3l-4 6" stroke="#ffd84d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/>
-        </svg>
-      </div>
-      <h3>Formação</h3>
-      <p>Desenvolvimento técnico, físico e mental. Hunters UR e treinamentos que formam atletas e líderes de verdade.</p>
+      <div class="icon-circle ic-blue">🎯</div>
+      <h3>Desenvolvimento</h3>
+      <p>Técnica, tática, físico e mentalidade. Os Hunters UR guiam o atleta a crescer dentro e fora das quadras.</p>
     </div>
-
-    <!-- Entretenimento -->
     <div class="pilar-card fu">
-      <div class="sport-icon-ring sir-fire">
-        <svg viewBox="0 0 48 48" fill="none">
-          <defs>
-            <radialGradient id="eg1" cx="40%" cy="30%"><stop offset="0%" stop-color="#ffb060"/><stop offset="100%" stop-color="#c03000"/></radialGradient>
-          </defs>
-          <!-- Câmera / play -->
-          <rect x="8" y="14" width="24" height="18" rx="3" fill="url(#eg1)" opacity=".85"/>
-          <path d="M32 20l8-4v16l-8-4" fill="url(#eg1)" opacity=".7"/>
-          <!-- Play triangle -->
-          <path d="M17 20l10 4-10 4V20z" fill="#fff" opacity=".9"/>
-        </svg>
-      </div>
+      <div class="icon-circle ic-fire">🎬</div>
       <h3>Entretenimento</h3>
-      <p>Transmissões ao vivo, documentários, cobertura de mídia e conteúdo exclusivo. Cada jogo conta uma história.</p>
+      <p>Transmissões ao vivo, documentários e cobertura de cada etapa. Sua história merece ser contada.</p>
     </div>
-
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- HUNTERS -->
-<div id="hunters" class="sec fu" style="padding-top:0;padding-bottom:0;max-width:1100px">
+<!-- HUNTERS UR -->
+<div id="hunters" class="sec fu" style="padding-top:0;padding-bottom:0">
   <div class="hunters-wrap">
-    <div class="hunters-hex"></div>
     <div class="hunters-inner">
       <div class="hunters-left">
-        <div class="h-badge">🐺 Hunters UR</div>
-        <h2 class="hunters-title">Mentalidade<br><em>Campeã</em></h2>
-        <p class="hunters-quote">"Mais do que atletas, queremos formar líderes, exemplos e protagonistas da sua própria evolução."</p>
-        <div class="hunter-traits">
-          <div class="trait"><div class="trait-ico">🎯</div>Mentalidade vencedora aplicada ao jogo</div>
-          <div class="trait"><div class="trait-ico">🔥</div>Disciplina, resiliência e foco no processo</div>
-          <div class="trait"><div class="trait-ico">🤝</div>Liderança, ética e trabalho em equipe</div>
-          <div class="trait"><div class="trait-ico">⚡</div>Alto rendimento com propósito real</div>
+        <div class="h-pill">🐺 Hunters UR</div>
+        <h2 class="hunters-title">Eleve o Jogo.<br><span>Seja um Hunter.</span></h2>
+        <p class="hunters-bordao">Supere seus limites · Temporada 2026</p>
+        <p class="hunters-desc">Os Hunters UR são o programa de desenvolvimento humano da liga. Formamos atletas que evoluem de verdade — na quadra, na vida e na mentalidade. Não é sobre ser o melhor. É sobre ser melhor do que você era ontem.</p>
+        <div class="traits">
+          <div class="trait"><div class="trait-i">🎯</div>Foco, disciplina e evolução contínua</div>
+          <div class="trait"><div class="trait-i">💪</div>Desenvolvimento físico e técnico real</div>
+          <div class="trait"><div class="trait-i">🧠</div>Preparação mental e resiliência</div>
+          <div class="trait"><div class="trait-i">⚡</div>Alto rendimento com propósito</div>
         </div>
       </div>
       <div class="hunters-right">
-        <img src="logo-hunter.png" alt="Hunters UR" class="hunter-logo"
-             onerror="this.outerHTML='<div style=\'font-size:90px\'>🐺</div>'">
+        <img src="logo-hunter.png" alt="Hunters UR" class="hunter-logo" onerror="this.outerHTML='<div style=\'font-size:100px\'>🐺</div>'">
       </div>
     </div>
   </div>
 </div>
 
-<div class="divider" style="margin-top:88px"></div>
-
-<!-- ATLETAS GEOMÉTRICOS -->
-<div class="atletas-section fu">
-  <div class="atletas-header">
-    <div class="s-eyebrow">Arena UR</div>
-    <h2 class="s-title">Seus atletas,<br>sua liga</h2>
-    <p class="s-body">Duplas. Quartetos. Todos os níveis. Cada atleta com sua posição, ranking e identidade na liga.</p>
-  </div>
-  <div class="atletas-grid">
-
-    <!-- Card 1: Bloqueador(a) -->
-    <div class="atleta-card fu">
-      <div class="atleta-card-inner">
-        <div class="atleta-bg-num">B</div>
-        <div class="atleta-gradient" style="background:linear-gradient(180deg,rgba(255,216,77,.06) 0%,rgba(7,8,13,.95) 70%)"></div>
-        <!-- Silhueta: atacante saltando -->
-        <svg class="atleta-silhouette" viewBox="0 0 160 280" fill="none">
-          <g opacity=".85">
-            <!-- Sombra base -->
-            <ellipse cx="80" cy="272" rx="38" ry="7" fill="rgba(0,0,0,.4)"/>
-            <!-- Pernas -->
-            <path d="M62 180 Q55 220 48 268" stroke="#c89000" stroke-width="12" stroke-linecap="round"/>
-            <path d="M98 180 Q105 218 115 260" stroke="#a07000" stroke-width="12" stroke-linecap="round"/>
-            <!-- Pés -->
-            <ellipse cx="46" cy="268" rx="12" ry="5" fill="#a07000"/>
-            <ellipse cx="116" cy="260" rx="12" ry="5" fill="#8a6000"/>
-            <!-- Torso -->
-            <path d="M58 110 Q80 105 102 110 L108 185 Q80 190 52 185Z" fill="#ffd84d"/>
-            <!-- Braços levantados (ataque) -->
-            <path d="M58 115 Q30 80 20 55" stroke="#c89000" stroke-width="11" stroke-linecap="round"/>
-            <path d="M102 115 Q130 75 148 50" stroke="#c89000" stroke-width="11" stroke-linecap="round"/>
-            <!-- Mãos -->
-            <circle cx="20" cy="52" r="8" fill="#ffd84d"/>
-            <circle cx="148" cy="48" r="8" fill="#ffd84d"/>
-            <!-- Bola (direita) -->
-            <circle cx="148" cy="36" r="14" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/>
-            <path d="M136 30 Q148 22 160 30" stroke="#fff" stroke-width="1.5" opacity=".4"/>
-            <!-- Cabeça -->
-            <circle cx="80" cy="80" r="26" fill="#ffd84d"/>
-            <!-- Capacete / headband -->
-            <path d="M54 78 Q80 68 106 78" stroke="#c89000" stroke-width="5" stroke-linecap="round"/>
-            <!-- Olhos -->
-            <circle cx="71" cy="82" r="4" fill="#0a0800"/>
-            <circle cx="89" cy="82" r="4" fill="#0a0800"/>
-            <!-- Raio na camisa -->
-            <path d="M76 125l-6 12h5l-6 12" stroke="#0a0800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>
-          </g>
-        </svg>
-        <div class="atleta-color-bar" style="background:linear-gradient(90deg,var(--gold),var(--gold3))"></div>
-        <div class="atleta-info">
-          <div class="atleta-pos">Bloqueador(a) · Duplas</div>
-          <div class="atleta-name">Posição Ofensiva</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2: Defensor(a) -->
-    <div class="atleta-card fu" style="margin-top:28px">
-      <div class="atleta-card-inner">
-        <div class="atleta-bg-num">D</div>
-        <div class="atleta-gradient" style="background:linear-gradient(180deg,rgba(30,80,180,.08) 0%,rgba(7,8,13,.95) 70%)"></div>
-        <!-- Silhueta: defensor em posição baixa -->
-        <svg class="atleta-silhouette" viewBox="0 0 160 280" fill="none">
-          <g opacity=".85">
-            <ellipse cx="80" cy="272" rx="42" ry="7" fill="rgba(0,0,0,.4)"/>
-            <!-- Pernas abertas (baixa) -->
-            <path d="M68 170 Q50 210 30 250" stroke="#1e5ab4" stroke-width="12" stroke-linecap="round"/>
-            <path d="M92 170 Q112 210 132 248" stroke="#164898" stroke-width="12" stroke-linecap="round"/>
-            <ellipse cx="28" cy="252" rx="14" ry="5" fill="#164898"/>
-            <ellipse cx="133" cy="250" rx="14" ry="5" fill="#0e3878"/>
-            <!-- Torso inclinado -->
-            <path d="M55 100 Q80 92 105 100 L112 172 Q80 178 48 172Z" fill="#3a7aff"/>
-            <!-- Braços para frente (defesa) -->
-            <path d="M55 108 Q25 135 15 155" stroke="#1e5ab4" stroke-width="11" stroke-linecap="round"/>
-            <path d="M105 108 Q135 133 145 153" stroke="#1e5ab4" stroke-width="11" stroke-linecap="round"/>
-            <!-- Mãos unidas no centro-baixo -->
-            <circle cx="15" cy="156" r="8" fill="#3a7aff"/>
-            <circle cx="145" cy="154" r="8" fill="#3a7aff"/>
-            <!-- Cabeça levantada -->
-            <circle cx="80" cy="70" r="26" fill="#3a7aff"/>
-            <path d="M54 66 Q80 56 106 66" stroke="#1e5ab4" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="71" cy="72" r="4" fill="#050a1a"/>
-            <circle cx="89" cy="72" r="4" fill="#050a1a"/>
-            <!-- Raio -->
-            <path d="M76 118l-6 12h5l-6 12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/>
-          </g>
-        </svg>
-        <div class="atleta-color-bar" style="background:linear-gradient(90deg,#3a7aff,#1e5ab4)"></div>
-        <div class="atleta-info">
-          <div class="atleta-pos">Defensor(a) · Duplas</div>
-          <div class="atleta-name">Posição Defensiva</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3: Levantador(a) -->
-    <div class="atleta-card fu">
-      <div class="atleta-card-inner">
-        <div class="atleta-bg-num">L</div>
-        <div class="atleta-gradient" style="background:linear-gradient(180deg,rgba(180,50,180,.06) 0%,rgba(7,8,13,.95) 70%)"></div>
-        <!-- Silhueta: levantador com mãos acima -->
-        <svg class="atleta-silhouette" viewBox="0 0 160 280" fill="none">
-          <g opacity=".85">
-            <ellipse cx="80" cy="272" rx="38" ry="7" fill="rgba(0,0,0,.4)"/>
-            <path d="M66 185 Q60 225 55 268" stroke="#8a2be2" stroke-width="12" stroke-linecap="round"/>
-            <path d="M94 185 Q100 223 105 266" stroke="#6a1cb0" stroke-width="12" stroke-linecap="round"/>
-            <ellipse cx="53" cy="268" rx="12" ry="5" fill="#6a1cb0"/>
-            <ellipse cx="106" cy="267" rx="12" ry="5" fill="#5a14a0"/>
-            <!-- Torso reto -->
-            <path d="M60 112 Q80 106 100 112 L106 188 Q80 194 54 188Z" fill="#b040e0"/>
-            <!-- Braços levantados (toque) -->
-            <path d="M60 118 Q40 88 35 65" stroke="#8a2be2" stroke-width="11" stroke-linecap="round"/>
-            <path d="M100 118 Q120 88 125 65" stroke="#8a2be2" stroke-width="11" stroke-linecap="round"/>
-            <!-- Mãos abertas em toque -->
-            <circle cx="34" cy="62" r="9" fill="#b040e0"/>
-            <circle cx="126" cy="62" r="9" fill="#b040e0"/>
-            <!-- Bola em cima -->
-            <circle cx="80" cy="44" r="16" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
-            <path d="M64 44 Q80 36 96 44" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
-            <!-- Cabeça -->
-            <circle cx="80" cy="84" r="26" fill="#b040e0"/>
-            <path d="M54 80 Q80 70 106 80" stroke="#8a2be2" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="71" cy="86" r="4" fill="#1a001a"/>
-            <circle cx="89" cy="86" r="4" fill="#1a001a"/>
-            <path d="M76 130l-6 12h5l-6 12" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".4"/>
-          </g>
-        </svg>
-        <div class="atleta-color-bar" style="background:linear-gradient(90deg,#b040e0,#6a1cb0)"></div>
-        <div class="atleta-info">
-          <div class="atleta-pos">Levantador(a) · Quarteto</div>
-          <div class="atleta-name">Armação do Jogo</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4: Universal -->
-    <div class="atleta-card fu" style="margin-top:28px">
-      <div class="atleta-card-inner">
-        <div class="atleta-bg-num">U</div>
-        <div class="atleta-gradient" style="background:linear-gradient(180deg,rgba(0,180,100,.06) 0%,rgba(7,8,13,.95) 70%)"></div>
-        <!-- Silhueta: universal em posição dinâmica -->
-        <svg class="atleta-silhouette" viewBox="0 0 160 280" fill="none">
-          <g opacity=".85">
-            <ellipse cx="80" cy="272" rx="38" ry="7" fill="rgba(0,0,0,.4)"/>
-            <path d="M68 182 Q56 222 50 264" stroke="#1a8a4a" stroke-width="12" stroke-linecap="round"/>
-            <path d="M92 182 Q108 218 118 258" stroke="#147038" stroke-width="12" stroke-linecap="round"/>
-            <ellipse cx="48" cy="265" rx="12" ry="5" fill="#147038"/>
-            <ellipse cx="119" cy="259" rx="12" ry="5" fill="#0e5028"/>
-            <!-- Torso dinâmico (correndo) -->
-            <path d="M56 106 Q80 98 104 106 L110 184 Q80 190 50 184Z" fill="#22c060"/>
-            <!-- Um braço para frente, outro para trás -->
-            <path d="M56 112 Q28 90 18 72" stroke="#1a8a4a" stroke-width="11" stroke-linecap="round"/>
-            <path d="M104 112 Q126 140 138 162" stroke="#1a8a4a" stroke-width="11" stroke-linecap="round"/>
-            <circle cx="17" cy="70" r="8" fill="#22c060"/>
-            <circle cx="139" cy="164" r="8" fill="#22c060"/>
-            <!-- Cabeça -->
-            <circle cx="80" cy="76" r="26" fill="#22c060"/>
-            <path d="M54 72 Q80 62 106 72" stroke="#1a8a4a" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="71" cy="78" r="4" fill="#001a08"/>
-            <circle cx="89" cy="78" r="4" fill="#001a08"/>
-            <!-- Raio -->
-            <path d="M76 124l-6 12h5l-6 12" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".45"/>
-          </g>
-        </svg>
-        <div class="atleta-color-bar" style="background:linear-gradient(90deg,#22c060,#1a8a4a)"></div>
-        <div class="atleta-info">
-          <div class="atleta-pos">Universal · Quarteto</div>
-          <div class="atleta-name">Polivalente</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="divider"></div>
+<div class="divider" style="margin-top:84px"></div>
 
 <!-- MODALIDADES -->
 <div id="modalidades" class="sec-alt fu">
   <div class="sec">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:14px">
       <div>
-        <div class="s-eyebrow">Formatos Oficiais</div>
+        <div class="s-label">Formatos Oficiais</div>
         <h2 class="s-title">Modalidades</h2>
       </div>
-      <span style="background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:1.5px;padding:6px 16px;border-radius:4px;text-transform:uppercase;height:fit-content">T01 · 2026</span>
+      <span style="background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.25);color:var(--gold);font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:1.5px;padding:6px 16px;border-radius:4px;text-transform:uppercase">T01 · 2026</span>
     </div>
-    <div class="format-duo">
+    <div class="g2">
+
       <div class="fmt-card fu">
-        <div class="fmt-top fmt-duplas-bg">
-          <div class="fmt-geo">
-            <svg width="100%" height="100%" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice">
-              <polygon points="0,0 300,0 200,120 0,120" fill="#ffd84d" opacity=".04"/>
-              <polygon points="150,0 400,0 400,120 250,120" fill="#ffd84d" opacity=".03"/>
-              <line x1="0" y1="40" x2="400" y2="80" stroke="#ffd84d" stroke-width="1" opacity=".06"/>
-              <line x1="0" y1="80" x2="400" y2="40" stroke="#ffd84d" stroke-width="1" opacity=".04"/>
-            </svg>
-          </div>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <defs><radialGradient id="vb1" cx="40%" cy="30%"><stop offset="0%" stop-color="#ffd84d"/><stop offset="100%" stop-color="#a06800"/></radialGradient></defs>
-            <circle cx="32" cy="32" r="28" stroke="url(#vb1)" stroke-width="2.5" fill="none"/>
-            <path d="M32 4 Q50 18 50 32 Q50 46 32 60 Q14 46 14 32 Q14 18 32 4Z" fill="url(#vb1)" opacity=".2"/>
-            <path d="M4 32 Q18 14 32 14 Q46 14 60 32" stroke="url(#vb1)" stroke-width="2" fill="none" opacity=".5"/>
-            <circle cx="32" cy="32" r="8" fill="url(#vb1)" opacity=".8"/>
+        <div class="fmt-top ft-d">
+          <!-- Linhas de quadra decorativas -->
+          <svg class="fmt-court-lines" viewBox="0 0 400 110" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+            <line x1="200" y1="0" x2="200" y2="110" stroke="white" stroke-width="1" opacity=".15"/>
+            <line x1="0" y1="55" x2="400" y2="55" stroke="white" stroke-width=".5" opacity=".1"/>
+            <rect x="60" y="20" width="280" height="70" fill="none" stroke="white" stroke-width="1" opacity=".08"/>
           </svg>
+          <div class="icon-circle ic-blue" style="margin:0;width:64px;height:64px;font-size:28px">🏐</div>
         </div>
         <div class="fmt-body">
           <p class="fmt-tag">Formato 2×2</p>
           <h3>Duplas</h3>
-          <p>Vôlei de praia clássico. Dois atletas por equipe, máxima intensidade e liberdade tática. Posições: Bloqueador(a) e Defensor(a).</p>
-          <div class="fmt-tags">
+          <p>Vôlei de praia no formato clássico. Dois atletas, máxima intensidade. Posições oficiais: Bloqueador(a) e Defensor(a).</p>
+          <div class="ftags">
             <span class="ftag">2 atletas</span><span class="ftag">Vôlei de Praia</span><span class="ftag">Draft</span><span class="ftag">Ranking</span>
           </div>
         </div>
       </div>
+
       <div class="fmt-card fu">
-        <div class="fmt-top fmt-quartetos-bg">
-          <div class="fmt-geo">
-            <svg width="100%" height="100%" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice">
-              <polygon points="0,0 400,0 320,120 0,120" fill="#ff7a20" opacity=".04"/>
-              <line x1="0" y1="60" x2="400" y2="60" stroke="#ff7a20" stroke-width="1" opacity=".06"/>
-              <line x1="200" y1="0" x2="200" y2="120" stroke="#ff7a20" stroke-width="1" opacity=".04"/>
-            </svg>
-          </div>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <defs><radialGradient id="q1" cx="40%" cy="30%"><stop offset="0%" stop-color="#ff9a50"/><stop offset="100%" stop-color="#c03000"/></radialGradient></defs>
-            <!-- 4 pessoas -->
-            <circle cx="18" cy="14" r="7" fill="url(#q1)" opacity=".8"/>
-            <circle cx="46" cy="14" r="7" fill="url(#q1)" opacity=".8"/>
-            <circle cx="18" cy="48" r="7" fill="url(#q1)" opacity=".6"/>
-            <circle cx="46" cy="48" r="7" fill="url(#q1)" opacity=".6"/>
-            <path d="M18 21v8M46 21v8M18 55v6M46 55v6" stroke="url(#q1)" stroke-width="3" stroke-linecap="round"/>
-            <!-- Seta / raio central -->
-            <path d="M28 30l8 4-8 4" fill="url(#q1)" opacity=".9"/>
+        <div class="fmt-top ft-q">
+          <svg class="fmt-court-lines" viewBox="0 0 400 110" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+            <line x1="200" y1="0" x2="200" y2="110" stroke="white" stroke-width="1" opacity=".15"/>
+            <line x1="120" y1="0" x2="120" y2="110" stroke="white" stroke-width=".5" opacity=".08"/>
+            <line x1="280" y1="0" x2="280" y2="110" stroke="white" stroke-width=".5" opacity=".08"/>
+            <rect x="60" y="20" width="280" height="70" fill="none" stroke="white" stroke-width="1" opacity=".08"/>
           </svg>
+          <div class="icon-circle ic-fire" style="margin:0;width:64px;height:64px;font-size:28px">🔥</div>
         </div>
         <div class="fmt-body">
           <p class="fmt-tag">Formato 4×4</p>
           <h3>Quartetos</h3>
           <p>Mais jogadores, mais estratégia, mais espetáculo. Posições: Universal, Levantador(a), Ponteiro(a), Central, Oposto(a) e Líbero.</p>
-          <div class="fmt-tags">
+          <div class="ftags">
             <span class="ftag">4 atletas</span><span class="ftag">Estratégia</span><span class="ftag">Draft</span><span class="ftag">Ranking</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -719,79 +455,32 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 <div class="divider"></div>
 
 <!-- COMO FUNCIONA -->
-<div id="como-funciona" class="sec fu">
-  <div style="text-align:center;margin-bottom:56px">
-    <div class="s-eyebrow" style="justify-content:center">
-      <span style="flex:none">O Processo</span>
-    </div>
+<div class="sec fu">
+  <div style="text-align:center;margin-bottom:52px">
+    <div class="s-label" style="justify-content:center"><span>O Processo</span></div>
     <h2 class="s-title">Como Funciona</h2>
-    <p class="s-body" style="margin:0 auto">Do cadastro ao pódio — entenda a jornada de um atleta UR.</p>
+    <p class="s-body" style="margin:0 auto">Do cadastro ao pódio — a jornada do atleta UR.</p>
   </div>
-  <div class="steps-row">
+  <div class="steps">
     <div class="step fu">
-      <div class="step-circle">01</div>
-      <h4>Inscrição & Nivelamento</h4>
-      <p>Cadastre-se, informe seu nível e posição. O sistema te classifica no ciclo certo automaticamente.</p>
-    </div>
-    <div class="step fu">
-      <div class="step-circle">02</div>
-      <h4>Draft de Equipes</h4>
-      <p>Equipes montadas pelo draft — equilibrado e estratégico. Todos têm chances iguais desde o início.</p>
+      <div class="step-n">01</div>
+      <h4>Inscrição</h4>
+      <p>Cadastre-se, informe nível e posição. O sistema classifica você no ciclo certo.</p>
     </div>
     <div class="step fu">
-      <div class="step-circle">03</div>
-      <h4>Torneio Oficial</h4>
-      <p>Etapas com árbitro, placar, transmissão e cobertura. Cada jogo vale pontos no ranking da temporada.</p>
+      <div class="step-n">02</div>
+      <h4>Draft</h4>
+      <p>Equipes montadas com equilíbrio real. Todos têm chances iguais desde o início.</p>
     </div>
     <div class="step fu">
-      <div class="step-circle">04</div>
-      <h4>Ranking & Evolução</h4>
-      <p>Seu desempenho atualiza seu ranking. Suba de nível, conquiste UR Coins e seja reconhecido na liga.</p>
+      <div class="step-n">03</div>
+      <h4>Torneio</h4>
+      <p>Etapas com árbitro, placar e transmissão. Cada jogo vale pontos no ranking.</p>
     </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- PRÓXIMA RODADA (Kings League match card) -->
-<div class="sec-alt fu">
-  <div class="sec">
-    <div style="text-align:center;margin-bottom:40px">
-      <div class="s-eyebrow" style="justify-content:center"><span style="flex:none">Em Breve</span></div>
-      <h2 class="s-title">Próxima Rodada</h2>
-    </div>
-    <div class="rodada-card">
-      <div class="rodada-header">
-        <span class="rodada-label">⚡ Temporada T01 · 2026 — Rodada 01</span>
-        <span class="rodada-date">A confirmar</span>
-      </div>
-      <div class="rodada-match">
-        <div class="team-side">
-          <div class="team-shield ts-gold">⚡</div>
-          <div class="team-name">Equipe A</div>
-          <div class="team-tag">Definida no Draft</div>
-        </div>
-        <div class="vs-block">
-          <div class="vs-text">VS</div>
-          <div class="vs-sub">Draft em breve</div>
-        </div>
-        <div class="team-side">
-          <div class="team-shield ts-dark">🐺</div>
-          <div class="team-name">Equipe B</div>
-          <div class="team-tag">Definida no Draft</div>
-        </div>
-      </div>
-      <div class="rodada-footer">
-        <div class="rf-item">
-          <svg viewBox="0 0 16 16" fill="currentColor" style="color:var(--gold)"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2a5 5 0 110 10A5 5 0 018 3zm.5 2.5h-1V9l3.5 2.1.5-.8-3-1.8V5.5z"/></svg>
-          BH · 2026
-        </div>
-        <div class="rf-item">
-          <svg viewBox="0 0 16 16" fill="currentColor" style="color:var(--gold)"><path d="M8 1C5.2 1 3 3.2 3 6c0 3.9 5 9 5 9s5-5.1 5-9c0-2.8-2.2-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg>
-          Local a confirmar
-        </div>
-        <a href="UR_Inscricao_Atleta.html" style="background:var(--gold);color:#000;font-family:var(--display);font-size:13px;font-weight:800;padding:8px 18px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">⚡ Participar</a>
-      </div>
+    <div class="step fu">
+      <div class="step-n">04</div>
+      <h4>Evolução</h4>
+      <p>Ranking atualizado, UR Coins e reconhecimento. Suba de nível com performance real.</p>
     </div>
   </div>
 </div>
@@ -799,66 +488,48 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 <div class="divider"></div>
 
 <!-- NÍVEIS -->
-<div id="niveis" class="sec fu">
-  <div style="text-align:center;margin-bottom:44px">
-    <div class="s-eyebrow" style="justify-content:center"><span style="flex:none">Sistema de Progressão</span></div>
-    <h2 class="s-title">Níveis UR</h2>
-    <p class="s-body" style="margin:0 auto">Do iniciante ao elite — evolução real, baseada em performance.</p>
-  </div>
-  <div class="lvl-grid">
-    <div class="lvl-card lv1 fu"><div class="lvl-badge">N1</div><div class="lvl-name">Iniciante</div><div class="lvl-desc">Primeiros contatos. Foco em fundamentos e pertencimento à comunidade UR.</div></div>
-    <div class="lvl-card lv2 fu"><div class="lvl-badge">N2</div><div class="lvl-name">Desenvolvimento</div><div class="lvl-desc">Base técnica em consolidação. Evolução constante dentro e fora das quadras.</div></div>
-    <div class="lvl-card lv3 fu"><div class="lvl-badge">N3</div><div class="lvl-name">Competitivo</div><div class="lvl-desc">Entende posicionamento e busca resultado. Foco em tática e consistência.</div></div>
-    <div class="lvl-card lv4 fu"><div class="lvl-badge">N4</div><div class="lvl-name">Avançado</div><div class="lvl-desc">Alta performance, leitura de jogo refinada e liderança de equipe.</div></div>
-    <div class="lvl-card lv5 fu"><div class="lvl-badge">N5</div><div class="lvl-name">Elite ⚡</div><div class="lvl-desc">Topo do sistema UR. Padrão próximo ao profissional. Referência total na liga.</div></div>
+<div id="niveis" class="sec-alt fu">
+  <div class="sec">
+    <div style="text-align:center;margin-bottom:42px">
+      <div class="s-label" style="justify-content:center"><span>Progressão</span></div>
+      <h2 class="s-title">Níveis UR</h2>
+      <p class="s-body" style="margin:0 auto">Do iniciante ao elite. Evolução baseada em performance real.</p>
+    </div>
+    <div class="lvl-grid">
+      <div class="lvl lv1 fu"><div class="lvl-n">N1</div><div class="lvl-nome">Iniciante</div><div class="lvl-desc">Primeiros contatos. Foco em fundamentos e pertencimento à liga.</div></div>
+      <div class="lvl lv2 fu"><div class="lvl-n">N2</div><div class="lvl-nome">Desenvolvimento</div><div class="lvl-desc">Base técnica em consolidação. Evolução constante dentro e fora das quadras.</div></div>
+      <div class="lvl lv3 fu"><div class="lvl-n">N3</div><div class="lvl-nome">Competitivo</div><div class="lvl-desc">Entende posicionamento, busca resultado. Foco em tática e consistência.</div></div>
+      <div class="lvl lv4 fu"><div class="lvl-n">N4</div><div class="lvl-nome">Avançado</div><div class="lvl-desc">Alta performance, leitura de jogo refinada e liderança de equipe.</div></div>
+      <div class="lvl lv5 fu"><div class="lvl-n">N5</div><div class="lvl-nome">Elite ⚡</div><div class="lvl-desc">Topo do sistema UR. Padrão profissional. Referência total na liga.</div></div>
+    </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
 <!-- ECOSSISTEMA -->
-<div id="ecossistema" class="sec-alt fu">
-  <div class="sec">
-    <div style="margin-bottom:44px">
-      <div class="s-eyebrow">Plataforma Integrada</div>
-      <h2 class="s-title">Tudo integrado.<br>Nada isolado.</h2>
-      <p class="s-body">Ranking, UR Coins, draft e mídia — tudo conectado no mesmo ecossistema.</p>
+<div id="ecossistema" class="sec fu">
+  <div style="margin-bottom:44px">
+    <div class="s-label">Plataforma</div>
+    <h2 class="s-title">Tudo integrado.</h2>
+    <p class="s-body">Ranking, UR Coins, draft e mídia — conectados na mesma plataforma.</p>
+  </div>
+  <div class="g2">
+    <div class="eco-card fu">
+      <div class="icon-circle ic-gold" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">🏆</div>
+      <div><h4>Ranking Individual</h4><p>Atualizado a cada torneio. Sua posição na liga reflete performance real e abre o próximo nível.</p></div>
     </div>
-    <div class="eco-grid">
-      <div class="eco-card fu">
-        <div class="eco-ico sir-navy" style="background:radial-gradient(circle at 35% 30%,#1a2060,#080c30)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-        </div>
-        <div><h4>Ranking Individual</h4><p>Atualizado a cada torneio. Sua posição na liga reflete performance real e abre portas para o próximo nível.</p></div>
-      </div>
-      <div class="eco-card fu">
-        <div class="eco-ico sir-green" style="background:radial-gradient(circle at 35% 30%,#0d3018,#030f06)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#3ddc84" stroke-width="1.8" stroke-linecap="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v2M12 16v2M6 12h2M16 12h2"/>
-            <circle cx="12" cy="12" r="3" fill="#3ddc84" opacity=".4"/>
-          </svg>
-        </div>
-        <div><h4>UR Coins</h4><p>Moeda interna. Ganhe com vitórias, presença e engajamento. Troque por treinos, produtos e benefícios exclusivos.</p></div>
-      </div>
-      <div class="eco-card fu">
-        <div class="eco-ico sir-dark" style="background:radial-gradient(circle at 35% 30%,#1a1050,#080420)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7eb8ff" stroke-width="1.8" stroke-linecap="round">
-            <path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/>
-          </svg>
-        </div>
-        <div><h4>Sistema de Draft</h4><p>Equipes montadas com equilíbrio e estratégia. Todos os atletas têm chance. Competitividade real desde a rodada 1.</p></div>
-      </div>
-      <div class="eco-card fu">
-        <div class="eco-ico sir-fire" style="background:radial-gradient(circle at 35% 30%,#301010,#140808)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a3c" stroke-width="1.8" stroke-linecap="round">
-            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>
-          </svg>
-        </div>
-        <div><h4>UR Play — Mídia</h4><p>Transmissões ao vivo, documentários e cobertura completa. Sua história contada com qualidade. Atletas viram referência.</p></div>
-      </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-green" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">🪙</div>
+      <div><h4>UR Coins</h4><p>Moeda interna da liga. Ganhe com vitórias e engajamento. Troque por treinos, produtos e benefícios.</p></div>
+    </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-blue" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">🎯</div>
+      <div><h4>Sistema de Draft</h4><p>Equipes montadas com equilíbrio estratégico. Todos têm chance. Competitividade real desde a rodada 1.</p></div>
+    </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-fire" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">📡</div>
+      <div><h4>UR Play — Mídia</h4><p>Transmissões ao vivo, documentários e cobertura completa. Atletas se tornam referência.</p></div>
     </div>
   </div>
 </div>
@@ -868,8 +539,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 <!-- CTA FINAL -->
 <div class="cta-sec fu">
   <div class="cta-glow"></div>
-  <h2>Pronto para<br><em>elevar o jogo?</em></h2>
-  <p>"Eleve o jogo, supere seus limites." — A vaga é sua. A evolução também.</p>
+  <p class="bordao">"Eleve o jogo, supere seus limites."</p>
+  <h2>Pronto para<br><span>jogar de verdade?</span></h2>
+  <p>Temporada T01 · 2026 · Inscrições abertas para todos os níveis.</p>
   <div class="cta-btns">
     <a href="UR_Inscricao_Atleta.html" class="btn-gold" style="font-size:20px;padding:18px 48px">⚡ Fazer Inscrição Agora</a>
     <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
@@ -881,33 +553,33 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:36px
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <img src="logo-ur-3d.png" alt="UR" style="height:32px" onerror="this.style.display='none'">
+  <div class="foot-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
     <span>ULTIMATE RIVALS</span>
   </div>
-  <div class="footer-links">
+  <div class="foot-links">
     <a href="UR_Inscricao_Atleta.html">Inscrição</a>
     <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
     <a href="https://instagram.com/ultimaterivals" target="_blank">Instagram</a>
     <a href="UR_Sistema_Volei_Pro_v4.html">Sistema UR</a>
   </div>
-  <p class="footer-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
 </footer>
 
 <script>
-// Fade-up scroll observer
-const obs = new IntersectionObserver((entries)=>{
+const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      e.target.classList.add('vis');
-      // stagger children
-      const items = e.target.querySelectorAll('.pilar-card,.fmt-card,.step,.lvl-card,.eco-card,.atleta-card');
-      items.forEach((el,i)=>{el.style.transitionDelay=(i*.12)+'s';el.classList.add('vis')});
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.pilar-card,.fmt-card,.step,.lvl,.eco-card').forEach((el,i)=>{
+        el.style.transitionDelay=(i*.1)+'s';
+        el.classList.add('on');
+      });
     }
   });
-},{threshold:0.1});
+},{threshold:.1});
 document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
