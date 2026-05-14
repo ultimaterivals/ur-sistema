@@ -142,7 +142,7 @@
 <!-- CONFIG (admin only — Supabase credentials) -->
 <script>
   const UR_CONFIG = {
-    supabaseUrl: localStorage.getItem('ur_insc_url') || '',
+    supabaseUrl: localStorage.getItem('ur_insc_url') || 'https://ongicywqaeedgzblllus.supabase.co',
     supabaseKey: localStorage.getItem('ur_insc_key') || ''
   };
 </script>
@@ -165,7 +165,7 @@
   <details class="config-panel" id="configPanel">
     <summary>Configuração Supabase (somente admin)</summary>
     <div style="margin-top:12px">
-      <div class="field"><label>Supabase URL</label><input id="cfgUrl" placeholder="https://xxxx.supabase.co" oninput="saveConfig()"></div>
+      <div class="field"><label>Supabase URL</label><input id="cfgUrl" placeholder="https://xxxx.supabase.co" value="https://ongicywqaeedgzblllus.supabase.co" oninput="saveConfig()"></div>
       <div class="field"><label>Anon Key</label><input id="cfgKey" type="password" placeholder="eyJ..." oninput="saveConfig()"></div>
       <small id="cfgStatus" style="color:var(--green)"></small>
     </div>
@@ -704,11 +704,12 @@ function saveConfig(){
   document.getElementById('cfgStatus').textContent = url ? '✓ Configuração salva' : '';
 }
 window.addEventListener('DOMContentLoaded', () => {
-  const u = localStorage.getItem('ur_insc_url')||'';
+  const u = localStorage.getItem('ur_insc_url') || 'https://ongicywqaeedgzblllus.supabase.co';
   const k = localStorage.getItem('ur_insc_key')||'';
   document.getElementById('cfgUrl').value = u;
   document.getElementById('cfgKey').value = k;
-  if(u) document.getElementById('cfgStatus').textContent = '✓ Supabase configurado';
+  UR_CONFIG.supabaseUrl = u; UR_CONFIG.supabaseKey = k;
+  if(u) document.getElementById('cfgStatus').textContent = '✓ URL configurada — insira a Anon Key para ativar';
   buildStars('techStars','techLabel','techScore',['','Iniciante','Básico','Intermediário','Avançado','Elite']);
   buildStars('physStars','physLabel','physScore',['','Leve','Moderado','Regular','Intenso','Atleta']);
   updateProgress(1);
