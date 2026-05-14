@@ -143,7 +143,7 @@
 <script>
   const UR_CONFIG = {
     supabaseUrl: localStorage.getItem('ur_insc_url') || 'https://ongicywqaeedgzblllus.supabase.co',
-    supabaseKey: localStorage.getItem('ur_insc_key') || ''
+    supabaseKey: localStorage.getItem('ur_insc_key') || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZ2ljeXdxYWVlZGd6YmxsbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjY5NTYsImV4cCI6MjA5NDM0Mjk1Nn0.UtVWQPL88y5-KR-qtttqnrOwG7_MtfWV-V_enmABCso'
   };
 </script>
 
@@ -709,7 +709,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('cfgUrl').value = u;
   document.getElementById('cfgKey').value = k;
   UR_CONFIG.supabaseUrl = u; UR_CONFIG.supabaseKey = k;
-  if(u) document.getElementById('cfgStatus').textContent = '✓ URL configurada — insira a Anon Key para ativar';
+  document.getElementById('cfgStatus').textContent = (u && k) ? '✓ Supabase totalmente configurado' : (u ? '✓ URL configurada — insira a Anon Key para ativar' : '');
   buildStars('techStars','techLabel','techScore',['','Iniciante','Básico','Intermediário','Avançado','Elite']);
   buildStars('physStars','physLabel','physScore',['','Leve','Moderado','Regular','Intenso','Atleta']);
   updateProgress(1);
