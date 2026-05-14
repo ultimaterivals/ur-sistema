@@ -4,355 +4,600 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ultimate Rivals — Liga de Vôlei de Praia | BH</title>
-<meta name="description" content="A liga de vôlei de praia mais vibrante de Belo Horizonte. Duplas e quartetos, todos os níveis. Inscreva-se agora!">
-<meta property="og:title" content="Ultimate Rivals — Liga de Vôlei de Praia">
-<meta property="og:description" content="Duplas e quartetos. Todos os níveis. Comunidade, ranking, transmissão ao vivo. Inscreva-se na temporada 2026!">
-<meta property="og:image" content="https://ur-sistema.vercel.app/logo-ur.png">
-<meta property="og:url" content="https://ur-sistema.vercel.app/landing.html">
+<meta name="description" content="O ecossistema esportivo mais inovador de Belo Horizonte. Duplas e quartetos, todos os níveis, Mentalidade Hunter. Temporada 2026 aberta!">
+<meta property="og:title" content="Ultimate Rivals — Liga de Vôlei de Praia BH">
+<meta property="og:description" content="Competição. Formação. Entretenimento. Seja um Hunter. Temporada 2026.">
+<meta property="og:image" content="logo-ur-3d.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://ur-sistema.vercel.app/landing.html">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07080d;--surface:#0f1018;--card:#13141e;--border:rgba(255,255,255,.07);
-  --gold:#ffd84d;--gold2:#f5c518;--gold3:#e6a800;
-  --green:#4caf50;--text:#e8e3d4;--muted:rgba(255,255,255,.38);
+  --bg:#050608;--surface:#0a0b10;--card:#0f1019;--card2:#13141f;--border:rgba(255,255,255,.07);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.35);
+  --red:#e84040;--green:#3ddc84;
+  --text:#edeade;--muted:rgba(255,255,255,.4);--muted2:rgba(255,255,255,.22);
   --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+  --radius:12px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,8,13,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+/* ══════════════════════════════════════
+   TICKER
+══════════════════════════════════════ */
+.ticker{background:var(--gold);height:36px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 28s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ticker-item{font-family:var(--display);font-size:13px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;padding:0 32px}
+.ticker-dot{width:5px;height:5px;background:#000;border-radius:50%;flex-shrink:0;opacity:.4}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav{position:sticky;top:0;z-index:1000;background:rgba(5,6,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:30px;filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,216,77,.4));opacity:.9}
-.nav-logo span{font-family:var(--display);font-size:20px;font-weight:900;color:var(--gold);letter-spacing:2px}
-.nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{color:var(--muted);font-size:13px;font-weight:600;text-decoration:none;transition:color .2s}
+.nav-logo-img{height:38px;width:auto;object-fit:contain;mix-blend-mode:lighten}
+.nav-logo-img-fallback{display:none;font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);letter-spacing:2px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.3px;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:8px 18px;border-radius:8px;text-decoration:none;font-family:var(--display);letter-spacing:.5px;transition:all .2s}
-.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,216,77,.35)}
-@media(max-width:600px){.nav-links{display:none}}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-season{background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+@media(max-width:700px){.nav-links{display:none}.nav-season{display:none}}
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(255,216,77,.12),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(255,100,50,.06),transparent 50%)}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:20px;text-transform:uppercase}
-.hero-title{font-family:var(--display);font-size:clamp(52px,12vw,100px);font-weight:900;line-height:.95;letter-spacing:-1px;margin-bottom:8px}
-.hero-title .line1{color:var(--text)}
-.hero-title .line2{color:var(--gold);-webkit-text-stroke:0px;text-shadow:0 0 40px rgba(255,216,77,.4)}
-.hero-sub{font-size:clamp(15px,3vw,19px);color:var(--muted);max-width:520px;margin:16px auto 36px;line-height:1.6}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-hero-primary{background:linear-gradient(135deg,var(--gold),var(--gold3));color:#000;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:.5px;padding:16px 36px;border-radius:12px;text-decoration:none;transition:all .25s;box-shadow:0 6px 24px rgba(255,216,77,.3)}
-.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(255,216,77,.45)}
-.btn-hero-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--text);font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:12px;text-decoration:none;transition:all .25s}
-.btn-hero-secondary:hover{border-color:rgba(255,216,77,.5);color:var(--gold);transform:translateY(-2px)}
-.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
-.stat{text-align:center}
-.stat-num{font-family:var(--display);font-size:36px;font-weight:900;color:var(--gold);line-height:1}
-.stat-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:4px}
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px 60px;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 100% 60% at 50% -10%,rgba(255,216,77,.15),transparent 55%),
+             radial-gradient(ellipse 70% 40% at 90% 90%,rgba(200,100,20,.08),transparent 50%),
+             var(--bg)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
+.hero-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(255,216,77,.1) 0%,transparent 65%);pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.4);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:24px;text-transform:uppercase;font-family:var(--display)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero-logo{width:130px;height:auto;margin:0 auto 20px;filter:drop-shadow(0 0 30px rgba(255,216,77,.5));mix-blend-mode:lighten}
+.hero-title{font-family:var(--display);font-size:clamp(56px,14vw,120px);font-weight:900;line-height:.9;letter-spacing:-2px;text-transform:uppercase}
+.hero-title .t1{color:#fff}
+.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.5)}
+.hero-tagline{font-family:var(--display);font-size:clamp(16px,3vw,22px);font-weight:600;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin:14px 0 8px}
+.hero-divider{width:60px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto}
+.hero-sub{font-size:clamp(14px,2.5vw,17px);color:var(--muted);max-width:500px;margin:0 auto 40px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-primary{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 40px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
+.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 36px;border-radius:10px;transition:all .25s}
+.btn-secondary:hover{border-color:rgba(255,216,77,.6);color:var(--gold)}
+.hero-stats{display:flex;gap:0;justify-content:center;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:600px;margin:0 auto}
+.h-stat{flex:1;padding:20px 24px;text-align:center;border-right:1px solid var(--border);background:rgba(255,255,255,.02)}
+.h-stat:last-child{border-right:none}
+.h-stat-num{font-family:var(--display);font-size:36px;font-weight:900;color:var(--gold);line-height:1}
+.h-stat-label{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:5px}
 
-/* ── SECTIONS ── */
-section{padding:80px 20px;max-width:1100px;margin:0 auto}
-.section-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
-.section-title{font-family:var(--display);font-size:clamp(32px,6vw,52px);font-weight:900;line-height:1.05;margin-bottom:16px}
-.section-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.65;margin-bottom:40px}
+/* ══════════════════════════════════════
+   SECTION COMMONS
+══════════════════════════════════════ */
+.section{padding:90px 20px;max-width:1100px;margin:0 auto}
+.section-full{padding:90px 20px;background:var(--surface)}
+.section-full .section{padding:0;margin:0 auto}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px;font-family:var(--display)}
+.s-title{font-family:var(--display);font-size:clamp(34px,6vw,56px);font-weight:900;line-height:1.0;text-transform:uppercase;margin-bottom:14px}
+.s-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.7}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid-3,.grid-2,.grid-4{grid-template-columns:1fr}}
 
-/* ── MODALITIES GRID ── */
-.mod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.mod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:all .3s;cursor:default}
-.mod-card:hover{border-color:rgba(255,216,77,.35);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
-.mod-icon{font-size:36px;margin-bottom:14px}
-.mod-name{font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);margin-bottom:6px;letter-spacing:.5px}
-.mod-desc{font-size:13px;color:var(--muted);line-height:1.6}
-.mod-tag{display:inline-block;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.8px;padding:3px 8px;border-radius:6px;margin-top:12px;text-transform:uppercase}
+/* ══════════════════════════════════════
+   3D ICON CARDS
+══════════════════════════════════════ */
+.icon-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:all .3s;position:relative;overflow:hidden}
+.icon-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.4),transparent);opacity:0;transition:opacity .3s}
+.icon-card:hover{border-color:rgba(255,216,77,.25);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.icon-card:hover::before{opacity:1}
+.icon-3d{width:64px;height:64px;margin-bottom:20px;position:relative}
 
-/* ── HOW IT WORKS ── */
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
-.step-card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px 24px}
-.step-num{font-family:var(--display);font-size:56px;font-weight:900;color:rgba(255,216,77,.12);line-height:1;margin-bottom:8px}
-.step-title{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:.3px}
-.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+/* SVG icon style */
+.icon-box{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;overflow:hidden}
+.icon-box svg{width:34px;height:34px;position:relative;z-index:1}
+.icon-box::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,.08);border-radius:14px 14px 0 0}
 
-/* ── LEVELS ── */
-.levels-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.level-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
-.level-stars{font-size:18px;margin-bottom:8px;letter-spacing:2px}
-.level-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px}
-.level-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.ib-gold{background:linear-gradient(145deg,#332200,#1a1000);box-shadow:0 8px 24px rgba(200,144,0,.3),inset 0 1px 0 rgba(255,216,77,.2)}
+.ib-dark{background:linear-gradient(145deg,#1a1a2e,#0d0d1a);box-shadow:0 8px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+.ib-hunter{background:linear-gradient(145deg,#1a0f00,#0f0800);box-shadow:0 8px 24px rgba(255,140,0,.2),inset 0 1px 0 rgba(255,160,0,.15)}
 
-/* ── COMMUNITY CTA ── */
-.community{text-align:center;padding:80px 20px;background:linear-gradient(135deg,rgba(255,216,77,.07),rgba(255,100,50,.04));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.community .section-title{margin:0 auto 12px}
-.community .section-sub{margin:0 auto 32px}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-wpp{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,.1);border:1.5px solid rgba(37,211,102,.4);color:#25d366;font-family:var(--display);font-size:18px;font-weight:900;padding:15px 28px;border-radius:12px;text-decoration:none;transition:all .25s;letter-spacing:.3px}
-.btn-wpp:hover{background:rgba(37,211,102,.18);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,.2)}
-.btn-insc{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold3));color:#000;font-family:var(--display);font-size:18px;font-weight:900;padding:15px 28px;border-radius:12px;text-decoration:none;transition:all .25s;letter-spacing:.3px}
-.btn-insc:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,216,77,.4)}
+.icon-card h3{font-family:var(--display);font-size:20px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;color:var(--text)}
+.icon-card p{font-size:13px;color:var(--muted);line-height:1.65}
 
-/* ── FORMAT CARDS ── */
-.format-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.format-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;transition:all .25s}
-.format-card:hover{border-color:rgba(255,216,77,.3);transform:translateY(-3px)}
-.format-icon{font-size:28px;margin-bottom:10px}
-.format-name{font-family:var(--display);font-size:17px;font-weight:900;color:var(--gold);margin-bottom:4px;letter-spacing:.3px}
-.format-desc{font-size:11px;color:var(--muted);line-height:1.5}
+/* ══════════════════════════════════════
+   HUNTERS SECTION
+══════════════════════════════════════ */
+.hunters-wrap{background:linear-gradient(135deg,#0a0600,#0f0a00,#0a0600);border:1px solid rgba(255,140,0,.2);border-radius:20px;overflow:hidden;position:relative}
+.hunters-wrap::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cpath fill='%23ffffff' fill-opacity='0.015' d='M20 20l10-10v10z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hunters-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center}
+@media(max-width:768px){.hunters-inner{grid-template-columns:1fr}}
+.hunters-left{padding:56px 48px;position:relative;z-index:1}
+@media(max-width:768px){.hunters-left{padding:36px 24px}}
+.hunters-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.35);color:#ffaa00;font-size:11px;font-weight:800;letter-spacing:2px;padding:5px 14px;border-radius:3px;margin-bottom:20px;text-transform:uppercase;font-family:var(--display)}
+.hunters-title{font-family:var(--display);font-size:clamp(38px,6vw,60px);font-weight:900;line-height:.95;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.hunters-title span{color:#ffaa00}
+.hunters-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.7;margin:16px 0 28px;max-width:420px}
+.hunter-traits{display:flex;flex-direction:column;gap:12px}
+.trait{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.7);font-weight:500}
+.trait-icon{width:34px;height:34px;border-radius:8px;background:rgba(255,140,0,.15);border:1px solid rgba(255,140,0,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.hunters-right{display:flex;align-items:center;justify-content:center;padding:48px;position:relative}
+@media(max-width:768px){.hunters-right{padding:24px;padding-top:0}}
+.hunter-logo{width:260px;height:auto;filter:drop-shadow(0 0 40px rgba(255,140,0,.4)) drop-shadow(0 0 80px rgba(255,80,0,.2));animation:float 4s ease-in-out infinite}
+@media(max-width:768px){.hunter-logo{width:180px}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* ── FOOTER ── */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 20px;text-align:center}
-.footer-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}
-.footer-logo img{height:28px;filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,216,77,.3));opacity:.7}
-.footer-logo span{font-family:var(--display);font-size:18px;font-weight:900;color:var(--muted);letter-spacing:2px}
-footer p{font-size:12px;color:var(--muted);line-height:1.8}
-footer a{color:var(--gold);text-decoration:none}
+/* ══════════════════════════════════════
+   SEASON CARD (Kings League style)
+══════════════════════════════════════ */
+.season-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;gap:20px;flex-wrap:wrap}
+.season-pill{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:1.5px;padding:6px 16px;border-radius:4px;text-transform:uppercase}
+.format-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;cursor:default}
+.format-card:hover{border-color:rgba(255,216,77,.3);transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.5)}
+.format-card-top{height:130px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.fc-duplas{background:linear-gradient(135deg,#0d1520,#0a1030)}
+.fc-quartetos{background:linear-gradient(135deg,#1a0d00,#100800)}
+.format-card-top-icon{font-size:56px;filter:drop-shadow(0 0 20px rgba(255,216,77,.5))}
+.format-card-body{padding:22px}
+.format-card-tag{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;opacity:.7}
+.format-card h3{font-family:var(--display);font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:10px}
+.format-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.format-tags{display:flex;flex-wrap:wrap;gap:6px}
+.ftag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:11px;font-weight:600;color:rgba(255,255,255,.6);padding:3px 10px;border-radius:20px}
 
-/* ── INSTAGRAM LINK BANNER ── */
-.ig-banner{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:16px;padding:28px 24px;text-align:center;margin:0 auto 40px;max-width:560px}
-.ig-banner p{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:4px}
-.ig-banner a{display:inline-block;margin-top:10px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-family:var(--display);font-size:17px;font-weight:900;padding:10px 24px;border-radius:10px;text-decoration:none}
-.ig-banner a:hover{background:rgba(255,255,255,.25)}
-.ig-url{font-family:monospace;font-size:14px;background:rgba(255,255,255,.15);padding:8px 16px;border-radius:8px;color:#fff;margin-top:8px;display:inline-block;letter-spacing:.5px}
+/* ══════════════════════════════════════
+   HOW IT WORKS STEPS
+══════════════════════════════════════ */
+.steps-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.steps-wrap::before{content:'';position:absolute;top:42px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.3) 20%,rgba(255,216,77,.3) 80%,transparent);pointer-events:none}
+@media(max-width:900px){.steps-wrap{grid-template-columns:1fr 1fr}.steps-wrap::before{display:none}}
+@media(max-width:600px){.steps-wrap{grid-template-columns:1fr}}
+.step{text-align:center;padding:24px 16px}
+.step-num{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--display);font-size:22px;font-weight:900;position:relative;z-index:1}
+.step-num-inner{background:linear-gradient(145deg,#2a1c00,#1a1100);border:2px solid rgba(255,216,77,.5);box-shadow:0 0 24px rgba(255,216,77,.2)}
+.step-num span{color:var(--gold)}
+.step h4{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.step p{font-size:13px;color:var(--muted);line-height:1.6}
 
-@media(max-width:600px){
-  .hero-stats{gap:24px}
-  .stat-num{font-size:28px}
-  section{padding:60px 16px}
-}
+/* ══════════════════════════════════════
+   LEVELS TABLE
+══════════════════════════════════════ */
+.levels-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:900px){.levels-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.levels-grid{grid-template-columns:1fr}}
+.level-card{border-radius:12px;padding:22px 16px;text-align:center;border:1px solid var(--border);background:var(--card);transition:all .3s;position:relative;overflow:hidden}
+.level-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.4)}
+.level-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.lv1::after{background:linear-gradient(90deg,#555,#888)}
+.lv2::after{background:linear-gradient(90deg,#2e7d32,#4caf50)}
+.lv3::after{background:linear-gradient(90deg,#1565c0,#42a5f5)}
+.lv4::after{background:linear-gradient(90deg,#6a1b9a,#ab47bc)}
+.lv5::after{background:linear-gradient(90deg,var(--gold3),var(--gold))}
+.lv5{border-color:rgba(255,216,77,.2);background:linear-gradient(180deg,rgba(255,216,77,.05),var(--card))}
+.level-badge{font-family:var(--display);font-size:40px;font-weight:900;line-height:1;margin-bottom:6px}
+.lv1 .level-badge{color:#888}
+.lv2 .level-badge{color:#4caf50}
+.lv3 .level-badge{color:#42a5f5}
+.lv4 .level-badge{color:#ab47bc}
+.lv5 .level-badge{color:var(--gold);text-shadow:0 0 20px rgba(255,216,77,.5)}
+.level-name{font-family:var(--display);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;color:var(--text)}
+.level-desc{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ══════════════════════════════════════
+   UR ECOSYSTEM CARDS
+══════════════════════════════════════ */
+.eco-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;align-items:flex-start;gap:18px;transition:all .3s}
+.eco-card:hover{border-color:rgba(255,216,77,.25);transform:translateY(-3px)}
+.eco-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+.eco-card h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px}
+.eco-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ══════════════════════════════════════
+   DIVIDER LINE
+══════════════════════════════════════ */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent);margin:0}
+
+/* ══════════════════════════════════════
+   CTA FINAL
+══════════════════════════════════════ */
+.cta-section{background:linear-gradient(135deg,#0a0800,#120f00,#0a0800);border-top:1px solid rgba(255,216,77,.15);border-bottom:1px solid rgba(255,216,77,.15);padding:100px 20px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(255,216,77,.12) 0%,transparent 65%);pointer-events:none}
+.cta-section h2{font-family:var(--display);font-size:clamp(40px,8vw,80px);font-weight:900;text-transform:uppercase;line-height:.95;margin-bottom:12px;position:relative;z-index:1}
+.cta-section h2 span{color:var(--gold)}
+.cta-section p{font-size:16px;color:var(--muted);max-width:460px;margin:0 auto 36px;line-height:1.7;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 32px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px}
+.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:40px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:100%}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{height:32px;filter:drop-shadow(0 0 8px rgba(255,216,77,.3))}
+.footer-logo span{font-family:var(--display);font-size:16px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:11px;color:var(--muted2)}
+
+/* ══════════════════════════════════════
+   ANIMATED ENTRY
+══════════════════════════════════════ */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">⚡ Temporada 2026 — Inscrições Abertas</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🐺 Mentalidade Hunter — Seja mais que um atleta</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🏆 Sistema de Ranking, Draft e UR Coins</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📍 Belo Horizonte — MG</span><span class="ticker-dot"></span>
+    <span class="ticker-item">⚡ Temporada 2026 — Inscrições Abertas</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🏐 Vôlei de Praia — Duplas & Quartetos</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🐺 Mentalidade Hunter — Seja mais que um atleta</span><span class="ticker-dot"></span>
+    <span class="ticker-item">🏆 Sistema de Ranking, Draft e UR Coins</span><span class="ticker-dot"></span>
+    <span class="ticker-item">📍 Belo Horizonte — MG</span><span class="ticker-dot"></span>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="logo-ur.png" alt="UR" onerror="this.style.display='none'">
-    <span>ULTIMATE RIVALS</span>
+    <img src="logo-ur-3d.png" alt="UR" class="nav-logo-img"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="nav-logo-img-fallback">⚡ ULTIMATE RIVALS</span>
   </div>
   <div class="nav-links">
     <a href="#modalidades">Modalidades</a>
-    <a href="#como-funciona">Como funciona</a>
+    <a href="#hunters">Hunters</a>
+    <a href="#como-funciona">Como Funciona</a>
     <a href="#niveis">Níveis</a>
-    <a href="#comunidade">Comunidade</a>
-    <a class="nav-cta" href="inscricao.html">⚡ Inscreva-se</a>
+    <a href="#ecossistema">Ecossistema</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="UR_Inscricao_Atleta.html" class="nav-cta">⚡ Inscreva-se</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<div class="hero">
-  <div class="hero-badge">🏐 Temporada 2026 · Belo Horizonte</div>
-  <h1 class="hero-title">
-    <div class="line1">ULTIMATE</div>
-    <div class="line2">RIVALS</div>
-  </h1>
-  <p class="hero-sub">A liga de vôlei de praia mais vibrante de BH. Duplas e quartetos para todos os níveis — do iniciante ao elite. Jogue, evolua, compita.</p>
-  <div class="hero-btns">
-    <a href="inscricao.html" class="btn-hero-primary">⚡ Garantir minha vaga</a>
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-hero-secondary">💬 Entrar na Comunidade</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span> Temporada T01 · 2026 · Inscrições Abertas
+    </div>
+    <img src="logo-ur-3d.png" alt="Ultimate Rivals" class="hero-logo"
+         onerror="this.style.display='none'">
+    <h1 class="hero-title">
+      <div class="t1">ULTIMATE</div>
+      <div class="t2">RIVALS</div>
+    </h1>
+    <p class="hero-tagline">Liga de Vôlei de Praia · Belo Horizonte</p>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">O ecossistema esportivo que une competição, formação de atletas e entretenimento. Seja parte da liga.</p>
+    <div class="hero-btns">
+      <a href="UR_Inscricao_Atleta.html" class="btn-primary">⚡ Garantir minha vaga</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-secondary">💬 Comunidade UR</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-num">5</div>
+        <div class="h-stat-label">Níveis</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">2</div>
+        <div class="h-stat-label">Formatos</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">BH</div>
+        <div class="h-stat-label">Cidade</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">T01</div>
+        <div class="h-stat-label">Temporada</div>
+      </div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">2×2</div><div class="stat-label">Duplas</div></div>
-    <div class="stat"><div class="stat-num">4×4</div><div class="stat-label">Quartetos</div></div>
-    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Níveis</div></div>
-    <div class="stat"><div class="stat-num">BH</div><div class="stat-label">Polo</div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PILARES -->
+<div class="section fade-up">
+  <div style="margin-bottom:48px">
+    <p class="s-label">O que é o Ultimate Rivals</p>
+    <h2 class="s-title">Mais do que<br>um torneio</h2>
+    <p class="s-sub">Um ecossistema completo que integra competição, desenvolvimento humano e entretenimento de alto nível.</p>
+  </div>
+  <div class="grid-3">
+    <div class="icon-card fade-up">
+      <div class="icon-box ib-gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      <h3>Competição</h3>
+      <p>Torneios oficiais com sistema de draft, ranking individual e premiações. Cada edição é um espetáculo esportivo de alto nível.</p>
+    </div>
+    <div class="icon-card fade-up">
+      <div class="icon-box ib-dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7ba7ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <h3>Formação</h3>
+      <p>Desenvolvimento técnico, físico, mental e de valores. Atletas que saem do UR crescem dentro e fora das quadras.</p>
+    </div>
+    <div class="icon-card fade-up">
+      <div class="icon-box ib-hunter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+      </div>
+      <h3>Entretenimento</h3>
+      <p>Cobertura de mídia, transmissões ao vivo, documentários e conteúdo exclusivo. Cada jogo conta uma história.</p>
+    </div>
   </div>
 </div>
 
-<!-- ── MODALIDADES ── -->
-<section id="modalidades">
-  <div class="section-label">O que oferecemos</div>
-  <h2 class="section-title">Modalidades<br><span style="color:var(--gold)">Ultimate Rivals</span></h2>
-  <p class="section-sub">Escolha como quer jogar. Cada formato tem sua identidade, seu ritmo e sua competitividade.</p>
-  <div class="mod-grid">
-    <div class="mod-card">
-      <div class="mod-icon">⚡</div>
-      <div class="mod-name">UR Play</div>
-      <div class="mod-desc">Liga semanal com ranking e pontuação acumulada. O formato ideal para quem quer jogar toda semana, evoluir e fazer parte de uma comunidade ativa.</div>
-      <div class="mod-tag">Semanal</div>
-    </div>
-    <div class="mod-card">
-      <div class="mod-icon">🏆</div>
-      <div class="mod-name">UR Series</div>
-      <div class="mod-desc">Torneios mensais eliminatórios com chaveamento. Grupos + playoffs + final no mesmo dia. Premiação para os finalistas.</div>
-      <div class="mod-tag">Mensal</div>
-    </div>
-    <div class="mod-card">
-      <div class="mod-icon">🥇</div>
-      <div class="mod-name">UR Championship</div>
-      <div class="mod-desc">O maior evento da temporada. Chaveamento completo, transmissão ao vivo, cerimônia de premiação e troféu. O palco dos melhores.</div>
-      <div class="mod-tag">Semestral</div>
-    </div>
-    <div class="mod-card">
-      <div class="mod-icon">🎯</div>
-      <div class="mod-name">Treino UR</div>
-      <div class="mod-desc">Sessões de treino técnico conduzidas por profissionais. Sem ranqueamento — foco total em fundamentos e evolução técnica.</div>
-      <div class="mod-tag">Desenvolvimento</div>
-    </div>
-  </div>
-</section>
+<div class="divider"></div>
 
-<!-- ── FORMATOS ── -->
-<section>
-  <div class="section-label">Categorias de disputa</div>
-  <h2 class="section-title">Duplas e<br><span style="color:var(--gold)">Quartetos</span></h2>
-  <p class="section-sub">Seis categorias diferentes. Há um formato perfeito para você.</p>
-  <div class="format-grid">
-    <div class="format-card">
-      <div class="format-icon">👨‍👨‍👦</div>
-      <div class="format-name">DM</div>
-      <div class="format-desc">Dupla Masculina<br>2×2 · Homens</div>
+<!-- HUNTERS SECTION -->
+<div id="hunters" class="section fade-up">
+  <div class="hunters-wrap">
+    <div class="hunters-inner">
+      <div class="hunters-left">
+        <div class="hunters-badge">🐺 Hunters UR</div>
+        <h2 class="hunters-title">Mentalidade<br><span>Campeã</span></h2>
+        <p class="hunters-sub">"Mais do que atletas, queremos formar líderes, exemplos e protagonistas da sua própria evolução." Os Hunters UR são a essência do projeto — homens e mulheres que elevam o padrão dentro e fora das quadras.</p>
+        <div class="hunter-traits">
+          <div class="trait"><div class="trait-icon">🎯</div>Mentalidade vencedora aplicada ao jogo</div>
+          <div class="trait"><div class="trait-icon">🔥</div>Disciplina, resiliência e foco no processo</div>
+          <div class="trait"><div class="trait-icon">🤝</div>Liderança, ética e trabalho em equipe</div>
+          <div class="trait"><div class="trait-icon">⚡</div>Alto rendimento com propósito real</div>
+        </div>
+      </div>
+      <div class="hunters-right">
+        <img src="logo-hunter.png" alt="Hunters UR" class="hunter-logo"
+             onerror="this.style.fontSize='80px';this.style.display='block';this.outerHTML='<div style=\'font-size:80px;text-align:center\'>🐺</div>'">
+      </div>
     </div>
-    <div class="format-card">
-      <div class="format-icon">👩‍👩‍👦</div>
-      <div class="format-name">DF</div>
-      <div class="format-desc">Dupla Feminina<br>2×2 · Mulheres</div>
-    </div>
-    <div class="format-card">
-      <div class="format-icon">🤝</div>
-      <div class="format-name">DX</div>
-      <div class="format-desc">Dupla Mista<br>2×2 · Misto</div>
-    </div>
-    <div class="format-card">
-      <div class="format-icon">👨‍👨‍👦‍👦</div>
-      <div class="format-name">QM</div>
-      <div class="format-desc">Quarteto Masc.<br>4×4 · Homens</div>
-    </div>
-    <div class="format-card">
-      <div class="format-icon">👩‍👩‍👦‍👦</div>
-      <div class="format-name">QF</div>
-      <div class="format-desc">Quarteto Fem.<br>4×4 · Mulheres</div>
-    </div>
-    <div class="format-card">
-      <div class="format-icon">🌟</div>
-      <div class="format-name">QX</div>
-      <div class="format-desc">Quarteto Misto<br>4×4 · Mix</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COMO FUNCIONA ── -->
-<section id="como-funciona">
-  <div class="section-label">Simples assim</div>
-  <h2 class="section-title">Como<br><span style="color:var(--gold)">Funciona</span></h2>
-  <p class="section-sub">Do zero ao jogo em 4 passos.</p>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-title">Preencha a ficha</div>
-      <div class="step-desc">Inscrição online em 5 minutos. Informe seu nível, disponibilidade e categorias de interesse.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-title">Nivelamento</div>
-      <div class="step-desc">Você participa de uma sessão de avaliação para ser alocado no grupo certo — jogos equilibrados e justos.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-title">Jogue e pontue</div>
-      <div class="step-desc">Participe das rodadas do UR Play, acumule pontos no ranking e suba de nível naturalmente.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div class="step-title">Compita nos torneios</div>
-      <div class="step-desc">Com ranking estabelecido, dispute as UR Series e o Championship com transmissão ao vivo e premiação.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── NÍVEIS ── -->
-<section id="niveis">
-  <div class="section-label">Todos são bem-vindos</div>
-  <h2 class="section-title">Do iniciante<br><span style="color:var(--gold)">ao Elite</span></h2>
-  <p class="section-sub">Cinco níveis técnicos garantem que você sempre jogue com e contra pessoas do mesmo patamar.</p>
-  <div class="levels-wrap">
-    <div class="level-card">
-      <div class="level-stars">⭐</div>
-      <div class="level-name">N1 — Iniciante</div>
-      <div class="level-desc">Menos de 6 meses. Aprendendo fundamentos e regras básicas.</div>
-    </div>
-    <div class="level-card">
-      <div class="level-stars">⭐⭐</div>
-      <div class="level-name">N2 — Básico</div>
-      <div class="level-desc">Consegue manter rally. Saque por cima inconstante. Noções de posicionamento.</div>
-    </div>
-    <div class="level-card">
-      <div class="level-stars">⭐⭐⭐</div>
-      <div class="level-name">N3 — Intermediário</div>
-      <div class="level-desc">Treina regularmente. Domina saque, passe e ataque simples. Entende táticas.</div>
-    </div>
-    <div class="level-card">
-      <div class="level-stars">⭐⭐⭐⭐</div>
-      <div class="level-name">N4 — Avançado</div>
-      <div class="level-desc">Técnica consistente. Já disputou ligas ou campeonatos. 3+ anos de prática.</div>
-    </div>
-    <div class="level-card">
-      <div class="level-stars">⭐⭐⭐⭐⭐</div>
-      <div class="level-name">N5 — Elite</div>
-      <div class="level-desc">Atleta competitivo. Ligas federadas ou alto nível. Referência técnica em quadra.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── INSTAGRAM SHARING GUIDE ── -->
-<section>
-  <div class="section-label">Para o Instagram</div>
-  <h2 class="section-title">Como<br><span style="color:var(--gold)">Compartilhar</span></h2>
-  <p class="section-sub">Guia rápido para divulgar o link de inscrição no Instagram.</p>
-  <div class="ig-banner">
-    <p style="font-size:15px;font-weight:700;color:#fff;margin-bottom:4px">📌 Link na Bio</p>
-    <p>Cole este link na bio do perfil @ultimaterivals:</p>
-    <div class="ig-url">ur-sistema.vercel.app/inscricao.html</div>
-    <a href="inscricao.html">Ver página de inscrição →</a>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:800px;margin:0 auto">
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
-      <div style="font-size:24px;margin-bottom:10px">📸</div>
-      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">Stories com Link Sticker</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Poste um flyer nos Stories → adicione o adesivo de link → cole <code style="background:#1a1a2e;padding:2px 6px;border-radius:4px;font-size:11px">ur-sistema.vercel.app/inscricao.html</code></div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
-      <div style="font-size:24px;margin-bottom:10px">🖼️</div>
-      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">Post no Feed</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Poste o flyer de inscrição no feed. Na legenda escreva: <em style="color:var(--text)">"Link na bio para se inscrever 👆"</em> e direcione para o link.</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px">
-      <div style="font-size:24px;margin-bottom:10px">💬</div>
-      <div style="font-family:var(--display);font-size:16px;font-weight:800;margin-bottom:6px">WhatsApp e Grupos</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6">Envie o link direto: <code style="background:#1a1a2e;padding:2px 6px;border-radius:4px;font-size:11px">ur-sistema.vercel.app/inscricao.html</code> com uma foto do evento ou arte gráfica.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COMMUNITY CTA ── -->
-<div class="community" id="comunidade">
-  <div style="max-width:640px;margin:0 auto">
-    <div class="section-label" style="text-align:center">Faça parte</div>
-    <h2 class="section-title">Pronto para<br><span style="color:var(--gold)">jogar?</span></h2>
-    <p class="section-sub" style="text-align:center">Inscreva-se agora na temporada 2026 ou entre na nossa comunidade do WhatsApp para ficar por dentro de tudo.</p>
-    <div class="cta-btns">
-      <a href="inscricao.html" class="btn-insc">⚡ Fazer Inscrição</a>
-      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">💬 Comunidade UR</a>
-    </div>
-    <p style="margin-top:24px;font-size:12px;color:var(--muted)">Dúvidas? Fale com a gente no Instagram <a href="https://instagram.com/ultimaterivals" target="_blank" style="color:var(--gold)">@ultimaterivals</a></p>
   </div>
 </div>
 
-<!-- ── FOOTER ── -->
+<div class="divider"></div>
+
+<!-- MODALIDADES -->
+<div id="modalidades" class="section-full fade-up">
+  <div class="section">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+      <div>
+        <p class="s-label">Formatos de Jogo</p>
+        <h2 class="s-title">Modalidades<br>Oficiais</h2>
+      </div>
+      <span class="season-pill">Temporada T01 · 2026</span>
+    </div>
+    <div class="grid-2">
+      <div class="format-card fade-up">
+        <div class="format-card-top fc-duplas">
+          <span class="format-card-top-icon">🏐</span>
+        </div>
+        <div class="format-card-body">
+          <p class="format-card-tag">Formato 2×2</p>
+          <h3>Duplas</h3>
+          <p>Vôlei de praia no formato clássico. Dois atletas por equipe, alta intensidade, máxima liberdade tática. Posições: Bloqueador(a) e Defensor(a).</p>
+          <div class="format-tags">
+            <span class="ftag">2 atletas</span>
+            <span class="ftag">Vôlei de Praia</span>
+            <span class="ftag">Draft</span>
+            <span class="ftag">Ranking</span>
+          </div>
+        </div>
+      </div>
+      <div class="format-card fade-up">
+        <div class="format-card-top fc-quartetos">
+          <span class="format-card-top-icon">🔥</span>
+        </div>
+        <div class="format-card-body">
+          <p class="format-card-tag">Formato 4×4</p>
+          <h3>Quartetos</h3>
+          <p>Mais jogadores, mais estratégia, mais espetáculo. Posições completas: Universal, Levantador(a), Ponteiro(a), Central, Oposto(a) e Líbero.</p>
+          <div class="format-tags">
+            <span class="ftag">4 atletas</span>
+            <span class="ftag">Estratégia</span>
+            <span class="ftag">Draft</span>
+            <span class="ftag">Ranking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMO FUNCIONA -->
+<div id="como-funciona" class="section fade-up">
+  <div style="text-align:center;margin-bottom:56px">
+    <p class="s-label">O Processo</p>
+    <h2 class="s-title">Como Funciona</h2>
+    <p class="s-sub" style="margin:0 auto">Do cadastro ao pódio — entenda a jornada de um atleta UR.</p>
+  </div>
+  <div class="steps-wrap">
+    <div class="step fade-up">
+      <div class="step-num step-num-inner"><span>01</span></div>
+      <h4>Inscrição & Nivelamento</h4>
+      <p>Cadastre-se, informe seu nível e posição. O sistema te classifica automaticamente no ciclo certo.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num step-num-inner"><span>02</span></div>
+      <h4>Draft de Equipes</h4>
+      <p>As equipes são montadas pelo sistema de draft, garantindo equilíbrio competitivo e aleatoriedade estratégica.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num step-num-inner"><span>03</span></div>
+      <h4>Torneio Oficial</h4>
+      <p>Etapas com árbitro, placar, transmissão e cobertura de mídia. Cada jogo vale pontos no ranking.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num step-num-inner"><span>04</span></div>
+      <h4>Ranking & Evolução</h4>
+      <p>Seu desempenho atualiza seu ranking semanal. Suba de nível, conquiste UR Coins e seja reconhecido.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- NÍVEIS -->
+<div id="niveis" class="section-full fade-up">
+  <div class="section">
+    <div style="text-align:center;margin-bottom:44px">
+      <p class="s-label">Sistema de Progressão</p>
+      <h2 class="s-title">Níveis UR</h2>
+      <p class="s-sub" style="margin:0 auto">Todos têm espaço — do iniciante ao atleta de elite. Suba o nível com performance real.</p>
+    </div>
+    <div class="levels-grid">
+      <div class="level-card lv1 fade-up">
+        <div class="level-badge">N1</div>
+        <div class="level-name">Iniciante</div>
+        <div class="level-desc">Primeiros contatos com a modalidade. Foco em fundamentos, diversão e pertencimento à comunidade UR.</div>
+      </div>
+      <div class="level-card lv2 fade-up">
+        <div class="level-badge">N2</div>
+        <div class="level-name">Desenvolvimento</div>
+        <div class="level-desc">Base técnica em consolidação. Atleta que joga com frequência e busca evolução constante dentro e fora das quadras.</div>
+      </div>
+      <div class="level-card lv3 fade-up">
+        <div class="level-badge">N3</div>
+        <div class="level-name">Competitivo</div>
+        <div class="level-desc">Conhece o jogo, entende posicionamento e já busca resultado. Foco em táticas de jogo e consistência técnica.</div>
+      </div>
+      <div class="level-card lv4 fade-up">
+        <div class="level-badge">N4</div>
+        <div class="level-name">Avançado</div>
+        <div class="level-desc">Alta performance, leitura de jogo refinada e mentalidade competitiva. Experiência em torneios e liderança de equipe.</div>
+      </div>
+      <div class="level-card lv5 fade-up">
+        <div class="level-badge">N5</div>
+        <div class="level-name">Elite ⚡</div>
+        <div class="level-desc">Topo do sistema UR. Padrão próximo ao profissional. Referência técnica, mental e competitiva para toda a liga.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ECOSSISTEMA -->
+<div id="ecossistema" class="section fade-up">
+  <div style="margin-bottom:48px">
+    <p class="s-label">Ecossistema UR</p>
+    <h2 class="s-title">Tudo integrado.<br>Nada isolado.</h2>
+    <p class="s-sub">Ranking, moedas internas, draft, mídia e formação — tudo conectado na mesma plataforma.</p>
+  </div>
+  <div class="grid-2">
+    <div class="eco-card fade-up">
+      <div class="eco-icon" style="background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.25)">🏆</div>
+      <div>
+        <h4>Ranking Individual</h4>
+        <p>Atualizado a cada torneio. Seu posicionamento na liga reflete sua performance real e abre portas para o próximo nível.</p>
+      </div>
+    </div>
+    <div class="eco-card fade-up">
+      <div class="eco-icon" style="background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.2)">🪙</div>
+      <div>
+        <h4>UR Coins</h4>
+        <p>Moeda interna do ecossistema. Ganhe com vitórias, presença e engajamento. Troque por treinos, produtos e benefícios exclusivos.</p>
+      </div>
+    </div>
+    <div class="eco-card fade-up">
+      <div class="eco-icon" style="background:rgba(100,150,255,.1);border:1px solid rgba(100,150,255,.2)">🎯</div>
+      <div>
+        <h4>Sistema de Draft</h4>
+        <p>Equipes montadas por processo seletivo justo. Todos os atletas têm chance. Competitividade equilibrada desde o primeiro torneio.</p>
+      </div>
+    </div>
+    <div class="eco-card fade-up">
+      <div class="eco-icon" style="background:rgba(255,100,80,.1);border:1px solid rgba(255,100,80,.2)">📡</div>
+      <div>
+        <h4>UR Play — Mídia</h4>
+        <p>Transmissões ao vivo, documentários e cobertura completa. Sua história contada com qualidade e emoção. Atletas se tornam referência.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA FINAL -->
+<div class="cta-section fade-up">
+  <div class="cta-glow"></div>
+  <h2>Pronto para<br><span>elevar o jogo?</span></h2>
+  <p>"Eleve o jogo, supere seus limites." — A vaga é sua. A evolução também.</p>
+  <div class="cta-btns">
+    <a href="UR_Inscricao_Atleta.html" class="btn-primary" style="font-size:20px;padding:18px 44px">⚡ Fazer Inscrição Agora</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Comunidade WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="logo-ur.png" alt="UR" onerror="this.style.display='none'">
+    <img src="logo-ur-3d.png" alt="UR" style="height:36px;mix-blend-mode:lighten"
+         onerror="this.style.display='none'">
     <span>ULTIMATE RIVALS</span>
   </div>
-  <p>
-    Liga de Vôlei de Praia · Belo Horizonte · Temporada 2026<br>
-    <a href="inscricao.html">Inscrição</a> ·
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">Comunidade WhatsApp</a> ·
+  <div class="footer-links">
+    <a href="UR_Inscricao_Atleta.html">Inscrição</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
     <a href="https://instagram.com/ultimaterivals" target="_blank">Instagram</a>
-  </p>
-  <p style="margin-top:12px;font-size:11px;opacity:.4">© 2026 Ultimate Rivals. Todos os direitos reservados.</p>
+    <a href="UR_Sistema_Volei_Pro_v4.html">Sistema UR</a>
+  </div>
+  <p class="footer-copy">© 2026 Ultimate Rivals · BH · Todos os direitos reservados</p>
 </footer>
+
+<script>
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      // stagger children inside
+      e.target.querySelectorAll('.icon-card,.format-card,.step,.level-card,.eco-card').forEach((el,i) => {
+        el.style.transitionDelay = (i * 0.1) + 's';
+        el.classList.add('visible');
+      });
+    }
+  });
+}, {threshold: 0.12});
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
