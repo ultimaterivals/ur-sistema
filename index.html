@@ -959,7 +959,7 @@
       data.franchise = data.franchise || {units:[], licenseRequests:[], royalties:[]};
       data.mediaContent = Array.isArray(data.mediaContent) ? data.mediaContent : [];
       data.integrations = data.integrations || {instagram:{}, supabase:{}, mercadopago:{}, whatsapp:{}, notifications:{}};
-      if(!data.integrations.supabase?.url) data.integrations.supabase = {...(data.integrations.supabase||{}), url:"https://ongicywqaeedgzblllus.supabase.co", key:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZ2ljeXdxYWVlZGd6YmxsbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjY5NTYsImV4cCI6MjA5NDM0Mjk1Nn0.UtVWQPL88y5-KR-qtttqnrOwG7_MtfWV-V_enmABCso", connected:true};
+      if(!data.integrations.supabase?.url || !data.integrations.supabase?.key) data.integrations.supabase = {...(data.integrations.supabase||{}), url:"https://ongicywqaeedgzblllus.supabase.co", key:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZ2ljeXdxYWVlZGd6YmxsbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjY5NTYsImV4cCI6MjA5NDM0Mjk1Nn0.UtVWQPL88y5-KR-qtttqnrOwG7_MtfWV-V_enmABCso", connected:true};
       data.advancedTournaments = Array.isArray(data.advancedTournaments) ? data.advancedTournaments : [];
       return data;
     }
