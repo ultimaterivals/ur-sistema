@@ -29,7 +29,7 @@
     .nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-family:var(--display);font-weight:900;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
     .nav a:hover{color:var(--white);background:rgba(255,255,255,.055)}
     .nav .cta{color:#050507;background:linear-gradient(135deg,var(--gold2),var(--gold));margin-left:6px}
-    .hero{min-height:100vh;display:flex;align-items:center;padding:116px 0 64px;position:relative;overflow:hidden}
+    .hero{min-height:100vh;display:flex;align-items:center;padding:64px 0 64px;position:relative;overflow:hidden}
     .hero::after{content:"RK";position:absolute;right:-35px;bottom:-118px;font-family:var(--display);font-size:min(430px,52vw);font-weight:900;line-height:1;color:rgba(255,216,77,.04);pointer-events:none}
     .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;position:relative;z-index:1}
     .eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:var(--gold2);font-family:var(--display);font-size:13px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
@@ -92,21 +92,78 @@
     .cta-band p{margin-top:12px;color:rgba(245,239,221,.74);max-width:700px}
     footer{padding:30px 0 42px;color:var(--muted);text-align:center;font-size:12px}
     .fade{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fade.show{opacity:1;transform:none}
-    @media(max-width:980px){.nav a:not(.cta){display:none}.hero-grid,.pillar-grid,.cta-band{grid-template-columns:1fr}.ladder-row{grid-template-columns:76px 1fr}.ladder-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
-    @media(max-width:640px){.top-inner{height:auto;min-height:72px;padding:10px 0;flex-wrap:wrap}.nav{width:100%;margin-left:0}.nav .cta{width:100%;text-align:center}.hero{padding-top:144px}.grid{display:block}.card{margin-bottom:12px}.ladder-row{display:block}.ladder-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}.cta-band{padding:26px}}
+    @media(max-width:980px){.hero-grid,.pillar-grid,.cta-band{grid-template-columns:1fr}.ladder-row{grid-template-columns:76px 1fr}.ladder-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
+    @media(max-width:640px){.hero{padding-top:100px}.grid{display:block}.card{margin-bottom:12px}.ladder-row{display:block}.ladder-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}.cta-band{padding:26px}}
+
+/* ── TICKER ── */
+.ticker{background:var(--gold2);height:34px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
+.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:rgba(255,255,255,.4);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase;text-decoration:none}
+.nav-links a:hover{color:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold2);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold2);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap;text-decoration:none}
+.nav-cta:hover{background:var(--gold);transform:translateY(-1px);box-shadow:0 4px 18px rgba(255,216,77,.32)}
+.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+.nav-ham:hover{border-color:var(--gold2);color:var(--gold2)}
+.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap;text-decoration:none}
+.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold2)}
+@media(max-width:780px){
+  nav{position:relative}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid rgba(255,255,255,.08);padding:10px 20px 16px;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-ham{display:block}
+  .nav-season{display:none}
+  .nav-portal-btn{display:none}
+}
   </style>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap top-inner">
-      <a class="logo-box" href="#inicio" aria-label="Ultimate Rivals"><img src="logo_ur_preto-removebg-preview.png" alt="Ultimate Rivals"></a>
-      <div class="brand"><strong>Ultimate Rivals</strong><span>Ranking do Atleta</span></div>
-      <nav class="nav" aria-label="Navegação">
-        <a href="#logica">Lógica</a><a href="#pontuar">Pontuação</a><a href="#tipos">Tipos</a><a href="#desempate">Desempate</a><a href="#faq">FAQ</a>
-        <a class="cta" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever</a>
-      </nav>
+  <!-- TICKER -->
+  <div class="ticker"><div class="ticker-inner">
+    <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
+    <span class="ti">Ranking T01 · 2026</span><span class="ts">✦</span>
+    <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
+    <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
+    <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
+    <span class="ti">Ranking T01 · 2026</span><span class="ts">✦</span>
+    <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
+    <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
+  </div></div>
+  <nav>
+    <div class="nav-logos">
+      <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
+      <div class="nav-sep"></div>
+      <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
     </div>
-  </header>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking" style="color:var(--gold2)">Ranking</a>
+      <a href="/patrocinadores">Patrocinadores</a>
+    </div>
+    <div class="nav-right">
+      <span class="nav-season">T01 · 2026</span>
+      <a href="/portal" class="nav-portal-btn">🏐 Portal</a>
+      <a href="/inscricao" class="nav-cta">⚡ Inscreva-se</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
+  </nav>
 
   <main>
     <section class="hero" id="inicio">
@@ -116,7 +173,7 @@
           <h1>Ranking claro. <em>Disputa viva.</em></h1>
           <p class="lead">O ranking do Ultimate Rivals existe para transformar participação, desempenho e evolução em uma disputa visível. Ele mostra quem aparece, quem vence, quem decide, quem evolui e quem constrói história durante o trimestre.</p>
           <div class="hero-actions">
-            <a class="btn gold" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Entrar no ranking</a>
+            <a class="btn gold" href="/inscricao" target="_blank" rel="noopener">Entrar no ranking</a>
             <a class="btn" href="#pontuar">Como pontuar</a>
             <button class="btn" id="copyLink">Copiar inscrição</button>
           </div>
@@ -282,8 +339,8 @@
           </div>
           <div class="card span-6 fade">
             <h3>Mensagem para atletas</h3>
-            <p id="shareText">O Ranking UR transforma presença, resultado, fundamentos, evolução e conduta em uma disputa clara. Nada é obrigatório, mas quanto mais o atleta participa, mais chances tem de pontuar, ganhar coins, aparecer nas tabelas e chegar forte à Virada de Ranking. Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</p>
-            <div class="hero-actions"><button class="btn gold" id="copyShare">Copiar mensagem</button><a class="btn" href="https://forms.gle/RrtKcxpQyJpoTxrg7" target="_blank" rel="noopener">Inscrever agora</a></div>
+            <p id="shareText">O Ranking UR transforma presença, resultado, fundamentos, evolução e conduta em uma disputa clara. Nada é obrigatório, mas quanto mais o atleta participa, mais chances tem de pontuar, ganhar coins, aparecer nas tabelas e chegar forte à Virada de Ranking. Inscrição oficial: /inscricao</p>
+            <div class="hero-actions"><button class="btn gold" id="copyShare">Copiar mensagem</button><a class="btn" href="/inscricao" target="_blank" rel="noopener">Inscrever agora</a></div>
           </div>
         </div>
       </div>
@@ -303,17 +360,21 @@
           <div class="card span-5 fade">
             <h3>Resumo final</h3>
             <p>O Ranking UR cria interesse porque transforma o trimestre em disputa acompanhável. Ele cria clareza porque mostra quais ações importam. E cria justiça porque permite comparar presença, resultado, técnica, nível e evolução.</p>
-            <div class="note" style="margin-top:16px">Inscrição oficial: https://forms.gle/RrtKcxpQyJpoTxrg7</div>
+            <div class="note" style="margin-top:16px">Inscrição oficial: /inscricao</div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap">Ultimate Rivals | Ranking do Atleta | Inscrição: https://forms.gle/RrtKcxpQyJpoTxrg7</div></footer>
+  <footer><div class="wrap"><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:12px"><a href="/">Início</a><a href="/temporada">Temporada</a><a href="/atletas">Atletas</a><a href="/ranking">Ranking</a><a href="/patrocinadores">Patrocinadores</a><a href="/portal">Portal</a><a href="/inscricao">Inscrição</a></div><p>© 2026 Ultimate Rivals · Belo Horizonte · MG</p></div></footer>
 
   <script>
-    const FORM_LINK = "https://forms.gle/RrtKcxpQyJpoTxrg7";
+    document.getElementById('navHam').addEventListener('click',function(){
+      document.getElementById('navLinks').classList.toggle('open');
+      this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
+    });
+    const FORM_LINK = "/inscricao";
     function copy(text){ navigator.clipboard.writeText(text).then(() => alert("Copiado.")); }
     document.getElementById("copyLink").addEventListener("click", () => copy(FORM_LINK));
     document.getElementById("copyShare").addEventListener("click", () => copy(document.getElementById("shareText").textContent.trim()));

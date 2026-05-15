@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultimate Rivals — Atletas · Ranking T01 2026</title>
+<meta name="description" content="Ranking público de atletas da Ultimate Rivals. Pontos, vitórias, estatísticas e níveis da Temporada T01 2026.">
+<meta property="og:title" content="Ultimate Rivals — Ranking de Atletas T01 2026">
+<meta property="og:description" content="Acompanhe a classificação ao vivo dos atletas da UR. Vôlei de praia BH.">
+<meta property="og:image" content="logo-ur-3d.png">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ── TICKER ── */
+.ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
+.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+.nav-ham:hover{border-color:var(--gold);color:var(--gold)}
+.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
+@media(max-width:780px){
+  nav{position:relative}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid var(--border);padding:10px 20px 16px;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-ham{display:block}
+  .nav-season{display:none}
+  .nav-portal-btn{display:none}
+}
+
+/* ── HERO ── */
+.hero{
+  padding:72px 28px 60px;
+  background:radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255,216,77,.10), transparent 55%),
+             linear-gradient(180deg,#07080d 0%,#000 100%);
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"UR";position:absolute;right:-20px;bottom:-60px;
+  font-family:var(--display);font-size:min(340px,46vw);font-weight:900;
+  line-height:1;color:rgba(255,216,77,.03);pointer-events:none;user-select:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.35);
+  color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;
+  padding:6px 16px;border-radius:3px;margin-bottom:24px;
+  text-transform:uppercase;font-family:var(--display);
+}
+.hero h1{
+  font-family:var(--display);font-size:clamp(52px,10vw,110px);
+  font-weight:900;line-height:.88;text-transform:uppercase;letter-spacing:-1px;
+  color:#fff;position:relative;z-index:1;
+}
+.hero h1 span{color:var(--gold)}
+.hero-sub{
+  font-family:var(--display);font-size:clamp(16px,3vw,22px);font-weight:600;
+  letter-spacing:4px;color:var(--muted);text-transform:uppercase;
+  margin-top:14px;position:relative;z-index:1;
+}
+.hero-sub em{color:var(--gold);font-style:normal}
+
+/* KPI grid */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  max-width:860px;margin:40px auto 0;position:relative;z-index:1;
+}
+.kpi{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:20px 18px;text-align:left;transition:border-color .2s;
+}
+.kpi:hover{border-color:rgba(255,216,77,.22)}
+.kpi-val{
+  font-family:var(--display);font-size:38px;font-weight:900;
+  color:var(--gold);line-height:1;
+}
+.kpi-label{font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;letter-spacing:.3px}
+
+/* skeleton */
+.skel{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-val{height:38px;width:72px;display:inline-block;vertical-align:bottom}
+.skel-label{height:12px;width:90px;margin-top:8px;display:block}
+
+/* spinner */
+.spinner{
+  width:40px;height:40px;border:3px solid rgba(255,216,77,.15);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin .8s linear infinite;margin:0 auto;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── FILTROS (sticky) ── */
+.filter-bar{
+  position:sticky;top:64px;z-index:900;
+  background:rgba(0,0,0,.94);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:14px 28px;
+}
+.filter-inner{
+  max-width:1160px;margin:0 auto;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.level-pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  color:var(--muted);font-family:var(--display);font-size:12px;font-weight:800;
+  letter-spacing:.8px;padding:6px 14px;border-radius:999px;cursor:pointer;
+  transition:all .18s;text-transform:uppercase;user-select:none;
+}
+.pill:hover{border-color:rgba(255,216,77,.35);color:var(--gold)}
+.pill.active{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.5);color:var(--gold)}
+.search-wrap{position:relative;flex:1;min-width:180px;max-width:320px}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+#searchInput{
+  width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);
+  color:var(--text);font-family:var(--font);font-size:13px;
+  padding:8px 14px 8px 38px;border-radius:8px;outline:none;
+  transition:border-color .18s;
+}
+#searchInput::placeholder{color:var(--muted)}
+#searchInput:focus{border-color:rgba(255,216,77,.4)}
+.result-count{
+  margin-left:auto;font-size:12px;color:var(--muted);
+  font-weight:600;white-space:nowrap;
+}
+.result-count strong{color:var(--gold)}
+@media(max-width:640px){
+  .filter-bar{top:0}
+  .result-count{margin-left:0;width:100%;text-align:center}
+}
+
+/* ── RANKING SECTION ── */
+.rank-section{padding:48px 28px 72px;max-width:1160px;margin:0 auto}
+
+/* Table */
+.rank-table{width:100%;border-collapse:collapse}
+.rank-table th{
+  font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--muted);padding:10px 12px;
+  border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;
+}
+.rank-table th.num{text-align:center}
+.rank-table th.right{text-align:right}
+.rank-table tbody tr{
+  border-bottom:1px solid rgba(255,255,255,.04);
+  transition:background .15s;
+  animation:rowIn .35s ease both;
+}
+.rank-table tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+.rank-table tbody tr:hover{background:rgba(255,216,77,.04)}
+.rank-table td{padding:13px 12px;vertical-align:middle}
+@keyframes rowIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Position medal */
+.pos{
+  font-family:var(--display);font-size:20px;font-weight:900;
+  text-align:center;width:44px;color:var(--muted);
+}
+.pos-medal{font-size:22px;line-height:1}
+
+/* Gold / Silver / Bronze rows */
+tr.gold-row{background:rgba(255,216,77,.06)!important;box-shadow:inset 3px 0 0 var(--gold)}
+tr.silver-row{background:rgba(192,192,192,.05)!important;box-shadow:inset 3px 0 0 #c0c0c0}
+tr.bronze-row{background:rgba(205,127,50,.05)!important;box-shadow:inset 3px 0 0 #cd7f32}
+
+/* Athlete name */
+.ath-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:.2px}
+.ath-name-wrap{display:flex;flex-direction:column;gap:2px}
+
+/* Level badge */
+.lvl{
+  display:inline-block;font-family:var(--display);font-size:11px;font-weight:800;
+  letter-spacing:.8px;padding:3px 9px;border-radius:4px;text-transform:uppercase;
+}
+.lvl-N1{background:rgba(255,107,53,.18);color:#ff6b35;border:1px solid rgba(255,107,53,.35)}
+.lvl-N2{background:rgba(255,216,77,.18);color:#ffd84d;border:1px solid rgba(255,216,77,.35)}
+.lvl-N3{background:rgba(78,205,196,.18);color:#4ecdc4;border:1px solid rgba(78,205,196,.35)}
+.lvl-N4{background:rgba(124,58,237,.2);color:#a78bfa;border:1px solid rgba(124,58,237,.4)}
+.lvl-N5{background:rgba(16,185,129,.18);color:#10b981;border:1px solid rgba(16,185,129,.35)}
+.lvl-NI{background:rgba(107,114,128,.15);color:#9ca3af;border:1px solid rgba(107,114,128,.3)}
+
+/* Points */
+.pts{font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);text-align:right;white-space:nowrap}
+.pts-zero{color:var(--muted2);font-size:18px}
+
+/* Stats cells */
+.stat{font-size:13px;font-weight:600;text-align:right;color:var(--text)}
+.stat-muted{color:var(--muted)}
+
+/* Coins */
+.coins{font-family:var(--display);font-size:14px;font-weight:800;color:#f59e0b;text-align:right}
+
+/* Empty state */
+.empty-state{text-align:center;padding:72px 20px;color:var(--muted)}
+.empty-state p{font-size:48px;margin-bottom:16px}
+.empty-state h3{font-family:var(--display);font-size:28px;font-weight:800;color:var(--text);margin-bottom:8px}
+.empty-state span{font-size:14px}
+
+/* Error state */
+.error-box{
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);
+  border-radius:12px;padding:28px;text-align:center;
+  max-width:520px;margin:40px auto;
+}
+.error-box h3{font-family:var(--display);font-size:22px;color:#fca5a5;margin-bottom:8px}
+.error-box p{font-size:13px;color:var(--muted)}
+
+/* Mobile cards */
+.mobile-cards{display:none}
+.ath-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:18px;margin-bottom:10px;
+  animation:rowIn .35s ease both;
+  transition:border-color .2s;
+}
+.ath-card:hover{border-color:rgba(255,216,77,.2)}
+.ath-card.gold-card{border-color:rgba(255,216,77,.4);box-shadow:0 0 20px rgba(255,216,77,.08)}
+.ath-card.silver-card{border-color:rgba(192,192,192,.3)}
+.ath-card.bronze-card{border-color:rgba(205,127,50,.3)}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.card-pos{font-family:var(--display);font-size:28px;font-weight:900;color:var(--muted);min-width:32px}
+.card-info{flex:1}
+.card-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.card-pts{font-family:var(--display);font-size:30px;font-weight:900;color:var(--gold);line-height:1}
+.card-pts-label{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cstat{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 10px;text-align:center}
+.cstat-val{font-family:var(--display);font-size:20px;font-weight:900;color:var(--text);line-height:1}
+.cstat-lbl{font-size:10px;color:var(--muted);letter-spacing:.5px;margin-top:3px;text-transform:uppercase}
+
+/* ── SOBRE O RANKING ── */
+.sobre{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:72px 28px;
+}
+.sobre-inner{max-width:1060px;margin:0 auto}
+.sobre-head{text-align:center;margin-bottom:48px}
+.sobre-head h2{
+  font-family:var(--display);font-size:clamp(36px,6vw,64px);
+  font-weight:900;text-transform:uppercase;color:#fff;line-height:.9;
+}
+.sobre-head h2 span{color:var(--gold)}
+.sobre-head p{font-size:15px;color:var(--muted);margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto}
+.sobre-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sobre-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:28px 24px;transition:border-color .2s;
+}
+.sobre-card:hover{border-color:rgba(255,216,77,.22)}
+.sobre-icon{font-size:32px;margin-bottom:14px}
+.sobre-card h3{font-family:var(--display);font-size:22px;font-weight:800;color:var(--gold);margin-bottom:10px;text-transform:uppercase}
+.sobre-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.sobre-ctas{display:flex;gap:12px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,216,77,.35);color:var(--gold);
+  font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.5px;
+  padding:11px 24px;border-radius:8px;text-transform:uppercase;
+  transition:all .2s;
+}
+.btn-outline:hover{background:rgba(255,216,77,.08);border-color:var(--gold)}
+.btn-solid{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:#000;
+  font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.5px;
+  padding:11px 24px;border-radius:8px;text-transform:uppercase;
+  transition:all .2s;
+}
+.btn-solid:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+
+/* ── FOOTER ── */
+footer{
+  background:#000;border-top:1px solid var(--border);
+  padding:40px 28px 32px;
+}
+.foot-inner{max-width:1160px;margin:0 auto}
+.foot-logos{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.foot-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.3))}
+.foot-logos .fh{height:32px;filter:drop-shadow(0 0 8px rgba(255,140,0,.3))!important}
+.foot-logos span{font-family:var(--display);font-size:18px;font-weight:900;color:var(--gold);letter-spacing:1px}
+.foot-links{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.3px;transition:color .2s;text-transform:uppercase}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:12px;color:rgba(255,255,255,.2)}
+
+@media(max-width:640px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .rank-table{display:none}
+  .mobile-cards{display:block}
+  .sobre-cards{grid-template-columns:1fr}
+  .filter-inner{gap:8px}
+}
+@media(max-width:960px){
+  .sobre-cards{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-inner">
+  <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
+  <span class="ti">Ranking de Atletas · T01 2026</span><span class="ts">✦</span>
+  <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
+  <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
+  <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
+  <span class="ti">Ranking de Atletas · T01 2026</span><span class="ts">✦</span>
+  <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
+  <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
+</div></div>
+
+<nav>
+  <div class="nav-logos">
+    <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
+    <div class="nav-sep"></div>
+    <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Início</a>
+    <a href="/temporada">Temporada</a>
+    <a href="/atletas" style="color:var(--gold)">Atletas</a>
+    <a href="/ranking">Ranking</a>
+    <a href="/patrocinadores">Patrocinadores</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="/portal" class="nav-portal-btn">🏐 Portal</a>
+    <a href="/inscricao" class="nav-cta">⚡ Inscreva-se</a>
+  </div>
+  <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🏐 Temporada T01 · 2026 · Ao vivo</div>
+  <h1><span>Atletas</span><br>Ultimate Rivals</h1>
+  <p class="hero-sub">Ranking oficial · <em>T01 2026</em></p>
+
+  <div class="kpi-grid" id="kpiGrid">
+    <div class="kpi" id="kpi-total">
+      <div class="kpi-val"><span class="skel skel-val"></span></div>
+      <div class="kpi-label"><span class="skel skel-label"></span></div>
+    </div>
+    <div class="kpi" id="kpi-levels">
+      <div class="kpi-val"><span class="skel skel-val"></span></div>
+      <div class="kpi-label"><span class="skel skel-label"></span></div>
+    </div>
+    <div class="kpi" id="kpi-top">
+      <div class="kpi-val"><span class="skel skel-val"></span></div>
+      <div class="kpi-label"><span class="skel skel-label"></span></div>
+    </div>
+    <div class="kpi" id="kpi-avg">
+      <div class="kpi-val"><span class="skel skel-val"></span></div>
+      <div class="kpi-label"><span class="skel skel-label"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="filter-inner">
+    <div class="level-pills" id="levelPills">
+      <button class="pill active" data-level="all">Todos</button>
+      <button class="pill" data-level="N1">N1</button>
+      <button class="pill" data-level="N2">N2</button>
+      <button class="pill" data-level="N3">N3</button>
+      <button class="pill" data-level="N4">N4</button>
+      <button class="pill" data-level="N5">N5</button>
+      <button class="pill" data-level="NI">NI</button>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Buscar atleta…" autocomplete="off">
+    </div>
+    <div class="result-count" id="resultCount"></div>
+  </div>
+</div>
+
+<!-- RANKING TABLE -->
+<div class="rank-section">
+  <div id="loadingState" style="text-align:center;padding:60px 0">
+    <div class="spinner"></div>
+    <p style="margin-top:16px;font-size:13px;color:var(--muted)">Carregando atletas…</p>
+  </div>
+  <div id="errorState" style="display:none">
+    <div class="error-box">
+      <h3>Erro ao carregar dados</h3>
+      <p id="errorMsg">Não foi possível conectar ao servidor. Tente novamente em instantes.</p>
+    </div>
+  </div>
+
+  <!-- Desktop table -->
+  <table class="rank-table" id="rankTable" style="display:none">
+    <thead>
+      <tr>
+        <th class="num">#</th>
+        <th>Atleta</th>
+        <th>Nível</th>
+        <th class="right">Pts UR</th>
+        <th class="right">Vitórias</th>
+        <th class="right">Sets</th>
+        <th class="right">MVPs</th>
+        <th class="right">Coins</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <!-- Mobile cards -->
+  <div class="mobile-cards" id="mobileCards"></div>
+
+  <!-- Empty state -->
+  <div id="emptyState" style="display:none">
+    <div class="empty-state">
+      <p>🏐</p>
+      <h3>Nenhum atleta encontrado</h3>
+      <span>Tente outro nível ou altere o termo de busca.</span>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE O RANKING -->
+<section class="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-head">
+      <h2>Sobre o <span>Ranking</span></h2>
+      <p>Entenda como funciona a classificação dos atletas na temporada T01 · 2026.</p>
+    </div>
+    <div class="sobre-cards">
+      <div class="sobre-card">
+        <div class="sobre-icon">📊</div>
+        <h3>Como funciona</h3>
+        <p>O ranking reflete a pontuação acumulada ao longo da temporada. Cada atleta compete em duplas ou quartetos e acumula pontos UR a cada participação. Quanto mais alto o nível, mais pontos em disputa.</p>
+      </div>
+      <div class="sobre-card">
+        <div class="sobre-icon">⚡</div>
+        <h3>Como pontuar</h3>
+        <p>Vitórias concedem pontos cheios. Participação garante pontos base mesmo em derrota. MVPs e desempenho destacado em stats (aces, bloqueios, escavações) concedem bônus extras de pontuação.</p>
+      </div>
+      <div class="sobre-card">
+        <div class="sobre-icon">🔄</div>
+        <h3>Virada de Ranking</h3>
+        <p>Ao fim de cada temporada os pontos são zerados e o histórico é arquivado. Atletas podem subir ou descer de nível conforme a performance. O topo do ranking garante vantagens na temporada seguinte.</p>
+      </div>
+    </div>
+    <div class="sobre-ctas">
+      <a href="/ranking" class="btn-outline">Ver regras completas →</a>
+      <a href="/portal" class="btn-solid">🏐 Portal do Atleta</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logos">
+      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+      <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
+      <span>ULTIMATE RIVALS</span>
+    </div>
+    <div class="foot-links">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking">Ranking</a>
+      <a href="/patrocinadores">Patrocinadores</a>
+      <a href="/portal">Portal do Atleta</a>
+      <a href="/inscricao">Inscrição</a>
+      <a href="/sistema/">Sistema UR</a>
+    </div>
+    <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+  </div>
+</footer>
+
+<script>
+const SB_URL = "https://ongicywqaeedgzblllus.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZ2ljeXdxYWVlZGd6YmxsbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjY5NTYsImV4cCI6MjA5NDM0Mjk1Nn0.UtVWQPL88y5-KR-qtttqnrOwG7_MtfWV-V_enmABCso";
+
+let allAthletes = [];
+let activeLevel = "all";
+let searchQuery = "";
+
+const LEVEL_ORDER = ["N5","N4","N3","N2","N1","NI"];
+
+async function loadAthletes() {
+  const res = await fetch(
+    `${SB_URL}/rest/v1/ur_backups?id=eq.main&select=data&limit=1`,
+    { headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` } }
+  );
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const rows = await res.json();
+  if (!rows.length) throw new Error("Sem dados no servidor");
+  const state = JSON.parse(rows[0].data);
+  return (state.athletes || []).filter(a => a && a.name);
+}
+
+function setKpi(id, val, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = `<div class="kpi-val">${val}</div><div class="kpi-label">${label}</div>`;
+}
+
+function updateKpis(athletes) {
+  const total = athletes.length;
+  const levels = new Set(athletes.map(a => a.level).filter(Boolean)).size;
+  const sorted = [...athletes].sort((a,b) => (b.rankPoints||0)-(a.rankPoints||0));
+  const topName = sorted[0] ? sorted[0].name.split(" ")[0] : "—";
+  const avgSets = total > 0
+    ? Math.round(athletes.reduce((s,a) => s + ((a.stats && a.stats.setsPlayed) || 0), 0) / total)
+    : 0;
+  setKpi("kpi-total", total, "Total de atletas");
+  setKpi("kpi-levels", levels, "Níveis ativos");
+  setKpi("kpi-top", `<span style="font-size:24px;font-weight:800;color:var(--gold)">${topName}</span>`, "Top pontuador");
+  setKpi("kpi-avg", avgSets, "Média de sets jogados");
+}
+
+function lvlClass(level) {
+  return "lvl lvl-" + (level || "NI");
+}
+
+function medalEmoji(pos) {
+  if (pos === 1) return "🥇";
+  if (pos === 2) return "🥈";
+  if (pos === 3) return "🥉";
+  return pos;
+}
+
+function rowClass(pos) {
+  if (pos === 1) return "gold-row";
+  if (pos === 2) return "silver-row";
+  if (pos === 3) return "bronze-row";
+  return "";
+}
+
+function cardClass(pos) {
+  if (pos === 1) return "gold-card";
+  if (pos === 2) return "silver-card";
+  if (pos === 3) return "bronze-card";
+  return "";
+}
+
+function fmt(v) {
+  return (v != null && v !== undefined) ? v : 0;
+}
+
+function renderTable(athletes) {
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+  athletes.forEach((a, i) => {
+    const pos = i + 1;
+    const s = a.stats || {};
+    const pts = a.rankPoints || 0;
+    const ptsHtml = pts > 0
+      ? `<span class="pts">${pts}</span>`
+      : `<span class="pts pts-zero">—</span>`;
+    const tr = document.createElement("tr");
+    tr.className = rowClass(pos);
+    tr.style.animationDelay = `${Math.min(i * 30, 600)}ms`;
+    tr.innerHTML = `
+      <td class="pos"><span class="${pos <= 3 ? 'pos-medal' : ''}">${medalEmoji(pos)}</span></td>
+      <td><div class="ath-name-wrap"><span class="ath-name">${escHtml(a.name)}</span></div></td>
+      <td><span class="${lvlClass(a.level)}">${a.level || "NI"}</span></td>
+      <td style="text-align:right">${ptsHtml}</td>
+      <td class="stat">${fmt(s.wins)}</td>
+      <td class="stat">${fmt(s.setsPlayed)}</td>
+      <td class="stat">${fmt(s.mvps)}</td>
+      <td class="coins">🪙 ${fmt(a.coins)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderCards(athletes) {
+  const container = document.getElementById("mobileCards");
+  container.innerHTML = "";
+  athletes.forEach((a, i) => {
+    const pos = i + 1;
+    const s = a.stats || {};
+    const pts = a.rankPoints || 0;
+    const div = document.createElement("div");
+    div.className = `ath-card ${cardClass(pos)}`;
+    div.style.animationDelay = `${Math.min(i * 30, 600)}ms`;
+    div.innerHTML = `
+      <div class="card-top">
+        <div class="card-pos">${medalEmoji(pos)}</div>
+        <div class="card-info">
+          <div class="card-name">${escHtml(a.name)}</div>
+          <span class="${lvlClass(a.level)}">${a.level || "NI"}</span>
+        </div>
+        <div style="text-align:right">
+          <div class="card-pts">${pts > 0 ? pts : "—"}</div>
+          <div class="card-pts-label">PTS UR</div>
+        </div>
+      </div>
+      <div class="card-stats">
+        <div class="cstat"><div class="cstat-val">${fmt(s.wins)}</div><div class="cstat-lbl">Vitórias</div></div>
+        <div class="cstat"><div class="cstat-val">${fmt(s.setsPlayed)}</div><div class="cstat-lbl">Sets</div></div>
+        <div class="cstat"><div class="cstat-val">${fmt(s.mvps)}</div><div class="cstat-lbl">MVPs</div></div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function filterAndRender() {
+  let list = [...allAthletes];
+
+  // Filter by level
+  if (activeLevel !== "all") {
+    list = list.filter(a => (a.level || "NI") === activeLevel);
+  }
+
+  // Filter by search
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(a => a.name.toLowerCase().includes(q));
+  }
+
+  // Sort: rankPoints desc, then wins desc
+  list.sort((a, b) => {
+    const pd = (b.rankPoints || 0) - (a.rankPoints || 0);
+    if (pd !== 0) return pd;
+    return ((b.stats && b.stats.wins) || 0) - ((a.stats && a.stats.wins) || 0);
+  });
+
+  // Result count
+  const countEl = document.getElementById("resultCount");
+  countEl.innerHTML = `<strong>${list.length}</strong> atleta${list.length !== 1 ? "s" : ""} encontrado${list.length !== 1 ? "s" : ""}`;
+
+  // Show/hide empty
+  const emptyState = document.getElementById("emptyState");
+  const rankTable = document.getElementById("rankTable");
+  const mobileCards = document.getElementById("mobileCards");
+
+  if (list.length === 0) {
+    emptyState.style.display = "block";
+    rankTable.style.display = "none";
+    mobileCards.style.display = "none";
+    return;
+  }
+
+  emptyState.style.display = "none";
+
+  if (window.innerWidth < 640) {
+    rankTable.style.display = "none";
+    mobileCards.style.display = "block";
+    renderCards(list);
+  } else {
+    rankTable.style.display = "table";
+    mobileCards.style.display = "none";
+    renderTable(list);
+  }
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
+}
+
+// Init
+async function init() {
+  try {
+    const athletes = await loadAthletes();
+    allAthletes = athletes;
+
+    document.getElementById("loadingState").style.display = "none";
+    updateKpis(athletes);
+    filterAndRender();
+  } catch (err) {
+    document.getElementById("loadingState").style.display = "none";
+    document.getElementById("errorState").style.display = "block";
+    const msg = document.getElementById("errorMsg");
+    if (msg) msg.textContent = err.message || "Erro desconhecido.";
+    console.error("Erro ao carregar atletas:", err);
+  }
+}
+
+// Level pills
+document.getElementById("levelPills").addEventListener("click", function(e) {
+  const btn = e.target.closest(".pill");
+  if (!btn) return;
+  activeLevel = btn.dataset.level;
+  document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  filterAndRender();
+});
+
+// Search
+document.getElementById("searchInput").addEventListener("input", function() {
+  searchQuery = this.value.trim();
+  filterAndRender();
+});
+
+// Hamburger
+document.getElementById("navHam").addEventListener("click", function() {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+// Responsive re-render on resize
+let resizeTimer;
+window.addEventListener("resize", function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(filterAndRender, 120);
+});
+
+init();
+</script>
+</body>
+</html>

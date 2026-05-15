@@ -40,7 +40,20 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 .nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
 .nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
-@media(max-width:780px){.nav-links{display:none}.nav-season{display:none}}
+.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+.nav-ham:hover{border-color:var(--gold);color:var(--gold)}
+.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
+@media(max-width:780px){
+  nav{position:relative}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid var(--border);padding:10px 20px 16px;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-ham{display:block}
+  .nav-season{display:none}
+  .nav-portal-btn{display:none}
+}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
@@ -275,21 +288,23 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 <!-- NAV -->
 <nav>
   <div class="nav-logos">
-    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
     <div class="nav-sep"></div>
-    <img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'">
+    <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
   </div>
-  <div class="nav-links">
-    <a href="#eventos">Eventos</a>
-    <a href="#calendario">Calendário</a>
-    <a href="#premiacoes">Premiações</a>
-    <a href="#planos">Planos</a>
-    <a href="#regras">Regras</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Início</a>
+    <a href="/temporada" style="color:var(--gold)">Temporada</a>
+    <a href="/atletas">Atletas</a>
+    <a href="/ranking">Ranking</a>
+    <a href="/patrocinadores">Patrocinadores</a>
   </div>
   <div class="nav-right">
     <span class="nav-season">T01 · 2026</span>
-    <a href="UR_Inscricao_Atleta.html" class="nav-cta">⚡ Inscreva-se</a>
+    <a href="/portal" class="nav-portal-btn">🏐 Portal</a>
+    <a href="/inscricao" class="nav-cta">⚡ Inscreva-se</a>
   </div>
+  <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -718,15 +733,23 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     <span>ULTIMATE RIVALS</span>
   </div>
   <div class="foot-links">
-    <a href="UR_Inscricao_Atleta.html">Inscrição</a>
-    <a href="UR_Landing_Page.html">Home</a>
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
-    <a href="https://instagram.com/ultimaterivals" target="_blank">Instagram</a>
+    <a href="/">Início</a>
+    <a href="/temporada">Temporada</a>
+    <a href="/atletas">Atletas</a>
+    <a href="/ranking">Ranking</a>
+    <a href="/patrocinadores">Patrocinadores</a>
+    <a href="/portal">Portal</a>
+    <a href="/inscricao">Inscrição</a>
+    <a href="/sistema/">Sistema UR</a>
   </div>
   <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
 </footer>
 
 <script>
+document.getElementById('navHam').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+  this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
+});
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
