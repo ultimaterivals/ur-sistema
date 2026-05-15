@@ -399,10 +399,26 @@ function pinDel(){
   document.getElementById("pinError").textContent="";
 }
 
+function resolvePin(a){
+  // PIN salvo no sistema tem prioridade
+  const saved = String(a.pin||"").replace(/\D/g,"");
+  if(saved.length===4) return saved;
+  // Fallback: últimos 4 dígitos do telefone
+  const digits = String(a.contact||"").replace(/\D/g,"");
+  if(digits.length>=4) return digits.slice(-4);
+  return null;
+}
+
 function checkPin(){
   const a=allAthletes.find(x=>x.id===pinAthleteId);
   if(!a) return;
-  if(pinBuffer===String(a.pin)){
+  const expected=resolvePin(a);
+  if(!expected){
+    document.getElementById("pinError").textContent="PIN não configurado. Fale com o admin.";
+    setTimeout(()=>{pinBuffer="";updatePinDots()},600);
+    return;
+  }
+  if(pinBuffer===expected){
     openPortal(a);
   } else {
     pinAttempts++;
