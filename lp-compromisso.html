@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ultimate Rivals — Mentalidade de Compromisso | Hunter N4→N3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#000;
+  --surface:#080808;
+  --card:#0d0d0d;
+  --gold:#ffd84d;
+  --gold2:#f5c518;
+  --gold3:#c89000;
+  --red:#e63946;
+  --green:#2dc653;
+  --blue:#4da6ff;
+  --text:#f0f0f0;
+  --muted:#888;
+  --border:#1a1a1a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── FADE-UP ANIMATION ── */
+.fu{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.fu.on{
+  opacity:1;
+  transform:translateY(0);
+}
+.fu-d1{transition-delay:0.1s;}
+.fu-d2{transition-delay:0.2s;}
+.fu-d3{transition-delay:0.3s;}
+.fu-d4{transition-delay:0.4s;}
+.fu-d5{transition-delay:0.5s;}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;line-height:1.1;}
+h1{font-size:clamp(2.8rem,8vw,5.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;text-transform:uppercase;letter-spacing:0.5px;}
+h3{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;}
+h4{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;}
+
+/* ── UTILITIES ── */
+.gold{color:var(--gold);}
+.green{color:var(--green);}
+.blue{color:var(--blue);}
+.red{color:var(--red);}
+.muted{color:var(--muted);}
+.text-center{text-align:center;}
+.container{max-width:1140px;margin:0 auto;padding:0 20px;}
+.section{padding:80px 0;}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 32px;border-radius:6px;
+  font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;
+  cursor:pointer;border:none;text-decoration:none;
+  transition:all 0.25s ease;
+}
+.btn-gold{background:var(--gold);color:#000;}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,216,77,0.35);}
+.btn-outline{background:transparent;color:var(--gold);border:2px solid var(--gold);}
+.btn-outline:hover{background:rgba(255,216,77,0.08);transform:translateY(-2px);}
+.btn-green{background:var(--green);color:#000;}
+.btn-green:hover{background:#25b045;transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,198,83,0.35);}
+.btn-lg{padding:18px 48px;font-size:1.25rem;}
+.btn-full{width:100%;display:flex;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:14px 20px;
+}
+.nav-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;
+}
+.nav-logo .logo-mark{
+  width:40px;height:40px;background:var(--gold);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:#000;
+}
+.nav-logo .logo-text{
+  font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--text);text-transform:uppercase;letter-spacing:1px;line-height:1.2;
+}
+.nav-logo .logo-sub{color:var(--muted);font-size:0.7rem;font-weight:400;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:0.9rem;font-weight:500;letter-spacing:0.3px;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{flex-shrink:0;}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-cta .btn{padding:10px 20px;font-size:0.95rem;}
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 20px 80px;
+  background:
+    linear-gradient(rgba(0,0,0,0.68),rgba(0,0,0,0.68)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+    linear-gradient(#c8a96e,#b8955a);
+  background-size:cover,300px 300px,cover;
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(transparent,var(--bg));pointer-events:none;
+}
+.hero-inner{
+  max-width:1140px;margin:0 auto;width:100%;
+  position:relative;z-index:1;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(77,166,255,0.15);border:1px solid rgba(77,166,255,0.35);
+  border-radius:50px;padding:6px 16px;margin-bottom:28px;
+  font-size:0.82rem;font-weight:600;color:var(--blue);letter-spacing:1px;text-transform:uppercase;
+}
+.hero-badge .dot{
+  width:6px;height:6px;background:var(--blue);border-radius:50%;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.3);}}
+
+.hero h1{margin-bottom:24px;}
+.hero h1 span{color:var(--gold);}
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.25rem);color:rgba(240,240,240,0.82);
+  max-width:620px;margin-bottom:40px;line-height:1.7;font-weight:400;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:60px;}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:32px;
+  padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);
+}
+.hero-stat{
+  display:flex;flex-direction:column;
+}
+.hero-stat .label{font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.hero-stat .value{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:var(--gold);}
+
+/* ── SECTION HEADERS ── */
+.section-label{
+  display:inline-block;
+  font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+  padding-bottom:6px;border-bottom:2px solid var(--gold3);
+}
+.section-title{margin-bottom:16px;}
+.section-subtitle{color:var(--muted);font-size:1.05rem;max-width:600px;margin-bottom:48px;}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:0;}
+
+/* ── BLOCO VERDADE ── */
+.truth-section{background:var(--surface);}
+.truth-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+@media(max-width:768px){.truth-grid{grid-template-columns:1fr;gap:40px;}}
+.truth-col h3{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;margin-bottom:20px;color:var(--gold);}
+.truth-col p{color:rgba(240,240,240,0.78);line-height:1.8;margin-bottom:16px;}
+.truth-col p strong{color:var(--text);}
+.truth-quote{
+  background:var(--card);border-left:3px solid var(--gold);
+  padding:20px 24px;border-radius:0 8px 8px 0;margin-top:24px;
+  font-style:italic;color:var(--text);font-size:1rem;line-height:1.7;
+}
+.truth-list{list-style:none;margin-top:20px;}
+.truth-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--border);
+  color:rgba(240,240,240,0.78);font-size:0.95rem;
+}
+.truth-list li:last-child{border-bottom:none;}
+.truth-list li .check{
+  width:20px;height:20px;background:rgba(45,198,83,0.15);border:1px solid var(--green);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--green);font-size:0.7rem;flex-shrink:0;margin-top:2px;
+}
+
+/* ── PILLARS ── */
+.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+@media(max-width:768px){.pillars-grid{grid-template-columns:1fr;}}
+.pillar-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:32px 28px;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.pillar-card:hover{border-color:var(--gold3);transform:translateY(-4px);}
+.pillar-icon{font-size:2.4rem;margin-bottom:20px;display:block;}
+.pillar-card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:10px;color:var(--gold);}
+.pillar-card p{color:var(--muted);font-size:0.93rem;line-height:1.7;}
+
+/* ── LEVELS ── */
+.levels-section{background:var(--surface);}
+.levels-stack{display:flex;flex-direction:column;gap:12px;max-width:720px;margin:0 auto;}
+.level-row{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:20px 24px;
+  display:flex;align-items:center;gap:20px;
+  transition:border-color 0.3s;
+}
+.level-row.highlight-blue{border-color:var(--blue);background:rgba(77,166,255,0.06);}
+.level-row.highlight-green{border-color:var(--green);background:rgba(45,198,83,0.06);}
+.level-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;
+  min-width:40px;
+}
+.level-num.dimmed{color:#333;}
+.level-num.c-blue{color:var(--blue);}
+.level-num.c-green{color:var(--green);}
+.level-info{flex:1;}
+.level-name{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;}
+.level-desc{font-size:0.85rem;color:var(--muted);margin-top:3px;}
+.level-badge{
+  font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 12px;border-radius:50px;flex-shrink:0;
+}
+.badge-you{background:rgba(77,166,255,0.2);border:1px solid var(--blue);color:var(--blue);}
+.badge-next{background:rgba(45,198,83,0.2);border:1px solid var(--green);color:var(--green);}
+.badge-dim{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);}
+
+.levels-diff{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto;
+}
+@media(max-width:768px){.levels-diff{grid-template-columns:1fr;}}
+.diff-card{
+  background:var(--card);border-radius:10px;padding:24px;border:1px solid var(--border);
+}
+.diff-card.blue-border{border-top:3px solid var(--blue);}
+.diff-card.green-border{border-top:3px solid var(--green);}
+.diff-card h5{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:14px;}
+.diff-card ul{list-style:none;}
+.diff-card ul li{
+  font-size:0.88rem;color:var(--muted);padding:6px 0;
+  border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;
+}
+.diff-card ul li:last-child{border-bottom:none;}
+.diff-card ul li::before{content:'·';flex-shrink:0;}
+
+/* ── TORNEIOS ── */
+.torneios-section{background:var(--bg);}
+.torneio-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+@media(max-width:768px){.torneio-layout{grid-template-columns:1fr;}}
+.torneio-info{}
+.torneio-info h3{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;margin-bottom:20px;color:var(--gold);}
+.format-list{list-style:none;margin-bottom:28px;}
+.format-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--border);
+  font-size:0.93rem;
+}
+.format-list li:last-child{border-bottom:none;}
+.format-list .key{color:var(--muted);min-width:130px;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.format-list .val{color:var(--text);font-weight:500;}
+.prize-bars{margin-top:24px;}
+.prize-bar{margin-bottom:12px;}
+.prize-bar .bar-label{display:flex;justify-content:space-between;margin-bottom:5px;font-size:0.82rem;}
+.prize-bar .bar-label .pos{font-weight:600;color:var(--text);}
+.prize-bar .bar-label .amount{color:var(--gold);font-weight:700;}
+.prize-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.prize-fill{height:100%;border-radius:4px;}
+.prize-fill.gold-fill{background:var(--gold);}
+.prize-fill.silver-fill{background:#a8a8a8;}
+.prize-fill.bronze-fill{background:#cd7f32;}
+
+.dates-stack{display:flex;flex-direction:column;gap:16px;}
+.date-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:20px 24px;display:flex;align-items:center;gap:20px;
+}
+.date-month{
+  font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;
+  min-width:60px;text-align:center;line-height:1;
+}
+.date-info .event{font-weight:600;font-size:0.95rem;margin-bottom:4px;}
+.date-info .detail{font-size:0.8rem;color:var(--muted);}
+.spots-tag{
+  margin-left:auto;font-size:0.72rem;font-weight:700;letter-spacing:0.5px;
+  padding:4px 10px;border-radius:4px;text-transform:uppercase;flex-shrink:0;
+}
+.spots-open{background:rgba(45,198,83,0.15);color:var(--green);border:1px solid rgba(45,198,83,0.3);}
+.spots-few{background:rgba(255,216,77,0.15);color:var(--gold);border:1px solid rgba(255,216,77,0.3);}
+
+/* ── UR COINS ── */
+.coins-section{background:var(--surface);}
+.coins-table{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;max-width:680px;margin:0 auto 32px;
+}
+.coins-row{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 24px;border-bottom:1px solid var(--border);
+}
+.coins-row:last-child{border-bottom:none;}
+.coins-row .coin-val{
+  font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:900;
+  min-width:56px;text-align:center;
+}
+.coins-row .coin-val.pos{color:var(--green);}
+.coins-row .coin-val.neg{color:var(--red);}
+.coins-row .coin-desc{flex:1;font-size:0.92rem;color:var(--text);}
+.coins-row .coin-icon{font-size:1.2rem;min-width:28px;text-align:center;}
+.coins-header{
+  background:rgba(255,216,77,0.06);border-bottom:1px solid var(--border);
+  padding:14px 24px;
+  font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
+  display:flex;gap:16px;
+}
+.coins-quote{
+  text-align:center;font-style:italic;color:var(--muted);font-size:0.95rem;
+  max-width:560px;margin:0 auto;padding:24px;
+  border:1px solid var(--border);border-radius:8px;background:var(--card);
+}
+.coins-quote strong{color:var(--gold);}
+
+/* ── CONSTÂNCIA ── */
+.constancia-section{background:var(--bg);}
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:768px){.results-grid{grid-template-columns:1fr;}}
+.result-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:32px 24px;text-align:center;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.result-card:hover{border-color:var(--gold3);transform:translateY(-4px);}
+.result-icon{font-size:2.8rem;margin-bottom:20px;display:block;}
+.result-card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;margin-bottom:12px;color:var(--gold);}
+.result-card p{color:var(--muted);font-size:0.88rem;line-height:1.7;}
+
+/* ── PRICING ── */
+.pricing-section{background:var(--surface);}
+.pricing-card{
+  max-width:520px;margin:0 auto;
+  background:var(--card);border:2px solid var(--green);border-radius:16px;
+  padding:48px 40px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.pricing-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--gold));
+}
+.pricing-badge-top{
+  display:inline-block;
+  background:rgba(45,198,83,0.15);border:1px solid var(--green);
+  border-radius:50px;padding:5px 16px;
+  font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--green);margin-bottom:20px;
+}
+.pricing-name{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;margin-bottom:6px;text-transform:uppercase;}
+.pricing-price{
+  font-family:'Barlow Condensed',sans-serif;font-size:4rem;font-weight:900;
+  color:var(--green);line-height:1;margin-bottom:4px;
+}
+.pricing-price span{font-size:1.5rem;vertical-align:top;padding-top:8px;display:inline-block;}
+.pricing-cycle{font-size:0.82rem;color:var(--muted);margin-bottom:36px;}
+.pricing-includes{list-style:none;text-align:left;margin-bottom:36px;}
+.pricing-includes li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 0;border-bottom:1px solid var(--border);
+  font-size:0.92rem;color:rgba(240,240,240,0.85);
+}
+.pricing-includes li:last-child{border-bottom:none;}
+.pricing-includes .pi-icon{color:var(--green);font-size:0.9rem;flex-shrink:0;margin-top:2px;}
+
+/* ── DEPOIMENTOS ── */
+.depo-section{background:var(--bg);}
+.depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:768px){.depo-grid{grid-template-columns:1fr;}}
+.depo-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:28px 24px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:border-color 0.3s;
+}
+.depo-card:hover{border-color:var(--border);}
+.depo-stars{color:var(--gold);letter-spacing:2px;font-size:0.9rem;}
+.depo-text{
+  font-size:0.92rem;color:rgba(240,240,240,0.82);line-height:1.8;
+  flex:1;font-style:italic;
+}
+.depo-author{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.depo-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold3),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:800;color:#000;
+  flex-shrink:0;
+}
+.depo-info .name{font-weight:600;font-size:0.9rem;}
+.depo-info .rank{font-size:0.75rem;color:var(--muted);}
+.depo-result{
+  display:inline-block;
+  background:rgba(45,198,83,0.1);border:1px solid rgba(45,198,83,0.3);
+  border-radius:4px;padding:4px 10px;
+  font-size:0.72rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.5px;
+}
+
+/* ── FAQ ── */
+.faq-section{background:var(--surface);}
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:4px;}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.faq-q{
+  width:100%;background:none;border:none;color:var(--text);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 24px;cursor:pointer;text-align:left;
+  font-family:'Inter',sans-serif;font-size:0.98rem;font-weight:600;
+  transition:background 0.2s;
+}
+.faq-q:hover{background:rgba(255,255,255,0.03);}
+.faq-q .arrow{
+  font-size:1.2rem;transition:transform 0.3s;
+  color:var(--gold);flex-shrink:0;
+}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height 0.35s ease;
+}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{
+  padding:0 24px 22px;
+  font-size:0.9rem;color:var(--muted);line-height:1.8;
+}
+.faq-a-inner strong{color:var(--text);}
+
+/* ── CTA FINAL ── */
+.cta-final{
+  background:var(--surface);
+  padding:100px 20px;text-align:center;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.cta-final::before{
+  content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,216,77,0.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-final h2{font-size:clamp(2rem,6vw,3.6rem);margin-bottom:16px;}
+.cta-final h2 span{color:var(--gold);}
+.cta-sub{
+  font-size:clamp(1rem,2.5vw,1.2rem);color:var(--muted);
+  max-width:540px;margin:0 auto 40px;line-height:1.7;
+}
+.cta-disclaimer{
+  margin-top:24px;font-size:0.78rem;color:#555;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:#000;border-top:1px solid var(--border);
+  padding:48px 20px 32px;
+}
+.footer-inner{
+  max-width:1140px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start;
+}
+.footer-brand .tagline{color:var(--muted);font-size:0.82rem;margin-top:10px;max-width:220px;line-height:1.6;}
+.footer-links h5{
+  font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px;
+}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-links ul a{color:rgba(240,240,240,0.6);text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+.footer-links ul a:hover{color:var(--text);}
+.footer-bottom{
+  max-width:1140px;margin:32px auto 0;
+  padding-top:24px;border-top:1px solid var(--border);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+}
+.footer-bottom p{font-size:0.8rem;color:#444;}
+.footer-bottom .slogan{font-size:0.8rem;color:var(--gold3);font-style:italic;}
+
+/* ── STAT HIGHLIGHT ── */
+.stat-block{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:24px 20px;text-align:center;
+}
+.stat-block .sval{
+  font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;
+  color:var(--gold);line-height:1;
+}
+.stat-block .slabel{font-size:0.8rem;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:0.5px;}
+.stats-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:560px;margin:40px auto 0;}
+@media(max-width:600px){.stats-row-3{grid-template-columns:1fr;}}
+
+/* ── RESPONSIVE MISC ── */
+@media(max-width:768px){
+  .section{padding:60px 0;}
+  h2{font-size:2rem;}
+  .hero-stats{gap:20px;}
+  .pillars-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">UR</div>
+      <div class="logo-text">
+        Ultimate Rivals
+        <div class="logo-sub">Sistema de Evolução</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#sistema">Sistema</a>
+      <a href="#torneios">Torneios</a>
+      <a href="#ranking">Ranking</a>
+      <a href="#planos">Planos</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#planos" class="btn btn-gold">Evoluir Agora</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge fu">
+      <span class="dot"></span>
+      Hunter N4 → N3 · Em Evolução
+    </div>
+    <h1 class="fu fu-d1">
+      Aqui ninguém cresce<br/>
+      <span>por acaso.</span><br/>
+      Cresce quem permanece.
+    </h1>
+    <p class="hero-sub fu fu-d2">
+      Você já começou. Agora é hora de construir com estrutura,
+      constância e propósito real. O próximo nível não é um acidente —
+      é a soma de cada decisão tomada dentro e fora de quadra.
+    </p>
+    <div class="hero-btns fu fu-d3">
+      <a href="#planos" class="btn btn-gold btn-lg">Quero Evoluir</a>
+      <a href="#torneios" class="btn btn-outline btn-lg">Ver Torneios</a>
+    </div>
+    <div class="hero-stats fu fu-d4">
+      <div class="hero-stat">
+        <span class="label">Ranking mensal</span>
+        <span class="value">Atualizado</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">UR Coins</span>
+        <span class="value">Cada ação conta</span>
+      </div>
+      <div class="hero-stat">
+        <span class="label">Mini Torneios</span>
+        <span class="value">Toda semana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ VERDADE ══ -->
+<section class="section truth-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:56px;">
+      <span class="section-label fu">Sem rodeios</span>
+      <h2 class="section-title fu fu-d1">A verdade sobre <span class="gold">evoluir</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu">A diferença entre quem sobe de nível e quem fica parado não é talento. É estrutura.</p>
+    </div>
+    <div class="truth-grid">
+      <div class="truth-col fu fu-d1">
+        <h3>O que separa quem sobe de quem fica parado</h3>
+        <p>
+          Existe uma ilusão muito comum entre atletas que já jogam há algum tempo:
+          a de que <strong>esforço isolado produz evolução</strong>. Treina forte uma semana,
+          compete em um torneio aleatório, descansa um mês. O ciclo se repete e a posição
+          no ranking não muda.
+        </p>
+        <p>
+          A realidade é dura e simples: <strong>constância sistemática supera intensidade
+          esporádica sempre</strong>. Não existe atalho. Não existe pico de performance
+          sem base sólida. Quem sobe de nível entende que evolução é acumulativa — cada
+          treino, cada torneio, cada decisão dentro de quadra deposita ou retira algo
+          do seu processo.
+        </p>
+        <p>
+          Atletas que ficam parados no N4 geralmente cometem os mesmos erros: competem
+          sem referência, treinam sem métrica, participam sem compromisso. <strong>Sem
+          estrutura, esforço vira apenas desgaste.</strong>
+        </p>
+        <div class="truth-quote">
+          "Quem respeita o processo, constrói algo que não quebra."
+        </div>
+      </div>
+      <div class="truth-col fu fu-d2">
+        <h3>Como a UR estrutura sua jornada</h3>
+        <p>
+          A Ultimate Rivals foi construída para atletas que já passaram da fase da descoberta
+          e querem <strong>crescer com propósito real</strong>. Não é uma plataforma de
+          diversão casual — é um sistema de desenvolvimento que respeita quem leva o
+          esporte a sério.
+        </p>
+        <p>
+          Três pilares orientam tudo na UR: <strong>métricas transparentes</strong> que mostram
+          onde você está de fato; <strong>competição regular</strong> que testa sua evolução
+          em ambiente real; e <strong>reconhecimento que reflete quem você é</strong> —
+          não quem você acha que é.
+        </p>
+        <p>
+          O sistema de ranking é alimentado por desempenho, participação, comportamento
+          e consistência. Cada ação deixa uma marca. Cada torneio conta. Cada coin
+          acumulado é evidência de compromisso real.
+        </p>
+        <ul class="truth-list">
+          <li><span class="check">✓</span>Ranking baseado em desempenho verificável, não em opinião</li>
+          <li><span class="check">✓</span>Torneios regulares com premiação real e pontuação de ranking</li>
+          <li><span class="check">✓</span>Sistema de coins que registra cada ação positiva</li>
+          <li><span class="check">✓</span>Histórico mensal de evolução acessível no seu dashboard</li>
+          <li><span class="check">✓</span>Comunidade de atletas comprometidos — o padrão sobe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ SISTEMA / PILARES ══ -->
+<section class="section" id="sistema">
+  <div class="container">
+    <span class="section-label fu">Como funciona</span>
+    <h2 class="section-title fu fu-d1">O Sistema de Evolução <span class="gold">UR</span></h2>
+    <p class="section-subtitle fu fu-d2">Quatro pilares que transformam dedicação em progresso mensurável.</p>
+    <div class="pillars-grid">
+      <div class="pillar-card fu fu-d1">
+        <span class="pillar-icon">📊</span>
+        <h4>Ranking Transparente</h4>
+        <p>
+          Seu ranking é calculado com base em desempenho real: resultados em torneios,
+          consistência de participação, comportamento em quadra e coins acumulados.
+          Nenhum favorecimento. Nenhuma subjetividade. Você sobe porque merece subir.
+          O sistema atualiza mensalmente e você acompanha cada variação no dashboard.
+        </p>
+      </div>
+      <div class="pillar-card fu fu-d2">
+        <span class="pillar-icon">🏆</span>
+        <h4>Torneios Regulares</h4>
+        <p>
+          Mini Torneios semanais e a UR Series para os níveis mais avançados.
+          Cada evento tem formato estruturado, premiação definida e pontuação que
+          impacta diretamente seu ranking. Não são eventos aleatórios — são momentos
+          de aferição real do seu nível, disputados com quem está na mesma fase que você.
+        </p>
+      </div>
+      <div class="pillar-card fu fu-d3">
+        <span class="pillar-icon">🪙</span>
+        <h4>UR Coins</h4>
+        <p>
+          Cada ação positiva dentro do sistema gera coins. Treinos registrados,
+          participação em torneios, destaque técnico, pontualidade — tudo é contabilizado.
+          Os coins funcionam como uma reputação numérica: mostram quem você é como atleta
+          além dos resultados. Eles influenciam seu posicionamento e abrem portas para
+          eventos exclusivos.
+        </p>
+      </div>
+      <div class="pillar-card fu fu-d4">
+        <span class="pillar-icon">📈</span>
+        <h4>Histórico de Evolução</h4>
+        <p>
+          Seu dashboard pessoal registra tudo: torneios disputados, posição no ranking
+          mês a mês, coins acumulados, destaques técnicos recebidos. Você tem acesso
+          a uma linha do tempo da sua evolução — o que garante perspectiva real sobre
+          onde estava e o quanto avançou. Sem memória curta, sem ilusão de performance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ NÍVEIS ══ -->
+<section class="section levels-section" id="ranking">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Onde você está</span>
+      <h2 class="section-title fu fu-d1">Sua posição <span class="gold">nos níveis</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu fu-d2">
+        Cada nível representa um padrão real de desempenho e comprometimento.
+        Você não se declara N3 — você se torna N3.
+      </p>
+    </div>
+    <div class="levels-stack fu">
+      <div class="level-row">
+        <div class="level-num dimmed">N5</div>
+        <div class="level-info">
+          <div class="level-name" style="color:#555;">Hunter Iniciante</div>
+          <div class="level-desc">Fase de descoberta. Aprendendo o jogo e o sistema.</div>
+        </div>
+        <div class="level-badge badge-dim">Início</div>
+      </div>
+      <div class="level-row highlight-blue">
+        <div class="level-num c-blue">N4</div>
+        <div class="level-info">
+          <div class="level-name" style="color:var(--blue);">Hunter</div>
+          <div class="level-desc">Você aqui: construindo base sólida. Constância é a chave. Já joga, já compete — agora é hora de sistematizar.</div>
+        </div>
+        <div class="level-badge badge-you">Você agora</div>
+      </div>
+      <div class="level-row highlight-green">
+        <div class="level-num c-green">N3</div>
+        <div class="level-info">
+          <div class="level-name" style="color:var(--green);">Hunter Experiente</div>
+          <div class="level-desc">Destino: você com consistência comprovada. Compete com regularidade, acumula coins, mantém posição. Respeitado na comunidade.</div>
+        </div>
+        <div class="level-badge badge-next">→ Próximo nível</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num" style="color:#555;">N2</div>
+        <div class="level-info">
+          <div class="level-name" style="color:#555;">Hunter Elite</div>
+          <div class="level-desc">Alta performance. Resultados consistentes em torneios de maior nível.</div>
+        </div>
+        <div class="level-badge badge-dim">Elite</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num" style="color:#3a3a3a;">N1</div>
+        <div class="level-info">
+          <div class="level-name" style="color:#3a3a3a;">Hunter Lenda</div>
+          <div class="level-desc">Legado. O topo do sistema. Referência absoluta de performance e conduta.</div>
+        </div>
+        <div class="level-badge badge-dim">Legado</div>
+      </div>
+    </div>
+
+    <div class="levels-diff fu fu-d2">
+      <div class="diff-card blue-border">
+        <h5 style="color:var(--blue);">N4 Hunter — Onde você está</h5>
+        <ul>
+          <li>Participação irregular em torneios</li>
+          <li>Coins acumulados de forma inconsistente</li>
+          <li>Ainda buscando dupla fixa e estável</li>
+          <li>Performance variável entre eventos</li>
+          <li>Ranking ainda em construção</li>
+        </ul>
+      </div>
+      <div class="diff-card green-border">
+        <h5 style="color:var(--green);">N3 Hunter Experiente — Para onde você vai</h5>
+        <ul>
+          <li>Participa de ao menos 3 torneios por mês</li>
+          <li>Coins acima de 150 por temporada</li>
+          <li>Dupla estável com histórico de parceria</li>
+          <li>Performance consistente — sem grandes oscilações</li>
+          <li>Top 30% no ranking mensal de sua categoria</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ TORNEIOS ══ -->
+<section class="section torneios-section" id="torneios">
+  <div class="container">
+    <span class="section-label fu">Sua arena</span>
+    <h2 class="section-title fu fu-d1">Mini Torneios — <span class="gold">evolução em tempo real</span></h2>
+    <p class="section-subtitle fu fu-d2">
+      Não existe teorizar sobre nível sem competição real. Os Mini Torneios UR são
+      o momento em que você descobre onde está de fato.
+    </p>
+    <div class="torneio-layout">
+      <div class="torneio-info fu fu-d1">
+        <h3>Formato do Evento</h3>
+        <ul class="format-list">
+          <li><span class="key">Modalidade</span><span class="val">Duplas (Beach Tennis)</span></li>
+          <li><span class="key">Equipes</span><span class="val">8 duplas por torneio</span></li>
+          <li><span class="key">Quadras</span><span class="val">2 simultâneas em atividade</span></li>
+          <li><span class="key">Investimento</span><span class="val"><strong class="gold">R$50</strong> por atleta — reserva inclusa</span></li>
+          <li><span class="key">Premiação Total</span><span class="val"><strong class="gold">R$330</strong> distribuídos</span></li>
+          <li><span class="key">Ranking</span><span class="val">Pontuação alimenta o sistema UR</span></li>
+          <li><span class="key">Reservas</span><span class="val">3 vagas garantidas por dupla</span></li>
+          <li><span class="key">Temporada</span><span class="val">T01 2026 — em andamento</span></li>
+        </ul>
+        <div class="prize-bars">
+          <div class="prize-bar">
+            <div class="bar-label">
+              <span class="pos">🥇 1º Lugar</span>
+              <span class="amount">R$198 (60%)</span>
+            </div>
+            <div class="prize-track"><div class="prize-fill gold-fill" style="width:60%;"></div></div>
+          </div>
+          <div class="prize-bar">
+            <div class="bar-label">
+              <span class="pos">🥈 2º Lugar</span>
+              <span class="amount">R$99 (30%)</span>
+            </div>
+            <div class="prize-track"><div class="prize-fill silver-fill" style="width:30%;"></div></div>
+          </div>
+          <div class="prize-bar">
+            <div class="bar-label">
+              <span class="pos">🥉 3º Lugar</span>
+              <span class="amount">R$33 (10%)</span>
+            </div>
+            <div class="prize-track"><div class="prize-fill bronze-fill" style="width:10%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="fu fu-d2">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:20px;color:var(--text);">Próximas Datas — T01 2026</h3>
+        <div class="dates-stack">
+          <div class="date-card">
+            <div class="date-month gold">JUL</div>
+            <div class="date-info">
+              <div class="event">Mini Torneio Julho</div>
+              <div class="detail">Temporada T01 · Ranking points disponíveis</div>
+            </div>
+            <div class="spots-tag spots-open">Vagas abertas</div>
+          </div>
+          <div class="date-card">
+            <div class="date-month gold">AGO</div>
+            <div class="date-info">
+              <div class="event">Mini Torneio Agosto</div>
+              <div class="detail">Temporada T01 · Decisivo para classificação N3</div>
+            </div>
+            <div class="spots-tag spots-open">Vagas abertas</div>
+          </div>
+          <div class="date-card">
+            <div class="date-month gold">SET</div>
+            <div class="date-info">
+              <div class="event">Mini Torneio Setembro</div>
+              <div class="detail">Temporada T01 · Classificatório UR Series</div>
+            </div>
+            <div class="spots-tag spots-few">Últimas vagas</div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:10px;border-left:3px solid var(--gold);">
+          <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;">
+            <strong style="color:var(--gold);">Sistema de reservas:</strong> Cada dupla garantida com 3 vagas reservadas.
+            Não perca seu slot — a demanda aumenta a cada temporada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ UR COINS ══ -->
+<section class="section coins-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Cada ação conta</span>
+      <h2 class="section-title fu fu-d1">UR Coins — <span class="gold">seu histórico de comprometimento</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu fu-d2">
+        Os UR Coins são a memória do sistema. Eles registram quem você é
+        como atleta além dos resultados em quadra.
+      </p>
+    </div>
+    <div class="coins-table fu">
+      <div class="coins-header">
+        <span style="min-width:70px;">Coins</span>
+        <span>Ação</span>
+      </div>
+      <div class="coins-row">
+        <div class="coin-icon">🏋️</div>
+        <div class="coin-val pos">+5</div>
+        <div class="coin-desc">Registrar treino no sistema UR</div>
+      </div>
+      <div class="coins-row">
+        <div class="coin-icon">🏆</div>
+        <div class="coin-val pos">+10</div>
+        <div class="coin-desc">Participar de Mini Torneio ou evento UR</div>
+      </div>
+      <div class="coins-row">
+        <div class="coin-icon">⭐</div>
+        <div class="coin-val pos">+15</div>
+        <div class="coin-desc">Destaque técnico reconhecido em torneio</div>
+      </div>
+      <div class="coins-row">
+        <div class="coin-icon">📲</div>
+        <div class="coin-val pos">+10</div>
+        <div class="coin-desc">Post no UR Play com conteúdo relevante</div>
+      </div>
+      <div class="coins-row">
+        <div class="coin-icon">⏰</div>
+        <div class="coin-val pos">+5</div>
+        <div class="coin-desc">Pontualidade comprovada em evento oficial</div>
+      </div>
+      <div class="coins-row" style="background:rgba(230,57,70,0.04);">
+        <div class="coin-icon">⚠️</div>
+        <div class="coin-val neg">−10</div>
+        <div class="coin-desc">Infração de conduta ou comportamento inadequado</div>
+      </div>
+    </div>
+    <div class="coins-quote fu fu-d1">
+      "Seus coins refletem quem você é dentro e fora de quadra."<br/>
+      <strong>O sistema não mente. Você escolhe o que ele registra.</strong>
+    </div>
+    <div class="stats-row-3 fu fu-d2">
+      <div class="stat-block">
+        <div class="sval">150+</div>
+        <div class="slabel">Coins para N3</div>
+      </div>
+      <div class="stat-block">
+        <div class="sval">2x</div>
+        <div class="slabel">Coins em destaque (Hunter Competidor)</div>
+      </div>
+      <div class="stat-block">
+        <div class="sval">T01</div>
+        <div class="slabel">Temporada ativa agora</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ CONSTÂNCIA ══ -->
+<section class="section constancia-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Resultados reais</span>
+      <h2 class="section-title fu fu-d1">O que a constância <span class="gold">constrói</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu fu-d2">
+        Motivação vai e vem. O que permanece é a estrutura que você constrói
+        enquanto a motivação estava presente.
+      </p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card fu fu-d1">
+        <span class="result-icon">📍</span>
+        <h4>Ranking Regional Real</h4>
+        <p>
+          Uma posição no ranking UR não é um número decorativo. Ela reflete
+          seu histórico de performance, participação e condutas ao longo da temporada.
+          Atletas N3 carregam um ranking que o mercado esportivo local reconhece —
+          e que abre convites para eventos maiores.
+        </p>
+      </div>
+      <div class="result-card fu fu-d2">
+        <span class="result-icon">🎯</span>
+        <h4>Acesso à UR Series</h4>
+        <p>
+          A UR Series é a liga de maior premiação da plataforma — reservada para
+          atletas que provaram consistência. Hunters Experientes (N3) classificados
+          recebem convites diretos para disputar torneios com premiações superiores
+          e contra os melhores da região. Constância hoje = acesso amanhã.
+        </p>
+      </div>
+      <div class="result-card fu fu-d3">
+        <span class="result-icon">🤝</span>
+        <h4>Reconhecimento da Comunidade</h4>
+        <p>
+          Hunter Experiente é respeitado. Não pelo título — mas pelo que o título
+          representa: meses de presença, de competição séria, de comportamento
+          dentro do padrão UR. A comunidade vê quem aparece, quem compete, quem
+          permanece. Reputação é construída ação por ação.
+        </p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="fu fu-d4">
+      <p style="font-size:1.1rem;color:var(--muted);font-style:italic;max-width:560px;margin:0 auto;">
+        "O jogo termina. A mentalidade permanece."
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ PLANOS ══ -->
+<section class="section pricing-section" id="planos">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Investimento</span>
+      <h2 class="section-title fu fu-d1">Plano <span class="gold">Hunter Competidor</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu fu-d2">
+        Para atletas que jogam com intenção e querem resultados rastreáveis.
+      </p>
+    </div>
+    <div class="pricing-card fu">
+      <div class="pricing-badge-top">Recomendado para N4 → N3</div>
+      <div class="pricing-name">Hunter Competidor</div>
+      <div class="pricing-price"><span>R$</span>129</div>
+      <div class="pricing-cycle">por mês · Temporada T01 2026</div>
+      <ul class="pricing-includes">
+        <li><span class="pi-icon">✓</span>Tudo do plano Hunter Básico incluído</li>
+        <li><span class="pi-icon">✓</span>Inscrição com desconto em todos os Mini Torneios</li>
+        <li><span class="pi-icon">✓</span>Acesso qualificado à UR Series (torneios de maior premiação)</li>
+        <li><span class="pi-icon">✓</span>Dashboard de evolução pessoal com histórico completo</li>
+        <li><span class="pi-icon">✓</span>Ranking por nome no sistema UR — visibilidade regional</li>
+        <li><span class="pi-icon">✓</span>UR Coins em dobro ao receber destaque técnico</li>
+        <li><span class="pi-icon">✓</span>Reserva garantida nas 3 primeiras vagas por torneio</li>
+        <li><span class="pi-icon">✓</span>Suporte direto para formação e gestão de dupla</li>
+      </ul>
+      <a href="#" class="btn btn-green btn-full btn-lg">Quero o Hunter Competidor</a>
+      <p style="margin-top:16px;font-size:0.8rem;color:var(--muted);">
+        Compromisso mensal. Cancele quando quiser. Sem taxas ocultas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ DEPOIMENTOS ══ -->
+<section class="section depo-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Atletas reais</span>
+      <h2 class="section-title fu fu-d1">Quem já decidiu <span class="gold">continuar</span></h2>
+      <p class="section-subtitle" style="margin:0 auto;" class="fu fu-d2">
+        Resultados concretos. Processo real. Sem hype.
+      </p>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card fu fu-d1">
+        <div class="depo-stars">★★★★★</div>
+        <div class="depo-text">
+          "Fiquei estagnado no N4 por quase seis meses. Achava que era questão de talento.
+          Não era. Era falta de estrutura. Quando comecei a usar o dashboard da UR, entendi
+          onde estava errando: participava pouco, sem constância. Mudar isso foi mais simples
+          do que eu pensava — mas eu precisava da métrica pra enxergar."
+        </div>
+        <div class="depo-author">
+          <div class="depo-avatar">RM</div>
+          <div class="depo-info">
+            <div class="name">Rafael M.</div>
+            <div class="rank">Hunter N4 · 7 meses no sistema</div>
+          </div>
+        </div>
+        <div class="depo-result">Desbloqueou consistência</div>
+      </div>
+      <div class="depo-card fu fu-d2">
+        <div class="depo-stars">★★★★★</div>
+        <div class="depo-text">
+          "Subi de N4 para N3 em exatamente 3 meses. Não foi mágica. Participei de
+          todos os Mini Torneios do período, treinei com frequência, registrei tudo
+          no sistema. Os coins foram subindo. O ranking acompanhou. Na virada do terceiro
+          mês, recebi a notificação de upgrade. Foi a melhor sensação — porque eu sabia
+          que era merecido."
+        </div>
+        <div class="depo-author">
+          <div class="depo-avatar">CL</div>
+          <div class="depo-info">
+            <div class="name">Carla L.</div>
+            <div class="rank">Hunter N3 · 3 meses de progressão</div>
+          </div>
+        </div>
+        <div class="depo-result">N4 → N3 em 3 meses</div>
+      </div>
+      <div class="depo-card fu fu-d3">
+        <div class="depo-stars">★★★★★</div>
+        <div class="depo-text">
+          "Minha maior dificuldade era encontrar uma dupla que levasse a sério.
+          Tentei de tudo fora da UR — WhatsApp, grupos aleatórios. Nada funcionava.
+          Dentro do sistema, encontrei meu parceiro atual em duas semanas. A gente
+          treina junto toda semana e compete em quase todos os torneios. Hoje somos
+          uma das duplas mais estáveis da nossa categoria."
+        </div>
+        <div class="depo-author">
+          <div class="depo-avatar">PT</div>
+          <div class="depo-info">
+            <div class="name">Pedro T.</div>
+            <div class="rank">Hunter N4 · Dupla fixa formada</div>
+          </div>
+        </div>
+        <div class="depo-result">Dupla fixa e ativa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ FAQ ══ -->
+<section class="section faq-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="section-label fu">Suas dúvidas</span>
+      <h2 class="section-title fu fu-d1">Perguntas <span class="gold">frequentes</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fu fu-d1">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Como funciona o ranking? É justo?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            O ranking UR é calculado com base em quatro fatores: <strong>resultados em torneios</strong>
+            (peso maior), <strong>consistência de participação</strong>, <strong>UR Coins acumulados</strong>
+            e <strong>histórico de conduta</strong>. Todos os critérios são documentados e visíveis
+            no sistema. Nenhum atleta sobe por indicação ou por conhecer alguém — o sistema
+            é cego a relações sociais e sensível apenas a performance e comportamento verificáveis.
+            É justo porque é transparente. Você sabe exatamente o que precisa fazer.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item fu fu-d2">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Posso subir de nível rápido?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Depende do que você chama de "rápido". <strong>Atletas que participam de todos
+            os torneios disponíveis em um período de 3 meses e mantêm consistência de
+            treinamento e coins</strong> têm avançado de N4 para N3 nesse prazo.
+            O sistema não tem um mínimo de tempo obrigatório — mas tem métricas mínimas
+            de desempenho e participação. Atalhos não existem aqui. Eficiência, sim.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item fu fu-d3">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          O que é UR Series e como me classifico?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            A UR Series é a liga premium da plataforma — torneios com premiações maiores,
+            campo mais competitivo e visibilidade regional. <strong>Para se classificar,
+            você precisa estar no nível N3 ou superior e ter acumulado pontos suficientes
+            nos Mini Torneios classificatórios da temporada.</strong> O plano Hunter Competidor
+            dá acesso qualificado à UR Series — atletas do plano têm prioridade nas vagas
+            e desconto na inscrição. A temporada T01 2026 tem slots disponíveis para
+            classificação até setembro.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item fu fu-d4">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          E se minha dupla desistir?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Acontece — e o sistema está preparado para isso. <strong>Seu histórico individual
+            é preservado independente de mudanças de dupla.</strong> Os coins, a posição no ranking
+            e os destaques são seus, não da dupla. Para quem precisa encontrar novo parceiro,
+            o sistema UR facilita a conexão entre atletas disponíveis por nível e disponibilidade.
+            Atletas do plano Hunter Competidor têm suporte direto para formação de nova dupla.
+            A parceria muda — o compromisso com seu próprio desenvolvimento não precisa mudar.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item fu fu-d5">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Como os UR Coins afetam meu ranking?
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Os UR Coins entram no cálculo do ranking como um <strong>fator de desempate e
+            bonificação de consistência</strong>. Dois atletas com resultados similares em
+            torneios serão diferenciados pelos coins — quem acumulou mais demonstrou
+            maior engajamento com o sistema. Além disso, atingir certos marcos de coins
+            (como 150 na temporada) é um requisito para progressão de nível, independente
+            de resultados em torneios. Pense neles como a prova de que você esteve presente
+            quando ninguém estava olhando.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════ CTA FINAL ══ -->
+<section class="cta-final">
+  <div class="container">
+    <span class="section-label fu" style="margin-bottom:20px;display:inline-block;">Decisão</span>
+    <h2 class="fu fu-d1">
+      Você já começou.<br/>
+      Agora decida continuar<br/>
+      <span>com estrutura.</span>
+    </h2>
+    <p class="cta-sub fu fu-d2">
+      Compromisso não é motivação. É decisão. Tome a sua.
+      O sistema está pronto. A temporada está em andamento.
+      O próximo torneio está chegando.
+    </p>
+    <div class="fu fu-d3">
+      <a href="#planos" class="btn btn-gold btn-lg" style="font-size:1.3rem;padding:20px 56px;letter-spacing:2px;">
+        QUERO EVOLUIR COM A UR
+      </a>
+    </div>
+    <p class="cta-disclaimer fu fu-d4">
+      Eleve o jogo, supere seus limites.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="text-decoration:none;">
+        <div class="logo-mark">UR</div>
+        <div class="logo-text">
+          Ultimate Rivals
+          <div class="logo-sub">Sistema de Evolução</div>
+        </div>
+      </a>
+      <p class="tagline">
+        A plataforma para atletas que levam o esporte a sério e querem crescer com estrutura.
+      </p>
+    </div>
+    <div class="footer-links">
+      <h5>Plataforma</h5>
+      <ul>
+        <a href="#sistema"><li>Sistema de Evolução</li></a>
+        <a href="#torneios"><li>Mini Torneios</li></a>
+        <a href="#ranking"><li>Ranking e Níveis</li></a>
+        <a href="#planos"><li>Planos</li></a>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Para o Atleta</h5>
+      <ul>
+        <a href="#"><li>UR Coins</li></a>
+        <a href="#"><li>UR Series</li></a>
+        <a href="#"><li>UR Play</li></a>
+        <a href="#"><li>Dashboard Pessoal</li></a>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Temporada</h5>
+      <ul>
+        <a href="#"><li>T01 2026 — Ativa</li></a>
+        <a href="#"><li>Calendário de Eventos</li></a>
+        <a href="#"><li>Classificatórios UR Series</li></a>
+        <a href="#"><li>Resultados</li></a>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Ultimate Rivals. Todos os direitos reservados.</p>
+    <p class="slogan">Eleve o jogo, supere seus limites.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════ JS ══ -->
+<script>
+/* ─ IntersectionObserver: fade-up ─ */
+(function(){
+  var els = document.querySelectorAll('.fu');
+  if(!els.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+/* ─ FAQ accordion ─ */
+function toggleFaq(btn){
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){
+    i.classList.remove('open');
+  });
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ─ Nav background on scroll ─ */
+(function(){
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 60){
+      nav.style.background = 'rgba(0,0,0,0.97)';
+    } else {
+      nav.style.background = 'rgba(0,0,0,0.92)';
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Rivals — Patrocínios & Parcerias Institucionais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000;
+    --surface:#080808;
+    --card:#0d0d0d;
+    --gold:#ffd84d;
+    --gold2:#f5c518;
+    --gold3:#c89000;
+    --red:#e63946;
+    --green:#2dc653;
+    --blue:#4da6ff;
+    --text:#f0f0f0;
+    --muted:#888;
+    --border:#1a1a1a
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img { display: block; max-width: 100%; }
+
+  /* Fade-up animation */
+  .fu {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fu.on {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fu.d1 { transition-delay: 0.1s; }
+  .fu.d2 { transition-delay: 0.2s; }
+  .fu.d3 { transition-delay: 0.3s; }
+  .fu.d4 { transition-delay: 0.4s; }
+  .fu.d5 { transition-delay: 0.5s; }
+  .fu.d6 { transition-delay: 0.6s; }
+
+  /* Layout helpers */
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.75;
+  }
+
+  .gold { color: var(--gold); }
+  .muted { color: var(--muted); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    gap: 24px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: -1px;
+  }
+
+  .nav-badge {
+    background: rgba(255,216,77,0.12);
+    border: 1px solid rgba(255,216,77,0.3);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 11px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.22s;
+    text-decoration: none;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: #000;
+  }
+  .btn-gold:hover {
+    background: var(--gold2);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(255,216,77,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .nav-cta { flex-shrink: 0; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 68px;
+    border-bottom: 1px solid var(--border);
+    background:
+      linear-gradient(rgba(0,0,0,0.88),rgba(0,0,0,0.88)),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+      linear-gradient(#c8a96e,#b8955a);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 60% 40%, rgba(200,169,110,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    padding: 80px 24px 100px;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,216,77,0.1);
+    border: 1px solid rgba(255,216,77,0.25);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 6vw, 74px);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .hero-title em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(240,240,240,0.72);
+    line-height: 1.75;
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hero-stat {
+    background: rgba(13,13,13,0.9);
+    padding: 22px 24px;
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-credential {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 20px 22px;
+  }
+
+  .hero-credential-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .hero-credential-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── POR QUE PATROCINAR ─── */
+  #porque {
+    background: var(--surface);
+  }
+
+  .porque-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .porque-editorial p {
+    font-size: 17px;
+    color: rgba(240,240,240,0.8);
+    line-height: 1.85;
+    margin-bottom: 22px;
+  }
+
+  .porque-editorial p strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .porque-destaque {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.2;
+    border-left: 4px solid var(--gold);
+    padding-left: 24px;
+    margin-bottom: 32px;
+  }
+
+  .porque-pilares {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pilar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .pilar:hover { border-color: rgba(255,216,77,0.3); }
+
+  .pilar-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,216,77,0.08);
+    border-radius: 6px;
+  }
+
+  .pilar-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .pilar-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ─── PÚBLICO ─── */
+  #publico {
+    background: var(--bg);
+  }
+
+  .publico-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 52px;
+  }
+
+  .publico-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px 28px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .publico-card:hover {
+    border-color: rgba(255,216,77,0.25);
+    transform: translateY(-3px);
+  }
+
+  .publico-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .publico-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .publico-card-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .publico-card-highlight {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .publico-quote {
+    margin-top: 52px;
+    background: rgba(255,216,77,0.04);
+    border: 1px solid rgba(255,216,77,0.15);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .publico-quote p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .publico-quote span {
+    color: var(--gold);
+  }
+
+  /* ─── O QUE SUA MARCA GANHA ─── */
+  #beneficios {
+    background: var(--surface);
+  }
+
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 52px;
+  }
+
+  .beneficio-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px 28px;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .beneficio-card:hover {
+    border-color: rgba(255,216,77,0.3);
+    box-shadow: 0 8px 40px rgba(255,216,77,0.06);
+    transform: translateY(-4px);
+  }
+
+  .beneficio-icon {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+
+  .beneficio-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .beneficio-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── COTAS ─── */
+  #cotas {
+    background: var(--bg);
+  }
+
+  .cotas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 52px;
+    align-items: start;
+  }
+
+  .cota-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .cota-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  }
+
+  .cota-header {
+    padding: 26px 24px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cota-tier {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cota-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .cota-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .cota-period {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .cota-body {
+    padding: 24px;
+  }
+
+  .cota-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .cota-features li {
+    font-size: 13px;
+    color: rgba(240,240,240,0.8);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .cota-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .cota-cta {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  /* Bronze */
+  .cota-bronze .cota-tier { color: #cd7f32; }
+  .cota-bronze .cota-price { color: #cd7f32; }
+  .cota-bronze .cota-features li::before { color: #cd7f32; }
+  .cota-bronze .cota-cta { background: rgba(205,127,50,0.12); color: #cd7f32; border: 1px solid rgba(205,127,50,0.3); }
+  .cota-bronze .cota-cta:hover { background: rgba(205,127,50,0.2); }
+
+  /* Prata */
+  .cota-prata .cota-tier { color: #c0c0c0; }
+  .cota-prata .cota-price { color: #c0c0c0; }
+  .cota-prata .cota-features li::before { color: #c0c0c0; }
+  .cota-prata .cota-cta { background: rgba(192,192,192,0.1); color: #c0c0c0; border: 1px solid rgba(192,192,192,0.25); }
+  .cota-prata .cota-cta:hover { background: rgba(192,192,192,0.18); }
+
+  /* Ouro */
+  .cota-ouro {
+    border-color: rgba(255,216,77,0.35);
+    position: relative;
+  }
+
+  .cota-popular {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .cota-ouro .cota-tier { color: var(--gold); }
+  .cota-ouro .cota-price { color: var(--gold); }
+  .cota-ouro .cota-features li::before { color: var(--gold); }
+  .cota-ouro .cota-cta { background: var(--gold); color: #000; }
+  .cota-ouro .cota-cta:hover { background: var(--gold2); box-shadow: 0 4px 16px rgba(255,216,77,0.25); }
+
+  /* Diamante */
+  .cota-diamante {
+    border-color: rgba(77,166,255,0.3);
+    background: linear-gradient(160deg, #0d0d0d 0%, #0a0e14 100%);
+  }
+
+  .cota-diamante .cota-tier { color: var(--blue); }
+  .cota-diamante .cota-price { color: var(--blue); }
+  .cota-diamante .cota-features li::before { color: var(--blue); }
+  .cota-diamante .cota-cta { background: rgba(77,166,255,0.1); color: var(--blue); border: 1px solid rgba(77,166,255,0.3); }
+  .cota-diamante .cota-cta:hover { background: rgba(77,166,255,0.18); }
+
+  .cota-exclusivo {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(77,166,255,0.1);
+    border: 1px solid rgba(77,166,255,0.25);
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── IMPACTO SOCIAL ─── */
+  #impacto {
+    background: var(--surface);
+  }
+
+  .impacto-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    margin-top: 56px;
+    align-items: start;
+  }
+
+  .impacto-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .impacto-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .impacto-bullet {
+    width: 36px;
+    height: 36px;
+    background: rgba(45,198,83,0.1);
+    border: 1px solid rgba(45,198,83,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .impacto-item-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .impacto-item-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .impacto-esg {
+    background: rgba(45,198,83,0.04);
+    border: 1px solid rgba(45,198,83,0.15);
+    border-radius: 10px;
+    padding: 36px;
+  }
+
+  .impacto-esg-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .impacto-esg-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  .impacto-esg p {
+    font-size: 15px;
+    color: rgba(240,240,240,0.75);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+
+  .impacto-esg-quote {
+    border-left: 3px solid var(--green);
+    padding-left: 18px;
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(240,240,240,0.8);
+    line-height: 1.7;
+    margin-top: 20px;
+  }
+
+  /* ─── TIMELINE ─── */
+  #timeline {
+    background: var(--bg);
+  }
+
+  .timeline-wrap {
+    margin-top: 52px;
+    position: relative;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(255,216,77,0.1) 100%);
+  }
+
+  .timeline-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 70px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 24px 0 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -54px;
+    top: 28px;
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-dot.big {
+    width: 18px;
+    height: 18px;
+    left: -57px;
+    top: 25px;
+    box-shadow: 0 0 0 3px var(--gold), 0 0 16px rgba(255,216,77,0.4);
+  }
+
+  .timeline-month {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .timeline-event {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .timeline-event.highlight { color: var(--gold); font-size: 26px; }
+
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .timeline-tag {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(255,216,77,0.08);
+    border: 1px solid rgba(255,216,77,0.2);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .timeline-total {
+    margin-top: 36px;
+    text-align: center;
+    padding: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .timeline-total strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    color: var(--gold);
+  }
+
+  /* ─── RELATÓRIO DE IMPACTO ─── */
+  #relatorio {
+    background: var(--surface);
+  }
+
+  .relatorio-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 52px;
+    align-items: center;
+  }
+
+  .relatorio-mock {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .relatorio-mock-header {
+    background: rgba(255,216,77,0.06);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .relatorio-mock-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .relatorio-mock-date {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .relatorio-mock-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .relatorio-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-radius: 6px;
+  }
+
+  .relatorio-row-label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .relatorio-row-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .relatorio-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .relatorio-feature {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .relatorio-feature-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .relatorio-feature-text {
+    font-size: 15px;
+    color: rgba(240,240,240,0.8);
+    line-height: 1.65;
+  }
+
+  /* ─── POR QUE AGORA ─── */
+  #agora {
+    background: var(--bg);
+  }
+
+  .agora-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    margin-top: 52px;
+    align-items: center;
+  }
+
+  .agora-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .agora-reason {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .agora-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: rgba(255,216,77,0.12);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 48px;
+    text-align: center;
+  }
+
+  .agora-reason-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .agora-reason-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .agora-callout {
+    background: rgba(255,216,77,0.04);
+    border: 1px solid rgba(255,216,77,0.2);
+    border-radius: 12px;
+    padding: 44px 40px;
+    text-align: center;
+  }
+
+  .agora-callout-icon {
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+
+  .agora-callout-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .agora-callout-title span { color: var(--gold); }
+
+  .agora-callout-text {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .agora-quote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+    margin-top: 22px;
+    line-height: 1.4;
+  }
+
+  /* ─── FORMULÁRIO / CTA FINAL ─── */
+  #contato {
+    background: var(--surface);
+  }
+
+  .contato-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 72px;
+    margin-top: 56px;
+    align-items: start;
+  }
+
+  .contato-left-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .contato-left-title span { color: var(--gold); }
+
+  .contato-left-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .contato-promises {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .contato-promise {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .contato-promise-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+
+  .contato-promise-text {
+    font-size: 14px;
+    color: rgba(240,240,240,0.8);
+    line-height: 1.55;
+  }
+
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(45,198,83,0.1);
+    border: 1px solid rgba(45,198,83,0.3);
+    color: var(--green);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .whatsapp-btn:hover {
+    background: rgba(45,198,83,0.18);
+    box-shadow: 0 4px 16px rgba(45,198,83,0.15);
+  }
+
+  /* Form */
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 36px 32px;
+  }
+
+  .form-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: rgba(255,216,77,0.4);
+  }
+
+  .form-select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .form-select option { background: #111; }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+
+  .form-submit {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .form-submit .btn { flex: 1; justify-content: center; }
+
+  .form-disclaimer {
+    font-size: 11px;
+    color: var(--muted);
+    grid-column: 1 / -1;
+    line-height: 1.5;
+    margin-top: -4px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 44px 24px;
+  }
+
+  .footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-logo-mark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 52px 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .cotas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-right { display: none; }
+    .porque-grid,
+    .publico-grid { grid-template-columns: 1fr; }
+    .publico-grid { grid-template-columns: repeat(2, 1fr); }
+    .impacto-layout,
+    .relatorio-layout,
+    .agora-layout,
+    .contato-layout { grid-template-columns: 1fr; gap: 48px; }
+    .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 72px 0; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      gap: 18px;
+    }
+    .nav-links.open a { font-size: 16px; }
+    .hamburger { display: flex; }
+    .nav-cta { display: none; }
+    .cotas-grid { grid-template-columns: 1fr; }
+    .beneficios-grid { grid-template-columns: 1fr; }
+    .publico-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .agora-callout { padding: 32px 24px; }
+    .form-card { padding: 28px 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .porque-destaque { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-mark">UR</span>
+      <span class="nav-badge">Patrocinadores</span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#porque">Impacto</a></li>
+      <li><a href="#publico">Alcance</a></li>
+      <li><a href="#cotas">Cotas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+
+    <a href="#contato" class="btn btn-gold nav-cta">Quero Patrocinar</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge fu">Patrocínio &amp; Parceria Institucional</div>
+
+      <h1 class="hero-title fu d1">
+        Associe sua marca<br>
+        a quem <em>eleva pessoas,</em><br>
+        não só atletas.
+      </h1>
+
+      <p class="hero-sub fu d2">
+        A Ultimate Rivals é uma plataforma de desenvolvimento humano através do esporte.
+        Seu investimento gera impacto real, audiência engajada e posicionamento de marca genuíno —
+        com ROI de imagem documentado e narrativa pronta para o LinkedIn da sua empresa.
+      </p>
+
+      <div class="hero-ctas fu d3">
+        <a href="#contato" class="btn btn-gold">Quero Patrocinar</a>
+        <a href="#contato" class="btn btn-outline">Baixar Media Kit</a>
+      </div>
+
+      <div class="hero-stats fu d4">
+        <div class="hero-stat">
+          <div class="hero-stat-value">200+</div>
+          <div class="hero-stat-label">Atletas Ativos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">T01 2026</div>
+          <div class="hero-stat-label">Temporada em curso</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">12+</div>
+          <div class="hero-stat-label">Eventos na temporada</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">↑</div>
+          <div class="hero-stat-label">Comunidade em crescimento</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right fu d2">
+      <div class="hero-credential">
+        <div class="hero-credential-label">Visibilidade de Marca</div>
+        <div class="hero-credential-text">Logo em materiais, banners em quadra, uniformes e conteúdo digital semanal para uma audiência ativa e engajada.</div>
+      </div>
+      <div class="hero-credential">
+        <div class="hero-credential-label">Impacto Social Mensurável</div>
+        <div class="hero-credential-text">Relatório mensal com alcance, visualizações e presença geográfica. Narrativa ESG com história real por trás dos números.</div>
+      </div>
+      <div class="hero-credential">
+        <div class="hero-credential-label">Naming Opportunities Exclusivas</div>
+        <div class="hero-credential-text">A T01 2026 é o momento fundador. Marcas que entram agora crescem com a comunidade desde o início e são lembradas como parceiras originais do movimento.</div>
+      </div>
+      <div class="hero-credential">
+        <div class="hero-credential-label">Exclusividade por Categoria</div>
+        <div class="hero-credential-text">Cota Diamante garante exclusividade de segmento — sua marca sem concorrência direta dentro da plataforma.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── POR QUE PATROCINAR ─── -->
+<section id="porque">
+  <div class="container">
+    <span class="section-label fu">Contexto Institucional</span>
+    <h2 class="section-title fu d1">Por que patrocinar<br>esporte de base organizado</h2>
+
+    <div class="porque-grid">
+      <div class="porque-editorial fu d2">
+        <p>
+          O esporte amador organizado é um dos últimos espaços onde uma marca encontra
+          <strong>audiência real, comprometida e com alto potencial de fidelização.</strong>
+          Não há algoritmo mediando a relação. Há presença física, frequência semanal e
+          pertencimento a uma comunidade.
+        </p>
+        <p>
+          Na Ultimate Rivals, não há atletas de passagem. Há pessoas que constroem algo
+          semana após semana — que chegam no horário, que respeitam a disputa, que voltam
+          na próxima rodada independente do resultado. <strong>Esse tipo de comprometimento
+          é raro. E é exatamente com esse público que sua marca vai estar associada.</strong>
+        </p>
+        <p>
+          O esporte de base organizado não é filantropia corporativa. É posicionamento
+          estratégico. É audiência qualificada, engajamento orgânico e uma narrativa que
+          a sua equipe de marketing pode usar com orgulho — sem exagero, sem greenwashing,
+          sem inventar impacto onde não existe.
+        </p>
+        <p>
+          <strong>Patrocinar a UR não é comprar uma placa.</strong> É ser parte da narrativa
+          de transformação de uma comunidade que está se construindo em tempo real, na T01 2026,
+          com dados, eventos e pessoas reais.
+        </p>
+        <p>
+          O mercado de patrocínio esportivo no Brasil é dominado pelo futebol profissional
+          de ponta. O que a Ultimate Rivals oferece é algo diferente: <strong>acesso direto
+          a uma comunidade em formação</strong>, antes que ela chegue ao mainstream —
+          com toda a vantagem de quem chegou primeiro.
+        </p>
+      </div>
+
+      <div class="fu d3">
+        <div class="porque-destaque">
+          "O melhor momento para uma marca construir com uma comunidade é antes do pico. A UR está no começo do começo."
+        </div>
+
+        <div class="porque-pilares">
+          <div class="pilar">
+            <div class="pilar-icon">🎯</div>
+            <div>
+              <div class="pilar-title">Audiência qualificada</div>
+              <div class="pilar-text">Jovens adultos ativos, com renda própria, que escolheram estar aqui. Não foram empurrados por um anúncio.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-icon">📈</div>
+            <div>
+              <div class="pilar-title">ROI de imagem documentado</div>
+              <div class="pilar-text">Relatório mensal com alcance, visualizações e engajamento. Você tem o que mostrar para o board.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-icon">🤝</div>
+            <div>
+              <div class="pilar-title">Associação de valores autêntica</div>
+              <div class="pilar-text">Disciplina, comprometimento, comunidade e desenvolvimento humano. Sem construção artificial de narrativa.</div>
+            </div>
+          </div>
+          <div class="pilar">
+            <div class="pilar-icon">🌱</div>
+            <div>
+              <div class="pilar-title">Posicionamento ESG real</div>
+              <div class="pilar-text">Impacto social com história verdadeira por trás. Conteúdo genuíno para o relatório de sustentabilidade da sua empresa.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PÚBLICO ─── -->
+<section id="publico">
+  <div class="container">
+    <span class="section-label fu">Dados de Audiência</span>
+    <h2 class="section-title fu d1">Quem é o público da UR</h2>
+    <p class="section-sub fu d2">Estimativas baseadas no modelo T01 2026. Uma audiência que cresce de forma orgânica, semana após semana, evento após evento.</p>
+
+    <div class="publico-grid">
+      <div class="publico-card fu d1">
+        <div class="publico-icon">👥</div>
+        <div class="publico-card-highlight">200+</div>
+        <div class="publico-card-title">Atletas Ativos — T01</div>
+        <div class="publico-card-text">
+          Faixa etária predominante: 18–35 anos.<br>
+          60% masculino / 40% feminino.<br>
+          Participação regular e comprometida ao longo da temporada.
+        </div>
+      </div>
+
+      <div class="publico-card fu d2">
+        <div class="publico-icon">📱</div>
+        <div class="publico-card-highlight">UR Play</div>
+        <div class="publico-card-title">Conteúdo Digital Semanal</div>
+        <div class="publico-card-text">
+          Conteúdo produzido a cada evento — fotos, vídeos, rankings e resultados.
+          Engajamento orgânico de atletas, familiares e comunidade próxima.
+          Presença nas redes com frequência consistente.
+        </div>
+      </div>
+
+      <div class="publico-card fu d3">
+        <div class="publico-icon">📍</div>
+        <div class="publico-card-highlight">Múltiplos</div>
+        <div class="publico-card-title">Polos e Eventos</div>
+        <div class="publico-card-text">
+          Eventos regulares com presença física e cobertura digital.
+          Expansão planejada de polos ao longo da temporada T01 2026.
+          Alcance que cresce a cada rodada.
+        </div>
+      </div>
+
+      <div class="publico-card fu d1">
+        <div class="publico-icon">💰</div>
+        <div class="publico-card-highlight">Jovens</div>
+        <div class="publico-card-title">Adultos com Renda Própria</div>
+        <div class="publico-card-text">
+          Consumidores ativos de produto e serviço.
+          Estilo de vida orientado à atividade física, performance e pertencimento.
+          Alta receptividade a marcas que patrocinam o que eles vivem.
+        </div>
+      </div>
+
+      <div class="publico-card fu d2">
+        <div class="publico-icon">🔁</div>
+        <div class="publico-card-highlight">Alta</div>
+        <div class="publico-card-title">Taxa de Retenção</div>
+        <div class="publico-card-text">
+          Atletas que entram na UR tendem a permanecer ao longo de toda a temporada.
+          O sistema de ranking cria engajamento contínuo e incentivo à participação recorrente.
+        </div>
+      </div>
+
+      <div class="publico-card fu d3">
+        <div class="publico-icon">🏙️</div>
+        <div class="publico-card-highlight">Interior</div>
+        <div class="publico-card-title">e Periferia</div>
+        <div class="publico-card-text">
+          Presença em cidades e regiões onde o esporte organizado raramente chega.
+          Comunidades que valorizam ainda mais a marca que se faz presente onde ninguém vai.
+        </div>
+      </div>
+    </div>
+
+    <div class="publico-quote fu">
+      <p>"Uma audiência que <span>escolhe estar aqui.</span><br>Não foi empurrada por um algoritmo."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFÍCIOS ─── -->
+<section id="beneficios">
+  <div class="container">
+    <span class="section-label fu">Entrega de Valor</span>
+    <h2 class="section-title fu d1">O que sua marca ganha</h2>
+    <p class="section-sub fu d2">Cada cota inclui entregas tangíveis, mensuráveis e com narrativa pronta para uso institucional.</p>
+
+    <div class="beneficios-grid">
+      <div class="beneficio-card fu d1">
+        <div class="beneficio-icon">🏷️</div>
+        <div class="beneficio-title">Visibilidade de Marca</div>
+        <div class="beneficio-text">
+          Logo nos materiais de comunicação da temporada — banners, flyers, camisetas e materiais
+          de quadra. Presença física em todos os eventos da cota contratada.
+          Visibilidade para o público presente e para o registro fotográfico e em vídeo.
+        </div>
+      </div>
+
+      <div class="beneficio-card fu d2">
+        <div class="beneficio-icon">📱</div>
+        <div class="beneficio-title">Conteúdo Digital</div>
+        <div class="beneficio-text">
+          Menções e posts no UR Play com marcação da marca patrocinadora.
+          Stories de eventos com visibilidade orgânica. Conteúdo produzido com qualidade,
+          disponível para uso da marca nas próprias redes e materiais institucionais.
+        </div>
+      </div>
+
+      <div class="beneficio-card fu d3">
+        <div class="beneficio-icon">🎤</div>
+        <div class="beneficio-title">Ativações em Eventos</div>
+        <div class="beneficio-text">
+          Espaço dedicado para sampling de produto, demonstrações e ações experienciais
+          durante os eventos. Contato direto com atletas e comunidade — sem intermediários,
+          sem custo adicional de ponto de venda.
+        </div>
+      </div>
+
+      <div class="beneficio-card fu d1">
+        <div class="beneficio-icon">📊</div>
+        <div class="beneficio-title">Relatório de Impacto</div>
+        <div class="beneficio-text">
+          Documento mensal com métricas de visualização, alcance, engajamento e presença
+          geográfica. O que você recebe tem número. Dados reais para justificar o investimento
+          internamente e usar no relatório de responsabilidade social da empresa.
+        </div>
+      </div>
+
+      <div class="beneficio-card fu d2">
+        <div class="beneficio-icon">🤝</div>
+        <div class="beneficio-title">Associação de Valores</div>
+        <div class="beneficio-text">
+          Vinculação orgânica a valores de esporte, disciplina, comunidade e desenvolvimento
+          humano. Uma associação que se constrói pela convivência real — não por um briefing
+          de agência. Autêntica o suficiente para resistir a qualquer checagem.
+        </div>
+      </div>
+
+      <div class="beneficio-card fu d3">
+        <div class="beneficio-icon">📰</div>
+        <div class="beneficio-title">Material de LinkedIn</div>
+        <div class="beneficio-text">
+          Narrativa pronta de responsabilidade social e investimento em esporte.
+          Conteúdo que o time de comunicação da sua empresa pode usar com confiança —
+          com foto, número e história real por trás. Posicionamento institucional de verdade.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COTAS ─── -->
+<section id="cotas">
+  <div class="container">
+    <span class="section-label fu">Investimento</span>
+    <h2 class="section-title fu d1">Cotas de Patrocínio<br>Temporada T01 2026</h2>
+    <p class="section-sub fu d2">Escolha o nível de parceria que faz sentido para sua marca. Todas as cotas incluem relatório de impacto e contato direto com nossa equipe.</p>
+
+    <div class="cotas-grid">
+      <!-- Bronze -->
+      <div class="cota-card cota-bronze fu d1">
+        <div class="cota-header">
+          <div class="cota-tier">Bronze</div>
+          <div class="cota-name">Cota Bronze</div>
+          <div class="cota-price">R$1.500</div>
+          <div class="cota-period">por mês · T01 2026</div>
+        </div>
+        <div class="cota-body">
+          <ul class="cota-features">
+            <li>Logo em todos os materiais digitais da temporada</li>
+            <li>Menção oficial nos eventos</li>
+            <li>2 inscrições gratuitas para atletas convidados pela marca</li>
+            <li>Acesso ao grupo de patrocinadores da UR</li>
+            <li>Certificado de parceria ao final da temporada</li>
+          </ul>
+          <a href="#contato" class="cota-cta">Quero o Bronze</a>
+        </div>
+      </div>
+
+      <!-- Prata -->
+      <div class="cota-card cota-prata fu d2">
+        <div class="cota-header">
+          <div class="cota-tier">Prata</div>
+          <div class="cota-name">Cota Prata</div>
+          <div class="cota-price">R$3.000</div>
+          <div class="cota-period">por mês · T01 2026</div>
+        </div>
+        <div class="cota-body">
+          <ul class="cota-features">
+            <li>Tudo da Cota Bronze</li>
+            <li>Banner em quadra em todos os eventos</li>
+            <li>Post dedicado no UR Play — 1x por mês</li>
+            <li>Ativação experiencial de 1h em 1 evento por mês</li>
+            <li>Logo em posição de destaque nos materiais</li>
+          </ul>
+          <a href="#contato" class="cota-cta">Quero o Prata</a>
+        </div>
+      </div>
+
+      <!-- Ouro -->
+      <div class="cota-card cota-ouro fu d3" style="position:relative;">
+        <span class="cota-popular">Mais escolhida</span>
+        <div class="cota-header">
+          <div class="cota-tier">Ouro</div>
+          <div class="cota-name">Cota Ouro</div>
+          <div class="cota-price">R$6.000</div>
+          <div class="cota-period">por mês · T01 2026</div>
+        </div>
+        <div class="cota-body">
+          <ul class="cota-features">
+            <li>Tudo da Cota Prata</li>
+            <li>Naming rights de 1 evento/mês — "UR Series by [Marca]"</li>
+            <li>Acesso ao banco de dados de atletas (conformidade LGPD)</li>
+            <li>Relatório mensal de impacto detalhado</li>
+            <li>Co-criação de 1 conteúdo exclusivo por mês</li>
+            <li>Presença em 2 ativações por mês</li>
+          </ul>
+          <a href="#contato" class="cota-cta">Quero o Ouro</a>
+        </div>
+      </div>
+
+      <!-- Diamante -->
+      <div class="cota-card cota-diamante fu d4">
+        <div class="cota-header">
+          <div class="cota-tier">Diamante</div>
+          <div class="cota-name">Cota Diamante</div>
+          <div class="cota-price">R$12.000</div>
+          <div class="cota-period">por mês · T01 2026</div>
+          <span class="cota-exclusivo">Exclusiva — 1 por segmento</span>
+        </div>
+        <div class="cota-body">
+          <ul class="cota-features">
+            <li>Tudo da Cota Ouro</li>
+            <li>Parceiro Master Oficial da Temporada T01</li>
+            <li>Logo em posição de destaque em 100% dos materiais</li>
+            <li>Naming do campeonato anual — evento de maior audiência</li>
+            <li>1 vaga no Conselho Consultivo da UR</li>
+            <li>Exclusividade de categoria — 1 marca por segmento de mercado</li>
+            <li>Acesso prioritário a ações especiais e expansão da T02</li>
+          </ul>
+          <a href="#contato" class="cota-cta">Quero o Diamante</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMPACTO SOCIAL ─── -->
+<section id="impacto">
+  <div class="container">
+    <span class="section-label fu">ESG &amp; Impacto Social</span>
+    <h2 class="section-title fu d1">O impacto social<br>que você endossa</h2>
+    <p class="section-sub fu d2">A Ultimate Rivals não é só um torneio. É um sistema com impacto real e mensurável na vida de pessoas.</p>
+
+    <div class="impacto-layout">
+      <ul class="impacto-list">
+        <li class="impacto-item fu d1">
+          <div class="impacto-bullet">🧠</div>
+          <div>
+            <div class="impacto-item-title">Desenvolvimento de disciplina e respeito</div>
+            <div class="impacto-item-text">A estrutura competitiva da UR exige comprometimento real — presença, pontualidade e conduta. Soft skills que o mercado de trabalho valoriza e que o esporte organizado ensina melhor do que qualquer treinamento corporativo.</div>
+          </div>
+        </li>
+        <li class="impacto-item fu d2">
+          <div class="impacto-bullet">🏆</div>
+          <div>
+            <div class="impacto-item-title">Reconhecimento fora do ambiente escolar e corporativo</div>
+            <div class="impacto-item-text">Para muitos atletas, a UR é o único espaço onde seu desempenho é medido, registrado e celebrado. Um ranking com o próprio nome, uma vitória documentada, um troféu conquistado — pequenos marcos com grande impacto na autoestima.</div>
+          </div>
+        </li>
+        <li class="impacto-item fu d3">
+          <div class="impacto-bullet">🏘️</div>
+          <div>
+            <div class="impacto-item-title">Comunidades reais em cidades do interior e periferia</div>
+            <div class="impacto-item-text">A UR expande o esporte organizado para regiões onde ele raramente chega. Cada polo é uma comunidade nova sendo construída — com frequência, rituais e sentido de pertencimento.</div>
+          </div>
+        </li>
+        <li class="impacto-item fu d4">
+          <div class="impacto-bullet">🎯</div>
+          <div>
+            <div class="impacto-item-title">Democratização do esporte competitivo</div>
+            <div class="impacto-item-text">O esporte de alto nível tem barreira de acesso. A UR reduz essa barreira — com estrutura, organização e seriedade, mas com portas abertas para quem quer competir com comprometimento, independente de clube ou background.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="impacto-esg fu d2">
+        <span class="impacto-esg-label">Para o Seu Relatório de Impacto</span>
+        <div class="impacto-esg-title">Uma narrativa ESG com história verdadeira por trás</div>
+        <p>
+          Empresas com metas ESG precisam de projetos que sejam reais — não só fotogênicos.
+          A UR entrega os dois. Com dados de atletas alcançados, eventos realizados e comunidades
+          formadas, sua empresa tem o que mostrar para stakeholders, investidores e o mercado.
+        </p>
+        <p>
+          Não é uma doação anônima para um instituto desconhecido. É parceria ativa com
+          um ecossistema esportivo em construção — com nome, rosto e resultado documentado.
+        </p>
+        <p>
+          Sua equipe de comunicação vai ter o que trabalhar. Seu time de RH vai ter o que
+          contar nas reuniões. Seu board vai ter o que apresentar no relatório anual.
+        </p>
+        <div class="impacto-esg-quote">
+          "Investir na UR é ter o que contar no seu relatório de impacto —<br>
+          com história real por trás, não só número."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TIMELINE ─── -->
+<section id="timeline">
+  <div class="container">
+    <span class="section-label fu">Calendário T01 2026</span>
+    <h2 class="section-title fu d1">Timeline de exposição<br>em T01 2026</h2>
+    <p class="section-sub fu d2">Seis meses de exposição contínua. Dez eventos. Uma temporada completa com sua marca em cada etapa.</p>
+
+    <div class="timeline-wrap fu d2">
+      <div class="timeline-line"></div>
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-month">Julho 2026</div>
+          <div class="timeline-event">Mini Torneio #1</div>
+          <div class="timeline-desc">Evento de lançamento da Temporada T01 — primeiro contato do público com a UR em formato competitivo oficial. Alto impacto de mídia e cobertura.</div>
+          <span class="timeline-tag">Abertura da Temporada</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-month">Agosto 2026</div>
+          <div class="timeline-event">UR Series #1</div>
+          <div class="timeline-desc">Primeira etapa da série principal da temporada. Formato com maior carga competitiva, ranking e premiação. Presença de patrocinadores em posição de destaque.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-month">Setembro 2026</div>
+          <div class="timeline-event">Mini Torneio #2 + UR Series #2</div>
+          <div class="timeline-desc">Mês duplo — dois eventos com exposição de marca em ambos. A temporada ganha ritmo e a comunidade cresce. Ranking começa a se consolidar.</div>
+          <span class="timeline-tag">Mês de Maior Volume</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-month">Outubro 2026</div>
+          <div class="timeline-event">Mini Torneio #3 + UR Series #3</div>
+          <div class="timeline-desc">Fase de classificação avançada. Disputa pelos postos do ranking final aumenta o engajamento dos atletas e da comunidade. Tensão competitiva se intensifica.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-month">Novembro 2026</div>
+          <div class="timeline-event">Pré-Virada</div>
+          <div class="timeline-desc">Evento preparatório para o grande encerramento. Última oportunidade de ajuste de ranking antes da rodada final. Clima de antecipação e alta mobilização.</div>
+          <span class="timeline-tag">Antecipação Máxima</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot big"></div>
+          <div class="timeline-month">Dezembro 2026</div>
+          <div class="timeline-event highlight">Virada de Ranking T01</div>
+          <div class="timeline-desc">
+            O evento principal da temporada. Definição do ranking final, premiação e celebração da comunidade UR.
+            Maior audiência do ano, cobertura máxima e cerimônia de encerramento.
+            Nome do patrocinador master no título do evento.
+          </div>
+          <span class="timeline-tag">Evento Principal da Temporada</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-total fu">
+      <strong>10+ eventos em 6 meses</strong> &nbsp;·&nbsp; Exposição contínua de julho a dezembro &nbsp;·&nbsp; Temporada T01 2026
+    </div>
+  </div>
+</section>
+
+<!-- ─── RELATÓRIO DE IMPACTO ─── -->
+<section id="relatorio">
+  <div class="container">
+    <span class="section-label fu">Transparência</span>
+    <h2 class="section-title fu d1">Modelo de relatório<br>de impacto mensal</h2>
+    <p class="section-sub fu d2">Todo patrocinador recebe dados concretos. Você sabe exatamente o que seu investimento entregou — e tem material para usar internamente.</p>
+
+    <div class="relatorio-layout">
+      <div class="relatorio-mock fu d1">
+        <div class="relatorio-mock-header">
+          <span class="relatorio-mock-title">Relatório de Impacto — UR</span>
+          <span class="relatorio-mock-date">Outubro 2026</span>
+        </div>
+        <div class="relatorio-mock-body">
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Atletas alcançados no período</span>
+            <span class="relatorio-row-value">200+</span>
+          </div>
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Visualizações no UR Play</span>
+            <span class="relatorio-row-value">—</span>
+          </div>
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Eventos com presença da marca</span>
+            <span class="relatorio-row-value">2</span>
+          </div>
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Menções nas publicações</span>
+            <span class="relatorio-row-value">—</span>
+          </div>
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Fotos e vídeos entregues</span>
+            <span class="relatorio-row-value">✓</span>
+          </div>
+          <div class="relatorio-row">
+            <span class="relatorio-row-label">Presença geográfica (polos)</span>
+            <span class="relatorio-row-value">Mapa incluso</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fu d2">
+        <span class="section-label">O que você recebe mensalmente</span>
+        <ul class="relatorio-features">
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Total de atletas alcançados</strong> — número de participantes diretos e indiretos impactados pela presença da marca nos eventos e no conteúdo digital.
+            </div>
+          </li>
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Visualizações de conteúdo no UR Play</strong> — alcance orgânico das publicações com menção à marca patrocinadora no período.
+            </div>
+          </li>
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Fotos e vídeos de ativação para uso da marca</strong> — arquivo completo de registro visual dos eventos para uso irrestrito em materiais institucionais da empresa.
+            </div>
+          </li>
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Menções e engajamento nas publicações</strong> — mapeamento das interações geradas pelo conteúdo com presença da marca.
+            </div>
+          </li>
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Mapa de presença geográfica</strong> — visualização dos polos e regiões onde a marca teve exposição, com perfil da audiência por localidade.
+            </div>
+          </li>
+          <li class="relatorio-feature">
+            <div class="relatorio-feature-dot"></div>
+            <div class="relatorio-feature-text">
+              <strong>Sumário executivo</strong> — documento de 1 página pronto para apresentar internamente, com os principais números e a narrativa de impacto do período.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── POR QUE AGORA ─── -->
+<section id="agora">
+  <div class="container">
+    <span class="section-label fu">Janela de Oportunidade</span>
+    <h2 class="section-title fu d1">Por que entrar agora,<br>na T01 2026</h2>
+
+    <div class="agora-layout">
+      <div class="agora-reasons">
+        <div class="agora-reason fu d1">
+          <div class="agora-num">01</div>
+          <div>
+            <div class="agora-reason-title">Naming opportunities exclusivas sem concorrência</div>
+            <div class="agora-reason-text">
+              A T01 2026 é a temporada inaugural. Não há histórico de patrocinadores por categoria.
+              Marcas que entram agora ocupam o espaço antes que ele seja disputado.
+              Na T02, o jogo muda — e as condições também.
+            </div>
+          </div>
+        </div>
+
+        <div class="agora-reason fu d2">
+          <div class="agora-num">02</div>
+          <div>
+            <div class="agora-reason-title">Crescer com a comunidade desde o início</div>
+            <div class="agora-reason-text">
+              Uma comunidade que nasce associa sua origem às marcas que estiveram lá no começo.
+              Esse vínculo é difícil de construir depois — e impossível de comprar com dinheiro, só com presença.
+            </div>
+          </div>
+        </div>
+
+        <div class="agora-reason fu d3">
+          <div class="agora-num">03</div>
+          <div>
+            <div class="agora-reason-title">Ser lembrado como fundador do movimento</div>
+            <div class="agora-reason-text">
+              Marcas fundadoras têm posição diferente na memória de uma comunidade.
+              Não importa quem chegue depois com mais recurso — quem estava no começo, fica no começo.
+            </div>
+          </div>
+        </div>
+
+        <div class="agora-reason fu d4">
+          <div class="agora-num">04</div>
+          <div>
+            <div class="agora-reason-title">Acesso direto a dados e co-criação de formato</div>
+            <div class="agora-reason-text">
+              Patrocinadores de T01 têm acesso à equipe fundadora, influência no formato de ativações
+              e a possibilidade de moldar como a marca se integra à plataforma. Uma vantagem que
+              desaparece à medida que a operação escala.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="agora-callout fu d2">
+        <div class="agora-callout-icon">⚡</div>
+        <div class="agora-callout-title">
+          A janela de<br>
+          <span>primeiro mover</span><br>
+          é agora
+        </div>
+        <div class="agora-callout-text">
+          A Temporada T01 2026 começa em julho. As vagas de Cota Diamante são únicas por segmento
+          e têm exclusividade garantida por contrato. Uma vez que o segmento da sua marca é ocupado,
+          a conversa muda de categoria.
+        </div>
+        <a href="#contato" class="btn btn-gold" style="width:100%;justify-content:center;margin-bottom:0;">Garantir minha cota agora</a>
+        <div class="agora-quote">
+          "As marcas que constroem com atletas antes do pico são as que ficam."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL + FORMULÁRIO ─── -->
+<section id="contato">
+  <div class="container">
+    <div class="contato-layout">
+      <div>
+        <span class="section-label fu">Vamos conversar</span>
+        <h2 class="contato-left-title fu d1">
+          Seja parte do que<br>
+          estamos <span>construindo.</span>
+        </h2>
+        <p class="contato-left-sub fu d2">
+          Interessado em patrocinar? Nossa equipe apresenta o media kit completo e
+          uma proposta personalizada em até 48 horas. Sem compromisso, sem pressão —
+          só uma conversa sobre como sua marca pode crescer com a UR.
+        </p>
+
+        <ul class="contato-promises fu d3">
+          <li class="contato-promise">
+            <div class="contato-promise-icon">⏱️</div>
+            <div class="contato-promise-text">Resposta em até 48 horas úteis com proposta personalizada</div>
+          </li>
+          <li class="contato-promise">
+            <div class="contato-promise-icon">📋</div>
+            <div class="contato-promise-text">Media kit completo com dados de audiência, calendário e exemplos de ativação</div>
+          </li>
+          <li class="contato-promise">
+            <div class="contato-promise-icon">🎯</div>
+            <div class="contato-promise-text">Proposta adequada à cota de interesse e ao perfil da sua empresa</div>
+          </li>
+          <li class="contato-promise">
+            <div class="contato-promise-icon">🔒</div>
+            <div class="contato-promise-text">Exclusividade de categoria garantida por contrato na Cota Diamante</div>
+          </li>
+        </ul>
+
+        <div class="fu d4">
+          <div style="margin-bottom:14px;font-size:14px;color:var(--muted);">Prefere uma conversa rápida?</div>
+          <a href="https://wa.me/5500000000000" class="whatsapp-btn" target="_blank" rel="noopener">
+            <span>💬</span>
+            Agendar apresentação via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="form-card fu d2">
+        <div class="form-title">Solicitar proposta de patrocínio</div>
+        <form class="form-grid" onsubmit="return false;" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome completo *</label>
+            <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="empresa">Empresa *</label>
+            <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cargo">Cargo</label>
+            <input class="form-input" type="text" id="cargo" name="cargo" placeholder="Ex: Gerente de Marketing">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail corporativo *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="voce@empresa.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="telefone">Telefone / WhatsApp</label>
+            <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="cota">Cota de interesse</label>
+            <select class="form-select" id="cota" name="cota">
+              <option value="" disabled selected>Selecione uma cota</option>
+              <option value="bronze">Cota Bronze — R$1.500/mês</option>
+              <option value="prata">Cota Prata — R$3.000/mês</option>
+              <option value="ouro">Cota Ouro — R$6.000/mês</option>
+              <option value="diamante">Cota Diamante — R$12.000/mês (exclusiva)</option>
+              <option value="personalizada">Quero discutir uma proposta personalizada</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="mensagem">Mensagem ou contexto adicional</label>
+            <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte-nos sobre sua empresa, objetivos de patrocínio ou qualquer dúvida que tenha..."></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold">Enviar solicitação</button>
+          </div>
+
+          <p class="form-disclaimer">
+            Ao enviar, você concorda com o contato da equipe Ultimate Rivals em até 48 horas úteis.
+            Seus dados são tratados em conformidade com a LGPD e não serão compartilhados com terceiros.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="footer-logo-mark">UR</span>
+      <span class="footer-copy">© 2026 Ultimate Rivals · Patrocínios &amp; Parcerias Institucionais</span>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="#porque">Impacto</a></li>
+      <li><a href="#publico">Alcance</a></li>
+      <li><a href="#cotas">Cotas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // ─── IntersectionObserver para animações .fu → .fu.on
+  (function () {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('on');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.fu').forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+
+  // ─── Mobile nav toggle
+  (function () {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
+      });
+
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
+  })();
+
+  // ─── Nav shadow on scroll
+  (function () {
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 20) {
+        nav.style.boxShadow = '0 4px 32px rgba(0,0,0,0.5)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+  })();
+
+  // ─── Smooth active link highlight
+  (function () {
+    var sections = document.querySelectorAll('section[id]');
+    var navAnchors = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+      sections.forEach(function (section) {
+        var top = section.offsetTop - 100;
+        var bottom = top + section.offsetHeight;
+        var id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < bottom) {
+          navAnchors.forEach(function (a) {
+            a.style.color = '';
+          });
+          var active = document.querySelector('.nav-links a[href="#' + id + '"]');
+          if (active) active.style.color = '#ffd84d';
+        }
+      });
+    }, { passive: true });
+  })();
+
+  // ─── Form submit feedback
+  (function () {
+    var form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('.btn-gold');
+        var original = btn.textContent;
+        btn.textContent = 'Enviado! Entraremos em contato em até 48h.';
+        btn.style.background = '#2dc653';
+        btn.style.color = '#000';
+        btn.disabled = true;
+        setTimeout(function () {
+          btn.textContent = original;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.disabled = false;
+          form.reset();
+        }, 5000);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

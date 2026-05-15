@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legado — Ultimate Rivals | Para quem chegou ao topo e quer elevar outros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000;
+  --surface:#080808;
+  --card:#0d0d0d;
+  --gold:#ffd84d;
+  --gold2:#f5c518;
+  --gold3:#c89000;
+  --red:#e63946;
+  --green:#2dc653;
+  --blue:#4da6ff;
+  --text:#f0f0f0;
+  --muted:#888;
+  --border:#1a1a1a;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth;font-size:16px}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── FADE-UP ANIMATION ── */
+.fu{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.fu.on{
+  opacity:1;
+  transform:translateY(0);
+}
+.fu.delay-1{transition-delay:0.1s}
+.fu.delay-2{transition-delay:0.2s}
+.fu.delay-3{transition-delay:0.3s}
+.fu.delay-4{transition-delay:0.4s}
+.fu.delay-5{transition-delay:0.5s}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4,h5{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-0.01em;
+}
+
+.display{
+  font-size:clamp(3rem, 9vw, 8rem);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:0.95;
+}
+
+.section-title{
+  font-size:clamp(2.2rem, 5vw, 4rem);
+  text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+
+.section-label{
+  font-family:'Inter',sans-serif;
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  margin-bottom:1rem;
+  display:block;
+}
+
+/* ── LAYOUT ── */
+.container{
+  max-width:1140px;
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+
+.container-narrow{
+  max-width:780px;
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+
+section{
+  padding:6rem 0;
+  border-bottom:1px solid var(--border);
+}
+
+/* ── NAVIGATION ── */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 1.5rem;
+}
+
+.nav-inner{
+  max-width:1140px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
+}
+
+.nav-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:1.9rem;
+  color:var(--gold);
+  letter-spacing:0.05em;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  list-style:none;
+}
+
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.82rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+
+.nav-links a:hover{color:var(--text)}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.7rem 1.6rem;
+  border-radius:2px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+  transition:all 0.2s;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#000;
+}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+
+.btn-outline{
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--gold3);
+}
+.btn-outline:hover{background:var(--gold);color:#000}
+
+.btn-lg{
+  padding:1rem 2.4rem;
+  font-size:1.15rem;
+}
+
+.btn-xl{
+  padding:1.2rem 3rem;
+  font-size:1.3rem;
+}
+
+.nav-cta{
+  margin-left:1rem;
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:64px;
+  position:relative;
+  background:
+    linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+    linear-gradient(#c8a96e,#b8955a);
+  border-bottom:1px solid var(--border);
+}
+
+.hero-inner{
+  padding:5rem 1.5rem 4rem;
+  max-width:1140px;
+  margin:0 auto;
+  width:100%;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  background:rgba(200,144,0,0.15);
+  border:1px solid var(--gold3);
+  border-radius:2px;
+  padding:0.4rem 1rem;
+  margin-bottom:2rem;
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.hero-badge span{
+  width:6px;
+  height:6px;
+  background:var(--gold);
+  border-radius:50%;
+  display:inline-block;
+}
+
+.hero-headline{
+  margin-bottom:1.5rem;
+}
+
+.hero-headline .line1{
+  color:var(--text);
+}
+
+.hero-headline .line2{
+  color:var(--gold);
+}
+
+.hero-sub{
+  max-width:640px;
+  font-size:1.15rem;
+  color:rgba(240,240,240,0.7);
+  line-height:1.7;
+  margin-bottom:2.5rem;
+  font-weight:300;
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1.2rem;
+  margin-bottom:3rem;
+}
+
+.hero-note{
+  font-size:0.8rem;
+  color:var(--muted);
+  font-style:italic;
+  letter-spacing:0.04em;
+}
+
+.hero-pillars{
+  display:flex;
+  gap:0;
+  border:1px solid var(--border);
+  border-radius:2px;
+  overflow:hidden;
+  max-width:520px;
+  margin-top:1rem;
+}
+
+.pillar{
+  flex:1;
+  padding:0.9rem 1rem;
+  text-align:center;
+  border-right:1px solid var(--border);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.9rem;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  background:rgba(255,255,255,0.02);
+  transition:color 0.2s, background 0.2s;
+}
+
+.pillar:last-child{border-right:none}
+.pillar:hover{color:var(--gold);background:rgba(200,144,0,0.06)}
+
+/* ── MANIFESTO ── */
+#manifesto{
+  background:var(--surface);
+}
+
+.manifesto-text{
+  font-size:clamp(1.15rem, 2.5vw, 1.45rem);
+  line-height:1.85;
+  color:rgba(240,240,240,0.85);
+  font-weight:300;
+}
+
+.manifesto-text p{
+  margin-bottom:1.6rem;
+}
+
+.manifesto-text p:last-child{
+  margin-bottom:0;
+}
+
+.manifesto-text strong{
+  color:var(--text);
+  font-weight:500;
+}
+
+.manifesto-text .highlight{
+  color:var(--gold);
+  font-style:italic;
+}
+
+.manifesto-quote{
+  border-left:3px solid var(--gold3);
+  padding-left:1.8rem;
+  margin:2.5rem 0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(1.5rem, 3vw, 2.2rem);
+  font-weight:700;
+  font-style:italic;
+  color:var(--gold);
+  line-height:1.3;
+}
+
+/* ── CAPITÃO ── */
+#capitao{
+  background:var(--bg);
+}
+
+.capitao-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:start;
+}
+
+.capitao-left .section-title{
+  margin-bottom:1.2rem;
+}
+
+.capitao-tagline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-style:italic;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:1.5rem;
+  line-height:1.3;
+}
+
+.capitao-desc{
+  color:rgba(240,240,240,0.7);
+  font-size:1rem;
+  line-height:1.8;
+  margin-bottom:2rem;
+}
+
+.responsibility-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0.8rem;
+  margin-bottom:2rem;
+}
+
+.responsibility-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:0.8rem;
+  font-size:0.95rem;
+  color:rgba(240,240,240,0.75);
+  line-height:1.6;
+}
+
+.responsibility-list li::before{
+  content:'';
+  width:2px;
+  height:16px;
+  background:var(--gold3);
+  flex-shrink:0;
+  margin-top:4px;
+}
+
+.benefit-cards{
+  display:flex;
+  flex-direction:column;
+  gap:0.8rem;
+}
+
+.benefit-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:1rem 1.2rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+.benefit-icon{
+  width:36px;
+  height:36px;
+  background:rgba(200,144,0,0.1);
+  border:1px solid var(--gold3);
+  border-radius:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:1rem;
+}
+
+.benefit-text{
+  font-size:0.9rem;
+  color:var(--text);
+  font-weight:500;
+}
+
+.benefit-sub{
+  font-size:0.78rem;
+  color:var(--muted);
+  margin-top:0.1rem;
+}
+
+/* ── EMBAIXADORES ── */
+#embaixadores{
+  background:var(--surface);
+}
+
+.emb-header{
+  max-width:680px;
+  margin-bottom:3.5rem;
+}
+
+.emb-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.5rem;
+  margin-bottom:3rem;
+}
+
+.emb-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:1.8rem 1.5rem;
+  transition:border-color 0.2s;
+}
+
+.emb-card:hover{border-color:var(--gold3)}
+
+.emb-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.5rem;
+  font-weight:900;
+  color:var(--gold3);
+  line-height:1;
+  margin-bottom:0.8rem;
+  opacity:0.5;
+}
+
+.emb-card h3{
+  font-size:1.1rem;
+  margin-bottom:0.6rem;
+  color:var(--text);
+}
+
+.emb-card p{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.emb-benefits{
+  background:rgba(200,144,0,0.05);
+  border:1px solid var(--gold3);
+  border-radius:3px;
+  padding:2rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  align-items:center;
+}
+
+.emb-benefit-tag{
+  background:rgba(200,144,0,0.1);
+  border:1px solid rgba(200,144,0,0.3);
+  border-radius:2px;
+  padding:0.4rem 0.9rem;
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--gold);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+.emb-cta-text{
+  width:100%;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.2rem;
+  font-style:italic;
+  color:rgba(240,240,240,0.6);
+  font-weight:600;
+  padding-top:0.5rem;
+}
+
+/* ── JORNADA TIMELINE ── */
+#jornada{
+  background:var(--bg);
+}
+
+.timeline{
+  position:relative;
+  padding-left:2rem;
+  margin:3rem 0;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  background:linear-gradient(to bottom, var(--border), var(--gold3), var(--gold));
+}
+
+.timeline-item{
+  position:relative;
+  padding:0 0 2.5rem 2rem;
+}
+
+.timeline-item:last-child{padding-bottom:0}
+
+.timeline-dot{
+  position:absolute;
+  left:-2rem;
+  top:4px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--border);
+  border:2px solid var(--border);
+  transform:translateX(-6px);
+  transition:background 0.3s;
+}
+
+.timeline-item.active .timeline-dot{
+  background:var(--gold);
+  border-color:var(--gold);
+  box-shadow:0 0 16px rgba(255,216,77,0.4);
+}
+
+.timeline-item.done .timeline-dot{
+  background:var(--gold3);
+  border-color:var(--gold3);
+}
+
+.timeline-level{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.3rem;
+}
+
+.timeline-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.6rem;
+  font-weight:900;
+  text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:0.3rem;
+}
+
+.timeline-item.active .timeline-title{
+  color:var(--gold);
+}
+
+.timeline-desc{
+  font-size:0.9rem;
+  color:var(--muted);
+}
+
+.jornada-close{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-left:3px solid var(--gold);
+  padding:1.5rem 2rem;
+  font-size:1.1rem;
+  color:rgba(240,240,240,0.75);
+  font-style:italic;
+  line-height:1.6;
+}
+
+/* ── IMPACTO ── */
+#impacto{
+  background:var(--surface);
+}
+
+.impact-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:2rem;
+  margin-top:3rem;
+}
+
+.impact-card{
+  padding:2.5rem 2rem;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:3px;
+  border-top:3px solid var(--gold3);
+  transition:transform 0.2s, border-color 0.2s;
+}
+
+.impact-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  border-top-color:var(--gold);
+}
+
+.impact-icon{
+  font-size:2rem;
+  margin-bottom:1.2rem;
+  display:block;
+}
+
+.impact-card h3{
+  font-size:1.4rem;
+  margin-bottom:0.8rem;
+  color:var(--text);
+  text-transform:uppercase;
+}
+
+.impact-card p{
+  font-size:0.9rem;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+/* ── DEPOIMENTOS ── */
+#depoimentos{
+  background:var(--bg);
+}
+
+.testimonials-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1.5rem;
+  margin-top:3rem;
+}
+
+.testimonial{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:2rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
+}
+
+.testimonial-body{
+  font-size:0.97rem;
+  color:rgba(240,240,240,0.75);
+  line-height:1.8;
+  font-style:italic;
+  flex:1;
+}
+
+.testimonial-body::before{
+  content:'"';
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:3rem;
+  color:var(--gold3);
+  line-height:0.5;
+  display:block;
+  margin-bottom:1rem;
+  opacity:0.6;
+}
+
+.testimonial-author{
+  border-top:1px solid var(--border);
+  padding-top:1rem;
+}
+
+.author-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  text-transform:uppercase;
+  color:var(--text);
+  letter-spacing:0.05em;
+}
+
+.author-role{
+  font-size:0.75rem;
+  color:var(--gold3);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-top:0.2rem;
+}
+
+/* ── COMPROMISSOS ── */
+#compromissos{
+  background:var(--surface);
+}
+
+.commitments{
+  margin-top:3rem;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border:1px solid var(--border);
+  border-radius:3px;
+  overflow:hidden;
+}
+
+.commitment{
+  padding:2rem 2.5rem;
+  border-bottom:1px solid var(--border);
+  display:grid;
+  grid-template-columns:60px 1fr;
+  gap:1.5rem;
+  align-items:start;
+  transition:background 0.2s;
+}
+
+.commitment:last-child{border-bottom:none}
+.commitment:hover{background:rgba(200,144,0,0.03)}
+
+.commitment-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:3rem;
+  font-weight:900;
+  color:var(--border);
+  line-height:1;
+  letter-spacing:-0.03em;
+  padding-top:2px;
+}
+
+.commitment-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.4rem;
+  font-weight:700;
+  text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:0.5rem;
+}
+
+.commitment-desc{
+  font-size:0.9rem;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+/* ── TORNEIOS ── */
+#torneios{
+  background:var(--bg);
+}
+
+.events-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1.5rem;
+  margin-top:3rem;
+}
+
+.event-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:3px;
+  overflow:hidden;
+  transition:border-color 0.2s;
+}
+
+.event-card:hover{border-color:var(--gold3)}
+
+.event-header{
+  padding:1.5rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(200,144,0,0.04);
+}
+
+.event-tag{
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  margin-bottom:0.6rem;
+  display:block;
+}
+
+.event-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.5rem;
+  font-weight:900;
+  text-transform:uppercase;
+  color:var(--text);
+  line-height:1.1;
+}
+
+.event-body{
+  padding:1.5rem;
+}
+
+.event-date{
+  font-size:0.8rem;
+  color:var(--gold);
+  font-weight:600;
+  letter-spacing:0.1em;
+  margin-bottom:0.6rem;
+}
+
+.event-desc{
+  font-size:0.88rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.event-access{
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-top:1rem;
+  font-size:0.72rem;
+  font-weight:700;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--gold3);
+}
+
+.event-access::before{
+  content:'';
+  width:6px;
+  height:6px;
+  background:var(--gold3);
+  border-radius:50%;
+}
+
+/* ── CTA FINAL ── */
+#cta-final{
+  background:
+    linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E"),
+    linear-gradient(135deg,#1a1000,#0d0800);
+  text-align:center;
+  padding:8rem 1.5rem;
+  border-bottom:none;
+}
+
+.cta-eyebrow{
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--gold3);
+  display:block;
+  margin-bottom:1.5rem;
+}
+
+.cta-headline{
+  font-size:clamp(2rem,5vw,3.8rem);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:1.05;
+  margin-bottom:1.2rem;
+}
+
+.cta-headline .accent{color:var(--gold)}
+
+.cta-sub{
+  font-size:1.1rem;
+  color:rgba(240,240,240,0.6);
+  max-width:560px;
+  margin:0 auto 2.5rem;
+  line-height:1.7;
+  font-weight:300;
+}
+
+.cta-note{
+  margin-top:1.2rem;
+  font-size:0.75rem;
+  color:var(--muted);
+  letter-spacing:0.08em;
+}
+
+.cta-divider{
+  width:60px;
+  height:1px;
+  background:var(--gold3);
+  margin:2rem auto;
+  opacity:0.5;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:#000;
+  border-top:1px solid var(--border);
+  padding:3rem 1.5rem;
+}
+
+.footer-inner{
+  max-width:1140px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:2rem;
+}
+
+.footer-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:1.6rem;
+  color:var(--gold);
+  letter-spacing:0.05em;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+.footer-links{
+  display:flex;
+  gap:1.5rem;
+  list-style:none;
+  justify-content:center;
+}
+
+.footer-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+}
+
+.footer-links a:hover{color:var(--gold)}
+
+.footer-quote{
+  text-align:right;
+}
+
+.footer-quote p{
+  font-size:0.8rem;
+  color:var(--muted);
+  line-height:1.6;
+  font-style:italic;
+}
+
+.footer-copy{
+  font-size:0.72rem;
+  color:rgba(136,136,136,0.5);
+  margin-top:0.3rem;
+}
+
+/* ── DIVIDER ACCENT ── */
+.section-divider{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:3rem;
+}
+
+.section-divider::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--border);
+}
+
+/* ── MOBILE HAMBURGER ── */
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:4px;
+}
+
+.nav-toggle span{
+  width:22px;
+  height:2px;
+  background:var(--text);
+  border-radius:1px;
+  transition:all 0.2s;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+
+  .capitao-grid{grid-template-columns:1fr}
+  .emb-grid{grid-template-columns:1fr 1fr}
+  .impact-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .events-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-quote{text-align:center}
+}
+
+@media(max-width:600px){
+  section{padding:4rem 0}
+  .emb-grid{grid-template-columns:1fr}
+  .commitment{grid-template-columns:40px 1fr}
+  .commitment-num{font-size:2rem}
+  .hero-pillars{flex-direction:column}
+  .pillar{border-right:none;border-bottom:1px solid var(--border)}
+  .pillar:last-child{border-bottom:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">UR</a>
+    <ul class="nav-links">
+      <li><a href="#capitao">Capitães</a></li>
+      <li><a href="#embaixadores">Embaixadores</a></li>
+      <li><a href="#jornada">Programa Legado</a></li>
+      <li><a href="#impacto">Impacto</a></li>
+    </ul>
+    <a href="#cta-final" class="btn btn-gold nav-cta">Fazer Parte</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <div class="hero-badge fu">
+      <span></span>
+      Hunter Lenda &nbsp;·&nbsp; N1 &nbsp;·&nbsp; Legado
+    </div>
+
+    <div class="hero-headline display fu delay-1">
+      <div class="line1">O que você constrói</div>
+      <div class="line2">em pessoas</div>
+      <div class="line1">nunca perde valor.</div>
+    </div>
+
+    <p class="hero-sub fu delay-2">
+      Legado não é sobre ser lembrado. É sobre o que você deixa que continua funcionando quando você não está mais lá.
+    </p>
+
+    <div class="hero-actions fu delay-3">
+      <a href="#cta-final" class="btn btn-gold btn-lg">Quero Construir Legado</a>
+    </div>
+
+    <p class="hero-note fu delay-3">Para atletas que chegaram ao topo e querem elevar outros.</p>
+
+    <div class="hero-pillars fu delay-4">
+      <div class="pillar">Capitanato</div>
+      <div class="pillar">Embaixadores</div>
+      <div class="pillar">Formação</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MANIFESTO ── -->
+<section id="manifesto">
+  <div class="container-narrow">
+
+    <div class="section-divider fu">
+      <span class="section-label">O que é Legado na UR</span>
+    </div>
+
+    <div class="manifesto-text">
+
+      <p class="fu">
+        Legado não se anuncia. Se constrói em silêncio, treino a treino, jogo a jogo, decisão a decisão.
+      </p>
+
+      <p class="fu delay-1">
+        Na Ultimate Rivals, atletas de Legado são aqueles que <strong>o ambiente reconhece antes mesmo de olhar o ranking</strong>. São os que chegam cedo, ficam até o fim, respondem as perguntas que ninguém fez e elevam o padrão sem precisar cobrar.
+      </p>
+
+      <div class="manifesto-quote fu delay-2">
+        "Antes do atleta, existe a pessoa."
+      </div>
+
+      <p class="fu delay-2">
+        Há uma distinção que o jogo não ensina, mas o tempo revela: entre quem compete e quem <span class="highlight">constrói o ambiente em que a competição acontece</span>. O primeiro precisa do segundo. O segundo escolhe existir.
+      </p>
+
+      <p class="fu delay-3">
+        Chegar ao N1 é uma conquista individual. Permanecer relevante — e ser lembrado com respeito — é algo que só se constrói em relação. Com os outros. Para os outros.
+      </p>
+
+      <div class="manifesto-quote fu delay-3">
+        "O jogo termina. A mentalidade permanece."
+      </div>
+
+      <p class="fu delay-4">
+        Atletas de Legado na Ultimate Rivals não são figuras distantes. São presença constante. São os que um iniciante do N5 vai lembrar daqui a três anos como a razão pela qual não desistiu no segundo mês. São os que tornam uma comunidade esportiva em algo que vale pertencer.
+      </p>
+
+      <p class="fu delay-4">
+        <strong>Quem chegou ao N1 carrega uma responsabilidade: elevar quem está atrás.</strong>
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── O PAPEL DO CAPITÃO ── -->
+<section id="capitao">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Liderança Reconhecida</span>
+    </div>
+
+    <div class="capitao-grid">
+
+      <div class="capitao-left">
+        <h2 class="section-title fu">O Papel<br>do Capitão</h2>
+        <p class="capitao-tagline fu delay-1">"O capitão não é o melhor jogador.<br>É o melhor exemplo."</p>
+        <p class="capitao-desc fu delay-1">
+          Na Ultimate Rivals, ser Capitão não é uma posição conquistada apenas pelo ranking. É uma indicação do ambiente — de quem você é dentro e fora de quadra, de como você trata quem ainda está aprendendo e de como você representa os valores que construímos juntos.
+        </p>
+        <p class="capitao-desc fu delay-2">
+          Capitães são eleitos por uma combinação de performance, postura e histórico comunitário. A responsabilidade é real. O impacto também.
+        </p>
+
+        <ul class="responsibility-list fu delay-3">
+          <li>Liderar um grupo de atletas dentro do ecossistema UR, servindo de referência de conduta e comprometimento</li>
+          <li>Representar os valores da Ultimate Rivals em torneios, eventos e interações públicas</li>
+          <li>Apoiar o nivelamento de novos atletas, orientando nas primeiras etapas da jornada</li>
+          <li>Mediar conflitos dentro do grupo com maturidade e imparcialidade</li>
+          <li>Ser voz ativa na construção de regras e dinâmicas da comunidade</li>
+        </ul>
+      </div>
+
+      <div class="capitao-right">
+        <span class="section-label fu">Benefícios exclusivos</span>
+        <div class="benefit-cards">
+          <div class="benefit-card fu delay-1">
+            <div class="benefit-icon">🏅</div>
+            <div>
+              <div class="benefit-text">Badge Exclusivo de Capitão</div>
+              <div class="benefit-sub">Identificação visual no perfil e nos torneios</div>
+            </div>
+          </div>
+          <div class="benefit-card fu delay-2">
+            <div class="benefit-icon">💳</div>
+            <div>
+              <div class="benefit-text">Desconto no Plano UR</div>
+              <div class="benefit-sub">Reconhecimento tangível pelo compromisso assumido</div>
+            </div>
+          </div>
+          <div class="benefit-card fu delay-3">
+            <div class="benefit-icon">🏆</div>
+            <div>
+              <div class="benefit-text">Acesso Antecipado a Torneios</div>
+              <div class="benefit-sub">Inscrição prioritária em eventos especiais e convites exclusivos</div>
+            </div>
+          </div>
+          <div class="benefit-card fu delay-4">
+            <div class="benefit-icon">🗣️</div>
+            <div>
+              <div class="benefit-text">Voz na Construção de Regras</div>
+              <div class="benefit-sub">Participação real nas decisões que moldam a comunidade</div>
+            </div>
+          </div>
+          <div class="benefit-card fu delay-5">
+            <div class="benefit-icon">🤝</div>
+            <div>
+              <div class="benefit-text">Rede de Capitães UR</div>
+              <div class="benefit-sub">Acesso a grupo exclusivo com líderes de todo o ecossistema</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── EMBAIXADORES ── -->
+<section id="embaixadores">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Programa Oficial</span>
+    </div>
+
+    <div class="emb-header">
+      <h2 class="section-title fu">Programa<br>Embaixadores UR</h2>
+      <p class="fu delay-1" style="font-size:1.05rem;color:rgba(240,240,240,0.65);line-height:1.75;margin-top:1rem;">
+        Por convite. Para atletas N1 com histórico positivo e presença relevante na comunidade. Embaixador UR não é título de vitrine — é compromisso de impacto real.
+      </p>
+    </div>
+
+    <div class="emb-grid">
+      <div class="emb-card fu">
+        <div class="emb-num">01</div>
+        <h3>Representação em Eventos</h3>
+        <p>Presença oficial da UR em escolas, eventos esportivos, clínicas e competições regionais. Você é a face do ecossistema no seu território.</p>
+      </div>
+      <div class="emb-card fu delay-1">
+        <div class="emb-num">02</div>
+        <h3>Co-criação no UR Play</h3>
+        <p>Produção de conteúdo em parceria com a plataforma: análises táticas, bastidores, séries de formação e narrativas que inspiram a comunidade.</p>
+      </div>
+      <div class="emb-card fu delay-2">
+        <div class="emb-num">03</div>
+        <h3>Mentoria Informal</h3>
+        <p>Acompanhamento próximo de atletas em estágio Descoberta (N5). Não é aula — é presença, referência e abertura para quem ainda está encontrando o caminho.</p>
+      </div>
+      <div class="emb-card fu delay-3">
+        <div class="emb-num">04</div>
+        <h3>Expansão Territorial</h3>
+        <p>Levar o ecossistema UR para novas cidades e regiões. Identificar talentos, criar pontos de encontro e construir a rede onde ela ainda não existe.</p>
+      </div>
+      <div class="emb-card fu delay-4">
+        <div class="emb-num">05</div>
+        <h3>Participação Estratégica</h3>
+        <p>Envolvimento nas decisões que moldam os próximos passos da Ultimate Rivals — produtos, torneios, políticas de comunidade e direção de crescimento.</p>
+      </div>
+      <div class="emb-card fu delay-5">
+        <div class="emb-num">06</div>
+        <h3>Formação Contínua</h3>
+        <p>Acesso a conteúdos exclusivos de liderança, comunicação e desenvolvimento esportivo. Crescer junto é parte do compromisso de elevar outros.</p>
+      </div>
+    </div>
+
+    <div class="emb-benefits fu delay-2">
+      <div class="emb-benefit-tag">Plano Gratuito</div>
+      <div class="emb-benefit-tag">Equipamento UR</div>
+      <div class="emb-benefit-tag">Menção Oficial</div>
+      <div class="emb-benefit-tag">Decisões Estratégicas</div>
+      <div class="emb-benefit-tag">Badge Embaixador</div>
+      <div class="emb-benefit-tag">Convites Exclusivos</div>
+      <p class="emb-cta-text">"Embaixador não é título de vitrine. É compromisso de impacto."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── JORNADA DO LEGADO ── -->
+<section id="jornada">
+  <div class="container-narrow">
+
+    <div class="section-divider fu">
+      <span class="section-label">A Jornada</span>
+    </div>
+
+    <h2 class="section-title fu">A Jornada<br>do Legado</h2>
+    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:0.5rem;">
+      Cada nível foi construído sobre o anterior. Agora você vê o mapa completo.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item done fu delay-1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-level">N5 → N4</div>
+        <div class="timeline-title">🎯 Descoberta</div>
+        <div class="timeline-desc">Você entrou no jogo. Aprendeu as regras, descobriu o ritmo e deu os primeiros passos com consistência.</div>
+      </div>
+
+      <div class="timeline-item done fu delay-2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-level">N4 → N3</div>
+        <div class="timeline-title">🔨 Compromisso</div>
+        <div class="timeline-desc">Você construiu consistência quando era mais fácil desistir. Aprendeu a competir com seriedade e a perder com dignidade.</div>
+      </div>
+
+      <div class="timeline-item done fu delay-3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-level">N3 → N2</div>
+        <div class="timeline-title">⚙️ Processo</div>
+        <div class="timeline-desc">Você refinou a execução. Passou a entender o jogo de um nível diferente — tático, mental, estratégico.</div>
+      </div>
+
+      <div class="timeline-item done fu delay-4">
+        <div class="timeline-dot"></div>
+        <div class="timeline-level">N2 → N1</div>
+        <div class="timeline-title">🏆 Performance</div>
+        <div class="timeline-desc">Você provou o nível. Competiu no topo, encontrou os melhores e se manteve entre eles. O ambiente reconhece quem você é.</div>
+      </div>
+
+      <div class="timeline-item active fu delay-5">
+        <div class="timeline-dot"></div>
+        <div class="timeline-level">N1 → Legado</div>
+        <div class="timeline-title">🌟 Você Agora</div>
+        <div class="timeline-desc">Você constrói outros. O ranking deixou de ser o único medidor. O que você deixa no ambiente é o que define quem você foi.</div>
+      </div>
+
+    </div>
+
+    <div class="jornada-close fu">
+      "Cada nível que você subiu foi um tijolo. Agora você pode construir casas."
+    </div>
+
+  </div>
+</section>
+
+<!-- ── IMPACTO ── -->
+<section id="impacto">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Áreas de Atuação</span>
+    </div>
+
+    <h2 class="section-title fu">Impacto que<br>você pode ter</h2>
+    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;">Legado se manifesta em três frentes concretas. Você escolhe onde a sua presença faz mais sentido.</p>
+
+    <div class="impact-grid">
+
+      <div class="impact-card fu delay-1">
+        <span class="impact-icon">👨‍🏫</span>
+        <h3>Formação</h3>
+        <p>Orientar novos atletas no processo de nivelamento, nos primeiros torneios e na construção de uma mentalidade competitiva saudável. Não é coaching formal — é o tipo de presença que transforma trajetórias.</p>
+      </div>
+
+      <div class="impact-card fu delay-2">
+        <span class="impact-icon">🏅</span>
+        <h3>Competição</h3>
+        <p>Liderar duplas e grupos em torneios, elevando o nível coletivo de performance. A presença de um atleta de Legado numa equipe muda o padrão de todos ao redor — a exigência sobe sem precisar de discurso.</p>
+      </div>
+
+      <div class="impact-card fu delay-3">
+        <span class="impact-icon">📱</span>
+        <h3>Comunidade</h3>
+        <p>Criar conteúdo no UR Play que inspira, educa e conecta. Análises táticas, histórias reais, perspectivas que só quem chegou ao topo pode oferecer. A sua voz tem peso — use ela para construir.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── DEPOIMENTOS ── -->
+<section id="depoimentos">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Quem Escolheu o Legado</span>
+    </div>
+
+    <h2 class="section-title fu">O que dizem os que<br>escolheram construir</h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial fu delay-1">
+        <div class="testimonial-body">
+          Quando eu cheguei ao N1, pensei que tinha chegado no fim. Mas aí comecei a acompanhar três atletas do N5 — e percebi que aprendi mais sobre o jogo ensinando do que em qualquer torneio que disputei. Hoje os três estão no N3. Isso vale mais que qualquer medalha que eu tenha.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Rafael M.</div>
+          <div class="author-role">Capitão UR · N1 · Temporada T01</div>
+        </div>
+      </div>
+
+      <div class="testimonial fu delay-2">
+        <div class="testimonial-body">
+          Eu trouxe minha cidade para o ecossistema da UR. Não foi um projeto — foi uma consequência de acreditar que o que a gente vivia merecia chegar em mais pessoas. Hoje temos grupo ativo, torneios locais e três atletas que mal sabiam o que era nivelamento no início do ano. O território cresceu porque alguém decidiu plantar.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Camila S.</div>
+          <div class="author-role">Embaixadora UR · N1 · Região Sudeste</div>
+        </div>
+      </div>
+
+      <div class="testimonial fu delay-3">
+        <div class="testimonial-body">
+          Eu não planejei ser referência. Comecei a chegar mais cedo nos treinos coletivos dos fins de semana e logo estavam me fazendo perguntas. Hoje eu fico os últimos quarenta minutos treinando duplas que estão começando. Não porque alguém pediu. Porque é a coisa certa a fazer quando você já passou por aquilo e sabe que uma palavra no momento certo pode mudar tudo.
+        </div>
+        <div class="testimonial-author">
+          <div class="author-name">Thiago P.</div>
+          <div class="author-role">Hunter Lenda · Capitão UR · N1</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── COMPROMISSOS ── -->
+<section id="compromissos">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Mentalidade de Legado</span>
+    </div>
+
+    <h2 class="section-title fu">Os 5 Compromissos</h2>
+    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:2rem;">
+      Não são regras. São padrões. Quem escolheu o Legado já vive a maioria deles — este é o momento de torná-los explícitos.
+    </p>
+
+    <div class="commitments">
+
+      <div class="commitment fu delay-1">
+        <div class="commitment-num">01</div>
+        <div>
+          <div class="commitment-title">Chegar antes e ficar depois</div>
+          <div class="commitment-desc">Presença como exemplo, não como obrigação. Quando um atleta de Legado está no ambiente antes de precisar estar, todos ao redor entendem, sem palavras, qual é o padrão de comprometimento. Não é sobre pontualidade — é sobre o que a sua presença comunica antes mesmo de você abrir a boca.</div>
+        </div>
+      </div>
+
+      <div class="commitment fu delay-2">
+        <div class="commitment-num">02</div>
+        <div>
+          <div class="commitment-title">Falar com respeito — dentro e fora de quadra</div>
+          <div class="commitment-desc">A forma como você trata um adversário que acabou de te vencer diz mais sobre quem você é do que qualquer vitória. Atletas de Legado sabem que o vocabulário de um esportista maduro exige disciplina. Respeito não é fraqueza — é a marca de quem chegou longe e sabe como chegou.</div>
+        </div>
+      </div>
+
+      <div class="commitment fu delay-3">
+        <div class="commitment-num">03</div>
+        <div>
+          <div class="commitment-title">Ensinar sem diminuir</div>
+          <div class="commitment-desc">Compartilhar o que você aprendeu sem fazer quem está aprendendo se sentir pequeno. Criar dependência é fácil — e é exatamente o oposto do que o Legado exige. Ensinar bem significa dar ferramentas para que a pessoa pense por si mesma, jogue por si mesma, cresça por si mesma.</div>
+        </div>
+      </div>
+
+      <div class="commitment fu delay-4">
+        <div class="commitment-num">04</div>
+        <div>
+          <div class="commitment-title">Perder com dignidade — vencer com humildade</div>
+          <div class="commitment-desc">Os dois lados do mesmo compromisso. Derrota com dignidade mostra que você é maior que o resultado. Vitória com humildade mostra que você entende que o jogo sempre pode voltar. Os atletas que permanecem relevantes por anos dominaram os dois — e o ambiente reconhece isso sem precisar de ranking.</div>
+        </div>
+      </div>
+
+      <div class="commitment fu delay-5">
+        <div class="commitment-num">05</div>
+        <div>
+          <div class="commitment-title">Construir a comunidade que você queria ter encontrado</div>
+          <div class="commitment-desc">Pense no atleta que você era quando começou. No ambiente que você teria querido encontrar — mais acolhedor, mais honesto, mais exigente nas coisas certas. Esse é o seu projeto agora. Não como nostalgia, mas como responsabilidade. Você tem o poder de criar o que não existia quando você precisava.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TORNEIOS ── -->
+<section id="torneios">
+  <div class="container">
+
+    <div class="section-divider fu">
+      <span class="section-label">Calendário Exclusivo</span>
+    </div>
+
+    <h2 class="section-title fu">Torneios de Legado</h2>
+    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:0.5rem;">
+      Eventos pensados para quem chegou ao topo — como competidor, como mentor, como referência.
+    </p>
+
+    <div class="events-grid">
+
+      <div class="event-card fu delay-1">
+        <div class="event-header">
+          <span class="event-tag">Evento do Ano</span>
+          <div class="event-name">Virada de Ranking 2026</div>
+        </div>
+        <div class="event-body">
+          <div class="event-date">Dezembro 2026</div>
+          <p class="event-desc">
+            O evento do topo do topo. O encerramento da temporada T01 com os melhores atletas do ecossistema UR. Performance, reconhecimento e a definição do ranking final do ano. Presença obrigatória para quem fez parte da história da temporada inaugural.
+          </p>
+          <div class="event-access">N1 — Hunter Lenda</div>
+        </div>
+      </div>
+
+      <div class="event-card fu delay-2">
+        <div class="event-header">
+          <span class="event-tag">By Invite Only</span>
+          <div class="event-name">Torneios de Capitães</div>
+        </div>
+        <div class="event-body">
+          <div class="event-date">Ao longo de T01 · 2026</div>
+          <p class="event-desc">
+            Competições fechadas, exclusivas para Capitães indicados. Formato especial, regras construídas em co-criação com os próprios líderes. O nível de jogo mais elevado dentro do ecossistema — sem espectadores, sem palco. Só quem pertence.
+          </p>
+          <div class="event-access">Capitães UR · Convite</div>
+        </div>
+      </div>
+
+      <div class="event-card fu delay-3">
+        <div class="event-header">
+          <span class="event-tag">Formação em Campo</span>
+          <div class="event-name">Clínicas de Formação</div>
+        </div>
+        <div class="event-body">
+          <div class="event-date">Calendário em construção · 2026</div>
+          <p class="event-desc">
+            Você como mentor em campo. Clínicas práticas onde atletas N1 e Embaixadores conduzem sessões de formação para atletas em estágio de Descoberta e Compromisso. Aprendizado direto, presença real, impacto imediato.
+          </p>
+          <div class="event-access">Embaixadores · Capitães</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section id="cta-final">
+
+  <span class="cta-eyebrow fu">Ultimate Rivals · Temporada T01 · 2026</span>
+
+  <h2 class="cta-headline fu delay-1">
+    Há atletas que jogam.<br>
+    <span class="accent">Há atletas que elevam o jogo.</span>
+  </h2>
+
+  <p class="cta-sub fu delay-2">
+    A Ultimate Rivals precisa dos dois. Mas é o segundo tipo que faz o primeiro possível.
+  </p>
+
+  <div class="fu delay-3">
+    <a href="#" class="btn btn-gold btn-xl">QUERO CONSTRUIR MEU LEGADO</a>
+  </div>
+
+  <div class="cta-divider fu delay-4"></div>
+
+  <p class="cta-note fu delay-4">
+    Somente para atletas N1 — Hunter Lenda — da Temporada T01 2026
+  </p>
+
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#hero" class="footer-logo">UR</a>
+    <ul class="footer-links">
+      <li><a href="#capitao">Capitães</a></li>
+      <li><a href="#embaixadores">Embaixadores</a></li>
+      <li><a href="#jornada">Programa Legado</a></li>
+      <li><a href="#impacto">Impacto</a></li>
+      <li><a href="#torneios">Torneios</a></li>
+    </ul>
+    <div class="footer-quote">
+      <p>"O jogo termina.<br>A mentalidade permanece."</p>
+      <p class="footer-copy">© 2026 Ultimate Rivals</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+// IntersectionObserver fade-up
+(function(){
+  var els = document.querySelectorAll('.fu');
+  if(!els.length) return;
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('on');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  els.forEach(function(el){ observer.observe(el); });
+})();
+
+// Nav active state on scroll
+(function(){
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+
+  function updateNav(){
+    var scrollY = window.scrollY + 80;
+    sections.forEach(function(section){
+      var top = section.offsetTop;
+      var bottom = top + section.offsetHeight;
+      var id = section.getAttribute('id');
+      navLinks.forEach(function(link){
+        if(link.getAttribute('href') === '#' + id){
+          if(scrollY >= top && scrollY < bottom){
+            link.style.color = 'var(--gold)';
+          } else {
+            link.style.color = '';
+          }
+        }
+      });
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, {passive: true});
+})();
+
+// Nav background on scroll
+(function(){
+  var nav = document.querySelector('nav');
+  function updateNavBg(){
+    if(window.scrollY > 20){
+      nav.style.borderBottomColor = 'rgba(200,144,0,0.15)';
+    } else {
+      nav.style.borderBottomColor = '';
+    }
+  }
+  window.addEventListener('scroll', updateNavBg, {passive: true});
+})();
+
+// Mobile nav toggle (simple show/hide)
+(function(){
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if(!toggle || !links) return;
+
+  var open = false;
+
+  toggle.addEventListener('click', function(){
+    open = !open;
+    if(open){
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(0,0,0,0.97)';
+      links.style.padding = '1.5rem';
+      links.style.gap = '1.2rem';
+      links.style.borderBottom = '1px solid var(--border)';
+    } else {
+      links.style.display = '';
+      links.style.flexDirection = '';
+      links.style.position = '';
+      links.style.top = '';
+      links.style.left = '';
+      links.style.right = '';
+      links.style.background = '';
+      links.style.padding = '';
+      links.style.gap = '';
+      links.style.borderBottom = '';
+    }
+  });
+
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      open = false;
+      links.style.display = '';
+      links.style.flexDirection = '';
+      links.style.position = '';
+      links.style.top = '';
+      links.style.left = '';
+      links.style.right = '';
+      links.style.background = '';
+      links.style.padding = '';
+      links.style.gap = '';
+      links.style.borderBottom = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

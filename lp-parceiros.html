@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultimate Rivals — Parcerias Estratégicas com Arenas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --bg: #000;
+      --surface: #080808;
+      --card: #0d0d0d;
+      --gold: #ffd84d;
+      --gold2: #f5c518;
+      --gold3: #c89000;
+      --red: #e63946;
+      --green: #2dc653;
+      --blue: #4da6ff;
+      --text: #f0f0f0;
+      --muted: #888;
+      --border: #1a1a1a;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section { padding: 96px 0; }
+    .section-sm { padding: 64px 0; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .label {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .label-gold { background: rgba(255,216,77,0.15); color: var(--gold); border: 1px solid rgba(255,216,77,0.3); }
+    .label-blue { background: rgba(77,166,255,0.12); color: var(--blue); border: 1px solid rgba(77,166,255,0.25); }
+    .label-green { background: rgba(45,198,83,0.12); color: var(--green); border: 1px solid rgba(45,198,83,0.25); }
+
+    .gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 20px 0 32px;
+    }
+
+    .divider-center { margin: 20px auto 32px; }
+
+    .text-center { text-align: center; }
+
+    /* ============================================================
+       FADE-UP ANIMATION
+    ============================================================ */
+    .fu {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fu.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fu.d1 { transition-delay: 0.1s; }
+    .fu.d2 { transition-delay: 0.2s; }
+    .fu.d3 { transition-delay: 0.3s; }
+    .fu.d4 { transition-delay: 0.4s; }
+    .fu.d5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold2);
+      border-color: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,216,77,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(240,240,240,0.3);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-lg {
+      font-size: 1.15rem;
+      padding: 18px 36px;
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-mark {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: #000;
+      flex-shrink: 0;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-brand-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta { margin-left: 16px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      position: relative;
+      background:
+        linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+        linear-gradient(#c8a96e, #b8955a);
+    }
+
+    .hero-content {
+      padding: 80px 0 96px;
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 640px;
+    }
+
+    .hero-stat {
+      flex: 1;
+      min-width: 160px;
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .hero-stat:last-child { border-right: none; }
+
+    .hero-stat-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       PROBLEMA / SOLUÇÃO
+    ============================================================ */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .compare-card {
+      border-radius: 10px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .compare-card.bad {
+      background: rgba(230,57,70,0.06);
+      border-color: rgba(230,57,70,0.2);
+    }
+    .compare-card.good {
+      background: rgba(45,198,83,0.06);
+      border-color: rgba(45,198,83,0.2);
+    }
+
+    .compare-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .compare-title.bad { color: var(--red); }
+    .compare-title.good { color: var(--green); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .compare-list li .icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================================
+       COMO FUNCIONA — STEPS
+    ============================================================ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(255,216,77,0.15);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       MODELO FINANCEIRO
+    ============================================================ */
+    .finance-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .finance-table-wrap {
+      overflow-x: auto;
+      margin-top: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .finance-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .finance-table thead {
+      background: rgba(255,216,77,0.08);
+    }
+
+    .finance-table th {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .finance-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .finance-table tr:last-child td { border-bottom: none; }
+
+    .finance-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .finance-table .range {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .finance-example {
+      margin-top: 32px;
+      background: rgba(255,216,77,0.06);
+      border: 1px solid rgba(255,216,77,0.2);
+      border-radius: 10px;
+      padding: 28px 32px;
+    }
+
+    .finance-example-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .finance-example-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 16px;
+    }
+
+    .finance-example-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .finance-example-item .val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .finance-example-item .lbl {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .finance-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 12px;
+    }
+
+    /* ============================================================
+       O QUE A UR LEVA
+    ============================================================ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+
+    .feature-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .feature-text span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       REPUTAÇÃO
+    ============================================================ */
+    .rep-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+      align-items: start;
+    }
+
+    .rep-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .rep-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .rep-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .rep-card {
+      background: linear-gradient(135deg, rgba(255,216,77,0.08), rgba(255,216,77,0.03));
+      border: 1px solid rgba(255,216,77,0.25);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .rep-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .rep-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .rep-card-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       TIPOS DE EVENTO
+    ============================================================ */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .event-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .event-card:hover {
+      border-color: rgba(255,216,77,0.3);
+      transform: translateY(-4px);
+    }
+
+    .event-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .event-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .event-meta {
+      font-size: 0.78rem;
+      color: var(--blue);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .event-detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .event-detail-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .event-detail-list li::before {
+      content: '—';
+      color: var(--gold3);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       CRITÉRIOS
+    ============================================================ */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .criteria-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .criteria-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: rgba(255,216,77,0.2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .criteria-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       TIMELINE
+    ============================================================ */
+    .timeline {
+      position: relative;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), rgba(255,216,77,0.2));
+      z-index: 0;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-dot {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #000;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+
+    .timeline-week {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold3);
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       EXCLUSIVIDADE
+    ============================================================ */
+    .excl-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .excl-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .excl-inner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .excl-inner p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .excl-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .excl-badge {
+      background: rgba(255,216,77,0.08);
+      border: 1px solid rgba(255,216,77,0.25);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ============================================================
+       CTA FINAL + FORMULÁRIO
+    ============================================================ */
+    .cta-section {
+      background: linear-gradient(180deg, #000 0%, #050505 100%);
+      padding: 96px 0;
+    }
+
+    .cta-inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 64px;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .cta-inner h2 span { color: var(--gold); }
+
+    .cta-inner p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .cta-urgency {
+      display: inline-block;
+      background: rgba(230,57,70,0.12);
+      border: 1px solid rgba(230,57,70,0.3);
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+
+    .form-wrapper {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 48px 40px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .form-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option { background: #111; }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-submit {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .form-submit .btn { width: 100%; justify-content: center; }
+
+    .form-or {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1ebe57;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 6px;
+      width: 100%;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .whatsapp-btn:hover {
+      background: #18a34c;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-tag {
+      font-size: 0.72rem;
+      color: rgba(255,216,77,0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.97);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .compare-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .events-grid { grid-template-columns: 1fr; }
+      .criteria-grid { grid-template-columns: 1fr 1fr; }
+      .rep-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .timeline::before { display: none; }
+      .timeline-step { align-items: flex-start; text-align: left; flex-direction: row; gap: 20px; }
+      .timeline-dot { flex-shrink: 0; margin-bottom: 0; }
+
+      .form-wrapper { padding: 32px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 64px 0; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .criteria-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stat:last-child { border-bottom: none; }
+      .finance-example-row { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-mark">UR</div>
+          <div class="nav-brand">
+            <span class="nav-brand-name">Ultimate Rivals</span>
+            <span class="nav-badge">Parceiros Estratégicos</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#modelo">Modelo</a></li>
+          <li><a href="#roi">ROI</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+
+        <a href="#contato" class="btn btn-gold nav-cta">Quero Ser Parceiro</a>
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <div class="label label-gold fu">Parceria Estratégica · Temporada T01 2026</div>
+
+        <h1 class="fu d1">
+          Sua quadra <span>sempre ocupada.</span><br/>
+          Com evento, estrutura e reputação.
+        </h1>
+
+        <p class="hero-sub fu d2">
+          A Ultimate Rivals leva torneios organizados para sua arena.
+          Você recebe por hora. Nós cuidamos de tudo mais.
+        </p>
+
+        <div class="hero-ctas fu d3">
+          <a href="#contato" class="btn btn-gold btn-lg">Quero Ser Parceiro</a>
+          <a href="#roi" class="btn btn-outline btn-lg">Ver Modelo Financeiro</a>
+        </div>
+
+        <div class="hero-stats fu d4">
+          <div class="hero-stat">
+            <div class="hero-stat-val">Ocupação garantida</div>
+            <div class="hero-stat-label">Agenda fixa nos melhores horários</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">Pagamento fixo / hora</div>
+            <div class="hero-stat-label">Independente do número de atletas</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">Zero burocracia</div>
+            <div class="hero-stat-label">Logística e inscrições pela UR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROBLEMA / SOLUÇÃO
+  ============================================================ -->
+  <section class="section" id="problema">
+    <div class="container">
+      <div class="text-center fu">
+        <div class="label label-blue">O Problema que a UR Resolve</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          Sem vs. Com a Ultimate Rivals
+        </h2>
+        <div class="divider divider-center"></div>
+        <p style="color:var(--muted);max-width:560px;margin:0 auto;font-size:.95rem;line-height:1.7;">
+          Compare a realidade de arenas que operam sem estrutura de eventos
+          com arenas que fazem parte do ecossistema UR.
+        </p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card bad fu d1">
+          <div class="compare-title bad">
+            <span>✕</span> Sem a UR
+          </div>
+          <ul class="compare-list">
+            <li><span class="icon">⬇</span> Quadras ociosas em dias específicos da semana, receita imprevisível</li>
+            <li><span class="icon">⬇</span> Eventos amadores sem estrutura, sem marca, sem audiência</li>
+            <li><span class="icon">⬇</span> Gestão de inscrições e check-in fica com você e sua equipe</li>
+            <li><span class="icon">⬇</span> Risco de cancelamento de última hora sem garantia de pagamento</li>
+            <li><span class="icon">⬇</span> Visibilidade zero fora do raio local da sua arena</li>
+            <li><span class="icon">⬇</span> Sem árbitro profissional ou coordenação esportiva</li>
+          </ul>
+        </div>
+
+        <div class="compare-card good fu d2">
+          <div class="compare-title good">
+            <span>✓</span> Com a UR
+          </div>
+          <ul class="compare-list">
+            <li><span class="icon">⬆</span> Agenda fixa nos melhores horários de final de semana</li>
+            <li><span class="icon">⬆</span> Evento profissional com marca estabelecida e comunidade ativa</li>
+            <li><span class="icon">⬆</span> Toda a logística, inscrições e operação são responsabilidade da UR</li>
+            <li><span class="icon">⬆</span> Pagamento garantido por hora de quadra — independente de imprevistos</li>
+            <li><span class="icon">⬆</span> Sua arena aparece nos canais UR (Instagram, LP, UR Play)</li>
+            <li><span class="icon">⬆</span> Árbitro e coordenação esportiva presentes em cada evento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMO FUNCIONA — STEPS
+  ============================================================ -->
+  <section class="section" id="como-funciona" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="text-center fu">
+        <div class="label label-gold">Como Funciona o Modelo</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          4 passos para sua arena entrar no calendário
+        </h2>
+        <div class="divider divider-center"></div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card fu d1">
+          <div class="step-num">01</div>
+          <div class="step-title">Contato e Visita Técnica</div>
+          <p class="step-desc">Avaliamos juntos a capacidade da sua arena, agenda disponível e perfil de atletas da região. Sem compromisso inicial.</p>
+        </div>
+        <div class="step-card fu d2">
+          <div class="step-num">02</div>
+          <div class="step-title">Contrato de Parceria</div>
+          <p class="step-desc">Valores fixos por hora de quadra acordados por escrito. Sem surpresas, sem variável dependente do número de atletas inscritos.</p>
+        </div>
+        <div class="step-card fu d3">
+          <div class="step-num">03</div>
+          <div class="step-title">Eventos Regulares na Agenda</div>
+          <p class="step-desc">Mini Torneios, UR Series e Virada de Ranking entram no calendário fixo da Temporada T01 2026. Você sabe as datas com antecedência.</p>
+        </div>
+        <div class="step-card fu d4">
+          <div class="step-num">04</div>
+          <div class="step-title">Pagamento Garantido</div>
+          <p class="step-desc">Recebimento conforme contrato — independente de quantos atletas comparecem. A gestão de risco de público é da UR, não sua.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MODELO FINANCEIRO
+  ============================================================ -->
+  <section class="section finance-section" id="roi">
+    <div class="container">
+      <div class="fu">
+        <div class="label label-gold">Modelo Financeiro</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          O que você recebe como parceiro
+        </h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);max-width:600px;font-size:.92rem;line-height:1.7;">
+          Pagamento fixo por hora de quadra, negociado de acordo com a região e padrão do espaço.
+          Os valores abaixo são referências médias de mercado praticados em 2026.
+        </p>
+      </div>
+
+      <div class="finance-table-wrap fu d1">
+        <table class="finance-table">
+          <thead>
+            <tr>
+              <th>Região</th>
+              <th>Faixa por hora (1 quadra)</th>
+              <th>Perfil do mercado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>São Paulo — Capital</td>
+              <td class="range">R$ 150 – R$ 250 / hora</td>
+              <td style="color:var(--muted)">Alta demanda, base de atletas consolidada</td>
+            </tr>
+            <tr>
+              <td>São Paulo — Interior</td>
+              <td class="range">R$ 80 – R$ 150 / hora</td>
+              <td style="color:var(--muted)">Crescimento acelerado, competição menor</td>
+            </tr>
+            <tr>
+              <td>Rio de Janeiro</td>
+              <td class="range">R$ 120 – R$ 200 / hora</td>
+              <td style="color:var(--muted)">Mercado maduro, alta visibilidade esportiva</td>
+            </tr>
+            <tr>
+              <td>Sul do Brasil</td>
+              <td class="range">R$ 70 – R$ 130 / hora</td>
+              <td style="color:var(--muted)">Expansão UR em 2026, primeiras parcerias</td>
+            </tr>
+            <tr>
+              <td>Nordeste</td>
+              <td class="range">R$ 60 – R$ 100 / hora</td>
+              <td style="color:var(--muted)">Mercado emergente com alto potencial</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="finance-example fu d2">
+        <div class="finance-example-title">Exemplo de Evento — Mini Torneio em São Paulo (Interior)</div>
+        <div class="finance-example-row">
+          <div class="finance-example-item">
+            <span class="val">6h</span>
+            <span class="lbl">Duração do evento</span>
+          </div>
+          <div class="finance-example-item">
+            <span class="val">2</span>
+            <span class="lbl">Quadras simultâneas</span>
+          </div>
+          <div class="finance-example-item">
+            <span class="val">12h</span>
+            <span class="lbl">Total faturado</span>
+          </div>
+          <div class="finance-example-item">
+            <span class="val" style="color:var(--green);">R$ 1.440</span>
+            <span class="lbl">Receita mínima (R$120/h)</span>
+          </div>
+        </div>
+        <p class="finance-note">
+          * Valores por evento. Para uma temporada com 8 eventos no ciclo T01 2026: R$ 11.520 de receita garantida para 2 quadras (base mínima).
+          Você recebe o horário. Nós cuidamos dos atletas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       O QUE A UR LEVA
+  ============================================================ -->
+  <section class="section" id="modelo">
+    <div class="container">
+      <div class="text-center fu">
+        <div class="label label-green">Estrutura Completa</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          O que a UR leva para seu espaço
+        </h2>
+        <div class="divider divider-center"></div>
+        <p style="color:var(--muted);max-width:560px;margin:0 auto;font-size:.92rem;line-height:1.7;">
+          Sua arena entra no evento como infraestrutura. A operação completa é responsabilidade da Ultimate Rivals.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-item fu d1">
+          <div class="feature-icon">🏷</div>
+          <div class="feature-text">
+            <strong>Marca consolidada com comunidade ativa</strong>
+            <span>Atletas já conhecem e confiam no formato UR. Não é evento de primeira vez.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d2">
+          <div class="feature-icon">📋</div>
+          <div class="feature-text">
+            <strong>Gestão completa de inscrições e check-in</strong>
+            <span>Da abertura das vagas ao controle de presença no dia — 100% pela equipe UR.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d1">
+          <div class="feature-icon">📣</div>
+          <div class="feature-text">
+            <strong>Comunicação, marketing e divulgação</strong>
+            <span>Artes, posts, stories, landing page específica do evento — sem trabalho para você.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d2">
+          <div class="feature-icon">⚖</div>
+          <div class="feature-text">
+            <strong>Árbitro e coordenação esportiva</strong>
+            <span>Profissional treinado no formato UR presente durante todo o evento.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d1">
+          <div class="feature-icon">🏅</div>
+          <div class="feature-text">
+            <strong>Premiação e certificados</strong>
+            <span>Troféus, medalhas e certificados digitais UR para os atletas classificados.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d2">
+          <div class="feature-icon">🛡</div>
+          <div class="feature-text">
+            <strong>Seguro de atletas durante o evento</strong>
+            <span>Cobertura ativa para todos os participantes inscritos no dia do torneio.</span>
+          </div>
+        </div>
+        <div class="feature-item fu d1" style="grid-column:1/-1">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-text">
+            <strong>Cobertura no UR Play</strong>
+            <span>Conteúdo em vídeo e foto do evento que promove sua arena nos canais digitais da Ultimate Rivals, gerando visibilidade além do dia do torneio.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REPUTAÇÃO
+  ============================================================ -->
+  <section class="section rep-section">
+    <div class="container">
+      <div class="fu">
+        <div class="label label-gold">Reputação e Marca</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          O que a parceria faz pela sua reputação
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="rep-grid">
+        <ul class="rep-list">
+          <li class="fu d1">
+            Sua arena aparece em todos os materiais UR — Instagram, landing pages e o aplicativo UR com base de atletas cadastrados.
+          </li>
+          <li class="fu d2">
+            Atletas que participam de torneios UR constroem hábito: eles voltam para treinar e recomendam o espaço para parceiros de jogo.
+          </li>
+          <li class="fu d3">
+            Eventos geram movimento no dia — consumo na lanchonete, circulação de visitantes e audiência que vai além dos participantes inscritos.
+          </li>
+          <li class="fu d4">
+            Associação com marca esportiva profissional sinaliza padrão para o mercado e diferencia sua arena da concorrência regional.
+          </li>
+          <li class="fu d5">
+            Conteúdo do UR Play documenta a sua arena em ação — vídeos e fotos que ficam disponíveis nos canais UR como portfólio contínuo.
+          </li>
+        </ul>
+
+        <div class="rep-card fu d2">
+          <div class="rep-card-icon">🏟</div>
+          <div class="rep-card-title">Arena Parceira Oficial</div>
+          <p style="font-size:.9rem;color:var(--text);margin-bottom:12px;line-height:1.6;">
+            Sua arena recebe o selo oficial de arena parceira Ultimate Rivals, exibido em todos os materiais da temporada.
+          </p>
+          <div class="rep-card-sub">Ultimate Rivals · Temporada T01 2026</div>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,216,77,0.15);">
+            <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Visibilidade garantida em</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+              <span style="background:rgba(255,216,77,0.1);color:var(--gold3);font-size:.72rem;padding:4px 10px;border-radius:4px;font-weight:600;">Instagram UR</span>
+              <span style="background:rgba(255,216,77,0.1);color:var(--gold3);font-size:.72rem;padding:4px 10px;border-radius:4px;font-weight:600;">UR Play</span>
+              <span style="background:rgba(255,216,77,0.1);color:var(--gold3);font-size:.72rem;padding:4px 10px;border-radius:4px;font-weight:600;">Landing Pages</span>
+              <span style="background:rgba(255,216,77,0.1);color:var(--gold3);font-size:.72rem;padding:4px 10px;border-radius:4px;font-weight:600;">App UR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIPOS DE EVENTO
+  ============================================================ -->
+  <section class="section" id="eventos">
+    <div class="container">
+      <div class="text-center fu">
+        <div class="label label-blue">Formatos de Competição</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          Tipos de evento que acontecem na sua arena
+        </h2>
+        <div class="divider divider-center"></div>
+        <p style="color:var(--muted);max-width:560px;margin:0 auto;font-size:.92rem;line-height:1.7;">
+          Cada formato tem requisitos, público e modelo financeiro diferentes.
+          A UR define qual cabe melhor na sua arena e agenda.
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card fu d1">
+          <div class="event-icon">🏐</div>
+          <div class="event-name">Mini Torneio</div>
+          <div class="event-meta">Entrada no ecossistema UR</div>
+          <ul class="event-detail-list">
+            <li>Sábados ou domingos, formato compacto</li>
+            <li>Duração: 6 a 8 horas</li>
+            <li>Capacidade: 8 duplas por rodada</li>
+            <li>Inscrição: R$ 50 por atleta</li>
+            <li>Requisito: 1 quadra de areia (mín.)</li>
+            <li>Ideal para arenas menores ou estreia no formato</li>
+          </ul>
+        </div>
+
+        <div class="event-card fu d2" style="border-color:rgba(255,216,77,0.2);">
+          <div class="event-icon">🏆</div>
+          <div class="event-name">UR Series</div>
+          <div class="event-meta">Eventos de médio porte — ranking oficial</div>
+          <ul class="event-detail-list">
+            <li>Fins de semana com produção ampliada</li>
+            <li>Duração: 8 a 10 horas</li>
+            <li>Capacidade: 8 equipes elite com classificação</li>
+            <li>Inscrição: R$ 100 por atleta</li>
+            <li>Requisito: mínimo 2 quadras simultâneas</li>
+            <li>Pontuação válida para ranking da temporada</li>
+          </ul>
+        </div>
+
+        <div class="event-card fu d3">
+          <div class="event-icon">🎯</div>
+          <div class="event-name">Virada de Ranking</div>
+          <div class="event-meta">Evento especial anual — produção completa</div>
+          <ul class="event-detail-list">
+            <li>Data única por temporada, calendário fechado</li>
+            <li>Duração: dia inteiro (8h–18h)</li>
+            <li>Capacidade: até 12 equipes com fase final</li>
+            <li>Produção completa: cobertura, premiação, mídia</li>
+            <li>Requisito: 2 quadras + estrutura de recepção</li>
+            <li>Define posições finais na tabela da temporada</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CRITÉRIOS
+  ============================================================ -->
+  <section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="fu">
+        <div class="label label-blue">Pré-Requisitos</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          Quem pode ser parceiro
+        </h2>
+        <div class="divider"></div>
+        <p style="color:var(--muted);max-width:580px;font-size:.92rem;line-height:1.7;">
+          A parceria UR exige padrão mínimo de infraestrutura e comprometimento de médio prazo.
+          Estes são os critérios objetivos de avaliação.
+        </p>
+      </div>
+
+      <div class="criteria-grid">
+        <div class="criteria-item fu d1">
+          <div class="criteria-num">01</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Infraestrutura mínima de quadras</strong><br/>
+            Pelo menos 2 quadras de areia para UR Series. Mini Torneio solo aceita 1 quadra como ponto de entrada.
+          </p>
+        </div>
+        <div class="criteria-item fu d2">
+          <div class="criteria-num">02</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Vestiários e área de convivência</strong><br/>
+            Espaço funcional para os atletas se prepararem, hidratarem e acompanharem os jogos com conforto.
+          </p>
+        </div>
+        <div class="criteria-item fu d3">
+          <div class="criteria-num">03</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Localização acessível</strong><br/>
+            Referências claras de transporte público ou estacionamento para atletas de diferentes bairros ou cidades próximas.
+          </p>
+        </div>
+        <div class="criteria-item fu d1">
+          <div class="criteria-num">04</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Disponibilidade regular aos fins de semana</strong><br/>
+            Mínimo de 1 final de semana por mês disponível para eventos UR ao longo da temporada.
+          </p>
+        </div>
+        <div class="criteria-item fu d2">
+          <div class="criteria-num">05</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Interesse em parceria de médio prazo</strong><br/>
+            Mínimo de 1 temporada completa = 6 meses de comprometimento. A UR não opera com arenas por evento único.
+          </p>
+        </div>
+        <div class="criteria-item fu d3">
+          <div class="criteria-num">06</div>
+          <p class="criteria-text">
+            <strong style="color:var(--text);">Alinhamento com padrão de qualidade UR</strong><br/>
+            Areia limpa, estrutura segura e postura profissional no atendimento. Avaliado na visita técnica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIMELINE
+  ============================================================ -->
+  <section class="section" id="processo">
+    <div class="container">
+      <div class="text-center fu">
+        <div class="label label-gold">Processo de Aprovação</div>
+        <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-transform:uppercase;">
+          Da conversa ao primeiro evento em 4 semanas
+        </h2>
+        <div class="divider divider-center"></div>
+        <p style="color:var(--muted);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7;">
+          Processo sem burocracia. A UR conduz todo o fluxo de aprovação
+          e integração na agenda da Temporada T01 2026.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step fu d1">
+          <div class="timeline-dot">1</div>
+          <div>
+            <div class="timeline-week">Semana 1</div>
+            <div class="timeline-title">Contato Inicial + Visita Técnica</div>
+            <p class="timeline-desc">Você preenche o formulário. A equipe UR agenda uma visita à arena para avaliação técnica presencial.</p>
+          </div>
+        </div>
+        <div class="timeline-step fu d2">
+          <div class="timeline-dot">2</div>
+          <div>
+            <div class="timeline-week">Semana 2</div>
+            <div class="timeline-title">Proposta Financeira e Contrato</div>
+            <p class="timeline-desc">Valores fixos negociados, contrato apresentado para leitura e assinatura. Sem cláusulas ocultas.</p>
+          </div>
+        </div>
+        <div class="timeline-step fu d3">
+          <div class="timeline-dot">3</div>
+          <div>
+            <div class="timeline-week">Semana 3</div>
+            <div class="timeline-title">Integração na Agenda T01 2026</div>
+            <p class="timeline-desc">Sua arena entra no calendário oficial. Datas confirmadas com mínimo 3 semanas de antecedência cada.</p>
+          </div>
+        </div>
+        <div class="timeline-step fu d4">
+          <div class="timeline-dot">4</div>
+          <div>
+            <div class="timeline-week">Semana 4</div>
+            <div class="timeline-title">Primeiro Evento na Sua Arena</div>
+            <p class="timeline-desc">Mini Torneio inaugural ou UR Series — dependendo do perfil da arena. Tudo operado pela equipe UR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXCLUSIVIDADE REGIONAL
+  ============================================================ -->
+  <section class="excl-section">
+    <div class="container">
+      <div class="excl-inner">
+        <div class="label label-gold fu">Exclusividade Geográfica</div>
+        <h2 class="fu d1">
+          Seja a primeira arena parceira oficial da UR na sua região
+        </h2>
+        <p class="fu d2">
+          A Ultimate Rivals opera com exclusividade geográfica por parceiro. Uma arena por raio de atuação —
+          quem fecha primeiro garante o território. Arenas que entrarem na Temporada T01 2026 terão
+          prioridade de renovação e condições exclusivas para T02.
+        </p>
+        <div class="excl-badges fu d3">
+          <span class="excl-badge">São Paulo Capital</span>
+          <span class="excl-badge">Grande São Paulo</span>
+          <span class="excl-badge">Interior SP</span>
+          <span class="excl-badge">Rio de Janeiro</span>
+          <span class="excl-badge">Sul do Brasil</span>
+          <span class="excl-badge">Nordeste</span>
+        </div>
+        <a href="#contato" class="btn btn-gold btn-lg fu d4">Garantir Minha Região</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL + FORMULÁRIO
+  ============================================================ -->
+  <section class="cta-section" id="contato">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="label label-gold fu">Proposta de Parceria</div>
+        <h2 class="fu d1">
+          Sua arena. <span>Nosso evento.</span><br/>Resultado para os dois.
+        </h2>
+        <p class="fu d2">Vagas limitadas de parceria por região. Garantia de exclusividade por área geográfica.</p>
+        <div class="cta-urgency fu d3">Temporada T01 2026 — Vagas abertas agora</div>
+      </div>
+
+      <div class="form-wrapper fu d2">
+        <div class="form-title">Formulário de Parceria</div>
+        <p class="form-sub">Preencha os dados abaixo. Nossa equipe retorna em até 48 horas úteis com proposta inicial.</p>
+
+        <form onsubmit="return false;">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nome">Nome do responsável *</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required/>
+            </div>
+            <div class="form-group">
+              <label for="arena">Nome da arena *</label>
+              <input type="text" id="arena" name="arena" placeholder="Arena / Centro Esportivo" required/>
+            </div>
+            <div class="form-group">
+              <label for="cidade">Cidade e Estado *</label>
+              <input type="text" id="cidade" name="cidade" placeholder="Ex: Campinas, SP" required/>
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required/>
+            </div>
+            <div class="form-group">
+              <label for="quadras">Número de quadras de areia</label>
+              <select id="quadras" name="quadras">
+                <option value="">Selecione</option>
+                <option value="1">1 quadra</option>
+                <option value="2">2 quadras</option>
+                <option value="3">3 quadras</option>
+                <option value="4+">4 ou mais</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="disponibilidade">Disponibilidade preferencial</label>
+              <select id="disponibilidade" name="disponibilidade">
+                <option value="">Selecione</option>
+                <option value="sabado">Sábados</option>
+                <option value="domingo">Domingos</option>
+                <option value="ambos">Sábados e domingos</option>
+                <option value="flexivel">Flexível</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="mensagem">Conte mais sobre sua arena (opcional)</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Estrutura disponível, público atual, região de atuação, perguntas iniciais..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-gold btn-lg" style="width:100%;justify-content:center;">
+              Enviar Proposta de Parceria
+            </button>
+            <span class="form-or">— ou fale direto pelo WhatsApp —</span>
+            <a href="https://wa.me/5511999999999?text=Olá%2C%20tenho%20interesse%20em%20ser%20parceiro%20da%20Ultimate%20Rivals%20T01%202026" class="whatsapp-btn" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Falar com a Equipe UR
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <div class="nav-logo-mark" style="width:32px;height:32px;font-size:1rem;">UR</div>
+          <div>
+            <div class="nav-brand-name" style="font-size:.95rem;">Ultimate Rivals</div>
+            <div class="footer-tag">Parcerias Estratégicas</div>
+          </div>
+        </div>
+        <div class="footer-copy">
+          © 2026 Ultimate Rivals · Parcerias Estratégicas · Temporada T01 2026<br/>
+          <span style="font-size:.7rem;">Todos os valores são referenciais e sujeitos a negociação conforme região e contrato.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+          <a href="#inicio" style="font-size:.78rem;color:var(--muted);transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">Voltar ao topo ↑</a>
+          <a href="#contato" class="btn btn-gold" style="padding:10px 20px;font-size:.85rem;">Ser Parceiro</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    // IntersectionObserver para .fu → .fu.on
+    (function () {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('on');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.fu').forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      var links = document.getElementById('navLinks');
+      links.classList.toggle('open');
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('#navLinks a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Smooth nav background on scroll
+    (function () {
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 60) {
+          nav.style.background = 'rgba(0,0,0,0.97)';
+        } else {
+          nav.style.background = 'rgba(0,0,0,0.92)';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

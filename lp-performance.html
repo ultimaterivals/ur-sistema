@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hunter Elite · Hunter Lenda — Ultimate Rivals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000;
+      --surface: #080808;
+      --card: #0d0d0d;
+      --gold: #ffd84d;
+      --gold2: #f5c518;
+      --gold3: #c89000;
+      --red: #e63946;
+      --green: #2dc653;
+      --blue: #4da6ff;
+      --text: #f0f0f0;
+      --muted: #888;
+      --border: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── FADE-UP ANIMATION ─── */
+    .fu {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fu.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fu-d1 { transition-delay: 0.1s; }
+    .fu-d2 { transition-delay: 0.2s; }
+    .fu-d3 { transition-delay: 0.3s; }
+    .fu-d4 { transition-delay: 0.4s; }
+    .fu-d5 { transition-delay: 0.5s; }
+
+    /* ─── UTILITIES ─── */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .gold { color: var(--gold); }
+    .red  { color: var(--red); }
+    .muted { color: var(--muted); }
+
+    .section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .display-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.5px;
+    }
+
+    .d-xl  { font-size: clamp(2.8rem, 6vw, 5.2rem); }
+    .d-lg  { font-size: clamp(2.2rem, 4.5vw, 3.8rem); }
+    .d-md  { font-size: clamp(1.8rem, 3.5vw, 2.8rem); }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold2);
+      border-color: var(--gold2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255, 216, 77, 0.3);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .btn-outline-gold:hover {
+      background: rgba(255, 216, 77, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+    .btn-red:hover {
+      background: #c8303c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(230, 57, 70, 0.35);
+    }
+
+    .divider-gold {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: -1px;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span {
+      color: var(--text);
+      font-size: 0.55em;
+      font-weight: 400;
+      letter-spacing: 2px;
+      display: block;
+      margin-top: -4px;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 120px 0 80px;
+      background:
+        linear-gradient(rgba(0,0,0,0.80), rgba(0,0,0,0.80)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
+        linear-gradient(#c8a96e, #b8955a);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(200,144,0,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, rgba(255,216,77,0.18), rgba(200,144,0,0.10));
+      border: 1px solid rgba(255,216,77,0.35);
+      margin-bottom: 32px;
+      animation: badge-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,216,77,0); }
+      50% { box-shadow: 0 0 20px 4px rgba(255,216,77,0.15); }
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: dot-blink 1.6s ease-in-out infinite;
+    }
+
+    @keyframes dot-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-badge-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--gold), var(--gold3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-headline {
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold2) 50%, var(--gold3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: rgba(240,240,240,0.75);
+      max-width: 560px;
+      margin-bottom: 44px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      max-width: 640px;
+    }
+
+    .hero-stat {
+      flex: 1;
+      min-width: 160px;
+      padding: 20px 24px;
+      border-right: 1px solid var(--border);
+      background: rgba(13,13,13,0.85);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .hero-stat-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ─── EDITORIAL SECTION ─── */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (min-width: 768px) {
+      .editorial-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    }
+
+    .editorial-body {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(240,240,240,0.8);
+      font-weight: 300;
+    }
+
+    .editorial-body p + p { margin-top: 20px; }
+
+    .editorial-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .pull-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--gold);
+      line-height: 1.2;
+      border-left: 4px solid var(--gold);
+      padding-left: 24px;
+      margin: 32px 0;
+    }
+
+    /* ─── SERIES CARD ─── */
+    .series-main-card {
+      background: var(--card);
+      border: 1px solid rgba(255,216,77,0.25);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .series-card-header {
+      background: linear-gradient(135deg, rgba(255,216,77,0.12), rgba(200,144,0,0.06));
+      border-bottom: 1px solid rgba(255,216,77,0.2);
+      padding: 32px 40px;
+    }
+
+    .series-card-body {
+      padding: 40px;
+    }
+
+    .series-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    @media (min-width: 768px) {
+      .series-features { grid-template-columns: 1fr 1fr; }
+    }
+
+    .series-feature {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .series-feature-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,216,77,0.1);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .series-feature-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .series-feature-text span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .prize-breakdown {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .prize-item {
+      flex: 1;
+      min-width: 100px;
+      padding: 16px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .prize-item.first {
+      background: linear-gradient(135deg, rgba(255,216,77,0.2), rgba(200,144,0,0.1));
+      border: 1px solid rgba(255,216,77,0.4);
+    }
+
+    .prize-item.second {
+      background: rgba(240,240,240,0.05);
+      border: 1px solid rgba(240,240,240,0.12);
+    }
+
+    .prize-item.third {
+      background: rgba(200,120,50,0.08);
+      border: 1px solid rgba(200,120,50,0.2);
+    }
+
+    .prize-item .pct {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      display: block;
+    }
+
+    .prize-item.first .pct { color: var(--gold); }
+    .prize-item.second .pct { color: #c0c0c0; }
+    .prize-item.third .pct { color: #cd7f32; }
+
+    .prize-item .place {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── VIRADA SECTION ─── */
+    .virada-section {
+      background: linear-gradient(135deg, rgba(230,57,70,0.06) 0%, rgba(0,0,0,0) 60%);
+      border-top: 1px solid rgba(230,57,70,0.2);
+      border-bottom: 1px solid rgba(230,57,70,0.2);
+    }
+
+    .virada-card {
+      background: var(--card);
+      border: 1px solid rgba(230,57,70,0.3);
+      border-radius: 6px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .virada-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red), rgba(230,57,70,0.3));
+    }
+
+    .virada-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(230,57,70,0.15);
+      border: 1px solid rgba(230,57,70,0.4);
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+
+    .virada-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .virada-details { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .virada-detail {
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .virada-detail-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .virada-detail-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--text);
+    }
+
+    /* ─── PYRAMID / HIERARCHY ─── */
+    .hierarchy-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .level-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .level-row:hover {
+      transform: translateX(4px);
+    }
+
+    .level-row.lv5 {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.07);
+    }
+
+    .level-row.lv4 {
+      background: rgba(77,166,255,0.05);
+      border-color: rgba(77,166,255,0.15);
+    }
+
+    .level-row.lv3 {
+      background: rgba(45,198,83,0.05);
+      border-color: rgba(45,198,83,0.15);
+    }
+
+    .level-row.lv2 {
+      background: linear-gradient(90deg, rgba(255,216,77,0.1), rgba(255,216,77,0.03));
+      border-color: rgba(255,216,77,0.35);
+      padding: 22px 24px;
+    }
+
+    .level-row.lv1 {
+      background: linear-gradient(90deg, rgba(230,57,70,0.12), rgba(230,57,70,0.03));
+      border-color: rgba(230,57,70,0.35);
+      padding: 22px 24px;
+    }
+
+    .level-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .lv5 .level-badge { color: var(--muted); }
+    .lv4 .level-badge { color: var(--blue); }
+    .lv3 .level-badge { color: var(--green); }
+    .lv2 .level-badge { color: var(--gold); }
+    .lv1 .level-badge { color: var(--red); }
+
+    .level-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .level-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .level-tag {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    .lv2 .level-tag {
+      background: rgba(255,216,77,0.15);
+      color: var(--gold);
+      border: 1px solid rgba(255,216,77,0.4);
+    }
+
+    .lv1 .level-tag {
+      background: rgba(230,57,70,0.15);
+      color: var(--red);
+      border: 1px solid rgba(230,57,70,0.4);
+    }
+
+    .hierarchy-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─── LENDA CHARACTERISTICS ─── */
+    .lenda-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .lenda-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .lenda-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+
+    .lenda-item:hover {
+      border-color: rgba(230,57,70,0.3);
+    }
+
+    .lenda-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      width: 44px;
+      text-align: center;
+    }
+
+    .lenda-content strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .lenda-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-card {
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+      border: 1px solid rgba(255,216,77,0.2);
+    }
+
+    .pricing-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+    }
+
+    .pricing-header {
+      padding: 40px 40px 32px;
+      background: linear-gradient(135deg, rgba(255,216,77,0.08), rgba(230,57,70,0.05));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .pricing-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .pricing-price span {
+      font-size: 1.5rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .pricing-period {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .pricing-body {
+      padding: 36px 40px 40px;
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .pricing-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: rgba(240,240,240,0.85);
+    }
+
+    .pricing-list li::before {
+      content: '—';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pricing-note {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 3px;
+      border-left: 3px solid rgba(255,216,77,0.4);
+    }
+
+    /* ─── LEGACY SECTION ─── */
+    .legacy-section {
+      background: linear-gradient(180deg, #000 0%, #050505 100%);
+      text-align: center;
+    }
+
+    .legacy-text {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .legacy-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .legacy-quote em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .legacy-body {
+      font-size: 1.1rem;
+      color: rgba(240,240,240,0.65);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(255,216,77,0.2);
+      transform: translateY(-4px);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 6rem;
+      color: rgba(255,216,77,0.08);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .testimonial-level {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: rgba(240,240,240,0.8);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .avatar-gold {
+      background: linear-gradient(135deg, rgba(255,216,77,0.3), rgba(200,144,0,0.2));
+      border: 2px solid rgba(255,216,77,0.5);
+      color: var(--gold);
+    }
+
+    .avatar-red {
+      background: linear-gradient(135deg, rgba(230,57,70,0.3), rgba(180,40,50,0.2));
+      border: 2px solid rgba(230,57,70,0.5);
+      color: var(--red);
+    }
+
+    .author-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .author-info {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), rgba(255,216,77,0.1));
+    }
+
+    @media (min-width: 768px) {
+      .timeline::before { left: 50%; transform: translateX(-1px); }
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      position: relative;
+      padding-left: 56px;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-item {
+        padding-left: 0;
+        justify-content: flex-end;
+        width: 50%;
+        padding-right: 48px;
+      }
+      .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 48px;
+        margin-left: 50%;
+      }
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 12px;
+      top: 14px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--gold);
+      z-index: 1;
+    }
+
+    .timeline-item.highlight .timeline-dot {
+      border-color: var(--red);
+      background: rgba(230,57,70,0.2);
+      width: 20px;
+      height: 20px;
+      left: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-dot {
+        left: auto;
+        right: -8px;
+      }
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: -8px;
+        right: auto;
+      }
+      .timeline-item.highlight .timeline-dot {
+        left: auto;
+        right: -10px;
+      }
+      .timeline-item:nth-child(even).highlight .timeline-dot {
+        left: -10px;
+        right: auto;
+      }
+    }
+
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      flex: 1;
+      max-width: 280px;
+    }
+
+    .timeline-item.highlight .timeline-card {
+      border-color: rgba(230,57,70,0.35);
+      background: linear-gradient(135deg, rgba(230,57,70,0.06), var(--card));
+    }
+
+    .timeline-month {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .timeline-event {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .timeline-item.highlight .timeline-event { color: var(--red); }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: #020202;
+      border-top: 1px solid rgba(255,216,77,0.2);
+      text-align: center;
+      padding: 112px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .final-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,216,77,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .final-cta .container { position: relative; z-index: 1; }
+
+    .final-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 0.95;
+    }
+
+    .final-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-final {
+      display: inline-block;
+      padding: 20px 56px;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-final::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-final:hover {
+      background: var(--gold2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 48px rgba(255,216,77,0.4);
+    }
+
+    .btn-final:hover::after { left: 100%; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(136,136,136,0.6);
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,216,77,0.3); }
+
+    /* ─── SELECTION ─── */
+    ::selection {
+      background: rgba(255,216,77,0.25);
+      color: var(--text);
+    }
+
+    /* ─── MOBILE NAV BURGER (simplified) ─── */
+    .nav-mobile-cta {
+      display: flex;
+    }
+
+    @media (min-width: 768px) {
+      .nav-mobile-cta { display: none; }
+    }
+
+    /* ─── SECTION ACCENT LINE ─── */
+    .section-accent {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 48px;
+      opacity: 0.3;
+    }
+
+    /* ─── INFO STRIP ─── */
+    .info-strip {
+      background: rgba(255,216,77,0.05);
+      border: 1px solid rgba(255,216,77,0.15);
+      border-radius: 4px;
+      padding: 20px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .info-strip-item {
+      font-size: 13px;
+      color: rgba(240,240,240,0.7);
+    }
+
+    .info-strip-item strong { color: var(--gold); }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAV
+  ══════════════════════════════════════════ -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          UR
+          <span>Ultimate Rivals</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#series">UR Series</a></li>
+          <li><a href="#virada">Virada</a></li>
+          <li><a href="#ranking">Ranking</a></li>
+          <li><a href="#elite">Elite</a></li>
+        </ul>
+        <a href="#cta-final" class="btn btn-gold nav-mobile-cta" style="font-size:12px;padding:10px 20px;">
+          Entrar no Topo
+        </a>
+        <a href="#cta-final" class="btn btn-gold" style="display:none;" id="nav-cta-desktop">
+          Entrar no Topo
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    @media (min-width: 768px) {
+      .nav-mobile-cta { display: none !important; }
+      #nav-cta-desktop { display: inline-block !important; }
+    }
+  </style>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-badge fu">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-text">Hunter Elite · N2 &nbsp;/&nbsp; Hunter Lenda · N1</span>
+      </div>
+
+      <h1 class="display-heading d-xl hero-headline fu fu-d1">
+        Quando você entra<br />
+        em quadra,<br />
+        <em>o ambiente muda.</em>
+      </h1>
+
+      <p class="hero-sub fu fu-d2">
+        Hunter Elite não é título. É postura. É o nível onde o jogo se torna declaração.
+      </p>
+
+      <div class="hero-ctas fu fu-d3">
+        <a href="#cta-final" class="btn btn-gold">Competir no Topo</a>
+        <a href="#series" class="btn btn-outline-gold">Ver Calendário Elite</a>
+      </div>
+
+      <div class="hero-stats fu fu-d4">
+        <div class="hero-stat">
+          <span class="hero-stat-val">R$1.200</span>
+          <span class="hero-stat-label">Em prêmios por evento</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">UR Series</span>
+          <span class="hero-stat-label">Arena exclusiva N2 / N1</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">Virada</span>
+          <span class="hero-stat-label">Evento de ranking T01 2026</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       O QUE SIGNIFICA SER ELITE
+  ══════════════════════════════════════════ -->
+  <section class="section" id="elite">
+    <div class="container">
+      <div class="editorial-grid">
+
+        <div class="fu">
+          <p class="section-label">Mentalidade</p>
+          <div class="section-accent"></div>
+          <h2 class="display-heading d-lg">
+            O que significa<br />ser <span class="gold">Elite</span>
+          </h2>
+          <div class="divider-gold"></div>
+          <p style="font-size:1rem;color:var(--muted);margin-top:24px;line-height:1.7;">
+            Não é sobre um número no ranking. É sobre o padrão que você carrega dentro e fora de quadra — antes do apito, durante o jogo e muito depois que o placar fecha.
+          </p>
+        </div>
+
+        <div class="fu fu-d2">
+          <div class="editorial-body">
+            <p>
+              <strong>Hunter Elite</strong> é o atleta reconhecido pelo jogo, pela postura e pelo impacto que cria no ambiente ao redor. Quando ele aquece, os outros observam. Quando ele joga, o nível da quadra sobe.
+            </p>
+            <div class="pull-quote">
+              "O jogo termina.<br />A mentalidade permanece."
+            </div>
+            <p>
+              <strong>Hunter Lenda</strong> vai além. É o atleta que a comunidade referencia. Que define o padrão para os outros sem precisar declarar isso. Que eleva o nível sem precisar falar nada.
+            </p>
+            <p>
+              N1 não é uma conquista que se exibe. É uma responsabilidade que se carrega. É onde a performance encontra o legado — e onde poucos chegam, e menos ainda permanecem.
+            </p>
+            <p style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);">
+              <em>Ninguém sobe ao topo sem pagar o preço. Você já pagou parte. Agora colha.</em>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       UR SERIES
+  ══════════════════════════════════════════ -->
+  <section class="section" id="series">
+    <div class="container">
+
+      <div class="fu" style="text-align:center;margin-bottom:56px;">
+        <p class="section-label">Arena dos melhores</p>
+        <h2 class="display-heading d-lg">UR Series —<br /><span class="gold">a arena dos melhores</span></h2>
+        <div class="divider-gold" style="margin:24px auto;"></div>
+        <p style="max-width:540px;margin:0 auto;color:var(--muted);font-size:1rem;line-height:1.7;">
+          Um formato criado para separar os bons dos excepcionais. Acesso restrito. Competição real. Premiação proporcional ao nível.
+        </p>
+      </div>
+
+      <div class="series-main-card fu fu-d2">
+
+        <div class="series-card-header">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+            <div>
+              <p class="section-label" style="margin-bottom:8px;">Temporada T01 2026</p>
+              <h3 class="display-heading d-md">UR Series <span class="gold">Elite</span></h3>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.8rem;color:var(--gold);">R$1.200</span>
+              <p style="font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Total em prêmios</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="series-card-body">
+
+          <div class="series-features">
+            <div class="series-feature">
+              <div class="series-feature-icon">🏆</div>
+              <div class="series-feature-text">
+                <strong>8 equipes selecionadas</strong>
+                <span>Duplas de elite, vagas limitadas por nível</span>
+              </div>
+            </div>
+            <div class="series-feature">
+              <div class="series-feature-icon">💰</div>
+              <div class="series-feature-text">
+                <strong>R$100 por atleta</strong>
+                <span>Inscrição exclusiva para N2 e N1</span>
+              </div>
+            </div>
+            <div class="series-feature">
+              <div class="series-feature-icon">🎯</div>
+              <div class="series-feature-text">
+                <strong>2 quadras simultâneas</strong>
+                <span>Com árbitro profissional designado</span>
+              </div>
+            </div>
+            <div class="series-feature">
+              <div class="series-feature-icon">📊</div>
+              <div class="series-feature-text">
+                <strong>Pontuação especial</strong>
+                <span>Multiplicador exclusivo no ranking geral</span>
+              </div>
+            </div>
+            <div class="series-feature">
+              <div class="series-feature-icon">🔑</div>
+              <div class="series-feature-text">
+                <strong>Classificação para Virada</strong>
+                <span>Top ranqueados garantem vaga no evento final</span>
+              </div>
+            </div>
+            <div class="series-feature">
+              <div class="series-feature-icon">🌐</div>
+              <div class="series-feature-text">
+                <strong>Visibilidade no ranking público</strong>
+                <span>Resultados publicados com destaque N2/N1</span>
+              </div>
+            </div>
+          </div>
+
+          <h4 style="font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Distribuição de premiação</h4>
+          <div class="prize-breakdown">
+            <div class="prize-item first">
+              <span class="pct">60%</span>
+              <p class="place">1º lugar</p>
+            </div>
+            <div class="prize-item second">
+              <span class="pct">30%</span>
+              <p class="place">2º lugar</p>
+            </div>
+            <div class="prize-item third">
+              <span class="pct">10%</span>
+              <p class="place">3º lugar</p>
+            </div>
+          </div>
+
+          <div class="info-strip" style="margin-top:36px;">
+            <div class="info-strip-item"><strong>Formato:</strong> Fase de grupos + eliminatórias</div>
+            <div class="info-strip-item"><strong>Acesso:</strong> Exclusivo N2 e N1</div>
+            <div class="info-strip-item"><strong>Frequência:</strong> 3 edições por temporada</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       VIRADA DE RANKING
+  ══════════════════════════════════════════ -->
+  <section class="section virada-section" id="virada">
+    <div class="container">
+
+      <div class="fu" style="max-width:520px;margin-bottom:56px;">
+        <p class="section-label">Evento do ano</p>
+        <h2 class="display-heading d-lg">Virada de Ranking<br /><span class="red">T01 2026</span></h2>
+        <div class="divider-gold"></div>
+        <p style="font-size:1rem;color:var(--muted);margin-top:20px;line-height:1.7;">
+          Onde o ranking vira história. O encerramento de temporada que define quem realmente pertence ao topo.
+        </p>
+      </div>
+
+      <div class="virada-card fu fu-d2">
+        <span class="virada-tag">Destaque máximo · Temporada</span>
+
+        <h3 class="display-heading d-md" style="margin-bottom:16px;">
+          "A Virada é onde o<br />ranking vira <span class="red">história.</span>"
+        </h3>
+
+        <p style="font-size:1.05rem;color:rgba(240,240,240,0.7);max-width:600px;line-height:1.75;font-weight:300;">
+          O evento final da temporada T01 2026 não é aberto para inscrição geral. É reservado para quem construiu o seu caminho ao longo do ano — partida a partida, torneio a torneio, ponto a ponto no ranking.
+        </p>
+
+        <div class="virada-details">
+          <div class="virada-detail">
+            <p class="virada-detail-label">Inscrição</p>
+            <p class="virada-detail-val" style="color:var(--red);">R$120 <span style="font-size:0.8rem;color:var(--muted);font-weight:400;">/ atleta</span></p>
+          </div>
+          <div class="virada-detail">
+            <p class="virada-detail-label">Data</p>
+            <p class="virada-detail-val">Dezembro 2026</p>
+          </div>
+          <div class="virada-detail">
+            <p class="virada-detail-label">Acesso</p>
+            <p class="virada-detail-val">Classificados<br /><span style="font-size:0.8rem;color:var(--muted);font-weight:400;">pela temporada</span></p>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding-top:32px;border-top:1px solid rgba(230,57,70,0.2);">
+          <p style="font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">O que está em jogo</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;gap:12px;font-size:14px;color:rgba(240,240,240,0.8);">
+              <span style="color:var(--red);font-weight:700;">→</span>
+              Premiação especial para os top do ranking da temporada completa
+            </li>
+            <li style="display:flex;gap:12px;font-size:14px;color:rgba(240,240,240,0.8);">
+              <span style="color:var(--red);font-weight:700;">→</span>
+              Slots extremamente limitados — classificação garantida por desempenho
+            </li>
+            <li style="display:flex;gap:12px;font-size:14px;color:rgba(240,240,240,0.8);">
+              <span style="color:var(--red);font-weight:700;">→</span>
+              Titulação de campeão de temporada — reconhecimento permanente na plataforma
+            </li>
+            <li style="display:flex;gap:12px;font-size:14px;color:rgba(240,240,240,0.8);">
+              <span style="color:var(--red);font-weight:700;">→</span>
+              Conteúdo documental dos finalistas — legado registrado na comunidade UR
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       HIERARQUIA DE NÍVEIS
+  ══════════════════════════════════════════ -->
+  <section class="section" id="ranking">
+    <div class="container">
+
+      <div class="fu" style="text-align:center;margin-bottom:56px;">
+        <p class="section-label">Sistema de progressão</p>
+        <h2 class="display-heading d-lg">Hierarquia dos níveis<br /><span class="gold">Você no topo</span></h2>
+        <div class="divider-gold" style="margin:24px auto;"></div>
+        <p style="max-width:440px;margin:0 auto;color:var(--muted);font-size:1rem;line-height:1.7;">
+          Cada nível é uma declaração. Saber onde você está é o primeiro passo para saber até onde pode ir.
+        </p>
+      </div>
+
+      <div class="hierarchy-grid fu fu-d2">
+
+        <div class="level-row lv5">
+          <span class="level-badge">N5</span>
+          <div>
+            <p class="level-name" style="color:var(--muted);">Iniciante</p>
+            <p class="level-sub">Primeiro contato com o ambiente competitivo</p>
+          </div>
+        </div>
+
+        <div class="level-row lv4">
+          <span class="level-badge">N4</span>
+          <div>
+            <p class="level-name" style="color:var(--blue);">Hunter</p>
+            <p class="level-sub">Fundamentos sólidos, jogo em desenvolvimento</p>
+          </div>
+        </div>
+
+        <div class="level-row lv3">
+          <span class="level-badge">N3</span>
+          <div>
+            <p class="level-name" style="color:var(--green);">Experiente</p>
+            <p class="level-sub">Consistência e leitura de jogo avançada</p>
+          </div>
+        </div>
+
+        <div class="level-row lv2">
+          <span class="level-badge">N2</span>
+          <div>
+            <p class="level-name" style="color:var(--gold);">Hunter Elite</p>
+            <p class="level-sub">Performance de alto nível, postura reconhecida</p>
+          </div>
+          <span class="level-tag">Você aqui</span>
+        </div>
+
+        <div class="level-row lv1">
+          <span class="level-badge">N1</span>
+          <div>
+            <p class="level-name" style="color:var(--red);">Hunter Lenda</p>
+            <p class="level-sub">Referência da comunidade, padrão máximo</p>
+          </div>
+          <span class="level-tag">Destino: Legado</span>
+        </div>
+
+      </div>
+
+      <p class="hierarchy-note fu fu-d3">
+        "Poucos chegam aqui. Menos ainda permanecem."
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       O QUE DEFINE HUNTER LENDA
+  ══════════════════════════════════════════ -->
+  <section class="section" style="background:var(--surface);">
+    <div class="container">
+
+      <div class="fu" style="margin-bottom:56px;">
+        <p class="section-label">Nível N1</p>
+        <h2 class="display-heading d-lg">O que define<br /><span class="red">Hunter Lenda</span></h2>
+        <div class="divider-gold"></div>
+        <p style="max-width:480px;color:var(--muted);font-size:1rem;margin-top:20px;line-height:1.7;">
+          N1 não é um número. É um conjunto de atributos que a comunidade reconhece antes mesmo de olhar para o ranking.
+        </p>
+      </div>
+
+      <div class="lenda-grid">
+
+        <div class="lenda-item fu fu-d1">
+          <div class="lenda-icon">🏆</div>
+          <div class="lenda-content">
+            <strong>Histórico de performance consistente em torneios</strong>
+            <p>Não uma boa partida. Uma temporada inteira de resultados — em diferentes contextos, contra diferentes adversários, sob diferentes pressões.</p>
+          </div>
+        </div>
+
+        <div class="lenda-item fu fu-d2">
+          <div class="lenda-icon">📊</div>
+          <div class="lenda-content">
+            <strong>Ranking consolidado ao longo da temporada</strong>
+            <p>A posição no topo não chegou por acidente. É o reflexo matemático de decisões corretas repetidas ao longo de meses de competição.</p>
+          </div>
+        </div>
+
+        <div class="lenda-item fu fu-d3">
+          <div class="lenda-icon">🎯</div>
+          <div class="lenda-content">
+            <strong>Referência técnica reconhecida pela comunidade</strong>
+            <p>Quando Hunter Lenda joga, os outros observam para aprender. O nível técnico é explícito — não precisa ser anunciado.</p>
+          </div>
+        </div>
+
+        <div class="lenda-item fu fu-d4">
+          <div class="lenda-icon">🤝</div>
+          <div class="lenda-content">
+            <strong>Postura de liderança dentro e fora de quadra</strong>
+            <p>Competitividade sem toxicidade. Intensidade sem arrogância. O atleta que eleva o ambiente simplesmente por estar presente.</p>
+          </div>
+        </div>
+
+        <div class="lenda-item fu fu-d5" style="grid-column: 1 / -1;">
+          <div class="lenda-icon">🌟</div>
+          <div class="lenda-content">
+            <strong>Candidato a embaixador e capitão da comunidade</strong>
+            <p>Hunter Lenda tem acesso ao programa de capitães — responsável por representar a UR em novos territórios, liderar eventos locais e ser referência institucional da marca. Um nível que vai além da competição.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PLANO HUNTER ELITE — PRICING
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="fu" style="text-align:center;margin-bottom:56px;">
+        <p class="section-label">Acesso completo</p>
+        <h2 class="display-heading d-lg">Plano <span class="gold">Hunter Elite</span></h2>
+        <div class="divider-gold" style="margin:24px auto;"></div>
+        <p style="max-width:420px;margin:0 auto;color:var(--muted);font-size:1rem;line-height:1.7;">
+          Tudo o que um atleta N2 ou N1 precisa para competir no mais alto nível, em um único acesso.
+        </p>
+      </div>
+
+      <div class="pricing-card fu fu-d2">
+
+        <div class="pricing-header">
+          <p class="pricing-label">Hunter Elite · N2 / N1</p>
+          <div class="pricing-price">
+            R$<span>199</span>
+            <span>/mês</span>
+          </div>
+          <p class="pricing-period">Acesso mensal · Renovação automática · Cancele quando quiser</p>
+        </div>
+
+        <div class="pricing-body">
+          <ul class="pricing-list">
+            <li>Acesso prioritário a UR Series e Virada de Ranking</li>
+            <li>Dashboard completo de performance com métricas avançadas</li>
+            <li>Histórico de evolução desde o início da jornada na plataforma</li>
+            <li>Destaque visual no ranking público da comunidade</li>
+            <li>Badge exclusivo identificador de nível N2 / N1</li>
+            <li>Coins elite com multiplicador 1.5x em todos os eventos</li>
+            <li>Convite para o programa de capitães e embaixadores UR</li>
+          </ul>
+
+          <a href="#cta-final" class="btn btn-red" style="width:100%;text-align:center;padding:18px;">
+            Quero o Hunter Elite
+          </a>
+
+          <p class="pricing-note">
+            Disponível exclusivamente para atletas com comprovação de nível N2 ou N1 verificada no sistema Ultimate Rivals. O acesso é validado pela plataforma antes da ativação.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SEU LEGADO COMEÇA AGORA
+  ══════════════════════════════════════════ -->
+  <section class="section legacy-section">
+    <div class="container">
+      <div class="legacy-text">
+
+        <div class="fu">
+          <p class="section-label" style="text-align:center;">Visão</p>
+          <h2 class="display-heading d-lg" style="text-align:center;margin-bottom:48px;">
+            Seu legado<br /><span class="gold">começa agora</span>
+          </h2>
+        </div>
+
+        <div class="legacy-quote fu fu-d2">
+          "O atleta que chega no N1 não chegou por <em>sorte</em>.<br />
+          Chegou por repetição, por processo,<br />
+          por não sair quando era mais fácil ir embora."
+        </div>
+
+        <div class="legacy-body fu fu-d3">
+          <p>Hunter Lenda é quem os outros observam. É quem eleva o nível sem precisar falar nada. É o atleta que a comunidade vai lembrar quando a temporada acabar — não pelo título, mas pela forma como jogou cada partida, em qualquer condição.</p>
+        </div>
+
+        <div class="divider-gold" style="margin:40px auto;"></div>
+
+        <div class="legacy-quote fu fu-d4" style="font-size:clamp(1.2rem,2.2vw,1.8rem);color:var(--muted);">
+          "Eleve o jogo, supere seus limites."
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DEPOIMENTOS / SOCIAL PROOF
+  ══════════════════════════════════════════ -->
+  <section class="section" style="background:var(--surface);">
+    <div class="container">
+
+      <div class="fu" style="margin-bottom:56px;">
+        <p class="section-label">Da comunidade</p>
+        <h2 class="display-heading d-lg">Quem chegou<br /><span class="gold">no topo</span></h2>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card fu fu-d1">
+          <p class="testimonial-level">Hunter Lenda · N1</p>
+          <p class="testimonial-text">
+            "Entrei no N4. Levei dois anos para chegar aqui. Não fui o mais talentoso — fui o mais consistente. Cada torneio era uma decisão, não uma obrigação. Quando olhei para o ranking e vi N1, entendi que o processo sempre foi o ponto."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar avatar-red">RC</div>
+            <div>
+              <p class="author-name">Rafael C.</p>
+              <p class="author-info">Hunter Lenda · 24 torneios disputados</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fu fu-d2">
+          <p class="testimonial-level">Hunter Elite · N2</p>
+          <p class="testimonial-text">
+            "A UR Series não é para quem quer competir. É para quem precisa competir. Minha dupla ganhou a edição de agosto. Não foi sorte — foi preparação durante três meses. O prêmio ficou. A memória ficou mais."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar avatar-gold">MB</div>
+            <div>
+              <p class="author-name">Matheus B.</p>
+              <p class="author-info">Hunter Elite · Campeão UR Series #2</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fu fu-d3">
+          <p class="testimonial-level">Hunter Lenda · N1 · Capitão</p>
+          <p class="testimonial-text">
+            "Virei capitão porque o nível me qualificou — mas fiquei porque a responsabilidade faz sentido para mim. Representar a UR em novos grupos é uma extensão natural de tudo que construí dentro de quadra."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar avatar-red">TL</div>
+            <div>
+              <p class="author-name">Thiago L.</p>
+              <p class="author-info">Hunter Lenda · Capitão UR · T01 2026</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PRÓXIMOS EVENTOS — TIMELINE
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="fu" style="text-align:center;margin-bottom:64px;">
+        <p class="section-label">Calendário</p>
+        <h2 class="display-heading d-lg">Próximos eventos<br /><span class="gold">Elite em 2026</span></h2>
+        <div class="divider-gold" style="margin:24px auto;"></div>
+        <p style="max-width:400px;margin:0 auto;color:var(--muted);font-size:1rem;line-height:1.7;">
+          A temporada T01 2026 foi construída para quem leva o jogo a sério. Cada evento é uma oportunidade de avançar no ranking e se classificar para o evento final.
+        </p>
+      </div>
+
+      <div class="timeline fu fu-d2">
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Julho 2026</p>
+            <p class="timeline-event">Mini Torneio</p>
+            <p class="timeline-desc">Aquecimento de temporada · Todos os níveis · Pontuação ranking</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Agosto 2026</p>
+            <p class="timeline-event">UR Series #1</p>
+            <p class="timeline-desc">Exclusivo N2/N1 · 8 equipes · R$1.200 em prêmios</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Setembro 2026</p>
+            <p class="timeline-event">UR Series #2</p>
+            <p class="timeline-desc">Exclusivo N2/N1 · 8 equipes · R$1.200 em prêmios</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Outubro 2026</p>
+            <p class="timeline-event">UR Series #3</p>
+            <p class="timeline-desc">Exclusivo N2/N1 · 8 equipes · R$1.200 em prêmios</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Novembro 2026</p>
+            <p class="timeline-event">Pré-Virada</p>
+            <p class="timeline-desc">Última chance de pontuação · Ranking fecha</p>
+          </div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <span class="timeline-dot"></span>
+          <div class="timeline-card">
+            <p class="timeline-month">Dezembro 2026</p>
+            <p class="timeline-event">Virada de Ranking T01 2026</p>
+            <p class="timeline-desc">Evento final da temporada · Classificados · Premiação especial · Encerramento histórico</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CTA FINAL
+  ══════════════════════════════════════════ -->
+  <section class="final-cta" id="cta-final">
+    <div class="container">
+
+      <div class="fu">
+        <p class="section-label" style="text-align:center;margin-bottom:24px;">Decisão</p>
+        <h2 class="final-headline">
+          O topo não espera.<br />
+          <span style="background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+            Você já sabe o que é capaz.
+          </span>
+        </h2>
+        <p class="final-sub fu fu-d2">
+          Hunter Elite não é destino. É escolha que se faz todo dia.
+        </p>
+        <a href="#" class="btn-final fu fu-d3">
+          QUERO COMPETIR NO TOPO
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <p class="footer-logo">UR</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:1px;">Ultimate Rivals</p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#series">UR Series</a></li>
+          <li><a href="#virada">Virada de Ranking</a></li>
+          <li><a href="#ranking">Hierarquia</a></li>
+          <li><a href="#elite">Hunter Elite</a></li>
+          <li><a href="#cta-final">Competir</a></li>
+        </ul>
+
+        <p class="footer-copy">
+          &copy; 2026 Ultimate Rivals &nbsp;·&nbsp; Temporada T01 2026 &nbsp;·&nbsp; Todos os direitos reservados
+        </p>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       JAVASCRIPT — FADE-UP OBSERVER
+  ══════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // IntersectionObserver para fade-up
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('on');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        }
+      );
+
+      document.querySelectorAll('.fu').forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Nav scroll behavior — adiciona fundo mais sólido ao rolar
+      var nav = document.querySelector('nav');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 60) {
+          nav.style.borderBottomColor = 'rgba(255,216,77,0.12)';
+        } else {
+          nav.style.borderBottomColor = 'var(--border)';
+        }
+      }, { passive: true });
+
+      // Smooth scroll para âncoras internas
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            var navHeight = 64;
+            var targetY = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+          }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
