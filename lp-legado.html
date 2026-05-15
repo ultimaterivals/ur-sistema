@@ -2,1711 +2,545 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legado — Ultimate Rivals | Para quem chegou ao topo e quer elevar outros</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legado — Ultimate Rivals | O Que Você Constrói Permanece</title>
+<meta name="description" content="N1 Hunter Lenda. Capitães. Embaixadores. Você chegou ao topo — agora é hora de construir o que vai durar. Programa Legado UR.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#000;
-  --surface:#080808;
-  --card:#0d0d0d;
-  --gold:#ffd84d;
-  --gold2:#f5c518;
-  --gold3:#c89000;
-  --red:#e63946;
-  --green:#2dc653;
-  --blue:#4da6ff;
-  --text:#f0f0f0;
-  --muted:#888;
-  --border:#1a1a1a;
-}
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth;font-size:16px}
-
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  font-weight:400;
-  line-height:1.6;
-  overflow-x:hidden;
-}
-
-/* ── FADE-UP ANIMATION ── */
-.fu{
-  opacity:0;
-  transform:translateY(32px);
-  transition:opacity 0.7s ease, transform 0.7s ease;
-}
-.fu.on{
-  opacity:1;
-  transform:translateY(0);
-}
-.fu.delay-1{transition-delay:0.1s}
-.fu.delay-2{transition-delay:0.2s}
-.fu.delay-3{transition-delay:0.3s}
-.fu.delay-4{transition-delay:0.4s}
-.fu.delay-5{transition-delay:0.5s}
-
-/* ── TYPOGRAPHY ── */
-h1,h2,h3,h4,h5{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  line-height:1.05;
-  letter-spacing:-0.01em;
-}
-
-.display{
-  font-size:clamp(3rem, 9vw, 8rem);
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:-0.02em;
-  line-height:0.95;
-}
-
-.section-title{
-  font-size:clamp(2.2rem, 5vw, 4rem);
-  text-transform:uppercase;
-  margin-bottom:0.5rem;
-}
-
-.section-label{
-  font-family:'Inter',sans-serif;
-  font-size:0.7rem;
-  font-weight:600;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold3);
-  margin-bottom:1rem;
-  display:block;
-}
-
-/* ── LAYOUT ── */
-.container{
-  max-width:1140px;
-  margin:0 auto;
-  padding:0 1.5rem;
-}
-
-.container-narrow{
-  max-width:780px;
-  margin:0 auto;
-  padding:0 1.5rem;
-}
-
-section{
-  padding:6rem 0;
-  border-bottom:1px solid var(--border);
-}
-
-/* ── NAVIGATION ── */
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:100;
-  background:rgba(0,0,0,0.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:0 1.5rem;
-}
-
-.nav-inner{
-  max-width:1140px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:64px;
-}
-
-.nav-logo{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:1.9rem;
-  color:var(--gold);
-  letter-spacing:0.05em;
-  text-decoration:none;
-  text-transform:uppercase;
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:2rem;
-  list-style:none;
-}
-
-.nav-links a{
-  color:var(--muted);
-  text-decoration:none;
-  font-size:0.82rem;
-  font-weight:500;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  transition:color 0.2s;
-}
-
-.nav-links a:hover{color:var(--text)}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.5rem;
-  padding:0.7rem 1.6rem;
-  border-radius:2px;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;
-  font-size:1rem;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  text-decoration:none;
-  cursor:pointer;
-  border:none;
-  transition:all 0.2s;
-}
-
-.btn-gold{
-  background:var(--gold);
-  color:#000;
-}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
-
-.btn-outline{
-  background:transparent;
-  color:var(--gold);
-  border:1px solid var(--gold3);
-}
-.btn-outline:hover{background:var(--gold);color:#000}
-
-.btn-lg{
-  padding:1rem 2.4rem;
-  font-size:1.15rem;
-}
-
-.btn-xl{
-  padding:1.2rem 3rem;
-  font-size:1.3rem;
-}
-
-.nav-cta{
-  margin-left:1rem;
-}
-
-/* ── HERO ── */
-#hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding-top:64px;
-  position:relative;
-  background:
-    linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E"),
-    linear-gradient(#c8a96e,#b8955a);
-  border-bottom:1px solid var(--border);
-}
-
-.hero-inner{
-  padding:5rem 1.5rem 4rem;
-  max-width:1140px;
-  margin:0 auto;
-  width:100%;
-}
-
-.hero-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:0.6rem;
-  background:rgba(200,144,0,0.15);
-  border:1px solid var(--gold3);
-  border-radius:2px;
-  padding:0.4rem 1rem;
-  margin-bottom:2rem;
-  font-size:0.72rem;
-  font-weight:600;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold);
-}
-
-.hero-badge span{
-  width:6px;
-  height:6px;
-  background:var(--gold);
-  border-radius:50%;
-  display:inline-block;
-}
-
-.hero-headline{
-  margin-bottom:1.5rem;
-}
-
-.hero-headline .line1{
-  color:var(--text);
-}
-
-.hero-headline .line2{
-  color:var(--gold);
-}
-
-.hero-sub{
-  max-width:640px;
-  font-size:1.15rem;
-  color:rgba(240,240,240,0.7);
-  line-height:1.7;
-  margin-bottom:2.5rem;
-  font-weight:300;
-}
-
-.hero-actions{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:1.2rem;
-  margin-bottom:3rem;
-}
-
-.hero-note{
-  font-size:0.8rem;
-  color:var(--muted);
-  font-style:italic;
-  letter-spacing:0.04em;
-}
-
-.hero-pillars{
-  display:flex;
-  gap:0;
-  border:1px solid var(--border);
-  border-radius:2px;
-  overflow:hidden;
-  max-width:520px;
-  margin-top:1rem;
-}
-
-.pillar{
-  flex:1;
-  padding:0.9rem 1rem;
-  text-align:center;
-  border-right:1px solid var(--border);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.9rem;
-  font-weight:700;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:var(--muted);
-  background:rgba(255,255,255,0.02);
-  transition:color 0.2s, background 0.2s;
-}
-
-.pillar:last-child{border-right:none}
-.pillar:hover{color:var(--gold);background:rgba(200,144,0,0.06)}
-
-/* ── MANIFESTO ── */
-#manifesto{
-  background:var(--surface);
-}
-
-.manifesto-text{
-  font-size:clamp(1.15rem, 2.5vw, 1.45rem);
-  line-height:1.85;
-  color:rgba(240,240,240,0.85);
-  font-weight:300;
-}
-
-.manifesto-text p{
-  margin-bottom:1.6rem;
-}
-
-.manifesto-text p:last-child{
-  margin-bottom:0;
-}
-
-.manifesto-text strong{
-  color:var(--text);
-  font-weight:500;
-}
-
-.manifesto-text .highlight{
-  color:var(--gold);
-  font-style:italic;
-}
-
-.manifesto-quote{
-  border-left:3px solid var(--gold3);
-  padding-left:1.8rem;
-  margin:2.5rem 0;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:clamp(1.5rem, 3vw, 2.2rem);
-  font-weight:700;
-  font-style:italic;
-  color:var(--gold);
-  line-height:1.3;
-}
-
-/* ── CAPITÃO ── */
-#capitao{
-  background:var(--bg);
-}
-
-.capitao-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4rem;
-  align-items:start;
-}
-
-.capitao-left .section-title{
-  margin-bottom:1.2rem;
-}
-
-.capitao-tagline{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:clamp(1.1rem,2vw,1.5rem);
-  font-style:italic;
-  color:var(--gold);
-  font-weight:600;
-  margin-bottom:1.5rem;
-  line-height:1.3;
-}
-
-.capitao-desc{
-  color:rgba(240,240,240,0.7);
-  font-size:1rem;
-  line-height:1.8;
-  margin-bottom:2rem;
-}
-
-.responsibility-list{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:0.8rem;
-  margin-bottom:2rem;
-}
-
-.responsibility-list li{
-  display:flex;
-  align-items:flex-start;
-  gap:0.8rem;
-  font-size:0.95rem;
-  color:rgba(240,240,240,0.75);
-  line-height:1.6;
-}
-
-.responsibility-list li::before{
-  content:'';
-  width:2px;
-  height:16px;
-  background:var(--gold3);
-  flex-shrink:0;
-  margin-top:4px;
-}
-
-.benefit-cards{
-  display:flex;
-  flex-direction:column;
-  gap:0.8rem;
-}
-
-.benefit-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:3px;
-  padding:1rem 1.2rem;
-  display:flex;
-  align-items:center;
-  gap:1rem;
-}
-
-.benefit-icon{
-  width:36px;
-  height:36px;
-  background:rgba(200,144,0,0.1);
-  border:1px solid var(--gold3);
-  border-radius:2px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-  font-size:1rem;
-}
-
-.benefit-text{
-  font-size:0.9rem;
-  color:var(--text);
-  font-weight:500;
-}
-
-.benefit-sub{
-  font-size:0.78rem;
-  color:var(--muted);
-  margin-top:0.1rem;
-}
-
-/* ── EMBAIXADORES ── */
-#embaixadores{
-  background:var(--surface);
-}
-
-.emb-header{
-  max-width:680px;
-  margin-bottom:3.5rem;
-}
-
-.emb-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:1.5rem;
-  margin-bottom:3rem;
-}
-
-.emb-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:3px;
-  padding:1.8rem 1.5rem;
-  transition:border-color 0.2s;
-}
-
-.emb-card:hover{border-color:var(--gold3)}
-
-.emb-num{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:2.5rem;
-  font-weight:900;
-  color:var(--gold3);
-  line-height:1;
-  margin-bottom:0.8rem;
-  opacity:0.5;
-}
-
-.emb-card h3{
-  font-size:1.1rem;
-  margin-bottom:0.6rem;
-  color:var(--text);
-}
-
-.emb-card p{
-  font-size:0.88rem;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.emb-benefits{
-  background:rgba(200,144,0,0.05);
-  border:1px solid var(--gold3);
-  border-radius:3px;
-  padding:2rem;
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
-  align-items:center;
-}
-
-.emb-benefit-tag{
-  background:rgba(200,144,0,0.1);
-  border:1px solid rgba(200,144,0,0.3);
-  border-radius:2px;
-  padding:0.4rem 0.9rem;
-  font-size:0.8rem;
-  font-weight:600;
-  color:var(--gold);
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-}
-
-.emb-cta-text{
-  width:100%;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.2rem;
-  font-style:italic;
-  color:rgba(240,240,240,0.6);
-  font-weight:600;
-  padding-top:0.5rem;
-}
-
-/* ── JORNADA TIMELINE ── */
-#jornada{
-  background:var(--bg);
-}
-
-.timeline{
-  position:relative;
-  padding-left:2rem;
-  margin:3rem 0;
-}
-
-.timeline::before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:8px;
-  bottom:8px;
-  width:2px;
-  background:linear-gradient(to bottom, var(--border), var(--gold3), var(--gold));
-}
-
-.timeline-item{
-  position:relative;
-  padding:0 0 2.5rem 2rem;
-}
-
-.timeline-item:last-child{padding-bottom:0}
-
-.timeline-dot{
-  position:absolute;
-  left:-2rem;
-  top:4px;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:var(--border);
-  border:2px solid var(--border);
-  transform:translateX(-6px);
-  transition:background 0.3s;
-}
-
-.timeline-item.active .timeline-dot{
-  background:var(--gold);
-  border-color:var(--gold);
-  box-shadow:0 0 16px rgba(255,216,77,0.4);
-}
-
-.timeline-item.done .timeline-dot{
-  background:var(--gold3);
-  border-color:var(--gold3);
-}
-
-.timeline-level{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.72rem;
-  font-weight:700;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:0.3rem;
-}
-
-.timeline-title{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.6rem;
-  font-weight:900;
-  text-transform:uppercase;
-  color:var(--text);
-  margin-bottom:0.3rem;
-}
-
-.timeline-item.active .timeline-title{
-  color:var(--gold);
-}
-
-.timeline-desc{
-  font-size:0.9rem;
-  color:var(--muted);
-}
-
-.jornada-close{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-left:3px solid var(--gold);
-  padding:1.5rem 2rem;
-  font-size:1.1rem;
-  color:rgba(240,240,240,0.75);
-  font-style:italic;
-  line-height:1.6;
-}
-
-/* ── IMPACTO ── */
-#impacto{
-  background:var(--surface);
-}
-
-.impact-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:2rem;
-  margin-top:3rem;
-}
-
-.impact-card{
-  padding:2.5rem 2rem;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:3px;
-  border-top:3px solid var(--gold3);
-  transition:transform 0.2s, border-color 0.2s;
-}
-
-.impact-card:hover{
-  transform:translateY(-4px);
-  border-color:var(--gold);
-  border-top-color:var(--gold);
-}
-
-.impact-icon{
-  font-size:2rem;
-  margin-bottom:1.2rem;
-  display:block;
-}
-
-.impact-card h3{
-  font-size:1.4rem;
-  margin-bottom:0.8rem;
-  color:var(--text);
-  text-transform:uppercase;
-}
-
-.impact-card p{
-  font-size:0.9rem;
-  color:var(--muted);
-  line-height:1.75;
-}
-
-/* ── DEPOIMENTOS ── */
-#depoimentos{
-  background:var(--bg);
-}
-
-.testimonials-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:1.5rem;
-  margin-top:3rem;
-}
-
-.testimonial{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:3px;
-  padding:2rem;
-  display:flex;
-  flex-direction:column;
-  gap:1.2rem;
-}
-
-.testimonial-body{
-  font-size:0.97rem;
-  color:rgba(240,240,240,0.75);
-  line-height:1.8;
-  font-style:italic;
-  flex:1;
-}
-
-.testimonial-body::before{
-  content:'"';
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:3rem;
-  color:var(--gold3);
-  line-height:0.5;
-  display:block;
-  margin-bottom:1rem;
-  opacity:0.6;
-}
-
-.testimonial-author{
-  border-top:1px solid var(--border);
-  padding-top:1rem;
-}
-
-.author-name{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1rem;
-  font-weight:700;
-  text-transform:uppercase;
-  color:var(--text);
-  letter-spacing:0.05em;
-}
-
-.author-role{
-  font-size:0.75rem;
-  color:var(--gold3);
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  font-weight:600;
-  margin-top:0.2rem;
-}
-
-/* ── COMPROMISSOS ── */
-#compromissos{
-  background:var(--surface);
-}
-
-.commitments{
-  margin-top:3rem;
-  display:flex;
-  flex-direction:column;
-  gap:0;
-  border:1px solid var(--border);
-  border-radius:3px;
-  overflow:hidden;
-}
-
-.commitment{
-  padding:2rem 2.5rem;
-  border-bottom:1px solid var(--border);
-  display:grid;
-  grid-template-columns:60px 1fr;
-  gap:1.5rem;
-  align-items:start;
-  transition:background 0.2s;
-}
-
-.commitment:last-child{border-bottom:none}
-.commitment:hover{background:rgba(200,144,0,0.03)}
-
-.commitment-num{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:3rem;
-  font-weight:900;
-  color:var(--border);
-  line-height:1;
-  letter-spacing:-0.03em;
-  padding-top:2px;
-}
-
-.commitment-title{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.4rem;
-  font-weight:700;
-  text-transform:uppercase;
-  color:var(--text);
-  margin-bottom:0.5rem;
-}
-
-.commitment-desc{
-  font-size:0.9rem;
-  color:var(--muted);
-  line-height:1.75;
-}
-
-/* ── TORNEIOS ── */
-#torneios{
-  background:var(--bg);
-}
-
-.events-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:1.5rem;
-  margin-top:3rem;
-}
-
-.event-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:3px;
-  overflow:hidden;
-  transition:border-color 0.2s;
-}
-
-.event-card:hover{border-color:var(--gold3)}
-
-.event-header{
-  padding:1.5rem;
-  border-bottom:1px solid var(--border);
-  background:rgba(200,144,0,0.04);
-}
-
-.event-tag{
-  font-size:0.65rem;
-  font-weight:700;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--gold3);
-  margin-bottom:0.6rem;
-  display:block;
-}
-
-.event-name{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.5rem;
-  font-weight:900;
-  text-transform:uppercase;
-  color:var(--text);
-  line-height:1.1;
-}
-
-.event-body{
-  padding:1.5rem;
-}
-
-.event-date{
-  font-size:0.8rem;
-  color:var(--gold);
-  font-weight:600;
-  letter-spacing:0.1em;
-  margin-bottom:0.6rem;
-}
-
-.event-desc{
-  font-size:0.88rem;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.event-access{
-  display:inline-flex;
-  align-items:center;
-  gap:0.4rem;
-  margin-top:1rem;
-  font-size:0.72rem;
-  font-weight:700;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  color:var(--gold3);
-}
-
-.event-access::before{
-  content:'';
-  width:6px;
-  height:6px;
-  background:var(--gold3);
-  border-radius:50%;
-}
-
-/* ── CTA FINAL ── */
-#cta-final{
-  background:
-    linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.9)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E"),
-    linear-gradient(135deg,#1a1000,#0d0800);
-  text-align:center;
-  padding:8rem 1.5rem;
-  border-bottom:none;
-}
-
-.cta-eyebrow{
-  font-size:0.72rem;
-  font-weight:600;
-  letter-spacing:0.25em;
-  text-transform:uppercase;
-  color:var(--gold3);
-  display:block;
-  margin-bottom:1.5rem;
-}
-
-.cta-headline{
-  font-size:clamp(2rem,5vw,3.8rem);
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  text-transform:uppercase;
-  line-height:1.05;
-  margin-bottom:1.2rem;
-}
-
-.cta-headline .accent{color:var(--gold)}
-
-.cta-sub{
-  font-size:1.1rem;
-  color:rgba(240,240,240,0.6);
-  max-width:560px;
-  margin:0 auto 2.5rem;
-  line-height:1.7;
-  font-weight:300;
-}
-
-.cta-note{
-  margin-top:1.2rem;
-  font-size:0.75rem;
-  color:var(--muted);
-  letter-spacing:0.08em;
-}
-
-.cta-divider{
-  width:60px;
-  height:1px;
-  background:var(--gold3);
-  margin:2rem auto;
-  opacity:0.5;
-}
-
-/* ── FOOTER ── */
-footer{
-  background:#000;
-  border-top:1px solid var(--border);
-  padding:3rem 1.5rem;
-}
-
-.footer-inner{
-  max-width:1140px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  gap:2rem;
-}
-
-.footer-logo{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;
-  font-size:1.6rem;
-  color:var(--gold);
-  letter-spacing:0.05em;
-  text-decoration:none;
-  text-transform:uppercase;
-}
-
-.footer-links{
-  display:flex;
-  gap:1.5rem;
-  list-style:none;
-  justify-content:center;
-}
-
-.footer-links a{
-  color:var(--muted);
-  text-decoration:none;
-  font-size:0.78rem;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  transition:color 0.2s;
-}
-
-.footer-links a:hover{color:var(--gold)}
-
-.footer-quote{
-  text-align:right;
-}
-
-.footer-quote p{
-  font-size:0.8rem;
-  color:var(--muted);
-  line-height:1.6;
-  font-style:italic;
-}
-
-.footer-copy{
-  font-size:0.72rem;
-  color:rgba(136,136,136,0.5);
-  margin-top:0.3rem;
-}
-
-/* ── DIVIDER ACCENT ── */
-.section-divider{
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  margin-bottom:3rem;
-}
-
-.section-divider::after{
-  content:'';
-  flex:1;
-  height:1px;
-  background:var(--border);
-}
-
-/* ── MOBILE HAMBURGER ── */
-.nav-toggle{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:4px;
-}
-
-.nav-toggle span{
-  width:22px;
-  height:2px;
-  background:var(--text);
-  border-radius:1px;
-  transition:all 0.2s;
-}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .nav-links{display:none}
-  .nav-toggle{display:flex}
-
-  .capitao-grid{grid-template-columns:1fr}
-  .emb-grid{grid-template-columns:1fr 1fr}
-  .impact-grid{grid-template-columns:1fr}
-  .testimonials-grid{grid-template-columns:1fr}
-  .events-grid{grid-template-columns:1fr}
-  .footer-inner{grid-template-columns:1fr;text-align:center}
-  .footer-quote{text-align:center}
-}
-
-@media(max-width:600px){
-  section{padding:4rem 0}
-  .emb-grid{grid-template-columns:1fr}
-  .commitment{grid-template-columns:40px 1fr}
-  .commitment-num{font-size:2rem}
-  .hero-pillars{flex-direction:column}
-  .pillar{border-right:none;border-bottom:1px solid var(--border)}
-  .pillar:last-child{border-bottom:none}
-}
+  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* TICKER */
+.ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
+.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+@media(max-width:780px){.nav-links{display:none}.nav-season{display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-color:#1c1508;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
+.hero-court{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent calc(50% - .5px),rgba(255,255,255,.07) calc(50% - .5px),rgba(255,255,255,.07) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(transparent calc(30% - .5px),rgba(255,255,255,.04) calc(30% - .5px),rgba(255,255,255,.04) calc(30% + .5px),transparent calc(30% + .5px)),linear-gradient(transparent calc(70% - .5px),rgba(255,255,255,.04) calc(70% - .5px),rgba(255,255,255,.04) calc(70% + .5px),transparent calc(70% + .5px)),linear-gradient(90deg,transparent 12%,rgba(255,255,255,.04) 12%,rgba(255,255,255,.04) 12.3%,transparent 12.3%),linear-gradient(90deg,transparent 87.7%,rgba(255,255,255,.04) 87.7%,rgba(255,255,255,.04) 88%,transparent 88%)}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.12),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.55) 0%,rgba(7,8,13,.72) 60%,rgba(7,8,13,.92) 100%)}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:28px;text-transform:uppercase;font-family:var(--display)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.hero-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
+.hero-logos img{height:100px;filter:drop-shadow(0 0 28px rgba(255,216,77,.45))}
+.hero-logos .hl-hunter{height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))}
+.hero-logos-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.18),transparent)}
+.hero-title{font-family:var(--display);font-size:clamp(60px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase}
+.hero-title .t1{color:#fff}
+.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.45)}
+.hero-tag{font-family:var(--display);font-size:clamp(14px,2.5vw,20px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
+.hero-bordao{font-family:var(--display);font-size:clamp(18px,3.5vw,28px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 42px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:10px;transition:all .25s;text-transform:uppercase}
+.btn-ghost:hover{border-color:rgba(255,216,77,.6);color:var(--gold)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:520px;margin:0 auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(7,8,13,.5)}
+.h-stat{padding:16px 0;text-align:center;border-right:1px solid var(--border)}
+.h-stat:last-child{border-right:none}
+.h-stat-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+.h-stat-l{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+
+/* SECTION BASE */
+.sec{padding:84px 20px;max-width:1100px;margin:0 auto}
+.sec-alt{background:var(--surface)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
+.s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
+.s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
+
+/* ÍCONES CIRCULARES */
+.icon-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:30px;position:relative;flex-shrink:0}
+.icon-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 180deg,var(--gold) 0deg,rgba(255,216,77,.15) 90deg,rgba(255,216,77,.15) 270deg,var(--gold) 360deg);opacity:.55}
+.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
+.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
+.ic-fire{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500)}
+.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
+
+/* PILAR CARDS */
+.pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
+.pilar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
+.pilar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.pilar-card h3{font-family:var(--display);font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.pilar-card p{font-size:13px;color:var(--muted);line-height:1.67}
+
+/* HUNTERS */
+.hunters-wrap{background:linear-gradient(135deg,#0a0600,#110900,#080500);border:1px solid rgba(255,200,0,.18);border-radius:16px;overflow:hidden;position:relative}
+.hunters-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(38deg,transparent 30%,rgba(255,200,0,.055) 30.5%,rgba(255,200,0,.055) 31.5%,transparent 32%),linear-gradient(38deg,transparent 33%,rgba(255,200,0,.04) 33.5%,rgba(255,200,0,.04) 34.2%,transparent 34.7%),linear-gradient(38deg,transparent 36%,rgba(255,200,0,.03) 36.5%,rgba(255,200,0,.03) 37%,transparent 37.5%),linear-gradient(225deg,transparent 60%,rgba(255,160,0,.05) 60.5%,rgba(255,160,0,.05) 61.2%,transparent 61.7%),linear-gradient(225deg,transparent 63%,rgba(255,160,0,.04) 63.5%,rgba(255,160,0,.04) 64%,transparent 64.5%),linear-gradient(225deg,transparent 66%,rgba(255,160,0,.025) 66.5%,rgba(255,160,0,.025) 67%,transparent 67.5%)}
+.hunters-lightning{position:absolute;top:0;right:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.hunters-lightning svg{position:absolute}
+.hunters-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:700px){.hunters-inner{grid-template-columns:1fr}}
+.hunters-left{padding:52px 48px;position:relative;z-index:1}
+@media(max-width:700px){.hunters-left{padding:32px 22px}}
+.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
+.hunters-title{font-family:var(--display);font-size:clamp(36px,5.5vw,58px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.hunters-title span{color:var(--gold)}
+.hunters-bordao{font-family:var(--display);font-size:clamp(14px,2vw,18px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
+.hunters-desc{font-size:14px;color:rgba(255,255,255,.48);line-height:1.72;max-width:400px;margin-bottom:28px;border-left:2px solid rgba(255,216,77,.25);padding-left:14px}
+.traits{display:flex;flex-direction:column;gap:10px}
+.trait{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500;line-height:1.5}
+.trait strong{color:rgba(255,255,255,.9);font-weight:700}
+.trait-i{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.hunters-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
+@media(max-width:700px){.hunters-right{padding:0 22px 32px}}
+.hunter-logo{width:260px;max-width:80vw;filter:drop-shadow(0 0 30px rgba(255,200,0,.45)) drop-shadow(0 0 70px rgba(255,120,0,.18));animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* CTA */
+.cta-sec{padding:96px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-sec::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
+.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos .fh{height:26px;filter:drop-shadow(0 0 5px rgba(255,140,0,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2)}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* JORNADA NÍVEIS */
+.journey{display:flex;flex-direction:column;gap:0;position:relative;padding-left:60px}
+.journey::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,rgba(255,216,77,.5),rgba(255,216,77,.2))}
+.journey-item{position:relative;padding:0 0 24px 28px;display:flex;gap:18px;align-items:flex-start}
+.journey-item:last-child{padding-bottom:0}
+.journey-dot{position:absolute;left:-38px;top:8px;width:16px;height:16px;border-radius:50%;border:2px solid var(--border);background:#000;display:flex;align-items:center;justify-content:center}
+.journey-dot.active{border-color:var(--gold);background:rgba(255,216,77,.15);box-shadow:0 0 12px rgba(255,216,77,.4)}
+.journey-dot-inner{width:6px;height:6px;border-radius:50%;background:var(--muted2)}
+.journey-dot.active .journey-dot-inner{background:var(--gold)}
+.journey-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;transition:all .3s}
+.journey-card:hover{border-color:rgba(255,216,77,.2);transform:translateX(4px)}
+.journey-card.inicio{border-color:rgba(255,216,77,.28);background:linear-gradient(135deg,rgba(255,216,77,.06),var(--card))}
+.jn{font-family:var(--display);font-size:24px;font-weight:900;margin-right:8px}
+.j-lv1 .jn{color:#777}
+.j-lv2 .jn{color:#43a047}
+.j-lv3 .jn{color:#1e88e5}
+.j-lv4 .jn{color:#9c27b0}
+.j-lv5 .jn{color:var(--gold);text-shadow:0 0 12px rgba(255,216,77,.4)}
+.journey-header{display:flex;align-items:center;margin-bottom:6px}
+.journey-nome{font-family:var(--display);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.journey-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:8px}
+.journey-tags{display:flex;flex-wrap:wrap;gap:6px}
+.jtag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);font-family:var(--display)}
+.jtag.gold{background:rgba(255,216,77,.1);border-color:rgba(255,216,77,.25);color:var(--gold)}
+.inicio-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#000;font-family:var(--display);font-size:10px;font-weight:900;letter-spacing:1.5px;padding:4px 12px;border-radius:3px;text-transform:uppercase;margin-bottom:8px}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q span{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;color:var(--text);letter-spacing:.3px}
+.faq-icon{font-size:20px;color:var(--gold);flex-shrink:0;transition:transform .3s;font-family:var(--display);font-weight:900;line-height:1}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.72;padding-bottom:20px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* PLANO */
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;position:relative;overflow:hidden;transition:all .3s}
+.plan-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.plan-card.destaque{border-color:rgba(255,216,77,.35);background:linear-gradient(160deg,rgba(255,216,77,.06),var(--card))}
+.plan-price{font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin:12px 0 4px}
+.plan-price span{font-size:18px;color:var(--muted);font-weight:600}
+.plan-name{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.plan-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.plan-list li{font-size:13px;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.plan-list li::before{content:'✓';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:1px}
+.plan-list li strong{color:rgba(255,255,255,.9)}
+.plan-btn{display:block;text-align:center;margin-top:22px;background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:17px;font-weight:900;padding:13px 24px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;transition:all .25s}
+.plan-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,216,77,.35)}
 </style>
 </head>
-
 <body>
 
-<!-- ── NAVIGATION ── -->
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti">🌟 Hunter Lenda N1 — O topo que você construiu com suas próprias mãos</span><span class="ts">|</span>
+    <span class="ti">🐺 O que você constrói em pessoas nunca perde valor.</span><span class="ts">|</span>
+    <span class="ti">👑 Programa Capitães — Líderes que elevam o ambiente</span><span class="ts">|</span>
+    <span class="ti">🏆 Virada de Ranking · Dezembro 2026 · Acesso N1 exclusivo</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01</span><span class="ts">|</span>
+    <span class="ti">🌟 Hunter Lenda N1 — O topo que você construiu com suas próprias mãos</span><span class="ts">|</span>
+    <span class="ti">🐺 O que você constrói em pessoas nunca perde valor.</span><span class="ts">|</span>
+    <span class="ti">👑 Programa Capitães — Líderes que elevam o ambiente</span><span class="ts">|</span>
+    <span class="ti">🏆 Virada de Ranking · Dezembro 2026 · Acesso N1 exclusivo</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01</span><span class="ts">|</span>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">UR</a>
-    <ul class="nav-links">
-      <li><a href="#capitao">Capitães</a></li>
-      <li><a href="#embaixadores">Embaixadores</a></li>
-      <li><a href="#jornada">Programa Legado</a></li>
-      <li><a href="#impacto">Impacto</a></li>
-    </ul>
-    <a href="#cta-final" class="btn btn-gold nav-cta">Fazer Parte</a>
-    <button class="nav-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+  <div class="nav-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <div class="nav-sep"></div>
+    <img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'">
+  </div>
+  <div class="nav-links">
+    <a href="#legado">Legado</a>
+    <a href="#jornada">Jornada</a>
+    <a href="#capitaes">Capitães</a>
+    <a href="#plano">Plano</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="UR_Inscricao_Atleta.html" class="nav-cta">🌟 Programa Legado</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<section id="hero">
-  <div class="hero-inner">
-
-    <div class="hero-badge fu">
-      <span></span>
-      Hunter Lenda &nbsp;·&nbsp; N1 &nbsp;·&nbsp; Legado
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-court"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fu">
+    <div class="hero-badge">Mentalidade de Legado · Temporada T01 2026</div>
+    <div class="hero-logos">
+      <img src="logo-ur-3d.png" alt="Ultimate Rivals" onerror="this.style.display='none'">
+      <div class="hero-logos-divider"></div>
+      <img src="logo-hunter.png" alt="Hunters UR" class="hl-hunter" onerror="this.style.display='none'">
     </div>
-
-    <div class="hero-headline display fu delay-1">
-      <div class="line1">O que você constrói</div>
-      <div class="line2">em pessoas</div>
-      <div class="line1">nunca perde valor.</div>
+    <h1 class="hero-title">
+      <div class="t1">O QUE VOCÊ CONSTRÓI</div>
+      <div class="t2">PERMANECE</div>
+    </h1>
+    <p class="hero-tag">Vôlei de Praia · N1 · Capitães · Embaixadores</p>
+    <div class="hero-divider"></div>
+    <p class="hero-bordao">O que você constrói em pessoas nunca perde valor.</p>
+    <div class="hero-btns">
+      <a href="UR_Inscricao_Atleta.html" class="btn-gold">🌟 Quero fazer parte do Legado</a>
+      <a href="#capitaes" class="btn-ghost">👑 Programa Capitães</a>
     </div>
-
-    <p class="hero-sub fu delay-2">
-      Legado não é sobre ser lembrado. É sobre o que você deixa que continua funcionando quando você não está mais lá.
-    </p>
-
-    <div class="hero-actions fu delay-3">
-      <a href="#cta-final" class="btn btn-gold btn-lg">Quero Construir Legado</a>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">N1</div><div class="h-stat-l">Hunter Lenda</div></div>
+      <div class="h-stat"><div class="h-stat-n">R$199</div><div class="h-stat-l">Plano/mês</div></div>
+      <div class="h-stat"><div class="h-stat-n">T01</div><div class="h-stat-l">Temporada</div></div>
+      <div class="h-stat"><div class="h-stat-n">Dez</div><div class="h-stat-l">Virada Ranking</div></div>
     </div>
-
-    <p class="hero-note fu delay-3">Para atletas que chegaram ao topo e querem elevar outros.</p>
-
-    <div class="hero-pillars fu delay-4">
-      <div class="pillar">Capitanato</div>
-      <div class="pillar">Embaixadores</div>
-      <div class="pillar">Formação</div>
-    </div>
-
   </div>
 </section>
 
-<!-- ── MANIFESTO ── -->
-<section id="manifesto">
-  <div class="container-narrow">
+<div class="divider"></div>
 
-    <div class="section-divider fu">
-      <span class="section-label">O que é Legado na UR</span>
-    </div>
-
-    <div class="manifesto-text">
-
-      <p class="fu">
-        Legado não se anuncia. Se constrói em silêncio, treino a treino, jogo a jogo, decisão a decisão.
-      </p>
-
-      <p class="fu delay-1">
-        Na Ultimate Rivals, atletas de Legado são aqueles que <strong>o ambiente reconhece antes mesmo de olhar o ranking</strong>. São os que chegam cedo, ficam até o fim, respondem as perguntas que ninguém fez e elevam o padrão sem precisar cobrar.
-      </p>
-
-      <div class="manifesto-quote fu delay-2">
-        "Antes do atleta, existe a pessoa."
-      </div>
-
-      <p class="fu delay-2">
-        Há uma distinção que o jogo não ensina, mas o tempo revela: entre quem compete e quem <span class="highlight">constrói o ambiente em que a competição acontece</span>. O primeiro precisa do segundo. O segundo escolhe existir.
-      </p>
-
-      <p class="fu delay-3">
-        Chegar ao N1 é uma conquista individual. Permanecer relevante — e ser lembrado com respeito — é algo que só se constrói em relação. Com os outros. Para os outros.
-      </p>
-
-      <div class="manifesto-quote fu delay-3">
-        "O jogo termina. A mentalidade permanece."
-      </div>
-
-      <p class="fu delay-4">
-        Atletas de Legado na Ultimate Rivals não são figuras distantes. São presença constante. São os que um iniciante do N5 vai lembrar daqui a três anos como a razão pela qual não desistiu no segundo mês. São os que tornam uma comunidade esportiva em algo que vale pertencer.
-      </p>
-
-      <p class="fu delay-4">
-        <strong>Quem chegou ao N1 carrega uma responsabilidade: elevar quem está atrás.</strong>
-      </p>
-
-    </div>
-
+<!-- O QUE É LEGADO -->
+<div id="legado" class="sec fu">
+  <div style="text-align:center;margin-bottom:52px">
+    <div class="s-label" style="justify-content:center"><span>Mentalidade N1 · Capitães · Embaixadores</span></div>
+    <h2 class="s-title">A fase de Legado</h2>
+    <p class="s-body" style="margin:0 auto">Você chegou ao N1. Agora a pergunta não é mais o que você conquista — é o que você deixa. Capitães elevam o ambiente. Embaixadores expandem a liga. Lendas são lembradas.</p>
   </div>
-</section>
-
-<!-- ── O PAPEL DO CAPITÃO ── -->
-<section id="capitao">
-  <div class="container">
-
-    <div class="section-divider fu">
-      <span class="section-label">Liderança Reconhecida</span>
+  <div class="g3">
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-gold">🌟</div>
+      <h3>Hunter Lenda N1</h3>
+      <p>O topo absoluto do ecossistema. Acesso exclusivo à Virada de Ranking de Dezembro, ranking bônus de temporada e o título que define a história da liga na T01.</p>
     </div>
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-fire">👑</div>
+      <h3>Programa Capitães</h3>
+      <p>Líderes que moldam o ambiente. Capitães têm papel ativo no draft, responsabilidade sobre novos atletas e visibilidade especial dentro do ecossistema Hunter.</p>
+    </div>
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-blue">🤝</div>
+      <h3>Embaixadores UR</h3>
+      <p>Atletas que levam o ecossistema além das quadras. Representam a liga em novos polos, indicam atletas e têm benefícios exclusivos de parceria com o UR.</p>
+    </div>
+  </div>
+</div>
 
-    <div class="capitao-grid">
+<div class="divider"></div>
 
-      <div class="capitao-left">
-        <h2 class="section-title fu">O Papel<br>do Capitão</h2>
-        <p class="capitao-tagline fu delay-1">"O capitão não é o melhor jogador.<br>É o melhor exemplo."</p>
-        <p class="capitao-desc fu delay-1">
-          Na Ultimate Rivals, ser Capitão não é uma posição conquistada apenas pelo ranking. É uma indicação do ambiente — de quem você é dentro e fora de quadra, de como você trata quem ainda está aprendendo e de como você representa os valores que construímos juntos.
-        </p>
-        <p class="capitao-desc fu delay-2">
-          Capitães são eleitos por uma combinação de performance, postura e histórico comunitário. A responsabilidade é real. O impacto também.
-        </p>
-
-        <ul class="responsibility-list fu delay-3">
-          <li>Liderar um grupo de atletas dentro do ecossistema UR, servindo de referência de conduta e comprometimento</li>
-          <li>Representar os valores da Ultimate Rivals em torneios, eventos e interações públicas</li>
-          <li>Apoiar o nivelamento de novos atletas, orientando nas primeiras etapas da jornada</li>
-          <li>Mediar conflitos dentro do grupo com maturidade e imparcialidade</li>
-          <li>Ser voz ativa na construção de regras e dinâmicas da comunidade</li>
-        </ul>
+<!-- JORNADA HUNTER -->
+<div id="jornada" class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:48px">
+      <div class="s-label">Progressão</div>
+      <h2 class="s-title">Sua Jornada Hunter</h2>
+      <p class="s-body">Cinco níveis. Uma jornada. Você chegou ao N1 — o ponto onde o legado começa a ser construído.</p>
+    </div>
+    <div class="journey">
+      <div class="journey-item j-lv5 fu">
+        <div class="journey-dot"></div>
+        <div class="journey-card">
+          <div class="journey-header"><span class="jn">N5</span><span class="journey-nome">Hunter Iniciante</span></div>
+          <p class="journey-desc">Ponto de entrada. UR Play, nivelamento, primeiros passos. Todo N1 começou aqui.</p>
+          <div class="journey-tags"><span class="jtag">UR Play</span><span class="jtag">Nivelamento</span></div>
+        </div>
       </div>
-
-      <div class="capitao-right">
-        <span class="section-label fu">Benefícios exclusivos</span>
-        <div class="benefit-cards">
-          <div class="benefit-card fu delay-1">
-            <div class="benefit-icon">🏅</div>
-            <div>
-              <div class="benefit-text">Badge Exclusivo de Capitão</div>
-              <div class="benefit-sub">Identificação visual no perfil e nos torneios</div>
-            </div>
-          </div>
-          <div class="benefit-card fu delay-2">
-            <div class="benefit-icon">💳</div>
-            <div>
-              <div class="benefit-text">Desconto no Plano UR</div>
-              <div class="benefit-sub">Reconhecimento tangível pelo compromisso assumido</div>
-            </div>
-          </div>
-          <div class="benefit-card fu delay-3">
-            <div class="benefit-icon">🏆</div>
-            <div>
-              <div class="benefit-text">Acesso Antecipado a Torneios</div>
-              <div class="benefit-sub">Inscrição prioritária em eventos especiais e convites exclusivos</div>
-            </div>
-          </div>
-          <div class="benefit-card fu delay-4">
-            <div class="benefit-icon">🗣️</div>
-            <div>
-              <div class="benefit-text">Voz na Construção de Regras</div>
-              <div class="benefit-sub">Participação real nas decisões que moldam a comunidade</div>
-            </div>
-          </div>
-          <div class="benefit-card fu delay-5">
-            <div class="benefit-icon">🤝</div>
-            <div>
-              <div class="benefit-text">Rede de Capitães UR</div>
-              <div class="benefit-sub">Acesso a grupo exclusivo com líderes de todo o ecossistema</div>
-            </div>
+      <div class="journey-item j-lv4 fu">
+        <div class="journey-dot"></div>
+        <div class="journey-card">
+          <div class="journey-header"><span class="jn">N4</span><span class="journey-nome">Hunter</span></div>
+          <p class="journey-desc">Fase de compromisso. Mini Torneio, voucher, regularidade. Quem permanece, sobe.</p>
+          <div class="journey-tags"><span class="jtag">Mini Torneio</span><span class="jtag">Voucher R$50</span></div>
+        </div>
+      </div>
+      <div class="journey-item j-lv3 fu">
+        <div class="journey-dot"></div>
+        <div class="journey-card">
+          <div class="journey-header"><span class="jn">N3</span><span class="journey-nome">Hunter Experiente</span></div>
+          <p class="journey-desc">Premiação real começa aqui. Mini Torneio até R$330. Ranking começa a pesar.</p>
+          <div class="journey-tags"><span class="jtag gold">R$330 1º lugar</span><span class="jtag">Ranking</span></div>
+        </div>
+      </div>
+      <div class="journey-item j-lv2 fu">
+        <div class="journey-dot"></div>
+        <div class="journey-card">
+          <div class="journey-header"><span class="jn">N2</span><span class="journey-nome">Hunter Elite</span></div>
+          <p class="journey-desc">UR Series. R$1.200. O ambiente te respeita. Draft de alto nível. Análise técnica.</p>
+          <div class="journey-tags"><span class="jtag gold">R$1.200 1º lugar</span><span class="jtag">UR Series</span></div>
+        </div>
+      </div>
+      <div class="journey-item j-lv1 fu">
+        <div class="journey-dot active"></div>
+        <div class="journey-card inicio">
+          <div class="inicio-badge">→ Você chegou</div>
+          <div class="journey-header"><span class="jn">N1</span><span class="journey-nome">Hunter Lenda</span></div>
+          <p class="journey-desc">O topo que você construiu. Virada de Ranking em Dezembro, ranking bônus de temporada, Programa Capitães e o título definitivo de Lenda da T01.</p>
+          <div class="journey-tags">
+            <span class="jtag gold">Virada de Ranking</span>
+            <span class="jtag gold">Ranking Bônus</span>
+            <span class="jtag gold">Lenda T01</span>
+            <span class="jtag">Capitães</span>
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-</section>
+</div>
 
-<!-- ── EMBAIXADORES ── -->
-<section id="embaixadores">
-  <div class="container">
+<div class="divider"></div>
 
-    <div class="section-divider fu">
-      <span class="section-label">Programa Oficial</span>
+<!-- PROGRAMA CAPITÃES -->
+<div id="capitaes" class="sec fu" style="padding-top:0;padding-bottom:0">
+  <div class="hunters-wrap">
+    <div class="hunters-lightning">
+      <svg width="120" height="200" viewBox="0 0 120 200" style="top:10px;right:20px;opacity:.12">
+        <defs><linearGradient id="bolt1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffd84d"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+        <path d="M70 0 L40 80 L65 80 L30 200 L80 90 L55 90 L90 0Z" fill="url(#bolt1)"/>
+      </svg>
+      <svg width="60" height="120" viewBox="0 0 60 120" style="top:60px;right:180px;opacity:.07">
+        <path d="M35 0 L20 45 L33 45 L15 120 L42 50 L28 50 L45 0Z" fill="#ffd84d"/>
+      </svg>
+      <svg width="160" height="140" viewBox="0 0 160 140" style="top:-10px;right:-10px;opacity:.13">
+        <path d="M160 0 Q120 30 90 60" stroke="#ffd84d" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M160 15 Q118 42 85 72" stroke="#ffd84d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M160 30 Q115 55 80 85" stroke="#ffd84d" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M160 45 Q112 68 76 98" stroke="#ffd84d" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+      </svg>
     </div>
-
-    <div class="emb-header">
-      <h2 class="section-title fu">Programa<br>Embaixadores UR</h2>
-      <p class="fu delay-1" style="font-size:1.05rem;color:rgba(240,240,240,0.65);line-height:1.75;margin-top:1rem;">
-        Por convite. Para atletas N1 com histórico positivo e presença relevante na comunidade. Embaixador UR não é título de vitrine — é compromisso de impacto real.
-      </p>
-    </div>
-
-    <div class="emb-grid">
-      <div class="emb-card fu">
-        <div class="emb-num">01</div>
-        <h3>Representação em Eventos</h3>
-        <p>Presença oficial da UR em escolas, eventos esportivos, clínicas e competições regionais. Você é a face do ecossistema no seu território.</p>
+    <div class="hunters-inner">
+      <div class="hunters-left">
+        <div class="h-pill">👑 Programa Capitães · Liderança no Ecossistema</div>
+        <h2 class="hunters-title">Capitão não é<br><span>posto. É escolha.</span></h2>
+        <p class="hunters-bordao">⚡ Líderes que moldam o próximo nível do UR</p>
+        <p class="hunters-desc">O Programa Capitães é para Hunters N1 que querem ir além de competir. Capitães têm papel ativo na formação de novas duplas, responsabilidade no ambiente e visibilidade diferenciada dentro da liga.</p>
+        <div class="traits">
+          <div class="trait"><div class="trait-i">👑</div><div><strong>Papel no draft</strong> — Capitão tem prioridade e voz ativa na formação de duplas nos torneios</div></div>
+          <div class="trait"><div class="trait-i">🌱</div><div><strong>Mentoria N5/N4</strong> — acompanhamento informal de atletas iniciantes dentro do ecossistema</div></div>
+          <div class="trait"><div class="trait-i">🤝</div><div><strong>Embaixador de Polo</strong> — representa o UR em novos polos, indica atletas e expande a liga</div></div>
+          <div class="trait"><div class="trait-i">🌟</div><div><strong>Legado de Temporada</strong> — seu nome na história da T01. Resultados que ficam registrados.</div></div>
+        </div>
       </div>
-      <div class="emb-card fu delay-1">
-        <div class="emb-num">02</div>
-        <h3>Co-criação no UR Play</h3>
-        <p>Produção de conteúdo em parceria com a plataforma: análises táticas, bastidores, séries de formação e narrativas que inspiram a comunidade.</p>
-      </div>
-      <div class="emb-card fu delay-2">
-        <div class="emb-num">03</div>
-        <h3>Mentoria Informal</h3>
-        <p>Acompanhamento próximo de atletas em estágio Descoberta (N5). Não é aula — é presença, referência e abertura para quem ainda está encontrando o caminho.</p>
-      </div>
-      <div class="emb-card fu delay-3">
-        <div class="emb-num">04</div>
-        <h3>Expansão Territorial</h3>
-        <p>Levar o ecossistema UR para novas cidades e regiões. Identificar talentos, criar pontos de encontro e construir a rede onde ela ainda não existe.</p>
-      </div>
-      <div class="emb-card fu delay-4">
-        <div class="emb-num">05</div>
-        <h3>Participação Estratégica</h3>
-        <p>Envolvimento nas decisões que moldam os próximos passos da Ultimate Rivals — produtos, torneios, políticas de comunidade e direção de crescimento.</p>
-      </div>
-      <div class="emb-card fu delay-5">
-        <div class="emb-num">06</div>
-        <h3>Formação Contínua</h3>
-        <p>Acesso a conteúdos exclusivos de liderança, comunicação e desenvolvimento esportivo. Crescer junto é parte do compromisso de elevar outros.</p>
+      <div class="hunters-right">
+        <img src="logo-hunter.png" alt="Hunters UR" class="hunter-logo" onerror="this.outerHTML='<div style=\'font-size:100px\'>👑</div>'">
       </div>
     </div>
-
-    <div class="emb-benefits fu delay-2">
-      <div class="emb-benefit-tag">Plano Gratuito</div>
-      <div class="emb-benefit-tag">Equipamento UR</div>
-      <div class="emb-benefit-tag">Menção Oficial</div>
-      <div class="emb-benefit-tag">Decisões Estratégicas</div>
-      <div class="emb-benefit-tag">Badge Embaixador</div>
-      <div class="emb-benefit-tag">Convites Exclusivos</div>
-      <p class="emb-cta-text">"Embaixador não é título de vitrine. É compromisso de impacto."</p>
-    </div>
-
   </div>
-</section>
+</div>
 
-<!-- ── JORNADA DO LEGADO ── -->
-<section id="jornada">
-  <div class="container-narrow">
+<div class="divider" style="margin-top:84px"></div>
 
-    <div class="section-divider fu">
-      <span class="section-label">A Jornada</span>
-    </div>
-
-    <h2 class="section-title fu">A Jornada<br>do Legado</h2>
-    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:0.5rem;">
-      Cada nível foi construído sobre o anterior. Agora você vê o mapa completo.
-    </p>
-
-    <div class="timeline">
-
-      <div class="timeline-item done fu delay-1">
-        <div class="timeline-dot"></div>
-        <div class="timeline-level">N5 → N4</div>
-        <div class="timeline-title">🎯 Descoberta</div>
-        <div class="timeline-desc">Você entrou no jogo. Aprendeu as regras, descobriu o ritmo e deu os primeiros passos com consistência.</div>
-      </div>
-
-      <div class="timeline-item done fu delay-2">
-        <div class="timeline-dot"></div>
-        <div class="timeline-level">N4 → N3</div>
-        <div class="timeline-title">🔨 Compromisso</div>
-        <div class="timeline-desc">Você construiu consistência quando era mais fácil desistir. Aprendeu a competir com seriedade e a perder com dignidade.</div>
-      </div>
-
-      <div class="timeline-item done fu delay-3">
-        <div class="timeline-dot"></div>
-        <div class="timeline-level">N3 → N2</div>
-        <div class="timeline-title">⚙️ Processo</div>
-        <div class="timeline-desc">Você refinou a execução. Passou a entender o jogo de um nível diferente — tático, mental, estratégico.</div>
-      </div>
-
-      <div class="timeline-item done fu delay-4">
-        <div class="timeline-dot"></div>
-        <div class="timeline-level">N2 → N1</div>
-        <div class="timeline-title">🏆 Performance</div>
-        <div class="timeline-desc">Você provou o nível. Competiu no topo, encontrou os melhores e se manteve entre eles. O ambiente reconhece quem você é.</div>
-      </div>
-
-      <div class="timeline-item active fu delay-5">
-        <div class="timeline-dot"></div>
-        <div class="timeline-level">N1 → Legado</div>
-        <div class="timeline-title">🌟 Você Agora</div>
-        <div class="timeline-desc">Você constrói outros. O ranking deixou de ser o único medidor. O que você deixa no ambiente é o que define quem você foi.</div>
-      </div>
-
-    </div>
-
-    <div class="jornada-close fu">
-      "Cada nível que você subiu foi um tijolo. Agora você pode construir casas."
-    </div>
-
+<!-- PLANO ELITE + LEGADO -->
+<div id="plano" class="sec fu">
+  <div style="margin-bottom:48px">
+    <div class="s-label">Assinatura</div>
+    <h2 class="s-title">Hunter Elite — Plano Lenda</h2>
+    <p class="s-body">O plano máximo do ecossistema. Tudo incluído + acesso ao Programa Capitães para atletas N1.</p>
   </div>
-</section>
-
-<!-- ── IMPACTO ── -->
-<section id="impacto">
-  <div class="container">
-
-    <div class="section-divider fu">
-      <span class="section-label">Áreas de Atuação</span>
+  <div class="g2" style="align-items:start">
+    <div class="plan-card destaque fu">
+      <div class="plan-name">Hunter Elite</div>
+      <div class="plan-price">R$199<span>/mês</span></div>
+      <ul class="plan-list">
+        <li><strong>UR Play ilimitado</strong> durante toda a temporada</li>
+        <li><strong>1 Mini Torneio por mês</strong> incluído (vale R$50 avulso)</li>
+        <li><strong>1 UR Series por mês</strong> incluído (vale R$100 avulso)</li>
+        <li><strong>20% de desconto</strong> em eventos adicionais</li>
+        <li>Prioridade máxima no draft — acesso Capitão para N1</li>
+        <li>Análise técnica individual pós-torneio</li>
+        <li>Acesso garantido à Virada de Ranking — Dezembro</li>
+        <li>Ranking Bônus de temporada ativo</li>
+        <li>Elegível ao Programa Capitães (N1 confirmado)</li>
+      </ul>
+      <a href="UR_Inscricao_Atleta.html" class="plan-btn">🌟 Assinar Hunter Elite</a>
     </div>
-
-    <h2 class="section-title fu">Impacto que<br>você pode ter</h2>
-    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;">Legado se manifesta em três frentes concretas. Você escolhe onde a sua presença faz mais sentido.</p>
-
-    <div class="impact-grid">
-
-      <div class="impact-card fu delay-1">
-        <span class="impact-icon">👨‍🏫</span>
-        <h3>Formação</h3>
-        <p>Orientar novos atletas no processo de nivelamento, nos primeiros torneios e na construção de uma mentalidade competitiva saudável. Não é coaching formal — é o tipo de presença que transforma trajetórias.</p>
+    <div class="fu">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--display);font-size:14px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">Programa Capitães</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.72;margin-bottom:16px">Atletas N1 com plano Hunter Elite ativo por pelo menos 2 meses consecutivos são elegíveis ao Programa Capitães. A seleção considera performance, presença e comportamento em quadra.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.7)"><span style="color:var(--gold);font-weight:900;flex-shrink:0">✓</span><span><strong style="color:#fff">Prioridade máxima</strong> no draft de todos os torneios</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.7)"><span style="color:var(--gold);font-weight:900;flex-shrink:0">✓</span><span><strong style="color:#fff">Visibilidade</strong> nas comunicações do UR como líder da comunidade</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.7)"><span style="color:var(--gold);font-weight:900;flex-shrink:0">✓</span><span><strong style="color:#fff">Insígnia Capitão</strong> no ranking e perfil de atleta</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(255,255,255,.7)"><span style="color:var(--gold);font-weight:900;flex-shrink:0">✓</span><span><strong style="color:#fff">Programa Embaixador</strong> — expansão de polo com benefícios exclusivos</span></div>
+        </div>
       </div>
-
-      <div class="impact-card fu delay-2">
-        <span class="impact-icon">🏅</span>
-        <h3>Competição</h3>
-        <p>Liderar duplas e grupos em torneios, elevando o nível coletivo de performance. A presença de um atleta de Legado numa equipe muda o padrão de todos ao redor — a exigência sobe sem precisar de discurso.</p>
+      <div style="background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.18);border-radius:10px;padding:18px">
+        <div style="font-family:var(--display);font-size:13px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Falar com a equipe UR</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">Para dúvidas sobre o Programa Capitães ou para indicar um Embaixador de Polo, entre em contato diretamente.</p>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" style="font-family:var(--display);font-size:14px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.5px">Falar no WhatsApp →</a>
       </div>
-
-      <div class="impact-card fu delay-3">
-        <span class="impact-icon">📱</span>
-        <h3>Comunidade</h3>
-        <p>Criar conteúdo no UR Play que inspira, educa e conecta. Análises táticas, histórias reais, perspectivas que só quem chegou ao topo pode oferecer. A sua voz tem peso — use ela para construir.</p>
-      </div>
-
     </div>
-
   </div>
-</section>
+</div>
 
-<!-- ── DEPOIMENTOS ── -->
-<section id="depoimentos">
-  <div class="container">
+<div class="divider"></div>
 
-    <div class="section-divider fu">
-      <span class="section-label">Quem Escolheu o Legado</span>
+<!-- FAQ -->
+<div id="faq" class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:48px">
+      <div class="s-label">Dúvidas Frequentes</div>
+      <h2 class="s-title">FAQ Legado</h2>
+      <p class="s-body">Tudo sobre N1, Capitães e o que significa construir legado no ecossistema UR.</p>
     </div>
-
-    <h2 class="section-title fu">O que dizem os que<br>escolheram construir</h2>
-
-    <div class="testimonials-grid">
-
-      <div class="testimonial fu delay-1">
-        <div class="testimonial-body">
-          Quando eu cheguei ao N1, pensei que tinha chegado no fim. Mas aí comecei a acompanhar três atletas do N5 — e percebi que aprendi mais sobre o jogo ensinando do que em qualquer torneio que disputei. Hoje os três estão no N3. Isso vale mais que qualquer medalha que eu tenha.
-        </div>
-        <div class="testimonial-author">
-          <div class="author-name">Rafael M.</div>
-          <div class="author-role">Capitão UR · N1 · Temporada T01</div>
-        </div>
+    <div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Como me tornar um Capitão UR?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Para ser elegível ao Programa Capitães você precisa: ser N1 Hunter Lenda com ranking ativo, ter plano Hunter Elite ativo por pelo menos 2 meses consecutivos, e demonstrar comportamento de liderança em quadra e na comunidade. A seleção é feita pela equipe UR com base em performance, presença e impacto no ambiente. Não é um título que se compra — é um título que se conquista.</p>
       </div>
-
-      <div class="testimonial fu delay-2">
-        <div class="testimonial-body">
-          Eu trouxe minha cidade para o ecossistema da UR. Não foi um projeto — foi uma consequência de acreditar que o que a gente vivia merecia chegar em mais pessoas. Hoje temos grupo ativo, torneios locais e três atletas que mal sabiam o que era nivelamento no início do ano. O território cresceu porque alguém decidiu plantar.
-        </div>
-        <div class="testimonial-author">
-          <div class="author-name">Camila S.</div>
-          <div class="author-role">Embaixadora UR · N1 · Região Sudeste</div>
-        </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>O que é a Virada de Ranking de Dezembro?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">A Virada de Ranking é o evento máximo da temporada T01 2026, realizado em Dezembro. É exclusivo para atletas N1 com ranking ativo e plano Hunter Elite. Inclui premiação especial, ranking bônus de toda a temporada, confrontos entre os melhores Hunters do ano e o título definitivo de Hunter Lenda T01. É o ponto onde a história da temporada é selada.</p>
       </div>
-
-      <div class="testimonial fu delay-3">
-        <div class="testimonial-body">
-          Eu não planejei ser referência. Comecei a chegar mais cedo nos treinos coletivos dos fins de semana e logo estavam me fazendo perguntas. Hoje eu fico os últimos quarenta minutos treinando duplas que estão começando. Não porque alguém pediu. Porque é a coisa certa a fazer quando você já passou por aquilo e sabe que uma palavra no momento certo pode mudar tudo.
-        </div>
-        <div class="testimonial-author">
-          <div class="author-name">Thiago P.</div>
-          <div class="author-role">Hunter Lenda · Capitão UR · N1</div>
-        </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>O que é o Programa Embaixador de Polo?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Embaixadores UR são Capitães que ajudam a expandir o ecossistema para novos polos de vôlei de praia. Eles indicam quadras parceiras, apresentam o sistema a novos atletas e têm papel ativo no crescimento da liga. Embaixadores recebem benefícios exclusivos de parceria com o UR e têm sua contribuição registrada na história da temporada.</p>
       </div>
-
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Como funciona o ranking bônus de temporada?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">O ranking bônus de temporada é um sistema de pontuação acumulativa que considera toda a participação do atleta ao longo da T01 2026. Atletas com mais eventos disputados, mais vitórias e maior regularidade acumulam pontos bônus que são revelados e aplicados na Virada de Ranking de Dezembro. É a recompensa pela consistência ao longo de toda a temporada.</p>
+      </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Posso ser N1 sem ter passado por todos os níveis?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Não. O sistema de progressão Hunter é linear — você evolui de N5 para N4, N3, N2 e N1 conforme performance e regularidade. Não existe promoção direta. Cada nível tem critérios específicos de progressão avaliados em quadra pela equipe técnica. Isso garante que o N1 Hunter Lenda tenha sido testado em cada fase da jornada — e que o título signifique de verdade.</p>
+      </div>
     </div>
-
   </div>
-</section>
+</div>
 
-<!-- ── COMPROMISSOS ── -->
-<section id="compromissos">
-  <div class="container">
+<div class="divider"></div>
 
-    <div class="section-divider fu">
-      <span class="section-label">Mentalidade de Legado</span>
-    </div>
-
-    <h2 class="section-title fu">Os 5 Compromissos</h2>
-    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:2rem;">
-      Não são regras. São padrões. Quem escolheu o Legado já vive a maioria deles — este é o momento de torná-los explícitos.
-    </p>
-
-    <div class="commitments">
-
-      <div class="commitment fu delay-1">
-        <div class="commitment-num">01</div>
-        <div>
-          <div class="commitment-title">Chegar antes e ficar depois</div>
-          <div class="commitment-desc">Presença como exemplo, não como obrigação. Quando um atleta de Legado está no ambiente antes de precisar estar, todos ao redor entendem, sem palavras, qual é o padrão de comprometimento. Não é sobre pontualidade — é sobre o que a sua presença comunica antes mesmo de você abrir a boca.</div>
-        </div>
-      </div>
-
-      <div class="commitment fu delay-2">
-        <div class="commitment-num">02</div>
-        <div>
-          <div class="commitment-title">Falar com respeito — dentro e fora de quadra</div>
-          <div class="commitment-desc">A forma como você trata um adversário que acabou de te vencer diz mais sobre quem você é do que qualquer vitória. Atletas de Legado sabem que o vocabulário de um esportista maduro exige disciplina. Respeito não é fraqueza — é a marca de quem chegou longe e sabe como chegou.</div>
-        </div>
-      </div>
-
-      <div class="commitment fu delay-3">
-        <div class="commitment-num">03</div>
-        <div>
-          <div class="commitment-title">Ensinar sem diminuir</div>
-          <div class="commitment-desc">Compartilhar o que você aprendeu sem fazer quem está aprendendo se sentir pequeno. Criar dependência é fácil — e é exatamente o oposto do que o Legado exige. Ensinar bem significa dar ferramentas para que a pessoa pense por si mesma, jogue por si mesma, cresça por si mesma.</div>
-        </div>
-      </div>
-
-      <div class="commitment fu delay-4">
-        <div class="commitment-num">04</div>
-        <div>
-          <div class="commitment-title">Perder com dignidade — vencer com humildade</div>
-          <div class="commitment-desc">Os dois lados do mesmo compromisso. Derrota com dignidade mostra que você é maior que o resultado. Vitória com humildade mostra que você entende que o jogo sempre pode voltar. Os atletas que permanecem relevantes por anos dominaram os dois — e o ambiente reconhece isso sem precisar de ranking.</div>
-        </div>
-      </div>
-
-      <div class="commitment fu delay-5">
-        <div class="commitment-num">05</div>
-        <div>
-          <div class="commitment-title">Construir a comunidade que você queria ter encontrado</div>
-          <div class="commitment-desc">Pense no atleta que você era quando começou. No ambiente que você teria querido encontrar — mais acolhedor, mais honesto, mais exigente nas coisas certas. Esse é o seu projeto agora. Não como nostalgia, mas como responsabilidade. Você tem o poder de criar o que não existia quando você precisava.</div>
-        </div>
-      </div>
-
-    </div>
-
+<!-- CTA FINAL -->
+<div class="cta-sec fu">
+  <div class="cta-glow"></div>
+  <p class="bordao">"O que você constrói em pessoas nunca perde valor."</p>
+  <h2>Construa seu<br><span>legado</span></h2>
+  <p>N1 Hunter Lenda. Programa Capitães. Virada de Ranking em Dezembro. R$199/mês com tudo incluído.</p>
+  <div class="cta-btns">
+    <a href="UR_Inscricao_Atleta.html" class="btn-gold" style="font-size:20px;padding:18px 48px">🌟 Assinar Hunter Elite</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Comunidade WhatsApp
+    </a>
   </div>
-</section>
+</div>
 
-<!-- ── TORNEIOS ── -->
-<section id="torneios">
-  <div class="container">
-
-    <div class="section-divider fu">
-      <span class="section-label">Calendário Exclusivo</span>
-    </div>
-
-    <h2 class="section-title fu">Torneios de Legado</h2>
-    <p class="fu delay-1" style="font-size:1rem;color:var(--muted);margin-top:0.8rem;margin-bottom:0.5rem;">
-      Eventos pensados para quem chegou ao topo — como competidor, como mentor, como referência.
-    </p>
-
-    <div class="events-grid">
-
-      <div class="event-card fu delay-1">
-        <div class="event-header">
-          <span class="event-tag">Evento do Ano</span>
-          <div class="event-name">Virada de Ranking 2026</div>
-        </div>
-        <div class="event-body">
-          <div class="event-date">Dezembro 2026</div>
-          <p class="event-desc">
-            O evento do topo do topo. O encerramento da temporada T01 com os melhores atletas do ecossistema UR. Performance, reconhecimento e a definição do ranking final do ano. Presença obrigatória para quem fez parte da história da temporada inaugural.
-          </p>
-          <div class="event-access">N1 — Hunter Lenda</div>
-        </div>
-      </div>
-
-      <div class="event-card fu delay-2">
-        <div class="event-header">
-          <span class="event-tag">By Invite Only</span>
-          <div class="event-name">Torneios de Capitães</div>
-        </div>
-        <div class="event-body">
-          <div class="event-date">Ao longo de T01 · 2026</div>
-          <p class="event-desc">
-            Competições fechadas, exclusivas para Capitães indicados. Formato especial, regras construídas em co-criação com os próprios líderes. O nível de jogo mais elevado dentro do ecossistema — sem espectadores, sem palco. Só quem pertence.
-          </p>
-          <div class="event-access">Capitães UR · Convite</div>
-        </div>
-      </div>
-
-      <div class="event-card fu delay-3">
-        <div class="event-header">
-          <span class="event-tag">Formação em Campo</span>
-          <div class="event-name">Clínicas de Formação</div>
-        </div>
-        <div class="event-body">
-          <div class="event-date">Calendário em construção · 2026</div>
-          <p class="event-desc">
-            Você como mentor em campo. Clínicas práticas onde atletas N1 e Embaixadores conduzem sessões de formação para atletas em estágio de Descoberta e Compromisso. Aprendizado direto, presença real, impacto imediato.
-          </p>
-          <div class="event-access">Embaixadores · Capitães</div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ── CTA FINAL ── -->
-<section id="cta-final">
-
-  <span class="cta-eyebrow fu">Ultimate Rivals · Temporada T01 · 2026</span>
-
-  <h2 class="cta-headline fu delay-1">
-    Há atletas que jogam.<br>
-    <span class="accent">Há atletas que elevam o jogo.</span>
-  </h2>
-
-  <p class="cta-sub fu delay-2">
-    A Ultimate Rivals precisa dos dois. Mas é o segundo tipo que faz o primeiro possível.
-  </p>
-
-  <div class="fu delay-3">
-    <a href="#" class="btn btn-gold btn-xl">QUERO CONSTRUIR MEU LEGADO</a>
-  </div>
-
-  <div class="cta-divider fu delay-4"></div>
-
-  <p class="cta-note fu delay-4">
-    Somente para atletas N1 — Hunter Lenda — da Temporada T01 2026
-  </p>
-
-</section>
-
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <a href="#hero" class="footer-logo">UR</a>
-    <ul class="footer-links">
-      <li><a href="#capitao">Capitães</a></li>
-      <li><a href="#embaixadores">Embaixadores</a></li>
-      <li><a href="#jornada">Programa Legado</a></li>
-      <li><a href="#impacto">Impacto</a></li>
-      <li><a href="#torneios">Torneios</a></li>
-    </ul>
-    <div class="footer-quote">
-      <p>"O jogo termina.<br>A mentalidade permanece."</p>
-      <p class="footer-copy">© 2026 Ultimate Rivals</p>
-    </div>
+  <div class="foot-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
+    <span>ULTIMATE RIVALS</span>
   </div>
+  <div class="foot-links">
+    <a href="UR_Inscricao_Atleta.html">Inscrição</a>
+    <a href="UR_Landing_Page.html">Home</a>
+    <a href="UR_LP_Performance.html">Performance</a>
+    <a href="UR_LP_Parceiros.html">Parceiros</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+  </div>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
 </footer>
 
-<!-- ── SCRIPTS ── -->
 <script>
-// IntersectionObserver fade-up
-(function(){
-  var els = document.querySelectorAll('.fu');
-  if(!els.length) return;
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('on');
-        observer.unobserve(entry.target);
-      }
-    });
-  },{
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  els.forEach(function(el){ observer.observe(el); });
-})();
-
-// Nav active state on scroll
-(function(){
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-links a');
-
-  function updateNav(){
-    var scrollY = window.scrollY + 80;
-    sections.forEach(function(section){
-      var top = section.offsetTop;
-      var bottom = top + section.offsetHeight;
-      var id = section.getAttribute('id');
-      navLinks.forEach(function(link){
-        if(link.getAttribute('href') === '#' + id){
-          if(scrollY >= top && scrollY < bottom){
-            link.style.color = 'var(--gold)';
-          } else {
-            link.style.color = '';
-          }
-        }
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.pilar-card,.step,.eco-card,.journey-item,.faq-item,.plan-card').forEach((el,i)=>{
+        el.style.transitionDelay=(i*.1)+'s';
+        el.classList.add('on');
       });
-    });
-  }
-
-  window.addEventListener('scroll', updateNav, {passive: true});
-})();
-
-// Nav background on scroll
-(function(){
-  var nav = document.querySelector('nav');
-  function updateNavBg(){
-    if(window.scrollY > 20){
-      nav.style.borderBottomColor = 'rgba(200,144,0,0.15)';
-    } else {
-      nav.style.borderBottomColor = '';
-    }
-  }
-  window.addEventListener('scroll', updateNavBg, {passive: true});
-})();
-
-// Mobile nav toggle (simple show/hide)
-(function(){
-  var toggle = document.querySelector('.nav-toggle');
-  var links = document.querySelector('.nav-links');
-  if(!toggle || !links) return;
-
-  var open = false;
-
-  toggle.addEventListener('click', function(){
-    open = !open;
-    if(open){
-      links.style.display = 'flex';
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '64px';
-      links.style.left = '0';
-      links.style.right = '0';
-      links.style.background = 'rgba(0,0,0,0.97)';
-      links.style.padding = '1.5rem';
-      links.style.gap = '1.2rem';
-      links.style.borderBottom = '1px solid var(--border)';
-    } else {
-      links.style.display = '';
-      links.style.flexDirection = '';
-      links.style.position = '';
-      links.style.top = '';
-      links.style.left = '';
-      links.style.right = '';
-      links.style.background = '';
-      links.style.padding = '';
-      links.style.gap = '';
-      links.style.borderBottom = '';
     }
   });
-
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      open = false;
-      links.style.display = '';
-      links.style.flexDirection = '';
-      links.style.position = '';
-      links.style.top = '';
-      links.style.left = '';
-      links.style.right = '';
-      links.style.background = '';
-      links.style.padding = '';
-      links.style.gap = '';
-      links.style.borderBottom = '';
-    });
-  });
-})();
+},{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
