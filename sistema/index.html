@@ -923,6 +923,12 @@
         note:base.note || ""
       };
     }
+    function genPin(a){
+      // PIN padrão: últimos 4 dígitos do telefone, ou 4 dígitos aleatórios
+      const digits = (a.contact || "").replace(/\D/g,"");
+      if(digits.length >= 4) return digits.slice(-4);
+      return String(Math.floor(1000 + Math.random() * 9000));
+    }
     function normalizeState(data){
       data.calendar = normalizeCalendar(data.calendar);
       data.leveling = normalizeLeveling(data.leveling);
@@ -949,7 +955,8 @@
         desiredDays:Array.isArray(a.desiredDays) ? a.desiredDays : [],
         desiredShifts:Array.isArray(a.desiredShifts) ? a.desiredShifts : [],
         crm:normalizeCrm(a.crm || {}),
-        history:a.history || []
+        history:a.history || [],
+        pin: a.pin || genPin(a)
       }));
       data.teams = (data.teams || []).filter(t => !isBerim(t.name)).map(t => ({...t, modalities:t.modalities || [], desiredPositions:Array.isArray(t.desiredPositions)?t.desiredPositions:[], city:isBerim(t.city) ? "" : (t.city || ""), notes:t.notes || "", captain:t.captain || "", contact:t.contact || "", uniform:t.uniform || "", paymentStatus:t.paymentStatus || "Pendente", operationalStatus:t.operationalStatus || "Em formacao", availability:t.availability || "", contingency:t.contingency || "", reserves:t.reserves || [], record:{w:0,l:0,setsW:0,setsL:0,rk:0, ...(t.record || {})}}));
       // v4: normalize new modules
@@ -1132,6 +1139,7 @@
         <div class="field full"><label>Dias da semana desejados</label>${checkboxGroup(prefix,"days",dowNames.map((d,i)=>[String(i),d]),(a.desiredDays || []).map(String))}</div>
         <div class="field full"><label>Turnos desejados</label>${checkboxGroup(prefix,"shifts",athleteShiftOptions,a.desiredShifts || [])}</div>
         <div class="field"><label>Contato</label><input id="${prefix}Contact" placeholder="WhatsApp" value="${esc(a.contact || "")}"></div>
+        <div class="field"><label>🔑 PIN do Portal <span style="font-size:10px;color:var(--muted);font-weight:400">(4 dígitos)</span></label><input id="${prefix}Pin" placeholder="0000" maxlength="4" pattern="[0-9]{4}" value="${esc(a.pin || "")}"></div>
         <div class="field"><label>Cidade</label><input id="${prefix}City" placeholder="Belo Horizonte, Contagem..." value="${esc(a.city || "")}"></div>
         <div class="field"><label>Equipe vinculada</label>${athleteTeamSelect(prefix,a.teamId || "")}</div>
         <div class="field"><label>Nascimento</label><input id="${prefix}Birth" type="date" value="${esc(a.birth || "")}"></div>
@@ -1159,6 +1167,7 @@
         desiredDays:checkedValues(prefix,"days"),
         desiredShifts:checkedValues(prefix,"shifts"),
         contact:document.getElementById(prefix+"Contact").value.trim(),
+        pin:(document.getElementById(prefix+"Pin")?.value.trim().replace(/\D/g,"").slice(0,4)) || genPin({contact:document.getElementById(prefix+"Contact").value.trim()}),
         city:document.getElementById(prefix+"City").value.trim(),
         teamId:document.getElementById(prefix+"Team").value === "__free__" ? "" : document.getElementById(prefix+"Team").value,
         birth:document.getElementById(prefix+"Birth").value,
