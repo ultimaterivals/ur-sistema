@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parceiros — Ultimate Rivals | Sua Quadra Sempre Ocupada · BH</title>
+<meta name="description" content="Tenha sua quadra movimentada toda semana com atletas engajados e uma liga profissional. Seja parceiro de arena do Ultimate Rivals. Temporada T01 2026 — BH.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+.ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
+.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
+.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+@media(max-width:780px){.nav-season{display:none}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-color:#0a0f1c;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
+.hero-court{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent calc(50% - .5px),rgba(255,255,255,.07) calc(50% - .5px),rgba(255,255,255,.07) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(transparent calc(30% - .5px),rgba(255,255,255,.04) calc(30% - .5px),rgba(255,255,255,.04) calc(30% + .5px),transparent calc(30% + .5px)),linear-gradient(transparent calc(70% - .5px),rgba(255,255,255,.04) calc(70% - .5px),rgba(255,255,255,.04) calc(70% + .5px),transparent calc(70% + .5px)),linear-gradient(90deg,transparent 12%,rgba(255,255,255,.04) 12%,rgba(255,255,255,.04) 12.3%,transparent 12.3%),linear-gradient(90deg,transparent 87.7%,rgba(255,255,255,.04) 87.7%,rgba(255,255,255,.04) 88%,transparent 88%)}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.1),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.55) 0%,rgba(7,8,13,.72) 60%,rgba(7,8,13,.92) 100%)}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:28px;text-transform:uppercase;font-family:var(--display)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
+.hero-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
+.hero-logos img{height:100px;filter:drop-shadow(0 0 28px rgba(255,216,77,.45))}
+.hero-logos-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.18),transparent)}
+.hero-title{font-family:var(--display);font-size:clamp(60px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase}
+.hero-title .t1{color:#fff}
+.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.45)}
+.hero-tag{font-family:var(--display);font-size:clamp(14px,2.5vw,20px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
+.hero-bordao{font-family:var(--display);font-size:clamp(16px,3vw,26px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 42px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:10px;transition:all .25s;text-transform:uppercase}
+.btn-ghost:hover{border-color:rgba(255,216,77,.6);color:var(--gold)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:520px;margin:0 auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(7,8,13,.5)}
+.h-stat{padding:16px 0;text-align:center;border-right:1px solid var(--border)}
+.h-stat:last-child{border-right:none}
+.h-stat-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+.h-stat-l{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+.sec{padding:84px 20px;max-width:1100px;margin:0 auto}
+.sec-alt{background:var(--surface)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
+.s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
+.s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
+.icon-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:30px;position:relative;flex-shrink:0}
+.icon-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 180deg,var(--gold) 0deg,rgba(255,216,77,.15) 90deg,rgba(255,216,77,.15) 270deg,var(--gold) 360deg);opacity:.55}
+.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
+.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
+.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
+.pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
+.pilar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
+.pilar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.pilar-card h3{font-family:var(--display);font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.pilar-card p{font-size:13px;color:var(--muted);line-height:1.67}
+.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.benefit-grid{grid-template-columns:1fr}}
+.benefit-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:all .3s}
+.benefit-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-2px)}
+.benefit-icon{width:40px;height:40px;border-radius:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.benefit-text h4{font-family:var(--display);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.benefit-text p{font-size:12px;color:var(--muted);line-height:1.6}
+.parceria-wrap{background:linear-gradient(135deg,#050a1a,#0a0f24,#050810);border:1px solid rgba(100,140,255,.15);border-radius:16px;overflow:hidden;position:relative}
+.parceria-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
+@media(max-width:700px){.parceria-inner{grid-template-columns:1fr}}
+.parceria-left{padding:52px 48px;position:relative;z-index:1}
+@media(max-width:700px){.parceria-left{padding:32px 22px}}
+.parceria-right{padding:40px;display:flex;align-items:center;justify-content:center}
+@media(max-width:700px){.parceria-right{padding:0 22px 32px}}
+.p-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
+.parceria-title{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.parceria-title span{color:var(--gold)}
+.parceria-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.72;max-width:420px;margin-bottom:28px;border-left:2px solid rgba(255,216,77,.2);padding-left:14px}
+.parceria-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.parceria-list li{font-size:13px;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.parceria-list li::before{content:'✓';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:1px}
+.parceria-list li strong{color:rgba(255,255,255,.9)}
+.arena-visual{width:280px;max-width:90vw;aspect-ratio:1;border-radius:16px;background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(255,216,77,.02));border:1px solid rgba(255,216,77,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:28px}
+.arena-visual .big-icon{font-size:64px;line-height:1}
+.arena-visual p{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;color:var(--gold);letter-spacing:.5px}
+.arena-visual span{font-size:12px;color:var(--muted);line-height:1.5}
+.cta-sec{padding:96px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#050810,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.08) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,22px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
+.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2)}
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q span{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;color:var(--text);letter-spacing:.3px}
+.faq-icon{font-size:20px;color:var(--gold);flex-shrink:0;transition:transform .3s;font-family:var(--display);font-weight:900;line-height:1}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.72;padding-bottom:20px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+@media(max-width:600px){
+  .hero{padding:56px 14px 44px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:10px}
+  .btn-gold,.btn-ghost{font-size:17px;padding:15px 20px;text-align:center;justify-content:center}
+  .hero-logos img{height:72px}
+  nav{padding:0 14px}
+  .nav-cta{padding:8px 14px;font-size:12px}
+  .sec{padding:60px 14px}
+  .parceria-left{padding:30px 18px}
+  .parceria-right{padding:0 18px 28px}
+  footer{padding:24px 14px;flex-direction:column;align-items:flex-start}
+  .foot-links{gap:12px}
+  .cta-sec{padding:72px 14px}
+}
+@media(max-width:380px){
+  .hero-title{font-size:clamp(44px,14vw,65px);letter-spacing:-1px}
+  .h-stat-n{font-size:24px}
+  .h-stat-l{font-size:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti">🏟️ Parceiro de Arena — quadra ocupada, atletas engajados, toda semana · T01 2026</span><span class="ts">|</span>
+    <span class="ti">📅 UR Play toda semana · Mini Torneios mensais · UR Series · Calendário fixo</span><span class="ts">|</span>
+    <span class="ti">🤝 Parceria que gera movimento, visibilidade e receita recorrente para sua arena</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01 · Temporada T01 2026</span><span class="ts">|</span>
+    <span class="ti">🏟️ Parceiro de Arena — quadra ocupada, atletas engajados, toda semana · T01 2026</span><span class="ts">|</span>
+    <span class="ti">📅 UR Play toda semana · Mini Torneios mensais · UR Series · Calendário fixo</span><span class="ts">|</span>
+    <span class="ti">🤝 Parceria que gera movimento, visibilidade e receita recorrente para sua arena</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01 · Temporada T01 2026</span><span class="ts">|</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <div class="nav-sep" style="width:1px;height:28px;background:rgba(255,255,255,.12)"></div>
+    <img src="logo-hunter.png" alt="Hunters" style="height:34px;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))" onerror="this.style.display='none'">
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="nav-cta">🤝 Ser Parceiro</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-court"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fu">
+    <div class="hero-badge">Parceiro de Arena · Temporada T01 2026</div>
+    <div class="hero-logos">
+      <img src="logo-ur-3d.png" alt="Ultimate Rivals" onerror="this.style.display='none'">
+      <div class="hero-logos-divider"></div>
+      <img src="logo-hunter.png" alt="Hunters UR" style="height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))" onerror="this.style.display='none'">
+    </div>
+    <h1 class="hero-title">
+      <div class="t1">SUA QUADRA</div>
+      <div class="t2">SEMPRE OCUPADA</div>
+    </h1>
+    <p class="hero-tag">Arenas de Vôlei de Praia · BH · Parceria de Temporada</p>
+    <div class="hero-divider"></div>
+    <p class="hero-bordao">Atletas engajados. Calendário fixo. Movimento toda semana.</p>
+    <div class="hero-btns">
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-gold">🤝 Quero ser parceiro</a>
+      <a href="#beneficios" class="btn-ghost">📋 Ver como funciona</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">52×</div><div class="h-stat-l">Semanas/Ano</div></div>
+      <div class="h-stat"><div class="h-stat-n">3</div><div class="h-stat-l">Eventos/Mês</div></div>
+      <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">Níveis Hunter</div></div>
+      <div class="h-stat"><div class="h-stat-n">BH</div><div class="h-stat-l">Polo 01</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div id="beneficios" class="sec fu">
+  <div style="text-align:center;margin-bottom:52px">
+    <div class="s-label" style="justify-content:center"><span>Por Que Ser Parceiro UR</span></div>
+    <h2 class="s-title">Sua arena no centro<br>de uma liga de verdade.</h2>
+    <p class="s-body" style="margin:0 auto">O Ultimate Rivals não é um grupo de WhatsApp que marca jogo. É uma liga estruturada — com calendário fixo, ranking, premiações e uma base de atletas que aparece toda semana. Sua arena entra nesse ecossistema.</p>
+  </div>
+  <div class="g3">
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-gold">📅</div>
+      <h3>Calendário Fixo Toda Semana</h3>
+      <p>O UR Play acontece toda semana — mesmo horário, mesmo lugar. Sua arena recebe atletas com regularidade, não de forma esporádica. Previsibilidade real de ocupação ao longo de toda a temporada.</p>
+    </div>
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-blue">🏆</div>
+      <h3>Mini Torneio e UR Series</h3>
+      <p>Além do UR Play semanal, sua arena pode receber Mini Torneios mensais e etapas do UR Series — os maiores eventos do calendário. Mais atletas, mais visibilidade, mais movimento em datas especiais.</p>
+    </div>
+    <div class="pilar-card fu">
+      <div class="icon-circle ic-green">📣</div>
+      <h3>Visibilidade na Liga</h3>
+      <p>Sua arena aparece como polo oficial do Ultimate Rivals nas comunicações da liga, materiais da temporada e canais da comunidade Hunter. Sua marca associada a uma liga competitiva e engajada em BH.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec-alt fu">
+  <div class="sec">
+    <div class="parceria-wrap">
+      <div class="parceria-inner">
+        <div class="parceria-left">
+          <div class="p-pill">🏟️ Modelo de Parceria</div>
+          <h2 class="parceria-title">Uma parceria<br><span>que funciona.</span></h2>
+          <p class="parceria-desc">O Ultimate Rivals traz os atletas, o formato e a liga. Você traz o campo de batalha. Juntos, construímos o maior ecossistema de vôlei de praia de BH.</p>
+          <ul class="parceria-list">
+            <li><strong>Ocupação recorrente</strong> — atletas toda semana ao longo de toda a temporada T01</li>
+            <li><strong>Eventos especiais</strong> — mini torneios e UR Series geram picos de movimento</li>
+            <li><strong>Polo oficial da liga</strong> — visibilidade nos materiais e comunicação do ecossistema</li>
+            <li><strong>Comunidade Hunter</strong> — atletas engajados, pontuais e comprometidos com a temporada</li>
+            <li><strong>Suporte operacional</strong> — a liga cuida do formato, ranking e gestão dos atletas</li>
+            <li><strong>Calendário antecipado</strong> — datas programadas com antecedência para planejamento</li>
+          </ul>
+        </div>
+        <div class="parceria-right">
+          <div class="arena-visual">
+            <div class="big-icon">🏟️</div>
+            <p>Arena Parceira UR</p>
+            <span>Polo oficial do ecossistema Ultimate Rivals em BH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="sec fu">
+  <div style="text-align:center;margin-bottom:48px">
+    <div class="s-label" style="justify-content:center"><span>O Que Sua Arena Recebe</span></div>
+    <h2 class="s-title">Benefícios concretos.<br>Resultados visíveis.</h2>
+    <p class="s-body" style="margin:0 auto">Tudo o que a parceria com O Ultimate Rivals entrega para sua operação.</p>
+  </div>
+  <div class="benefit-grid">
+    <div class="benefit-card fu">
+      <div class="benefit-icon">📊</div>
+      <div class="benefit-text">
+        <h4>Ocupação Previsível</h4>
+        <p>Calendário da temporada completa definido com antecedência. Você sabe exatamente quando e quantos atletas esperar em cada semana.</p>
+      </div>
+    </div>
+    <div class="benefit-card fu">
+      <div class="benefit-icon">🎖️</div>
+      <div class="benefit-text">
+        <h4>Polo Oficial da Liga</h4>
+        <p>Sua arena aparece como polo credenciado do Ultimate Rivals — nos materiais digitais, comunicados da temporada e canais da comunidade.</p>
+      </div>
+    </div>
+    <div class="benefit-card fu">
+      <div class="benefit-icon">🏆</div>
+      <div class="benefit-text">
+        <h4>Eventos de Grande Porte</h4>
+        <p>Mini Torneios e etapas do UR Series trazem movimento extra, mais atletas e uma experiência de competição profissional para sua arena.</p>
+      </div>
+    </div>
+    <div class="benefit-card fu">
+      <div class="benefit-icon">🤝</div>
+      <div class="benefit-text">
+        <h4>Comunidade Engajada</h4>
+        <p>Os Hunters UR são atletas comprometidos, que aparecem toda semana e tratam a quadra como o seu campo de batalha. Não é público avulso.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div id="faq" class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:48px">
+      <div class="s-label">Perguntas Frequentes</div>
+      <h2 class="s-title">Como funciona<br>na prática.</h2>
+    </div>
+    <div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Quais são os requisitos para ser parceiro?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">A arena precisa ter quadras de areia em boas condições de uso — a quantidade e disponibilidade são conversadas na negociação. O importante é que os horários do UR Play (semanais) e dos eventos especiais caibam no calendário da sua operação. O resto é papo nosso.</p>
+      </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>A liga usa as quadras de graça?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">Não. O modelo de parceria envolve uma negociação entre O Ultimate Rivals e a arena — os termos financeiros são definidos caso a caso, levando em conta frequência de uso, eventos e exposição. O objetivo é que o negócio seja vantajoso para os dois lados.</p>
+      </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Quantos atletas participam dos eventos?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">O UR Play semanal tem capacidade variável dependendo do número de quadras disponíveis. Mini Torneios e UR Series costumam ter participação maior, com múltiplas quadras em simultâneo. Os números exatos são alinhados na negociação e planejamento da temporada.</p>
+      </div>
+      <div class="faq-item fu">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Como começo a conversa?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <p class="faq-a">É simples — entre em contato pelo WhatsApp da liga. A conversa inicial é rápida: você conta sobre sua arena, a gente apresenta o modelo de parceria e vemos se faz sentido para os dois lados. Sem formulários longos, sem processos burocráticos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="cta-sec fu">
+  <div class="cta-glow"></div>
+  <p class="bordao">"Sua arena. Nossa liga. Atletas toda semana."</p>
+  <h2>Vamos construir<br><span>isso juntos</span></h2>
+  <p>Entre em contato e veja como sua arena pode se tornar o polo oficial do Ultimate Rivals na Temporada T01 2026.</p>
+  <div class="cta-btns">
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-gold" style="font-size:19px;padding:17px 42px">🤝 Quero ser parceiro</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-logos">
+    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+    <span>ULTIMATE RIVALS</span>
+  </div>
+  <div class="foot-links">
+    <a href="/">Home</a>
+    <a href="/lp/patrocinadores">Patrocinadores</a>
+    <a href="/temporada.html">Temporada T01</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+  </div>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');e.target.querySelectorAll('.pilar-card,.benefit-card,.faq-item').forEach((el,i)=>{el.style.transitionDelay=(i*.1)+'s';el.classList.add('on');});}});},{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
