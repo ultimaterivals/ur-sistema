@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Portal do Atleta · Ultimate Rivals</title>
+<meta name="theme-color" content="#ffd84d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#050507;--surface:#0d0d10;--card:#141418;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--goldglow:rgba(255,216,77,.25);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.42);--muted2:rgba(255,255,255,.16);
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;--purple:#a855f7;
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100dvh;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── HEADER ── */
+.header{background:rgba(5,5,7,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header-logo{font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);letter-spacing:.5px}
+.header-sub{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.header-back{font-family:var(--display);font-size:14px;font-weight:800;color:var(--muted);cursor:pointer;background:none;border:none;padding:6px 12px;border-radius:8px;transition:all .18s;display:none;letter-spacing:.5px;text-transform:uppercase}
+.header-back:hover{color:var(--gold);background:rgba(255,216,77,.08)}
+.header-back.show{display:block}
+
+/* ── SEARCH SCREEN ── */
+#searchScreen{padding:32px 18px 80px}
+.search-hero{text-align:center;padding:32px 0 36px}
+.search-hero-icon{font-size:56px;margin-bottom:12px}
+.search-hero h1{font-family:var(--display);font-size:clamp(36px,10vw,60px);font-weight:900;text-transform:uppercase;line-height:.95;margin-bottom:8px}
+.search-hero h1 span{color:var(--gold)}
+.search-hero p{font-size:14px;color:var(--muted);line-height:1.6}
+.search-box{position:relative;margin-bottom:20px}
+.search-box input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px 16px 50px;font-size:16px;color:var(--text);font-family:var(--font);outline:none;transition:border-color .18s}
+.search-box input::placeholder{color:var(--muted)}
+.search-box input:focus{border-color:rgba(255,216,77,.4)}
+.search-box .si{position:absolute;left:17px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--muted)}
+.search-results{display:flex;flex-direction:column;gap:8px}
+.search-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s}
+.search-item:hover{border-color:rgba(255,216,77,.28);transform:translateY(-2px)}
+.si-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,rgba(255,216,77,.15),rgba(255,216,77,.04));border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;font-weight:900;color:var(--gold);flex-shrink:0}
+.si-name{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase}
+.si-arrow{color:var(--muted);font-size:18px;margin-left:auto}
+.search-empty{text-align:center;padding:40px 0;color:var(--muted);font-size:14px}
+
+/* ── PORTAL SCREEN ── */
+#portalScreen{display:none}
+.athlete-header{
+  padding:28px 18px 0;
+  background:linear-gradient(180deg,rgba(255,216,77,.06) 0%,transparent 100%);
+  border-bottom:1px solid var(--border);
+}
+.ath-hero{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.ath-big-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(255,216,77,.2),rgba(255,216,77,.05));border:2px solid rgba(255,216,77,.3);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:28px;font-weight:900;color:var(--gold);flex-shrink:0;box-shadow:0 0 24px rgba(255,216,77,.15)}
+.ath-hero-info{flex:1;min-width:0}
+.ath-hero-name{font-family:var(--display);font-size:clamp(26px,7vw,38px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:6px}
+.ath-hero-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lvl-badge{font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:4px;text-transform:uppercase}
+.lv-NI,.lv-N5{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.lv-N4{background:rgba(59,130,246,.15);color:#60a5fa}
+.lv-N3{background:rgba(34,197,94,.12);color:#4ade80}
+.lv-N2{background:rgba(255,216,77,.15);color:var(--gold)}
+.lv-N1{background:rgba(239,68,68,.15);color:#f87171}
+.ath-season{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.8px;text-transform:uppercase}
+
+/* ── QUICK STATS ── */
+.quick-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:0}
+.qs{background:var(--card);padding:12px 8px;text-align:center}
+.qs-n{font-family:var(--display);font-size:26px;font-weight:900;color:var(--gold);line-height:1}
+.qs-l{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-top:2px}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:57px;z-index:90}
+.tab-btn{flex:1;padding:14px 8px;font-family:var(--display);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .18s}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── TAB CONTENT ── */
+.tab-content{display:none;padding:20px 16px 80px}
+.tab-content.active{display:block}
+
+/* ── SECTION HEADER ── */
+.sec-hd{margin-bottom:16px}
+.sec-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);margin-bottom:4px}
+.sec-title{font-family:var(--display);font-size:clamp(24px,6vw,36px);font-weight:900;text-transform:uppercase;line-height:1}
+
+/* ── STATS GRID ── */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.stat-card-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px}
+.stat-card-l{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+
+/* ── EVALUATION BARS ── */
+.eval-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:20px}
+.eval-row{margin-bottom:10px}
+.eval-row:last-child{margin-bottom:0}
+.eval-label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+.eval-label span:last-child{color:var(--text)}
+.eval-bar-bg{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.eval-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width .8s ease}
+
+/* ── RANKING ── */
+.rank-position-card{background:linear-gradient(135deg,rgba(255,216,77,.12),rgba(255,216,77,.04));border:1px solid rgba(255,216,77,.28);border-radius:16px;padding:24px;text-align:center;margin-bottom:20px}
+.rank-pos-n{font-family:var(--display);font-size:72px;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 40px rgba(255,216,77,.4)}
+.rank-pos-l{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+.rank-pos-sub{font-size:13px;color:var(--muted);margin-top:8px}
+.rank-divs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.rank-div-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.rank-div-n{font-family:var(--display);font-size:36px;font-weight:900;color:var(--gold);line-height:1}
+.rank-div-l{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-top:3px}
+
+.rank-list{display:flex;flex-direction:column;gap:8px}
+.rank-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.rank-item.is-me{border-color:rgba(255,216,77,.35);background:rgba(255,216,77,.05)}
+.rank-pos{font-family:var(--display);font-size:20px;font-weight:900;color:var(--muted2);width:32px;text-align:center;flex-shrink:0}
+.rank-pos.top1{color:#ffd84d}
+.rank-pos.top2{color:#c0c0c0}
+.rank-pos.top3{color:#cd7f32}
+.rank-avatar{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);flex-shrink:0}
+.rank-name{flex:1;font-family:var(--display);font-size:16px;font-weight:800;text-transform:uppercase}
+.rank-pts{font-family:var(--display);font-size:18px;font-weight:900;color:var(--gold)}
+.rank-pts-l{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase}
+.you-badge{font-size:10px;font-weight:800;color:#000;background:var(--gold);padding:2px 7px;border-radius:3px;letter-spacing:.5px;text-transform:uppercase;font-family:var(--display)}
+
+/* ── MERCADO ── */
+.coins-card{background:linear-gradient(135deg,#1a1200,#0d0900);border:1px solid rgba(255,216,77,.3);border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;position:relative;overflow:hidden}
+.coins-card::before{content:'🪙';position:absolute;right:-10px;top:-10px;font-size:90px;opacity:.07;pointer-events:none}
+.coins-n{font-family:var(--display);font-size:56px;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 30px rgba(255,216,77,.4)}
+.coins-l{font-size:12px;color:rgba(255,216,77,.6);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.coins-info{font-size:12px;color:var(--muted);max-width:120px;text-align:right;line-height:1.5}
+
+.prizes-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prize-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:all .2s;position:relative}
+.prize-card.affordable{border-color:rgba(255,216,77,.2)}
+.prize-card.affordable:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+.prize-card.locked{opacity:.5}
+.prize-category{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-family:var(--display)}
+.prize-name{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;line-height:1.1}
+.prize-partner{font-size:11px;color:var(--muted)}
+.prize-cost{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:8px;border-top:1px solid var(--border)}
+.prize-cost-n{font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold)}
+.prize-cost-l{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase}
+.prize-btn{width:100%;padding:10px;background:var(--gold);color:#000;border:none;border-radius:8px;font-family:var(--display);font-size:14px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:4px}
+.prize-btn:hover{background:var(--gold2);transform:scale(1.02)}
+.prize-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed;transform:none}
+.prize-lock{position:absolute;top:10px;right:10px;font-size:14px;opacity:.4}
+
+/* ── REDEMPTION MODAL ── */
+.modal-overlay{position:fixed;inset:0;z-index:999;background:rgba(5,5,7,.92);backdrop-filter:blur(12px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:20px 20px 0 0;padding:28px 20px 40px;width:100%;max-width:480px;transform:translateY(100%);transition:transform .3s cubic-bezier(.2,1,.4,1)}
+.modal-overlay.show .modal-box{transform:translateY(0)}
+.modal-title{font-family:var(--display);font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:6px}
+.modal-sub{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.modal-prize-info{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center}
+.modal-prize-name{font-family:var(--display);font-size:20px;font-weight:800;text-transform:uppercase}
+.modal-prize-cost{font-family:var(--display);font-size:28px;font-weight:900;color:var(--gold)}
+.modal-note{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:var(--font);font-size:14px;outline:none;resize:none;margin-bottom:16px}
+.modal-note:focus{border-color:rgba(255,216,77,.4)}
+.modal-btns{display:flex;gap:10px}
+.modal-cancel{flex:1;padding:14px;background:transparent;border:1px solid var(--border);border-radius:10px;color:var(--muted);font-family:var(--display);font-size:16px;font-weight:800;text-transform:uppercase;cursor:pointer;transition:all .18s}
+.modal-cancel:hover{border-color:var(--border);color:var(--text)}
+.modal-confirm{flex:2;padding:14px;background:var(--gold);color:#000;border:none;border-radius:10px;font-family:var(--display);font-size:16px;font-weight:900;text-transform:uppercase;cursor:pointer;transition:all .18s;letter-spacing:.5px}
+.modal-confirm:hover{background:var(--gold2)}
+
+/* ── STATES ── */
+.state-msg{text-align:center;padding:60px 24px;color:var(--muted)}
+.state-msg .icon{font-size:52px;margin-bottom:14px}
+.state-msg h3{font-family:var(--display);font-size:22px;font-weight:800;text-transform:uppercase;color:var(--text);margin-bottom:8px}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:14px;font-weight:600;padding:12px 22px;border-radius:10px;transition:transform .3s;z-index:200;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:380px){.prizes-grid{grid-template-columns:1fr}.quick-stats{grid-template-columns:repeat(4,1fr)}.qs-n{font-size:20px}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-logo">⚡ ULTIMATE RIVALS</div>
+    <div class="header-sub">Portal do Atleta · T01 2026</div>
+  </div>
+  <button class="header-back" id="backBtn">← Voltar</button>
+</div>
+
+<!-- SEARCH SCREEN -->
+<div id="searchScreen">
+  <div class="search-hero">
+    <div class="search-hero-icon">🐺</div>
+    <h1>Portal do<br><span>Hunter</span></h1>
+    <p>Busque seu nome para acessar<br>ranking, stats e Mercado UR.</p>
+  </div>
+  <div class="search-box">
+    <span class="si">🔍</span>
+    <input type="text" id="searchInput" placeholder="Digite seu nome..." autocomplete="off" autocorrect="off" spellcheck="false">
+  </div>
+  <div id="searchResults">
+    <div class="state-msg"><div class="spinner"></div><p>Carregando atletas...</p></div>
+  </div>
+</div>
+
+<!-- PORTAL SCREEN -->
+<div id="portalScreen">
+  <!-- Athlete Header -->
+  <div class="athlete-header">
+    <div class="ath-hero">
+      <div class="ath-big-avatar" id="portalAvatar"></div>
+      <div class="ath-hero-info">
+        <div class="ath-hero-name" id="portalName"></div>
+        <div class="ath-hero-meta">
+          <span class="lvl-badge" id="portalLevel"></span>
+          <span class="ath-season">Temporada T01</span>
+        </div>
+      </div>
+    </div>
+    <div class="quick-stats">
+      <div class="qs"><div class="qs-n" id="qsPts">0</div><div class="qs-l">Pontos</div></div>
+      <div class="qs"><div class="qs-n" id="qsCoins">0</div><div class="qs-l">🪙 Coins</div></div>
+      <div class="qs"><div class="qs-n" id="qsWins">0</div><div class="qs-l">Vitórias</div></div>
+      <div class="qs"><div class="qs-n" id="qsPresences">0</div><div class="qs-l">Presenças</div></div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="perfil">📊 Perfil</button>
+    <button class="tab-btn" data-tab="ranking">🏆 Ranking</button>
+    <button class="tab-btn" data-tab="mercado">🪙 Mercado</button>
+  </div>
+
+  <!-- TAB: PERFIL -->
+  <div class="tab-content active" id="tab-perfil">
+    <div class="sec-hd">
+      <div class="sec-label">Temporada T01</div>
+      <div class="sec-title">Suas Stats</div>
+    </div>
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="sec-hd">
+      <div class="sec-label">Avaliação Técnica</div>
+      <div class="sec-title">Habilidades</div>
+    </div>
+    <div class="eval-wrap" id="evalBars"></div>
+  </div>
+
+  <!-- TAB: RANKING -->
+  <div class="tab-content" id="tab-ranking">
+    <div class="rank-position-card">
+      <div class="rank-pos-n" id="rankPosN">—</div>
+      <div class="rank-pos-l">Posição Geral</div>
+      <div class="rank-pos-sub" id="rankPosSub"></div>
+    </div>
+    <div class="rank-divs">
+      <div class="rank-div-card">
+        <div class="rank-div-n" id="rankLevelPos">—</div>
+        <div class="rank-div-l" id="rankLevelLabel">No nível</div>
+      </div>
+      <div class="rank-div-card">
+        <div class="rank-div-n" id="rankStreak">0</div>
+        <div class="rank-div-l">Sequência</div>
+      </div>
+    </div>
+    <div class="sec-hd">
+      <div class="sec-label">Top 10</div>
+      <div class="sec-title">Ranking Geral</div>
+    </div>
+    <div class="rank-list" id="rankList"></div>
+  </div>
+
+  <!-- TAB: MERCADO -->
+  <div class="tab-content" id="tab-mercado">
+    <div class="coins-card">
+      <div>
+        <div class="coins-n" id="mercadoCoins">0</div>
+        <div class="coins-l">🪙 UR Coins</div>
+      </div>
+      <div class="coins-info">Ganhe coins jogando e evoluindo. Troque por produtos e experiências.</div>
+    </div>
+    <div class="sec-hd">
+      <div class="sec-label">Loja</div>
+      <div class="sec-title">Mercado UR</div>
+    </div>
+    <div class="prizes-grid" id="prizesGrid"></div>
+  </div>
+</div>
+
+<!-- REDEMPTION MODAL -->
+<div class="modal-overlay" id="redeemModal">
+  <div class="modal-box">
+    <div class="modal-title">Solicitar Resgate</div>
+    <div class="modal-sub">O administrador receberá sua solicitação e confirmará o resgate no próximo evento.</div>
+    <div class="modal-prize-info">
+      <div class="modal-prize-name" id="modalPrizeName">—</div>
+      <div>
+        <div class="modal-prize-cost" id="modalPrizeCost">0</div>
+        <div style="font-size:10px;color:var(--muted);text-align:right">UR COINS</div>
+      </div>
+    </div>
+    <textarea class="modal-note" id="modalNote" rows="2" placeholder="Observação (opcional)..."></textarea>
+    <div class="modal-btns">
+      <button class="modal-cancel" id="modalCancel">Cancelar</button>
+      <button class="modal-confirm" id="modalConfirm">✅ Solicitar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const SB_URL  = "https://ongicywqaeedgzblllus.supabase.co";
+const SB_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uZ2ljeXdxYWVlZGd6YmxsbHVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NjY5NTYsImV4cCI6MjA5NDM0Mjk1Nn0.UtVWQPL88y5-KR-qtttqnrOwG7_MtfWV-V_enmABCso";
+const HEADERS = { "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json" };
+
+const LEVEL_NAMES = { NI:"Indefinido", N5:"Iniciante", N4:"Hunter", N3:"Experiente", N2:"Elite", N1:"Lenda" };
+const EVAL_LABELS = { set:"Levantamento", attack:"Ataque", defense:"Defesa", serve:"Saque", block:"Bloqueio", movement:"Movimentação", communication:"Comunicação", tactical:"Tática", physical:"Físico", behavior:"Comportamento" };
+
+let allAthletes = [], allPrizes = [], currentAthlete = null, pendingPrize = null;
+
+// ── UTILS ──
+function toast(msg, dur=2600){ const el=document.getElementById("toast"); el.textContent=msg; el.classList.add("show"); setTimeout(()=>el.classList.remove("show"),dur); }
+function initials(name){ return name.split(" ").slice(0,2).map(n=>n[0]).join("").toUpperCase(); }
+function levelBadge(lvl){ return `<span class="lvl-badge lv-${lvl||"NI"}">${lvl||"NI"} · ${LEVEL_NAMES[lvl]||lvl||"—"}</span>`; }
+function fmt(n){ return Number(n||0).toLocaleString("pt-BR"); }
+
+// ── SUPABASE ──
+async function loadState(){
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/ur_backups?id=eq.main&select=data&limit=1`, { headers: HEADERS });
+    if(!r.ok) throw new Error();
+    const rows = await r.json();
+    if(!rows?.length || !rows[0].data) return null;
+    return JSON.parse(rows[0].data);
+  } catch(e){ return null; }
+}
+
+async function submitRedemption(athlete, prize, notes){
+  const r = await fetch(`${SB_URL}/rest/v1/ur_redemption_requests`, {
+    method:"POST",
+    headers:{ ...HEADERS, "Prefer":"return=minimal" },
+    body: JSON.stringify({
+      athlete_id: athlete.id,
+      athlete_name: athlete.name,
+      prize_id: prize.id,
+      prize_name: prize.name,
+      coins_cost: Number(prize.cost),
+      notes: notes || ""
+    })
+  });
+  return r.ok || r.status === 201;
+}
+
+// ── SEARCH ──
+function renderSearch(q=""){
+  const filtered = q ? allAthletes.filter(a=>a.name.toLowerCase().includes(q.toLowerCase())) : allAthletes;
+  const el = document.getElementById("searchResults");
+  if(!filtered.length){
+    el.innerHTML = `<div class="search-empty">${q ? "Nenhum atleta encontrado." : "Nenhum atleta na liga ainda."}</div>`;
+    return;
+  }
+  el.innerHTML = filtered.slice(0,20).map(a=>`
+    <div class="search-item" onclick="openPortal('${a.id}')">
+      <div class="si-avatar">${initials(a.name)}</div>
+      <div>
+        <div class="si-name">${a.name}</div>
+        <div style="margin-top:4px">${levelBadge(a.level)}</div>
+      </div>
+      <div class="si-arrow">›</div>
+    </div>`).join("");
+}
+
+document.getElementById("searchInput").addEventListener("input", e => renderSearch(e.target.value));
+
+// ── OPEN PORTAL ──
+function openPortal(athleteId){
+  currentAthlete = allAthletes.find(a => a.id === athleteId);
+  if(!currentAthlete) return;
+  sessionStorage.setItem("ur_portal_athlete", athleteId);
+
+  // Header
+  document.getElementById("portalAvatar").textContent = initials(currentAthlete.name);
+  document.getElementById("portalName").textContent = currentAthlete.name;
+  document.getElementById("portalLevel").className = `lvl-badge lv-${currentAthlete.level||"NI"}`;
+  document.getElementById("portalLevel").textContent = `${currentAthlete.level||"NI"} · ${LEVEL_NAMES[currentAthlete.level]||"Indefinido"}`;
+
+  // Quick stats
+  document.getElementById("qsPts").textContent = fmt(currentAthlete.pts);
+  document.getElementById("qsCoins").textContent = fmt(currentAthlete.coins);
+  document.getElementById("qsWins").textContent = fmt(currentAthlete.wins);
+  document.getElementById("qsPresences").textContent = fmt(currentAthlete.presences);
+
+  renderPerfil();
+  renderRanking();
+  renderMercado();
+
+  document.getElementById("searchScreen").style.display = "none";
+  document.getElementById("portalScreen").style.display = "block";
+  document.getElementById("backBtn").classList.add("show");
+  window.scrollTo(0,0);
+}
+
+// ── PERFIL ──
+function renderPerfil(){
+  const a = currentAthlete;
+  const statsData = [
+    { n: a.wins||0, l:"Vitórias" },
+    { n: a.losses||0, l:"Derrotas" },
+    { n: a.streak||0, l:"Sequência" },
+    { n: a.mvps||0, l:"MVPs" },
+    { n: a.stats?.aces||0, l:"Aces" },
+    { n: a.stats?.attacks||0, l:"Ataques" },
+    { n: a.stats?.blocks||0, l:"Bloqueios" },
+    { n: a.stats?.digs||0, l:"Defesas" },
+    { n: a.stats?.points||0, l:"Pontos" },
+    { n: a.stats?.assists||0, l:"Assistências" },
+  ];
+  document.getElementById("statsGrid").innerHTML = statsData.map(s=>`
+    <div class="stat-card">
+      <div class="stat-card-n">${fmt(s.n)}</div>
+      <div class="stat-card-l">${s.l}</div>
+    </div>`).join("");
+
+  const ev = a.evolution || {};
+  const evalKeys = ["set","attack","defense","serve","block","movement","tactical","physical","behavior","communication"];
+  const hasEval = evalKeys.some(k => Number(ev[k]||0) > 0);
+  if(!hasEval){
+    document.getElementById("evalBars").innerHTML = `<div style="text-align:center;color:var(--muted);font-size:13px;padding:8px">Avaliação técnica ainda não registrada.</div>`;
+    return;
+  }
+  document.getElementById("evalBars").innerHTML = evalKeys.filter(k=>Number(ev[k]||0)>0).map(k=>{
+    const val = Math.min(10, Number(ev[k]||0));
+    const pct = val * 10;
+    return `<div class="eval-row">
+      <div class="eval-label"><span>${EVAL_LABELS[k]||k}</span><span>${val}/10</span></div>
+      <div class="eval-bar-bg"><div class="eval-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join("");
+}
+
+// ── RANKING ──
+function renderRanking(){
+  const a = currentAthlete;
+  const sorted = [...allAthletes].sort((x,y) => (Number(y.pts)||0) - (Number(x.pts)||0));
+  const pos = sorted.findIndex(x => x.id === a.id) + 1;
+  const total = sorted.length;
+
+  // Level ranking
+  const sameLevel = sorted.filter(x => x.level === a.level);
+  const levelPos = sameLevel.findIndex(x => x.id === a.id) + 1;
+
+  document.getElementById("rankPosN").textContent = pos > 0 ? `#${pos}` : "—";
+  document.getElementById("rankPosSub").textContent = `de ${total} atletas · ${fmt(a.pts)} pts`;
+  document.getElementById("rankLevelPos").textContent = levelPos > 0 ? `#${levelPos}` : "—";
+  document.getElementById("rankLevelLabel").textContent = `No nível ${a.level||"NI"}`;
+  document.getElementById("rankStreak").textContent = a.streak || 0;
+
+  // Top 10 list
+  const top10 = sorted.slice(0, 10);
+  const inTop10 = top10.some(x => x.id === a.id);
+  const showList = inTop10 ? top10 : [...top10, sorted[pos-1]].filter(Boolean);
+
+  document.getElementById("rankList").innerHTML = showList.map((x, i) => {
+    const p = sorted.findIndex(s => s.id === x.id) + 1;
+    const isMe = x.id === a.id;
+    const posCls = p===1?"top1":p===2?"top2":p===3?"top3":"";
+    return `<div class="rank-item${isMe?" is-me":""}">
+      <div class="rank-pos ${posCls}">${p===1?"🥇":p===2?"🥈":p===3?"🥉":"#"+p}</div>
+      <div class="rank-avatar">${initials(x.name)}</div>
+      <div class="rank-name">${x.name.split(" ")[0]} ${isMe?'<span class="you-badge">VOCÊ</span>':""}</div>
+      <div style="text-align:right">
+        <div class="rank-pts">${fmt(x.pts)}</div>
+        <div class="rank-pts-l">pts</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ── MERCADO ──
+function renderMercado(){
+  const a = currentAthlete;
+  const coins = Number(a.coins || 0);
+  document.getElementById("mercadoCoins").textContent = fmt(coins);
+  const prizes = allPrizes.filter(p => p.active !== false);
+  if(!prizes.length){
+    document.getElementById("prizesGrid").innerHTML = `<div class="state-msg" style="grid-column:1/-1"><div class="icon">🛒</div><h3>Mercado vazio</h3><p>Nenhum item disponível ainda.</p></div>`;
+    return;
+  }
+  document.getElementById("prizesGrid").innerHTML = prizes.map(p => {
+    const cost = Number(p.cost||0);
+    const canAfford = coins >= cost;
+    return `<div class="prize-card${canAfford?" affordable":" locked"}">
+      ${!canAfford?'<div class="prize-lock">🔒</div>':""}
+      <div class="prize-category">${p.category||"Produto"}</div>
+      <div class="prize-name">${p.name}</div>
+      <div class="prize-partner">Por ${p.partner||"UR"}</div>
+      <div class="prize-cost">
+        <div class="prize-cost-n">${fmt(cost)}</div>
+        <div class="prize-cost-l">🪙 coins</div>
+      </div>
+      <button class="prize-btn" ${canAfford?"":"disabled"} onclick="openRedeem('${p.id}')">
+        ${canAfford?"Resgatar":"Sem coins"}
+      </button>
+    </div>`;
+  }).join("");
+}
+
+// ── REDEEM MODAL ──
+function openRedeem(prizeId){
+  pendingPrize = allPrizes.find(p => p.id === prizeId);
+  if(!pendingPrize) return;
+  document.getElementById("modalPrizeName").textContent = pendingPrize.name;
+  document.getElementById("modalPrizeCost").textContent = fmt(pendingPrize.cost);
+  document.getElementById("modalNote").value = "";
+  document.getElementById("redeemModal").classList.add("show");
+}
+document.getElementById("modalCancel").onclick = () => document.getElementById("redeemModal").classList.remove("show");
+document.getElementById("redeemModal").onclick = e => { if(e.target === document.getElementById("redeemModal")) document.getElementById("redeemModal").classList.remove("show"); };
+document.getElementById("modalConfirm").onclick = async () => {
+  if(!pendingPrize || !currentAthlete) return;
+  const btn = document.getElementById("modalConfirm");
+  btn.disabled = true; btn.textContent = "Enviando...";
+  const notes = document.getElementById("modalNote").value.trim();
+  const ok = await submitRedemption(currentAthlete, pendingPrize, notes);
+  btn.disabled = false; btn.textContent = "✅ Solicitar";
+  document.getElementById("redeemModal").classList.remove("show");
+  if(ok){ toast("✅ Solicitação enviada! O admin confirmará no próximo evento."); }
+  else { toast("Erro ao enviar. Tente novamente."); }
+};
+
+// ── TABS ──
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-"+btn.dataset.tab).classList.add("active");
+  });
+});
+
+// ── BACK ──
+document.getElementById("backBtn").onclick = () => {
+  document.getElementById("searchScreen").style.display = "block";
+  document.getElementById("portalScreen").style.display = "none";
+  document.getElementById("backBtn").classList.remove("show");
+  sessionStorage.removeItem("ur_portal_athlete");
+  currentAthlete = null;
+};
+
+// ── INIT ──
+async function init(){
+  const state = await loadState();
+  if(!state){
+    document.getElementById("searchResults").innerHTML = `<div class="state-msg"><div class="icon">⚠️</div><h3>Sem dados</h3><p>Sincronize o sistema com o Supabase primeiro.</p></div>`;
+    return;
+  }
+  allAthletes = (state.athletes || []).filter(a => a.name?.trim()).sort((a,b) => a.name.localeCompare(b.name,"pt-BR"));
+  allPrizes   = (state.prizes   || []).filter(p => p.active !== false);
+
+  // Checar se há atleta salvo na sessão
+  const saved = sessionStorage.getItem("ur_portal_athlete");
+  if(saved && allAthletes.find(a => a.id === saved)){
+    openPortal(saved);
+  } else {
+    renderSearch();
+  }
+}
+
+init();
+</script>
+</body>
+</html>
