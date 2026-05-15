@@ -556,7 +556,11 @@
   <!-- LOGIN WALL -->
   <div id="login-wall">
     <div class="lw-box">
-      <div class="lw-logo">⚡</div>
+      <div class="lw-logo" style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px">
+        <img src="../logo-ur-3d.png" alt="UR" height="48" style="object-fit:contain;filter:drop-shadow(0 0 10px rgba(255,216,77,.5))" onerror="this.style.display='none'">
+        <div style="width:1px;height:34px;background:rgba(255,216,77,.25)"></div>
+        <img src="../logo-hunter.png" alt="Hunter" height="44" style="object-fit:contain;filter:drop-shadow(0 0 10px rgba(255,140,0,.4))" onerror="this.style.display='none'">
+      </div>
       <div class="lw-title">ULTIMATE RIVALS</div>
       <div class="lw-sub">Sistema de Gestão · Acesso Restrito</div>
       <input id="lw-user" type="text" placeholder="Usuário" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('lw-pass').focus()">
@@ -568,8 +572,10 @@
   <div class="app">
     <div class="shell">
       <header class="topbar">
-        <div class="mark">
-          <img src="logo_ur_preto-removebg-preview.png" alt="UR" onerror="this.parentNode.innerHTML='<span class=ur-text-logo>UR</span>'">
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+          <img src="../logo-ur-3d.png" alt="Ultimate Rivals" height="44" style="object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,216,77,.45));display:block" onerror="this.style.display='none'">
+          <div style="width:1px;height:30px;background:rgba(255,216,77,.25);flex-shrink:0"></div>
+          <img src="../logo-hunter.png" alt="Hunter" height="40" style="object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,140,0,.4));display:block" onerror="this.style.display='none'">
         </div>
         <div class="brand">
           <strong>ULTIMATE RIVALS</strong>
