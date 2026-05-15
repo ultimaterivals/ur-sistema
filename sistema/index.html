@@ -976,6 +976,10 @@
         localStorage.setItem(BACKUP_KEYS[slot], JSON.stringify({...state, _savedAt: new Date().toISOString(), _events: state.events.length}));
         backupSlot++;
         localStorage.setItem("ur-bkp-slot", backupSlot);
+        // Cloud sync automático a cada 5 saves (silencioso, non-blocking)
+        if(state.integrations?.supabase?.autoSync !== false){
+          supabaseSyncData(true);
+        }
       }
       const el = document.getElementById("saveStatus");
       if(el){
@@ -6489,14 +6493,13 @@
         supabaseSyncData();
       };
     }
-    async function supabaseSyncData(){
+    async function supabaseSyncData(silent=false){
       const intg = state.integrations;
-      if(!intg?.supabase?.url || !intg?.supabase?.key){
-        return toast("Configure URL e Key do Supabase primeiro.");
-      }
-      toast("Sincronizando com Supabase...");
+      if(!intg?.supabase?.url || !intg?.supabase?.key) return;
+      if(!silent) toast("Sincronizando com Supabase...");
       try {
         const payload = {
+          id: "main",
           season: state.season,
           week: state.week,
           athletes_count: state.athletes.length,
@@ -6510,23 +6513,62 @@
             "Content-Type": "application/json",
             "apikey": intg.supabase.key,
             "Authorization": "Bearer " + intg.supabase.key,
-            "Prefer": "return=minimal"
+            "Prefer": "resolution=merge-duplicates,return=minimal"
           },
           body: JSON.stringify(payload)
         });
         if(res.ok || res.status === 201){
           intg.supabase.connected = true;
           intg.supabase.lastSync = new Date().toLocaleString("pt-BR");
-          toast("✅ Dados sincronizados com Supabase!");
+          if(!silent) toast("✅ Dados sincronizados com Supabase!");
         } else {
           const err = await res.text();
-          toast("Erro Supabase: " + (err.slice(0,80)||res.status) + " — Verifique se a tabela 'ur_backups' existe.");
+          if(!silent) toast("Erro Supabase: " + (err.slice(0,80)||res.status));
         }
       } catch(e) {
-        toast("Erro de conexão: " + (e.message||"verifique a URL e Key."));
+        if(!silent) toast("Erro de conexão: " + (e.message||"verifique a URL e Key."));
       }
-      render();
+      if(!silent) render();
     }
+
+    async function loadFromSupabase(){
+      const intg = state.integrations;
+      if(!intg?.supabase?.url || !intg?.supabase?.key) return null;
+      try {
+        const res = await fetch(
+          `${intg.supabase.url}/rest/v1/ur_backups?id=eq.main&select=data,synced_at&limit=1`,
+          { headers: { "apikey": intg.supabase.key, "Authorization": "Bearer " + intg.supabase.key } }
+        );
+        if(!res.ok) return null;
+        const rows = await res.json();
+        if(!rows?.length || !rows[0].data) return null;
+        return { state: JSON.parse(rows[0].data), syncedAt: rows[0].synced_at };
+      } catch(e) { return null; }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // CLOUD SYNC — verifica Supabase após DOM carregar
+    // ═══════════════════════════════════════════════════════════
+    window.addEventListener("load", async () => {
+      const cloud = await loadFromSupabase();
+      if(!cloud) return;
+      const localSaveCount = Number(localStorage.getItem("ur-save-count") || 0);
+      const cloudDate = new Date(cloud.syncedAt);
+      const localRaw = localStorage.getItem(STORAGE_KEY);
+      const localDate = localRaw ? new Date(JSON.parse(localRaw)?._lastSave || 0) : new Date(0);
+      // Se cloud tiver mais atletas ou for de outro dispositivo, oferecer carregar
+      const cloudAthletes = cloud.state?.athletes?.length || 0;
+      const localAthletes = state.athletes.length;
+      if(cloudAthletes > localAthletes || (cloudDate > localDate && cloudAthletes >= localAthletes && localSaveCount < 3)){
+        const msg = `☁ Dados na nuvem encontrados:\n• ${cloudAthletes} atletas (local: ${localAthletes})\n• Sincronizado em: ${cloudDate.toLocaleString("pt-BR")}\n\nCarregar dados da nuvem?`;
+        if(confirm(msg)){
+          state = normalizeState(cloud.state);
+          saveState();
+          render();
+          toast("✅ Dados carregados da nuvem!");
+        }
+      }
+    });
 
     // ═══════════════════════════════════════════════════════════
     // PWA SERVICE WORKER REGISTRATION
