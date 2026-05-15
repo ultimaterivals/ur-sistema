@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Patrocinadores — Ultimate Rivals | Sua Marca no Que Importa</title>
-<meta name="description" content="Associe sua marca ao ecossistema Hunter. Cotas Bronze, Prata, Ouro e Diamante. Visibilidade real com uma comunidade esportiva engajada em BH.">
+<title>Patrocinadores — Ultimate Rivals | Sua Marca No Que Importa · BH</title>
+<meta name="description" content="Associe sua marca a uma liga de vôlei de praia real, com atletas engajados e uma comunidade que cresce. Cotas de patrocínio T01 2026 — Belo Horizonte.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -13,54 +13,43 @@
   --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
   --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
   --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+  --bronze:#cd7f32;--silver:#a8a9ad;--ouro:#ffd84d;--diamante:#b9f2ff;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{display:block}
-
-/* TICKER */
 .ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
 .ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
 .ticker-inner:hover{animation-play-state:paused}
 .ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
 .ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
 .nav-logos{display:flex;align-items:center;gap:14px}
 .nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
-.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
-.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
-.nav-links{display:flex;gap:26px}
-.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
-.nav-links a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:10px}
 .nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
 .nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
-@media(max-width:780px){.nav-links{display:none}.nav-season{display:none}}
-
-/* HERO */
+@media(max-width:780px){.nav-season{display:none}}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background-color:#1c1508;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
+.hero::before{content:'';position:absolute;inset:0;background-color:#08050f;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
 .hero-court{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent calc(50% - .5px),rgba(255,255,255,.07) calc(50% - .5px),rgba(255,255,255,.07) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(transparent calc(30% - .5px),rgba(255,255,255,.04) calc(30% - .5px),rgba(255,255,255,.04) calc(30% + .5px),transparent calc(30% + .5px)),linear-gradient(transparent calc(70% - .5px),rgba(255,255,255,.04) calc(70% - .5px),rgba(255,255,255,.04) calc(70% + .5px),transparent calc(70% + .5px)),linear-gradient(90deg,transparent 12%,rgba(255,255,255,.04) 12%,rgba(255,255,255,.04) 12.3%,transparent 12.3%),linear-gradient(90deg,transparent 87.7%,rgba(255,255,255,.04) 87.7%,rgba(255,255,255,.04) 88%,transparent 88%)}
-.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.12),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.55) 0%,rgba(7,8,13,.72) 60%,rgba(7,8,13,.92) 100%)}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.1),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.55) 0%,rgba(7,8,13,.72) 60%,rgba(7,8,13,.92) 100%)}
 .hero-content{position:relative;z-index:2;max-width:860px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:28px;text-transform:uppercase;font-family:var(--display)}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
 .hero-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
 .hero-logos img{height:100px;filter:drop-shadow(0 0 28px rgba(255,216,77,.45))}
-.hero-logos .hl-hunter{height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))}
 .hero-logos-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.18),transparent)}
 .hero-title{font-family:var(--display);font-size:clamp(60px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase}
 .hero-title .t1{color:#fff}
 .hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.45)}
 .hero-tag{font-family:var(--display);font-size:clamp(14px,2.5vw,20px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
 .hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
-.hero-bordao{font-family:var(--display);font-size:clamp(18px,3.5vw,28px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
+.hero-bordao{font-family:var(--display);font-size:clamp(16px,3vw,26px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
 .btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 42px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
@@ -71,8 +60,6 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 .h-stat:last-child{border-right:none}
 .h-stat-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
 .h-stat-l{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
-
-/* SECTION BASE */
 .sec{padding:84px 20px;max-width:1100px;margin:0 auto}
 .sec-alt{background:var(--surface)}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
@@ -80,79 +67,68 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 .s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
 .s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
 .s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 @media(max-width:900px){.g4{grid-template-columns:1fr 1fr}}
-@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.g3,.g2,.g4{grid-template-columns:1fr}}
-
-/* ÍCONES CIRCULARES */
-.icon-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:30px;position:relative;flex-shrink:0}
-.icon-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 180deg,var(--gold) 0deg,rgba(255,216,77,.15) 90deg,rgba(255,216,77,.15) 270deg,var(--gold) 360deg);opacity:.55}
-.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
-.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
-.ic-fire{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500)}
-.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
-
-/* PILAR CARDS */
+@media(max-width:560px){.g4,.g2{grid-template-columns:1fr}}
 .pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
 .pilar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
 .pilar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
 .pilar-card h3{font-family:var(--display);font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
 .pilar-card p{font-size:13px;color:var(--muted);line-height:1.67}
-
-/* HUNTERS */
-.hunters-wrap{background:linear-gradient(135deg,#0a0600,#110900,#080500);border:1px solid rgba(255,200,0,.18);border-radius:16px;overflow:hidden;position:relative}
-.hunters-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(38deg,transparent 30%,rgba(255,200,0,.055) 30.5%,rgba(255,200,0,.055) 31.5%,transparent 32%),linear-gradient(38deg,transparent 33%,rgba(255,200,0,.04) 33.5%,rgba(255,200,0,.04) 34.2%,transparent 34.7%),linear-gradient(38deg,transparent 36%,rgba(255,200,0,.03) 36.5%,rgba(255,200,0,.03) 37%,transparent 37.5%),linear-gradient(225deg,transparent 60%,rgba(255,160,0,.05) 60.5%,rgba(255,160,0,.05) 61.2%,transparent 61.7%),linear-gradient(225deg,transparent 63%,rgba(255,160,0,.04) 63.5%,rgba(255,160,0,.04) 64%,transparent 64.5%),linear-gradient(225deg,transparent 66%,rgba(255,160,0,.025) 66.5%,rgba(255,160,0,.025) 67%,transparent 67.5%)}
-.hunters-lightning{position:absolute;top:0;right:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
-.hunters-lightning svg{position:absolute}
-.hunters-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
-@media(max-width:700px){.hunters-inner{grid-template-columns:1fr}}
-.hunters-left{padding:52px 48px;position:relative;z-index:1}
-@media(max-width:700px){.hunters-left{padding:32px 22px}}
-.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
-.hunters-title{font-family:var(--display);font-size:clamp(36px,5.5vw,58px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:6px}
-.hunters-title span{color:var(--gold)}
-.hunters-bordao{font-family:var(--display);font-size:clamp(14px,2vw,18px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
-.hunters-desc{font-size:14px;color:rgba(255,255,255,.48);line-height:1.72;max-width:400px;margin-bottom:28px;border-left:2px solid rgba(255,216,77,.25);padding-left:14px}
-.traits{display:flex;flex-direction:column;gap:10px}
-.trait{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500;line-height:1.5}
-.trait strong{color:rgba(255,255,255,.9);font-weight:700}
-.trait-i{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.hunters-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
-@media(max-width:700px){.hunters-right{padding:0 22px 32px}}
-.hunter-logo{width:260px;max-width:80vw;filter:drop-shadow(0 0 30px rgba(255,200,0,.45)) drop-shadow(0 0 70px rgba(255,120,0,.18));animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-
-/* CTA */
-.cta-sec{padding:96px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
-.cta-sec::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
-.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+/* COTAS */
+.cota-card{border-radius:16px;padding:30px 24px;position:relative;overflow:hidden;transition:all .3s}
+.cota-card:hover{transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.5)}
+.cota-bronze{background:linear-gradient(160deg,rgba(205,127,50,.1),var(--card));border:1px solid rgba(205,127,50,.35)}
+.cota-prata{background:linear-gradient(160deg,rgba(168,169,173,.1),var(--card));border:1px solid rgba(168,169,173,.35)}
+.cota-ouro{background:linear-gradient(160deg,rgba(255,216,77,.12),var(--card));border:1px solid rgba(255,216,77,.45)}
+.cota-diamante{background:linear-gradient(160deg,rgba(185,242,255,.1),var(--card));border:1px solid rgba(185,242,255,.35)}
+.cota-nivel{font-family:var(--display);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cota-bronze .cota-nivel{color:var(--bronze)}
+.cota-prata .cota-nivel{color:var(--silver)}
+.cota-ouro .cota-nivel{color:var(--ouro)}
+.cota-diamante .cota-nivel{color:var(--diamante)}
+.cota-preco{font-family:var(--display);font-size:38px;font-weight:900;line-height:1;margin-bottom:4px}
+.cota-bronze .cota-preco{color:var(--bronze)}
+.cota-prata .cota-preco{color:var(--silver)}
+.cota-ouro .cota-preco{color:var(--ouro)}
+.cota-diamante .cota-preco{color:var(--diamante)}
+.cota-periodo{font-size:12px;color:var(--muted);margin-bottom:16px}
+.cota-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.cota-list li{font-size:12px;color:rgba(255,255,255,.7);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.cota-list li::before{content:'✓';font-weight:900;flex-shrink:0;margin-top:1px}
+.cota-bronze .cota-list li::before{color:var(--bronze)}
+.cota-prata .cota-list li::before{color:var(--silver)}
+.cota-ouro .cota-list li::before{color:var(--ouro)}
+.cota-diamante .cota-list li::before{color:var(--diamante)}
+.cota-list li strong{color:rgba(255,255,255,.9)}
+.cota-btn{display:block;text-align:center;margin-top:20px;font-family:var(--display);font-size:15px;font-weight:900;padding:12px 20px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;transition:all .25s}
+.cota-bronze .cota-btn{background:rgba(205,127,50,.15);border:1px solid rgba(205,127,50,.4);color:var(--bronze)}
+.cota-prata .cota-btn{background:rgba(168,169,173,.15);border:1px solid rgba(168,169,173,.4);color:var(--silver)}
+.cota-ouro .cota-btn{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;border:none}
+.cota-diamante .cota-btn{background:rgba(185,242,255,.15);border:1px solid rgba(185,242,255,.4);color:var(--diamante)}
+.cota-btn:hover{transform:translateY(-2px);opacity:.9}
+.cota-destaque{position:absolute;top:14px;right:14px;font-family:var(--display);font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.cota-ouro .cota-destaque{background:var(--gold);color:#000}
+.cta-sec{padding:96px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#080510,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.08) 0%,transparent 60%);pointer-events:none}
 .cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
 .cta-sec h2 span{color:var(--gold)}
-.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,22px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
 .cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
 .btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
 .btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
-
-/* FOOTER */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .foot-logos{display:flex;align-items:center;gap:12px}
 .foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
-.foot-logos .fh{height:26px;filter:drop-shadow(0 0 5px rgba(255,140,0,.3))}
 .foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
 .foot-links{display:flex;gap:18px;flex-wrap:wrap}
 .foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
 .foot-links a:hover{color:var(--gold)}
 .foot-copy{font-size:11px;color:var(--muted2)}
-
-/* FADE UP */
 .fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
 .fu.on{opacity:1;transform:translateY(0)}
-
-/* FAQ */
 .faq-item{border-bottom:1px solid var(--border)}
 .faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-q span{font-family:var(--display);font-size:18px;font-weight:800;text-transform:uppercase;color:var(--text);letter-spacing:.3px}
@@ -160,300 +136,178 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 .faq-a{font-size:14px;color:var(--muted);line-height:1.72;padding-bottom:20px;display:none}
 .faq-item.open .faq-a{display:block}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
-
-/* COTAS */
-.cota-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 20px;position:relative;overflow:hidden;transition:all .3s}
-.cota-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
-.cota-card.destaque{border-color:rgba(255,216,77,.35);background:linear-gradient(160deg,rgba(255,216,77,.06),var(--card))}
-.cota-nivel{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;padding:4px 10px;border-radius:3px;display:inline-block}
-.cota-bronze .cota-nivel{background:rgba(184,115,51,.15);color:#cd7f32;border:1px solid rgba(184,115,51,.3)}
-.cota-prata .cota-nivel{background:rgba(192,192,192,.1);color:#c0c0c0;border:1px solid rgba(192,192,192,.2)}
-.cota-ouro .cota-nivel{background:rgba(255,216,77,.1);color:var(--gold);border:1px solid rgba(255,216,77,.25)}
-.cota-diamante .cota-nivel{background:rgba(100,180,255,.1);color:#64b4ff;border:1px solid rgba(100,180,255,.2)}
-.cota-price{font-family:var(--display);font-size:38px;font-weight:900;color:var(--gold);line-height:1;margin:10px 0 4px}
-.cota-price span{font-size:14px;color:var(--muted);font-weight:600}
-.cota-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:14px}
-.cota-list li{font-size:12px;color:rgba(255,255,255,.65);display:flex;align-items:flex-start;gap:7px;line-height:1.45}
-.cota-list li::before{content:'✓';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:1px;font-size:11px}
-.cota-list li strong{color:rgba(255,255,255,.85)}
-.cota-btn{display:block;text-align:center;margin-top:18px;background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:14px;font-weight:900;padding:11px 20px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;transition:all .25s}
-.cota-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,216,77,.35)}
+@media(max-width:600px){
+  .hero{padding:56px 14px 44px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:10px}
+  .btn-gold,.btn-ghost{font-size:17px;padding:15px 20px;text-align:center;justify-content:center}
+  .hero-logos img{height:72px}
+  nav{padding:0 14px}
+  .nav-cta{padding:8px 14px;font-size:12px}
+  .sec{padding:60px 14px}
+  footer{padding:24px 14px;flex-direction:column;align-items:flex-start}
+  .foot-links{gap:12px}
+  .cta-sec{padding:72px 14px}
+}
+@media(max-width:380px){
+  .hero-title{font-size:clamp(44px,14vw,65px);letter-spacing:-1px}
+  .h-stat-n{font-size:24px}
+  .h-stat-l{font-size:8px}
+}
 </style>
 </head>
 <body>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ti">🏆 Patrocinadores UR · Associe sua marca a quem eleva pessoas, não só atletas</span><span class="ts">|</span>
-    <span class="ti">💎 Cotas Bronze, Prata, Ouro e Diamante · T01 2026</span><span class="ts">|</span>
-    <span class="ti">📣 Visibilidade em eventos, redes sociais e comunidade Hunter BH</span><span class="ts">|</span>
-    <span class="ti">🤝 Vagas limitadas por temporada · Polo 01 Belo Horizonte</span><span class="ts">|</span>
-    <span class="ti">🏆 Patrocinadores UR · Associe sua marca a quem eleva pessoas, não só atletas</span><span class="ts">|</span>
-    <span class="ti">💎 Cotas Bronze, Prata, Ouro e Diamante · T01 2026</span><span class="ts">|</span>
-    <span class="ti">📣 Visibilidade em eventos, redes sociais e comunidade Hunter BH</span><span class="ts">|</span>
-    <span class="ti">🤝 Vagas limitadas por temporada · Polo 01 Belo Horizonte</span><span class="ts">|</span>
+    <span class="ti">🏅 Sua marca associada à liga mais engajada de vôlei de praia de BH · T01 2026</span><span class="ts">|</span>
+    <span class="ti">📣 Cotas Bronze · Prata · Ouro · Diamante — visibilidade em toda a temporada</span><span class="ts">|</span>
+    <span class="ti">🤝 Patrocínio que conecta sua marca a uma comunidade real de atletas competitivos</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01 · Temporada T01 2026</span><span class="ts">|</span>
+    <span class="ti">🏅 Sua marca associada à liga mais engajada de vôlei de praia de BH · T01 2026</span><span class="ts">|</span>
+    <span class="ti">📣 Cotas Bronze · Prata · Ouro · Diamante — visibilidade em toda a temporada</span><span class="ts">|</span>
+    <span class="ti">🤝 Patrocínio que conecta sua marca a uma comunidade real de atletas competitivos</span><span class="ts">|</span>
+    <span class="ti">📍 Belo Horizonte — MG · Polo 01 · Temporada T01 2026</span><span class="ts">|</span>
   </div>
 </div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logos">
     <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
-    <div class="nav-sep"></div>
-    <img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'">
-  </div>
-  <div class="nav-links">
-    <a href="#proposta">Proposta</a>
-    <a href="#cotas">Cotas</a>
-    <a href="#audiencia">Audiência</a>
-    <a href="#faq">FAQ</a>
+    <div style="width:1px;height:28px;background:rgba(255,255,255,.12)"></div>
+    <img src="logo-hunter.png" alt="Hunters" style="height:34px;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))" onerror="this.style.display='none'">
   </div>
   <div class="nav-right">
     <span class="nav-season">T01 · 2026</span>
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="nav-cta">💎 Quero Patrocinar</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="nav-cta">🏅 Ser Patrocinador</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-court"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content fu">
-    <div class="hero-badge">Patrocinadores UR · Temporada T01 2026</div>
+    <div class="hero-badge">Patrocínio Oficial · Temporada T01 2026</div>
     <div class="hero-logos">
       <img src="logo-ur-3d.png" alt="Ultimate Rivals" onerror="this.style.display='none'">
       <div class="hero-logos-divider"></div>
-      <img src="logo-hunter.png" alt="Hunters UR" class="hl-hunter" onerror="this.style.display='none'">
+      <img src="logo-hunter.png" alt="Hunters UR" style="height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))" onerror="this.style.display='none'">
     </div>
     <h1 class="hero-title">
       <div class="t1">SUA MARCA NO</div>
       <div class="t2">QUE IMPORTA</div>
     </h1>
-    <p class="hero-tag">Para Marcas e Empresas · Patrocínio de Comunidade Esportiva</p>
+    <p class="hero-tag">Patrocínio Esportivo · BH · Liga de Vôlei de Praia</p>
     <div class="hero-divider"></div>
-    <p class="hero-bordao">Associe sua marca a quem eleva pessoas, não só atletas.</p>
+    <p class="hero-bordao">Uma comunidade real. Uma temporada inteira. Sua marca no centro.</p>
     <div class="hero-btns">
-      <a href="#cotas" class="btn-gold">💎 Ver cotas de patrocínio</a>
-      <a href="#audiencia" class="btn-ghost">📊 Conhecer a audiência</a>
+      <a href="#cotas" class="btn-gold">🏅 Ver cotas de patrocínio</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-ghost">💬 Falar com a liga</a>
     </div>
     <div class="hero-stats">
-      <div class="h-stat"><div class="h-stat-n">+100</div><div class="h-stat-l">Atletas</div></div>
-      <div class="h-stat"><div class="h-stat-n">4+</div><div class="h-stat-l">Eventos/mês</div></div>
+      <div class="h-stat"><div class="h-stat-n">52×</div><div class="h-stat-l">Eventos/Ano</div></div>
+      <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">Níveis Hunter</div></div>
+      <div class="h-stat"><div class="h-stat-n">T01</div><div class="h-stat-l">Temporada</div></div>
       <div class="h-stat"><div class="h-stat-n">BH</div><div class="h-stat-l">Polo 01</div></div>
-      <div class="h-stat"><div class="h-stat-n">T01</div><div class="h-stat-l">2026</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- POR QUE PATROCINAR -->
-<div id="proposta" class="sec fu">
+<div class="sec fu">
   <div style="text-align:center;margin-bottom:52px">
-    <div class="s-label" style="justify-content:center"><span>Proposta de Valor</span></div>
-    <h2 class="s-title">Por que patrocinar o UR</h2>
-    <p class="s-body" style="margin:0 auto">Não é só visibilidade de logo. É associação com valores reais: evolução, comunidade, superação e disciplina. Com uma audiência que consome, influencia e recomenda.</p>
+    <div class="s-label" style="justify-content:center"><span>Por Que Patrocinar O Ultimate Rivals</span></div>
+    <h2 class="s-title">Patrocínio que vai<br>além do logo na camisa.</h2>
+    <p class="s-body" style="margin:0 auto">O Ultimate Rivals é uma liga ativa — com eventos toda semana, atletas engajados e uma comunidade que acompanha a temporada de perto. Sua marca entra nesse ecossistema e fica visível onde o esporte acontece de verdade.</p>
   </div>
-  <div class="g3">
+  <div class="g2">
     <div class="pilar-card fu">
-      <div class="icon-circle ic-gold">🎯</div>
-      <h3>Audiência Qualificada</h3>
-      <p>Atletas com 20–45 anos, renda ativa, engajados em esporte e comunidade. Uma base que paga mensalidade, frequenta eventos e consome marcas alinhadas com seus valores.</p>
+      <div style="font-size:36px;margin-bottom:14px">🎯</div>
+      <h3>Público Qualificado</h3>
+      <p>Os Hunters UR são atletas entre 18 e 45 anos, ativos, comprometidos com esporte e estilo de vida. Uma audiência que compra, que engaja e que indica. Não é público passivo — é comunidade.</p>
     </div>
     <div class="pilar-card fu">
-      <div class="icon-circle ic-blue">📣</div>
-      <h3>Visibilidade Real</h3>
-      <p>Logo em banners de evento, camisas de patrocinador, redes sociais, canal Hunter no WhatsApp e vídeos dos torneios. Presença onde os atletas estão — não só no feed.</p>
+      <div style="font-size:36px;margin-bottom:14px">📅</div>
+      <h3>Visibilidade por Toda a Temporada</h3>
+      <p>Sua marca não aparece num evento isolado. Aparece em cada UR Play semanal, cada Mini Torneio, cada etapa do UR Series e nos materiais de comunicação da liga ao longo de toda a T01 2026.</p>
     </div>
     <div class="pilar-card fu">
-      <div class="icon-circle ic-fire">🤝</div>
-      <h3>Associação de Valores</h3>
-      <p>O UR não é só competição — é evolução de pessoas. Sua marca fica associada a um ecossistema que transforma atletas amadores em competidores reais. Isso tem valor de marca que não se compra em mídia paga.</p>
+      <div style="font-size:36px;margin-bottom:14px">📣</div>
+      <h3>Presença no Ambiente Competitivo</h3>
+      <p>Quadra, comunicações digitais, camisetas, premiações, ranking — sua marca está onde o esporte acontece. Não em anúncio. No campo de batalha, junto com os atletas.</p>
+    </div>
+    <div class="pilar-card fu">
+      <div style="font-size:36px;margin-bottom:14px">🤝</div>
+      <h3>Associação com Liga em Crescimento</h3>
+      <p>A T01 é o começo. Patrocinadores que entram agora constroem uma relação com O Ultimate Rivals desde a fundação — com visibilidade histórica e posicionamento privilegiado nas temporadas seguintes.</p>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- AUDIÊNCIA -->
-<div id="audiencia" class="sec-alt fu">
+<div id="cotas" class="sec-alt fu">
   <div class="sec">
-    <div style="margin-bottom:48px">
-      <div class="s-label">Audiência Hunter</div>
-      <h2 class="s-title">Quem você vai alcançar</h2>
-      <p class="s-body">Uma comunidade que cresce a cada temporada e que confia nas marcas que apoiam seu desenvolvimento.</p>
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="s-label" style="justify-content:center"><span>Cotas de Patrocínio T01 2026</span></div>
+      <h2 class="s-title">Quatro níveis.<br>Uma temporada inteira.</h2>
+      <p class="s-body" style="margin:0 auto">Escolha o nível de presença da sua marca no ecossistema. Todos os patrocinadores aparecem em eventos ao vivo, comunicação digital e materiais da liga.</p>
     </div>
-    <div class="g3">
-      <div class="pilar-card fu">
-        <div style="font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px">100+</div>
-        <h3>Atletas Ativos</h3>
-        <p>Base de atletas inscritos na T01 2026 em crescimento. Cada um com nome, nível e histórico de participação no ecossistema.</p>
+    <div class="g4">
+      <div class="cota-card cota-bronze fu">
+        <div class="cota-nivel">🥉 Bronze</div>
+        <div class="cota-preco">R$1.500</div>
+        <div class="cota-periodo">por temporada · T01 2026</div>
+        <ul class="cota-list">
+          <li>Logo nos materiais digitais da liga</li>
+          <li>Menção nos comunicados da temporada</li>
+          <li>Presença na comunicação dos eventos</li>
+          <li>Acesso à base de atletas Hunter</li>
+        </ul>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Quero o Bronze</a>
       </div>
-      <div class="pilar-card fu">
-        <div style="font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px">4–6</div>
-        <h3>Eventos por Mês</h3>
-        <p>UR Play semanal, Mini Torneio e UR Series mensais. Sua marca presente em todos os pontos de contato com os atletas.</p>
+      <div class="cota-card cota-prata fu">
+        <div class="cota-nivel">🥈 Prata</div>
+        <div class="cota-preco">R$3.000</div>
+        <div class="cota-periodo">por temporada · T01 2026</div>
+        <ul class="cota-list">
+          <li>Tudo do Bronze +</li>
+          <li><strong>Logo na arena</strong> nos dias de evento</li>
+          <li>Menção nos materiais dos atletas</li>
+          <li>Presença em Mini Torneios mensais</li>
+          <li>Post de apresentação do patrocinador</li>
+        </ul>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Quero o Prata</a>
       </div>
-      <div class="pilar-card fu">
-        <div style="font-family:var(--display);font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px">20–45</div>
-        <h3>Faixa Etária</h3>
-        <p>Adultos com renda ativa, decisores de compra, engajados com esporte, saúde e estilo de vida. Alto potencial de conversão para marcas alinhadas.</p>
+      <div class="cota-card cota-ouro fu">
+        <div class="cota-nivel">🥇 Ouro</div>
+        <div class="cota-destaque">Mais escolhido</div>
+        <div class="cota-preco">R$6.000</div>
+        <div class="cota-periodo">por temporada · T01 2026</div>
+        <ul class="cota-list">
+          <li>Tudo do Prata +</li>
+          <li><strong>Naming rights</strong> em 1 evento da temporada</li>
+          <li>Exposição no UR Series mensal</li>
+          <li>Ação de ativação com os atletas</li>
+          <li>Relatório de exposição por evento</li>
+          <li>Presença na Virada de Ranking</li>
+        </ul>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Quero o Ouro</a>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- O QUE O ECOSSISTEMA REPRESENTA -->
-<div class="sec fu" style="padding-top:0;padding-bottom:0">
-  <div class="hunters-wrap">
-    <div class="hunters-lightning">
-      <svg width="120" height="200" viewBox="0 0 120 200" style="top:10px;right:20px;opacity:.12">
-        <defs><linearGradient id="bolt1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffd84d"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
-        <path d="M70 0 L40 80 L65 80 L30 200 L80 90 L55 90 L90 0Z" fill="url(#bolt1)"/>
-      </svg>
-      <svg width="60" height="120" viewBox="0 0 60 120" style="top:60px;right:180px;opacity:.07">
-        <path d="M35 0 L20 45 L33 45 L15 120 L42 50 L28 50 L45 0Z" fill="#ffd84d"/>
-      </svg>
-      <svg width="160" height="140" viewBox="0 0 160 140" style="top:-10px;right:-10px;opacity:.13">
-        <path d="M160 0 Q120 30 90 60" stroke="#ffd84d" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M160 15 Q118 42 85 72" stroke="#ffd84d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M160 30 Q115 55 80 85" stroke="#ffd84d" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="hunters-inner">
-      <div class="hunters-left">
-        <div class="h-pill">💎 Patrocinadores UR · Marcas que elevam</div>
-        <h2 class="hunters-title">Sua marca onde<br><span>o esforço acontece.</span></h2>
-        <p class="hunters-bordao">⚡ Não é só patrocínio — é pertencimento</p>
-        <p class="hunters-desc">Patrocinadores UR fazem parte do ecossistema, não são apenas anunciantes. A comunidade Hunter reconhece, respeita e recomenda as marcas que investem no desenvolvimento real dos atletas.</p>
-        <div class="traits">
-          <div class="trait"><div class="trait-i">🏅</div><div><strong>Naming rights de eventos</strong> — seu nome no Mini Torneio ou UR Series (cotas Ouro/Diamante)</div></div>
-          <div class="trait"><div class="trait-i">📱</div><div><strong>Conteúdo orgânico</strong> — sua marca aparece nos vídeos e fotos dos eventos nas redes sociais</div></div>
-          <div class="trait"><div class="trait-i">🎁</div><div><strong>Ativação em eventos</strong> — espaço para distribuição de produtos e experiências para os atletas</div></div>
-          <div class="trait"><div class="trait-i">📊</div><div><strong>Relatório de temporada</strong> — dados de alcance, presença e engajamento ao final da T01</div></div>
-        </div>
-      </div>
-      <div class="hunters-right">
-        <img src="logo-ur-3d.png" alt="Ultimate Rivals" class="hunter-logo" onerror="this.outerHTML='<div style=\'font-size:100px\'>💎</div>'">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider" style="margin-top:84px"></div>
-
-<!-- COTAS DE PATROCÍNIO -->
-<div id="cotas" class="sec fu">
-  <div style="text-align:center;margin-bottom:52px">
-    <div class="s-label" style="justify-content:center"><span>Cotas T01 2026</span></div>
-    <h2 class="s-title">Cotas de Patrocínio</h2>
-    <p class="s-body" style="margin:0 auto">Quatro níveis de parceria para diferentes objetivos de marca. Vagas limitadas por temporada para garantir exclusividade.</p>
-  </div>
-  <div class="g4">
-    <div class="cota-card cota-bronze fu">
-      <div class="cota-nivel">🥉 Bronze</div>
-      <div class="cota-price">R$1.500<span>/mês</span></div>
-      <ul class="cota-list">
-        <li><strong>Logo em banners</strong> dos eventos UR Play</li>
-        <li>Menção nas comunicações da comunidade Hunter</li>
-        <li>1 post de apresentação nas redes UR</li>
-        <li>Certificado de patrocinador T01</li>
-      </ul>
-      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Falar sobre Bronze</a>
-    </div>
-    <div class="cota-card cota-prata fu">
-      <div class="cota-nivel">🥈 Prata</div>
-      <div class="cota-price">R$3.000<span>/mês</span></div>
-      <ul class="cota-list">
-        <li>Tudo do Bronze</li>
-        <li><strong>Logo em banners</strong> do Mini Torneio mensal</li>
-        <li>2 posts mensais nas redes UR</li>
-        <li>Espaço para <strong>ativação</strong> nos eventos (mesa/banner)</li>
-        <li>Menção nos stories dos eventos</li>
-      </ul>
-      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Falar sobre Prata</a>
-    </div>
-    <div class="cota-card cota-ouro destaque fu">
-      <div class="cota-nivel">🥇 Ouro</div>
-      <div class="cota-price">R$6.000<span>/mês</span></div>
-      <ul class="cota-list">
-        <li>Tudo do Prata</li>
-        <li><strong>Naming rights</strong> do Mini Torneio mensal</li>
-        <li>Logo nas camisas de árbitros e staff</li>
-        <li>4 posts mensais + reels dos eventos</li>
-        <li>Ativação garantida em todos os eventos</li>
-        <li><strong>Relatório mensal</strong> de alcance e presença</li>
-      </ul>
-      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Falar sobre Ouro</a>
-    </div>
-    <div class="cota-card cota-diamante fu">
-      <div class="cota-nivel">💎 Diamante</div>
-      <div class="cota-price">R$12.000<span>/mês</span></div>
-      <ul class="cota-list">
-        <li>Tudo do Ouro</li>
-        <li><strong>Naming rights da UR Series</strong> e da Virada de Ranking</li>
-        <li>Logo principal em todos os materiais da temporada</li>
-        <li>Exclusividade de categoria de produto</li>
-        <li>Produção de conteúdo dedicado à marca</li>
-        <li>Acesso a dados de atletas (LGPD compliant)</li>
-        <li><strong>Co-branding</strong> em troféus e premiações</li>
-      </ul>
-      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Falar sobre Diamante</a>
-    </div>
-  </div>
-  <div style="margin-top:32px;padding:20px;background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.18);border-radius:10px;text-align:center" class="fu">
-    <p style="font-size:13px;color:var(--muted);line-height:1.7">Cotas são negociadas por temporada completa (T01: Jan–Dez 2026). Cotas anuais têm desconto especial. Vagas limitadas para garantir exclusividade de categoria. Para proposta personalizada, entre em contato diretamente.</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- FAQ -->
-<div id="faq" class="sec-alt fu">
-  <div class="sec">
-    <div style="margin-bottom:48px">
-      <div class="s-label">Dúvidas Frequentes</div>
-      <h2 class="s-title">FAQ Patrocinadores</h2>
-      <p class="s-body">O que marcas e empresas precisam saber antes de patrocinar o UR.</p>
-    </div>
-    <div>
-      <div class="faq-item fu">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Quantas marcas podem patrocinar ao mesmo tempo?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <p class="faq-a">As vagas são limitadas por cota e por categoria de produto para garantir exclusividade. Cota Diamante tem 1 vaga exclusiva por temporada. Cota Ouro tem até 2 vagas. Cotas Prata e Bronze têm até 4 vagas cada. Dentro de cada cota, duas marcas da mesma categoria não coexistem — se você é uma academia, não haverá outra academia no mesmo nível de cota.</p>
-      </div>
-      <div class="faq-item fu">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Como funciona a ativação nos eventos?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <p class="faq-a">A partir da cota Prata, a marca tem espaço reservado nos eventos para mesa de ativação, distribuição de amostras, produtos ou experiências. A ativação é presencial — um representante da marca pode estar no evento para interagir diretamente com os atletas. O UR coordina a logística do espaço e confirma presença via calendário com antecedência de 15 dias.</p>
-      </div>
-      <div class="faq-item fu">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>O que são naming rights de evento?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <p class="faq-a">Naming rights significa que o evento leva o nome da sua marca. Por exemplo: "Mini Torneio [Sua Marca] — Ultimate Rivals T01" ou "UR Series by [Sua Marca]". O nome aparece em todos os materiais do evento: banners, comunicações, redes sociais e transmissões. É o nível mais alto de associação entre marca e evento — disponível nas cotas Ouro (Mini Torneio) e Diamante (UR Series e Virada de Ranking).</p>
-      </div>
-      <div class="faq-item fu">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Que tipo de empresas fazem sentido como patrocinadores?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <p class="faq-a">Marcas que atendem o público de atletas amadores adultos em BH: academias, nutrição esportiva, suplementos, fisioterapia, equipamentos esportivos, apparel, bebidas funcionais, saúde e bem-estar, serviços financeiros, tecnologia e educação. A audiência UR tem perfil de consumo ativo e aprecia marcas que se identificam com o estilo de vida esportivo. Marcas fora desse universo podem patrocinar se tiverem fit cultural com os valores da liga.</p>
-      </div>
-      <div class="faq-item fu">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Existe opção de patrocínio pontual (evento único)?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <p class="faq-a">Sim. Além das cotas de temporada, o UR oferece patrocínio pontual de evento — ideal para marcas que querem testar a associação antes de um contrato de temporada. O patrocínio de evento único inclui logo nos materiais daquele evento específico, menção nas comunicações e espaço de ativação. Valores e disponibilidade são negociados diretamente. Entre em contato para proposta.</p>
+      <div class="cota-card cota-diamante fu">
+        <div class="cota-nivel">💎 Diamante</div>
+        <div class="cota-preco">R$12.000</div>
+        <div class="cota-periodo">por temporada · T01 2026</div>
+        <ul class="cota-list">
+          <li>Tudo do Ouro +</li>
+          <li><strong>Patrocinador master</strong> da temporada T01</li>
+          <li><strong>Naming rights</strong> da Virada de Ranking</li>
+          <li>Marca na identidade visual da liga</li>
+          <li>Ativações exclusivas em todos os eventos</li>
+          <li>Reunião de planejamento com a diretoria</li>
+        </ul>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cota-btn">Quero o Diamante</a>
       </div>
     </div>
   </div>
@@ -461,49 +315,75 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 
 <div class="divider"></div>
 
-<!-- CTA FINAL -->
+<div id="faq" class="sec fu">
+  <div style="margin-bottom:48px">
+    <div class="s-label">Perguntas Frequentes</div>
+    <h2 class="s-title">Sobre o patrocínio.</h2>
+  </div>
+  <div>
+    <div class="faq-item fu">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Qual é o tamanho da audiência do Ultimate Rivals?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <p class="faq-a">A Temporada T01 2026 é o início do ecossistema em BH. A audiência inclui os atletas inscritos na liga, seus círculos sociais e o alcance digital da comunidade Hunter. Números exatos de inscrições e eventos são compartilhados durante a negociação comercial.</p>
+    </div>
+    <div class="faq-item fu">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>É possível personalizar uma cota?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <p class="faq-a">Sim. As cotas são o ponto de partida. Se sua marca tem necessidades específicas — um evento focal, um formato de ativação diferente ou uma combinação de benefícios — podemos montar uma proposta personalizada. Entre em contato pelo WhatsApp.</p>
+    </div>
+    <div class="faq-item fu">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Como funciona o contrato de patrocínio?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <p class="faq-a">O patrocínio é formalizado com um contrato de prestação de serviços cobrindo a Temporada T01 2026 (duração definida no documento). O contrato descreve os entregáveis por cota, o calendário de exposição e as responsabilidades de ambas as partes.</p>
+    </div>
+    <div class="faq-item fu">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span>Como começo a conversa?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <p class="faq-a">Entre em contato pelo WhatsApp da liga. A conversa inicial é direta: você conta sobre sua marca, seus objetivos e a gente apresenta a proposta mais alinhada. Sem processo longo — a T01 começa em breve e as cotas são limitadas.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
 <div class="cta-sec fu">
   <div class="cta-glow"></div>
-  <p class="bordao">"Associe sua marca a quem eleva pessoas."</p>
-  <h2>Sua marca<br><span>no que importa</span></h2>
-  <p>Cotas Bronze a Diamante. Visibilidade real com uma comunidade que cresce. Vagas limitadas na T01 2026.</p>
+  <p class="bordao">"Uma comunidade real. Uma temporada inteira. Sua marca no centro."</p>
+  <h2>As cotas são<br><span>limitadas</span></h2>
+  <p>A Temporada T01 2026 começa em breve. Patrocinadores que entram agora têm visibilidade desde o primeiro evento — e posição privilegiada para as temporadas seguintes.</p>
   <div class="cta-btns">
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-gold" style="font-size:20px;padding:18px 48px">💎 Quero Patrocinar o UR</a>
-    <a href="mailto:contato@ultimaterivals.com.br" class="btn-wpp">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      Enviar Proposta
+    <a href="#cotas" class="btn-gold" style="font-size:19px;padding:17px 42px">🏅 Ver cotas disponíveis</a>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
     </a>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-logos">
     <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
-    <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
     <span>ULTIMATE RIVALS</span>
   </div>
   <div class="foot-links">
     <a href="UR_Landing_Page.html">Home</a>
-    <a href="UR_LP_Parceiros.html">Parceiros</a>
-    <a href="UR_LP_Iniciante.html">Para Atletas</a>
+    <a href="UR_LP_Parceiros.html">Parceiros de Arena</a>
+    <a href="UR_Temporada_T01_2026.html">Temporada T01</a>
     <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
   </div>
   <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
 </footer>
 
 <script>
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('on');
-      e.target.querySelectorAll('.pilar-card,.step,.eco-card,.journey-item,.faq-item,.plan-card,.cota-card').forEach((el,i)=>{
-        el.style.transitionDelay=(i*.1)+'s';
-        el.classList.add('on');
-      });
-    }
-  });
-},{threshold:.1});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');e.target.querySelectorAll('.pilar-card,.cota-card,.faq-item').forEach((el,i)=>{el.style.transitionDelay=(i*.1)+'s';el.classList.add('on');});}});},{threshold:.1});
 document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 </script>
 </body>
