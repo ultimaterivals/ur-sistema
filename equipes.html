@@ -92,33 +92,55 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 .team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media(max-width:700px){.team-grid{grid-template-columns:1fr}}
 
-/* TEAM CARD */
-.team-card{border-radius:16px;overflow:hidden;position:relative;transition:all .35s;cursor:default;border:1px solid rgba(255,255,255,.07)}
-.team-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.5)}
-.team-card-inner{padding:28px;position:relative;z-index:1}
-.team-bg{position:absolute;inset:0;z-index:0;opacity:.9}
+/* TEAM CARD — v10 style with --team CSS variable */
+.team-card{
+  position:relative;min-height:200px;border-radius:18px;
+  border:1px solid rgba(255,255,255,.1);background:#0d0e13;
+  overflow:hidden;transition:all .35s;cursor:default;
+  box-shadow:0 14px 40px rgba(0,0,0,.35);
+}
+.team-card:hover{transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.52);border-color:rgba(255,255,255,.18)}
 
-/* team color variants */
-.tc-azul-branco .team-bg{background:linear-gradient(135deg,#0d1b3e 0%,#1a3460 50%,#0d1b3e 100%)}
-.tc-verde-preto .team-bg{background:linear-gradient(135deg,#052210 0%,#0d3a1a 50%,#020c06 100%)}
-.tc-vermelho-dourado .team-bg{background:linear-gradient(135deg,#2a0606 0%,#3d0a0a 50%,#1a0303 100%)}
-.tc-roxo-prata .team-bg{background:linear-gradient(135deg,#160a2e 0%,#2a1050 50%,#0e0620 100%)}
-.tc-laranja-preto .team-bg{background:linear-gradient(135deg,#1a0c00 0%,#2e1400 50%,#0f0800 100%)}
-.tc-azul-amarelo .team-bg{background:linear-gradient(135deg,#050e2e 0%,#0a1a50 50%,#03091e 100%)}
-.tc-verde-dourado .team-bg{background:linear-gradient(135deg,#0a1208 0%,#162010 50%,#060d04 100%)}
-.tc-branco-preto .team-bg{background:linear-gradient(135deg,#1a1a1a 0%,#282828 50%,#111 100%)}
-.tc-vermelho-branco .team-bg{background:linear-gradient(135deg,#2a0606 0%,#3d0000 50%,#1a0000 100%)}
-.tc-cinza-dourado .team-bg{background:linear-gradient(135deg,#161616 0%,#222222 50%,#0e0e0e 100%)}
-.tc-azul-claro .team-bg{background:linear-gradient(135deg,#0a1e3a 0%,#0e2a52 50%,#061524 100%)}
-.tc-preto-dourado .team-bg{background:linear-gradient(135deg,#0a0800 0%,#120e00 50%,#050400 100%)}
+/* Diagonal color slab using --team variable */
+.team-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(circle at 28% 30%, rgba(255,255,255,.06), transparent 35%),
+    linear-gradient(112deg, var(--team,#1a1a2a) 0%, var(--team,#1a1a2a) 24%, #13141a 24%, #13141a 74%, #09090d 74%);
+}
 
-/* shine overlay */
-.team-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 50%);z-index:1;pointer-events:none;border-radius:16px}
+/* Diagonal gold slash at bottom-right */
+.team-card::after{
+  content:'';position:absolute;
+  right:-44px;bottom:0;width:0;height:0;z-index:1;
+  border-style:solid;
+  border-width:0 0 90px 120px;
+  border-color:transparent transparent rgba(255,216,77,.55) transparent;
+  opacity:.7;
+}
 
-.team-logo-area{width:72px;height:72px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-family:var(--display);font-size:22px;font-weight:900;border:2px solid rgba(255,255,255,.18);position:relative;z-index:2;flex-shrink:0;letter-spacing:-1px}
-.team-name{font-family:var(--display);font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;color:#fff;margin-bottom:6px;position:relative;z-index:2;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.team-meta{font-size:12px;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:14px;position:relative;z-index:2}
-.team-badges{display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:2}
+/* Shine overlay */
+.team-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.05) 0%,transparent 45%);z-index:1;pointer-events:none;border-radius:18px}
+
+.team-card-inner{padding:24px 26px;position:relative;z-index:2;display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:center}
+@media(max-width:480px){.team-card-inner{grid-template-columns:1fr}}
+
+.team-logo-area{
+  width:80px;height:80px;border-radius:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:26px;font-weight:900;
+  background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,216,77,.7));
+  color:#060606;letter-spacing:-1px;
+  transform:perspective(500px) rotateY(-10deg);
+  box-shadow:0 12px 28px rgba(0,0,0,.4),inset 0 0 0 3px rgba(0,0,0,.14);
+  flex-shrink:0;
+}
+@media(max-width:480px){.team-logo-area{transform:none;width:64px;height:64px;font-size:20px;border-radius:14px}}
+
+.team-info{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.team-name{font-family:var(--display);font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:.2px;color:#fff;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.team-meta{font-size:12px;color:rgba(255,255,255,.45);font-weight:600;margin-bottom:12px}
+.team-badges{display:flex;gap:7px;flex-wrap:wrap}
 .badge{display:inline-flex;align-items:center;font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 11px;border-radius:4px}
 .badge-mod-d{background:rgba(100,180,255,.12);border:1px solid rgba(100,180,255,.25);color:#7eb8ff}
 .badge-mod-q{background:rgba(160,100,255,.12);border:1px solid rgba(160,100,255,.25);color:#b890ff}
@@ -233,15 +255,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
   <div class="team-grid" id="teamGrid">
 
     <!-- 1 Arena BH FC -->
-    <div class="team-card tc-azul-branco fu" data-nivel="N4">
+    <div class="team-card fu" data-nivel="N4" style="--team:#1a3469">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(30,80,180,.25);border-color:rgba(100,150,255,.3);color:#7eadff">BH</div>
-        <div class="team-name">Arena BH FC</div>
-        <div class="team-meta">Presidente: Marcus Viana · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n4">N4</span>
+        <div class="team-logo-area">BH</div>
+        <div class="team-info">
+          <div class="team-name">Arena BH FC</div>
+          <div class="team-meta">Presidente: Marcus Viana · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n4">N4</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -256,15 +280,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 2 Volta Atlético -->
-    <div class="team-card tc-verde-preto fu" data-nivel="N3">
+    <div class="team-card fu" data-nivel="N3" style="--team:#0d3a1a">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(20,80,40,.3);border-color:rgba(60,180,80,.3);color:#5de083">VA</div>
-        <div class="team-name">Volta Atlético</div>
-        <div class="team-meta">Presidente: Renata Souza · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n3">N3</span>
+        <div class="team-logo-area">VA</div>
+        <div class="team-info">
+          <div class="team-name">Volta Atlético</div>
+          <div class="team-meta">Presidente: Renata Souza · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n3">N3</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -279,15 +305,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 3 Belo Force -->
-    <div class="team-card tc-vermelho-dourado fu" data-nivel="N5">
+    <div class="team-card fu" data-nivel="N5" style="--team:#3d0a0a">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(120,20,20,.3);border-color:rgba(220,60,60,.3);color:var(--gold)">BF</div>
-        <div class="team-name">Belo Force</div>
-        <div class="team-meta">Presidente: Diego Almeida · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n5">N5</span>
+        <div class="team-logo-area">BF</div>
+        <div class="team-info">
+          <div class="team-name">Belo Force</div>
+          <div class="team-meta">Presidente: Diego Almeida · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n5">N5</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -302,15 +330,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 4 Savassi United -->
-    <div class="team-card tc-roxo-prata fu" data-nivel="N4">
+    <div class="team-card fu" data-nivel="N4" style="--team:#2a1050">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(80,20,150,.3);border-color:rgba(160,80,240,.3);color:#c090ff">SU</div>
-        <div class="team-name">Savassi United</div>
-        <div class="team-meta">Presidente: Camila Torres · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n4">N4</span>
+        <div class="team-logo-area">SU</div>
+        <div class="team-info">
+          <div class="team-name">Savassi United</div>
+          <div class="team-meta">Presidente: Camila Torres · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n4">N4</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -325,15 +355,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 5 Mangabeiras SC -->
-    <div class="team-card tc-laranja-preto fu" data-nivel="N3">
+    <div class="team-card fu" data-nivel="N3" style="--team:#2e1400">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(120,50,0,.3);border-color:rgba(255,130,30,.3);color:#ff9040">MS</div>
-        <div class="team-name">Mangabeiras SC</div>
-        <div class="team-meta">Presidente: Fernando Lima · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n3">N3</span>
+        <div class="team-logo-area">MS</div>
+        <div class="team-info">
+          <div class="team-name">Mangabeiras SC</div>
+          <div class="team-meta">Presidente: Fernando Lima · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n3">N3</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -348,15 +380,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 6 Contagem FC -->
-    <div class="team-card tc-azul-amarelo fu" data-nivel="N5">
+    <div class="team-card fu" data-nivel="N5" style="--team:#0a1a50">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(10,30,100,.3);border-color:rgba(40,80,200,.3);color:#ffda3a">CF</div>
-        <div class="team-name">Contagem FC</div>
-        <div class="team-meta">Presidente: Patricia Rocha · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n5">N5</span>
+        <div class="team-logo-area">CF</div>
+        <div class="team-info">
+          <div class="team-name">Contagem FC</div>
+          <div class="team-meta">Presidente: Patricia Rocha · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n5">N5</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -371,15 +405,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 7 Pampulha Warriors -->
-    <div class="team-card tc-verde-dourado fu" data-nivel="N4">
+    <div class="team-card fu" data-nivel="N4" style="--team:#162010">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(30,50,20,.3);border-color:rgba(100,140,60,.3);color:var(--gold)">PW</div>
-        <div class="team-name">Pampulha Warriors</div>
-        <div class="team-meta">Presidente: Tiago Mendes · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n4">N4</span>
+        <div class="team-logo-area">PW</div>
+        <div class="team-info">
+          <div class="team-name">Pampulha Warriors</div>
+          <div class="team-meta">Presidente: Tiago Mendes · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n4">N4</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -394,15 +430,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 8 Centro Athletic -->
-    <div class="team-card tc-branco-preto fu" data-nivel="N3">
+    <div class="team-card fu" data-nivel="N3" style="--team:#222222">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(60,60,60,.3);border-color:rgba(200,200,200,.25);color:#ddd">CA</div>
-        <div class="team-name">Centro Athletic</div>
-        <div class="team-meta">Presidente: Ana Beatriz · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n3">N3</span>
+        <div class="team-logo-area">CA</div>
+        <div class="team-info">
+          <div class="team-name">Centro Athletic</div>
+          <div class="team-meta">Presidente: Ana Beatriz · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n3">N3</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -417,15 +455,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 9 Liberdade BC -->
-    <div class="team-card tc-vermelho-branco fu" data-nivel="N5">
+    <div class="team-card fu" data-nivel="N5" style="--team:#3d0000">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(120,0,0,.3);border-color:rgba(255,60,60,.3);color:#ff8080">LB</div>
-        <div class="team-name">Liberdade BC</div>
-        <div class="team-meta">Presidente: Rodrigo Pinto · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n5">N5</span>
+        <div class="team-logo-area">LB</div>
+        <div class="team-info">
+          <div class="team-name">Liberdade BC</div>
+          <div class="team-meta">Presidente: Rodrigo Pinto · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n5">N5</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -440,15 +480,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 10 Barreiro Rude -->
-    <div class="team-card tc-cinza-dourado fu" data-nivel="N4">
+    <div class="team-card fu" data-nivel="N4" style="--team:#1e1e1e">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(50,50,50,.3);border-color:rgba(255,216,77,.28);color:var(--gold)">BR</div>
-        <div class="team-name">Barreiro Rude</div>
-        <div class="team-meta">Presidente: Lucas Ferreira · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n4">N4</span>
+        <div class="team-logo-area">BR</div>
+        <div class="team-info">
+          <div class="team-name">Barreiro Rude</div>
+          <div class="team-meta">Presidente: Lucas Ferreira · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n4">N4</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -463,15 +505,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 11 Norte SC -->
-    <div class="team-card tc-azul-claro fu" data-nivel="N3">
+    <div class="team-card fu" data-nivel="N3" style="--team:#0e2a52">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(10,60,140,.3);border-color:rgba(80,160,255,.3);color:#80c4ff">NS</div>
-        <div class="team-name">Norte SC</div>
-        <div class="team-meta">Presidente: Isabela Carvalho · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-d">Duplas</span>
-          <span class="badge badge-n3">N3</span>
+        <div class="team-logo-area">NS</div>
+        <div class="team-info">
+          <div class="team-name">Norte SC</div>
+          <div class="team-meta">Presidente: Isabela Carvalho · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-d">Duplas</span>
+            <span class="badge badge-n3">N3</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">
@@ -486,15 +530,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
     </div>
 
     <!-- 12 Elite Vôlei BH -->
-    <div class="team-card tc-preto-dourado fu" data-nivel="N5" style="border-color:rgba(255,216,77,.14)">
+    <div class="team-card fu" data-nivel="N5" style="--team:#120e00;border-color:rgba(255,216,77,.18)">
       <div class="team-bg"></div>
       <div class="team-card-inner">
-        <div class="team-logo-area" style="background:rgba(255,216,77,.1);border-color:rgba(255,216,77,.35);color:var(--gold)">EV</div>
-        <div class="team-name">Elite Vôlei BH</div>
-        <div class="team-meta">Presidente: Gabriel Nunes · Polo 01 · BH</div>
-        <div class="team-badges">
-          <span class="badge badge-mod-q">Quartetos</span>
-          <span class="badge badge-n5">N5</span>
+        <div class="team-logo-area">EV</div>
+        <div class="team-info">
+          <div class="team-name">Elite Vôlei BH</div>
+          <div class="team-meta">Presidente: Gabriel Nunes · Polo 01 · BH</div>
+          <div class="team-badges">
+            <span class="badge badge-mod-q">Quartetos</span>
+            <span class="badge badge-n5">N5</span>
+          </div>
         </div>
       </div>
       <div class="team-hover">

@@ -10,7 +10,7 @@
 <meta property="og:description" content="Você não assiste. Você joga. Liga de vôlei de praia em BH. T01 2026.">
 <meta property="og:image" content="logo-ur-3d.png">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -67,8 +67,23 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 /* ── HERO ── */
 .hero{
   min-height:100vh;position:relative;overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:100px 20px 80px;
+  display:flex;align-items:center;
+  padding:80px 28px;
+}
+.hero-grid{
+  position:relative;z-index:2;
+  width:100%;max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 440px;
+  gap:52px;align-items:center;
+}
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-left{text-align:center}
+  .hero-btns{justify-content:center}
+  .hero-season-card{display:none}
+}
+@media(max-width:640px){
+  .hero{padding:72px 20px 60px}
 }
 .hero::before{
   content:'';position:absolute;inset:0;
@@ -87,25 +102,75 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 }
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.3) 0%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.85) 100%)}
 .hero-wm{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(180px,30vw,360px);font-weight:900;color:rgba(255,216,77,.025);pointer-events:none;white-space:nowrap;letter-spacing:-10px;user-select:none}
-.hero-content{position:relative;z-index:2;max-width:860px}
 .hero-eyebrow{font-family:var(--display);font-size:13px;font-weight:700;color:rgba(255,216,77,.7);letter-spacing:3px;text-transform:uppercase;margin-bottom:28px}
-.hero-h1{display:flex;flex-direction:column;align-items:center;margin-bottom:28px}
-.h1-line{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.88;display:block}
-.h1-l1{font-size:clamp(52px,10vw,110px);color:rgba(255,255,255,.9);letter-spacing:-1px}
-.h1-l2{font-size:clamp(82px,15vw,180px);color:var(--gold);text-shadow:0 0 80px rgba(255,216,77,.4);letter-spacing:-3px}
-.h1-l3{font-size:clamp(52px,10vw,110px);color:#fff;letter-spacing:-1px}
-.hero-sub{max-width:560px;font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:36px}
-.btn-primary{background:var(--gold);color:#000;font-family:var(--display);font-size:16px;font-weight:900;letter-spacing:1px;padding:16px 38px;border-radius:8px;text-decoration:none;transition:all .2s;text-transform:uppercase;box-shadow:0 6px 28px rgba(255,216,77,.3);display:inline-block}
+.hero-h1{display:flex;flex-direction:column;margin-bottom:24px}
+.h1-line{font-family:'Anton',var(--display);font-weight:900;text-transform:uppercase;line-height:.9;display:block}
+.h1-l1{font-size:clamp(52px,8vw,100px);color:rgba(255,255,255,.9);letter-spacing:-.5px}
+.h1-l2{font-size:clamp(82px,13vw,160px);color:var(--gold);text-shadow:0 0 80px rgba(255,216,77,.4);letter-spacing:-2px}
+.h1-l3{font-size:clamp(52px,8vw,100px);color:#fff;letter-spacing:-.5px}
+.hero-sub{max-width:520px;font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px}
+.btn-primary{background:var(--gold);color:#000;font-family:var(--display);font-size:16px;font-weight:900;letter-spacing:1px;padding:15px 36px;border-radius:6px;text-decoration:none;transition:all .2s;text-transform:uppercase;box-shadow:0 6px 28px rgba(255,216,77,.3);display:inline-flex;align-items:center;gap:8px}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,216,77,.45)}
-.btn-secondary{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:var(--display);font-size:16px;font-weight:800;letter-spacing:1px;padding:16px 32px;border-radius:8px;text-decoration:none;transition:all .2s;text-transform:uppercase;display:inline-block}
+.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:var(--display);font-size:16px;font-weight:800;letter-spacing:1px;padding:15px 30px;border-radius:6px;text-decoration:none;transition:all .2s;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
 .btn-secondary:hover{border-color:rgba(255,216,77,.5);color:var(--gold)}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
-.hero-stats{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;background:rgba(0,0,0,.5);backdrop-filter:blur(12px)}
-.hs{padding:18px 28px;text-align:center}
-.hs-n{display:block;font-family:var(--display);font-size:36px;font-weight:900;color:var(--gold);line-height:1}
-.hs-l{display:block;font-size:10px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
-.hs-div{width:1px;height:50px;background:rgba(255,255,255,.1);flex-shrink:0}
-@media(max-width:640px){.hero-stats{flex-wrap:wrap}.hs-div:nth-child(4){display:none}}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.hero-urgency{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase}
+.hero-urgency strong{color:var(--gold)}
+
+/* ── SEASON CARD ── */
+.hero-season-card{
+  position:relative;border-radius:22px;
+  border:1px solid rgba(255,216,77,.42);
+  background:linear-gradient(160deg,rgba(255,216,77,.18),rgba(10,10,16,.97) 28%,rgba(3,4,6,.98));
+  box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 0 0 1px rgba(255,216,77,.08);
+  overflow:hidden;align-self:center;
+}
+.hero-season-card::after{content:'T1';position:absolute;right:-6px;bottom:6px;font-family:'Anton',var(--display);font-size:60px;letter-spacing:.04em;color:rgba(255,216,77,.05);line-height:1;pointer-events:none}
+.hsc-top{padding:18px 22px 14px;border-bottom:1px solid rgba(255,216,77,.14);background:linear-gradient(90deg,rgba(255,216,77,.13),rgba(255,255,255,.03))}
+.hsc-label{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:3px}
+.hsc-title{font-family:'Anton',var(--display);font-size:32px;letter-spacing:.04em;line-height:1;color:#fff;margin-bottom:3px}
+.hsc-sub{font-size:12px;color:var(--muted)}
+.hsc-flow{padding:4px 22px}
+.hsc-step{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:13px 0;border-top:1px solid rgba(255,255,255,.07)}
+.hsc-step:first-child{border-top:none}
+.hsc-n{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.28);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;font-weight:900;color:var(--gold);flex-shrink:0}
+.hsc-step>div strong{display:block;font-family:var(--display);font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:#fff;line-height:1.1}
+.hsc-step>div span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.hsc-state{font-family:var(--display);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(255,216,77,.1);color:var(--gold);border:1px solid rgba(255,216,77,.2);white-space:nowrap;flex-shrink:0}
+.hsc-state.active{background:rgba(255,216,77,.22);border-color:var(--gold)}
+.hsc-bottom{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,216,77,.14)}
+.hsc-mini{padding:12px;text-align:center;background:rgba(0,0,0,.2);border-left:1px solid rgba(255,255,255,.06)}
+.hsc-mini:first-child{border-left:none}
+.hsc-mini strong{display:block;font-family:'Anton',var(--display);font-size:22px;color:var(--gold);line-height:1}
+.hsc-mini span{font-family:var(--display);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── METRICS BAR ── */
+.metrics-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,216,77,.16);border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.metric-item{padding:22px 16px;text-align:center;background:#07080c}
+.metric-item strong{display:block;font-family:'Anton',var(--display);font-size:36px;color:var(--gold);line-height:1}
+.metric-item span{display:block;margin-top:5px;color:var(--muted);font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+@media(max-width:640px){.metrics-bar{grid-template-columns:repeat(2,1fr)}}
+
+/* ── PILLS ── */
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.pill{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,216,77,.22);color:var(--gold);background:rgba(255,216,77,.07)}
+.pill.blue{color:#a8d8ff;border-color:rgba(168,216,255,.28);background:rgba(168,216,255,.07)}
+.pill.green{color:#a7ffc0;border-color:rgba(167,255,192,.28);background:rgba(167,255,192,.07)}
+
+/* ── NUM BADGE ── */
+.num-badge{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.3);font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);margin-bottom:16px;flex-shrink:0}
+
+/* ── ECO FLOW ── */
+.eco-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:start;gap:0;margin-bottom:52px}
+@media(max-width:768px){.eco-flow{grid-template-columns:1fr 1fr;gap:0}.eco-arrow{display:none}}
+@media(max-width:480px){.eco-flow{grid-template-columns:1fr}}
+.eco-flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 14px}
+.eco-flow-icon{width:68px;height:68px;border-radius:50%;border:2px solid rgba(255,216,77,.28);background:rgba(255,216,77,.06);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:14px;transition:all .3s}
+.eco-flow-step:hover .eco-flow-icon{border-color:var(--gold);background:rgba(255,216,77,.12)}
+.eco-flow-n{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:2.5px;color:rgba(255,216,77,.6);text-transform:uppercase;margin-bottom:5px}
+.eco-flow-title{font-family:var(--display);font-size:18px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.eco-flow-body{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65;max-width:175px}
+.eco-arrow{display:flex;align-items:center;justify-content:center;padding-top:26px;color:rgba(255,216,77,.3);font-size:22px;flex-shrink:0}
 
 /* ── SECTION BASE ── */
 .sec{padding:96px 20px;max-width:1100px;margin:0 auto}
@@ -127,6 +192,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 .liga-card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px 24px;transition:all .3s}
 .liga-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
 .liga-card::before{content:attr(data-n);position:absolute;right:12px;top:-8px;font-family:var(--display);font-size:110px;font-weight:900;color:rgba(255,216,77,.04);line-height:1;pointer-events:none}
+.liga-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.65}
 .liga-card-tag{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .liga-card-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
 .liga-card h3{font-family:var(--display);font-size:24px;font-weight:900;text-transform:uppercase;margin-bottom:10px;color:#fff}
@@ -357,29 +423,82 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
   <div class="hero-court"></div>
   <div class="hero-overlay"></div>
   <div class="hero-wm">UR</div>
-  <div class="hero-content fu">
-    <div class="hero-eyebrow">Liga de Vôlei de Praia · Belo Horizonte · Temporada T01 2026</div>
-    <h1 class="hero-h1">
-      <span class="h1-line h1-l1">VOCÊ NÃO</span>
-      <span class="h1-line h1-l2">ASSISTE.</span>
-      <span class="h1-line h1-l3">VOCÊ JOGA.</span>
-    </h1>
-    <p class="hero-sub">Ninguém entra pronto. Todos entram possíveis. Ciclos trimestrais, ranking real, repasses recorrentes. O esporte virou jornada — e a jornada começa quando você aparece.</p>
-    <div class="hero-btns">
-      <a href="/inscricao" class="btn-primary">ENTRAR NA TEMPORADA</a>
-      <a href="/portal" class="btn-secondary">PORTAL DO ATLETA</a>
+  <div class="hero-grid">
+
+    <!-- LEFT: Headline + CTAs -->
+    <div class="hero-left fu">
+      <div class="hero-eyebrow">Liga de Vôlei de Praia · Belo Horizonte · T01 2026</div>
+      <h1 class="hero-h1">
+        <span class="h1-line h1-l1">VOCÊ NÃO</span>
+        <span class="h1-line h1-l2">ASSISTE.</span>
+        <span class="h1-line h1-l3">VOCÊ JOGA.</span>
+      </h1>
+      <p class="hero-sub">Ninguém entra pronto. Todos entram possíveis. Ciclos trimestrais, ranking real, repasses recorrentes. A jornada começa quando você aparece.</p>
+      <div class="hero-btns">
+        <a href="/inscricao" class="btn-primary">⚡ Iniciar minha jornada T01</a>
+        <a href="/portal" class="btn-secondary">Portal do Atleta →</a>
+      </div>
+      <p class="hero-urgency">Pré-Temporada em andamento · <strong>Vagas limitadas</strong> · Nivelamento obrigatório</p>
     </div>
-    <div class="hero-stats">
-      <div class="hs"><span class="hs-n">3</span><span class="hs-l">Meses · Ciclo</span></div>
-      <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">5</span><span class="hs-l">Níveis de Jogo</span></div>
-      <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">R$</span><span class="hs-l">Repasses Recorrentes</span></div>
-      <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">BH</span><span class="hs-l">Capital · MG</span></div>
-    </div>
+
+    <!-- RIGHT: Season card -->
+    <aside class="hero-season-card fu">
+      <div class="hsc-top">
+        <div class="hsc-label">Temporada Trimestral</div>
+        <div class="hsc-title">T01 · 2026</div>
+        <p class="hsc-sub">Belo Horizonte · MG · Ciclo de 90 dias</p>
+      </div>
+      <div class="hsc-flow">
+        <div class="hsc-step">
+          <div class="hsc-n">01</div>
+          <div>
+            <strong>UR Play + Nivelamento</strong>
+            <span>Semanas 1–4 · Início do ciclo</span>
+          </div>
+          <span class="hsc-state active">Em breve</span>
+        </div>
+        <div class="hsc-step">
+          <div class="hsc-n">02</div>
+          <div>
+            <strong>Torneios Mensais</strong>
+            <span>Semanas 5–8 · Ranking em jogo</span>
+          </div>
+          <span class="hsc-state">—</span>
+        </div>
+        <div class="hsc-step">
+          <div class="hsc-n">03</div>
+          <div>
+            <strong>Fase de Grupos</strong>
+            <span>Semanas 9–11 · Classificatórias</span>
+          </div>
+          <span class="hsc-state">—</span>
+        </div>
+        <div class="hsc-step">
+          <div class="hsc-n">04</div>
+          <div>
+            <strong>Virada do Ranking</strong>
+            <span>Semana 12 · Repasses + Evento Final</span>
+          </div>
+          <span class="hsc-state">—</span>
+        </div>
+      </div>
+      <div class="hsc-bottom">
+        <div class="hsc-mini"><strong>90</strong><span>Dias/Ciclo</span></div>
+        <div class="hsc-mini"><strong>5</strong><span>Níveis</span></div>
+        <div class="hsc-mini"><strong>R$</strong><span>Repasses</span></div>
+      </div>
+    </aside>
+
   </div>
 </section>
+
+<!-- METRICS BAR -->
+<div class="metrics-bar">
+  <div class="metric-item"><strong>90</strong><span>Dias por Ciclo</span></div>
+  <div class="metric-item"><strong>5</strong><span>Níveis de Jogo</span></div>
+  <div class="metric-item"><strong>10pts</strong><span>= 1 UR Coin</span></div>
+  <div class="metric-item"><strong>360°</strong><span>Atleta + Equipe + Mídia</span></div>
+</div>
 
 <div class="divider"></div>
 
@@ -407,16 +526,19 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
       <div class="liga-card-tag">A Jornada</div>
       <h3>A JORNADA</h3>
       <p>O esporte deixou de ser um momento. Passou a ser uma jornada. O Ultimate Rivals não é pelada de sábado — é uma liga estruturada com calendário, regulamento, ranking e ciclos trimestrais que definem quem ficou na história.</p>
+      <div class="pill-row"><span class="pill">Trimestral</span><span class="pill">Ranking Real</span></div>
     </div>
     <div class="liga-card fu" data-n="02">
       <div class="liga-card-tag">O Sistema</div>
       <h3>O SISTEMA</h3>
       <p>Cada atleta tem um perfil, pontuação, histórico e UR Coins. Resultados são registrados. Fundamentos são observados. Conduta importa. O sistema não perdoa quem some — e não esquece quem aparece.</p>
+      <div class="pill-row"><span class="pill">UR Coins</span><span class="pill blue">Dados</span></div>
     </div>
     <div class="liga-card fu" data-n="03">
       <div class="liga-card-tag">O Atleta</div>
       <h3>O ATLETA</h3>
       <p>Ninguém entra pronto. Todos entram possíveis. Você não precisa ser profissional para ser levado a sério — precisa mostrar presença, competir com consistência e respeitar o jogo. O UR existe para quem quer disputa real.</p>
+      <div class="pill-row"><span class="pill green">Mérito</span><span class="pill">Presença</span></div>
     </div>
   </div>
 </div>
@@ -586,27 +708,70 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 <!-- 06 · ECOSSISTEMA -->
 <div id="ecossistema" class="sec-wrap fu">
   <div class="sec">
-    <div style="margin-bottom:52px">
-      <div class="s-label">06 · Ecossistema UR</div>
+    <div style="text-align:center;margin-bottom:56px">
+      <div class="s-label" style="justify-content:center">06 · Ecossistema UR</div>
       <h2 class="s-title-lg">MAIS QUE UM JOGO.<br><span class="s-gold">UM SISTEMA COMPLETO.</span></h2>
+      <p style="font-size:15px;color:var(--muted);max-width:500px;margin:14px auto 0;line-height:1.7">Cada ponto marcado, cada presença, cada vitória — tudo vira ativo. O esforço vira trajetória. A trajetória vira retorno.</p>
     </div>
-    <div class="g2">
-      <div class="eco-card fu" data-icon="COINS">
+
+    <!-- Fluxo: UR Coins → Ranking → Draft → Repasse -->
+    <div class="eco-flow fu">
+      <div class="eco-flow-step">
+        <div class="eco-flow-icon">🪙</div>
+        <div class="eco-flow-n">Passo 01</div>
+        <div class="eco-flow-title">UR Coins</div>
+        <p class="eco-flow-body">Ganhe jogando, perca faltando. Troque por produtos reais no mercado ou acumule posição.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-flow-step">
+        <div class="eco-flow-icon">📊</div>
+        <div class="eco-flow-n">Passo 02</div>
+        <div class="eco-flow-title">Ranking UR</div>
+        <p class="eco-flow-body">Presença, resultado, fundamentos e conduta. Público, rastreável, atualizado a cada ciclo.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-flow-step">
+        <div class="eco-flow-icon">🎯</div>
+        <div class="eco-flow-n">Passo 03</div>
+        <div class="eco-flow-title">Draft</div>
+        <p class="eco-flow-body">Rankings altos abrem portas. Prioridade na formação de duplas e chamadas para torneios.</p>
+      </div>
+      <div class="eco-arrow">→</div>
+      <div class="eco-flow-step">
+        <div class="eco-flow-icon">💰</div>
+        <div class="eco-flow-n">Passo 04</div>
+        <div class="eco-flow-title">Repasse</div>
+        <p class="eco-flow-body">Não é prêmio único — é reconhecimento recorrente. A cada Virada, atletas sérios recebem retorno real.</p>
+      </div>
+    </div>
+
+    <!-- Cards de detalhe -->
+    <div class="g2 fu">
+      <div class="eco-card" data-icon="COINS">
         <h4>UR COINS</h4>
-        <p>A moeda interna da liga. Ganhe jogando, perca faltando, troque por produtos reais no mercado. Um sistema de reconhecimento que vai além do placar.</p>
+        <p>Ganhe a cada UR Play, torneio e evento. Perca por faltas não justificadas. O sistema não esquece quem aparece — e não perdoa quem some.</p>
+        <div class="pill-row"><span class="pill">Mercado UR</span><span class="pill green">Acumulativo</span></div>
       </div>
-      <div class="eco-card fu" data-icon="RANK">
-        <h4>RANKING UR</h4>
-        <p>Presença, resultado, fundamentos e conduta transformados em posição. Atualizado a cada ciclo. Público. Rastreável. Real.</p>
+      <div class="eco-card" data-icon="RANK">
+        <h4>RANKING REAL</h4>
+        <p>Quatro dimensões: presença, resultado, fundamentos e conduta. Não é só quem vence — é quem constrói histórico com consistência.</p>
+        <div class="pill-row"><span class="pill">Por Nível</span><span class="pill blue">Público</span></div>
       </div>
-      <div class="eco-card fu" data-icon="VIRADA">
+      <div class="eco-card" data-icon="VIRADA">
         <h4>VIRADA DE RANKING</h4>
-        <p>O fechamento de cada temporada. Reconhecimento, repasses e revisão de níveis. Quem construiu histórico aparece. O campo não mente.</p>
+        <p>O fechamento do trimestre. Revisão de níveis, reconhecimento público e repasse financeiro para quem construiu o ciclo com seriedade.</p>
+        <div class="pill-row"><span class="pill">Trimestral</span><span class="pill">R$ Repasses</span></div>
       </div>
-      <div class="eco-card fu" data-icon="DRAFT">
+      <div class="eco-card" data-icon="DRAFT">
         <h4>DRAFT &amp; CHAMADAS</h4>
-        <p>Os melhores colocados têm prioridade em chamadas e formação de duplas e quartetos. Rankings altos abrem portas que o campo fechado não consegue.</p>
+        <p>Os melhores do ranking têm prioridade. Aqui ranking não é vaidade — é vantagem real dentro da liga.</p>
+        <div class="pill-row"><span class="pill green">Mérito</span><span class="pill">Duplas · Quartetos</span></div>
       </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px">
+      <p style="font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:900;text-transform:uppercase;color:rgba(255,255,255,.5);letter-spacing:.04em;margin-bottom:22px">Aqui o esforço <span style="color:var(--gold)">vira ativo.</span></p>
+      <a href="/inscricao" class="btn-primary">⚡ Garantir minha vaga na T01</a>
     </div>
   </div>
 </div>
@@ -728,21 +893,44 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 </footer>
 
 <script>
-document.getElementById('navHam').addEventListener('click',function(){
-  document.getElementById('navLinks').classList.toggle('open');
-  this.innerHTML = document.getElementById('navLinks').classList.contains('open') ? '&#10005;' : '&#9776;';
-});
+/* ── Mobile menu toggle ── */
+(function(){
+  var ham = document.getElementById('navHam');
+  var nav = document.getElementById('navLinks');
+  if(!ham||!nav) return;
+  ham.addEventListener('click',function(){
+    var open = nav.classList.toggle('open');
+    ham.innerHTML = open ? '&#10005;' : '&#9776;';
+    ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      nav.classList.remove('open');
+      ham.innerHTML = '&#9776;';
+      ham.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!ham.contains(e.target)&&!nav.contains(e.target)){
+      nav.classList.remove('open');
+      ham.innerHTML = '&#9776;';
+      ham.setAttribute('aria-expanded','false');
+    }
+  });
+})();
+
+/* ── Scroll reveal ── */
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('on');
-      e.target.querySelectorAll('.liga-card,.modal-card,.step-item,.lvl,.eco-card,.portal-card,.ciclo-card,.hunter-stat').forEach((el,i)=>{
-        el.style.transitionDelay=(i*.1)+'s';
+      e.target.querySelectorAll('.liga-card,.modal-card,.step-item,.lvl,.eco-card,.eco-flow-step,.portal-card,.ciclo-card,.hunter-stat,.metric-item').forEach((el,i)=>{
+        el.style.transitionDelay=(i*.08)+'s';
         el.classList.add('on');
       });
     }
   });
-},{threshold:.1});
+},{threshold:.08});
 document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 </script>
 </body>
