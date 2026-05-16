@@ -7,10 +7,13 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#0a0a0a;--surface:#111;--card:#161616;--border:#222;
-    --gold:#f5c518;--gold2:#e6b800;--text:#f0f0f0;--muted:#666;
-    --green:#4caf50;--red:#f44;--blue:#4a9eff;
-    --radius:14px;--font:'Inter',system-ui,sans-serif;
+    --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+    --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.28);
+    --text:#e8e3d4;--muted:rgba(255,255,255,.42);--muted2:rgba(255,255,255,.18);
+    --green:#4caf50;--red:#f55;--blue:#4a9eff;
+    --radius:14px;
+    --font:'Inter',system-ui,sans-serif;
+    --display:'Barlow Condensed',sans-serif;
   }
   body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;padding-bottom:40px}
 
@@ -21,14 +24,19 @@
   .header-sub{font-size:11px;color:var(--muted);margin-top:2px}
 
   /* ── Progress ── */
-  .progress-wrap{background:var(--surface);padding:14px 20px;border-bottom:1px solid var(--border)}
-  .progress-steps{display:flex;gap:6px;margin-bottom:10px;justify-content:center;flex-wrap:wrap}
-  .step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--border);color:var(--muted);transition:all .3s;flex-shrink:0}
-  .step-dot.active{border-color:var(--gold);color:var(--gold);background:rgba(245,197,24,.1)}
+  .progress-wrap{background:var(--surface);padding:14px 20px 12px;border-bottom:1px solid var(--border)}
+  .progress-steps{display:flex;gap:4px;margin-bottom:10px;justify-content:center;align-items:flex-start}
+  .step-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;max-width:80px}
+  .step-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--border);color:var(--muted);transition:all .3s;flex-shrink:0}
+  .step-dot.active{border-color:var(--gold);color:var(--gold);background:rgba(255,216,77,.1);box-shadow:0 0 0 3px rgba(255,216,77,.15)}
   .step-dot.done{border-color:var(--green);background:var(--green);color:#000}
-  .progress-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:2px;transition:width .4s ease}
-  .progress-label{text-align:center;font-size:11px;color:var(--muted);margin-top:6px}
+  .step-name{font-size:9px;color:var(--muted2);text-align:center;font-weight:600;letter-spacing:.3px;text-transform:uppercase;line-height:1.2}
+  .step-item.active .step-name{color:var(--gold)}
+  .step-item.done .step-name{color:rgba(76,175,80,.7)}
+  @media(max-width:400px){.step-name{display:none}}
+  .progress-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin:0 -20px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold3),var(--gold));border-radius:2px;transition:width .4s ease}
+  .progress-label{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;font-family:var(--display);letter-spacing:.5px}
 
   /* ── Container ── */
   .container{max-width:600px;margin:0 auto;padding:20px 16px}
@@ -43,8 +51,9 @@
   .step-desc{font-size:13px;color:var(--muted);line-height:1.5}
 
   /* ── Card ── */
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
-  .card-title{font-size:13px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.55;pointer-events:none}
+  .card-title{font-family:var(--display);font-size:15px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 
   /* ── Fields ── */
   .field{margin-bottom:14px}
@@ -130,6 +139,8 @@
   .term-text{font-size:13px;color:var(--muted);line-height:1.5;cursor:pointer}
   .term-text strong{color:var(--text)}
 
+  @keyframes spin{to{transform:rotate(360deg)}}
+
   /* ── Responsive ── */
   @media(max-width:400px){
     .field-row{grid-template-columns:1fr}
@@ -139,21 +150,28 @@
   /* ── Barlow Condensed para títulos UR ── */
   .ur-brand { font-family: 'Barlow Condensed', sans-serif; }
 
+  /* ── Site Nav ── */
+  .site-nav{background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 20px;justify-content:space-between;position:sticky;top:0;z-index:200}
+  .nav-back{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;transition:color .2s;text-decoration:none}
+  .nav-back:hover{color:var(--gold)}
+  .nav-back svg{width:16px;height:16px;opacity:.6}
+  .nav-brand{font-family:var(--display);font-size:18px;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+  .nav-season-pill{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:1.5px;padding:4px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase}
+
   /* ── Header hero gradiente ── */
   .header {
-    background: linear-gradient(135deg, #0a0a0a 0%, #161616 40%, #1a1500 100%);
-    border-bottom: 1px solid rgba(245,197,24,.25);
-    padding: 20px 20px 16px;
+    background: linear-gradient(160deg, rgba(255,216,77,.14) 0%, rgba(8,9,13,.95) 30%, #000 100%);
+    border-bottom: 1px solid rgba(255,216,77,.18);
+    padding: 32px 20px 24px;
     text-align: center;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 4px 24px rgba(0,0,0,.5);
+    box-shadow: 0 4px 32px rgba(0,0,0,.7);
   }
-  .header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 6px; }
-  .header-bolt { font-size: 32px; filter: drop-shadow(0 0 8px rgba(245,197,24,.6)); }
-  .header-logo-img { height: 46px; width: auto;  filter: drop-shadow(0 0 12px rgba(255,216,77,.5)); }
-  .header-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 900; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 20px rgba(245,197,24,.3); }
-  .header-sub { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: 1px; text-transform: uppercase; }
-  .header-season { display: inline-block; background: rgba(245,197,24,.12); border: 1px solid rgba(245,197,24,.25); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; padding: 3px 10px; border-radius: 20px; margin-top: 6px; }
+  .header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+  .header-bolt { font-size: 32px; filter: drop-shadow(0 0 8px rgba(255,216,77,.6)); }
+  .header-logo-img { height: 48px; width: auto; filter: drop-shadow(0 0 12px rgba(255,216,77,.5)); }
+  .header-title { font-family:'Anton',var(--display); font-size: 30px; font-weight: 900; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; text-shadow: 0 0 24px rgba(255,216,77,.3); }
+  .header-sub { font-size: 11px; color: rgba(255,255,255,.35); letter-spacing: 1.2px; text-transform: uppercase; margin-top: 4px; }
+  .header-season { display: inline-block; background: rgba(255,216,77,.1); border: 1px solid rgba(255,216,77,.28); color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 2px; padding: 4px 14px; border-radius: 20px; margin-top: 10px; font-family:var(--display); text-transform:uppercase; }
 
   /* ── Guide boxes (mini tooltips) ── */
   .guide-wrap { margin-top: 10px; }
@@ -171,33 +189,30 @@
   .guide-text strong { color: var(--gold); display: block; margin-bottom: 2px; }
   .guide-text span { color: rgba(255,255,255,.55); }
 
-  /* ── Melhorias nos cards ── */
-  .card { background: linear-gradient(135deg, #161616, #111); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.3); }
-  .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  /* ── Card override (gradient bg) ── */
+  .card { background: linear-gradient(160deg, #111 0%, #0a0a0a 100%); box-shadow: 0 4px 20px rgba(0,0,0,.35); }
 
-  /* ── Step header melhorado ── */
-  .step-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: .5px; }
-  .step-icon { font-size: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 6px rgba(245,197,24,.3)); }
+  /* ── Step header ── */
+  .step-title { font-family:'Anton',var(--display); font-size: 28px; font-weight: 900; letter-spacing: .5px; }
+  .step-icon { font-size: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 8px rgba(255,216,77,.3)); }
 
-  /* ── Chip labels com descrição ── */
+  /* ── Chip labels ── */
   .chip-label-wrap { display: flex; flex-direction: column; }
   .chip-label-name { font-weight: 700; }
   .chip-label-desc { font-size: 10px; opacity: .65; margin-top: 1px; }
 
-  /* ── Botão submit dourado ── */
-  #submitBtn { background: linear-gradient(135deg, #f5c518, #e6a800); color: #000; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 900; letter-spacing: 1px; box-shadow: 0 4px 20px rgba(245,197,24,.35); }
-  #submitBtn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(245,197,24,.5); }
+  /* ── Submit button ── */
+  #submitBtn { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; font-family:var(--display); font-size: 18px; font-weight: 900; letter-spacing: 1px; box-shadow: 0 4px 24px var(--goldglow); }
+  #submitBtn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,216,77,.5); }
+  #submitBtn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
 
-  /* ── Success melhorada ── */
-  .success-icon { font-size: 80px; filter: drop-shadow(0 0 20px rgba(245,197,24,.5)); }
-  .success-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: 1px; }
-  .success-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(76,175,80,.12); border: 1px solid rgba(76,175,80,.4); color: #4caf50; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
-  .btn-export { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); color: #e0e0e0; font-size: 13px; padding: 11px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all .2s; margin-top: 8px; width: 100%; }
-  .btn-export:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* ── Progress melhorado ── */
-  .step-dot { width: 32px; height: 32px; font-size: 11px; }
-  .step-dot.active { box-shadow: 0 0 0 3px rgba(245,197,24,.2); }
+  /* ── Success screen ── */
+  .success { background: linear-gradient(160deg, rgba(255,216,77,.07) 0%, transparent 30%); border-radius:20px; border:1px solid rgba(255,216,77,.12); margin-top:20px; }
+  .success-icon { font-size: 80px; filter: drop-shadow(0 0 24px rgba(255,216,77,.5)); }
+  .success-title { font-family:'Anton',var(--display); font-size: 40px; font-weight: 900; letter-spacing: 1.5px; }
+  .success-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(76,175,80,.1); border: 1px solid rgba(76,175,80,.35); color: var(--green); padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; font-family:var(--display); letter-spacing:.5px; }
+  .btn-export { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); color: var(--muted); font-size: 13px; padding: 12px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all .2s; margin-top: 8px; width: 100%; font-family:var(--font); }
+  .btn-export:hover { border-color: var(--gold); color: var(--gold); background: rgba(255,216,77,.06); }
 </style>
 <meta property="og:title" content="Inscrição — Ultimate Rivals 2026">
 <meta property="og:description" content="Ficha de inscrição oficial da liga de vôlei de praia Ultimate Rivals. Preencha e garanta sua vaga!">
@@ -206,7 +221,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ur-sistema.vercel.app/inscricao.html">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -219,14 +234,25 @@
   };
 </script>
 
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="/" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Voltar ao site
+  </a>
+  <span class="nav-brand">ULTIMATE RIVALS</span>
+  <span class="nav-season-pill">T01 · 2026</span>
+</nav>
+
+<!-- FORM HEADER -->
 <div class="header">
   <div class="header-logo-wrap">
     <img src="logo-ur-3d.png" alt="Ultimate Rivals" class="header-logo-img" onerror="this.style.display='none';document.getElementById('hbolt').style.display='inline'">
-    <span class="header-bolt" id="hbolt" style="display:none">⚡</span>
-    <span class="header-title">ULTIMATE RIVALS</span>
+    <span class="header-bolt" id="hbolt" style="display:none">🏐</span>
   </div>
-  <div class="header-sub">Liga de Vôlei de Praia</div>
-  <div class="header-season">🏐 Ficha de Inscrição · Temporada 2026</div>
+  <div class="header-title">INSCRIÇÃO OFICIAL</div>
+  <div class="header-sub">Liga de Vôlei de Praia · Belo Horizonte</div>
+  <div class="header-season">⚡ Ficha de Atleta · Temporada T01 2026</div>
 </div>
 
 <div class="progress-wrap" id="progressWrap">
@@ -472,7 +498,7 @@
           </div>
         </div>
       </div>
-      <div class="field">
+      <div class="field" id="f-practiceYears">
         <label>Tempo de prática no vôlei <span class="req">*</span></label>
         <select id="practiceYears">
           <option value="">Selecione</option>
@@ -483,6 +509,7 @@
           <option>5 a 10 anos</option>
           <option>Mais de 10 anos</option>
         </select>
+        <div class="field-err">Selecione o tempo de prática</div>
       </div>
       <div class="field">
         <label>Já disputou torneios organizados? <span class="req">*</span></label>
@@ -581,7 +608,7 @@
         </div>
         <div style="font-size:11px;color:var(--muted);margin-top:8px">A realocação garante equipes mais equilibradas e jogos mais justos para todos.</div>
       </div>
-      <div class="field">
+      <div class="field" id="f-weeklyAvail">
         <label>Disponibilidade para jogar <span class="req">*</span></label>
         <select id="weeklyAvail">
           <option value="">Selecione</option>
@@ -590,6 +617,7 @@
           <option>Mensalmente</option>
           <option>Eventualmente / quando possível</option>
         </select>
+        <div class="field-err">Selecione sua disponibilidade</div>
       </div>
     </div>
 
@@ -858,13 +886,14 @@
     <div class="card">
       <div class="card-title">👕 Uniforme</div>
       <div class="field-row">
-        <div class="field">
+        <div class="field" id="f-shirtSize">
           <label>Tamanho da camiseta <span class="req">*</span></label>
           <select id="shirtSize">
             <option value="">Selecione</option>
             <option>PP</option><option>P</option><option>M</option>
             <option>G</option><option>GG</option><option>XG</option>
           </select>
+          <div class="field-err">Selecione o tamanho</div>
         </div>
         <div class="field">
           <label>Número desejado <span style="color:var(--muted);font-weight:400;text-transform:none">(1–99)</span></label>
@@ -921,12 +950,12 @@
     <button class="btn-export" onclick="exportToCsv()" style="margin-top:6px">📄 Baixar comprovante CSV</button>
     <div style="margin-top:20px;font-size:12px;color:var(--muted)">
       Dúvidas? Fale conosco no Instagram
-      <a href="https://instagram.com/ultimaterivals" target="_blank" style="color:var(--gold);text-decoration:none">@ultimaterivals</a>
+      <a href="https://instagram.com/ultimaterivalsbr" target="_blank" style="color:var(--gold);text-decoration:none">@ultimaterivalsbr</a>
     </div>
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.35);color:#25d366;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s" onmouseover="this.style.background='rgba(37,211,102,.18)'" onmouseout="this.style.background='rgba(37,211,102,.1)'">
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.28);color:#4caf50;padding:13px 20px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;font-family:var(--display);letter-spacing:.5px" onmouseover="this.style.background='rgba(37,211,102,.15)'" onmouseout="this.style.background='rgba(37,211,102,.08)'">
       <span style="font-size:20px">💬</span> Entrar na Comunidade UR no WhatsApp
     </a>
-    </div>
+    <a href="/" style="display:block;margin-top:12px;text-align:center;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">← Voltar ao site</a>
   </div>
 
 </div><!-- /container -->
@@ -967,9 +996,15 @@ let currentStep = 1;
 
 function updateProgress(n){
   const dots = document.getElementById('progressSteps');
-  dots.innerHTML = STEPS.map(s=>`<div class="step-dot ${s.n<n?'done':s.n===n?'active':''}">${s.n<n?'✓':s.icon}</div>`).join('');
+  dots.innerHTML = STEPS.map(s=>{
+    const state = s.n<n?'done':s.n===n?'active':'';
+    return `<div class="step-item ${state}">
+      <div class="step-dot ${state}">${s.n<n?'✓':s.icon}</div>
+      <div class="step-name">${s.label.split(' ')[0]}</div>
+    </div>`;
+  }).join('');
   document.getElementById('progressFill').style.width = ((n-1)/(STEPS.length-1)*100)+'%';
-  document.getElementById('progressLabel').textContent = STEPS[n-1].label + ` — Passo ${n} de ${STEPS.length}`;
+  document.getElementById('progressLabel').textContent = `Passo ${n} de ${STEPS.length} — ${STEPS[n-1].label}`;
 }
 
 function showStep(n){
@@ -1014,13 +1049,16 @@ function validateStep(n){
   }
   if(n===3){
     require('position','f-position');
-    if(!window.techScore || window.techScore<1){ ok=false; toast('Avalie seu nível técnico'); }
-    if(!window.physScore || window.physScore<1){ ok=false; toast('Avalie seu condicionamento físico'); }
+    require('practiceYears','f-practiceYears');
+    require('weeklyAvail','f-weeklyAvail');
+    if(!window.techScore || window.techScore<1){ ok=false; toast('⭐ Avalie seu nível técnico'); }
+    if(!window.physScore || window.physScore<1){ ok=false; toast('💪 Avalie seu condicionamento físico'); }
   }
   if(n===6){
+    require('shirtSize','f-shirtSize');
     const terms = ['termInfo','termCommit','termRules'];
     const unchecked = terms.filter(id=>!document.getElementById(id).checked);
-    if(unchecked.length){ ok=false; document.getElementById('submitErr').style.display='block'; document.getElementById('submitErr').textContent='Confirme todos os termos obrigatórios para continuar.'; }
+    if(unchecked.length){ ok=false; document.getElementById('submitErr').style.display='block'; document.getElementById('submitErr').textContent='⚠️ Confirme todos os termos obrigatórios para continuar.'; }
     else { document.getElementById('submitErr').style.display='none'; }
   }
   if(!ok) window.scrollTo({top:0,behavior:'smooth'});
@@ -1103,8 +1141,10 @@ function collectData(){
     has_partner:     radio('hasPartner')==='true',
     partner_name:    g('partnerName'),
     has_quartet:     radio('hasQuartet')==='true',
+    quartet_members: g('quartetMembers'),
     medical_restriction: g('medicalRestriction'),
     blood_type:      g('bloodType'),
+    health_plan:     g('healthPlan'),
     shirt_size:      g('shirtSize'),
     shirt_number:    g('shirtNumber'),
     image_auth:      document.getElementById('termImage').checked,
@@ -1117,13 +1157,19 @@ function collectData(){
 async function submitForm(){
   if(!validateStep(6)) return;
   const btn = document.getElementById('submitBtn');
-  btn.disabled=true; btn.textContent='Enviando...';
+  const errEl = document.getElementById('submitErr');
+  btn.disabled=true;
+  btn.innerHTML='<span style="display:inline-flex;align-items:center;gap:8px"><span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite"></span>Enviando...</span>';
+  errEl.style.display='none';
+
   const data = collectData();
 
-  // Salvar local como fallback
-  const all = JSON.parse(localStorage.getItem('ur_inscricoes_local')||'[]');
-  all.push({...data, submitted_at: new Date().toISOString()});
-  localStorage.setItem('ur_inscricoes_local', JSON.stringify(all));
+  // Salvar local como fallback sempre
+  try{
+    const all = JSON.parse(localStorage.getItem('ur_inscricoes_local')||'[]');
+    all.push({...data, submitted_at: new Date().toISOString()});
+    localStorage.setItem('ur_inscricoes_local', JSON.stringify(all));
+  }catch(e){}
 
   // Tentar Supabase
   let online = false;
@@ -1138,9 +1184,12 @@ async function submitForm(){
         }, body: JSON.stringify(data)
       });
       online = res.ok || res.status===201;
+      if(!online && res.status!==0) console.warn('Supabase retornou', res.status);
     }catch(e){ console.warn('Supabase offline, salvo localmente.', e); }
   }
 
+  btn.disabled=false;
+  btn.innerHTML='⚡ Enviar Inscrição';
   showSuccess(data, online);
 }
 
@@ -1182,7 +1231,7 @@ function toggleGuide(id) {
 // ─── EXPORT CSV ───────────────────────────────────────
 function collectFormData(){ return collectData(); }
 // ─── DADOS DO FORMULÁRIO COMO ARRAY DE LINHA ────────────────
-const XLSX_HEADERS = ['Nome','Apelido/Mídia','Gênero','Nascimento','CPF','Instagram','WhatsApp','Email','Cidade','Bairro','Emergência','Posição Principal','Posição Secundária','Tempo de Prática','Exp. Torneios','Nível Técnico (1-5)','Nível Físico (1-5)','Aceita Realocação','Disponibilidade','Modalidades','Categorias','Dias','Turnos','Polo Preferido','Tem Equipe','Equipe','Tem Dupla','Parceiro(a)','Quarteto Definido','Restrição Médica','Tipo Sanguíneo','Camiseta','Nº Camiseta','Como Conheceu','Autoriza Imagem','Status','Data Inscrição'];
+const XLSX_HEADERS = ['Nome','Apelido/Mídia','Gênero','Nascimento','CPF','Instagram','WhatsApp','Email','Cidade','Bairro','Emergência','Posição Principal','Posição Secundária','Tempo de Prática','Exp. Torneios','Nível Técnico (1-5)','Nível Físico (1-5)','Aceita Realocação','Disponibilidade','Modalidades','Categorias','Dias','Turnos','Polo Preferido','Tem Equipe','Equipe','Tem Dupla','Parceiro(a)','Quarteto Definido','Membros Quarteto','Restrição Médica','Tipo Sanguíneo','Plano de Saúde','Camiseta','Nº Camiseta','Como Conheceu','Autoriza Imagem','Status','Data Inscrição'];
 
 function buildRowData(d) {
   const yn = v => v ? 'Sim' : 'Não';
@@ -1196,8 +1245,8 @@ function buildRowData(d) {
     yn(d.accepts_reloc), d.weekly_avail||'',
     arr(d.modalities), arr(d.categories), arr(d.days), arr(d.shifts),
     d.preferred_polo||'', yn(d.has_team), d.team_name||'',
-    yn(d.has_partner), d.partner_name||'', yn(d.has_quartet),
-    d.medical_restriction||'', d.blood_type||'',
+    yn(d.has_partner), d.partner_name||'', yn(d.has_quartet), d.quartet_members||'',
+    d.medical_restriction||'', d.blood_type||'', d.health_plan||'',
     d.shirt_size||'', d.shirt_number||'', d.how_found||'',
     yn(d.image_auth), 'Pendente',
     new Date().toLocaleString('pt-BR')
