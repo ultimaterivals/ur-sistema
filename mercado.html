@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mercado UR — Troque UR Coins por Recompensas | Ultimate Rivals</title>
+<meta name="description" content="Mercado UR — troque seus UR Coins por produtos reais. Equipamentos, alimentação, experiências e itens de patrocinadores. Disponíveis por nível.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ANNOUNCE BAR */
+.announce-bar{background:var(--gold);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
+.announce-inner{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.ab-tag{background:#000;color:var(--gold);padding:2px 10px;border-radius:3px;font-size:11px}
+.ab-sep{opacity:.35;font-size:16px}
+.ab-link{color:#000;border-bottom:1px solid rgba(0,0,0,.3)}
+.ab-link:hover{opacity:.7}
+@media(max-width:600px){.announce-inner span:not(.ab-tag):not(:last-child){display:none}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+.nav-ham:hover{border-color:var(--gold);color:var(--gold)}
+.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
+@media(max-width:780px){
+  nav{position:relative}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid var(--border);padding:10px 20px 16px;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-ham{display:block}
+  .nav-season{display:none}
+  .nav-portal-btn{display:none}
+}
+
+/* HERO */
+.hero{min-height:72vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,216,77,.13),transparent 55%),linear-gradient(180deg,#08090d 0%,#000 100%)}
+.hero::after{content:'COINS';position:absolute;right:-20px;bottom:-60px;font-family:var(--display);font-size:min(260px,36vw);font-weight:900;line-height:1;color:rgba(255,216,77,.025);pointer-events:none;user-select:none}
+.hero-content{position:relative;z-index:2;max-width:780px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:20px;text-transform:uppercase;font-family:var(--display)}
+.hero h1{font-family:var(--display);font-size:clamp(48px,11vw,96px);font-weight:900;line-height:.88;letter-spacing:-1px;text-transform:uppercase;color:#fff;margin-bottom:10px}
+.hero h1 span{color:var(--gold);text-shadow:0 0 50px rgba(255,216,77,.4)}
+.hero-slogan{font-family:var(--display);font-size:clamp(16px,2.8vw,24px);font-weight:700;color:rgba(255,216,77,.7);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.hero-sub{font-size:15px;color:var(--muted);max-width:540px;margin:0 auto 36px;line-height:1.72}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+
+/* SECTION */
+.sec{padding:80px 20px;max-width:1120px;margin:0 auto}
+.sec-alt{background:var(--surface)}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
+.s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
+.s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
+
+/* FILTER BAR */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.filter-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--muted);font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:8px 20px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:rgba(255,216,77,.4);color:var(--gold)}
+.filter-btn.active{background:rgba(255,216,77,.15);border-color:rgba(255,216,77,.5);color:var(--gold)}
+
+/* CATEGORY LABEL */
+.cat-label{font-family:var(--display);font-size:13px;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:10px}
+.cat-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.3),transparent)}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.product-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.product-grid{grid-template-columns:1fr}}
+
+/* PRODUCT CARD */
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;position:relative;display:flex;flex-direction:column}
+.prod-card:hover:not(.locked){border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+.prod-card.locked{opacity:.65}
+.prod-icon-area{padding:24px 24px 12px;display:flex;align-items:center;gap:14px}
+.prod-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.12);flex-shrink:0}
+.prod-name{font-family:var(--display);font-size:19px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;color:#fff;line-height:1.1}
+.prod-body{padding:0 24px 20px;flex:1;display:flex;flex-direction:column}
+.prod-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;flex:1}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.prod-lvl{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+.lvl-ni{background:rgba(150,150,150,.1);border:1px solid rgba(150,150,150,.2);color:#888}
+.lvl-n1{background:rgba(100,100,100,.1);border:1px solid rgba(100,100,100,.2);color:#777}
+.lvl-n2{background:rgba(43,160,72,.1);border:1px solid rgba(43,160,72,.2);color:#43a047}
+.lvl-n3{background:rgba(30,136,229,.1);border:1px solid rgba(30,136,229,.2);color:#1e88e5}
+.lvl-n4{background:rgba(156,39,176,.1);border:1px solid rgba(156,39,176,.2);color:#9c27b0}
+.lvl-n5{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold)}
+.prod-price{display:flex;align-items:center;gap:5px;font-family:var(--display);font-size:16px;font-weight:900;color:var(--gold);white-space:nowrap}
+.prod-price-icon{font-size:14px}
+.prod-btn{display:block;width:100%;text-align:center;margin-top:14px;background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:14px;font-weight:900;padding:10px 16px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;transition:all .25s;cursor:pointer;border:none}
+.prod-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,216,77,.35)}
+.prod-btn:disabled,.prod-btn.disabled{background:rgba(255,255,255,.08);color:rgba(255,255,255,.3);cursor:not-allowed;box-shadow:none;transform:none}
+.prod-btn.coming{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--muted)}
+
+/* LOCK OVERLAY */
+.prod-lock{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;border-radius:14px;flex-direction:column;gap:6px;opacity:0;transition:opacity .3s}
+.prod-card.locked:hover .prod-lock{opacity:1}
+.lock-icon{font-size:28px}
+.lock-text{font-family:var(--display);font-size:13px;font-weight:800;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
+
+/* HOW COINS WORK */
+.coins-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.coins-grid{grid-template-columns:1fr}}
+.coins-col{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.coins-col h3{font-family:var(--display);font-size:20px;font-weight:900;text-transform:uppercase;color:var(--gold);margin-bottom:16px;letter-spacing:.4px}
+.coin-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.coin-row:last-child{border-bottom:none}
+.coin-event{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.coin-amt{font-family:var(--display);font-size:18px;font-weight:900;color:var(--gold);white-space:nowrap}
+.coins-note{background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.15);border-radius:10px;padding:16px 20px;margin-top:16px;font-size:13px;color:var(--muted);line-height:1.65}
+.coins-note strong{color:var(--text)}
+
+/* CTA */
+.cta-sec{padding:80px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,7vw,72px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 28px;line-height:1.72;position:relative;z-index:1}
+.cta-btn-portal{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:18px;font-weight:900;padding:15px 40px;border-radius:10px;transition:all .25s;display:inline-block;text-transform:uppercase;letter-spacing:.5px;position:relative;z-index:1}
+.cta-btn-portal:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px}
+.foot-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-social{display:flex;gap:12px;flex-wrap:wrap}
+.foot-social a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+.foot-social a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2);margin-top:10px;text-align:center;max-width:1120px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  <div class="announce-inner">
+    <span class="ab-tag">T01 · 2026</span>
+    <span class="ab-sep">·</span>
+    <span>A Temporada Chega</span>
+    <span class="ab-sep">·</span>
+    <span>Garanta Sua Vaga</span>
+    <span class="ab-sep">·</span>
+    <span>Pré-Temporada · BH · MG</span>
+    <span class="ab-sep">·</span>
+    <a href="/temporada" class="ab-link">Ver calendário →</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logos">
+    <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
+    <div class="nav-sep"></div>
+    <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Início</a>
+    <a href="/temporada">Temporada</a>
+    <a href="/equipes">Equipes</a>
+    <a href="/atletas">Atletas</a>
+    <a href="/ranking">Ranking</a>
+    <a href="/ct-ur">CT UR</a>
+    <a href="/mercado" style="color:var(--gold)">Mercado</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="/portal" class="nav-portal-btn">Portal</a>
+    <a href="/inscricao" class="nav-cta">Inscreva-se</a>
+  </div>
+  <button class="nav-ham" id="navHam" aria-label="Menu">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fu">
+    <div class="hero-badge">Mercado · UR Coins · T01 2026</div>
+    <h1>MERCADO <span>UR</span></h1>
+    <p class="hero-slogan">Seus Coins. Sua Recompensa.</p>
+    <p class="hero-sub">Troque UR Coins por produtos reais. Equipamentos, benefícios e itens de patrocinadores disponíveis por nível.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCTS -->
+<div class="sec fu">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:10px">
+    <div>
+      <div class="s-label">Catálogo T01 · 2026</div>
+      <h2 class="s-title">Produtos Disponíveis</h2>
+      <p class="s-body">Cada produto tem um nível mínimo de desbloqueio. Suba no ranking para acessar mais recompensas.</p>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="equipamentos">Equipamentos</button>
+      <button class="filter-btn" data-filter="alimentacao">Alimentação</button>
+      <button class="filter-btn" data-filter="experiencias">Experiências</button>
+      <button class="filter-btn" data-filter="patrocinadores">Patrocinadores</button>
+    </div>
+  </div>
+
+  <!-- EQUIPAMENTOS -->
+  <div class="cat-label" data-cat="equipamentos">Equipamentos</div>
+  <div class="product-grid" id="prodGrid">
+
+    <div class="prod-card fu" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🦵</div>
+        <div class="prod-name">Joelheira Pro</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Joelheira de compressão de alta performance para treinos e jogos. Proteção real para atletas ativos.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n2">N2+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>200 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon">😎</div>
+        <div class="prod-name">Óculos Esportivo</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Óculos de sol esportivo com proteção UV400. Ideal para jogar na areia sem prejudicar a visão.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n1">N1+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>150 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🩱</div>
+        <div class="prod-name">Sunga/Short UR Oficial</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Sunga ou short oficial Ultimate Rivals. Tecido de secagem rápida, corte técnico esportivo e identidade UR.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n1">N1+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>300 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon">👕</div>
+        <div class="prod-name">Camiseta UR Dry-Fit</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Camiseta técnica Ultimate Rivals com tecido Dry-Fit de alta performance. Visual e conforto para treinos e eventos.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n1">N1+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>250 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🏖️</div>
+        <div class="prod-name">Bolsa de Areia para Treino</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Bolsa de areia de alta resistência para treinos funcionais específicos de vôlei de praia. Exclusivo para atletas N3+.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n3">N3+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>500 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu locked" data-cat="equipamentos">
+      <div class="prod-icon-area">
+        <div class="prod-icon" style="background:rgba(255,216,77,.15);border-color:rgba(255,216,77,.3)">🏆</div>
+        <div class="prod-name" style="color:var(--gold)">Kit Completo UR Elite</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Kit completo Hunter Elite — uniforme oficial, bolsa, acessórios e itens exclusivos N5. O pacote mais completo do ecossistema UR.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n5">N5</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>1.500 coins</span>
+        </div>
+        <button class="prod-btn disabled" disabled>Requer N5</button>
+      </div>
+      <div class="prod-lock">
+        <span class="lock-icon">🔒</span>
+        <span class="lock-text">Nível N5 necessário</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ALIMENTAÇÃO -->
+  <div class="cat-label" data-cat="alimentacao">Alimentação &amp; Suplementação</div>
+  <div class="product-grid">
+
+    <div class="prod-card fu" data-cat="alimentacao">
+      <div class="prod-icon-area">
+        <div class="prod-icon">💪</div>
+        <div class="prod-name">Whey Protein 1kg</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Whey Protein 1kg com sabores selecionados. Parceria com suplementação oficial UR para atletas N2+.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n2">N2+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>400 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="alimentacao">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🥤</div>
+        <div class="prod-name">Isotônico Pack 12un</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Pack com 12 unidades de isotônico esportivo. Reposição energética para jogos e treinos longos na areia.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n1">N1+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>180 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="alimentacao">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🍫</div>
+        <div class="prod-name">Barra de Proteína Pack</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Pack de barras de proteína para lanches pré e pós-treino. Sabores variados. Combustível certo para o Hunter certo.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n1">N1+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>120 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXPERIÊNCIAS -->
+  <div class="cat-label" data-cat="experiencias">Experiências</div>
+  <div class="product-grid">
+
+    <div class="prod-card fu" data-cat="experiencias">
+      <div class="prod-icon-area">
+        <div class="prod-icon">📸</div>
+        <div class="prod-name">Foto Oficial + Certificado</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Sessão fotográfica oficial UR com entrega de certificado personalizado da temporada. Sua história documentada.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n3">N3+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>600 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+    <div class="prod-card fu locked" data-cat="experiencias">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🎬</div>
+        <div class="prod-name">Sessão de Vídeo Análise</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Análise técnica personalizada com base em vídeo das suas partidas. Relatório completo com pontos de melhoria e estratégias.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n4">N4+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>800 coins</span>
+        </div>
+        <button class="prod-btn disabled" disabled>Requer N4</button>
+      </div>
+      <div class="prod-lock">
+        <span class="lock-icon">🔒</span>
+        <span class="lock-text">Nível N4 necessário</span>
+      </div>
+    </div>
+
+    <div class="prod-card fu" data-cat="experiencias">
+      <div class="prod-icon-area">
+        <div class="prod-icon">🎫</div>
+        <div class="prod-name">Ingresso Evento Final</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc">Acesso ao Evento Final da Virada de Ranking. Assistir ou disputar com direito a área especial Hunter.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-n2">N2+</span>
+          <span class="prod-price"><span class="prod-price-icon">⚡</span>350 coins</span>
+        </div>
+        <a href="/portal" class="prod-btn">Resgatar</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PATROCINADORES -->
+  <div class="cat-label" data-cat="patrocinadores">Patrocinadores</div>
+  <div class="product-grid">
+
+    <div class="prod-card fu locked" data-cat="patrocinadores">
+      <div class="prod-icon-area">
+        <div class="prod-icon" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">🏷️</div>
+        <div class="prod-name" style="color:var(--muted)">Patrocinador Slot A</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc" style="font-style:italic">Espaço reservado para produto de parceiro oficial. Em breve disponível para atletas.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-ni">Em breve</span>
+          <span class="prod-price" style="color:var(--muted)">— coins</span>
+        </div>
+        <button class="prod-btn coming" disabled>Em breve</button>
+      </div>
+      <div class="prod-lock">
+        <span class="lock-icon">🔜</span>
+        <span class="lock-text">Em breve</span>
+      </div>
+    </div>
+
+    <div class="prod-card fu locked" data-cat="patrocinadores">
+      <div class="prod-icon-area">
+        <div class="prod-icon" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)">🏷️</div>
+        <div class="prod-name" style="color:var(--muted)">Patrocinador Slot B</div>
+      </div>
+      <div class="prod-body">
+        <p class="prod-desc" style="font-style:italic">Espaço reservado para produto de parceiro oficial. Marcas interessadas em se conectar com atletas ativos e engajados.</p>
+        <div class="prod-footer">
+          <span class="prod-lvl lvl-ni">Em breve</span>
+          <span class="prod-price" style="color:var(--muted)">— coins</span>
+        </div>
+        <button class="prod-btn coming" disabled>Em breve</button>
+      </div>
+      <div class="prod-lock">
+        <span class="lock-icon">🔜</span>
+        <span class="lock-text">Em breve</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW COINS WORK -->
+<div class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:40px">
+      <div class="s-label">Sistema</div>
+      <h2 class="s-title">Como Funcionam os UR Coins</h2>
+      <p class="s-body">Ganhe coins participando. Gaste no Mercado UR. Simples assim.</p>
+    </div>
+    <div class="coins-grid">
+      <div class="coins-col fu">
+        <h3>Como Ganhar</h3>
+        <div class="coin-row">
+          <span class="coin-event">UR Play (por jogo)</span>
+          <span class="coin-amt">+5 coins</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Torneio Mensal (participação)</span>
+          <span class="coin-amt">+10 coins</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">MVP do Evento</span>
+          <span class="coin-amt">+25 coins</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Virada de Ranking (acumulado)</span>
+          <span class="coin-amt">+50 coins</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Vitória em Torneio</span>
+          <span class="coin-amt">+15 coins</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Presença CT UR</span>
+          <span class="coin-amt">+8 coins</span>
+        </div>
+      </div>
+      <div class="coins-col fu">
+        <h3>Regras dos Coins</h3>
+        <div class="coin-row">
+          <span class="coin-event">Validade dentro da temporada</span>
+          <span class="coin-amt" style="color:#60d070">Não vencem</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Transferência entre atletas</span>
+          <span class="coin-amt" style="color:rgba(255,100,80,.8)">Não permitida</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Conversão em dinheiro</span>
+          <span class="coin-amt" style="color:rgba(255,100,80,.8)">Não permitida</span>
+        </div>
+        <div class="coin-row">
+          <span class="coin-event">Uso no Mercado UR</span>
+          <span class="coin-amt" style="color:#60d070">Liberado</span>
+        </div>
+        <div class="coins-note">
+          <strong>Importante:</strong> UR Coins não vencem dentro da temporada ativa (T01 2026). Ao final do ciclo, o saldo pode ser parcialmente migrado conforme regras da próxima temporada. Acompanhe as atualizações no Portal.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="cta-sec fu">
+  <div class="cta-glow"></div>
+  <h2>Acesse Seu<br><span>Portal</span></h2>
+  <p>Veja seu saldo de UR Coins, histórico de resgates e produtos disponíveis para o seu nível.</p>
+  <a href="/portal" class="cta-btn-portal">Acessar Portal UR</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logos">
+      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+      <span>ULTIMATE RIVALS</span>
+    </div>
+    <div class="foot-links">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/equipes">Equipes</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking">Ranking</a>
+      <a href="/ct-ur">CT UR</a>
+      <a href="/mercado">Mercado</a>
+      <a href="/portal">Portal</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/ultimaterivalsbr" target="_blank">@ultimaterivalsbr</a>
+      <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
+      <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+</footer>
+
+<script>
+// Nav
+document.getElementById('navHam').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+  this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
+});
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    const f = this.dataset.filter;
+    // Show/hide category labels
+    document.querySelectorAll('.cat-label').forEach(lbl => {
+      lbl.style.display = (f === 'all' || lbl.dataset.cat === f) ? '' : 'none';
+    });
+    // Show/hide product cards
+    document.querySelectorAll('.prod-card[data-cat]').forEach(card => {
+      const show = f === 'all' || card.dataset.cat === f;
+      card.style.display = show ? '' : 'none';
+    });
+    // Show/hide product grids (hide empty grids)
+    document.querySelectorAll('.product-grid').forEach(grid => {
+      const visible = [...grid.querySelectorAll('.prod-card')].some(c => c.style.display !== 'none');
+      grid.style.display = (f === 'all' || visible) ? '' : 'none';
+    });
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.prod-card,.coins-col').forEach((el,i) => {
+        el.style.transitionDelay = (i*.07) + 's';
+        el.classList.add('on');
+      });
+    }
+  });
+}, {threshold:.06});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

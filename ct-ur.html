@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CT UR — Centro de Treinamento Ultimate Rivals | BH</title>
+<meta name="description" content="CT UR — Centro de Treinamento Ultimate Rivals. Sistema de evolução estruturado com fundamentos técnicos, Mentalidade Hunter e progressão de nível real.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
+  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
+  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
+  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block}
+
+/* ANNOUNCE BAR */
+.announce-bar{background:var(--gold);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
+.announce-inner{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.ab-tag{background:#000;color:var(--gold);padding:2px 10px;border-radius:3px;font-size:11px}
+.ab-sep{opacity:.35;font-size:16px}
+.ab-link{color:#000;border-bottom:1px solid rgba(0,0,0,.3)}
+.ab-link:hover{opacity:.7}
+@media(max-width:600px){.announce-inner span:not(.ab-tag):not(:last-child){display:none}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+.nav-logos{display:flex;align-items:center;gap:14px}
+.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
+.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
+.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
+.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
+.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
+.nav-ham:hover{border-color:var(--gold);color:var(--gold)}
+.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
+.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
+@media(max-width:780px){
+  nav{position:relative}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid var(--border);padding:10px 20px 16px;gap:0}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-ham{display:block}
+  .nav-season{display:none}
+  .nav-portal-btn{display:none}
+}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,140,0,.10),transparent 55%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(255,216,77,.05),transparent 40%),#000}
+.hero::after{content:'CT';position:absolute;right:-20px;bottom:-60px;font-family:var(--display);font-size:min(320px,44vw);font-weight:900;line-height:1;color:rgba(255,216,77,.03);pointer-events:none;user-select:none}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:22px;text-transform:uppercase;font-family:var(--display)}
+.hero h1{font-family:var(--display);font-size:clamp(54px,12vw,100px);font-weight:900;line-height:.88;letter-spacing:-1px;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.hero h1 .gold{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.4)}
+.hero-slogan{font-family:var(--display);font-size:clamp(18px,3vw,26px);font-weight:800;color:rgba(255,216,77,.7);text-transform:uppercase;letter-spacing:2px;margin:12px 0 20px}
+.hero-desc{font-size:15px;color:var(--muted);max-width:620px;margin:0 auto 36px;line-height:1.75;border-left:3px solid rgba(255,216,77,.3);padding-left:18px;text-align:left}
+.hero-btn{display:inline-flex;align-items:center;background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:.5px;padding:15px 40px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
+.hero-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+
+/* SECTION */
+.sec{padding:80px 20px;max-width:1100px;margin:0 auto}
+.sec-alt{background:var(--surface)}
+.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
+.s-title{font-family:var(--display);font-size:clamp(34px,5.5vw,52px);font-weight:900;line-height:1;text-transform:uppercase;margin-bottom:14px}
+.s-body{font-size:15px;color:var(--muted);max-width:540px;line-height:1.72}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
+
+/* PILLAR CARDS */
+.pillar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px 24px;transition:all .3s;position:relative;overflow:hidden}
+.pillar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
+.pillar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.pillar-icon{font-size:36px;margin-bottom:16px;display:block}
+.pillar-card h3{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px;color:var(--gold)}
+.pillar-card p{font-size:13px;color:var(--muted);line-height:1.68}
+
+/* HUNTER SECTION */
+.hunter-wrap{background:linear-gradient(135deg,#0a0600,#110900,#080500);border:1px solid rgba(255,200,0,.18);border-radius:18px;overflow:hidden;position:relative;padding:56px 52px}
+@media(max-width:700px){.hunter-wrap{padding:36px 24px}}
+.hunter-wrap::before{content:'';position:absolute;inset:0;background-image:linear-gradient(38deg,transparent 30%,rgba(255,200,0,.055) 30.5%,rgba(255,200,0,.055) 31.5%,transparent 32%),linear-gradient(38deg,transparent 33%,rgba(255,200,0,.04) 33.5%,rgba(255,200,0,.04) 34.2%,transparent 34.7%),linear-gradient(225deg,transparent 60%,rgba(255,160,0,.05) 60.5%,rgba(255,160,0,.05) 61.2%,transparent 61.7%),linear-gradient(225deg,transparent 63%,rgba(255,160,0,.04) 63.5%,rgba(255,160,0,.04) 64%,transparent 64.5%);pointer-events:none}
+.hunter-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:16px;text-transform:uppercase;font-family:var(--display)}
+.hunter-title{font-family:var(--display);font-size:clamp(38px,6vw,64px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.hunter-title span{color:var(--gold)}
+.hunter-quote{font-family:var(--display);font-size:clamp(16px,2.5vw,22px);font-weight:700;color:rgba(255,216,77,.7);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px}
+.hunter-body{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;max-width:620px;margin-bottom:36px;border-left:2px solid rgba(255,216,77,.25);padding-left:16px}
+.hunter-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:640px){.hunter-principles{grid-template-columns:1fr}}
+.principle{background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.15);border-radius:12px;padding:20px;text-align:center;transition:all .3s}
+.principle:hover{background:rgba(255,216,77,.1);border-color:rgba(255,216,77,.3);transform:translateY(-3px)}
+.principle-icon{font-size:28px;display:block;margin-bottom:10px}
+.principle h4{font-family:var(--display);font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:6px}
+.principle p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* STEPS */
+.steps-flow{display:flex;flex-direction:column;gap:0;position:relative;padding-left:40px}
+.steps-flow::before{content:'';position:absolute;left:19px;top:20px;bottom:20px;width:2px;background:linear-gradient(to bottom,transparent,rgba(255,216,77,.5),rgba(255,216,77,.5),transparent)}
+.step-item{position:relative;padding:0 0 28px 28px}
+.step-item:last-child{padding-bottom:0}
+.step-dot{position:absolute;left:-14px;top:16px;width:14px;height:14px;border-radius:50%;border:2px solid var(--gold);background:#000;transition:all .3s}
+.step-item:hover .step-dot{background:var(--gold);box-shadow:0 0 16px rgba(255,216,77,.6)}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;transition:all .3s}
+.step-item:hover .step-card{border-color:rgba(255,216,77,.2);transform:translateX(4px)}
+.step-n{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.step-card h4{font-family:var(--display);font-size:19px;font-weight:900;text-transform:uppercase;margin-bottom:5px}
+.step-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* LEVELS TABLE */
+.lvl-table{width:100%;border-collapse:collapse;font-size:13px}
+.lvl-table th{font-family:var(--display);font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.lvl-table td{padding:14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.lvl-table tr:last-child td{border-bottom:none}
+.lvl-table tr:hover td{background:rgba(255,255,255,.02)}
+.lvl-num{font-family:var(--display);font-size:22px;font-weight:900}
+.lni{color:#888}
+.ln1{color:#555}
+.ln2{color:#43a047}
+.ln3{color:#1e88e5}
+.ln4{color:#9c27b0}
+.ln5{color:var(--gold)}
+.lvl-name{font-family:var(--display);font-size:14px;font-weight:900;text-transform:uppercase;color:var(--text);margin-bottom:2px}
+.lvl-focus{font-size:12px;color:var(--muted);line-height:1.55}
+.lvl-badge{display:inline-flex;font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-top:6px}
+
+/* CTA */
+.cta-sec{padding:90px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec .tagline{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
+.cta-btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:18px;font-weight:800;padding:16px 36px;border-radius:10px;transition:all .25s;display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.5px;position:relative;z-index:1}
+.cta-btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px}
+.foot-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-social{display:flex;gap:12px;flex-wrap:wrap}
+.foot-social a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+.foot-social a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2);margin-top:10px;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  <div class="announce-inner">
+    <span class="ab-tag">T01 · 2026</span>
+    <span class="ab-sep">·</span>
+    <span>A Temporada Chega</span>
+    <span class="ab-sep">·</span>
+    <span>Garanta Sua Vaga</span>
+    <span class="ab-sep">·</span>
+    <span>Pré-Temporada · BH · MG</span>
+    <span class="ab-sep">·</span>
+    <a href="/temporada" class="ab-link">Ver calendário →</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logos">
+    <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
+    <div class="nav-sep"></div>
+    <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Início</a>
+    <a href="/temporada">Temporada</a>
+    <a href="/equipes">Equipes</a>
+    <a href="/atletas">Atletas</a>
+    <a href="/ranking">Ranking</a>
+    <a href="/ct-ur" style="color:var(--gold)">CT UR</a>
+    <a href="/mercado">Mercado</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-season">T01 · 2026</span>
+    <a href="/portal" class="nav-portal-btn">Portal</a>
+    <a href="/inscricao" class="nav-cta">Inscreva-se</a>
+  </div>
+  <button class="nav-ham" id="navHam" aria-label="Menu">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fu">
+    <div class="hero-badge">Centro de Treinamento · Ultimate Rivals</div>
+    <h1>CT <span class="gold">UR</span></h1>
+    <p class="hero-slogan">O Campo Onde Você Se Forma.</p>
+    <p class="hero-desc">O Centro de Treinamento Ultimate Rivals é onde atletas saem do campo para entrar em uma jornada de desenvolvimento estruturado. Não é academia. É um sistema de evolução com acompanhamento, fundamentos e progressão real.</p>
+    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="hero-btn">Quero Evoluir</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- O QUE É O CT UR -->
+<div class="sec fu">
+  <div style="text-align:center;margin-bottom:52px">
+    <div class="s-label" style="justify-content:center"><span>Estrutura</span></div>
+    <h2 class="s-title">O Que É o CT UR</h2>
+    <p class="s-body" style="margin:0 auto">Três pilares que sustentam a evolução de cada atleta dentro do ecossistema Ultimate Rivals.</p>
+  </div>
+  <div class="g3">
+    <div class="pillar-card fu">
+      <span class="pillar-icon">⚡</span>
+      <h3>Fundamentos Técnicos</h3>
+      <p>Saque, recepção, bloqueio, ataque, defesa e colocação. O CT trabalha fundamentos de forma estruturada, com observação real dos movimentos e feedback direto. Atletas com lacunas técnicas têm um mapa claro de onde melhorar.</p>
+    </div>
+    <div class="pillar-card fu">
+      <span class="pillar-icon">🧠</span>
+      <h3>Mentalidade Hunter</h3>
+      <p>Técnica sem postura não chega longe. O CT trabalha consistência, presença, liderança e atitude dentro e fora da quadra. A Mentalidade Hunter é um modo de jogo — e de vida dentro do esporte.</p>
+    </div>
+    <div class="pillar-card fu">
+      <span class="pillar-icon">📈</span>
+      <h3>Progressão de Nível</h3>
+      <p>Cada atleta tem um plano de treino alinhado ao seu nível atual e ao nível seguinte. A progressão no CT é observada e registrada — ela influencia o ranking, as chamadas e o reconhecimento na Virada.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MENTALIDADE HUNTER -->
+<div class="sec-alt fu">
+  <div class="sec">
+    <div class="hunter-wrap fu">
+      <div class="hunter-tag">CT UR · Identidade</div>
+      <h2 class="hunter-title">Mentalidade<br><span>Hunter</span></h2>
+      <p class="hunter-quote">"A Mentalidade Hunter não é um slogan. É uma postura."</p>
+      <p class="hunter-body">Atletas que treinam com consistência. Que aparecem nos jogos quando ninguém mandou. Que são líderes dentro da equipe antes de ser campeões no ranking. Que reconhecem o processo e sabem que evolução real não tem atalho. Os Hunters são o produto mais acabado desse sistema — e o CT UR é onde essa identidade é construída, testada e consolidada.</p>
+      <div class="hunter-principles">
+        <div class="principle fu">
+          <span class="principle-icon">🔁</span>
+          <h4>Consistência</h4>
+          <p>Aparecer quando é difícil. Treinar quando não é obrigatório. A consistência é o que separa atletas de passagem dos que constroem história.</p>
+        </div>
+        <div class="principle fu">
+          <span class="principle-icon">📍</span>
+          <h4>Presença</h4>
+          <p>Estar presente não é só mostrar o corpo. É chegar focado, contribuir, observar e deixar o ambiente melhor do que encontrou.</p>
+        </div>
+        <div class="principle fu">
+          <span class="principle-icon">⬆️</span>
+          <h4>Evolução</h4>
+          <p>O atleta Hunter não aceita estagnação. Cada ciclo termina com um nível — técnico, tático ou de postura — melhor do que no início.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMO FUNCIONA -->
+<div id="como-funciona" class="sec fu">
+  <div style="margin-bottom:48px">
+    <div class="s-label">Processo</div>
+    <h2 class="s-title">Como Funciona</h2>
+    <p class="s-body">Do primeiro contato até a Virada de Nível — cada passo é estruturado e acompanhado.</p>
+  </div>
+  <div class="steps-flow">
+    <div class="step-item fu">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-n">Passo 01</div>
+        <h4>Avaliação Inicial</h4>
+        <p>O atleta passa por uma avaliação técnica e de postura para identificar ponto de partida, nível atual e as principais lacunas. Sem julgamento — só dados para construir o plano certo.</p>
+      </div>
+    </div>
+    <div class="step-item fu">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-n">Passo 02</div>
+        <h4>Plano de Treino</h4>
+        <p>Com base na avaliação, o atleta recebe um plano de treino personalizado com foco nos fundamentos que mais impactam sua evolução de nível. O plano evolui conforme o atleta avança.</p>
+      </div>
+    </div>
+    <div class="step-item fu">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-n">Passo 03</div>
+        <h4>Acompanhamento Contínuo</h4>
+        <p>Presença nos treinos do CT é registrada. Observadores identificam fundamentos, progresso e comportamento dentro e fora da quadra. O atleta recebe feedback estruturado ao longo do ciclo.</p>
+      </div>
+    </div>
+    <div class="step-item fu">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-n">Passo 04</div>
+        <h4>Progressão Registrada</h4>
+        <p>A evolução técnica observada no CT alimenta o ranking de progressão do atleta. Quem avança no CT avança no sistema — ganha visibilidade, pontos e relevância para chamadas.</p>
+      </div>
+    </div>
+    <div class="step-item fu">
+      <div class="step-dot"></div>
+      <div class="step-card">
+        <div class="step-n">Passo 05</div>
+        <h4>Virada de Nível</h4>
+        <p>Atletas que atingem os critérios técnicos, táticos e de postura do próximo nível passam pela Virada de Nível — avaliação oficial que sobe o atleta na hierarquia do ecossistema UR.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- NÍVEIS NO CT UR -->
+<div class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:44px">
+      <div class="s-label">Desenvolvimento</div>
+      <h2 class="s-title">Níveis no CT UR</h2>
+      <p class="s-body">Cada nível tem um foco de treinamento específico. O CT UR é adaptado para onde o atleta está — e para onde quer chegar.</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+      <table class="lvl-table">
+        <thead>
+          <tr>
+            <th style="width:80px">Nível</th>
+            <th>Nome</th>
+            <th>Foco Principal no Treino</th>
+            <th>Meta de Progressão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lvl-num lni">NI</span></td>
+            <td>
+              <div class="lvl-name">Iniciante</div>
+              <span class="lvl-badge" style="background:rgba(150,150,150,.1);border:1px solid rgba(150,150,150,.2);color:#888">Nivelamento</span>
+            </td>
+            <td class="lvl-focus">Posicionamento básico, regras do jogo, controle de bola, recepção simples e postura na quadra. Introdução à cultura Hunter.</td>
+            <td class="lvl-focus">Dominar os fundamentos básicos e demonstrar consistência de presença por pelo menos 4 semanas.</td>
+          </tr>
+          <tr>
+            <td><span class="lvl-num ln1">N1</span></td>
+            <td>
+              <div class="lvl-name">Aprendiz</div>
+              <span class="lvl-badge" style="background:rgba(100,100,100,.1);border:1px solid rgba(100,100,100,.2);color:#666">Construção</span>
+            </td>
+            <td class="lvl-focus">Fundamentos de recepção e colocação, introdução ao saque flutuante, leitura de jogo básica, comunicação com parceiro.</td>
+            <td class="lvl-focus">Executar recepção e passe com consistência técnica observável em situação real de jogo.</td>
+          </tr>
+          <tr>
+            <td><span class="lvl-num ln2">N2</span></td>
+            <td>
+              <div class="lvl-name">Desenvolvido</div>
+              <span class="lvl-badge" style="background:rgba(43,160,72,.1);border:1px solid rgba(43,160,72,.2);color:#43a047">Em crescimento</span>
+            </td>
+            <td class="lvl-focus">Ataque de frente e de costas, bloqueio individual, defesa em mergulho, variações de saque e leitura tática de set.</td>
+            <td class="lvl-focus">Demonstrar impacto técnico observável em situação real de torneio ou UR Play.</td>
+          </tr>
+          <tr>
+            <td><span class="lvl-num ln3">N3</span></td>
+            <td>
+              <div class="lvl-name">Competitivo</div>
+              <span class="lvl-badge" style="background:rgba(30,136,229,.1);border:1px solid rgba(30,136,229,.2);color:#1e88e5">Competindo</span>
+            </td>
+            <td class="lvl-focus">Estratégia de jogo em dupla ou quarteto, leitura do adversário, variações de ataque, bloqueio duplo, liderança em quadra.</td>
+            <td class="lvl-focus">Influenciar partidas com consistência. Ser referência técnica ou tática dentro da equipe.</td>
+          </tr>
+          <tr>
+            <td><span class="lvl-num ln4">N4</span></td>
+            <td>
+              <div class="lvl-name">Avançado</div>
+              <span class="lvl-badge" style="background:rgba(156,39,176,.1);border:1px solid rgba(156,39,176,.2);color:#9c27b0">Referência</span>
+            </td>
+            <td class="lvl-focus">Jogo situacional, clutch, gestão de pressão, liderança de vestiário, evolução de jogadores do time, análise de jogo.</td>
+            <td class="lvl-focus">Ser reconhecido pela organização como referência técnica, tática e de postura dentro do ecossistema UR.</td>
+          </tr>
+          <tr>
+            <td><span class="lvl-num ln5">N5</span></td>
+            <td>
+              <div class="lvl-name">Hunter Elite</div>
+              <span class="lvl-badge" style="background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold)">Elite</span>
+            </td>
+            <td class="lvl-focus">Mentoria de atletas de menor nível, liderança de liga, participação na construção da cultura UR, embaixadores do ecossistema.</td>
+            <td class="lvl-focus">Hunter Elite sustenta e transmite a cultura. Não é sobre chegar ao topo — é sobre manter o padrão e elevar os demais.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="cta-sec fu">
+  <div class="cta-glow"></div>
+  <p class="tagline">Evolução real. Sem atalho.</p>
+  <h2>Quero<br><span>Evoluir</span></h2>
+  <p>Fale com a organização e inicie sua jornada no CT UR. Avaliação, plano e acompanhamento para cada fase da sua evolução.</p>
+  <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="cta-btn-wpp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com a Organização
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logos">
+      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+      <span>ULTIMATE RIVALS</span>
+    </div>
+    <div class="foot-links">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/equipes">Equipes</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking">Ranking</a>
+      <a href="/ct-ur">CT UR</a>
+      <a href="/mercado">Mercado</a>
+      <a href="/portal">Portal</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/ultimaterivalsbr" target="_blank">@ultimaterivalsbr</a>
+      <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
+      <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+</footer>
+
+<script>
+document.getElementById('navHam').addEventListener('click', function(){
+  document.getElementById('navLinks').classList.toggle('open');
+  this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.pillar-card,.step-item,.principle').forEach((el,i) => {
+        el.style.transitionDelay = (i*.1) + 's';
+        el.classList.add('on');
+      });
+    }
+  });
+}, {threshold:.08});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

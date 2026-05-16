@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Temporada T01 2026 — Ultimate Rivals | Vôlei de Praia BH</title>
-<meta name="description" content="Temporada oficial T01 2026 — calendário, eventos, premiações e regras. Vôlei de praia amador. Belo Horizonte.">
+<meta name="description" content="Temporada oficial T01 2026 — UR Play, Torneios Mensais, Fase de Grupos, Virada de Ranking. Premiações, calendário e formato completo. Vôlei de praia BH.">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,13 +19,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:h
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* TICKER */
-.ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
-.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
-.ticker-inner:hover{animation-play-state:paused}
-.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
-.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* ANNOUNCE BAR */
+.announce-bar{background:var(--gold);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
+.announce-inner{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.ab-tag{background:#000;color:var(--gold);padding:2px 10px;border-radius:3px;font-size:11px}
+.ab-sep{opacity:.35;font-size:16px}
+.ab-link{color:#000;border-bottom:1px solid rgba(0,0,0,.3)}
+.ab-link:hover{opacity:.7}
+@media(max-width:600px){.announce-inner span:not(.ab-tag):not(:last-child){display:none}}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
@@ -56,37 +57,31 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 }
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background-color:#1c1508;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
-.hero-court{position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent calc(50% - .5px),rgba(255,255,255,.07) calc(50% - .5px),rgba(255,255,255,.07) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(transparent calc(30% - .5px),rgba(255,255,255,.04) calc(30% - .5px),rgba(255,255,255,.04) calc(30% + .5px),transparent calc(30% + .5px)),linear-gradient(transparent calc(70% - .5px),rgba(255,255,255,.04) calc(70% - .5px),rgba(255,255,255,.04) calc(70% + .5px),transparent calc(70% + .5px)),linear-gradient(90deg,transparent 12%,rgba(255,255,255,.04) 12%,rgba(255,255,255,.04) 12.3%,transparent 12.3%),linear-gradient(90deg,transparent 87.7%,rgba(255,255,255,.04) 87.7%,rgba(255,255,255,.04) 88%,transparent 88%)}
-.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.12),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.55) 0%,rgba(7,8,13,.72) 60%,rgba(7,8,13,.92) 100%)}
-.hero-content{position:relative;z-index:2;max-width:860px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-color:#0d0b02;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.7}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse 100% 65% at 50% 0%,rgba(255,216,77,.14),transparent 55%),linear-gradient(to bottom,rgba(7,8,13,.5) 0%,rgba(7,8,13,.75) 60%,rgba(7,8,13,.95) 100%)}
+.hero-content{position:relative;z-index:2;max-width:900px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.38);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px;padding:6px 16px;border-radius:3px;margin-bottom:28px;text-transform:uppercase;font-family:var(--display)}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
-.hero-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
-.hero-logos img{height:100px;filter:drop-shadow(0 0 28px rgba(255,216,77,.45))}
-.hero-logos .hl-hunter{height:96px;filter:drop-shadow(0 0 24px rgba(255,140,0,.4))}
-.hero-logos-divider{width:1px;height:70px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.18),transparent)}
-.hero-title{font-family:var(--display);font-size:clamp(60px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase}
+.hero-title{font-family:var(--display);font-size:clamp(64px,14vw,120px);font-weight:900;line-height:.88;letter-spacing:-2px;text-transform:uppercase;margin-bottom:16px}
 .hero-title .t1{color:#fff}
-.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.45)}
-.hero-tag{font-family:var(--display);font-size:clamp(14px,2.5vw,20px);font-weight:600;color:var(--muted);letter-spacing:4px;text-transform:uppercase;margin:12px 0 6px}
-.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:14px auto}
-.hero-bordao{font-family:var(--display);font-size:clamp(18px,3.5vw,28px);font-weight:800;color:rgba(255,216,77,.85);letter-spacing:1px;margin-bottom:32px;text-transform:uppercase}
-.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
-.btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:19px;font-weight:900;letter-spacing:.5px;padding:16px 42px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
+.hero-title .t2{color:var(--gold);text-shadow:0 0 60px rgba(255,216,77,.5)}
+.hero-sub{font-family:var(--display);font-size:clamp(16px,2.5vw,22px);font-weight:600;color:var(--muted);letter-spacing:.5px;margin-bottom:10px}
+.hero-divider{width:52px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.btn-gold{background:linear-gradient(135deg,#ffd84d,#c89000);color:#000;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:.5px;padding:15px 40px;border-radius:10px;transition:all .25s;box-shadow:0 6px 28px rgba(255,216,77,.3);text-transform:uppercase}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(255,216,77,.5)}
-.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:.5px;padding:16px 32px;border-radius:10px;transition:all .25s;text-transform:uppercase}
+.btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);color:var(--text);font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:.5px;padding:15px 30px;border-radius:10px;transition:all .25s;text-transform:uppercase}
 .btn-ghost:hover{border-color:rgba(255,216,77,.6);color:var(--gold)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:520px;margin:0 auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(7,8,13,.5)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:540px;margin:0 auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;backdrop-filter:blur(8px);background:rgba(7,8,13,.5)}
 .h-stat{padding:16px 0;text-align:center;border-right:1px solid var(--border)}
 .h-stat:last-child{border-right:none}
 .h-stat-n{font-family:var(--display);font-size:32px;font-weight:900;color:var(--gold);line-height:1}
 .h-stat-l{font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
 
-/* SECTION BASE */
-.sec{padding:84px 20px;max-width:1100px;margin:0 auto}
+/* SECTION */
+.sec{padding:80px 20px;max-width:1100px;margin:0 auto}
 .sec-alt{background:var(--surface)}
 .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
 .s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -98,146 +93,92 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 @media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
 
-/* ÍCONES CIRCULARES */
-.icon-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:30px;position:relative;flex-shrink:0}
-.icon-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 180deg,var(--gold) 0deg,rgba(255,216,77,.15) 90deg,rgba(255,216,77,.15) 270deg,var(--gold) 360deg);opacity:.55}
-.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
-.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
-.ic-fire{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500)}
-.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
+/* FORMATO CARDS */
+.fmt-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
+.fmt-card:hover{border-color:rgba(255,216,77,.28);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+.fmt-head{padding:22px 24px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px}
+.fmt-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.fmt-icon.gold-bg{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900);border:1px solid rgba(255,216,77,.22)}
+.fmt-icon.blue-bg{background:radial-gradient(circle at 38% 32%,#0a1640,#040b20);border:1px solid rgba(80,140,255,.2)}
+.fmt-icon.green-bg{background:radial-gradient(circle at 38% 32%,#061e10,#020c06);border:1px solid rgba(60,160,80,.2)}
+.fmt-icon.fire-bg{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500);border:1px solid rgba(255,100,30,.2)}
+.fmt-card h3{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;margin-bottom:3px}
+.fmt-sub{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.4px}
+.fmt-body{padding:20px 24px}
+.fmt-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.fmt-row:last-child{border-bottom:none}
+.fmt-lbl{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.4px;text-transform:uppercase}
+.fmt-val{font-family:var(--display);font-size:15px;font-weight:800;color:var(--text)}
+.fmt-val.gold{color:var(--gold)}
 
-/* PILAR CARDS */
-.pilar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;transition:all .3s;position:relative;overflow:hidden}
-.pilar-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,216,77,.03),transparent);pointer-events:none}
-.pilar-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
-.pilar-card h3{font-family:var(--display);font-size:21px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
-.pilar-card p{font-size:13px;color:var(--muted);line-height:1.67}
+/* PRIZE CARDS */
+.prize-row{display:flex;gap:10px;margin-top:14px}
+.prize-item{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:center}
+.prize-medal{font-size:18px;display:block;margin-bottom:3px}
+.prize-val{font-family:var(--display);font-size:16px;font-weight:900;color:var(--gold)}
 
-/* HUNTERS */
-.hunters-wrap{background:linear-gradient(135deg,#0a0600,#110900,#080500);border:1px solid rgba(255,200,0,.18);border-radius:16px;overflow:hidden;position:relative}
-.hunters-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(38deg,transparent 30%,rgba(255,200,0,.055) 30.5%,rgba(255,200,0,.055) 31.5%,transparent 32%),linear-gradient(38deg,transparent 33%,rgba(255,200,0,.04) 33.5%,rgba(255,200,0,.04) 34.2%,transparent 34.7%),linear-gradient(38deg,transparent 36%,rgba(255,200,0,.03) 36.5%,rgba(255,200,0,.03) 37%,transparent 37.5%),linear-gradient(225deg,transparent 60%,rgba(255,160,0,.05) 60.5%,rgba(255,160,0,.05) 61.2%,transparent 61.7%),linear-gradient(225deg,transparent 63%,rgba(255,160,0,.04) 63.5%,rgba(255,160,0,.04) 64%,transparent 64.5%),linear-gradient(225deg,transparent 66%,rgba(255,160,0,.025) 66.5%,rgba(255,160,0,.025) 67%,transparent 67.5%)}
-.hunters-lightning{position:absolute;top:0;right:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
-.hunters-lightning svg{position:absolute}
-.hunters-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center}
-@media(max-width:700px){.hunters-inner{grid-template-columns:1fr}}
-.hunters-left{padding:52px 48px;position:relative;z-index:1}
-@media(max-width:700px){.hunters-left{padding:32px 22px}}
-.h-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
-.hunters-title{font-family:var(--display);font-size:clamp(36px,5.5vw,58px);font-weight:900;line-height:.92;text-transform:uppercase;color:#fff;margin-bottom:6px}
-.hunters-title span{color:var(--gold)}
-.hunters-bordao{font-family:var(--display);font-size:clamp(14px,2vw,18px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
-.hunters-desc{font-size:14px;color:rgba(255,255,255,.48);line-height:1.72;max-width:400px;margin-bottom:28px;border-left:2px solid rgba(255,216,77,.25);padding-left:14px}
-.traits{display:flex;flex-direction:column;gap:10px}
-.trait{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500;line-height:1.5}
-.trait strong{color:rgba(255,255,255,.9);font-weight:700}
-.trait-i{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
-.hunters-right{display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
-@media(max-width:700px){.hunters-right{padding:0 22px 32px}}
-.hunter-logo{width:260px;max-width:80vw;filter:drop-shadow(0 0 30px rgba(255,200,0,.45)) drop-shadow(0 0 70px rgba(255,120,0,.18));animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* PRIZE SECTION */
+.prize-banner{background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(255,140,0,.04));border:1px solid rgba(255,216,77,.2);border-radius:16px;padding:32px;margin-bottom:28px}
+.prize-title{font-family:var(--display);font-size:28px;font-weight:900;text-transform:uppercase;color:var(--gold);margin-bottom:6px;letter-spacing:.3px}
+.prize-desc{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.prize-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.prize-grid{grid-template-columns:1fr}}
+.prize-col{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:18px}
+.prize-col h4{font-family:var(--display);font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px;color:#fff}
+.prize-line{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.prize-line:last-child{border-bottom:none}
+.prize-pos{font-size:18px;flex-shrink:0;width:28px}
+.prize-name{font-size:13px;font-weight:600;color:var(--muted);flex:1}
+.prize-amt{font-family:var(--display);font-size:17px;font-weight:900;color:var(--gold);white-space:nowrap}
+.prize-event-final{background:linear-gradient(135deg,rgba(255,216,77,.12),rgba(255,100,0,.06));border:1px solid rgba(255,216,77,.3);border-radius:12px;padding:20px 24px;margin-top:16px}
+.prize-event-final h4{font-family:var(--display);font-size:19px;font-weight:900;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.prize-event-final p{font-size:13px;color:var(--muted);line-height:1.65}
 
-/* STEPS */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.steps::before{content:'';position:absolute;top:38px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.3) 10%,rgba(255,216,77,.3) 90%,transparent)}
-@media(max-width:800px){.steps{grid-template-columns:1fr 1fr}.steps::before{display:none}}
-@media(max-width:480px){.steps{grid-template-columns:1fr}}
-.step{padding:22px 16px;text-align:center}
-.step-n{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:var(--display);font-size:20px;font-weight:900;background:radial-gradient(circle at 38% 32%,#2a1a00,#100900);border:2px solid rgba(255,216,77,.4);box-shadow:0 0 18px rgba(255,216,77,.12);color:var(--gold);position:relative;z-index:1}
-.step h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
-.step p{font-size:13px;color:var(--muted);line-height:1.62}
+/* TABS */
+.tab-bar{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--muted);font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:9px 20px;border-radius:7px;cursor:pointer;transition:all .2s}
+.tab-btn:hover{color:var(--text);border-color:rgba(255,255,255,.2)}
+.tab-btn.active{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
 
-/* NÍVEIS */
-.lvl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-@media(max-width:860px){.lvl-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:480px){.lvl-grid{grid-template-columns:1fr 1fr}}
-.lvl{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 14px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
-.lvl:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.4)}
-.lvl::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
-.lv1::after{background:linear-gradient(90deg,#444,#777)}
-.lv2::after{background:linear-gradient(90deg,#1b5e20,#43a047)}
-.lv3::after{background:linear-gradient(90deg,#0d47a1,#1976d2)}
-.lv4::after{background:linear-gradient(90deg,#4a148c,#8e24aa)}
-.lv5::after{background:linear-gradient(90deg,var(--gold3),var(--gold))}
-.lv5{border-color:rgba(255,216,77,.18);background:linear-gradient(160deg,rgba(255,216,77,.05),var(--card))}
-.lvl-n{font-family:var(--display);font-size:36px;font-weight:900;line-height:1;margin-bottom:5px}
-.lv1 .lvl-n{color:#777}
-.lv2 .lvl-n{color:#43a047}
-.lv3 .lvl-n{color:#1e88e5}
-.lv4 .lvl-n{color:#9c27b0}
-.lv5 .lvl-n{color:var(--gold);text-shadow:0 0 18px rgba(255,216,77,.4)}
-.lvl-nome{font-family:var(--display);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
-.lvl-desc{font-size:11px;color:var(--muted);line-height:1.55}
+/* STANDINGS TABLE */
+.standings-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px}
+.standings-table th{font-family:var(--display);font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.standings-table th.num{text-align:center}
+.standings-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+.standings-table td.num{text-align:center;font-family:var(--display);font-size:15px;font-weight:800;color:var(--gold)}
+.standings-table tr:last-child td{border-bottom:none}
+.standings-table tr:hover td{background:rgba(255,255,255,.02)}
+.team-cell{display:flex;align-items:center;gap:10px}
+.team-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.team-cell-name{font-family:var(--display);font-size:15px;font-weight:900;text-transform:uppercase}
+.group-label{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;padding:10px 12px 6px;opacity:.7}
 
-/* ECO CARDS */
-.eco-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
-.eco-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-3px)}
-.eco-card h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px}
-.eco-card p{font-size:13px;color:var(--muted);line-height:1.62}
+/* RESULTS TABLE */
+.results-table{width:100%;border-collapse:collapse;font-size:13px}
+.results-table th{font-family:var(--display);font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.results-table td{padding:12px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+.results-table tr:last-child td{border-bottom:none}
+.results-table tr:hover td{background:rgba(255,255,255,.02)}
+.match-score{font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:.5px}
+.score-win{color:var(--gold)}
+.score-lose{color:var(--muted)}
+.status-badge{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px}
+.status-enc{background:rgba(60,200,80,.1);color:#60d070;border:1px solid rgba(60,200,80,.2)}
+.status-ag{background:rgba(255,216,77,.1);color:var(--gold);border:1px solid rgba(255,216,77,.2)}
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:20px}
 
-/* CTA */
-.cta-sec{padding:96px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
-.cta-sec::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px}
-.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
-.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
-.cta-sec h2 span{color:var(--gold)}
-.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
-.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
-.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
-
-/* FOOTER */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.foot-logos{display:flex;align-items:center;gap:12px}
-.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
-.foot-logos .fh{height:26px;filter:drop-shadow(0 0 5px rgba(255,140,0,.3))}
-.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
-.foot-links{display:flex;gap:18px;flex-wrap:wrap}
-.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
-.foot-links a:hover{color:var(--gold)}
-.foot-copy{font-size:11px;color:var(--muted2)}
-
-/* FADE UP */
-.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
-.fu.on{opacity:1;transform:translateY(0)}
-
-/* TIMELINE CALENDÁRIO */
-.timeline{position:relative;padding:0 0 0 40px}
-.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,rgba(255,216,77,.5),rgba(255,216,77,.5),transparent)}
-.tl-item{position:relative;padding:0 0 36px 30px}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-14px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:#000}
-.tl-dot.highlight{background:var(--gold);box-shadow:0 0 16px rgba(255,216,77,.6)}
-.tl-month{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.tl-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px}
-.tl-card.finale{border-color:rgba(255,216,77,.3);background:linear-gradient(135deg,rgba(255,216,77,.05),var(--card))}
-.tl-card h4{font-family:var(--display);font-size:18px;font-weight:900;text-transform:uppercase;margin-bottom:4px}
-.tl-card p{font-size:13px;color:var(--muted);line-height:1.55}
-.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.tl-tag{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:12px;font-family:var(--display)}
-.tl-tag.inscricao{background:rgba(99,255,99,.1);color:#4caf50;border:1px solid rgba(99,255,99,.2)}
-.tl-tag.evento{background:rgba(255,216,77,.1);color:var(--gold);border:1px solid rgba(255,216,77,.25)}
-.tl-tag.abertura{background:rgba(100,160,255,.1);color:#7eb8ff;border:1px solid rgba(100,160,255,.2)}
-.tl-tag.final{background:linear-gradient(135deg,rgba(255,216,77,.2),rgba(255,140,0,.2));color:var(--gold);border:1px solid rgba(255,216,77,.4)}
-.tl-tag.nivel{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1)}
-
-/* EVENTO CARDS */
-.evt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s}
-.evt-card:hover{border-color:rgba(255,216,77,.28);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
-.evt-head{padding:20px 22px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}
-.evt-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900);border:1px solid rgba(255,216,77,.2)}
-.evt-card h3{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;margin-bottom:2px}
-.evt-card .evt-sub{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px}
-.evt-body{padding:20px 22px}
-.evt-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.evt-row:last-child{border-bottom:none}
-.evt-lbl{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.evt-val{font-family:var(--display);font-size:15px;font-weight:800;color:var(--text)}
-.evt-val.gold{color:var(--gold)}
-.premio-row{display:flex;gap:10px;margin-top:12px}
-.premio-item{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px;text-align:center}
-.premio-medal{font-size:18px;display:block;margin-bottom:3px}
-.premio-val{font-family:var(--display);font-size:16px;font-weight:900;color:var(--gold)}
+/* TIMELINE */
+.timeline-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:32px}
+.timeline-flow::before{content:'';position:absolute;top:38px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.3) 10%,rgba(255,216,77,.3) 90%,transparent)}
+@media(max-width:800px){.timeline-flow{grid-template-columns:1fr 1fr}.timeline-flow::before{display:none}}
+@media(max-width:480px){.timeline-flow{grid-template-columns:1fr}}
+.tfl-step{padding:20px 14px;text-align:center;position:relative}
+.tfl-n{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--display);font-size:16px;font-weight:900;background:radial-gradient(circle at 38% 32%,#2a1a00,#100900);border:2px solid rgba(255,216,77,.4);box-shadow:0 0 18px rgba(255,216,77,.12);color:var(--gold);position:relative;z-index:1;line-height:1}
+.tfl-step h4{font-family:var(--display);font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;margin-bottom:6px}
+.tfl-step p{font-size:12px;color:var(--muted);line-height:1.55}
+.tfl-weeks{font-size:10px;font-weight:800;color:rgba(255,216,77,.6);letter-spacing:1px;text-transform:uppercase;font-family:var(--display);margin-bottom:8px}
 
 /* PLANOS */
 .plan-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 22px;position:relative;overflow:hidden;transition:all .3s}
@@ -256,32 +197,62 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 .plan-btn.ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);color:var(--text)}
 .plan-btn.ghost:hover{border-color:rgba(255,216,77,.5);color:var(--gold)}
 
-/* TABELA */
-.premio-table{width:100%;border-collapse:collapse;font-size:13px}
-.premio-table th{font-family:var(--display);font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
-.premio-table td{padding:14px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
-.premio-table tr:last-child td{border-bottom:none}
-.premio-table tr:hover td{background:rgba(255,255,255,.02)}
-.pt-event{font-family:var(--display);font-size:16px;font-weight:900;text-transform:uppercase}
-.pt-gold{color:var(--gold)}
-.pt-note{font-size:11px;color:var(--muted);margin-top:4px}
+/* ECO CARD */
+.eco-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
+.eco-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-3px)}
+.eco-card h4{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px}
+.eco-card p{font-size:13px;color:var(--muted);line-height:1.62}
+.icon-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative}
+.icon-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(from 180deg,var(--gold) 0deg,rgba(255,216,77,.15) 90deg,rgba(255,216,77,.15) 270deg,var(--gold) 360deg);opacity:.5}
+.ic-gold{background:radial-gradient(circle at 38% 32%,#2c1e00,#0f0900)}
+.ic-blue{background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a)}
+.ic-fire{background:radial-gradient(circle at 38% 32%,#2c0e00,#0f0500)}
+.ic-green{background:radial-gradient(circle at 38% 32%,#062010,#020a06)}
+
+/* CTA */
+.cta-sec{padding:90px 20px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
+.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
+.cta-sec h2{font-family:var(--display);font-size:clamp(40px,8vw,78px);font-weight:900;text-transform:uppercase;line-height:.92;margin-bottom:10px;position:relative;z-index:1}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec .bordao{font-family:var(--display);font-size:clamp(16px,3vw,24px);font-weight:700;color:rgba(255,216,77,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec p{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 34px;line-height:1.72;position:relative;z-index:1}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:17px;font-weight:800;padding:15px 30px;border-radius:10px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
+.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
+
+/* FADE UP */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:translateY(0)}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 28px}
+.foot-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-logos{display:flex;align-items:center;gap:12px}
+.foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+.foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap}
+.foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+.foot-links a:hover{color:var(--gold)}
+.foot-social{display:flex;gap:12px;flex-wrap:wrap}
+.foot-social a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+.foot-social a:hover{color:var(--gold)}
+.foot-copy{font-size:11px;color:var(--muted2);margin-top:10px;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ti">📅 Temporada T01 · 2026 — Abertura Julho 2026</span><span class="ts">|</span>
-    <span class="ti">🏆 Mini Torneio · UR Series · Virada de Ranking</span><span class="ts">|</span>
-    <span class="ti">🥇 Prêmios até R$1.200 por chave</span><span class="ts">|</span>
-    <span class="ti">⚡ Draft Justo · Ranking Real · 5 Níveis</span><span class="ts">|</span>
-    <span class="ti">📍 Polo 01 · Belo Horizonte — MG</span><span class="ts">|</span>
-    <span class="ti">📅 Temporada T01 · 2026 — Abertura Julho 2026</span><span class="ts">|</span>
-    <span class="ti">🏆 Mini Torneio · UR Series · Virada de Ranking</span><span class="ts">|</span>
-    <span class="ti">🥇 Prêmios até R$1.200 por chave</span><span class="ts">|</span>
-    <span class="ti">⚡ Draft Justo · Ranking Real · 5 Níveis</span><span class="ts">|</span>
-    <span class="ti">📍 Polo 01 · Belo Horizonte — MG</span><span class="ts">|</span>
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  <div class="announce-inner">
+    <span class="ab-tag">T01 · 2026</span>
+    <span class="ab-sep">·</span>
+    <span>A Temporada Chega</span>
+    <span class="ab-sep">·</span>
+    <span>Garanta Sua Vaga</span>
+    <span class="ab-sep">·</span>
+    <span>Pré-Temporada · BH · MG</span>
+    <span class="ab-sep">·</span>
+    <a href="/temporada" class="ab-link">Ver calendário →</a>
   </div>
 </div>
 
@@ -295,44 +266,39 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
   <div class="nav-links" id="navLinks">
     <a href="/">Início</a>
     <a href="/temporada" style="color:var(--gold)">Temporada</a>
+    <a href="/equipes">Equipes</a>
     <a href="/atletas">Atletas</a>
     <a href="/ranking">Ranking</a>
-    <a href="/patrocinadores">Patrocinadores</a>
+    <a href="/ct-ur">CT UR</a>
+    <a href="/mercado">Mercado</a>
   </div>
   <div class="nav-right">
     <span class="nav-season">T01 · 2026</span>
-    <a href="/portal" class="nav-portal-btn">🏐 Portal</a>
-    <a href="/inscricao" class="nav-cta">⚡ Inscreva-se</a>
+    <a href="/portal" class="nav-portal-btn">Portal</a>
+    <a href="/inscricao" class="nav-cta">Inscreva-se</a>
   </div>
-  <button class="nav-ham" id="navHam" aria-label="Menu">☰</button>
+  <button class="nav-ham" id="navHam" aria-label="Menu">&#9776;</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-court"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content fu">
     <div class="hero-badge">Temporada Oficial · T01 · 2026</div>
-    <div class="hero-logos">
-      <img src="logo-ur-3d.png" alt="Ultimate Rivals" onerror="this.style.display='none'">
-      <div class="hero-logos-divider"></div>
-      <img src="logo-hunter.png" alt="Hunters UR" class="hl-hunter" onerror="this.style.display='none'">
-    </div>
-    <h1 class="hero-title">
+    <div class="hero-title">
       <div class="t1">TEMPORADA</div>
       <div class="t2">T01</div>
-    </h1>
-    <p class="hero-tag">Ecossistema Esportivo · Vôlei de Praia · Belo Horizonte</p>
+    </div>
+    <p class="hero-sub">Ecossistema Esportivo · Vôlei de Praia · Belo Horizonte</p>
     <div class="hero-divider"></div>
-    <p class="hero-bordao">A temporada mais completa do vôlei de praia amador.</p>
     <div class="hero-btns">
-      <a href="UR_Inscricao_Atleta.html" class="btn-gold">⚡ Inscreva-se agora</a>
-      <a href="#calendario" class="btn-ghost">📅 Ver calendário</a>
+      <a href="/inscricao" class="btn-gold">Inscreva-se agora</a>
+      <a href="#formato" class="btn-ghost">Ver formato</a>
     </div>
     <div class="hero-stats">
-      <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">Meses</div></div>
-      <div class="h-stat"><div class="h-stat-n">3</div><div class="h-stat-l">Tipos de Evento</div></div>
-      <div class="h-stat"><div class="h-stat-n">2</div><div class="h-stat-l">Quadras</div></div>
+      <div class="h-stat"><div class="h-stat-n">4</div><div class="h-stat-l">Fases</div></div>
+      <div class="h-stat"><div class="h-stat-n">12</div><div class="h-stat-l">Semanas</div></div>
+      <div class="h-stat"><div class="h-stat-n">2</div><div class="h-stat-l">Modalidades</div></div>
       <div class="h-stat"><div class="h-stat-n">5</div><div class="h-stat-l">Níveis</div></div>
     </div>
   </div>
@@ -340,178 +306,76 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 
 <div class="divider"></div>
 
-<!-- TIPOS DE EVENTO -->
-<div id="eventos" class="sec fu">
+<!-- FORMATO: 4 FASES -->
+<div id="formato" class="sec fu">
   <div style="text-align:center;margin-bottom:52px">
-    <div class="s-label" style="justify-content:center"><span>Competição</span></div>
-    <h2 class="s-title">Tipos de Evento</h2>
-    <p class="s-body" style="margin:0 auto">Três formatos para cada fase da sua jornada na T01.</p>
+    <div class="s-label" style="justify-content:center"><span>Estrutura</span></div>
+    <h2 class="s-title">4 Fases da Temporada</h2>
+    <p class="s-body" style="margin:0 auto">A T01 é dividida em quatro momentos progressivos. Cada fase prepara o atleta para a próxima.</p>
   </div>
-  <div class="g3">
-    <div class="evt-card fu">
-      <div class="evt-head">
-        <div class="evt-icon">🏅</div>
+  <div class="g2">
+    <div class="fmt-card fu">
+      <div class="fmt-head">
+        <div class="fmt-icon gold-bg">🏐</div>
         <div>
-          <h3>Mini Torneio</h3>
-          <div class="evt-sub">N4 · N5 — Iniciante e Hunter</div>
+          <h3>UR Play</h3>
+          <div class="fmt-sub">Semana 1–4 · Jogos Semanais + Nivelamento</div>
         </div>
       </div>
-      <div class="evt-body">
-        <div class="evt-row"><span class="evt-lbl">Inscrição</span><span class="evt-val gold">R$50/atleta</span></div>
-        <div class="evt-row"><span class="evt-lbl">Formato</span><span class="evt-val">8 equipes/chave</span></div>
-        <div class="evt-row"><span class="evt-lbl">Atletas médios</span><span class="evt-val">5–6 por equipe</span></div>
-        <div class="evt-row"><span class="evt-lbl">Reservas</span><span class="evt-val">Pagam inscrição</span></div>
-        <div class="evt-row"><span class="evt-lbl">Frequência</span><span class="evt-val">Mensal</span></div>
-        <div class="premio-row">
-          <div class="premio-item"><span class="premio-medal">🥇</span><span class="premio-val">R$330</span></div>
-          <div class="premio-item"><span class="premio-medal">🥈</span><span class="premio-val">R$165</span></div>
-          <div class="premio-item"><span class="premio-medal">🥉</span><span class="premio-val">R$55</span></div>
-        </div>
+      <div class="fmt-body">
+        <div class="fmt-row"><span class="fmt-lbl">Formato</span><span class="fmt-val">Jogos semanais regulares</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Nivelamento</span><span class="fmt-val">Novos atletas avaliados</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Modalidades</span><span class="fmt-val">Duplas e Quartetos</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Pontuação</span><span class="fmt-val fmt-val gold">5 pontos por jogo</span></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">O UR Play é a base da temporada. Atletas novos passam por nivelamento e recebem sua classificação inicial. Todo mundo joga, todo mundo evolui.</p>
       </div>
     </div>
-    <div class="evt-card fu">
-      <div class="evt-head">
-        <div class="evt-icon" style="background:radial-gradient(circle at 38% 32%,#0e1a40,#050b1a);border-color:rgba(100,160,255,.2)">🏆</div>
+    <div class="fmt-card fu">
+      <div class="fmt-head">
+        <div class="fmt-icon blue-bg">🏅</div>
         <div>
-          <h3>UR Series</h3>
-          <div class="evt-sub">N2 · N3 — Elite e Experiente</div>
+          <h3>Torneios Mensais</h3>
+          <div class="fmt-sub">Semana 5–8 · Competição por Chave</div>
         </div>
       </div>
-      <div class="evt-body">
-        <div class="evt-row"><span class="evt-lbl">Inscrição</span><span class="evt-val gold">R$100/atleta</span></div>
-        <div class="evt-row"><span class="evt-lbl">Formato</span><span class="evt-val">8 equipes/chave</span></div>
-        <div class="evt-row"><span class="evt-lbl">Nível</span><span class="evt-val">N2 e N3</span></div>
-        <div class="evt-row"><span class="evt-lbl">Reservas</span><span class="evt-val">Pagam inscrição</span></div>
-        <div class="evt-row"><span class="evt-lbl">Frequência</span><span class="evt-val">Mensal</span></div>
-        <div class="premio-row">
-          <div class="premio-item"><span class="premio-medal">🥇</span><span class="premio-val">R$1.200</span></div>
-          <div class="premio-item"><span class="premio-medal">🥈</span><span class="premio-val">R$600</span></div>
-          <div class="premio-item"><span class="premio-medal">🥉</span><span class="premio-val">R$200</span></div>
-        </div>
+      <div class="fmt-body">
+        <div class="fmt-row"><span class="fmt-lbl">Formato</span><span class="fmt-val">8 equipes por chave</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Frequência</span><span class="fmt-val">Mensal</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Levels</span><span class="fmt-val">N3, N4, N5 separados</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Pontuação</span><span class="fmt-val gold">10 pts · MVP +25</span></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">Os torneios mensais movem o ranking com mais força. Chaves separadas por nível garantem disputa justa e premiação real para os 3 primeiros.</p>
       </div>
     </div>
-    <div class="evt-card fu" style="border-color:rgba(255,216,77,.2);background:linear-gradient(160deg,rgba(255,216,77,.04),var(--card))">
-      <div class="evt-head">
-        <div class="evt-icon" style="background:radial-gradient(circle at 38% 32%,#2c1a00,#100900);border-color:rgba(255,216,77,.35)">⚡</div>
+    <div class="fmt-card fu">
+      <div class="fmt-head">
+        <div class="fmt-icon green-bg">⚔️</div>
+        <div>
+          <h3>Fase de Grupos</h3>
+          <div class="fmt-sub">Semana 9–11 · Formato Kings League</div>
+        </div>
+      </div>
+      <div class="fmt-body">
+        <div class="fmt-row"><span class="fmt-lbl">Grupos</span><span class="fmt-val">4 equipes por grupo</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Sistema</span><span class="fmt-val">Pontos corridos</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Tabela</span><span class="fmt-val">P · V · E · D · GF · GC</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Pontuação</span><span class="fmt-val gold">15 pts · Líder bônus</span></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">Formato inspirado nas grandes ligas. Cada resultado conta na tabela do grupo. Os líderes de cada grupo garantem vantagem na Virada de Ranking.</p>
+      </div>
+    </div>
+    <div class="fmt-card fu" style="border-color:rgba(255,216,77,.2);background:linear-gradient(160deg,rgba(255,216,77,.04),var(--card))">
+      <div class="fmt-head">
+        <div class="fmt-icon fire-bg">⚡</div>
         <div>
           <h3>Virada de Ranking</h3>
-          <div class="evt-sub">N1 — Grande Final T01</div>
+          <div class="fmt-sub">Semana 12 · Encerramento + Repasses</div>
         </div>
       </div>
-      <div class="evt-body">
-        <div class="evt-row"><span class="evt-lbl">Inscrição</span><span class="evt-val gold">R$120/atleta</span></div>
-        <div class="evt-row"><span class="evt-lbl">Data</span><span class="evt-val">Dezembro 2026</span></div>
-        <div class="evt-row"><span class="evt-lbl">Nível</span><span class="evt-val">Todos · N1 Hunter Lenda</span></div>
-        <div class="evt-row"><span class="evt-lbl">Especial</span><span class="evt-val">+ Ranking Bônus</span></div>
-        <div class="evt-row"><span class="evt-lbl">Frequência</span><span class="evt-val">Único · Encerramento</span></div>
-        <div class="premio-row">
-          <div class="premio-item"><span class="premio-medal">🥇</span><span class="premio-val">R$1.200</span></div>
-          <div class="premio-item"><span class="premio-medal">🥈</span><span class="premio-val">R$600</span></div>
-          <div class="premio-item"><span class="premio-medal">🥉</span><span class="premio-val">R$200</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- CALENDÁRIO -->
-<div id="calendario" class="sec-alt fu">
-  <div class="sec">
-    <div style="margin-bottom:52px">
-      <div class="s-label">Temporada T01 · 2026</div>
-      <h2 class="s-title">Calendário Oficial</h2>
-      <p class="s-body">Cada mês é uma oportunidade. Cada evento, um passo no ranking.</p>
-    </div>
-    <div class="timeline">
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Junho 2026</div>
-        <div class="tl-card">
-          <h4>Abertura das Inscrições</h4>
-          <p>Planos Hunter disponíveis para aquisição. Cadastro de atletas e formação de base.</p>
-          <div class="tl-tags">
-            <span class="tl-tag inscricao">Inscrições Abertas</span>
-            <span class="tl-tag nivel">Todos os Níveis</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Julho 2026</div>
-        <div class="tl-card">
-          <h4>Mini Torneio de Abertura T01</h4>
-          <p>O pontapé inicial. Primeiro torneio oficial da temporada para N4 e N5.</p>
-          <div class="tl-tags">
-            <span class="tl-tag abertura">Abertura T01</span>
-            <span class="tl-tag evento">Mini Torneio</span>
-            <span class="tl-tag nivel">N4 / N5</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Agosto 2026</div>
-        <div class="tl-card">
-          <h4>Mini Torneio #1 + UR Series #1 + Draft T01</h4>
-          <p>Dupla rodada de eventos. Realização do Draft oficial da temporada.</p>
-          <div class="tl-tags">
-            <span class="tl-tag evento">Mini Torneio</span>
-            <span class="tl-tag evento">UR Series</span>
-            <span class="tl-tag abertura">Draft T01</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Setembro 2026</div>
-        <div class="tl-card">
-          <h4>Mini Torneio #2 + UR Series #2</h4>
-          <p>Ranking em formação. Os líderes começam a se definir.</p>
-          <div class="tl-tags">
-            <span class="tl-tag evento">Mini Torneio</span>
-            <span class="tl-tag evento">UR Series</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Outubro 2026</div>
-        <div class="tl-card">
-          <h4>Mini Torneio #3 + UR Series #3</h4>
-          <p>Metade da temporada. Hora de acelerar no ranking.</p>
-          <div class="tl-tags">
-            <span class="tl-tag evento">Mini Torneio</span>
-            <span class="tl-tag evento">UR Series</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot"></div>
-        <div class="tl-month">Novembro 2026</div>
-        <div class="tl-card">
-          <h4>Mini Torneio #4 + UR Series #4 + Revelação do Ranking</h4>
-          <p>Penúltimo mês. Revelação oficial do ranking antes da grande final.</p>
-          <div class="tl-tags">
-            <span class="tl-tag evento">Mini Torneio</span>
-            <span class="tl-tag evento">UR Series</span>
-            <span class="tl-tag abertura">Revelação do Ranking</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item fu">
-        <div class="tl-dot highlight"></div>
-        <div class="tl-month">Dezembro 2026 — GRANDE FINAL</div>
-        <div class="tl-card finale">
-          <h4>⚡ VIRADA DE RANKING T01</h4>
-          <p>O evento que define a história da T01. Todos os níveis, múltiplas chaves, 2 quadras simultâneas. Premiação + Ranking Bônus de Temporada.</p>
-          <div class="tl-tags">
-            <span class="tl-tag final">Grande Final</span>
-            <span class="tl-tag final">Ranking Bônus</span>
-            <span class="tl-tag nivel">Todos os Níveis</span>
-          </div>
-        </div>
+      <div class="fmt-body">
+        <div class="fmt-row"><span class="fmt-lbl">Periodicidade</span><span class="fmt-val">Trimestral</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Formato</span><span class="fmt-val">Todos os níveis · 2 quadras</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Repasses</span><span class="fmt-val">Equipes + Atletas</span></div>
+        <div class="fmt-row"><span class="fmt-lbl">Bônus Ranking</span><span class="fmt-val gold">50 pts acumulado</span></div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6">O fechamento do trimestre. O ranking geral define os repasses financeiros entre equipes e atletas. Premiação separada por nível maximiza competitividade.</p>
       </div>
     </div>
   </div>
@@ -520,61 +384,379 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 <div class="divider"></div>
 
 <!-- PREMIAÇÕES -->
-<div id="premiacoes" class="sec fu">
-  <div style="margin-bottom:48px">
-    <div class="s-label">Recompensas</div>
-    <h2 class="s-title">Premiações T01</h2>
-    <p class="s-body">Split 60/30/10 — distribuição transparente por chave a cada evento.</p>
+<div id="premiacoes" class="sec-alt fu">
+  <div class="sec">
+    <div style="margin-bottom:44px">
+      <div class="s-label">Recompensas</div>
+      <h2 class="s-title">Premiações T01</h2>
+      <p class="s-body">Distribuição transparente. Premiação por equipe e por atleta em cada nível da competição.</p>
+    </div>
+
+    <!-- QUARTETOS -->
+    <div class="prize-banner fu">
+      <div class="prize-title">Quartetos</div>
+      <div class="prize-desc">Premiação por equipe + por atleta. Distribuída nos 3 primeiros colocados de cada fase de grupos e torneio.</div>
+      <div class="prize-grid">
+        <div class="prize-col">
+          <h4>Prêmio Equipe</h4>
+          <div class="prize-line">
+            <span class="prize-pos">🥇</span>
+            <span class="prize-name">1º Lugar</span>
+            <span class="prize-amt">R$ 1.500</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥈</span>
+            <span class="prize-name">2º Lugar</span>
+            <span class="prize-amt">R$ 1.000</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥉</span>
+            <span class="prize-name">3º Lugar</span>
+            <span class="prize-amt">R$ 1.000</span>
+          </div>
+        </div>
+        <div class="prize-col">
+          <h4>Prêmio Atleta</h4>
+          <div class="prize-line">
+            <span class="prize-pos">🥇</span>
+            <span class="prize-name">1º Lugar</span>
+            <span class="prize-amt">R$ 500</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥈</span>
+            <span class="prize-name">2º Lugar</span>
+            <span class="prize-amt">R$ 300</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥉</span>
+            <span class="prize-name">3º Lugar</span>
+            <span class="prize-amt">R$ 300</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUPLAS -->
+    <div class="prize-banner fu">
+      <div class="prize-title">Duplas — 60% das Inscrições</div>
+      <div class="prize-desc">A premiação das duplas é calculada com base no volume de inscrições da categoria. Quanto mais duplas inscritas, maior a premiação. A mesma distribuição proporcional dos 3 primeiros se aplica.</div>
+      <div class="prize-grid">
+        <div class="prize-col">
+          <h4>Prêmio Dupla</h4>
+          <div class="prize-line">
+            <span class="prize-pos">🥇</span>
+            <span class="prize-name">1º Lugar</span>
+            <span class="prize-amt">Variável</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥈</span>
+            <span class="prize-name">2º Lugar</span>
+            <span class="prize-amt">Variável</span>
+          </div>
+          <div class="prize-line">
+            <span class="prize-pos">🥉</span>
+            <span class="prize-name">3º Lugar</span>
+            <span class="prize-amt">Variável</span>
+          </div>
+        </div>
+        <div class="prize-col">
+          <h4>Como é Calculado</h4>
+          <p style="font-size:13px;color:var(--muted);line-height:1.7">60% do total arrecadado nas inscrições de duplas vai para a premiação. Dividido proporcionalmente: 60% para o 1º, 30% para o 2º e 10% para o 3º colocado.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EVENTO FINAL -->
+    <div class="prize-event-final fu">
+      <h4>Evento Final — Acumulado do Trimestre (Separado)</h4>
+      <p>O evento final da Virada de Ranking conta como competição separada das demais etapas. A premiação é baseada no ranking geral acumulado do trimestre, somando duplas, quartetos e todas as modalidades. Premiação variada por nível para maximizar a competitividade em cada faixa — atletas de N5 disputam com N5, N3 com N3, e assim por diante.</p>
+    </div>
   </div>
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:24px">
-    <table class="premio-table">
-      <thead>
-        <tr>
-          <th>Evento / Nível</th>
-          <th>🥇 1º Lugar</th>
-          <th>🥈 2º Lugar</th>
-          <th>🥉 3º Lugar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div class="pt-event">Mini Torneio</div>
-            <div class="pt-note">N3 · R$50/atleta · 8 equipes/chave</div>
-          </td>
-          <td><span class="pt-gold" style="font-family:var(--display);font-size:18px;font-weight:900">R$330</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--text)">R$165</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--muted)">R$55</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="pt-event">UR Series</div>
-            <div class="pt-note">N2/N3 · R$100/atleta · 8 equipes/chave</div>
-          </td>
-          <td><span class="pt-gold" style="font-family:var(--display);font-size:18px;font-weight:900">R$1.200</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--text)">R$600</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--muted)">R$200</span></td>
-        </tr>
-        <tr>
-          <td>
-            <div class="pt-event">Virada de Ranking T01</div>
-            <div class="pt-note">N1/Open · R$120/atleta + Ranking Bônus</div>
-          </td>
-          <td><span class="pt-gold" style="font-family:var(--display);font-size:18px;font-weight:900">R$1.200+</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--text)">R$600+</span></td>
-          <td><span style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--muted)">R$200+</span></td>
-        </tr>
-      </tbody>
-    </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- FASE DE GRUPOS -->
+<div id="grupos" class="sec fu">
+  <div style="margin-bottom:44px">
+    <div class="s-label">Competição</div>
+    <h2 class="s-title">Fase de Grupos</h2>
+    <p class="s-body">Formato Kings League — rodadas completas, tabela real, narrativa de temporada. As melhores equipes avançam para a Virada.</p>
   </div>
-  <div style="background:rgba(255,216,77,.06);border:1px solid rgba(255,216,77,.18);border-radius:10px;padding:18px 22px">
-    <div style="font-family:var(--display);font-size:13px;font-weight:800;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Premiação por Nível</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;font-size:13px;color:var(--muted)">
-      <div><strong style="color:var(--text)">NI / N5:</strong> Troféu + UR Coins</div>
-      <div><strong style="color:var(--text)">N4:</strong> Voucher R$50 + troféu + UR Coins</div>
-      <div><strong style="color:var(--text)">N3:</strong> Cash R$330/R$165/R$55</div>
-      <div><strong style="color:var(--text)">N2:</strong> Cash R$1.200/R$600/R$200</div>
-      <div><strong style="color:var(--text)">N1:</strong> Cash + Ranking Bônus (Virada)</div>
+
+  <div class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="quartetos">Quartetos</button>
+    <button class="tab-btn" data-tab="duplas">Duplas</button>
+  </div>
+
+  <!-- QUARTETOS -->
+  <div class="tab-pane active" id="tab-quartetos">
+    <div class="table-wrap fu">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th colspan="2">Equipe</th>
+            <th class="num">P</th>
+            <th class="num">V</th>
+            <th class="num">E</th>
+            <th class="num">D</th>
+            <th class="num">GF</th>
+            <th class="num">GC</th>
+            <th class="num">SG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="9" class="group-label">GRUPO A</td></tr>
+          <tr>
+            <td class="num">1</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#4488ff"></div><span class="team-cell-name">Arena BH FC</span></div></td>
+            <td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">0</td>
+            <td class="num">18</td><td class="num">8</td><td class="num" style="color:var(--gold)">+10</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#70c060"></div><span class="team-cell-name">Pampulha Warriors</span></div></td>
+            <td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">1</td>
+            <td class="num">14</td><td class="num">12</td><td class="num" style="color:var(--gold)">+2</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#c080ff"></div><span class="team-cell-name">Savassi United</span></div></td>
+            <td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">2</td>
+            <td class="num">9</td><td class="num">15</td><td class="num" style="color:rgba(255,100,80,.8)">-6</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#80c4ff"></div><span class="team-cell-name">Norte SC</span></div></td>
+            <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td>
+            <td class="num">6</td><td class="num">18</td><td class="num" style="color:rgba(255,100,80,.8)">-12</td>
+          </tr>
+
+          <tr><td colspan="9" class="group-label">GRUPO B</td></tr>
+          <tr>
+            <td class="num">1</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:var(--gold)"></div><span class="team-cell-name">Elite Vôlei BH</span></div></td>
+            <td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">0</td>
+            <td class="num">12</td><td class="num">6</td><td class="num" style="color:var(--gold)">+6</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#ff9040"></div><span class="team-cell-name">Mangabeiras SC</span></div></td>
+            <td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">1</td>
+            <td class="num">8</td><td class="num">9</td><td class="num" style="color:rgba(255,100,80,.8)">-1</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#aaa"></div><span class="team-cell-name">Barreiro Rude</span></div></td>
+            <td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">1</td>
+            <td class="num">7</td><td class="num">8</td><td class="num" style="color:rgba(255,100,80,.8)">-1</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#ccc"></div><span class="team-cell-name">Centro Athletic</span></div></td>
+            <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">2</td>
+            <td class="num">4</td><td class="num">8</td><td class="num" style="color:rgba(255,100,80,.8)">-4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--display);font-size:20px;font-weight:900;text-transform:uppercase;margin-bottom:14px;color:var(--gold);letter-spacing:.5px">Resultados — Rodada 1</h3>
+    <div class="table-wrap fu">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Partida</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01/03/26</td>
+            <td>10:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Arena BH FC</span>
+              <span class="match-score"> &nbsp;<span class="score-win">3</span> <span style="color:var(--muted)">VS</span> <span class="score-lose">1</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Savassi United</span>
+            </td>
+            <td><span class="status-badge status-enc">Encerrado</span></td>
+          </tr>
+          <tr>
+            <td>01/03/26</td>
+            <td>11:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Norte SC</span>
+              <span class="match-score"> &nbsp;<span class="score-lose">0</span> <span style="color:var(--muted)">VS</span> <span class="score-win">4</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Pampulha Warriors</span>
+            </td>
+            <td><span class="status-badge status-enc">Encerrado</span></td>
+          </tr>
+          <tr>
+            <td>01/03/26</td>
+            <td>12:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Elite Vôlei BH</span>
+              <span class="match-score"> &nbsp;<span class="score-win">4</span> <span style="color:var(--muted)">VS</span> <span class="score-lose">2</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Barreiro Rude</span>
+            </td>
+            <td><span class="status-badge status-enc">Encerrado</span></td>
+          </tr>
+          <tr>
+            <td>08/03/26</td>
+            <td>10:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Pampulha Warriors</span>
+              <span class="match-score"> &nbsp;<span style="color:var(--muted)">VS</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Arena BH FC</span>
+            </td>
+            <td><span class="status-badge status-ag">Agendado</span></td>
+          </tr>
+          <tr>
+            <td>08/03/26</td>
+            <td>11:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Centro Athletic</span>
+              <span class="match-score"> &nbsp;<span style="color:var(--muted)">VS</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Mangabeiras SC</span>
+            </td>
+            <td><span class="status-badge status-ag">Agendado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DUPLAS -->
+  <div class="tab-pane" id="tab-duplas">
+    <div class="table-wrap fu">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th colspan="2">Dupla</th>
+            <th class="num">P</th>
+            <th class="num">V</th>
+            <th class="num">E</th>
+            <th class="num">D</th>
+            <th class="num">GF</th>
+            <th class="num">GC</th>
+            <th class="num">SG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="9" class="group-label">GRUPO A — DUPLAS</td></tr>
+          <tr>
+            <td class="num">1</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#4488ff"></div><span class="team-cell-name">Silva / Costa (Arena BH FC)</span></div></td>
+            <td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">0</td>
+            <td class="num">15</td><td class="num">7</td><td class="num" style="color:var(--gold)">+8</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#ff8080"></div><span class="team-cell-name">Rocha / Pinto (Liberdade BC)</span></div></td>
+            <td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">1</td>
+            <td class="num">12</td><td class="num">10</td><td class="num" style="color:var(--gold)">+2</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#70c060"></div><span class="team-cell-name">Lima / Souza (Volta Atlético)</span></div></td>
+            <td class="num">3</td><td class="num">1</td><td class="num">0</td><td class="num">2</td>
+            <td class="num">8</td><td class="num">12</td><td class="num" style="color:rgba(255,100,80,.8)">-4</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td><div class="team-cell"><div class="team-dot" style="background:#80c4ff"></div><span class="team-cell-name">Ferreira / Nunes (Norte SC)</span></div></td>
+            <td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td>
+            <td class="num">5</td><td class="num">11</td><td class="num" style="color:rgba(255,100,80,.8)">-6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--display);font-size:20px;font-weight:900;text-transform:uppercase;margin-bottom:14px;color:var(--gold);letter-spacing:.5px">Resultados — Rodada 1 Duplas</h3>
+    <div class="table-wrap fu">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Partida</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01/03/26</td>
+            <td>09:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Silva / Costa</span>
+              <span class="match-score"> &nbsp;<span class="score-win">2</span> <span style="color:var(--muted)">VS</span> <span class="score-lose">0</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Ferreira / Nunes</span>
+            </td>
+            <td><span class="status-badge status-enc">Encerrado</span></td>
+          </tr>
+          <tr>
+            <td>01/03/26</td>
+            <td>09:45</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Rocha / Pinto</span>
+              <span class="match-score"> &nbsp;<span class="score-win">2</span> <span style="color:var(--muted)">VS</span> <span class="score-lose">1</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Lima / Souza</span>
+            </td>
+            <td><span class="status-badge status-enc">Encerrado</span></td>
+          </tr>
+          <tr>
+            <td>08/03/26</td>
+            <td>09:00</td>
+            <td>
+              <span style="font-family:var(--display);font-weight:900">Silva / Costa</span>
+              <span class="match-score"> &nbsp;<span style="color:var(--muted)">VS</span>&nbsp; </span>
+              <span style="font-family:var(--display);font-weight:900">Rocha / Pinto</span>
+            </td>
+            <td><span class="status-badge status-ag">Agendado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FLUXO DA TEMPORADA -->
+<div class="sec-alt fu">
+  <div class="sec">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="s-label" style="justify-content:center"><span>Calendário</span></div>
+      <h2 class="s-title">Fluxo da Temporada</h2>
+      <p class="s-body" style="margin:0 auto">12 semanas. 4 fases. Do nivelamento até a Virada de Ranking.</p>
+    </div>
+    <div class="timeline-flow">
+      <div class="tfl-step fu">
+        <div class="tfl-n">01–04</div>
+        <div class="tfl-weeks">Semana 1–4</div>
+        <h4>UR Play + Nivelamento</h4>
+        <p>Jogos semanais, avaliação de novos atletas, definição de níveis iniciais e formação das equipes.</p>
+      </div>
+      <div class="tfl-step fu">
+        <div class="tfl-n">05–08</div>
+        <div class="tfl-weeks">Semana 5–8</div>
+        <h4>Torneios Mensais</h4>
+        <p>Torneios por nível. Ranking acumulando. Os atletas mais consistentes começam a se destacar.</p>
+      </div>
+      <div class="tfl-step fu">
+        <div class="tfl-n">09–11</div>
+        <div class="tfl-weeks">Semana 9–11</div>
+        <h4>Fase de Grupos</h4>
+        <p>Disputas em grupos no estilo Kings League. Tabela ao vivo, resultados publicados, narrativa de liga.</p>
+      </div>
+      <div class="tfl-step fu">
+        <div class="tfl-n">12</div>
+        <div class="tfl-weeks">Semana 12</div>
+        <h4>Virada do Ranking</h4>
+        <p>Encerramento do trimestre. Repasses financeiros para equipes e atletas. Premiação por nível. Abertura do novo ciclo.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -582,127 +764,92 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 <div class="divider"></div>
 
 <!-- COMO FUNCIONA -->
-<div class="sec-alt fu">
+<div class="sec fu">
+  <div style="text-align:center;margin-bottom:48px">
+    <div class="s-label" style="justify-content:center"><span>Guia</span></div>
+    <h2 class="s-title">Como Funciona</h2>
+  </div>
+  <div class="g2">
+    <div class="eco-card fu">
+      <div class="icon-circle ic-gold" style="position:relative">⚡</div>
+      <div>
+        <h4>Draft Reverso</h4>
+        <p>O pior colocado no ranking escolhe primeiro. Sistema reverso garante equilíbrio competitivo real entre as equipes da temporada.</p>
+      </div>
+    </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-blue" style="position:relative">🏆</div>
+      <div>
+        <h4>Formato dos Torneios</h4>
+        <p>8 equipes por chave, 2 quadras simultâneas. Fase de grupos + eliminatórias. Cada evento é completo e oficial.</p>
+      </div>
+    </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-fire" style="position:relative">👥</div>
+      <div>
+        <h4>Reservas e Inscrições</h4>
+        <p>Reservas pagam inscrição e podem ser acionadas durante o evento. Equipes com 5 a 6 atletas médios por chave.</p>
+      </div>
+    </div>
+    <div class="eco-card fu">
+      <div class="icon-circle ic-green" style="position:relative">📊</div>
+      <div>
+        <h4>Ranking Atualizado</h4>
+        <p>Ranking atualizado após cada evento oficial. Performance, presença e disciplina contam pontos na tabela geral da temporada.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- PLANOS -->
+<div id="planos" class="sec-alt fu">
   <div class="sec">
-    <div style="text-align:center;margin-bottom:52px">
-      <div class="s-label" style="justify-content:center"><span>Passo a Passo</span></div>
-      <h2 class="s-title">Como Funciona</h2>
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="s-label" style="justify-content:center"><span>Assinatura</span></div>
+      <h2 class="s-title">Planos Hunter</h2>
+      <p class="s-body" style="margin:0 auto">Maximize sua participação na T01. Escolha o plano ideal para o seu nível.</p>
     </div>
-    <div class="steps">
-      <div class="step fu">
-        <div class="step-n">01</div>
-        <h4>Inscrição e Nivelamento</h4>
-        <p>Cadastre-se e jogue seu primeiro UR Play. O sistema avalia e define seu nível inicial.</p>
+    <div class="g3">
+      <div class="plan-card fu">
+        <div class="plan-name">Hunter Básico</div>
+        <div class="plan-price">R$79<span>/mês</span></div>
+        <ul class="plan-list">
+          <li>UR Play ilimitado durante a temporada</li>
+          <li><strong>10% de desconto</strong> em eventos avulsos</li>
+          <li>Acesso à comunidade Hunter</li>
+          <li>Ranking individual atualizado</li>
+          <li>UR Coins mensais bônus</li>
+        </ul>
+        <a href="/inscricao" class="plan-btn ghost">Começar com Básico</a>
       </div>
-      <div class="step fu">
-        <div class="step-n">02</div>
-        <h4>Escolha seu Plano Hunter</h4>
-        <p>Básico, Competidor ou Elite. Cada plano dá acesso a benefícios e descontos exclusivos.</p>
+      <div class="plan-card destaque fu">
+        <div class="plan-badge">Mais Popular</div>
+        <div class="plan-name">Hunter Competidor</div>
+        <div class="plan-price">R$129<span>/mês</span></div>
+        <ul class="plan-list">
+          <li>UR Play ilimitado durante a temporada</li>
+          <li><strong>1 Mini Torneio por mês incluído</strong></li>
+          <li><strong>15% de desconto</strong> em eventos avulsos</li>
+          <li>Ranking individual e de equipe</li>
+          <li>UR Coins mensais bônus dobrado</li>
+          <li>Acesso prioritário a vagas</li>
+        </ul>
+        <a href="/inscricao" class="plan-btn">Assinar Competidor</a>
       </div>
-      <div class="step fu">
-        <div class="step-n">03</div>
-        <h4>Participe dos Eventos</h4>
-        <p>Mini Torneio, UR Series ou Virada. Escolha o evento do seu nível e dispute com tudo.</p>
-      </div>
-      <div class="step fu">
-        <div class="step-n">04</div>
-        <h4>Suba no Ranking</h4>
-        <p>Acumule pontos, UR Coins e evolua. Os melhores chegam à Virada de Ranking em Dezembro.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- PLANOS HUNTER -->
-<div id="planos" class="sec fu">
-  <div style="text-align:center;margin-bottom:52px">
-    <div class="s-label" style="justify-content:center"><span>Assinatura</span></div>
-    <h2 class="s-title">Planos Hunter</h2>
-    <p class="s-body" style="margin:0 auto">Maximize sua participação na T01. Escolha o plano ideal para o seu nível.</p>
-  </div>
-  <div class="g3">
-    <div class="plan-card fu">
-      <div class="plan-name">Hunter Básico</div>
-      <div class="plan-price">R$79<span>/mês</span></div>
-      <ul class="plan-list">
-        <li>UR Play ilimitado durante a temporada</li>
-        <li><strong>10% de desconto</strong> em eventos avulsos</li>
-        <li>Acesso à comunidade Hunter</li>
-        <li>Ranking individual atualizado</li>
-        <li>UR Coins mensais bônus</li>
-      </ul>
-      <a href="UR_Inscricao_Atleta.html" class="plan-btn ghost">Começar com Básico</a>
-    </div>
-    <div class="plan-card destaque fu">
-      <div class="plan-badge">Mais Popular</div>
-      <div class="plan-name">Hunter Competidor</div>
-      <div class="plan-price">R$129<span>/mês</span></div>
-      <ul class="plan-list">
-        <li>UR Play ilimitado durante a temporada</li>
-        <li><strong>1 Mini Torneio por mês incluído</strong></li>
-        <li><strong>15% de desconto</strong> em eventos avulsos</li>
-        <li>Ranking individual e de equipe</li>
-        <li>UR Coins mensais bônus dobrado</li>
-        <li>Acesso prioritário a vagas</li>
-      </ul>
-      <a href="UR_Inscricao_Atleta.html" class="plan-btn">Assinar Competidor</a>
-    </div>
-    <div class="plan-card fu">
-      <div class="plan-name">Hunter Elite</div>
-      <div class="plan-price">R$199<span>/mês</span></div>
-      <ul class="plan-list">
-        <li>UR Play ilimitado durante a temporada</li>
-        <li><strong>2 eventos por mês incluídos</strong></li>
-        <li>Prioridade total em inscrições</li>
-        <li><strong>Análise mensal de desempenho</strong></li>
-        <li>UR Coins premium + bônus especiais</li>
-        <li>Acesso VIP a conteúdos UR Play</li>
-      </ul>
-      <a href="UR_Inscricao_Atleta.html" class="plan-btn">Assinar Elite</a>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- REGRAS -->
-<div id="regras" class="sec-alt fu">
-  <div class="sec">
-    <div style="margin-bottom:44px">
-      <div class="s-label">Regulamento</div>
-      <h2 class="s-title">Regras Básicas</h2>
-      <p class="s-body">Transparência e equilíbrio em cada detalhe da T01.</p>
-    </div>
-    <div class="g2">
-      <div class="eco-card fu">
-        <div class="icon-circle ic-gold" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">⚡</div>
-        <div>
-          <h4>Draft Reverso</h4>
-          <p>O pior colocado no ranking escolhe primeiro. Sistema reverso garante equilíbrio competitivo real entre as equipes da temporada.</p>
-        </div>
-      </div>
-      <div class="eco-card fu">
-        <div class="icon-circle ic-blue" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">🏆</div>
-        <div>
-          <h4>Formato dos Torneios</h4>
-          <p>8 equipes por chave, 2 quadras simultâneas. Fase de grupos + eliminatórias. Cada evento é completo e oficial.</p>
-        </div>
-      </div>
-      <div class="eco-card fu">
-        <div class="icon-circle ic-fire" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">👥</div>
-        <div>
-          <h4>Reservas e Inscrições</h4>
-          <p>Reservas pagam inscrição e podem ser acionadas durante o evento. Equipes com 5 a 6 atletas médios por chave.</p>
-        </div>
-      </div>
-      <div class="eco-card fu">
-        <div class="icon-circle ic-green" style="width:52px;height:52px;font-size:22px;margin:0;flex-shrink:0">📊</div>
-        <div>
-          <h4>Atualização do Ranking</h4>
-          <p>Ranking atualizado após cada evento oficial. Performance, presença e disciplina contam pontos na tabela geral da temporada.</p>
-        </div>
+      <div class="plan-card fu">
+        <div class="plan-name">Hunter Elite</div>
+        <div class="plan-price">R$199<span>/mês</span></div>
+        <ul class="plan-list">
+          <li>UR Play ilimitado durante a temporada</li>
+          <li><strong>2 eventos por mês incluídos</strong></li>
+          <li>Prioridade total em inscrições</li>
+          <li><strong>Análise mensal de desempenho</strong></li>
+          <li>UR Coins premium + bônus especiais</li>
+          <li>Acesso VIP a conteúdos UR</li>
+        </ul>
+        <a href="/inscricao" class="plan-btn">Assinar Elite</a>
       </div>
     </div>
   </div>
@@ -710,14 +857,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 
 <div class="divider"></div>
 
-<!-- CTA FINAL -->
+<!-- CTA -->
 <div class="cta-sec fu">
   <div class="cta-glow"></div>
   <p class="bordao">"A temporada mais completa do vôlei de praia amador."</p>
   <h2>Faça parte<br><span>da T01</span></h2>
-  <p>Inscrições abertas. Julho de 2026 chega rápido — garanta sua vaga agora.</p>
+  <p>Inscrições abertas. Garanta sua vaga e comece a construir seu ranking.</p>
   <div class="cta-btns">
-    <a href="UR_Inscricao_Atleta.html" class="btn-gold" style="font-size:20px;padding:18px 48px">⚡ Inscrever agora</a>
+    <a href="/inscricao" class="btn-gold" style="font-size:20px;padding:18px 48px">Inscrever agora</a>
     <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Comunidade WhatsApp
@@ -727,41 +874,61 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logos">
-    <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
-    <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
-    <span>ULTIMATE RIVALS</span>
-  </div>
-  <div class="foot-links">
-    <a href="/">Início</a>
-    <a href="/temporada">Temporada</a>
-    <a href="/atletas">Atletas</a>
-    <a href="/ranking">Ranking</a>
-    <a href="/patrocinadores">Patrocinadores</a>
-    <a href="/portal">Portal</a>
-    <a href="/inscricao">Inscrição</a>
-    <a href="/sistema/">Sistema UR</a>
+  <div class="foot-inner">
+    <div class="foot-logos">
+      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+      <span>ULTIMATE RIVALS</span>
+    </div>
+    <div class="foot-links">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/equipes">Equipes</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking">Ranking</a>
+      <a href="/ct-ur">CT UR</a>
+      <a href="/mercado">Mercado</a>
+      <a href="/portal">Portal</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/ultimaterivalsbr" target="_blank">@ultimaterivalsbr</a>
+      <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
+      <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+    </div>
   </div>
   <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
 </footer>
 
 <script>
-document.getElementById('navHam').addEventListener('click',function(){
+// Nav
+document.getElementById('navHam').addEventListener('click', function(){
   document.getElementById('navLinks').classList.toggle('open');
   this.textContent = document.getElementById('navLinks').classList.contains('open') ? '✕' : '☰';
 });
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
     if(e.isIntersecting){
       e.target.classList.add('on');
-      e.target.querySelectorAll('.pilar-card,.evt-card,.step,.lvl,.eco-card,.plan-card,.tl-item').forEach((el,i)=>{
-        el.style.transitionDelay=(i*.1)+'s';
+      e.target.querySelectorAll('.fmt-card,.plan-card,.eco-card,.tfl-step').forEach((el,i) => {
+        el.style.transitionDelay = (i*.1) + 's';
         el.classList.add('on');
       });
     }
   });
-},{threshold:.1});
-document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+}, {threshold:.08});
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
