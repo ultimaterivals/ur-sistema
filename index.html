@@ -1,939 +1,1811 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ultimate Rivals — Liga de Vôlei de Praia BH | Temporada T01 2026</title>
-<meta name="description" content="A liga de vôlei de praia mais séria de Belo Horizonte. Duplas e quartetos. Rankings reais, UR Coins, Virada de Ranking. Temporada T01 2026 com inscrições abertas.">
-<meta name="keywords" content="vôlei de praia BH, liga vôlei Belo Horizonte, vôlei amador BH, torneio vôlei praia 2026, Ultimate Rivals">
-<meta property="og:title" content="Ultimate Rivals — Vôlei de Praia BH">
-<meta property="og:description" content="Você não assiste. Você joga. Liga de vôlei de praia em BH. T01 2026.">
-<meta property="og:image" content="logo-ur-3d.png">
-<meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
-  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
-  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
-  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{
-  background:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,216,77,.08), transparent 60%), #000;
-  color:var(--text);font-family:var(--font);overflow-x:hidden
-}
-a{text-decoration:none;color:inherit}
-img{display:block}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Rivals — Liga de Vôlei de Praia · BH</title>
+  <meta name="description" content="Ultimate Rivals é o ecossistema de vôlei de praia amador de Belo Horizonte. Temporada trimestral, ranking por níveis, UR Coins, CT UR e Mentalidade Hunter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font: inherit; border: none; background: none; }
+    ul, ol { list-style: none; }
 
-/* ── ANNOUNCE BAR ── */
-.announce-bar{background:var(--gold);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
-.announce-inner{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
-.ab-tag{background:#000;color:var(--gold);padding:2px 10px;border-radius:3px;font-size:11px}
-.ab-sep{opacity:.35;font-size:16px}
-.ab-link{color:#000;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.3)}
-.ab-link:hover{opacity:.7}
-@media(max-width:600px){.announce-inner span:not(.ab-tag):not(:last-child){display:none}}
+    /* ===== DESIGN SYSTEM ===== */
+    :root {
+      --black: #030405;
+      --ink: #07080c;
+      --panel: #101116;
+      --panel2: #171923;
+      --card: #1d1e26;
+      --line: rgba(255,216,77,.12);
+      --gold: #c9a84c;
+      --gold2: #ffd84d;
+      --gold3: #ffe27a;
+      --white: #f4eedf;
+      --soft: #d8cfb9;
+      --muted: #9b9177;
+      --dim: #6f6654;
+      --green: #7ee2a7;
+      --red: #ff7979;
+      --blue: #9dc7ff;
+      --display: 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif;
+      --body: 'Barlow', system-ui, sans-serif;
+    }
 
-/* ── NAV ── */
-nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
-.nav-logos{display:flex;align-items:center;gap:14px}
-.nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
-.nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
-.nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
-.nav-links{display:flex;gap:26px}
-.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
-.nav-links a:hover{color:var(--gold)}
-.nav-right{display:flex;align-items:center;gap:10px}
-.nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
-.nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
-.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 18px var(--goldglow)}
-.nav-ham{display:none;background:none;border:1px solid rgba(255,255,255,.18);color:#fff;padding:7px 12px;border-radius:7px;font-size:20px;line-height:1;cursor:pointer;transition:all .2s;flex-shrink:0}
-.nav-ham:hover{border-color:var(--gold);color:var(--gold)}
-.nav-portal-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:800;padding:8px 14px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
-.nav-portal-btn:hover{background:rgba(255,216,77,.12);border-color:rgba(255,216,77,.4);color:var(--gold)}
-@media(max-width:780px){
-  nav{position:relative}
-  .nav-links{display:none;flex-direction:column;position:absolute;top:64px;left:0;right:0;z-index:999;background:rgba(0,0,0,.98);border-bottom:1px solid var(--border);padding:10px 20px 16px;gap:0}
-  .nav-links.open{display:flex}
-  .nav-links a{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);width:100%;font-size:14px}
-  .nav-links a:last-child{border-bottom:none}
-  .nav-ham{display:block}
-  .nav-season{display:none}
-  .nav-portal-btn{display:none}
-}
+    body {
+      font-family: var(--body);
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 12% 0%, rgba(255,216,77,.16), transparent 40%),
+        radial-gradient(ellipse at 90% 12%, rgba(255,216,77,.07), transparent 34%),
+        linear-gradient(180deg, #07080c 0%, #030405 100%);
+      font-size: 15px;
+      line-height: 1.58;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-/* ── HERO ── */
-.hero{
-  min-height:100vh;position:relative;overflow:hidden;
-  display:flex;align-items:center;
-  padding:80px 28px;
-}
-.hero-grid{
-  position:relative;z-index:2;
-  width:100%;max-width:1200px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 440px;
-  gap:52px;align-items:center;
-}
-@media(max-width:960px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-left{text-align:center}
-  .hero-btns{justify-content:center}
-  .hero-season-card{display:none}
-}
-@media(max-width:640px){
-  .hero{padding:72px 20px 60px}
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 0%, rgba(255,216,77,.14) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255,140,0,.06) 0%, transparent 40%),
-    radial-gradient(ellipse 60% 40% at 20% 90%, rgba(255,216,77,.04) 0%, transparent 40%);
-}
-.hero-court{
-  position:absolute;inset:0;pointer-events:none;
-  background:
-    linear-gradient(170deg, transparent 20%, rgba(255,255,255,.04) 20.2%, rgba(255,255,255,.04) 20.4%, transparent 20.6%),
-    linear-gradient(190deg, transparent 20%, rgba(255,255,255,.04) 20.2%, rgba(255,255,255,.04) 20.4%, transparent 20.6%),
-    linear-gradient(transparent 49.5%, rgba(255,255,255,.05) 49.5%, rgba(255,255,255,.05) 50.5%, transparent 50.5%),
-    linear-gradient(transparent 85%, rgba(255,255,255,.03) 85%, rgba(255,255,255,.03) 85.5%, transparent 85.5%);
-}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.3) 0%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.85) 100%)}
-.hero-wm{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(180px,30vw,360px);font-weight:900;color:rgba(255,216,77,.025);pointer-events:none;white-space:nowrap;letter-spacing:-10px;user-select:none}
-.hero-eyebrow{font-family:var(--display);font-size:13px;font-weight:700;color:rgba(255,216,77,.7);letter-spacing:3px;text-transform:uppercase;margin-bottom:28px}
-.hero-h1{display:flex;flex-direction:column;margin-bottom:24px}
-.h1-line{font-family:'Anton',var(--display);font-weight:900;text-transform:uppercase;line-height:.9;display:block}
-.h1-l1{font-size:clamp(52px,8vw,100px);color:rgba(255,255,255,.9);letter-spacing:-.5px}
-.h1-l2{font-size:clamp(82px,13vw,160px);color:var(--gold);text-shadow:0 0 80px rgba(255,216,77,.4);letter-spacing:-2px}
-.h1-l3{font-size:clamp(52px,8vw,100px);color:#fff;letter-spacing:-.5px}
-.hero-sub{max-width:520px;font-size:17px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px}
-.btn-primary{background:var(--gold);color:#000;font-family:var(--display);font-size:16px;font-weight:900;letter-spacing:1px;padding:15px 36px;border-radius:6px;text-decoration:none;transition:all .2s;text-transform:uppercase;box-shadow:0 6px 28px rgba(255,216,77,.3);display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,216,77,.45)}
-.btn-secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:var(--display);font-size:16px;font-weight:800;letter-spacing:1px;padding:15px 30px;border-radius:6px;text-decoration:none;transition:all .2s;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
-.btn-secondary:hover{border-color:rgba(255,216,77,.5);color:var(--gold)}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-.hero-urgency{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase}
-.hero-urgency strong{color:var(--gold)}
+    /* ===== UTILITY ===== */
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-/* ── SEASON CARD ── */
-.hero-season-card{
-  position:relative;border-radius:22px;
-  border:1px solid rgba(255,216,77,.42);
-  background:linear-gradient(160deg,rgba(255,216,77,.18),rgba(10,10,16,.97) 28%,rgba(3,4,6,.98));
-  box-shadow:0 30px 80px rgba(0,0,0,.58),inset 0 0 0 1px rgba(255,216,77,.08);
-  overflow:hidden;align-self:center;
-}
-.hero-season-card::after{content:'T1';position:absolute;right:-6px;bottom:6px;font-family:'Anton',var(--display);font-size:60px;letter-spacing:.04em;color:rgba(255,216,77,.05);line-height:1;pointer-events:none}
-.hsc-top{padding:18px 22px 14px;border-bottom:1px solid rgba(255,216,77,.14);background:linear-gradient(90deg,rgba(255,216,77,.13),rgba(255,255,255,.03))}
-.hsc-label{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:3px}
-.hsc-title{font-family:'Anton',var(--display);font-size:32px;letter-spacing:.04em;line-height:1;color:#fff;margin-bottom:3px}
-.hsc-sub{font-size:12px;color:var(--muted)}
-.hsc-flow{padding:4px 22px}
-.hsc-step{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:13px 0;border-top:1px solid rgba(255,255,255,.07)}
-.hsc-step:first-child{border-top:none}
-.hsc-n{width:34px;height:34px;border-radius:8px;background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.28);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;font-weight:900;color:var(--gold);flex-shrink:0}
-.hsc-step>div strong{display:block;font-family:var(--display);font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.03em;color:#fff;line-height:1.1}
-.hsc-step>div span{display:block;font-size:11px;color:var(--muted);margin-top:2px}
-.hsc-state{font-family:var(--display);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(255,216,77,.1);color:var(--gold);border:1px solid rgba(255,216,77,.2);white-space:nowrap;flex-shrink:0}
-.hsc-state.active{background:rgba(255,216,77,.22);border-color:var(--gold)}
-.hsc-bottom{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,216,77,.14)}
-.hsc-mini{padding:12px;text-align:center;background:rgba(0,0,0,.2);border-left:1px solid rgba(255,255,255,.06)}
-.hsc-mini:first-child{border-left:none}
-.hsc-mini strong{display:block;font-family:'Anton',var(--display);font-size:22px;color:var(--gold);line-height:1}
-.hsc-mini span{font-family:var(--display);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      background: rgba(255,216,77,.08);
+      border: 1px solid rgba(255,216,77,.22);
+      border-radius: 6px;
+      padding: 4px 11px;
+      margin-bottom: 18px;
+    }
 
-/* ── METRICS BAR ── */
-.metrics-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,216,77,.16);border-top:1px solid rgba(255,216,77,.12);border-bottom:1px solid rgba(255,216,77,.12)}
-.metric-item{padding:22px 16px;text-align:center;background:#07080c}
-.metric-item strong{display:block;font-family:'Anton',var(--display);font-size:36px;color:var(--gold);line-height:1}
-.metric-item span{display:block;margin-top:5px;color:var(--muted);font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
-@media(max-width:640px){.metrics-bar{grid-template-columns:repeat(2,1fr)}}
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr .78fr;
+      gap: 48px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
 
-/* ── PILLS ── */
-.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.pill{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,216,77,.22);color:var(--gold);background:rgba(255,216,77,.07)}
-.pill.blue{color:#a8d8ff;border-color:rgba(168,216,255,.28);background:rgba(168,216,255,.07)}
-.pill.green{color:#a7ffc0;border-color:rgba(167,255,192,.28);background:rgba(167,255,192,.07)}
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
 
-/* ── NUM BADGE ── */
-.num-badge{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.3);font-family:var(--display);font-size:22px;font-weight:900;color:var(--gold);margin-bottom:16px;flex-shrink:0}
+    .section-head h2 em {
+      font-style: normal;
+      color: var(--gold2);
+    }
 
-/* ── ECO FLOW ── */
-.eco-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:start;gap:0;margin-bottom:52px}
-@media(max-width:768px){.eco-flow{grid-template-columns:1fr 1fr;gap:0}.eco-arrow{display:none}}
-@media(max-width:480px){.eco-flow{grid-template-columns:1fr}}
-.eco-flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 14px}
-.eco-flow-icon{width:68px;height:68px;border-radius:50%;border:2px solid rgba(255,216,77,.28);background:rgba(255,216,77,.06);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:14px;transition:all .3s}
-.eco-flow-step:hover .eco-flow-icon{border-color:var(--gold);background:rgba(255,216,77,.12)}
-.eco-flow-n{font-family:var(--display);font-size:10px;font-weight:800;letter-spacing:2.5px;color:rgba(255,216,77,.6);text-transform:uppercase;margin-bottom:5px}
-.eco-flow-title{font-family:var(--display);font-size:18px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
-.eco-flow-body{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65;max-width:175px}
-.eco-arrow{display:flex;align-items:center;justify-content:center;padding-top:26px;color:rgba(255,216,77,.3);font-size:22px;flex-shrink:0}
+    .section-lead {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--soft);
+      padding-top: 8px;
+    }
 
-/* ── SECTION BASE ── */
-.sec{padding:96px 20px;max-width:1100px;margin:0 auto}
-.sec-wrap{padding:96px 0;background:var(--surface);position:relative;overflow:hidden}
-.sec-wrap .sec{padding-top:0;padding-bottom:0}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
-.s-label{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;font-family:var(--display);display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.s-label::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(255,216,77,.4),transparent)}
-.s-title{font-family:var(--display);font-size:clamp(38px,6vw,62px);font-weight:900;line-height:.92;text-transform:uppercase;margin-bottom:16px}
-.s-title-lg{font-family:var(--display);font-size:clamp(48px,8vw,80px);font-weight:900;line-height:.88;text-transform:uppercase;margin-bottom:16px}
-.s-body{font-size:15px;color:var(--muted);max-width:520px;line-height:1.72}
-.s-gold{color:var(--gold)}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:860px){.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
+    section {
+      padding: 86px 0;
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
 
-/* ── LIGA CARDS ── */
-.liga-card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px 24px;transition:all .3s}
-.liga-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
-.liga-card::before{content:attr(data-n);position:absolute;right:12px;top:-8px;font-family:var(--display);font-size:110px;font-weight:900;color:rgba(255,216,77,.04);line-height:1;pointer-events:none}
-.liga-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.65}
-.liga-card-tag{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.liga-card-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
-.liga-card h3{font-family:var(--display);font-size:24px;font-weight:900;text-transform:uppercase;margin-bottom:10px;color:#fff}
-.liga-card p{font-size:14px;color:var(--muted);line-height:1.7}
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 9px;
+      font-family: var(--body);
+      font-size: 14px;
+      font-weight: 600;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--white);
+      transition: background .15s, border-color .15s, color .15s;
+      white-space: nowrap;
+    }
+    .btn:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn.gold {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      border-color: transparent;
+      color: #07080c;
+      font-weight: 700;
+    }
+    .btn.gold:hover {
+      background: linear-gradient(135deg, var(--gold3), var(--gold2));
+    }
+    .btn.small {
+      padding: 7px 14px;
+      font-size: 13px;
+    }
 
-/* ── STEPS ── */
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.steps-grid::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,216,77,.2) 10%,rgba(255,216,77,.2) 90%,transparent)}
-@media(max-width:800px){.steps-grid{grid-template-columns:1fr 1fr}.steps-grid::before{display:none}}
-@media(max-width:480px){.steps-grid{grid-template-columns:1fr}}
-.step-item{padding:24px 18px;text-align:center}
-.step-num{font-family:var(--display);font-size:64px;font-weight:900;color:rgba(255,216,77,.15);line-height:1;margin-bottom:8px}
-.step-title{font-family:var(--display);font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:10px}
-.step-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
+    /* ===== CARDS ===== */
+    .card {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 24px;
+    }
 
-/* ── MODALIDADES ── */
-.modal-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
-.modal-card:hover{border-color:rgba(255,216,77,.28);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
-.modal-header{padding:40px 32px 28px;position:relative;overflow:hidden}
-.mh-dupla{background:linear-gradient(135deg,#080f22,#0a1540)}
-.mh-quarteto{background:linear-gradient(135deg,#180900,#2a1200)}
-.modal-tag{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,216,77,.6);margin-bottom:6px}
-.modal-name{font-family:var(--display);font-size:48px;font-weight:900;text-transform:uppercase;color:#fff;line-height:1}
-.modal-name span{color:var(--gold)}
-.modal-body{padding:24px 32px 28px}
-.modal-body p{font-size:14px;color:var(--muted);line-height:1.72;margin-bottom:18px}
-.ftags{display:flex;flex-wrap:wrap;gap:6px}
-.ftag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.5);padding:4px 12px;border-radius:20px;font-weight:600}
+    /* ===== LINKS ===== */
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gold2);
+      font-weight: 600;
+      font-size: 14px;
+      transition: gap .15s;
+    }
+    .link-arrow:hover { gap: 10px; }
 
-/* ── NÍVEIS ── */
-.lvl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:860px){.lvl-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.lvl-grid{grid-template-columns:1fr}}
-.lvl{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;transition:all .3s;position:relative;overflow:hidden}
-.lvl:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.4)}
-.lvl::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
-.lv1::after{background:linear-gradient(90deg,#444,#777)}
-.lv2::after{background:linear-gradient(90deg,#1b5e20,#43a047)}
-.lv3::after{background:linear-gradient(90deg,#0d47a1,#1976d2)}
-.lv4::after{background:linear-gradient(90deg,#4a148c,#8e24aa)}
-.lv5::after{background:linear-gradient(90deg,var(--gold3),var(--gold))}
-.lv5{border-color:rgba(255,216,77,.18);background:linear-gradient(160deg,rgba(255,216,77,.05),var(--card))}
-.lvi::after{background:linear-gradient(90deg,#333,#555)}
-.lvl-badge{display:inline-block;font-family:var(--display);font-size:28px;font-weight:900;line-height:1;margin-bottom:8px}
-.lv1 .lvl-badge{color:#777}
-.lv2 .lvl-badge{color:#43a047}
-.lv3 .lvl-badge{color:#1e88e5}
-.lv4 .lvl-badge{color:#9c27b0}
-.lv5 .lvl-badge{color:var(--gold);text-shadow:0 0 18px rgba(255,216,77,.4)}
-.lvi .lvl-badge{color:#555}
-.lvl-nome{font-family:var(--display);font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;color:#fff}
-.lvl-desc{font-size:12px;color:var(--muted);line-height:1.6}
+    /* ===== TOP ALERT / TICKER ===== */
+    .top-alert {
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,216,77,.18);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .top-alert .wrap {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .ticker {
+      display: flex;
+      gap: 0;
+      animation: ticker 28s linear infinite;
+      width: max-content;
+      align-items: center;
+    }
+    .ticker span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+    .ticker span i {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold2);
+      flex-shrink: 0;
+      font-style: normal;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .top-alert:hover .ticker { animation-play-state: paused; }
 
-/* ── PORTAL ── */
-.portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-@media(max-width:720px){.portal-grid{grid-template-columns:1fr}}
-.portal-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.portal-list li{display:flex;align-items:center;gap:14px;font-size:15px;color:rgba(255,255,255,.75)}
-.portal-list li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
-.portal-card{background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(255,216,77,.03));border:1px solid rgba(255,216,77,.2);border-radius:16px;padding:28px;position:relative;overflow:hidden}
-.portal-card::before{content:'PORTAL';position:absolute;right:-10px;bottom:-20px;font-family:var(--display);font-size:90px;font-weight:900;color:rgba(255,216,77,.04);pointer-events:none}
-.portal-card-header{font-family:var(--display);font-size:13px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.portal-card p{font-size:14px;color:var(--muted);margin-bottom:4px}
-.portal-card-sep{text-align:center;color:var(--muted);font-size:11px;margin:14px 0;text-transform:uppercase;letter-spacing:1px}
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 72px;
+      background: rgba(3,4,5,.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,216,77,.12);
+      display: flex;
+      align-items: center;
+    }
+    .nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .nav-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+    .nav-brand-text strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-brand-text span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 11px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--soft);
+      border-radius: 8px;
+      transition: color .15s, background .15s;
+      white-space: nowrap;
+    }
+    .nav-link:hover,
+    .nav-item:hover > .nav-link {
+      color: #08090d;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+    }
+    .nav-link svg.chevron {
+      width: 10px; height: 10px;
+      opacity: .6;
+      transition: transform .15s;
+    }
+    .nav-item:hover .chevron { transform: rotate(180deg); }
 
-/* ── ECOSSISTEMA ── */
-.eco-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 24px;transition:all .3s;position:relative;overflow:hidden}
-.eco-card:hover{border-color:rgba(255,216,77,.2);transform:translateY(-3px)}
-.eco-card::before{content:attr(data-icon);position:absolute;right:16px;top:12px;font-family:var(--display);font-size:13px;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;opacity:.4}
-.eco-card h4{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:.3px;margin-bottom:8px;color:#fff}
-.eco-card p{font-size:14px;color:var(--muted);line-height:1.67}
+    .submenu {
+      position: absolute;
+      top: 44px;
+      left: 0;
+      background: rgba(7,8,12,.98);
+      border: 1px solid rgba(255,216,77,.18);
+      border-radius: 12px;
+      padding: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .16s, transform .16s;
+      min-width: 200px;
+      z-index: 200;
+    }
+    .nav-item:hover .submenu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .submenu a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--soft);
+      border-radius: 8px;
+      transition: background .12s, color .12s;
+    }
+    .submenu a:hover {
+      background: rgba(255,216,77,.1);
+      color: var(--gold2);
+    }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .nav-ham {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .nav-ham span {
+      display: block;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform .2s, opacity .2s;
+    }
+    .nav-ham[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-ham[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-ham[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── HUNTER PATROCINADOR ── */
-.sponsor-wrap{
-  background:linear-gradient(135deg,#0a0600,#110900,#080500);
-  border:1px solid rgba(255,200,0,.18);
-  border-radius:16px;overflow:hidden;position:relative;
-  padding:52px 48px;text-align:center;
-}
-.sponsor-wrap::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(38deg,transparent 30%,rgba(255,200,0,.04) 30.5%,rgba(255,200,0,.04) 31.5%,transparent 32%),
-    linear-gradient(38deg,transparent 33%,rgba(255,200,0,.03) 33.5%,rgba(255,200,0,.03) 34.2%,transparent 34.7%),
-    linear-gradient(225deg,transparent 60%,rgba(255,160,0,.04) 60.5%,rgba(255,160,0,.04) 61.2%,transparent 61.7%);
-}
-.sponsor-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.3);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:22px;text-transform:uppercase;font-family:var(--display)}
-.sponsor-logo{height:72px;margin:0 auto 22px;filter:drop-shadow(0 0 30px rgba(255,200,0,.4)) drop-shadow(0 0 60px rgba(255,120,0,.15))}
-.sponsor-desc{font-size:15px;color:rgba(255,255,255,.55);line-height:1.72;max-width:520px;margin:0 auto 24px}
-.sponsor-cta{font-family:var(--display);font-size:13px;font-weight:800;color:rgba(255,216,77,.6);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,216,77,.2)}
-.sponsor-cta:hover{color:var(--gold)}
+    /* ===== HERO ===== */
+    #inicio {
+      min-height: calc(100vh - 108px);
+      display: flex;
+      align-items: center;
+      border-top: none;
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #inicio .wrap { width: 100%; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 54px;
+      align-items: center;
+    }
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--display);
+      font-size: clamp(160px, 26vw, 400px);
+      font-weight: 900;
+      color: var(--white);
+      opacity: .035;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      letter-spacing: -.04em;
+      line-height: 1;
+      z-index: 0;
+    }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold2);
+      flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.01;
+      letter-spacing: -.015em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-h1 em { font-style: normal; color: var(--gold2); }
+    .hero-lead {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--soft);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-right { position: relative; z-index: 1; }
+    .hero-panel {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.22);
+      border-radius: 18px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(255,216,77,.03) 0px, rgba(255,216,77,.03) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, rgba(255,216,77,.03) 0px, rgba(255,216,77,.03) 1px, transparent 1px, transparent 40px);
+      pointer-events: none;
+    }
+    .hero-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .hero-panel-title {
+      font-family: var(--display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(126,226,167,.12);
+      border: 1px solid rgba(126,226,167,.3);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--green);
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .3; }
+    }
+    .match-card-hero {
+      background: rgba(7,8,12,.6);
+      border: 1px solid rgba(255,216,77,.12);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+    }
+    .match-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .team-crest-sm {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .team-name-sm {
+      flex: 1;
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .score-hero {
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--gold2);
+      padding: 0 10px;
+      flex-shrink: 0;
+    }
+    .match-meta-hero {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .hero-metric {
+      text-align: center;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px;
+      padding: 14px 8px;
+    }
+    .hero-metric-val {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold2);
+      line-height: 1;
+    }
+    .hero-metric-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
 
-/* ── CTA ── */
-.cta-sec{
-  padding:110px 20px;text-align:center;position:relative;overflow:hidden;
-  background:linear-gradient(180deg,var(--bg),#0e0b00,var(--bg));
-  border-top:1px solid rgba(255,216,77,.1);border-bottom:1px solid rgba(255,216,77,.1);
-}
-.cta-sec::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size:200px 200px;
-}
-.cta-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:450px;background:radial-gradient(ellipse,rgba(255,216,77,.1) 0%,transparent 60%);pointer-events:none}
-.cta-sec h2{font-family:var(--display);font-size:clamp(52px,9vw,100px);font-weight:900;text-transform:uppercase;line-height:.88;margin-bottom:16px;position:relative;z-index:1}
-.cta-sec h2 span{color:var(--gold)}
-.cta-sub{font-size:15px;color:var(--muted);max-width:440px;margin:0 auto 36px;line-height:1.72;position:relative;z-index:1}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
-.btn-wpp{background:linear-gradient(135deg,#128c7e,#075e54);color:#fff;font-family:var(--display);font-size:16px;font-weight:800;padding:16px 30px;border-radius:8px;transition:all .25s;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
-.btn-wpp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,140,126,.4)}
-.btn-cta-main{background:var(--gold);color:#000;font-family:var(--display);font-size:20px;font-weight:900;letter-spacing:.5px;padding:18px 52px;border-radius:8px;transition:all .25s;text-transform:uppercase;box-shadow:0 6px 28px rgba(255,216,77,.3)}
-.btn-cta-main:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,216,77,.5)}
+    /* ===== TABS ===== */
+    .tabs-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      transition: all .14s;
+      cursor: pointer;
+    }
+    .tab-btn:hover { color: var(--soft); background: rgba(255,255,255,.08); }
+    .tab-btn.active {
+      background: rgba(255,216,77,.12);
+      border-color: rgba(255,216,77,.28);
+      color: var(--gold2);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
-/* ── FOOTER ── */
-footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 28px}
-.foot-top{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:60px;margin-bottom:40px}
-.foot-logos{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.foot-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.3))}
-.foot-logos .fh{height:32px;filter:drop-shadow(0 0 8px rgba(255,140,0,.3))}
-.foot-tagline{font-family:var(--display);font-size:15px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:.5px}
-.foot-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:280px}
-.foot-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.foot-col{display:flex;flex-direction:column;gap:10px}
-.foot-col-title{font-family:var(--display);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
-.foot-col a{color:var(--muted);font-size:13px;text-decoration:none;transition:color .2s}
-.foot-col a:hover{color:var(--gold)}
-.foot-bottom{max-width:1100px;margin:0 auto;border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;color:rgba(255,255,255,.2)}
-@media(max-width:780px){.foot-top{grid-template-columns:1fr}.foot-nav{grid-template-columns:1fr 1fr}}
+    /* ===== TEMPORADA ===== */
+    .timeline-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .timeline-flow::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5%);
+      width: calc(75%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2), var(--gold));
+      opacity: .35;
+      z-index: 0;
+    }
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 900;
+      color: #07080c;
+      flex-shrink: 0;
+      margin-bottom: 16px;
+    }
+    .timeline-label {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold2);
+      margin-bottom: 8px;
+    }
+    .timeline-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-/* ── FADE UP ── */
-.fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
-.fu.on{opacity:1;transform:translateY(0)}
+    .urplay-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .virada-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .virada-item {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .virada-num {
+      font-family: var(--display);
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--gold2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .virada-label { font-size: 13px; font-weight: 600; color: var(--soft); line-height: 1.4; }
 
-/* ── VOLLEYBALL BG WATERMARKS ── */
-.vb-wm-wrap{position:absolute;pointer-events:none;z-index:0;overflow:hidden}
-#liga{position:relative;overflow:hidden}
-#liga>.vb-wm-wrap{right:-60px;top:50%;transform:translateY(-50%);width:500px;height:500px}
-#modalidades{position:relative;overflow:hidden}
-#modalidades>.vb-wm-wrap{left:-80px;top:0;bottom:0;width:380px;height:100%}
+    .repasses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .repasse-block {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .repasse-block h4 {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,216,77,.14);
+    }
+    .repasse-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      font-size: 14px;
+      color: var(--soft);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .repasse-row:last-child { border-bottom: none; }
+    .repasse-val { font-family: var(--display); font-size: 16px; font-weight: 800; color: var(--green); }
 
-/* ── CICLO TRIMESTRAL ── */
-.ciclo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-@media(max-width:780px){.ciclo-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.ciclo-grid{grid-template-columns:1fr}}
-.ciclo-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 22px;position:relative;overflow:hidden;transition:all .3s}
-.ciclo-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-3px)}
-.ciclo-card::after{content:attr(data-phase);position:absolute;right:14px;bottom:-4px;font-family:var(--display);font-size:64px;font-weight:900;color:rgba(255,216,77,.05);line-height:1}
-.ciclo-label{font-family:var(--display);font-size:10px;font-weight:800;color:rgba(255,216,77,.5);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
-.ciclo-title{font-family:var(--display);font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px;line-height:1.1}
-.ciclo-body{font-size:13px;color:var(--muted);line-height:1.68}
-.repasse-banner{margin-top:32px;background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(255,216,77,.03));border:1px solid rgba(255,216,77,.2);border-radius:14px;padding:28px 32px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
-.repasse-icon{font-family:var(--display);font-size:44px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0}
-.repasse-body h4{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px}
-.repasse-body p{font-size:14px;color:var(--muted);line-height:1.67;max-width:520px}
-@media(max-width:600px){.repasse-banner{flex-direction:column;gap:16px}}
+    /* ===== JOGOS ===== */
+    .match-table { width: 100%; border-collapse: collapse; }
+    .match-table thead th {
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .match-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background .12s;
+    }
+    .match-table tbody tr:hover { background: rgba(255,255,255,.025); }
+    .match-table td { padding: 12px 14px; font-size: 14px; vertical-align: middle; }
 
-/* ── HUNTERS ECOSYSTEM ── */
-.hunters-wrap{
-  background:linear-gradient(135deg,#020a06,#041209,#020806);
-  border:1px solid rgba(255,216,77,.12);
-  border-radius:16px;overflow:hidden;position:relative;
-  padding:52px 48px;
-}
-.hunters-wrap::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(38deg,transparent 30%,rgba(255,216,77,.025) 30.5%,rgba(255,216,77,.025) 31.5%,transparent 32%),
-    linear-gradient(225deg,transparent 60%,rgba(255,200,0,.025) 60.5%,rgba(255,200,0,.025) 61.2%,transparent 61.7%);
-}
-.hunters-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
-@media(max-width:720px){.hunters-inner{grid-template-columns:1fr;text-align:center}}
-.hunters-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.08);border:1px solid rgba(255,216,77,.22);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
-.hunters-title{font-family:var(--display);font-size:clamp(36px,5vw,56px);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:14px;color:#fff}
-.hunters-title span{color:var(--gold)}
-.hunters-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:24px}
-.hunters-quote{font-family:var(--display);font-size:17px;font-style:italic;color:rgba(255,216,77,.7);letter-spacing:.5px;border-left:3px solid rgba(255,216,77,.3);padding-left:16px}
-.hunters-logo-side{display:flex;flex-direction:column;align-items:center;gap:16px}
-.hunters-logo-side img{height:80px;filter:drop-shadow(0 0 30px rgba(255,200,0,.3)) drop-shadow(0 0 60px rgba(255,120,0,.1))}
-.hunters-stats{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
-.hunter-stat{text-align:center;background:rgba(0,0,0,.4);border:1px solid rgba(255,216,77,.12);border-radius:10px;padding:14px 20px}
-.hunter-stat-n{font-family:var(--display);font-size:28px;font-weight:900;color:var(--gold);line-height:1;display:block}
-.hunter-stat-l{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:2px}
-</style>
+    .team-crest {
+      width: 32px; height: 32px;
+      border-radius: 7px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .team-cell { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .score-cell {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold2);
+      text-align: center;
+      min-width: 70px;
+    }
+    .score-cell .vs { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+    .level-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      font-family: var(--display);
+    }
+    .pill-N5 { background: rgba(255,216,77,.14); color: var(--gold2); border: 1px solid rgba(255,216,77,.28); }
+    .pill-N4 { background: rgba(157,199,255,.1); color: var(--blue); border: 1px solid rgba(157,199,255,.24); }
+    .pill-N3 { background: rgba(126,226,167,.1); color: var(--green); border: 1px solid rgba(126,226,167,.24); }
+
+    .status-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+    .status-enc  { background: rgba(255,255,255,.06); color: var(--muted); }
+    .status-prox { background: rgba(157,199,255,.1); color: var(--blue); }
+    .status-live { background: rgba(255,216,77,.12); color: var(--gold2); animation: pulseBg 1.4s infinite; }
+    @keyframes pulseBg { 0%, 100% { opacity: 1; } 50% { opacity: .6; } }
+
+    /* ===== RANKING ===== */
+    .ranking-table { width: 100%; border-collapse: collapse; }
+    .ranking-table thead th {
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .ranking-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background .12s;
+    }
+    .ranking-table tbody tr:hover { background: rgba(255,255,255,.025); }
+    .ranking-table td { padding: 12px 14px; font-size: 14px; vertical-align: middle; }
+
+    .rank-pos { font-family: var(--display); font-size: 16px; font-weight: 900; width: 40px; text-align: center; }
+    .rank-pos.top1 { color: var(--gold2); }
+    .rank-pos.top2 { color: var(--soft); }
+    .rank-pos.top3 { color: #cd7f32; }
+    .athlete-name { font-weight: 700; }
+    .pts-cell { font-family: var(--display); font-size: 17px; font-weight: 900; color: var(--gold2); }
+    .coins-cell { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--muted); }
+    .trend-up    { color: var(--green); }
+    .trend-down  { color: var(--red); }
+    .trend-stable { color: var(--muted); }
+
+    /* ===== EQUIPES ===== */
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .team-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,216,77,.12);
+      position: relative;
+      background: var(--card);
+      transition: transform .2s, border-color .2s;
+    }
+    .team-card:hover { transform: translateY(-4px); border-color: rgba(255,216,77,.28); }
+    .team-card-slab { height: 70px; position: relative; overflow: hidden; }
+    .team-card-body { padding: 18px 20px 20px; }
+    .team-card-initials {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 12px;
+      border: 2px solid rgba(255,255,255,.12);
+    }
+    .team-card-name { font-family: var(--display); font-size: 19px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .team-card-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+
+    /* ===== CT UR ===== */
+    .ctur-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    /* ===== MERCADO ===== */
+    .market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .market-card {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .15s, transform .15s;
+    }
+    .market-card:hover { border-color: rgba(255,216,77,.3); transform: translateY(-3px); }
+    .market-icon { font-size: 32px; line-height: 1; }
+    .market-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .market-price { font-family: var(--display); font-size: 22px; font-weight: 900; color: var(--gold2); }
+    .market-level { font-size: 12px; color: var(--muted); }
+    .market-btn { margin-top: auto; }
+
+    /* ===== HUNTERS ===== */
+    .quote-block {
+      border-left: 3px solid var(--gold2);
+      padding: 16px 24px;
+      background: rgba(255,216,77,.05);
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 48px;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--soft);
+      line-height: 1.6;
+    }
+    .hunters-levels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .hunter-level-card {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: border-color .15s, transform .15s;
+    }
+    .hunter-level-card:hover { border-color: rgba(255,216,77,.3); transform: translateY(-3px); }
+    .hunter-badge { font-family: var(--display); font-size: 28px; font-weight: 900; color: var(--gold2); margin-bottom: 8px; line-height: 1; }
+    .hunter-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .hunter-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ===== MIDIA ===== */
+    .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .media-card {
+      background: linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,216,77,.14);
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color .15s, transform .15s;
+    }
+    .media-card:hover { border-color: rgba(255,216,77,.3); transform: translateY(-3px); }
+    .media-icon { font-size: 36px; line-height: 1; }
+    .media-name { font-family: var(--display); font-size: 20px; font-weight: 800; color: var(--white); }
+    .media-desc { font-size: 14px; color: var(--muted); flex: 1; }
+    .media-handle { font-size: 13px; font-weight: 600; color: var(--gold2); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,216,77,.1);
+      padding: 60px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand img { width: 38px; height: 38px; object-fit: contain; }
+    .footer-brand-name { font-family: var(--display); font-size: 18px; font-weight: 900; letter-spacing: .04em; }
+    .footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+    .footer-copy { font-size: 12px; color: var(--dim); }
+    .footer-col h5 {
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 14px; color: var(--soft); transition: color .12s; }
+    .footer-col ul li a:hover { color: var(--gold2); }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    /* ===== TABLE WRAPPER ===== */
+    .table-wrap { border: 1px solid rgba(255,255,255,.07); border-radius: 14px; overflow: hidden; overflow-x: auto; }
+
+    /* ===== SECTION FOOTER ===== */
+    .section-footer {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-ham { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(3,4,5,.98);
+        border-bottom: 1px solid rgba(255,216,77,.12);
+        padding: 16px 24px 24px;
+        gap: 4px;
+        align-items: flex-start;
+        z-index: 99;
+      }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .section-head { grid-template-columns: 1fr; gap: 20px; }
+      .teams-grid { grid-template-columns: repeat(2, 1fr); }
+      .market-grid { grid-template-columns: repeat(2, 1fr); }
+      .hunters-levels { grid-template-columns: repeat(3, 1fr); }
+      .timeline-flow { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .timeline-flow::before { display: none; }
+      .repasses-grid { grid-template-columns: 1fr; }
+      .virada-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 680px) {
+      .teams-grid { grid-template-columns: 1fr; }
+      .market-grid { grid-template-columns: 1fr; }
+      .hunters-levels { grid-template-columns: repeat(2, 1fr); }
+      .media-grid { grid-template-columns: 1fr; }
+      .urplay-cards { grid-template-columns: 1fr; }
+      .timeline-flow { grid-template-columns: 1fr; }
+      .ctur-features { grid-template-columns: 1fr; }
+      .nav-cta .btn:not(:last-child) { display: none; }
+      .hero-cta { flex-direction: column; align-items: flex-start; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ANNOUNCE BAR -->
-<div class="announce-bar">
-  <div class="announce-inner">
-    <span class="ab-tag">T01 · 2026</span>
-    <span class="ab-sep">·</span>
-    <span>A Temporada Chega</span>
-    <span class="ab-sep">·</span>
-    <span>Garanta Sua Vaga</span>
-    <span class="ab-sep">·</span>
-    <span>Pré-Temporada · BH · MG</span>
-    <span class="ab-sep">·</span>
-    <a href="/temporada" class="ab-link">Ver calendário →</a>
+<!-- ===== TICKER BAR ===== -->
+<div class="top-alert">
+  <div class="wrap">
+    <div class="ticker">
+      <span><i></i> Temporada trimestral</span>
+      <span><i></i> UR Play como porta de entrada</span>
+      <span><i></i> Ranking por níveis</span>
+      <span><i></i> Mercado UR</span>
+      <span><i></i> CT UR</span>
+      <span><i></i> Mentalidade Hunter</span>
+      <span><i></i> Mídia oficial · Kick · YouTube</span>
+      <span><i></i> BH · MG · T01 2026</span>
+      <span><i></i> Temporada trimestral</span>
+      <span><i></i> UR Play como porta de entrada</span>
+      <span><i></i> Ranking por níveis</span>
+      <span><i></i> Mercado UR</span>
+      <span><i></i> CT UR</span>
+      <span><i></i> Mentalidade Hunter</span>
+      <span><i></i> Mídia oficial · Kick · YouTube</span>
+      <span><i></i> BH · MG · T01 2026</span>
+    </div>
   </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logos">
-    <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>
-    <div class="nav-sep"></div>
-    <a href="/"><img src="logo-hunter.png" alt="Hunters" class="nav-hunter-logo" onerror="this.style.display='none'"></a>
-  </div>
-  <div class="nav-links" id="navLinks">
-    <a href="/" style="color:var(--gold)">Início</a>
-    <a href="/temporada">Temporada</a>
-    <a href="/equipes">Equipes</a>
-    <a href="/atletas">Atletas</a>
-    <a href="/ranking">Ranking</a>
-    <a href="/ct-ur">CT UR</a>
-    <a href="/mercado">Mercado</a>
-  </div>
-  <div class="nav-right">
-    <span class="nav-season">T01 · 2026</span>
-    <a href="/portal" class="nav-portal-btn">Portal</a>
-    <a href="/inscricao" class="nav-cta">Inscreva-se</a>
-  </div>
-  <button class="nav-ham" id="navHam" aria-label="Menu">&#9776;</button>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-court"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-wm">UR</div>
-  <div class="hero-grid">
-
-    <!-- LEFT: Headline + CTAs -->
-    <div class="hero-left fu">
-      <div class="hero-eyebrow">Liga de Vôlei de Praia · Belo Horizonte · T01 2026</div>
-      <h1 class="hero-h1">
-        <span class="h1-line h1-l1">VOCÊ NÃO</span>
-        <span class="h1-line h1-l2">ASSISTE.</span>
-        <span class="h1-line h1-l3">VOCÊ JOGA.</span>
-      </h1>
-      <p class="hero-sub">Ninguém entra pronto. Todos entram possíveis. Ciclos trimestrais, ranking real, repasses recorrentes. A jornada começa quando você aparece.</p>
-      <div class="hero-btns">
-        <a href="/inscricao" class="btn-primary">⚡ Iniciar minha jornada T01</a>
-        <a href="/portal" class="btn-secondary">Portal do Atleta →</a>
+<!-- ===== STICKY NAV ===== -->
+<header class="nav" role="banner">
+  <div class="wrap">
+    <a class="nav-brand" href="#inicio" aria-label="Ultimate Rivals — Home">
+      <img src="logo-ur-3d.png" alt="UR" width="42" height="42" onerror="this.style.display='none'">
+      <svg width="40" height="36" viewBox="0 0 64 60" fill="none" aria-hidden="true">
+        <path d="M32 4 52 12v17c0 14-8 24-20 31C20 53 12 43 12 29V12L32 4Z" fill="#ffd84d" opacity=".97"/>
+        <path d="M32 9 47 15v14c0 10.5-5.8 18.5-15 24-9.2-5.5-15-13.5-15-24V15l15-6Z" fill="#06070a"/>
+        <path d="M20 34 28 16h8l-5 13h9L27 50l4-16H20Z" fill="#ffd84d"/>
+      </svg>
+      <div class="nav-brand-text">
+        <strong>ULTIMATE RIVALS</strong>
+        <span>Liga de Vôlei de Praia · BH</span>
       </div>
-      <p class="hero-urgency">Pré-Temporada em andamento · <strong>Vagas limitadas</strong> · Nivelamento obrigatório</p>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <div class="nav-item">
+        <a class="nav-link" href="#temporada">Temporada
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="submenu">
+          <a href="#temporada">Visão do ciclo</a>
+          <a href="#temporada">UR Play</a>
+          <a href="#temporada">Virada do ranking</a>
+          <a href="#temporada">Repasses</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#jogos">Jogos
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="submenu">
+          <a href="#jogos">Tabela</a>
+          <a href="#jogos">Fase de grupos</a>
+          <a href="#jogos">Eliminatórias</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#ranking">Ranking
+          <svg class="chevron" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="submenu">
+          <a href="#ranking">Níveis</a>
+          <a href="#ranking">Pontuação</a>
+          <a href="#ranking">Repasses</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="/equipes">Equipes</a></div>
+      <div class="nav-item"><a class="nav-link" href="/atletas">Atletas</a></div>
+      <div class="nav-item"><a class="nav-link" href="/ct-ur">CT UR</a></div>
+      <div class="nav-item"><a class="nav-link" href="/mercado">Mercado</a></div>
+      <div class="nav-item"><a class="nav-link" href="#hunters">Hunters</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn small" href="https://kick.com/ultimaterivals" target="_blank" rel="noopener">🔴 Live</a>
+      <a class="btn small" href="/inscricao">Inscrever</a>
+      <a class="btn small gold" href="/mercado">Mercado</a>
     </div>
 
-    <!-- RIGHT: Season card -->
-    <aside class="hero-season-card fu">
-      <div class="hsc-top">
-        <div class="hsc-label">Temporada Trimestral</div>
-        <div class="hsc-title">T01 · 2026</div>
-        <p class="hsc-sub">Belo Horizonte · MG · Ciclo de 90 dias</p>
-      </div>
-      <div class="hsc-flow">
-        <div class="hsc-step">
-          <div class="hsc-n">01</div>
-          <div>
-            <strong>UR Play + Nivelamento</strong>
-            <span>Semanas 1–4 · Início do ciclo</span>
-          </div>
-          <span class="hsc-state active">Em breve</span>
-        </div>
-        <div class="hsc-step">
-          <div class="hsc-n">02</div>
-          <div>
-            <strong>Torneios Mensais</strong>
-            <span>Semanas 5–8 · Ranking em jogo</span>
-          </div>
-          <span class="hsc-state">—</span>
-        </div>
-        <div class="hsc-step">
-          <div class="hsc-n">03</div>
-          <div>
-            <strong>Fase de Grupos</strong>
-            <span>Semanas 9–11 · Classificatórias</span>
-          </div>
-          <span class="hsc-state">—</span>
-        </div>
-        <div class="hsc-step">
-          <div class="hsc-n">04</div>
-          <div>
-            <strong>Virada do Ranking</strong>
-            <span>Semana 12 · Repasses + Evento Final</span>
-          </div>
-          <span class="hsc-state">—</span>
-        </div>
-      </div>
-      <div class="hsc-bottom">
-        <div class="hsc-mini"><strong>90</strong><span>Dias/Ciclo</span></div>
-        <div class="hsc-mini"><strong>5</strong><span>Níveis</span></div>
-        <div class="hsc-mini"><strong>R$</strong><span>Repasses</span></div>
-      </div>
-    </aside>
+    <button class="nav-ham" id="navHam" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
+<!-- ===== HERO ===== -->
+<section id="inicio">
+  <div class="hero-watermark" aria-hidden="true">UR</div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">— ECOSSISTEMA ULTIMATE RIVALS</div>
+        <h1 class="hero-h1">
+          NINGUÉM ENTRA<br>
+          <em>PRONTO.</em><br>
+          TODOS ENTRAM<br>
+          <em>POSSÍVEIS.</em>
+        </h1>
+        <p class="hero-lead">
+          O UR organiza a jornada do esporte amador com método, ranking, dados,
+          mídia, mercado interno, CT UR e Mentalidade Hunter. Cada presença gera
+          histórico. Cada resultado gera consequência. Cada ciclo cria oportunidade.
+        </p>
+        <div class="hero-cta">
+          <a class="btn gold" href="#temporada">Entender a temporada →</a>
+          <a class="btn" href="#ranking">Ver ranking</a>
+          <a class="btn" href="/inscricao">Inscrever agora</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-panel">
+          <div class="hero-panel-header">
+            <span class="hero-panel-title">UR Play · Rodada 01</span>
+            <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
+          </div>
+          <div class="match-card-hero">
+            <div class="match-row">
+              <div class="team-crest-sm" style="background:rgba(26,52,105,.5);border:1px solid rgba(26,52,105,.8);">HX</div>
+              <span class="team-name-sm">Hunters X</span>
+              <span class="score-hero">21 <span style="color:var(--muted);font-size:16px;">vs</span> 18</span>
+              <span class="team-name-sm" style="text-align:right;">Rivals Gold</span>
+              <div class="team-crest-sm" style="background:rgba(201,168,76,.2);border:1px solid rgba(201,168,76,.4);">RG</div>
+            </div>
+            <div class="match-meta-hero">N1 Elite · Quartetos · Arena Central BH</div>
+          </div>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <div class="hero-metric-val">5</div>
+              <div class="hero-metric-lbl">Níveis</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-val">12</div>
+              <div class="hero-metric-lbl">Equipes</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-val">90</div>
+              <div class="hero-metric-lbl">Dias/ciclo</div>
+            </div>
+            <div class="hero-metric">
+              <div class="hero-metric-val">URC</div>
+              <div class="hero-metric-lbl">Moeda</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- METRICS BAR -->
-<div class="metrics-bar">
-  <div class="metric-item"><strong>90</strong><span>Dias por Ciclo</span></div>
-  <div class="metric-item"><strong>5</strong><span>Níveis de Jogo</span></div>
-  <div class="metric-item"><strong>10pts</strong><span>= 1 UR Coin</span></div>
-  <div class="metric-item"><strong>360°</strong><span>Atleta + Equipe + Mídia</span></div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 01 · A LIGA -->
-<div id="liga" class="sec fu">
-  <!-- Volleyball watermark -->
-  <div class="vb-wm-wrap">
-    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:.055">
-      <circle cx="100" cy="100" r="93" stroke="#ffd84d" stroke-width="2.5"/>
-      <path d="M100 7C133 8 160 26 178 54" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M178 54C196 82 195 118 178 146" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M178 146C161 174 134 192 100 193" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M100 7C67 8 40 26 22 54" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M22 54C4 82 5 118 22 146" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M22 146C39 174 66 192 100 193" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="100" y1="7" x2="100" y2="193" stroke="#ffd84d" stroke-width="1.5" stroke-dasharray="6 6" opacity=".4"/>
-    </svg>
-  </div>
-  <div style="position:relative;z-index:1;margin-bottom:52px">
-    <div class="s-label">01 · Sobre a Liga</div>
-    <h2 class="s-title-lg">UM CAMPO REAL.<br><span class="s-gold">RIVALIDADE REAL.</span></h2>
-  </div>
-  <div class="g3" style="position:relative;z-index:1">
-    <div class="liga-card fu" data-n="01">
-      <div class="liga-card-tag">A Jornada</div>
-      <h3>A JORNADA</h3>
-      <p>O esporte deixou de ser um momento. Passou a ser uma jornada. O Ultimate Rivals não é pelada de sábado — é uma liga estruturada com calendário, regulamento, ranking e ciclos trimestrais que definem quem ficou na história.</p>
-      <div class="pill-row"><span class="pill">Trimestral</span><span class="pill">Ranking Real</span></div>
+<!-- ===== TEMPORADA ===== -->
+<section id="temporada">
+  <div class="wrap">
+    <div class="tag">Temporada Trimestral</div>
+    <div class="section-head">
+      <h2>Começa no UR Play. Fecha na <em>Virada do Ranking.</em></h2>
+      <p class="section-lead">
+        A temporada é um ciclo de 90 dias. O atleta entra pelo UR Play, é nivelado,
+        acumula pontos, gera UR Coins, participa de eventos por nível e chega ao
+        fechamento trimestral com repasses, premiações e abertura de um novo ciclo.
+      </p>
     </div>
-    <div class="liga-card fu" data-n="02">
-      <div class="liga-card-tag">O Sistema</div>
-      <h3>O SISTEMA</h3>
-      <p>Cada atleta tem um perfil, pontuação, histórico e UR Coins. Resultados são registrados. Fundamentos são observados. Conduta importa. O sistema não perdoa quem some — e não esquece quem aparece.</p>
-      <div class="pill-row"><span class="pill">UR Coins</span><span class="pill blue">Dados</span></div>
-    </div>
-    <div class="liga-card fu" data-n="03">
-      <div class="liga-card-tag">O Atleta</div>
-      <h3>O ATLETA</h3>
-      <p>Ninguém entra pronto. Todos entram possíveis. Você não precisa ser profissional para ser levado a sério — precisa mostrar presença, competir com consistência e respeitar o jogo. O UR existe para quem quer disputa real.</p>
-      <div class="pill-row"><span class="pill green">Mérito</span><span class="pill">Presença</span></div>
-    </div>
-  </div>
-</div>
 
-<div class="divider"></div>
+    <div data-tabs="temporada">
+      <div class="tabs-bar">
+        <button class="tab-btn active" data-tab="tab-visao">Visão geral</button>
+        <button class="tab-btn" data-tab="tab-urplay">UR Play</button>
+        <button class="tab-btn" data-tab="tab-virada">Virada do Ranking</button>
+        <button class="tab-btn" data-tab="tab-repasses">Repasses</button>
+      </div>
 
-<!-- 02 · COMO FUNCIONA -->
-<div class="sec-wrap fu">
-  <div class="sec">
-    <div style="text-align:center;margin-bottom:56px">
-      <div class="s-label" style="justify-content:center">02 · Como Funciona</div>
-      <h2 class="s-title-lg">QUATRO PASSOS.<br><span class="s-gold">SEM ENROLAÇÃO.</span></h2>
-    </div>
-    <div class="steps-grid">
-      <div class="step-item fu">
-        <div class="step-num">01</div>
-        <div class="step-title">VOCÊ SE INSCREVE</div>
-        <p class="step-desc">Escolhe seu nível (N1 a N5 ou Iniciante), preenche o formulário e passa pelo nivelamento. Sem entrevista, sem julgamento. Só vôlei.</p>
+      <!-- Tab 1 -->
+      <div class="tab-panel active" id="tab-visao" data-tab-group="temporada">
+        <div class="timeline-flow">
+          <div class="timeline-step">
+            <div class="timeline-num">1</div>
+            <div class="timeline-label">UR Play</div>
+            <div class="timeline-desc">Entrada, nivelamento, jogos semanais, pontos, coins</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">2</div>
+            <div class="timeline-label">Torneios por nível</div>
+            <div class="timeline-desc">Eventos mensais N3/N4/N5 com premiação</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">3</div>
+            <div class="timeline-label">Fase de grupos</div>
+            <div class="timeline-desc">Confrontos diretos, tabela, classificação</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-num">4</div>
+            <div class="timeline-label">Virada do Ranking</div>
+            <div class="timeline-desc">Fechamento trimestral, repasses, novo ciclo</div>
+          </div>
+        </div>
       </div>
-      <div class="step-item fu">
-        <div class="step-num">02</div>
-        <div class="step-title">VOCÊ JOGA</div>
-        <p class="step-desc">UR Play toda semana. Torneios mensais. Cada jogo conta: presença, resultado, fundamentos e postura são registrados no sistema.</p>
-      </div>
-      <div class="step-item fu">
-        <div class="step-num">03</div>
-        <div class="step-title">VOCÊ SOBE</div>
-        <p class="step-desc">Seu ranking é atualizado a cada ciclo. Pontos, coins, stats e histórico visíveis no seu Portal do Atleta. Você vê onde está e o que precisa fazer.</p>
-      </div>
-      <div class="step-item fu">
-        <div class="step-num">04</div>
-        <div class="step-title">VOCÊ É RECONHECIDO</div>
-        <p class="step-desc">A Virada de Ranking fecha o trimestre. Os melhores recebem reconhecimento, repasses e chamadas para os próximos ciclos. O campo define.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="divider"></div>
-
-<!-- 03 · MODALIDADES -->
-<div id="modalidades" class="sec fu">
-  <!-- Player silhouette watermark -->
-  <div class="vb-wm-wrap" style="left:-60px;top:0;bottom:0;width:340px;display:flex;align-items:center">
-    <svg viewBox="0 0 100 200" fill="#ffd84d" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:.04">
-      <ellipse cx="50" cy="16" rx="13" ry="15"/>
-      <path d="M37,31 C32,50 28,82 26,120 L42,118 L40,168 L60,168 L58,118 L74,120 C72,82 68,50 63,31 Q56,27 50,27 Q44,27 37,31Z"/>
-      <path d="M37,40 L10,18 Q6,14 10,10 Q14,6 18,10 L40,34Z"/>
-      <path d="M63,42 L92,12 Q96,8 98,12 Q100,16 96,20 L66,44Z"/>
-      <path d="M40,168 L30,192 Q28,198 34,199 Q40,200 42,194 L46,170Z"/>
-      <path d="M60,168 L70,192 Q72,198 66,199 Q60,200 58,194 L54,170Z"/>
-    </svg>
-  </div>
-  <div style="position:relative;z-index:1;margin-bottom:52px">
-    <div class="s-label">03 · Modalidades</div>
-    <h2 class="s-title-lg">DUPLA OU QUARTETO.<br><span class="s-gold">VOCÊ ESCOLHE O CAMPO.</span></h2>
-  </div>
-  <div class="g2" style="position:relative;z-index:1">
-    <div class="modal-card fu">
-      <div class="modal-header mh-dupla">
-        <div class="modal-tag">Formato 2×2</div>
-        <div class="modal-name">2<span>P</span></div>
+      <!-- Tab 2 -->
+      <div class="tab-panel" id="tab-urplay" data-tab-group="temporada">
+        <div class="urplay-cards">
+          <div class="card">
+            <div class="tag" style="margin-bottom:14px;">Jogos semanais</div>
+            <p style="color:var(--soft);font-size:14px;line-height:1.65;">
+              Partidas toda semana na arena oficial. Cada jogo gera pontuação real, histórico de atleta e impacto no ranking.
+            </p>
+          </div>
+          <div class="card">
+            <div class="tag" style="margin-bottom:14px;">Nivelamento</div>
+            <p style="color:var(--soft);font-size:14px;line-height:1.65;">
+              Cada atleta passa por avaliação técnica e comportamental. O nível define em qual grupo e modalidade você compete.
+            </p>
+          </div>
+          <div class="card">
+            <div class="tag" style="margin-bottom:14px;">Pontuação para o ranking</div>
+            <p style="color:var(--soft);font-size:14px;line-height:1.65;">
+              Cada presença no UR Play conta. Vitórias, desempenho individual, fair play e constância geram pontos e UR Coins.
+            </p>
+          </div>
+          <div class="card">
+            <div class="tag" style="margin-bottom:14px;">Porta de entrada oficial</div>
+            <p style="color:var(--soft);font-size:14px;line-height:1.65;">
+              O UR Play é o ponto de entrada obrigatório da liga. Sem participação no UR Play, não há acesso aos torneios e à Virada.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>A modalidade mais técnica. Dois atletas contra dois. Cada toque expõe você. Cada erro é seu. Cada vitória também.</p>
-        <div class="ftags">
-          <span class="ftag">2 atletas</span>
-          <span class="ftag">Vôlei de Praia</span>
-          <span class="ftag">Ranking</span>
-          <span class="ftag">Draft</span>
+
+      <!-- Tab 3 -->
+      <div class="tab-panel" id="tab-virada" data-tab-group="temporada">
+        <p style="font-size:16px;color:var(--soft);max-width:640px;margin-bottom:36px;line-height:1.7;">
+          A cada 90 dias, o ranking fecha. Os melhores recebem os repasses. O ciclo reseta. Uma nova temporada começa.
+        </p>
+        <div class="virada-grid">
+          <div class="virada-item">
+            <div class="virada-num">①</div>
+            <div class="virada-label">Encerramento das rodadas</div>
+          </div>
+          <div class="virada-item">
+            <div class="virada-num">②</div>
+            <div class="virada-label">Consolidação do ranking</div>
+          </div>
+          <div class="virada-item">
+            <div class="virada-num">③</div>
+            <div class="virada-label">Cerimônia de repasses</div>
+          </div>
+          <div class="virada-item">
+            <div class="virada-num">④</div>
+            <div class="virada-label">Abertura do novo ciclo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4 -->
+      <div class="tab-panel" id="tab-repasses" data-tab-group="temporada">
+        <div class="tag" style="margin-bottom:24px;">Repasses e Premiações</div>
+        <div class="repasses-grid">
+          <div class="repasse-block">
+            <h4>Quartetos</h4>
+            <div class="repasse-row"><span>1º lugar equipe</span><span class="repasse-val">R$ 1.500</span></div>
+            <div class="repasse-row"><span>2º lugar equipe</span><span class="repasse-val">R$ 1.000</span></div>
+            <div class="repasse-row"><span>3º lugar equipe</span><span class="repasse-val">R$ 1.000</span></div>
+            <div class="repasse-row"><span>1º atleta destaque</span><span class="repasse-val">R$ 500</span></div>
+            <div class="repasse-row"><span>2º atleta destaque</span><span class="repasse-val">R$ 300</span></div>
+            <div class="repasse-row"><span>3º atleta destaque</span><span class="repasse-val">R$ 300</span></div>
+          </div>
+          <div class="repasse-block">
+            <h4>Duplas</h4>
+            <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">60% das inscrições · distribuição proporcional</p>
+            <div class="repasse-row"><span>1º lugar</span><span class="repasse-val">60% do fundo</span></div>
+            <div class="repasse-row"><span>2º lugar</span><span class="repasse-val">30% do fundo</span></div>
+            <div class="repasse-row"><span>3º lugar</span><span class="repasse-val">10% do fundo</span></div>
+          </div>
+          <div class="repasse-block">
+            <h4>Evento Final — Virada Geral</h4>
+            <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;">
+              Premiação separada baseada na soma do ranking geral ao final do ciclo trimestral.
+            </p>
+            <p style="font-size:13px;color:var(--dim);">Mais detalhes próximo da data.</p>
+          </div>
+        </div>
+        <div class="section-footer">
+          <a class="link-arrow" href="/temporada">Ver tabela completa →</a>
         </div>
       </div>
     </div>
-    <div class="modal-card fu">
-      <div class="modal-header mh-quarteto">
-        <div class="modal-tag">Formato 4×4</div>
-        <div class="modal-name">4<span>P</span></div>
+  </div>
+</section>
+
+<!-- ===== JOGOS ===== -->
+<section id="jogos">
+  <div class="wrap">
+    <div class="tag">Jogos e Fase de Grupos</div>
+    <div class="section-head">
+      <h2>Tabela clara. Ritmo de liga. <em>Formato de espetáculo.</em></h2>
+      <p class="section-lead">
+        Rodadas, horários, equipes, placar, nível e modalidade. Estrutura pronta
+        para dados reais, transmissão e estatísticas.
+      </p>
+    </div>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-match-filter="todos">Todos</button>
+      <button class="tab-btn" data-match-filter="N3">N3</button>
+      <button class="tab-btn" data-match-filter="N4">N4</button>
+      <button class="tab-btn" data-match-filter="N5">N5</button>
+      <button class="tab-btn" data-match-filter="Duplas">Duplas</button>
+      <button class="tab-btn" data-match-filter="Quartetos">Quartetos</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="match-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Casa</th>
+            <th style="text-align:center;">Placar</th>
+            <th>Visitante</th>
+            <th>Nível</th>
+            <th>Modalidade</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="matchBody"></tbody>
+      </table>
+    </div>
+
+    <div class="section-footer">
+      <a class="link-arrow" href="/temporada">Ver tabela completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RANKING ===== -->
+<section id="ranking">
+  <div class="wrap">
+    <div class="tag">Ranking por Níveis</div>
+    <div class="section-head">
+      <h2>O ranking premia quem vence, mas também quem <em>sustenta o processo.</em></h2>
+      <p class="section-lead">
+        Dividido por nível para evitar comparações injustas. N3, N4 e N5 têm disputas
+        próprias, premiações compatíveis e caminhos claros de progressão.
+      </p>
+    </div>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-rank-filter="geral">Geral</button>
+      <button class="tab-btn" data-rank-filter="N5">N5</button>
+      <button class="tab-btn" data-rank-filter="N4">N4</button>
+      <button class="tab-btn" data-rank-filter="N3">N3</button>
+      <button class="tab-btn" data-rank-filter="Duplas">Duplas</button>
+      <button class="tab-btn" data-rank-filter="Quartetos">Quartetos</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th style="text-align:center;">#</th>
+            <th>Atleta</th>
+            <th>Equipe</th>
+            <th>Nível</th>
+            <th>Modalidade</th>
+            <th style="text-align:right;">Pontos</th>
+            <th style="text-align:right;">UR Coins</th>
+            <th style="text-align:center;">Tendência</th>
+          </tr>
+        </thead>
+        <tbody id="rankBody"></tbody>
+      </table>
+    </div>
+
+    <div class="section-footer">
+      <a class="link-arrow" href="/ranking">Ver ranking completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPES ===== -->
+<section id="equipes">
+  <div class="wrap">
+    <div class="tag">Equipes Oficiais</div>
+    <div class="section-head">
+      <h2>Não são times soltos. São <em>marcas esportivas.</em></h2>
+      <p class="section-lead">
+        Cada equipe tem identidade, elenco, duplas filiadas, ranking coletivo,
+        saldo de UR Coins, histórico, rivalidade e presença na mídia oficial.
+      </p>
+    </div>
+
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#1a3469,#0d1e45);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(26,52,105,.5);">BH</div>
+          <div class="team-card-name">Arena BH FC</div>
+          <div class="team-card-meta"><span class="level-pill pill-N4">N4</span><span>Belo Horizonte</span></div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>Quatro atletas em quadra. Mais cobertura, mais posicionamento, mais leitura de jogo. Ideal para quem quer entrar no ritmo antes de disputar em dupla.</p>
-        <div class="ftags">
-          <span class="ftag">4 atletas</span>
-          <span class="ftag">Estratégia</span>
-          <span class="ftag">Ranking</span>
-          <span class="ftag">Draft</span>
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#120e00,#2a2000);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(201,168,76,.2);">EV</div>
+          <div class="team-card-name">Elite Vôlei BH</div>
+          <div class="team-card-meta"><span class="level-pill pill-N5">N5</span><span>Belo Horizonte</span></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#3d0a0a,#200505);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(255,121,121,.2);">BF</div>
+          <div class="team-card-name">Belo Force</div>
+          <div class="team-card-meta"><span class="level-pill pill-N5">N5</span><span>Belo Horizonte</span></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#2a1050,#160828);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(157,199,255,.2);">SU</div>
+          <div class="team-card-name">Savassi United</div>
+          <div class="team-card-meta"><span class="level-pill pill-N4">N4</span><span>Savassi</span></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#162010,#0a1208);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(126,226,167,.2);">PW</div>
+          <div class="team-card-name">Pampulha Warriors</div>
+          <div class="team-card-meta"><span class="level-pill pill-N4">N4</span><span>Pampulha</span></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-slab" style="background:linear-gradient(135deg,#2e1400,#1a0c00);"></div>
+        <div class="team-card-body">
+          <div class="team-card-initials" style="background:rgba(201,168,76,.15);">MS</div>
+          <div class="team-card-name">Mangabeiras SC</div>
+          <div class="team-card-meta"><span class="level-pill pill-N3">N3</span><span>Mangabeiras</span></div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="divider"></div>
-
-<!-- 04 · NÍVEIS -->
-<div id="niveis" class="sec-wrap fu">
-  <div class="sec">
-    <div style="text-align:center;margin-bottom:52px">
-      <div class="s-label" style="justify-content:center">04 · Sistema de Níveis</div>
-      <h2 class="s-title-lg">DO CAMPO AO TOPO.<br><span class="s-gold">CADA NÍVEL TEM SUA ARENA.</span></h2>
-    </div>
-    <div class="lvl-grid">
-      <div class="lvl lv1 fu">
-        <div class="lvl-badge">N1</div>
-        <div class="lvl-nome">Iniciante</div>
-        <div class="lvl-desc">Primeiros fundamentos. Aprender a se posicionar, tocar a bola e entender o campo. Sem pressão, sem vergonha.</div>
-      </div>
-      <div class="lvl lv2 fu">
-        <div class="lvl-badge">N2</div>
-        <div class="lvl-nome">Descoberta</div>
-        <div class="lvl-desc">Você já jogou, mas está construindo consistência. Erros acontecem — o que importa é que você aparece.</div>
-      </div>
-      <div class="lvl lv3 fu">
-        <div class="lvl-badge">N3</div>
-        <div class="lvl-nome">Compromisso</div>
-        <div class="lvl-desc">O jogo ficou técnico. Você disputa set, briga por ponto e entende o que é rivalidade real.</div>
-      </div>
-      <div class="lvl lv4 fu">
-        <div class="lvl-badge">N4</div>
-        <div class="lvl-nome">Performance</div>
-        <div class="lvl-desc">Alto nível amador. Fundamentos sólidos, leitura de jogo, decisão sob pressão. Aqui começa a separação.</div>
-      </div>
-      <div class="lvl lv5 fu">
-        <div class="lvl-badge">N5</div>
-        <div class="lvl-nome">Elite</div>
-        <div class="lvl-desc">Os melhores do UR. Atletas formados, que competem com consistência e dominam a quadra.</div>
-      </div>
-      <div class="lvl lvi fu">
-        <div class="lvl-badge">NI</div>
-        <div class="lvl-nome">Nivelamento</div>
-        <div class="lvl-desc">Primeiro evento. A organização observa seu jogo e coloca você no nível certo. Sem pressa.</div>
-      </div>
+    <div class="section-footer">
+      <a class="link-arrow" href="/equipes">Ver todas as 12 equipes →</a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="divider"></div>
-
-<!-- 05 · PORTAL DO ATLETA -->
-<div id="portal" class="sec fu">
-  <div style="margin-bottom:52px">
-    <div class="s-label">05 · Portal do Atleta</div>
-    <h2 class="s-title-lg">SEUS DADOS.<br>SEU HISTÓRICO.<br><span class="s-gold">SUA ARENA.</span></h2>
-  </div>
-  <div class="portal-grid">
-    <div>
-      <p style="font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px">Cada atleta tem acesso ao seu painel completo — tudo que você precisa saber sobre onde está e para onde vai.</p>
-      <ul class="portal-list">
-        <li>Ranking geral e por nível</li>
-        <li>Pontuação atualizada</li>
-        <li>UR Coins e mercado de prêmios</li>
-        <li>Histórico de jogos e fundamentos</li>
-        <li>Perfil público do atleta</li>
-      </ul>
-    </div>
-    <div class="portal-card fu">
-      <div class="portal-card-header">ACESSO RÁPIDO</div>
-      <p>Encontre seu nome e entre com seu PIN de atleta</p>
-      <a href="/portal" class="btn-primary" style="display:block;text-align:center;margin-top:16px">ACESSAR PORTAL →</a>
-      <div class="portal-card-sep">ou</div>
-      <a href="/checkin" style="display:block;text-align:center;color:var(--muted);font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.5px;text-transform:uppercase">CHECK-IN NO EVENTO →</a>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 06 · ECOSSISTEMA -->
-<div id="ecossistema" class="sec-wrap fu">
-  <div class="sec">
-    <div style="text-align:center;margin-bottom:56px">
-      <div class="s-label" style="justify-content:center">06 · Ecossistema UR</div>
-      <h2 class="s-title-lg">MAIS QUE UM JOGO.<br><span class="s-gold">UM SISTEMA COMPLETO.</span></h2>
-      <p style="font-size:15px;color:var(--muted);max-width:500px;margin:14px auto 0;line-height:1.7">Cada ponto marcado, cada presença, cada vitória — tudo vira ativo. O esforço vira trajetória. A trajetória vira retorno.</p>
+<!-- ===== CT UR ===== -->
+<section id="ctur">
+  <div class="wrap">
+    <div class="tag">Centro de Treinamento UR</div>
+    <div class="section-head">
+      <h2>A estrutura que transforma potencial em <em>performance.</em></h2>
+      <p class="section-lead">
+        O CT UR é a base técnica, física, mental e educacional do ecossistema.
+        Conecta diagnóstico, treino, evolução, dados e benefícios do Mercado UR.
+      </p>
     </div>
 
-    <!-- Fluxo: UR Coins → Ranking → Draft → Repasse -->
-    <div class="eco-flow fu">
-      <div class="eco-flow-step">
-        <div class="eco-flow-icon">🪙</div>
-        <div class="eco-flow-n">Passo 01</div>
-        <div class="eco-flow-title">UR Coins</div>
-        <p class="eco-flow-body">Ganhe jogando, perca faltando. Troque por produtos reais no mercado ou acumule posição.</p>
+    <div class="ctur-features">
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:14px;">🎯</div>
+        <h3 style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--gold2);margin-bottom:10px;">Avaliação técnica e comportamental</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.65;">
+          Cada atleta recebe diagnóstico individualizado de habilidades técnicas, físicas
+          e comportamentais. Os dados alimentam o ranking e o plano de desenvolvimento.
+        </p>
       </div>
-      <div class="eco-arrow">→</div>
-      <div class="eco-flow-step">
-        <div class="eco-flow-icon">📊</div>
-        <div class="eco-flow-n">Passo 02</div>
-        <div class="eco-flow-title">Ranking UR</div>
-        <p class="eco-flow-body">Presença, resultado, fundamentos e conduta. Público, rastreável, atualizado a cada ciclo.</p>
-      </div>
-      <div class="eco-arrow">→</div>
-      <div class="eco-flow-step">
-        <div class="eco-flow-icon">🎯</div>
-        <div class="eco-flow-n">Passo 03</div>
-        <div class="eco-flow-title">Draft</div>
-        <p class="eco-flow-body">Rankings altos abrem portas. Prioridade na formação de duplas e chamadas para torneios.</p>
-      </div>
-      <div class="eco-arrow">→</div>
-      <div class="eco-flow-step">
-        <div class="eco-flow-icon">💰</div>
-        <div class="eco-flow-n">Passo 04</div>
-        <div class="eco-flow-title">Repasse</div>
-        <p class="eco-flow-body">Não é prêmio único — é reconhecimento recorrente. A cada Virada, atletas sérios recebem retorno real.</p>
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:14px;">🔗</div>
+        <h3 style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--gold2);margin-bottom:10px;">Integração com ranking e UR Coins</h3>
+        <p style="font-size:14px;color:var(--muted);line-height:1.65;">
+          A evolução no CT UR gera pontos no ranking e UR Coins. O atleta que treina
+          tem vantagem competitiva real — dentro e fora de quadra.
+        </p>
       </div>
     </div>
 
-    <!-- Cards de detalhe -->
-    <div class="g2 fu">
-      <div class="eco-card" data-icon="COINS">
-        <h4>UR COINS</h4>
-        <p>Ganhe a cada UR Play, torneio e evento. Perca por faltas não justificadas. O sistema não esquece quem aparece — e não perdoa quem some.</p>
-        <div class="pill-row"><span class="pill">Mercado UR</span><span class="pill green">Acumulativo</span></div>
-      </div>
-      <div class="eco-card" data-icon="RANK">
-        <h4>RANKING REAL</h4>
-        <p>Quatro dimensões: presença, resultado, fundamentos e conduta. Não é só quem vence — é quem constrói histórico com consistência.</p>
-        <div class="pill-row"><span class="pill">Por Nível</span><span class="pill blue">Público</span></div>
-      </div>
-      <div class="eco-card" data-icon="VIRADA">
-        <h4>VIRADA DE RANKING</h4>
-        <p>O fechamento do trimestre. Revisão de níveis, reconhecimento público e repasse financeiro para quem construiu o ciclo com seriedade.</p>
-        <div class="pill-row"><span class="pill">Trimestral</span><span class="pill">R$ Repasses</span></div>
-      </div>
-      <div class="eco-card" data-icon="DRAFT">
-        <h4>DRAFT &amp; CHAMADAS</h4>
-        <p>Os melhores do ranking têm prioridade. Aqui ranking não é vaidade — é vantagem real dentro da liga.</p>
-        <div class="pill-row"><span class="pill green">Mérito</span><span class="pill">Duplas · Quartetos</span></div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:48px">
-      <p style="font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:900;text-transform:uppercase;color:rgba(255,255,255,.5);letter-spacing:.04em;margin-bottom:22px">Aqui o esforço <span style="color:var(--gold)">vira ativo.</span></p>
-      <a href="/inscricao" class="btn-primary">⚡ Garantir minha vaga na T01</a>
+    <div class="section-footer">
+      <a class="link-arrow" href="/ct-ur">Conhecer o CT UR →</a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="divider"></div>
+<!-- ===== MERCADO ===== -->
+<section id="mercado">
+  <div class="wrap">
+    <div class="tag">Mercado UR</div>
+    <div class="section-head">
+      <h2>Performance vira moeda. Moeda vira <em>evolução.</em></h2>
+      <p class="section-lead">
+        Marcas entram com produtos, serviços e benefícios úteis para atletas e equipes.
+        O atleta usa UR Coins para evoluir. O patrocinador entrega valor direto.
+      </p>
+    </div>
 
-<!-- 07 · CICLO TRIMESTRAL -->
-<div class="sec fu">
-  <div style="margin-bottom:0">
-    <div class="s-label">07 · Estrutura de Ciclos</div>
-    <h2 class="s-title-lg">CADA TRIMESTRE<br><span class="s-gold">É UMA NOVA CHANCE.</span></h2>
-    <p class="s-body" style="margin-top:14px">O UR opera em ciclos de 3 meses. Cada ciclo tem início definido, calendário de jogos, e encerra com a Virada de Ranking — onde os resultados se transformam em reconhecimento e repasses.</p>
-  </div>
-  <div class="ciclo-grid fu">
-    <div class="ciclo-card" data-phase="01">
-      <div class="ciclo-label">Fase 01 · Mês 1–2</div>
-      <div class="ciclo-title">UR PLAY<br>SEMANAL</div>
-      <p class="ciclo-body">Jogos semanais em duplas e quartetos. Cada aparição gera presença, pontos de ranking e UR Coins. O sistema registra tudo.</p>
-    </div>
-    <div class="ciclo-card" data-phase="02">
-      <div class="ciclo-label">Fase 02 · Mês 2–3</div>
-      <div class="ciclo-title">TORNEIOS<br>MENSAIS</div>
-      <p class="ciclo-body">Eventos competitivos de nível. Maior pontuação em jogo, maior pressão, maior teste de quem construiu o ciclo com consistência.</p>
-    </div>
-    <div class="ciclo-card" data-phase="03">
-      <div class="ciclo-label">Encerramento · Mês 3</div>
-      <div class="ciclo-title">VIRADA DE<br>RANKING</div>
-      <p class="ciclo-body">O fechamento do ciclo. Revisão de níveis, reconhecimento público, e repasse financeiro para os atletas que construíram histórico.</p>
-    </div>
-  </div>
-  <div class="repasse-banner fu">
-    <div class="repasse-icon">R$</div>
-    <div class="repasse-body">
-      <h4>REPASSES RECORRENTES — ABOVE THE STANDARD</h4>
-      <p>O UR distribui repasses financeiros a cada encerramento de ciclo. Não é prêmio único — é reconhecimento recorrente atrelado ao ranking. Quanto mais consistente sua jornada, maior seu retorno. Atletas sérios merecem um sistema sério.</p>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 08 · HUNTERS — ECOSSISTEMA UR -->
-<div class="sec fu">
-  <div class="hunters-wrap">
-    <div class="hunters-inner">
-      <div>
-        <div class="hunters-pill">Ecossistema UR · Embaixadores</div>
-        <h2 class="hunters-title">HUNTERS<br><span>UR.</span></h2>
-        <p class="hunters-body">Os Hunters não são patrocinadores. São atletas do ecossistema UR — embaixadores que reforçam identidade, cultura e liderança dentro da liga. Cada Hunter representa o que o Ultimate Rivals acredita: que atletas sérios merecem um sistema sério, e que o esporte pode ser mais do que lazer.</p>
-        <blockquote class="hunters-quote">"As equipes, embaixadores e Hunters reforçam identidade, cultura e liderança."</blockquote>
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-icon">🏐</div>
+        <div class="market-name">Kit de Treino Premium</div>
+        <div class="market-price">120 <span style="font-size:14px;color:var(--muted);">URC</span></div>
+        <div class="market-level">Nível N3+</div>
+        <a class="btn small market-btn" href="/mercado">Ver no mercado</a>
       </div>
-      <div class="hunters-logo-side">
-        <img src="logo-hunter.png" alt="Hunters UR" onerror="this.style.display='none'">
-        <div class="hunters-stats">
-          <div class="hunter-stat"><span class="hunter-stat-n">T01</span><span class="hunter-stat-l">Primeiro Ciclo</span></div>
-          <div class="hunter-stat"><span class="hunter-stat-n">BH</span><span class="hunter-stat-l">Capital · MG</span></div>
-        </div>
-        <a href="/patrocinadores" style="font-family:var(--display);font-size:13px;font-weight:800;color:rgba(255,216,77,.5);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,216,77,.2)">Seja parceiro da liga →</a>
+      <div class="market-card">
+        <div class="market-icon">📸</div>
+        <div class="market-name">Sessão de Fotos Esportiva</div>
+        <div class="market-price">80 <span style="font-size:14px;color:var(--muted);">URC</span></div>
+        <div class="market-level">Nível N2+</div>
+        <a class="btn small market-btn" href="/mercado">Ver no mercado</a>
+      </div>
+      <div class="market-card">
+        <div class="market-icon">🎽</div>
+        <div class="market-name">Uniforme Personalizado</div>
+        <div class="market-price">200 <span style="font-size:14px;color:var(--muted);">URC</span></div>
+        <div class="market-level">Nível N4+</div>
+        <a class="btn small market-btn" href="/mercado">Ver no mercado</a>
+      </div>
+      <div class="market-card">
+        <div class="market-icon">🎓</div>
+        <div class="market-name">Coaching Hunter</div>
+        <div class="market-price">60 <span style="font-size:14px;color:var(--muted);">URC</span></div>
+        <div class="market-level">Nível N1+</div>
+        <a class="btn small market-btn" href="/mercado">Ver no mercado</a>
+      </div>
+    </div>
+
+    <div class="section-footer">
+      <a class="link-arrow" href="/mercado">Ver mercado completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HUNTERS ===== -->
+<section id="hunters">
+  <div class="wrap">
+    <div class="tag">Mentalidade Hunter</div>
+    <div class="section-head">
+      <h2>O jogo termina. A mentalidade <em>permanece.</em></h2>
+      <p class="section-lead">
+        A Mentalidade Hunter conecta disciplina, fé, resiliência, liderança, constância
+        e desenvolvimento humano ao desempenho esportivo. Ela é o padrão de conduta
+        de quem representa o UR.
+      </p>
+    </div>
+
+    <blockquote class="quote-block">
+      "Ninguém entra pronto. Todos entram possíveis."
+    </blockquote>
+
+    <div class="hunters-levels">
+      <div class="hunter-level-card">
+        <div class="hunter-badge">NI</div>
+        <div class="hunter-title">Iniciante</div>
+        <div class="hunter-desc">Primeiro contato, curiosidade, aprendizado básico</div>
+      </div>
+      <div class="hunter-level-card">
+        <div class="hunter-badge">N1</div>
+        <div class="hunter-title">Fundamento</div>
+        <div class="hunter-desc">Técnica, consistência, compromisso</div>
+      </div>
+      <div class="hunter-level-card">
+        <div class="hunter-badge">N2</div>
+        <div class="hunter-title">Desenvolvimento</div>
+        <div class="hunter-desc">Evolução, dados, presença no ranking</div>
+      </div>
+      <div class="hunter-level-card">
+        <div class="hunter-badge">N3</div>
+        <div class="hunter-title">Competitivo</div>
+        <div class="hunter-desc">Liderança, resultados, voz no ecossistema</div>
+      </div>
+      <div class="hunter-level-card">
+        <div class="hunter-badge" style="color:var(--gold3);">N4+</div>
+        <div class="hunter-title">Elite</div>
+        <div class="hunter-desc">Referência técnica, mentalidade de alto desempenho</div>
+      </div>
+    </div>
+
+    <div class="section-footer">
+      <a class="link-arrow" href="/ct-ur">Conhecer o CT UR →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MÍDIA ===== -->
+<section id="midia">
+  <div class="wrap">
+    <div class="tag">Mídia Oficial</div>
+    <div class="section-head">
+      <h2>Todo jogo precisa virar dado, história e <em>distribuição.</em></h2>
+      <p class="section-lead">
+        A mídia oficial transforma o UR em canal, produto e vitrine. Jogos, rankings,
+        atletas e equipes geram transmissão, cortes, bastidores, entrevistas e
+        conteúdo recorrente.
+      </p>
+    </div>
+
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="media-icon">📺</div>
+        <div class="media-name">Kick.com</div>
+        <div class="media-desc">Transmissão ao vivo dos jogos — toda rodada no ar.</div>
+        <div class="media-handle">kick.com/ultimaterivals</div>
+        <a class="btn small" href="https://kick.com/ultimaterivals" target="_blank" rel="noopener">Acessar →</a>
+      </div>
+      <div class="media-card">
+        <div class="media-icon">🎬</div>
+        <div class="media-name">YouTube</div>
+        <div class="media-desc">Highlights, documentários, entrevistas e melhores momentos.</div>
+        <div class="media-handle">@UltimateRivalsTV</div>
+        <a class="btn small" href="https://youtube.com/@UltimateRivalsTV" target="_blank" rel="noopener">Acessar →</a>
+      </div>
+      <div class="media-card">
+        <div class="media-icon">📱</div>
+        <div class="media-name">Instagram</div>
+        <div class="media-desc">Bastidores, resultados, atletas e conteúdo diário da liga.</div>
+        <div class="media-handle">@ultimaterivalsbr</div>
+        <a class="btn small" href="https://instagram.com/ultimaterivalsbr" target="_blank" rel="noopener">Acessar →</a>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="divider"></div>
-
-<!-- CTA FINAL -->
-<div class="cta-sec fu">
-  <div class="cta-glow"></div>
-  <h2>A JORNADA<br><span>COMEÇA AGORA.</span></h2>
-  <p class="cta-sub">Pré-Temporada T01 · 2026 · Belo Horizonte · Garanta sua vaga antes da abertura oficial.</p>
-  <div class="cta-btns">
-    <a href="/inscricao" class="btn-cta-main">FAZER INSCRIÇÃO AGORA</a>
-    <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      COMUNIDADE WHATSAPP
-    </a>
-  </div>
-</div>
-
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer>
-  <div class="foot-top">
-    <div class="foot-brand">
-      <div class="foot-logos">
-        <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
-        <img src="logo-hunter.png" class="fh" alt="Hunters" onerror="this.style.display='none'">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo-ur-3d.png" alt="UR" width="38" height="38" onerror="this.style.display='none'">
+          <svg width="34" height="30" viewBox="0 0 64 60" fill="none" aria-hidden="true">
+            <path d="M32 4 52 12v17c0 14-8 24-20 31C20 53 12 43 12 29V12L32 4Z" fill="#ffd84d" opacity=".97"/>
+            <path d="M32 9 47 15v14c0 10.5-5.8 18.5-15 24-9.2-5.5-15-13.5-15-24V15l15-6Z" fill="#06070a"/>
+            <path d="M20 34 28 16h8l-5 13h9L27 50l4-16H20Z" fill="#ffd84d"/>
+          </svg>
+          <span class="footer-brand-name">ULTIMATE RIVALS</span>
+        </div>
+        <p class="footer-tagline">
+          Ecossistema esportivo de alto desempenho para organizar, estruturar e escalar o vôlei amador.
+        </p>
+        <p class="footer-copy">© 2026 Ultimate Rivals · Belo Horizonte, MG</p>
       </div>
-      <p class="foot-tagline">"Você não assiste. Você joga."</p>
-      <p class="foot-desc">Liga de vôlei de praia em Belo Horizonte. Ciclos trimestrais, ranking real, repasses recorrentes. Pré-Temporada T01 · 2026.</p>
+      <div class="footer-col">
+        <h5>Liga</h5>
+        <ul>
+          <li><a href="#temporada">Temporada</a></li>
+          <li><a href="/equipes">Equipes</a></li>
+          <li><a href="/atletas">Atletas</a></li>
+          <li><a href="#ranking">Ranking</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Atleta</h5>
+        <ul>
+          <li><a href="/inscricao">Inscrição</a></li>
+          <li><a href="/ct-ur">CT UR</a></li>
+          <li><a href="/mercado">Mercado</a></li>
+          <li><a href="/portal">Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Redes</h5>
+        <ul>
+          <li><a href="https://kick.com/ultimaterivals" target="_blank" rel="noopener">kick.com/ultimaterivals</a></li>
+          <li><a href="https://youtube.com/@UltimateRivalsTV" target="_blank" rel="noopener">@UltimateRivalsTV</a></li>
+          <li><a href="https://instagram.com/ultimaterivalsbr" target="_blank" rel="noopener">@ultimaterivalsbr</a></li>
+          <li><a href="https://wa.me/5531900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="foot-nav">
-      <div class="foot-col">
-        <div class="foot-col-title">A Liga</div>
-        <a href="/temporada">Temporada T01</a>
-        <a href="/atletas">Atletas</a>
-        <a href="/ranking">Ranking</a>
-        <a href="/patrocinadores">Patrocinadores</a>
-      </div>
-      <div class="foot-col">
-        <div class="foot-col-title">Atleta</div>
-        <a href="/inscricao">Inscrição</a>
-        <a href="/portal">Portal do Atleta</a>
-        <a href="/checkin">Check-in</a>
-        <a href="/nivelamento">Nivelamento</a>
-      </div>
-      <div class="foot-col">
-        <div class="foot-col-title">Contato</div>
-        <a href="https://instagram.com/ultimaterivalsbr" target="_blank">Instagram</a>
-        <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
-        <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
-        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
-        <a href="mailto:contato@ultimaterivals.org">Email</a>
-        <a href="/sistema/" style="color:rgba(255,255,255,.2);font-size:11px">Sistema UR</a>
-      </div>
+    <div class="footer-bottom">
+      <span>Ultimate Rivals · Liga de Vôlei de Praia · BH · MG</span>
+      <span>T01 2026 · Ecossistema Esportivo</span>
     </div>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 Ultimate Rivals · Belo Horizonte · MG · ultimaterivals.org</span>
-    <span>Vôlei de praia amador · Liga local · Ranking real</span>
   </div>
 </footer>
 
+<!-- ===== JAVASCRIPT ===== -->
 <script>
-/* ── Mobile menu toggle ── */
-(function(){
-  var ham = document.getElementById('navHam');
-  var nav = document.getElementById('navLinks');
-  if(!ham||!nav) return;
-  ham.addEventListener('click',function(){
-    var open = nav.classList.toggle('open');
-    ham.innerHTML = open ? '&#10005;' : '&#9776;';
-    ham.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      nav.classList.remove('open');
-      ham.innerHTML = '&#9776;';
-      ham.setAttribute('aria-expanded','false');
+  /* ---- DATA ---- */
+  const matches = [
+    {date:'07/06',hour:'19:00',home:'Arena BH FC',   away:'Belo Force',      hs:'21',as:'18',level:'N5',mode:'Quartetos',status:'Encerrado',       hc:'BH',ac:'BF',hbg:'rgba(26,52,105,.4)', abg:'rgba(61,10,10,.4)'},
+    {date:'07/06',hour:'20:00',home:'Savassi United', away:'Contagem FC',     hs:'19',as:'21',level:'N4',mode:'Quartetos',status:'Encerrado',       hc:'SU',ac:'CF',hbg:'rgba(42,16,80,.4)',  abg:'rgba(30,30,30,.4)'},
+    {date:'08/06',hour:'19:30',home:'Pampulha Warriors',away:'Norte SC',      hs:'--',as:'--',level:'N4',mode:'Duplas',   status:'Próximo',         hc:'PW',ac:'NS',hbg:'rgba(22,32,16,.4)', abg:'rgba(20,20,30,.4)'},
+    {date:'08/06',hour:'20:30',home:'Mangabeiras SC', away:'Centro Athletic', hs:'--',as:'--',level:'N3',mode:'Quartetos',status:'Próximo',         hc:'MS',ac:'CA',hbg:'rgba(46,20,0,.4)',  abg:'rgba(20,20,20,.4)'},
+    {date:'09/06',hour:'21:00',home:'Volta Atlético', away:'Elite Vôlei BH',  hs:'--',as:'--',level:'N5',mode:'Duplas',   status:'Ao vivo em breve',hc:'VA',ac:'EV',hbg:'rgba(20,15,30,.4)', abg:'rgba(18,14,0,.4)'}
+  ];
+
+  const ranking = [
+    {r:1,name:'Matheus W.',  team:'Arena BH FC',       level:'N5',mode:'Quartetos',pts:186,coins:74,trend:'▲ +2',   tClass:'trend-up'},
+    {r:2,name:'Lara S.',     team:'Elite Vôlei BH',    level:'N5',mode:'Duplas',   pts:178,coins:68,trend:'● estável',tClass:'trend-stable'},
+    {r:3,name:'Bruno A.',    team:'Savassi United',    level:'N4',mode:'Quartetos',pts:151,coins:52,trend:'▲ +1',   tClass:'trend-up'},
+    {r:4,name:'Nina R.',     team:'Belo Force',        level:'N4',mode:'Duplas',   pts:144,coins:49,trend:'▼ -1',   tClass:'trend-down'},
+    {r:5,name:'João P.',     team:'Mangabeiras SC',    level:'N3',mode:'Quartetos',pts:118,coins:34,trend:'▲ +4',   tClass:'trend-up'},
+    {r:6,name:'Camila T.',   team:'Volta Atlético',    level:'N3',mode:'Duplas',   pts:109,coins:31,trend:'● estável',tClass:'trend-stable'},
+    {r:7,name:'Rafael M.',   team:'Pampulha Warriors', level:'N4',mode:'Quartetos',pts:97, coins:28,trend:'▲ +2',   tClass:'trend-up'},
+    {r:8,name:'Ana B.',      team:'Norte SC',          level:'N3',mode:'Duplas',   pts:88, coins:22,trend:'▼ -2',   tClass:'trend-down'},
+  ];
+
+  /* ---- RENDER: MATCHES ---- */
+  function statusBadge(s) {
+    if (s === 'Encerrado')       return `<span class="status-badge status-enc">${s}</span>`;
+    if (s === 'Próximo')         return `<span class="status-badge status-prox">${s}</span>`;
+    return `<span class="status-badge status-live">${s}</span>`;
+  }
+
+  function renderMatches(filter) {
+    const body = document.getElementById('matchBody');
+    const data = filter === 'todos' ? matches : matches.filter(m => m.level === filter || m.mode === filter);
+    body.innerHTML = data.map(m => {
+      const score = m.hs === '--'
+        ? `<span class="vs">vs</span>`
+        : `${m.hs}&thinsp;<span class="vs">–</span>&thinsp;${m.as}`;
+      return `<tr>
+        <td style="color:var(--muted);font-size:13px;white-space:nowrap;">${m.date}<br><span style="font-size:11px;opacity:.6;">${m.hour}</span></td>
+        <td><div class="team-cell"><span class="team-crest" style="background:${m.hbg};">${m.hc}</span><span>${m.home}</span></div></td>
+        <td class="score-cell">${score}</td>
+        <td><div class="team-cell"><span class="team-crest" style="background:${m.abg};">${m.ac}</span><span>${m.away}</span></div></td>
+        <td><span class="level-pill pill-${m.level}">${m.level}</span></td>
+        <td style="font-size:13px;color:var(--muted);">${m.mode}</td>
+        <td>${statusBadge(m.status)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  renderMatches('todos');
+
+  /* ---- RENDER: RANKING ---- */
+  function renderRanking(filter) {
+    const body = document.getElementById('rankBody');
+    const data = filter === 'geral' ? ranking : ranking.filter(a => a.level === filter || a.mode === filter);
+    body.innerHTML = data.map(a => {
+      const posClass = a.r === 1 ? 'top1' : a.r === 2 ? 'top2' : a.r === 3 ? 'top3' : '';
+      return `<tr>
+        <td class="rank-pos ${posClass}">${a.r}</td>
+        <td class="athlete-name">${a.name}</td>
+        <td style="color:var(--muted);font-size:13px;">${a.team}</td>
+        <td><span class="level-pill pill-${a.level}">${a.level}</span></td>
+        <td style="font-size:13px;color:var(--muted);">${a.mode}</td>
+        <td class="pts-cell" style="text-align:right;">${a.pts}</td>
+        <td class="coins-cell" style="text-align:right;">${a.coins}</td>
+        <td class="${a.tClass}" style="text-align:center;">${a.trend}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  renderRanking('geral');
+
+  /* ---- TAB SYSTEM ---- */
+  document.querySelectorAll('[data-tabs]').forEach(group => {
+    const id = group.dataset.tabs;
+    group.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.dataset.tab;
+        group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll(`[data-tab-group="${id}"]`).forEach(p => {
+          p.classList.toggle('active', p.id === panel);
+        });
+      });
     });
   });
-  document.addEventListener('click',function(e){
-    if(!ham.contains(e.target)&&!nav.contains(e.target)){
-      nav.classList.remove('open');
-      ham.innerHTML = '&#9776;';
-      ham.setAttribute('aria-expanded','false');
-    }
-  });
-})();
 
-/* ── Scroll reveal ── */
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('on');
-      e.target.querySelectorAll('.liga-card,.modal-card,.step-item,.lvl,.eco-card,.eco-flow-step,.portal-card,.ciclo-card,.hunter-stat,.metric-item').forEach((el,i)=>{
-        el.style.transitionDelay=(i*.08)+'s';
-        el.classList.add('on');
-      });
+  /* ---- MATCH FILTER ---- */
+  document.querySelectorAll('[data-match-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-match-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderMatches(btn.dataset.matchFilter);
+    });
+  });
+
+  /* ---- RANKING FILTER ---- */
+  document.querySelectorAll('[data-rank-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-rank-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderRanking(btn.dataset.rankFilter);
+    });
+  });
+
+  /* ---- MOBILE HAMBURGER ---- */
+  const ham = document.getElementById('navHam');
+  const navLinks = document.getElementById('navLinks');
+  ham.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!ham.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
     }
   });
-},{threshold:.08});
-document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+  /* ---- SCROLL SPY ---- */
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-link[href^="#"]');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => {
+          const active = a.getAttribute('href') === `#${entry.target.id}`;
+          a.style.fontWeight = active ? '700' : '';
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => spy.observe(s));
 </script>
 </body>
 </html>
