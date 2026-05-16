@@ -6,20 +6,23 @@
   <title>Ultimate Rivals | Ranking do Atleta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --black:#050507;--panel:#111218;--card:#171822;--line:#2d2818;
-      --gold:#c9a84c;--gold2:#ffd84d;--white:#f5efdd;--muted:#9c927a;
-      --green:#9ee6a5;--blue:#9fc7ff;--red:#ff9b9b;--shadow:0 24px 70px rgba(0,0,0,.48);
-      --display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;--body:'Inter','Segoe UI',Arial,sans-serif;
+      --black:#030405;--ink:#07080c;--panel:#101116;--card:#1d1e26;
+      --line:rgba(255,216,77,.12);--gold:#c9a84c;--gold2:#ffd84d;--gold3:#ffe27a;
+      --white:#f4eedf;--soft:#d8cfb9;--muted:#9b9177;--dim:#6f6654;
+      --green:#7ee2a7;--red:#ff7979;--blue:#9dc7ff;
+      --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+      --body:'Barlow',system-ui,sans-serif;
+      --shadow:0 24px 70px rgba(0,0,0,.48);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{min-height:100vh;color:var(--white);font-family:var(--body);line-height:1.68;overflow-x:hidden;background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.18),transparent 42%),radial-gradient(ellipse at 88% 22%,rgba(159,199,255,.08),transparent 36%),linear-gradient(180deg,#08090d 0%,#030405 100%)}
+    body{min-height:100vh;font-family:var(--body);color:var(--white);background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.16),transparent 40%),radial-gradient(ellipse at 90% 12%,rgba(255,216,77,.07),transparent 34%),linear-gradient(180deg,#07080c 0%,#030405 100%);font-size:15px;line-height:1.58;overflow-x:hidden}
     a{color:inherit}button{font:inherit}
     .wrap{width:min(1160px,calc(100% - 32px));margin:0 auto}
-    .top{position:fixed;inset:0 0 auto;z-index:40;background:rgba(5,5,7,.88);border-bottom:1px solid rgba(255,210,31,.14);backdrop-filter:blur(18px)}
+    .top{position:fixed;inset:0 0 auto;z-index:40;background:rgba(3,4,5,.92);border-bottom:1px solid rgba(255,216,77,.12);backdrop-filter:blur(18px)}
     .top-inner{height:74px;display:flex;align-items:center;gap:14px}
     .logo-box{width:60px;height:50px;border-radius:10px;border:1px solid rgba(255,210,31,.36);display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,210,31,.16),rgba(255,210,31,.04));overflow:hidden;flex:0 0 auto}
     .logo-box img{width:54px;height:44px;object-fit:contain;display:block}
@@ -27,7 +30,7 @@
     .brand span{display:block;color:var(--muted);font-size:12px;margin-top:3px;letter-spacing:.04em}
     .nav{margin-left:auto;display:flex;gap:4px;align-items:center}
     .nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px;font-family:var(--display);font-weight:900;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
-    .nav a:hover{color:var(--white);background:rgba(255,255,255,.055)}
+    .nav a:hover{color:#08090d;background:linear-gradient(135deg,var(--gold2),var(--gold));border-radius:8px;padding:4px 9px}
     .nav .cta{color:#050507;background:linear-gradient(135deg,var(--gold2),var(--gold));margin-left:6px}
     .hero{min-height:100vh;display:flex;align-items:center;padding:64px 0 64px;position:relative;overflow:hidden}
     .hero::after{content:"RK";position:absolute;right:-35px;bottom:-118px;font-family:var(--display);font-size:min(430px,52vw);font-weight:900;line-height:1;color:rgba(255,216,77,.04);pointer-events:none}
@@ -57,7 +60,7 @@
     h2{font-family:var(--display);font-size:clamp(36px,5vw,62px);line-height:.96;text-transform:uppercase;color:var(--white);letter-spacing:0}
     .sec-desc{margin-top:14px;color:rgba(245,239,221,.72);font-size:16px;max-width:760px}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#0a0b10);border-radius:14px;padding:24px;box-shadow:0 16px 36px rgba(0,0,0,.18)}
+    .card{border:1px solid rgba(255,216,77,.14);background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border-radius:14px;padding:24px;box-shadow:0 16px 36px rgba(0,0,0,.18)}
     .card h3{font-family:var(--display);font-size:27px;line-height:1;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
     .card p{color:rgba(245,239,221,.74);font-size:14px}
     .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
@@ -106,13 +109,13 @@
     @media(max-width:980px){.hero-grid,.pillar-grid,.cta-band{grid-template-columns:1fr}.ladder-row{grid-template-columns:76px 1fr}.ladder-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
     @media(max-width:640px){.hero{padding-top:100px}.grid{display:block}.card{margin-bottom:12px}.ladder-row{display:block}.ladder-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}.cta-band{padding:26px}}
 
-/* ── TICKER ── */
-.ticker{background:var(--gold2);height:34px;overflow:hidden;display:flex;align-items:center}
-.ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
-.ticker-inner:hover{animation-play-state:paused}
-.ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
-.ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* ── TICKER BAR ── */
+.top-alert{background:#050507;border-bottom:1px solid rgba(255,216,77,.16);overflow:hidden;height:34px;display:flex;align-items:center}
+.ticker-wrap{overflow:hidden;width:100%}
+.ticker{display:inline-flex;gap:28px;animation:ticker 30s linear infinite;white-space:nowrap}
+.ticker span{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;letter-spacing:.09em;text-transform:uppercase;font-size:11px;color:var(--gold2)}
+.ticker i{width:6px;height:6px;border-radius:50%;background:var(--gold2);display:inline-block;flex-shrink:0}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
@@ -144,17 +147,24 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
   </style>
 </head>
 <body>
-  <!-- TICKER -->
-  <div class="ticker"><div class="ticker-inner">
-    <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
-    <span class="ti">Ranking T01 · 2026</span><span class="ts">✦</span>
-    <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
-    <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
-    <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
-    <span class="ti">Ranking T01 · 2026</span><span class="ts">✦</span>
-    <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
-    <span class="ti">Temporada em andamento</span><span class="ts">✦</span>
-  </div></div>
+  <div class="top-alert">
+    <div class="wrap ticker-wrap">
+      <div class="ticker">
+        <span><i></i> Temporada T01 · 2026</span>
+        <span><i></i> UR Play como porta de entrada</span>
+        <span><i></i> Ranking por níveis</span>
+        <span><i></i> Mercado UR</span>
+        <span><i></i> CT UR · Mentalidade Hunter</span>
+        <span><i></i> BH · MG</span>
+        <span><i></i> Temporada T01 · 2026</span>
+        <span><i></i> UR Play como porta de entrada</span>
+        <span><i></i> Ranking por níveis</span>
+        <span><i></i> Mercado UR</span>
+        <span><i></i> CT UR · Mentalidade Hunter</span>
+        <span><i></i> BH · MG</span>
+      </div>
+    </div>
+  </div>
   <nav>
     <div class="nav-logos">
       <a href="/"><img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'"></a>

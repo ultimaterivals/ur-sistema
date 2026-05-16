@@ -6,15 +6,21 @@
 <title>Portal do Atleta · Ultimate Rivals</title>
 <meta name="theme-color" content="#ffd84d">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#030305;--surface:#0d0d10;--card:#0d0d10;--border:rgba(255,216,77,.12);
-  --gold:#ffd84d;--gold2:#f5c518;--goldglow:rgba(255,216,77,.3);--goldglow2:rgba(255,216,77,.12);
-  --text:#e8e3d4;--muted:rgba(255,255,255,.42);--muted2:rgba(255,255,255,.16);
-  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;
-  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+  --black:#030405;--ink:#07080c;--panel:#101116;--card:#1d1e26;
+  --line:rgba(255,216,77,.12);--gold:#c9a84c;--gold2:#ffd84d;--gold3:#ffe27a;
+  --white:#f4eedf;--soft:#d8cfb9;--muted:#9b9177;--dim:#6f6654;
+  --green:#7ee2a7;--red:#ff7979;--blue:#9dc7ff;
+  --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --body:'Barlow',system-ui,sans-serif;
+  /* portal legacy aliases */
+  --bg:var(--black);--surface:var(--panel);--border:var(--line);
+  --text:var(--white);--muted2:rgba(255,216,77,.18);
+  --goldglow:rgba(255,216,77,.3);--goldglow2:rgba(255,216,77,.12);
+  --font:var(--body);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100dvh;overflow-x:hidden}

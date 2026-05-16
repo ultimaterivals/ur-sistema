@@ -7,36 +7,42 @@
   <meta name="description" content="Associe sua marca ao Ultimate Rivals, a liga de vôlei de praia de BH. Pacotes de patrocínio para todos os tamanhos de negócio.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#000; --surface:#080808; --card:#0d0d0d; --border:rgba(255,255,255,.08);
-      --gold:#ffd84d; --gold2:#f5c518; --gold3:#c89000; --goldglow:rgba(255,216,77,.32);
-      --text:#e8e3d4; --muted:rgba(255,255,255,.40); --muted2:rgba(255,255,255,.18);
-      --font:'Inter',system-ui,sans-serif; --display:'Barlow Condensed',sans-serif;
+      --black:#030405;--ink:#07080c;--panel:#101116;--card:#1d1e26;
+      --line:rgba(255,216,77,.12);--gold:#c9a84c;--gold2:#ffd84d;--gold3:#ffe27a;
+      --white:#f4eedf;--soft:#d8cfb9;--muted:#9b9177;--dim:#6f6654;
+      --green:#7ee2a7;--red:#ff7979;--blue:#9dc7ff;
+      --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+      --body:'Barlow',system-ui,sans-serif;
+      /* legacy aliases */
+      --bg:var(--black);--surface:var(--panel);--border:var(--line);
+      --text:var(--white);--muted2:rgba(255,216,77,.18);--goldglow:rgba(255,216,77,.32);
+      --font:var(--body);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden}
+    body{font-family:var(--body);color:var(--white);background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.16),transparent 40%),radial-gradient(ellipse at 90% 12%,rgba(255,216,77,.07),transparent 34%),linear-gradient(180deg,#07080c 0%,#030405 100%);font-size:15px;line-height:1.58;min-height:100vh;overflow-x:hidden}
     a{text-decoration:none}
 
-    /* TICKER */
-    .ticker{background:var(--gold);height:34px;overflow:hidden;display:flex;align-items:center}
-    .ticker-inner{display:flex;align-items:center;white-space:nowrap;animation:tick 32s linear infinite}
-    .ticker-inner:hover{animation-play-state:paused}
-    .ti{font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:1px;text-transform:uppercase;padding:0 28px}
-    .ts{color:rgba(0,0,0,.3);font-size:14px;padding:0 4px}
-    @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* TICKER BAR */
+    .top-alert{background:#050507;border-bottom:1px solid rgba(255,216,77,.16);overflow:hidden;height:34px;display:flex;align-items:center}
+    .ticker-wrap{overflow:hidden;width:100%}
+    .ticker{display:inline-flex;gap:28px;animation:ticker 30s linear infinite;white-space:nowrap}
+    .ticker span{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;letter-spacing:.09em;text-transform:uppercase;font-size:11px;color:var(--gold2)}
+    .ticker i{width:6px;height:6px;border-radius:50%;background:var(--gold2);display:inline-block;flex-shrink:0}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* NAV */
-    nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+    nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,5,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,216,77,.12);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
     .nav-logos{display:flex;align-items:center;gap:14px}
     .nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
     .nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
     .nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
     .nav-links{display:flex;gap:26px}
-    .nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase;text-decoration:none}
-    .nav-links a:hover{color:var(--gold)}
+    .nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase;text-decoration:none;font-family:var(--display)}
+    .nav-links a:hover{color:#08090d;background:linear-gradient(135deg,var(--gold2),var(--gold));border-radius:8px;padding:4px 9px}
     .nav-right{display:flex;align-items:center;gap:10px}
     .nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
     .nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap;text-decoration:none}
@@ -177,17 +183,22 @@
 </head>
 <body>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
-      <span class="ti">Patrocinadores & Parceiros</span><span class="ts">✦</span>
-      <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
-      <span class="ti">Temporada T01 · 2026</span><span class="ts">✦</span>
-      <span class="ti">Ultimate Rivals</span><span class="ts">✦</span>
-      <span class="ti">Patrocinadores & Parceiros</span><span class="ts">✦</span>
-      <span class="ti">Vôlei de Praia BH</span><span class="ts">✦</span>
-      <span class="ti">Temporada T01 · 2026</span><span class="ts">✦</span>
+  <div class="top-alert">
+    <div class="wrap ticker-wrap">
+      <div class="ticker">
+        <span><i></i> Temporada T01 · 2026</span>
+        <span><i></i> UR Play como porta de entrada</span>
+        <span><i></i> Ranking por níveis</span>
+        <span><i></i> Mercado UR</span>
+        <span><i></i> CT UR · Mentalidade Hunter</span>
+        <span><i></i> BH · MG</span>
+        <span><i></i> Temporada T01 · 2026</span>
+        <span><i></i> UR Play como porta de entrada</span>
+        <span><i></i> Ranking por níveis</span>
+        <span><i></i> Mercado UR</span>
+        <span><i></i> CT UR · Mentalidade Hunter</span>
+        <span><i></i> BH · MG</span>
+      </div>
     </div>
   </div>
 

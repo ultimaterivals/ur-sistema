@@ -5,38 +5,51 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Temporada T01 2026 — Ultimate Rivals | Vôlei de Praia BH</title>
 <meta name="description" content="Temporada oficial T01 2026 — UR Play, Torneios Mensais, Fase de Grupos, Virada de Ranking. Premiações, calendário e formato completo. Vôlei de praia BH.">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#000;--surface:#080808;--card:#0d0d0d;--border:rgba(255,255,255,.08);
-  --gold:#ffd84d;--gold2:#f5c518;--gold3:#c89000;--goldglow:rgba(255,216,77,.32);
-  --text:#e8e3d4;--muted:rgba(255,255,255,.40);--muted2:rgba(255,255,255,.18);
-  --font:'Inter',system-ui,sans-serif;--display:'Barlow Condensed',sans-serif;
+  --black:#030405;--ink:#07080c;--panel:#101116;--card:#1d1e26;
+  --line:rgba(255,216,77,.12);--gold:#c9a84c;--gold2:#ffd84d;--gold3:#ffe27a;
+  --white:#f4eedf;--soft:#d8cfb9;--muted:#9b9177;--dim:#6f6654;
+  --green:#7ee2a7;--red:#ff7979;--blue:#9dc7ff;
+  --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+  --body:'Barlow',system-ui,sans-serif;
+  /* legacy aliases */
+  --bg:var(--black);--surface:var(--panel);--border:var(--line);
+  --text:var(--white);--muted2:rgba(255,216,77,.18);--goldglow:rgba(255,216,77,.32);
+  --font:var(--body);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+body{font-family:var(--body);color:var(--white);background:radial-gradient(ellipse at 12% 0%,rgba(255,216,77,.16),transparent 40%),radial-gradient(ellipse at 90% 12%,rgba(255,216,77,.07),transparent 34%),linear-gradient(180deg,#07080c 0%,#030405 100%);font-size:15px;line-height:1.58;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 img{display:block}
 
-/* ANNOUNCE BAR */
-.announce-bar{background:var(--gold);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
+/* TICKER BAR */
+.top-alert{background:#050507;border-bottom:1px solid rgba(255,216,77,.16);overflow:hidden;height:34px;display:flex;align-items:center}
+.ticker-wrap{overflow:hidden;width:100%}
+.ticker{display:inline-flex;gap:28px;animation:ticker 30s linear infinite;white-space:nowrap}
+.ticker span{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;letter-spacing:.09em;text-transform:uppercase;font-size:11px;color:var(--gold2)}
+.ticker i{width:6px;height:6px;border-radius:50%;background:var(--gold2);display:inline-block;flex-shrink:0}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ANNOUNCE BAR (legacy css kept) */
+.announce-bar{background:var(--gold2);padding:0 20px;height:36px;display:flex;align-items:center;justify-content:center}
 .announce-inner{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:12px;font-weight:800;color:#000;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
-.ab-tag{background:#000;color:var(--gold);padding:2px 10px;border-radius:3px;font-size:11px}
+.ab-tag{background:#000;color:var(--gold2);padding:2px 10px;border-radius:3px;font-size:11px}
 .ab-sep{opacity:.35;font-size:16px}
 .ab-link{color:#000;border-bottom:1px solid rgba(0,0,0,.3)}
 .ab-link:hover{opacity:.7}
 @media(max-width:600px){.announce-inner span:not(.ab-tag):not(:last-child){display:none}}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
+nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,5,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,216,77,.12);height:64px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;gap:16px}
 .nav-logos{display:flex;align-items:center;gap:14px}
 .nav-logos img{height:36px;filter:drop-shadow(0 0 8px rgba(255,216,77,.35))}
 .nav-sep{width:1px;height:28px;background:rgba(255,255,255,.12)}
 .nav-hunter-logo{height:34px!important;filter:drop-shadow(0 0 8px rgba(255,140,0,.4))!important}
 .nav-links{display:flex;gap:26px}
-.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase}
-.nav-links a:hover{color:var(--gold)}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.2px;transition:color .2s;text-transform:uppercase;font-family:var(--display)}
+.nav-links a:hover{color:#08090d;background:linear-gradient(135deg,var(--gold2),var(--gold));border-radius:8px;padding:4px 9px}
 .nav-right{display:flex;align-items:center;gap:10px}
 .nav-season{background:rgba(255,216,77,.1);border:1px solid rgba(255,216,77,.28);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;font-family:var(--display);text-transform:uppercase;white-space:nowrap}
 .nav-cta{background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:9px 20px;border-radius:8px;font-family:var(--display);letter-spacing:.5px;transition:all .2s;text-transform:uppercase;white-space:nowrap}
@@ -94,7 +107,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
 @media(max-width:560px){.g3,.g2{grid-template-columns:1fr}}
 
 /* FORMATO CARDS */
-.fmt-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s}
+.fmt-card{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,216,77,.14);border-radius:16px;overflow:hidden;transition:all .3s}
 .fmt-card:hover{border-color:rgba(255,216,77,.28);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.45)}
 .fmt-head{padding:22px 24px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px}
 .fmt-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
@@ -241,18 +254,22 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:34px
 </head>
 <body>
 
-<!-- ANNOUNCE BAR -->
-<div class="announce-bar">
-  <div class="announce-inner">
-    <span class="ab-tag">T01 · 2026</span>
-    <span class="ab-sep">·</span>
-    <span>A Temporada Chega</span>
-    <span class="ab-sep">·</span>
-    <span>Garanta Sua Vaga</span>
-    <span class="ab-sep">·</span>
-    <span>Pré-Temporada · BH · MG</span>
-    <span class="ab-sep">·</span>
-    <a href="/temporada" class="ab-link">Ver calendário →</a>
+<div class="top-alert">
+  <div class="wrap ticker-wrap">
+    <div class="ticker">
+      <span><i></i> Temporada T01 · 2026</span>
+      <span><i></i> UR Play como porta de entrada</span>
+      <span><i></i> Ranking por níveis</span>
+      <span><i></i> Mercado UR</span>
+      <span><i></i> CT UR · Mentalidade Hunter</span>
+      <span><i></i> BH · MG</span>
+      <span><i></i> Temporada T01 · 2026</span>
+      <span><i></i> UR Play como porta de entrada</span>
+      <span><i></i> Ranking por níveis</span>
+      <span><i></i> Mercado UR</span>
+      <span><i></i> CT UR · Mentalidade Hunter</span>
+      <span><i></i> BH · MG</span>
+    </div>
   </div>
 </div>
 
