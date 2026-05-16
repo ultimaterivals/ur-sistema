@@ -161,6 +161,10 @@
 
     /* FOOTER */
     footer{background:var(--surface);border-top:1px solid var(--border);padding:44px 24px 32px;text-align:center}
+    .foot-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+    .foot-social{display:flex;gap:12px;flex-wrap:wrap}
+    .foot-social a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+    .foot-social a:hover{color:var(--gold)}
     .foot-logos{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:28px}
     .foot-logos img{height:38px;filter:drop-shadow(0 0 6px rgba(255,216,77,.25));object-fit:contain}
     .foot-logos .fh{height:32px;filter:drop-shadow(0 0 6px rgba(255,140,0,.3))}
@@ -453,19 +457,28 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="foot-logos">
-      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
-      <img src="logo-hunter.png" alt="Hunters" class="fh" onerror="this.style.display='none'">
-      <span>ULTIMATE RIVALS</span>
-    </div>
-    <div class="foot-links">
-      <a href="/">Início</a>
-      <a href="/temporada">Temporada</a>
-      <a href="/atletas">Atletas</a>
-      <a href="/ranking">Ranking</a>
-      <a href="/patrocinadores">Patrocinadores</a>
-      <a href="/portal">Portal do Atleta</a>
-      <a href="/inscricao">Inscrição</a>
+    <div class="foot-inner">
+      <div class="foot-logos">
+        <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+        <span>ULTIMATE RIVALS</span>
+      </div>
+      <div class="foot-links">
+        <a href="/">Início</a>
+        <a href="/temporada">Temporada</a>
+        <a href="/equipes">Equipes</a>
+        <a href="/atletas">Atletas</a>
+        <a href="/ranking">Ranking</a>
+        <a href="/ct-ur">CT UR</a>
+        <a href="/mercado">Mercado</a>
+        <a href="/patrocinadores">Parceiros</a>
+        <a href="/portal">Portal</a>
+      </div>
+      <div class="foot-social">
+        <a href="https://instagram.com/ultimaterivalsbr" target="_blank">Instagram</a>
+        <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
+        <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
+        <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+      </div>
     </div>
     <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
   </footer>

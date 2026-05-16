@@ -91,6 +91,17 @@
     .cta-band h2{font-size:clamp(36px,5vw,64px)}
     .cta-band p{margin-top:12px;color:rgba(245,239,221,.74);max-width:700px}
     footer{padding:30px 0 42px;color:var(--muted);text-align:center;font-size:12px}
+    .foot-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+    .foot-logos{display:flex;align-items:center;gap:12px}
+    .foot-logos img{height:28px;filter:drop-shadow(0 0 6px rgba(255,216,77,.3))}
+    .foot-logos span{font-family:var(--display);font-size:14px;font-weight:900;color:var(--gold);letter-spacing:1.5px}
+    .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+    .foot-links a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s;text-transform:uppercase;letter-spacing:.5px}
+    .foot-links a:hover{color:var(--gold)}
+    .foot-social{display:flex;gap:12px;flex-wrap:wrap}
+    .foot-social a{font-size:12px;color:var(--muted);font-weight:600;transition:color .2s}
+    .foot-social a:hover{color:var(--gold)}
+    .foot-copy{font-size:11px;color:var(--muted2);margin-top:10px;text-align:center;max-width:1100px;margin-left:auto;margin-right:auto}
     .fade{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}.fade.show{opacity:1;transform:none}
     @media(max-width:980px){.hero-grid,.pillar-grid,.cta-band{grid-template-columns:1fr}.ladder-row{grid-template-columns:76px 1fr}.ladder-row aside{grid-column:2}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}}
     @media(max-width:640px){.hero{padding-top:100px}.grid{display:block}.card{margin-bottom:12px}.ladder-row{display:block}.ladder-row aside{margin-top:12px}h1{font-size:50px}.lead{font-size:16px}.cta-band{padding:26px}}
@@ -369,7 +380,32 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.97);backdrop-filte
     </section>
   </main>
 
-  <footer><div class="wrap"><div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:12px"><a href="/">Início</a><a href="/temporada">Temporada</a><a href="/atletas">Atletas</a><a href="/ranking">Ranking</a><a href="/patrocinadores">Patrocinadores</a><a href="/portal">Portal</a><a href="/inscricao">Inscrição</a></div><p>© 2026 Ultimate Rivals · Belo Horizonte · MG</p></div></footer>
+  <footer>
+  <div class="foot-inner">
+    <div class="foot-logos">
+      <img src="logo-ur-3d.png" alt="UR" onerror="this.style.display='none'">
+      <span>ULTIMATE RIVALS</span>
+    </div>
+    <div class="foot-links">
+      <a href="/">Início</a>
+      <a href="/temporada">Temporada</a>
+      <a href="/equipes">Equipes</a>
+      <a href="/atletas">Atletas</a>
+      <a href="/ranking">Ranking</a>
+      <a href="/ct-ur">CT UR</a>
+      <a href="/mercado">Mercado</a>
+      <a href="/patrocinadores">Parceiros</a>
+      <a href="/portal">Portal</a>
+    </div>
+    <div class="foot-social">
+      <a href="https://instagram.com/ultimaterivalsbr" target="_blank">Instagram</a>
+      <a href="https://kick.com/ultimaterivals" target="_blank">Kick</a>
+      <a href="https://www.youtube.com/@UltimateRivalsTV" target="_blank">YouTube</a>
+      <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <p class="foot-copy">© 2026 Ultimate Rivals · Belo Horizonte · MG</p>
+</footer>
 
   <script>
     document.getElementById('navHam').addEventListener('click',function(){
