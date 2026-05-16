@@ -259,6 +259,56 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 /* ── FADE UP ── */
 .fu{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
 .fu.on{opacity:1;transform:translateY(0)}
+
+/* ── VOLLEYBALL BG WATERMARKS ── */
+.vb-wm-wrap{position:absolute;pointer-events:none;z-index:0;overflow:hidden}
+#liga{position:relative;overflow:hidden}
+#liga>.vb-wm-wrap{right:-60px;top:50%;transform:translateY(-50%);width:500px;height:500px}
+#modalidades{position:relative;overflow:hidden}
+#modalidades>.vb-wm-wrap{left:-80px;top:0;bottom:0;width:380px;height:100%}
+
+/* ── CICLO TRIMESTRAL ── */
+.ciclo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:780px){.ciclo-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ciclo-grid{grid-template-columns:1fr}}
+.ciclo-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 22px;position:relative;overflow:hidden;transition:all .3s}
+.ciclo-card:hover{border-color:rgba(255,216,77,.22);transform:translateY(-3px)}
+.ciclo-card::after{content:attr(data-phase);position:absolute;right:14px;bottom:-4px;font-family:var(--display);font-size:64px;font-weight:900;color:rgba(255,216,77,.05);line-height:1}
+.ciclo-label{font-family:var(--display);font-size:10px;font-weight:800;color:rgba(255,216,77,.5);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
+.ciclo-title{font-family:var(--display);font-size:22px;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px;line-height:1.1}
+.ciclo-body{font-size:13px;color:var(--muted);line-height:1.68}
+.repasse-banner{margin-top:32px;background:linear-gradient(135deg,rgba(255,216,77,.08),rgba(255,216,77,.03));border:1px solid rgba(255,216,77,.2);border-radius:14px;padding:28px 32px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.repasse-icon{font-family:var(--display);font-size:44px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0}
+.repasse-body h4{font-family:var(--display);font-size:22px;font-weight:900;text-transform:uppercase;color:#fff;margin-bottom:6px}
+.repasse-body p{font-size:14px;color:var(--muted);line-height:1.67;max-width:520px}
+@media(max-width:600px){.repasse-banner{flex-direction:column;gap:16px}}
+
+/* ── HUNTERS ECOSYSTEM ── */
+.hunters-wrap{
+  background:linear-gradient(135deg,#020a06,#041209,#020806);
+  border:1px solid rgba(255,216,77,.12);
+  border-radius:16px;overflow:hidden;position:relative;
+  padding:52px 48px;
+}
+.hunters-wrap::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(38deg,transparent 30%,rgba(255,216,77,.025) 30.5%,rgba(255,216,77,.025) 31.5%,transparent 32%),
+    linear-gradient(225deg,transparent 60%,rgba(255,200,0,.025) 60.5%,rgba(255,200,0,.025) 61.2%,transparent 61.7%);
+}
+.hunters-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+@media(max-width:720px){.hunters-inner{grid-template-columns:1fr;text-align:center}}
+.hunters-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,216,77,.08);border:1px solid rgba(255,216,77,.22);color:var(--gold);font-size:10px;font-weight:800;letter-spacing:2px;padding:5px 13px;border-radius:3px;margin-bottom:18px;text-transform:uppercase;font-family:var(--display)}
+.hunters-title{font-family:var(--display);font-size:clamp(36px,5vw,56px);font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:14px;color:#fff}
+.hunters-title span{color:var(--gold)}
+.hunters-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:24px}
+.hunters-quote{font-family:var(--display);font-size:17px;font-style:italic;color:rgba(255,216,77,.7);letter-spacing:.5px;border-left:3px solid rgba(255,216,77,.3);padding-left:16px}
+.hunters-logo-side{display:flex;flex-direction:column;align-items:center;gap:16px}
+.hunters-logo-side img{height:80px;filter:drop-shadow(0 0 30px rgba(255,200,0,.3)) drop-shadow(0 0 60px rgba(255,120,0,.1))}
+.hunters-stats{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.hunter-stat{text-align:center;background:rgba(0,0,0,.4);border:1px solid rgba(255,216,77,.12);border-radius:10px;padding:14px 20px}
+.hunter-stat-n{font-family:var(--display);font-size:28px;font-weight:900;color:var(--gold);line-height:1;display:block}
+.hunter-stat-l{font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-top:2px}
 </style>
 </head>
 <body>
@@ -268,11 +318,11 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
   <div class="announce-inner">
     <span class="ab-tag">T01 · 2026</span>
     <span class="ab-sep">·</span>
-    <span>Temporada em andamento</span>
+    <span>A Temporada Chega</span>
     <span class="ab-sep">·</span>
-    <span>Inscrições abertas</span>
+    <span>Garanta Sua Vaga</span>
     <span class="ab-sep">·</span>
-    <span>Belo Horizonte · MG</span>
+    <span>Pré-Temporada · BH · MG</span>
     <span class="ab-sep">·</span>
     <a href="/temporada" class="ab-link">Ver calendário →</a>
   </div>
@@ -312,19 +362,19 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
       <span class="h1-line h1-l2">ASSISTE.</span>
       <span class="h1-line h1-l3">VOCÊ JOGA.</span>
     </h1>
-    <p class="hero-sub">A liga de vôlei de praia mais séria de BH. Duplas e quartetos. Rankings reais. Coins. Virada de Ranking.</p>
+    <p class="hero-sub">Ninguém entra pronto. Todos entram possíveis. Ciclos trimestrais, ranking real, repasses recorrentes. O esporte virou jornada — e a jornada começa quando você aparece.</p>
     <div class="hero-btns">
       <a href="/inscricao" class="btn-primary">ENTRAR NA TEMPORADA</a>
       <a href="/portal" class="btn-secondary">PORTAL DO ATLETA</a>
     </div>
     <div class="hero-stats">
-      <div class="hs"><span class="hs-n" id="hsTotalAtletas">30+</span><span class="hs-l">Atletas Ativos</span></div>
+      <div class="hs"><span class="hs-n">3</span><span class="hs-l">Meses · Ciclo</span></div>
       <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">5</span><span class="hs-l">Níveis</span></div>
+      <div class="hs"><span class="hs-n">5</span><span class="hs-l">Níveis de Jogo</span></div>
       <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">2</span><span class="hs-l">Modalidades</span></div>
+      <div class="hs"><span class="hs-n">R$</span><span class="hs-l">Repasses Recorrentes</span></div>
       <div class="hs-div"></div>
-      <div class="hs"><span class="hs-n">T01</span><span class="hs-l">Temporada 2026</span></div>
+      <div class="hs"><span class="hs-n">BH</span><span class="hs-l">Capital · MG</span></div>
     </div>
   </div>
 </section>
@@ -333,15 +383,28 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 
 <!-- 01 · A LIGA -->
 <div id="liga" class="sec fu">
-  <div style="margin-bottom:52px">
+  <!-- Volleyball watermark -->
+  <div class="vb-wm-wrap">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:.055">
+      <circle cx="100" cy="100" r="93" stroke="#ffd84d" stroke-width="2.5"/>
+      <path d="M100 7C133 8 160 26 178 54" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M178 54C196 82 195 118 178 146" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M178 146C161 174 134 192 100 193" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M100 7C67 8 40 26 22 54" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M22 54C4 82 5 118 22 146" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M22 146C39 174 66 192 100 193" stroke="#ffd84d" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="100" y1="7" x2="100" y2="193" stroke="#ffd84d" stroke-width="1.5" stroke-dasharray="6 6" opacity=".4"/>
+    </svg>
+  </div>
+  <div style="position:relative;z-index:1;margin-bottom:52px">
     <div class="s-label">01 · Sobre a Liga</div>
     <h2 class="s-title-lg">UM CAMPO REAL.<br><span class="s-gold">RIVALIDADE REAL.</span></h2>
   </div>
-  <div class="g3">
+  <div class="g3" style="position:relative;z-index:1">
     <div class="liga-card fu" data-n="01">
-      <div class="liga-card-tag">A Arena</div>
-      <h3>A ARENA</h3>
-      <p>O Ultimate Rivals não é pelada de sábado. É uma liga estruturada com calendário, regulamento, ranking, níveis e reconhecimento. Cada temporada tem início, meio e uma Virada de Ranking que define quem ficou na história.</p>
+      <div class="liga-card-tag">A Jornada</div>
+      <h3>A JORNADA</h3>
+      <p>O esporte deixou de ser um momento. Passou a ser uma jornada. O Ultimate Rivals não é pelada de sábado — é uma liga estruturada com calendário, regulamento, ranking e ciclos trimestrais que definem quem ficou na história.</p>
     </div>
     <div class="liga-card fu" data-n="02">
       <div class="liga-card-tag">O Sistema</div>
@@ -351,7 +414,7 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
     <div class="liga-card fu" data-n="03">
       <div class="liga-card-tag">O Atleta</div>
       <h3>O ATLETA</h3>
-      <p>Você não precisa ser profissional para ser levado a sério. Precisa mostrar presença, competir com consistência e respeitar o jogo. O UR existe para atletas que querem mais do que pelada — querem disputa real.</p>
+      <p>Ninguém entra pronto. Todos entram possíveis. Você não precisa ser profissional para ser levado a sério — precisa mostrar presença, competir com consistência e respeitar o jogo. O UR existe para quem quer disputa real.</p>
     </div>
   </div>
 </div>
@@ -394,11 +457,22 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 
 <!-- 03 · MODALIDADES -->
 <div id="modalidades" class="sec fu">
-  <div style="margin-bottom:52px">
+  <!-- Player silhouette watermark -->
+  <div class="vb-wm-wrap" style="left:-60px;top:0;bottom:0;width:340px;display:flex;align-items:center">
+    <svg viewBox="0 0 100 200" fill="#ffd84d" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:.04">
+      <ellipse cx="50" cy="16" rx="13" ry="15"/>
+      <path d="M37,31 C32,50 28,82 26,120 L42,118 L40,168 L60,168 L58,118 L74,120 C72,82 68,50 63,31 Q56,27 50,27 Q44,27 37,31Z"/>
+      <path d="M37,40 L10,18 Q6,14 10,10 Q14,6 18,10 L40,34Z"/>
+      <path d="M63,42 L92,12 Q96,8 98,12 Q100,16 96,20 L66,44Z"/>
+      <path d="M40,168 L30,192 Q28,198 34,199 Q40,200 42,194 L46,170Z"/>
+      <path d="M60,168 L70,192 Q72,198 66,199 Q60,200 58,194 L54,170Z"/>
+    </svg>
+  </div>
+  <div style="position:relative;z-index:1;margin-bottom:52px">
     <div class="s-label">03 · Modalidades</div>
     <h2 class="s-title-lg">DUPLA OU QUARTETO.<br><span class="s-gold">VOCÊ ESCOLHE O CAMPO.</span></h2>
   </div>
-  <div class="g2">
+  <div class="g2" style="position:relative;z-index:1">
     <div class="modal-card fu">
       <div class="modal-header mh-dupla">
         <div class="modal-tag">Formato 2×2</div>
@@ -537,13 +611,60 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 
 <div class="divider"></div>
 
-<!-- PATROCINADOR FUNDADOR -->
+<!-- 07 · CICLO TRIMESTRAL -->
 <div class="sec fu">
-  <div class="sponsor-wrap">
-    <div class="sponsor-pill">Patrocinador Fundador</div>
-    <img src="logo-hunter.png" alt="Hunter" class="sponsor-logo" onerror="this.style.display='none'">
-    <p class="sponsor-desc">O Ultimate Rivals tem o apoio da Hunter — empresa de recrutamento e seleção que acredita no potencial humano dentro e fora do trabalho. Juntos desde a primeira temporada.</p>
-    <a href="/patrocinadores" class="sponsor-cta">Seja parceiro →</a>
+  <div style="margin-bottom:0">
+    <div class="s-label">07 · Estrutura de Ciclos</div>
+    <h2 class="s-title-lg">CADA TRIMESTRE<br><span class="s-gold">É UMA NOVA CHANCE.</span></h2>
+    <p class="s-body" style="margin-top:14px">O UR opera em ciclos de 3 meses. Cada ciclo tem início definido, calendário de jogos, e encerra com a Virada de Ranking — onde os resultados se transformam em reconhecimento e repasses.</p>
+  </div>
+  <div class="ciclo-grid fu">
+    <div class="ciclo-card" data-phase="01">
+      <div class="ciclo-label">Fase 01 · Mês 1–2</div>
+      <div class="ciclo-title">UR PLAY<br>SEMANAL</div>
+      <p class="ciclo-body">Jogos semanais em duplas e quartetos. Cada aparição gera presença, pontos de ranking e UR Coins. O sistema registra tudo.</p>
+    </div>
+    <div class="ciclo-card" data-phase="02">
+      <div class="ciclo-label">Fase 02 · Mês 2–3</div>
+      <div class="ciclo-title">TORNEIOS<br>MENSAIS</div>
+      <p class="ciclo-body">Eventos competitivos de nível. Maior pontuação em jogo, maior pressão, maior teste de quem construiu o ciclo com consistência.</p>
+    </div>
+    <div class="ciclo-card" data-phase="03">
+      <div class="ciclo-label">Encerramento · Mês 3</div>
+      <div class="ciclo-title">VIRADA DE<br>RANKING</div>
+      <p class="ciclo-body">O fechamento do ciclo. Revisão de níveis, reconhecimento público, e repasse financeiro para os atletas que construíram histórico.</p>
+    </div>
+  </div>
+  <div class="repasse-banner fu">
+    <div class="repasse-icon">R$</div>
+    <div class="repasse-body">
+      <h4>REPASSES RECORRENTES — ABOVE THE STANDARD</h4>
+      <p>O UR distribui repasses financeiros a cada encerramento de ciclo. Não é prêmio único — é reconhecimento recorrente atrelado ao ranking. Quanto mais consistente sua jornada, maior seu retorno. Atletas sérios merecem um sistema sério.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 08 · HUNTERS — ECOSSISTEMA UR -->
+<div class="sec fu">
+  <div class="hunters-wrap">
+    <div class="hunters-inner">
+      <div>
+        <div class="hunters-pill">Ecossistema UR · Embaixadores</div>
+        <h2 class="hunters-title">HUNTERS<br><span>UR.</span></h2>
+        <p class="hunters-body">Os Hunters não são patrocinadores. São atletas do ecossistema UR — embaixadores que reforçam identidade, cultura e liderança dentro da liga. Cada Hunter representa o que o Ultimate Rivals acredita: que atletas sérios merecem um sistema sério, e que o esporte pode ser mais do que lazer.</p>
+        <blockquote class="hunters-quote">"As equipes, embaixadores e Hunters reforçam identidade, cultura e liderança."</blockquote>
+      </div>
+      <div class="hunters-logo-side">
+        <img src="logo-hunter.png" alt="Hunters UR" onerror="this.style.display='none'">
+        <div class="hunters-stats">
+          <div class="hunter-stat"><span class="hunter-stat-n">T01</span><span class="hunter-stat-l">Primeiro Ciclo</span></div>
+          <div class="hunter-stat"><span class="hunter-stat-n">BH</span><span class="hunter-stat-l">Capital · MG</span></div>
+        </div>
+        <a href="/patrocinadores" style="font-family:var(--display);font-size:13px;font-weight:800;color:rgba(255,216,77,.5);letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(255,216,77,.2)">Seja parceiro da liga →</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -552,8 +673,8 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
 <!-- CTA FINAL -->
 <div class="cta-sec fu">
   <div class="cta-glow"></div>
-  <h2>PRONTO PARA<br><span>JOGAR DE VERDADE?</span></h2>
-  <p class="cta-sub">Temporada T01 · 2026 · Belo Horizonte · Inscrições abertas para todos os níveis.</p>
+  <h2>A JORNADA<br><span>COMEÇA AGORA.</span></h2>
+  <p class="cta-sub">Pré-Temporada T01 · 2026 · Belo Horizonte · Garanta sua vaga antes da abertura oficial.</p>
   <div class="cta-btns">
     <a href="/inscricao" class="btn-cta-main">FAZER INSCRIÇÃO AGORA</a>
     <a href="https://chat.whatsapp.com/IkcDIIRMcvRHeibs4sUsUk" target="_blank" class="btn-wpp">
@@ -572,7 +693,7 @@ footer{background:#080808;border-top:1px solid var(--border);padding:56px 20px 2
         <img src="logo-hunter.png" class="fh" alt="Hunters" onerror="this.style.display='none'">
       </div>
       <p class="foot-tagline">"Você não assiste. Você joga."</p>
-      <p class="foot-desc">Liga de vôlei de praia amador em Belo Horizonte. Duplas e quartetos. Ranking real. Temporada T01 · 2026.</p>
+      <p class="foot-desc">Liga de vôlei de praia em Belo Horizonte. Ciclos trimestrais, ranking real, repasses recorrentes. Pré-Temporada T01 · 2026.</p>
     </div>
     <div class="foot-nav">
       <div class="foot-col">
@@ -613,7 +734,7 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('on');
-      e.target.querySelectorAll('.liga-card,.modal-card,.step-item,.lvl,.eco-card,.portal-card').forEach((el,i)=>{
+      e.target.querySelectorAll('.liga-card,.modal-card,.step-item,.lvl,.eco-card,.portal-card,.ciclo-card,.hunter-stat').forEach((el,i)=>{
         el.style.transitionDelay=(i*.1)+'s';
         el.classList.add('on');
       });
