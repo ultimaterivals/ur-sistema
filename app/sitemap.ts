@@ -2,7 +2,17 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = "https://ultimate-rivals.local";
 
-const routes = ["", "/ur-play", "/ranking", "/equipes", "/temporada", "/ur-market", "/patrocinadores", "/eventos"];
+const routes = [
+  "",
+  "/atletas",
+  "/ur-play",
+  "/ranking",
+  "/equipes",
+  "/temporada",
+  "/ur-market",
+  "/patrocinadores",
+  "/eventos",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

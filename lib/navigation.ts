@@ -1,5 +1,5 @@
 export const mainNavigation = [
-  { label: "Ecossistema", href: "/#ecossistema" },
+  { label: "Atletas", href: "/atletas" },
   { label: "UR Play", href: "/ur-play" },
   { label: "Ranking", href: "/ranking" },
   { label: "Equipes", href: "/equipes" },
@@ -8,6 +8,7 @@ export const mainNavigation = [
 ] as const;
 
 export const mobileNavigation = [
+  { label: "Atletas", href: "/atletas" },
   { label: "Sou atleta", href: "/ur-play" },
   { label: "Tenho equipe", href: "/equipes" },
   { label: "Quero patrocinar", href: "/patrocinadores" },
@@ -31,8 +32,9 @@ export const footerColumns = [
   {
     title: "Participar",
     links: [
+      { label: "Atletas", href: "/atletas" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "Cadastro de atleta", href: "/ur-play" },
+      { label: "Cadastro de atleta", href: "/atletas" },
       { label: "Cadastro de equipe", href: "/equipes" },
       { label: "Eventos", href: "/eventos" },
       { label: "CT UR", href: "/#ct-ur" },
