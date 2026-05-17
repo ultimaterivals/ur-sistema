@@ -102,7 +102,7 @@ export default function URPlayPage() {
               histórico, entrar no radar de ranking e se conectar a equipes, Draft, torneios, CT UR e recompensas.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="#interesse">
+              <Button href="/cadastro#atleta">
                 Registrar interesse
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
@@ -219,7 +219,7 @@ export default function URPlayPage() {
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="como-funciona">
         <SectionHeader
           action={
-            <Button href="#interesse" variant="secondary">
+            <Button href="/cadastro#atleta" variant="secondary">
               Registrar interesse
             </Button>
           }
@@ -497,7 +497,7 @@ export default function URPlayPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="#interesse">Registrar interesse visual</Button>
+              <Button href="/cadastro#atleta">Registrar interesse visual</Button>
               <Button href="/ranking" variant="secondary">
                 Entender ranking
               </Button>

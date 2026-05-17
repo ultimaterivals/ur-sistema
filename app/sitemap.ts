@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://ultimate-rivals.local";
+const baseUrl = "https://ultimaterivals.org";
 
 const routes = [
   "",
+  "/cadastro",
   "/atletas",
   "/ur-play",
   "/ranking",

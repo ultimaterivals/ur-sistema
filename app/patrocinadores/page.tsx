@@ -196,7 +196,7 @@ export default function PatrocinadoresPage() {
               mídia, UR Market, CT UR e comunidade. Não é só comprar espaço de logo.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="#interesse">
+              <Button href="/cadastro#patrocinador">
                 Registrar interesse
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
@@ -439,7 +439,7 @@ export default function PatrocinadoresPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="#interesse">Registrar interesse</Button>
+              <Button href="/cadastro#patrocinador">Registrar interesse</Button>
               <Button href="/ur-market" variant="secondary">
                 Ver UR Market
               </Button>

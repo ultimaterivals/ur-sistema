@@ -149,7 +149,7 @@ export default function RankingPage() {
               desempenho em histórico, visibilidade, oportunidades, UR Coins, mídia e recompensas.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/ur-play">
+              <Button href="/cadastro#atleta">
                 Começar pelo UR Play
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
@@ -448,7 +448,7 @@ export default function RankingPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="/ur-play">Começar pelo UR Play</Button>
+              <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
               <Button href="/equipes" variant="secondary">
                 Ver equipes
               </Button>

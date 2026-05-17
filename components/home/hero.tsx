@@ -22,14 +22,14 @@ export function Hero() {
             Aqui, atleta deixa de ser apenas participante. Vira personagem, concorrente, evolução, mídia e oportunidade.
           </p>
           <div className="mt-4 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-            <Button href="/ur-play">
+            <Button href="/cadastro#atleta">
               Quero entrar no UR Play
               <ArrowRight aria-hidden className="h-4 w-4" />
             </Button>
-            <Button href="/equipes" variant="secondary">
+            <Button href="/cadastro#equipe" variant="secondary">
               Cadastrar minha equipe
             </Button>
-            <Button href="/patrocinadores" variant="ghost">
+            <Button href="/cadastro#patrocinador" variant="ghost">
               Quero patrocinar o UR
             </Button>
           </div>

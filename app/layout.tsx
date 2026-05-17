@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ultimate-rivals.local"),
+  metadataBase: new URL("https://ultimaterivals.org"),
   title: {
     default: "Ultimate Rivals | Ecossistema esportivo premium",
     template: "%s | Ultimate Rivals",

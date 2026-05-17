@@ -145,7 +145,7 @@ export default function EquipesPage() {
               rivalidade, mídia, UR Coins, repasses e oportunidades dentro da temporada.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="#interesse">
+              <Button href="/cadastro#equipe">
                 Registrar interesse
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
@@ -239,7 +239,7 @@ export default function EquipesPage() {
       <PageSection className="bg-[#07080c]" id="entrada">
         <SectionHeader
           action={
-            <Button href="#interesse" variant="secondary">
+            <Button href="/cadastro#equipe" variant="secondary">
               Registrar interesse visual
             </Button>
           }
@@ -494,11 +494,11 @@ export default function EquipesPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="#interesse">Registrar interesse visual</Button>
+              <Button href="/cadastro#equipe">Registrar interesse visual</Button>
               <Button href="/ranking" variant="secondary">
                 Entender ranking
               </Button>
-              <Button href="/ur-play" variant="ghost">
+              <Button href="/cadastro#atleta" variant="ghost">
                 Começar pelo UR Play
               </Button>
             </div>

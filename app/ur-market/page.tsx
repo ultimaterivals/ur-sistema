@@ -143,7 +143,7 @@ export default function URMarketPage() {
                 Ver vitrine visual
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
-              <Button href="/patrocinadores" variant="secondary">
+              <Button href="/cadastro#patrocinador" variant="secondary">
                 Entrar como patrocinador
               </Button>
               <Button href="/ranking" variant="ghost">
@@ -289,7 +289,7 @@ export default function URMarketPage() {
       <PageSection id="patrocinadores">
         <SectionHeader
           action={
-            <Button href="/patrocinadores" variant="secondary">
+            <Button href="/cadastro#patrocinador" variant="secondary">
               Ver patrocinadores
             </Button>
           }
@@ -388,10 +388,10 @@ export default function URMarketPage() {
             </div>
             <div className="grid gap-3">
               <Button href="/ranking">Entender ranking</Button>
-              <Button href="/patrocinadores" variant="secondary">
+              <Button href="/cadastro#patrocinador" variant="secondary">
                 Quero patrocinar
               </Button>
-              <Button href="/ur-play" variant="ghost">
+              <Button href="/cadastro#atleta" variant="ghost">
                 Começar pelo UR Play
               </Button>
             </div>

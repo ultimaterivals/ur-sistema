@@ -128,7 +128,7 @@ export default function Home() {
       <Section id="jornada-equipes">
         <SectionHeader
           action={
-            <Button href="/equipes" variant="secondary">
+            <Button href="/cadastro#equipe" variant="secondary">
               Cadastrar minha equipe no UR
             </Button>
           }
@@ -226,7 +226,7 @@ export default function Home() {
               <Button href="/ur-market" variant="secondary">
                 Ver benefícios do UR Market
               </Button>
-              <Button href="/patrocinadores" variant="ghost">
+              <Button href="/cadastro#patrocinador" variant="ghost">
                 Quero colocar minha marca no Market
               </Button>
             </div>
@@ -347,8 +347,8 @@ export default function Home() {
         <SectionHeader
           action={
             <div className="grid gap-3 sm:flex sm:flex-wrap">
-              <Button href="/patrocinadores">Quero patrocinar o UR</Button>
-              <Button href="/patrocinadores" variant="secondary">
+              <Button href="/cadastro#patrocinador">Quero patrocinar o UR</Button>
+              <Button href="/cadastro#patrocinador" variant="secondary">
                 Receber apresentação comercial
               </Button>
             </div>
@@ -392,7 +392,7 @@ export default function Home() {
       <Section id="quadras">
         <SectionHeader
           action={
-            <Button href="/#quadras" variant="secondary">
+            <Button href="/cadastro#quadra" variant="secondary">
               Quero minha quadra como polo UR
             </Button>
           }

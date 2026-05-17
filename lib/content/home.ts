@@ -124,7 +124,7 @@ export const audienceCards = [
     description:
       "Entre no UR Play, dispute ranking, evolua por níveis, acumule UR Coins e busque espaço em equipes oficiais.",
     cta: "Começar minha jornada",
-    href: "/ur-play",
+    href: "/cadastro#atleta",
   },
   {
     icon: Shield,
@@ -132,28 +132,28 @@ export const audienceCards = [
     description:
       "Registre seu time, fortaleça identidade, entre no ranking coletivo e prepare sua presença na temporada.",
     cta: "Cadastrar minha equipe",
-    href: "/equipes",
+    href: "/cadastro#equipe",
   },
   {
     icon: Handshake,
     title: "Quero patrocinar",
     description: "Conecte sua marca a atletas, eventos, mídia, ranking, comunidade e ativações com métricas.",
     cta: "Ver oportunidades comerciais",
-    href: "/patrocinadores",
+    href: "/cadastro#patrocinador",
   },
   {
     icon: Building2,
     title: "Tenho uma quadra",
     description: "Transforme sua estrutura em polo UR, receba ativações e participe da expansão regional.",
     cta: "Quero ser polo UR",
-    href: "/#quadras",
+    href: "/cadastro#quadra",
   },
   {
     icon: Radio,
     title: "Quero acompanhar",
     description: "Siga a temporada, acompanhe conteúdos, torça por atletas e participe da comunidade.",
     cta: "Acompanhar a temporada",
-    href: "/temporada",
+    href: "/cadastro#comunidade",
   },
 ];
 
@@ -397,10 +397,10 @@ export const faqItems = [
 ];
 
 export const finalActions = [
-  { label: "Entrar como atleta", href: "/ur-play" },
-  { label: "Cadastrar equipe", href: "/equipes" },
-  { label: "Patrocinar o UR", href: "/patrocinadores" },
-  { label: "Ser quadra parceira", href: "/#quadras" },
+  { label: "Entrar como atleta", href: "/cadastro#atleta" },
+  { label: "Cadastrar equipe", href: "/cadastro#equipe" },
+  { label: "Patrocinar o UR", href: "/cadastro#patrocinador" },
+  { label: "Ser quadra parceira", href: "/cadastro#quadra" },
 ] as const;
 
 export const statusItems = [

@@ -253,11 +253,11 @@ export default function EventosPage() {
               quadras parceiras e comunidade. Não é uma agenda solta.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="#interesse">
+              <Button href="/cadastro#atleta">
                 Demonstrar interesse
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
-              <Button href="/ur-play" variant="secondary">
+              <Button href="/cadastro#atleta" variant="secondary">
                 Começar pelo UR Play
               </Button>
               <Button href="/temporada" variant="ghost">
@@ -424,8 +424,8 @@ export default function EventosPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="#interesse">Demonstrar interesse</Button>
-              <Button href="/ur-play" variant="secondary">
+              <Button href="/cadastro#atleta">Demonstrar interesse</Button>
+              <Button href="/cadastro#atleta" variant="secondary">
                 Conhecer UR Play
               </Button>
               <Button href="/temporada" variant="ghost">

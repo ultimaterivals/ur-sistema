@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://ultimate-rivals.local/sitemap.xml",
+    sitemap: "https://ultimaterivals.org/sitemap.xml",
   };
 }

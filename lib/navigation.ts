@@ -9,10 +9,10 @@ export const mainNavigation = [
 
 export const mobileNavigation = [
   { label: "Atletas", href: "/atletas" },
-  { label: "Sou atleta", href: "/ur-play" },
-  { label: "Tenho equipe", href: "/equipes" },
-  { label: "Quero patrocinar", href: "/patrocinadores" },
-  { label: "Tenho quadra", href: "/#quadras" },
+  { label: "Sou atleta", href: "/cadastro#atleta" },
+  { label: "Tenho equipe", href: "/cadastro#equipe" },
+  { label: "Quero patrocinar", href: "/cadastro#patrocinador" },
+  { label: "Tenho quadra", href: "/cadastro#quadra" },
   { label: "Ver ranking", href: "/ranking" },
   { label: "Eventos", href: "/eventos" },
   { label: "UR Market", href: "/ur-market" },
@@ -32,12 +32,12 @@ export const footerColumns = [
   {
     title: "Participar",
     links: [
+      { label: "Cadastro UR", href: "/cadastro" },
       { label: "Atletas", href: "/atletas" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "Cadastro de atleta", href: "/atletas" },
-      { label: "Cadastro de equipe", href: "/equipes" },
+      { label: "Cadastro de atleta", href: "/cadastro#atleta" },
+      { label: "Cadastro de equipe", href: "/cadastro#equipe" },
       { label: "Eventos", href: "/eventos" },
-      { label: "CT UR", href: "/#ct-ur" },
     ],
   },
   {
@@ -45,17 +45,17 @@ export const footerColumns = [
     links: [
       { label: "Patrocinadores", href: "/patrocinadores" },
       { label: "UR Market", href: "/ur-market" },
-      { label: "Quadras parceiras", href: "/#quadras" },
+      { label: "Quadras parceiras", href: "/cadastro#quadra" },
       { label: "Mídia Kit", href: "/patrocinadores" },
-      { label: "Contato comercial", href: "/patrocinadores" },
+      { label: "Contato comercial", href: "/cadastro#patrocinador" },
     ],
   },
   {
     title: "Comunidade",
     links: [
-      { label: "Instagram", href: "/#comunidade" },
+      { label: "Instagram", href: "/cadastro#comunidade" },
       { label: "YouTube", href: "/#midia" },
-      { label: "WhatsApp", href: "/#comunidade" },
+      { label: "WhatsApp", href: "/cadastro#whatsapp" },
       { label: "Blog", href: "/#midia" },
       { label: "Ranking", href: "/ranking" },
     ],

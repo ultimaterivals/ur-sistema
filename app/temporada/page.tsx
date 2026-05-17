@@ -172,7 +172,7 @@ export default function TemporadaPage() {
               recompensas, repasses e Virada de Ranking antes do novo ciclo.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/ur-play">
+              <Button href="/cadastro#atleta">
                 Começar pelo UR Play
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
@@ -341,7 +341,7 @@ export default function TemporadaPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="/ur-play">Começar pelo UR Play</Button>
+              <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
               <Button href="/ranking" variant="secondary">
                 Ver Ranking UR
               </Button>

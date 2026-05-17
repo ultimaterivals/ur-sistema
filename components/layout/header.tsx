@@ -41,10 +41,10 @@ export function Header() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex">
-          <Button className="min-h-10 px-4 py-2 text-xs" href="/ur-play">
+          <Button className="min-h-10 px-4 py-2 text-xs" href="/cadastro">
             Entrar no UR
           </Button>
-          <Button className="min-h-10 px-3 py-2 text-xs" href="/patrocinadores" variant="secondary">
+          <Button className="min-h-10 px-3 py-2 text-xs" href="/cadastro#patrocinador" variant="secondary">
             Patrocinar
           </Button>
         </div>
@@ -61,7 +61,7 @@ export function Header() {
       </div>
 
       <div className="border-t border-white/10 px-5 pb-3 pt-3 lg:hidden">
-        <Button className="w-full" href="/ur-play">
+        <Button className="w-full" href="/cadastro#atleta">
           Quero entrar no UR Play
         </Button>
         {open ? (

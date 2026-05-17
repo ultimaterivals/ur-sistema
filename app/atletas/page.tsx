@@ -251,11 +251,11 @@ export default function AtletasPage() {
               UR Coins, mídia, CT UR e reputação dentro da comunidade.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="#interesse">
+              <Button href="/cadastro#atleta">
                 Registrar interesse
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
-              <Button href="/ur-play" variant="secondary">
+              <Button href="/cadastro#atleta" variant="secondary">
                 Começar pelo UR Play
               </Button>
               <Button href="#mentalidade-hunter" variant="ghost">
@@ -469,8 +469,8 @@ export default function AtletasPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="/ur-play">Começar pelo UR Play</Button>
-              <Button href="#interesse" variant="secondary">
+              <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
+              <Button href="/cadastro#atleta" variant="secondary">
                 Registrar interesse
               </Button>
               <Button href="/ranking" variant="ghost">
