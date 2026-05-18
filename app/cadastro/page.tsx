@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
-import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
-  Building2,
   ChevronDown,
-  Handshake,
   Lock,
   MessageCircle,
   Radio,
-  Shield,
-  Target,
   Users,
 } from "lucide-react";
 import type { ReactNode } from "react";
+import { LeadCaptureSection } from "@/components/cadastro/LeadCaptureSection";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { leadFormConfigs, leadProfileOrder } from "@/lib/lead-fields";
 import { externalLinks } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -25,79 +22,11 @@ export const metadata: Metadata = {
     "Registre seu interesse para entrar no Ultimate Rivals como atleta, equipe, patrocinador, quadra parceira ou membro da comunidade.",
 };
 
-type PathCard = {
-  id: string;
-  icon: LucideIcon;
-  title: string;
-  audience: string;
-  description: string;
-  href: string;
-  isExternal: boolean;
-  status: string;
-};
-
-const pathCards: PathCard[] = [
-  {
-    id: "atleta",
-    icon: Target,
-    title: "Sou atleta",
-    audience: "UR Play, ranking e evolução",
-    description:
-      "Para quem quer entrar pelo UR Play, construir histórico, disputar ranking, buscar equipe, mídia, CT UR e recompensas futuras.",
-    href: externalLinks.formularioAtleta.href,
-    isExternal: externalLinks.formularioAtleta.isConfigured,
-    status: externalLinks.formularioAtleta.status,
-  },
-  {
-    id: "equipe",
-    icon: Shield,
-    title: "Tenho uma equipe",
-    audience: "elenco, identidade e ranking coletivo",
-    description:
-      "Para capitães e representantes que querem preparar uma equipe oficial, com validação de elenco, identidade e temporada.",
-    href: externalLinks.formularioEquipe.href,
-    isExternal: externalLinks.formularioEquipe.isConfigured,
-    status: externalLinks.formularioEquipe.status,
-  },
-  {
-    id: "patrocinador",
-    icon: Handshake,
-    title: "Quero patrocinar",
-    audience: "marca, mídia e ativação comercial",
-    description:
-      "Para marcas que querem entrar na jornada do atleta, ativar eventos, ranking, UR Market, mídia, CT UR e comunidade.",
-    href: externalLinks.formularioPatrocinador.href,
-    isExternal: externalLinks.formularioPatrocinador.isConfigured,
-    status: externalLinks.formularioPatrocinador.status,
-  },
-  {
-    id: "quadra",
-    icon: Building2,
-    title: "Tenho uma quadra",
-    audience: "polo, agenda e comunidade local",
-    description:
-      "Para quadras interessadas em se tornar polo UR, receber ativações, organizar agenda e participar da expansão regional.",
-    href: externalLinks.formularioQuadra.href,
-    isExternal: externalLinks.formularioQuadra.isConfigured,
-    status: externalLinks.formularioQuadra.status,
-  },
-  {
-    id: "comunidade",
-    icon: Radio,
-    title: "Quero acompanhar a comunidade",
-    audience: "conteúdo, temporada e bastidores",
-    description:
-      "Para quem quer acompanhar notícias, mídia, ranking em formação, bastidores, eventos e próximos passos do ecossistema.",
-    href: externalLinks.comunidade.href,
-    isExternal: externalLinks.comunidade.isConfigured,
-    status: externalLinks.comunidade.status,
-  },
-];
-
 const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
-  "Você abre o formulário Tally oficial em uma nova aba.",
-  "A equipe UR valida agenda, polo, categoria e prioridade.",
+  "Você preenche o formulário próprio dentro do site.",
+  "O envio vai para Google Sheets quando o endpoint estiver configurado.",
+  "A equipe UR valida agenda, polo, perfil e prioridade.",
   "O cadastro não garante vaga, parceria, patrocínio ou participação imediata.",
 ] as const;
 
@@ -105,12 +34,12 @@ const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Sim, nos formulários Tally conectados. O envio registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata.",
+      "Sim, quando a variável NEXT_PUBLIC_GOOGLE_SCRIPT_URL estiver configurada. Enquanto isso, cada formulário mantém o Tally como fallback temporário.",
   },
   {
     question: "Existe backend, login ou banco de dados?",
     answer:
-      "Não nesta fase. O MVP usa links externos do Tally e mantém a captação organizada sem criar backend, login, pagamento, Supabase ou banco de dados.",
+      "Não nesta fase. O MVP envia o formulário próprio para Google Apps Script e Google Sheets, sem criar backend, login, pagamento, Supabase ou banco de dados.",
   },
   {
     question: "Posso entrar como atleta sem equipe?",
@@ -143,36 +72,6 @@ function PageSection({
   );
 }
 
-function PathCard({ item, featured = false }: { item: PathCard; featured?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[300px] flex-col" premium={featured}>
-      <div className="flex items-start justify-between gap-4">
-        <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-          <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-        </span>
-        <span className="max-w-[58%] rounded-md border border-[#ffd84d]/20 px-2 py-1 text-right text-[10px] font-black uppercase leading-4 tracking-[0.12em] text-[#ffe98b]">
-          interesse
-        </span>
-      </div>
-      <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">{item.title}</h3>
-      <p className="mt-2 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#ffe98b]">{item.audience}</p>
-      <p className="mt-4 flex-1 text-sm leading-6 text-white/70">{item.description}</p>
-      <Button
-        className="mt-6 w-full"
-        href={item.href}
-        target={item.isExternal ? "_blank" : undefined}
-        variant={featured ? "primary" : "secondary"}
-      >
-        {item.title}
-        <ArrowRight aria-hidden className="h-4 w-4" />
-      </Button>
-      <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">{item.status}</p>
-    </Card>
-  );
-}
-
 export default function CadastroPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
@@ -197,7 +96,7 @@ export default function CadastroPage() {
                 WhatsApp UR
               </Button>
               <Button href="#aviso-validacao" variant="ghost">
-                Status dos links
+                Aviso de validação
               </Button>
             </div>
           </div>
@@ -213,51 +112,44 @@ export default function CadastroPage() {
                 </span>
               </div>
               <div className="mt-6 grid gap-3">
-                {pathCards.map((item) => (
+                {leadProfileOrder.map((profile) => {
+                  const item = leadFormConfigs[profile];
+
+                  return (
                   <a
                     className="grid grid-cols-[40px_1fr] items-center gap-3 rounded-lg border border-white/10 bg-black/30 p-3 transition hover:border-[#ffd84d]/25"
-                    href={`#${item.id}`}
-                    key={item.id}
+                    href={`#${item.anchor}`}
+                    key={profile}
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                      {item.title.slice(0, 1)}
+                      {item.cardTitle.slice(0, 1)}
                     </span>
                     <span>
-                      <span className="block text-sm font-black uppercase leading-tight text-white">{item.title}</span>
+                      <span className="block text-sm font-black uppercase leading-tight text-white">
+                        {item.cardTitle}
+                      </span>
                       <span className="mt-1 block text-xs font-bold uppercase tracking-[0.1em] text-[#ffe98b]">
                         {item.audience}
                       </span>
                     </span>
                   </a>
-                ))}
+                  );
+                })}
               </div>
             </Card>
           </div>
         </div>
       </section>
 
-      <PageSection id="caminhos">
-        <SectionHeader
-          description="Cada card representa uma intenção diferente. Os formulários oficiais ficam centralizados em configuração e abrem em nova aba via Tally."
-          eyebrow="Escolha seu caminho"
-          title="Uma porta de entrada para cada perfil."
-        />
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-          {pathCards.map((item, index) => (
-            <div id={item.id} key={item.id}>
-              <PathCard featured={index === 0} item={item} />
-            </div>
-          ))}
-        </div>
-      </PageSection>
+      <LeadCaptureSection />
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="O MVP já organiza a intenção com formulários Tally para os caminhos principais. WhatsApp e Instagram seguem preparados para conexão oficial futura."
+          description="O MVP agora organiza a intenção com formulários próprios no site, envio preparado para Google Sheets e Tally preservado como fallback temporário."
           eyebrow="Depois do interesse"
           title="Captação real, validação operacional antes do próximo passo."
         />
-        <div className="grid gap-3 md:grid-cols-4">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
           {nextSteps.map((item, index) => (
             <Card className="min-h-[176px] p-4 md:p-5" key={item} premium={index === 0}>
               <span className="grid h-10 w-10 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
@@ -271,9 +163,9 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="Os formulários de atleta, equipe, patrocinador, quadra e comunidade já usam Tally. O cadastro registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata."
+          description="Os formulários próprios dependem da URL pública do Google Apps Script. O cadastro registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata."
           eyebrow="Aviso de validação"
-          title="Cadastro conectado. Aprovação continua em validação."
+          title="Cadastro próprio preparado. Aprovação continua em validação."
         />
         <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]" premium>
           <div>
@@ -284,8 +176,9 @@ export default function CadastroPage() {
               Enviar não garante aprovação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. A equipe UR ainda valida agenda,
-              polo, perfil, proposta e prioridade antes de liberar qualquer próximo passo.
+              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. O endpoint público guarda apenas
+              a URL do Apps Script, sem credenciais. A equipe UR ainda valida agenda, polo, perfil, proposta e prioridade
+              antes de liberar qualquer próximo passo.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -303,9 +196,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
-          description="A comunidade já tem formulário Tally. O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado."
+          description="O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado. A comunidade já pode entrar pelo formulário próprio, com Tally como fallback."
           eyebrow="CTAs de conversão"
-          title="WhatsApp preparado e comunidade conectada."
+          title="WhatsApp preparado e comunidade dentro da central."
         />
         <div className="grid gap-5 md:grid-cols-2">
           <Card className="p-5 md:p-6" premium>
@@ -331,18 +224,17 @@ export default function CadastroPage() {
             </span>
             <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">CTA para comunidade</h3>
             <p className="mt-4 text-sm leading-6 text-white/70">
-              Espaço futuro para quem quer acompanhar temporada, mídia, bastidores, eventos e próximos passos do UR.
+              Espaço para quem quer acompanhar temporada, mídia, bastidores, eventos e próximos passos do UR.
             </p>
             <Button
               className="mt-6 w-full"
-              href={externalLinks.comunidade.href}
-              target="_blank"
+              href="#comunidade"
               variant="secondary"
             >
-              {externalLinks.comunidade.label}
+              Quero acompanhar
             </Button>
             <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">
-              {externalLinks.comunidade.status}
+              formulário próprio no site com Tally como fallback
             </p>
           </Card>
         </div>
@@ -382,18 +274,19 @@ export default function CadastroPage() {
                 Escolha um caminho. A operação valida o próximo passo.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                O MVP agora tem uma central de conversão com formulários Tally conectados. A equipe UR valida cada
-                interesse antes de liberar agenda, polo, proposta, vaga ou participação.
+                O MVP agora tem uma central de conversão com formulários próprios, Google Sheets via Apps Script e Tally
+                como fallback temporário. A equipe UR valida cada interesse antes de liberar agenda, polo, proposta, vaga
+                ou participação.
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href={externalLinks.formularioAtleta.href} target="_blank">
+              <Button href="#atleta">
                 Sou atleta
               </Button>
-              <Button href={externalLinks.formularioEquipe.href} target="_blank" variant="secondary">
+              <Button href="#equipe" variant="secondary">
                 Tenho equipe
               </Button>
-              <Button href={externalLinks.formularioPatrocinador.href} target="_blank" variant="ghost">
+              <Button href="#patrocinador" variant="ghost">
                 Quero patrocinar
               </Button>
             </div>
