@@ -2,7 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useId, useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2, ShieldAlert } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Loader2, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { LeadField, LeadFormConfig } from "@/lib/lead-fields";
@@ -12,8 +12,10 @@ type LeadFormBaseProps = {
   config: LeadFormConfig;
 };
 
+type SubmitStatus = "idle" | "submitting" | "success" | "processing" | "error";
+
 type SubmitState = {
-  status: "idle" | "submitting" | "success" | "error";
+  status: SubmitStatus;
   message: string;
 };
 
@@ -38,6 +40,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
     const formData = new FormData(form);
     const honeypot = String(formData.get("website") ?? "").trim();
 
+    // Honeypot: bot silencioso
     if (honeypot) {
       setSubmitState({
         status: "success",
@@ -68,8 +71,10 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
     const result = await submitLead(payload);
 
     if (result.ok) {
+      // usedOpaqueFallback = true: o request foi enviado, mas a resposta é opaca (no-cors).
+      // Não é possível confirmar a gravação pelo browser — o usuário deve verificar a planilha.
       setSubmitState({
-        status: "success",
+        status: result.usedOpaqueFallback ? "processing" : "success",
         message: result.message,
       });
       form.reset();
@@ -108,9 +113,13 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
           </div>
 
           {!endpointConfigured ? (
-            <div className="mt-4 rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 p-4 text-sm leading-6 text-[#ffe98b]">
-              O endpoint do Google Sheets ainda não está configurado nesta build. Use o fallback Tally enquanto a URL
-              `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` não estiver ativa.
+            <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
+              <p className="font-black uppercase tracking-wide">Endpoint não configurado</p>
+              <p className="mt-1">
+                O Google Sheets ainda não está conectado nesta build. Use o botão abaixo para enviar
+                pelo Tally enquanto <code className="rounded bg-white/10 px-1">NEXT_PUBLIC_GOOGLE_SCRIPT_URL</code> não
+                estiver ativa.
+              </p>
             </div>
           ) : null}
 
@@ -121,6 +130,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
         </div>
 
         <form className="grid min-w-0 gap-4" onSubmit={handleSubmit}>
+          {/* Honeypot — invisível para humanos, visível para bots */}
           <div aria-hidden className="hidden">
             <label htmlFor={`${formId}-website`}>Website</label>
             <input autoComplete="off" id={`${formId}-website`} name="website" tabIndex={-1} type="text" />
@@ -137,26 +147,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
             operacional antes de liberar próximos passos.
           </div>
 
-          {submitState.message ? (
-            <div
-              className={`flex items-start gap-3 rounded-lg border p-4 text-sm font-semibold leading-6 ${
-                submitState.status === "success"
-                  ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-100"
-                  : submitState.status === "error"
-                    ? "border-red-300/25 bg-red-400/10 text-red-100"
-                    : "border-[#ffd84d]/25 bg-[#ffd84d]/10 text-[#ffe98b]"
-              }`}
-            >
-              {submitState.status === "success" ? (
-                <CheckCircle2 aria-hidden className="mt-0.5 h-5 w-5 shrink-0" />
-              ) : submitState.status === "error" ? (
-                <ShieldAlert aria-hidden className="mt-0.5 h-5 w-5 shrink-0" />
-              ) : (
-                <Loader2 aria-hidden className="mt-0.5 h-5 w-5 shrink-0 animate-spin" />
-              )}
-              <span>{submitState.message}</span>
-            </div>
-          ) : null}
+          {submitState.message ? <SubmitFeedback state={submitState} fallbackHref={config.fallbackHref} fallbackLabel={config.fallbackLabel} /> : null}
 
           <button
             className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
@@ -173,6 +164,54 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
         </form>
       </div>
     </Card>
+  );
+}
+
+function SubmitFeedback({
+  state,
+  fallbackHref,
+  fallbackLabel,
+}: {
+  state: SubmitState;
+  fallbackHref: string;
+  fallbackLabel: string;
+}) {
+  const isSuccess = state.status === "success";
+  const isProcessing = state.status === "processing";
+  const isError = state.status === "error";
+  const isSubmitting = state.status === "submitting";
+
+  const colorClass = isSuccess
+    ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-100"
+    : isProcessing
+      ? "border-amber-400/30 bg-amber-400/10 text-amber-200"
+      : isError
+        ? "border-red-300/25 bg-red-400/10 text-red-100"
+        : "border-[#ffd84d]/25 bg-[#ffd84d]/10 text-[#ffe98b]";
+
+  const Icon = isSuccess ? CheckCircle2 : isProcessing ? Clock : isError ? ShieldAlert : Loader2;
+  const iconClass = isSubmitting ? "animate-spin" : "";
+
+  return (
+    <div className={`grid gap-3 rounded-lg border p-4 text-sm font-semibold leading-6 ${colorClass}`}>
+      <div className="flex items-start gap-3">
+        <Icon aria-hidden className={`mt-0.5 h-5 w-5 shrink-0 ${iconClass}`} />
+        <span>{state.message}</span>
+      </div>
+
+      {/* Em processamento: mostrar Tally como confirmação alternativa */}
+      {isProcessing ? (
+        <a
+          className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest underline underline-offset-2 opacity-70 hover:opacity-100"
+          href={fallbackHref}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <ArrowRight aria-hidden className="h-3 w-3" />
+          {fallbackLabel} — confirme pelo Tally se quiser comprovante
+        </a>
+      ) : null}
+    </div>
   );
 }
 
