@@ -1,230 +1,296 @@
-# Captação UR — Google Sheets MVP v2
+# Captação UR — Google Sheets CRM MVP v2
 
-Fluxo:
-```
-Site UR → /cadastro (formulário próprio) → Apps Script v2 → Google Sheets nativo
-Tally preservado como fallback secundário
-```
+Fluxo oficial do MVP:
 
----
-
-## O que mudou na v2
-
-| Item | v1 (anterior) | v2 (atual) |
-|------|--------------|------------|
-| Planilha | Importada de .xlsx (causa problemas de estrutura) | **Nova planilha nativa Google Sheets** |
-| Apps Script | `docs/google-apps-script-webhook.js` | `docs/google-apps-script-webhook-v2.js` |
-| Chaves de perfil | Inglês (`athlete`, `team`...) | **Português** (`atleta`, `equipe`...) |
-| Formato de envio | JSON + text/plain | **URLSearchParams** (application/x-www-form-urlencoded) |
-| Campos no payload | Nested `{ profile, data: { ... } }` | **Flat** (todos no nível raiz) |
-| CORS | Tentativa redirect + fallback no-cors | **no-cors direto** (sem tentativa que sempre falha) |
-| Estado após envio | "success" verde mesmo quando opaco | **"processing" âmbar** + Tally como comprovante |
-| Logging no script | Básico | **Logger.log** detalhado em todos os pontos críticos |
-| Teste manual | Não existia | **5 funções testWrite** que gravam linhas reais |
-| Setup de abas | Manual | **setupSheets()** cria as 5 abas formatadas automaticamente |
-
----
-
-## Por que a planilha antiga não funcionava
-
-A planilha foi criada por importação de um arquivo `.xlsx`. Isso pode causar:
-
-- Nomes de abas diferentes dos esperados (espaços extras, encoding diferente).
-- `sheet.getLastRow()` retornando valores inesperados (linhas fantasmas do Excel).
-- Problemas de permissão no `SpreadsheetApp.openById()`.
-
-A solução é usar uma **planilha Google Sheets criada nativamente** (nunca importada).  
-A planilha .xlsx pode ser mantida como referência visual/histórica — não apague.
-
----
-
-## Por que o fetch falhava silenciosamente
-
-O fetch do site usava `redirect: "follow"` tentando ler a resposta. O Google Apps Script
-redireciona POSTs para `script.googleusercontent.com`, que não tem headers CORS. O browser
-lança CORS error e o código caía no fallback `no-cors`. Resultado: o request **chegava** ao
-GAS (por isso `doPost` mostrava "Concluído"), mas o código de confirmação no browser falhava.
-
-Na v2, usamos **`no-cors` direto** sem tentativa de leitura. Limitação aceita e comunicada
-claramente ao usuário: "Confirme na planilha antes de considerar o lead validado."
-
----
-
-## Passo a passo — configurar do zero
-
-### 1. Criar a planilha nativa
-
-1. Acesse [sheets.google.com](https://sheets.google.com) com a conta Google da operação UR.
-2. Clique em **+ Novo** → **Planilha em branco**.
-3. Renomeie para: **`Leads Ultimate Rivals — Captação MVP v2`**
-4. Copie o ID da URL:
-   ```
-   https://docs.google.com/spreadsheets/d/SEU_ID_AQUI/edit
-   ```
-   O ID é a sequência longa entre `/d/` e `/edit`.
-
-### 2. Colar o Apps Script v2
-
-1. Na planilha, acesse **Extensões → Apps Script**.
-2. Apague o conteúdo inicial do editor.
-3. Copie todo o conteúdo de `docs/google-apps-script-webhook-v2.js` e cole.
-4. No topo do script, substitua:
-   ```js
-   var SPREADSHEET_ID = "COLE_AQUI_O_ID_DA_PLANILHA";
-   ```
-   pelo ID copiado no passo anterior.
-5. Salve (**Ctrl+S** ou ícone de disquete). Nome do projeto: `UR Webhook v2`.
-
-### 3. Rodar setupSheets()
-
-1. No editor do Apps Script, selecione a função `setupSheets` no dropdown.
-2. Clique em **Executar**.
-3. Autorize o acesso quando solicitado (conta Google da operação UR).
-4. Verifique nos logs: deve aparecer "Criando/verificando aba" para as 5 abas.
-5. Abra a planilha — deve ter 5 abas: **Atletas, Equipes, Patrocinadores, Quadras, Comunidade**.
-
-### 4. Rodar testWriteAtleta()
-
-1. Selecione `testWriteAtleta` no dropdown.
-2. Clique em **Executar**.
-3. Verifique nos logs: `Lead gravado com ID: ATL-0001`.
-4. Abra a aba **Atletas** na planilha — deve ter uma linha com `TESTE Atleta v2`.
-
-Se a linha apareceu: o script está funcionando. Repita para os outros 4 perfis.
-
-### 5. Publicar como Web App
-
-1. Clique em **Implantar → Nova implantação**.
-2. Tipo: **App da Web**.
-3. Configure:
-   - **Executar como:** Eu (conta da operação UR)
-   - **Quem tem acesso:** Qualquer pessoa
-4. Clique em **Implantar**.
-5. Autorize novamente se solicitado.
-6. Copie a **URL de implantação** (termina em `/exec`).
-
-> **Atenção:** A URL de implantação é diferente a cada nova implantação. Sempre atualize a variável na Vercel após reimplantar.
-
-### 6. Testar o doGet
-
-Abra a URL `/exec` no browser. Deve retornar:
-```json
-{"ok":true,"message":"Webhook Ultimate Rivals v2 ativo.","ts":"..."}
+```text
+Site UR -> /cadastro -> formulário próprio -> Google Apps Script v2 -> Google Sheets CRM
 ```
 
-### 7. Configurar NEXT_PUBLIC_GOOGLE_SCRIPT_URL na Vercel
+Tally continua preservado como fallback secundário. O CRM operacional no Google Sheets é a base manual para triagem, contato, priorização e acompanhamento dos interessados.
 
-1. Acesse o dashboard da Vercel → projeto `ur-sistema` → **Settings → Environment Variables**.
-2. Adicione ou atualize:
-   ```
-   Name:  NEXT_PUBLIC_GOOGLE_SCRIPT_URL
-   Value: https://script.google.com/macros/s/SEU_ID_DE_IMPLANTACAO/exec
-   ```
-3. Selecione os ambientes: Production, Preview, Development.
-4. Salve.
+## Estrutura Final da Planilha CRM
 
-### 8. Reimplantar na Vercel
+A planilha nativa Google Sheets deve ter estas abas:
 
-1. Na Vercel, vá em **Deployments → Redeploy** (ou faça um push para o branch `main`).
-2. Aguarde o build completar.
+- `Dashboard`
+- `Atletas`
+- `Equipes`
+- `Patrocinadores`
+- `Quadras`
+- `Comunidade`
+- `Tarefas de Contato`
+- `Configurações`
+- `Origem dos Leads`
 
-### 9. Testar ponta a ponta no site
+O Apps Script `docs/google-apps-script-webhook-v2.js` cria as abas automaticamente ao executar `setupSheets()`.
 
-1. Acesse `https://ultimaterivals.org/cadastro`.
-2. Escolha o perfil **Atleta**.
-3. Preencha todos os campos obrigatórios com dados de teste.
-4. Envie o formulário.
-5. O site deve mostrar a mensagem âmbar: "Cadastro enviado para processamento..."
-6. Abra a planilha — deve ter aparecido uma nova linha na aba **Atletas**.
-7. Repita para os outros 4 perfis.
+## Abas de Leads
 
----
+As abas `Atletas`, `Equipes`, `Patrocinadores`, `Quadras` e `Comunidade` recebem leads enviados pelo site.
 
-## Estrutura do payload enviado pelo site
+Cada uma delas possui as colunas operacionais padrão:
 
-O site envia como `application/x-www-form-urlencoded` (sem preflight CORS):
+| Coluna | Função |
+|---|---|
+| ID do lead | ID sequencial por perfil: ATL, EQP, PAT, QDR ou COM |
+| Data de entrada | Data/hora do envio |
+| Perfil | Atleta, Equipe, Patrocinador, Quadra ou Comunidade |
+| Nome | Nome principal do lead, equipe, marca ou quadra |
+| WhatsApp | Canal principal de contato |
+| Cidade | Cidade informada |
+| Polo de interesse | Polo, região ou cidade de interesse |
+| Origem do lead | Fonte principal, geralmente Site / Cadastro UR |
+| UTM source | UTM capturada da URL |
+| UTM medium | UTM capturada da URL |
+| UTM campaign | UTM capturada da URL |
+| UTM content | UTM capturada da URL |
+| Status | Status operacional do lead |
+| Prioridade | Alta, Média, Baixa ou A definir |
+| Score | Pontuação manual de 0 a 100 |
+| Status sugerido | Fórmula baseada no score |
+| Responsável | Pessoa ou área responsável pelo contato |
+| Próximo passo | Ação seguinte da operação |
+| Próxima data de contato | Data programada para retorno |
+| Último contato | Última data de interação |
+| Tentativas de contato | Número manual de tentativas |
+| Observações | Registro operacional livre |
+| Motivo de arquivamento | Motivo quando o lead for arquivado |
+| Data de atualização | Data/hora da última gravação inicial |
 
-```
-profile=atleta
-source=site
-sourceLabel=Site+%2F+Cadastro+UR
-page=%2Fcadastro
-createdAt=2026-05-18T10%3A00%3A00.000Z
-utm_source=instagram
-utm_medium=bio
-utm_campaign=mvp_lancamento
-utm_content=
-statusInicial=Novo
-prioridadeInicial=A+definir
-responsavelInicial=Opera%C3%A7%C3%A3o+UR
-proximoPassoInicial=Triagem+inicial
-nomeCompleto=Jo%C3%A3o+Silva
-whatsapp=31999990000
-cidade=Belo+Horizonte
-...demais campos do perfil
-```
+Depois dessas colunas, cada aba recebe os campos específicos do formulário daquele perfil.
 
-O Apps Script v2 lê via `e.parameter` (flat, direto).
+## Status Permitidos
 
----
+- Novo
+- Em triagem
+- Qualificado
+- Aguardando contato
+- Contato feito
+- Aguardando retorno
+- Aprovado para próximo passo
+- Não prioritário agora
+- Arquivado
 
-## Abas e IDs gerados automaticamente
+## Prioridades Permitidas
 
-| Perfil | Aba | Prefixo | Exemplo de ID |
-|--------|-----|---------|---------------|
+- Alta
+- Média
+- Baixa
+- A definir
+
+## Score e Status Sugerido
+
+O score é manual, de 0 a 100.
+
+Classificação sugerida:
+
+| Score | Status sugerido |
+|---:|---|
+| 80 a 100 | Qualificado ou Aguardando contato |
+| 50 a 79 | Em triagem ou Qualificado |
+| 30 a 49 | Em triagem ou Não prioritário agora |
+| 0 a 29 | Não prioritário agora ou Arquivado |
+
+O Apps Script insere a fórmula de `Status sugerido` quando o lead é gravado. A decisão final continua sendo humana.
+
+## IDs por Perfil
+
+| Perfil | Aba | Prefixo | Exemplo |
+|---|---|---|---|
 | atleta | Atletas | ATL | ATL-0001 |
 | equipe | Equipes | EQP | EQP-0001 |
 | patrocinador | Patrocinadores | PAT | PAT-0001 |
 | quadra | Quadras | QDR | QDR-0001 |
 | comunidade | Comunidade | COM | COM-0001 |
 
----
+## Preenchimento Automático no Envio
 
-## Fallback Tally
+Ao receber um lead, o Apps Script preenche:
 
-O Tally continua preservado em `lib/links.ts`. Em qualquer estado do formulário:
-- Se o endpoint não estiver configurado: aparece aviso + botão Tally proeminente.
-- Se o envio for processado (estado âmbar): aparece link Tally para o usuário confirmar.
-- Se der erro de rede: aparece botão Tally como alternativa.
+- `Status`: Novo
+- `Prioridade`: A definir
+- `Responsável`: Operação UR
+- `Próximo passo`: Triagem inicial
+- `Tentativas de contato`: 0
+- `Data de atualização`: data atual
+- `Origem do lead`: Site / Cadastro UR, salvo quando enviado pelo site
 
-Links Tally atuais:
-- Atleta: `https://tally.so/r/RGb84l`
-- Equipe: `https://tally.so/r/2ElxKg`
-- Patrocinador: `https://tally.so/r/Y5JoVN`
-- Quadra: `https://tally.so/r/vGJ0zD`
-- Comunidade: `https://tally.so/r/WOKlpQ`
+## Dashboard
 
----
+O Dashboard é criado por `setupSheets()` com fórmulas para:
 
-## Quando reimplantar o Apps Script
+- Total de leads
+- Leads por perfil
+- Leads por status
+- Leads por prioridade
+- Leads novos da semana
+- Leads qualificados
+- Leads aprovados para próximo passo
+- Leads aguardando contato
+- Leads sem resposta
+- Origem com mais leads
+- Cidade/polo com mais interessados
+- Modalidade com mais interessados
+- Taxa de qualificação
+- Taxa de avanço para próximo passo
 
-Reimplantar sempre que:
-- Alterar qualquer função no script.
-- Adicionar ou remover campos.
-- Trocar a conta Google proprietária.
+### Fórmulas Principais
 
-Depois de reimplantar: copiar a nova URL `/exec` e atualizar `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` na Vercel.
+Total de leads:
 
----
+```text
+=SUM(COUNTA(Atletas!A2:A),COUNTA(Equipes!A2:A),COUNTA(Patrocinadores!A2:A),COUNTA(Quadras!A2:A),COUNTA(Comunidade!A2:A))
+```
 
-## Limitações conhecidas
+Leads novos da semana:
 
-- Sem backend próprio: não é possível confirmar a gravação no browser (resposta opaca).
-- Sem banco de dados: Google Sheets é o CRM operacional leve.
-- Sem Supabase, login ou pagamento.
-- Sem validação antifraude avançada.
-- Sem envio automático de confirmação por WhatsApp ou e-mail.
-- Honeypot básico (campo oculto `website`).
+```text
+=SUM(COUNTIFS(Atletas!B:B,">="&TODAY()-7),COUNTIFS(Equipes!B:B,">="&TODAY()-7),COUNTIFS(Patrocinadores!B:B,">="&TODAY()-7),COUNTIFS(Quadras!B:B,">="&TODAY()-7),COUNTIFS(Comunidade!B:B,">="&TODAY()-7))
+```
 
----
+Leads sem resposta:
 
-## Problemas comuns
+```text
+=SUM(COUNTIFS(Atletas!M:M,"Aguardando retorno",Atletas!T:T,"<"&TODAY()-7),COUNTIFS(Equipes!M:M,"Aguardando retorno",Equipes!T:T,"<"&TODAY()-7),COUNTIFS(Patrocinadores!M:M,"Aguardando retorno",Patrocinadores!T:T,"<"&TODAY()-7),COUNTIFS(Quadras!M:M,"Aguardando retorno",Quadras!T:T,"<"&TODAY()-7),COUNTIFS(Comunidade!M:M,"Aguardando retorno",Comunidade!T:T,"<"&TODAY()-7))
+```
 
-| Sintoma | Causa provável | Solução |
-|---------|---------------|---------|
-| doPost "Concluído" mas linha não cai | Planilha importada de .xlsx ou SPREADSHEET_ID errado | Criar planilha nativa + rodar setupSheets() |
-| Erro de permissão no script | Script não foi autorizado | Executar qualquer função e autorizar |
-| "Perfil inválido" no log | Profile em inglês chegando ao GAS v1 | Migrar para GAS v2 (aceita português) |
-| URL /exec retorna 404 | Script não publicado ou nova implantação não aplicada | Criar nova implantação e copiar URL |
-| Planilha não aparece no script | SPREADSHEET_ID incorreto | Conferir URL da planilha |
-| Linha gravada mas sem cabeçalhos | Aba já tinha linhas quando setupSheets() rodou | Limpar a aba e rodar setupSheets() novamente |
+Taxa de qualificação:
+
+```text
+Leads Qualificados / Total de Leads
+```
+
+Taxa de avanço:
+
+```text
+Leads Aprovados para Próximo Passo / Total de Leads
+```
+
+Observação: as fórmulas assumem a estrutura criada por `setupSheets()` em uma planilha nativa nova. Se a ordem das colunas for alterada manualmente, ajuste as letras das colunas.
+
+## Tarefas de Contato
+
+A aba `Tarefas de Contato` serve para controlar follow-ups e ações pendentes.
+
+Colunas:
+
+- ID da tarefa
+- ID do lead
+- Perfil
+- Nome
+- WhatsApp
+- Responsável
+- Status atual
+- Próxima data de contato
+- Tipo de contato
+- Mensagem enviada
+- Resultado
+- Data de conclusão
+
+Tipos de contato:
+
+- Primeiro contato
+- Follow-up
+- Envio de informação
+- Convite UR Play
+- Convite reunião
+- Proposta comercial
+- Validação de dados
+- Reativação
+
+## Configurações
+
+A aba `Configurações` guarda as listas usadas para validação:
+
+- Status
+- Prioridades
+- Perfis
+- Responsáveis
+- Tipos de contato
+- Origens
+- Classificação de score
+
+## Origem dos Leads
+
+A aba `Origem dos Leads` registra campanhas e canais.
+
+Colunas:
+
+- ID da campanha
+- Nome da campanha
+- Canal
+- Link usado
+- Página de destino
+- Público-alvo
+- Data de início
+- Data de fim
+- Leads gerados
+- Leads qualificados
+- Observações
+
+## Como Configurar do Zero
+
+1. Criar uma planilha Google Sheets nativa.
+2. Abrir `Extensões` -> `Apps Script`.
+3. Colar o conteúdo de `docs/google-apps-script-webhook-v2.js`.
+4. Substituir:
+
+```js
+var SPREADSHEET_ID = "COLE_AQUI_O_ID_DA_PLANILHA";
+```
+
+5. Salvar.
+6. Executar `setupSheets()`.
+7. Autorizar o script.
+8. Confirmar que as 9 abas foram criadas.
+9. Executar as funções de teste.
+10. Publicar como Web App.
+11. Configurar `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` na Vercel.
+
+## Como Testar Envio Real
+
+1. Acesse `https://ultimaterivals.org/cadastro`.
+2. Adicione UTMs de teste:
+
+```text
+?utm_source=qa&utm_medium=site&utm_campaign=crm_operacional
+```
+
+3. Envie um lead por perfil:
+
+- TESTE ATLETA UR
+- TESTE EQUIPE UR
+- TESTE PATROCINADOR UR
+- TESTE QUADRA UR
+- TESTE COMUNIDADE UR
+
+4. Verifique:
+
+- Caiu na aba correta.
+- Gerou ID correto.
+- Status veio como `Novo`.
+- Prioridade veio como `A definir`.
+- Responsável veio como `Operação UR`.
+- Próximo passo veio como `Triagem inicial`.
+- Tentativas veio como `0`.
+- UTMs foram preenchidas.
+- Fórmula de status sugerido foi aplicada.
+
+## Limitações
+
+- Google Sheets é o CRM operacional leve, não um banco de dados robusto.
+- O envio usa `no-cors`; o navegador não consegue confirmar a gravação lendo a resposta.
+- A validação final deve ser feita conferindo a planilha.
+- Não há login, backend próprio, Supabase ou pagamento.
+- Não há automação nativa de WhatsApp.
+- O score é manual.
+- O dashboard depende da manutenção da estrutura de colunas.
+
+## Documentos Relacionados
+
+- `docs/crm-operacional-leads.md`
+- `docs/checklist-qa-crm-leads.md`
+- `docs/playbook-triagem-leads.md`
+- `docs/mensagens-primeiro-contato.md`
+- `docs/lead-scoring-ur.md`
+- `docs/rotina-operacional-leads.md`

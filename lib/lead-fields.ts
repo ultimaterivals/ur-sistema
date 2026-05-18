@@ -39,13 +39,16 @@ export type AthleteLead = BaseLead & {
   instagram?: string;
   poloInteresse?: string;
   modalidadePrincipal?: string;
+  posicao?: string;
+  formatosJogo?: string;
   nivelPercebido?: string;
   temEquipe?: string;
   objetivoPrincipal?: string;
   interesseUrPlay?: string;
   interesseTorneios?: string;
   interesseCtUr?: string;
-  disponibilidade?: string;
+  diasDisponiveis?: string;
+  horarioDisponivel?: string;
   pontoMelhoria?: string;
 };
 
@@ -56,6 +59,7 @@ export type TeamLead = BaseLead & {
   instagramEquipe?: string;
   cidadePolo?: string;
   modalidade?: string;
+  formatosJogo?: string;
   elencoDefinido?: string;
   quantidadeAtletas?: string;
   nivelPercebido?: string;
@@ -63,7 +67,8 @@ export type TeamLead = BaseLead & {
   objetivoPrincipal?: string;
   interesseUrPlay?: string;
   interesseTorneiosOficiais?: string;
-  disponibilidade?: string;
+  diasDisponiveis?: string;
+  horarioDisponivel?: string;
   historiaObjetivo?: string;
 };
 
@@ -136,6 +141,27 @@ export type LeadPayload = {
 const poloOptions = ["Belo Horizonte", "Contagem", "Betim", "Outro", "Polo em formação"] as const;
 const modalidadeOptions = ["Vôlei de praia", "Futevôlei", "Futset", "Futebol", "Beach tennis", "Outra"] as const;
 const yesMaybeOptions = ["Sim", "Talvez", "Quero entender melhor"] as const;
+const posicaoOptions = [
+  "Levantador(a)",
+  "Líbero",
+  "Ponteiro(a)",
+  "Central",
+  "Oposto(a)",
+  "Universal / Todos",
+  "Atacante (praia/futevôlei)",
+  "Defensor(a) (praia/futevôlei)",
+  "Ainda definindo",
+] as const;
+const formatosOptions = [
+  "2x2 (praia / areia)",
+  "4x4",
+  "6x6 (quadra)",
+  "Duplas (futevôlei)",
+  "Trincas (futevôlei)",
+  "Múltiplos formatos",
+] as const;
+const diasOptions = ["Dias de semana", "Fins de semana", "Ambos (semana + fim de semana)", "A combinar"] as const;
+const horarioOptions = ["Manhã (6h – 12h)", "Tarde (12h – 18h)", "Noite (18h – 22h+)", "Flexível"] as const;
 
 const authorizationField = {
   name: "autorizacaoContato",
@@ -164,6 +190,8 @@ export const leadFormConfigs = {
       { name: "cidade", label: "Cidade", type: "text", required: true },
       { name: "poloInteresse", label: "Polo de interesse", type: "select", options: poloOptions },
       { name: "modalidadePrincipal", label: "Modalidade principal", type: "select", options: modalidadeOptions },
+      { name: "posicao", label: "Posição principal", type: "select", options: posicaoOptions },
+      { name: "formatosJogo", label: "Formatos que joga", type: "select", options: formatosOptions },
       {
         name: "nivelPercebido",
         label: "Nível percebido",
@@ -180,7 +208,8 @@ export const leadFormConfigs = {
       { name: "interesseUrPlay", label: "Interesse em UR Play", type: "select", options: yesMaybeOptions },
       { name: "interesseTorneios", label: "Interesse em torneios", type: "select", options: yesMaybeOptions },
       { name: "interesseCtUr", label: "Interesse em CT UR", type: "select", options: yesMaybeOptions },
-      { name: "disponibilidade", label: "Disponibilidade", type: "textarea", required: true },
+      { name: "diasDisponiveis", label: "Dias disponíveis", type: "select", options: diasOptions, required: true },
+      { name: "horarioDisponivel", label: "Horário disponível", type: "select", options: horarioOptions, required: true },
       { name: "pontoMelhoria", label: "Ponto de melhoria como atleta", type: "textarea" },
       authorizationField,
     ],
@@ -205,6 +234,7 @@ export const leadFormConfigs = {
       { name: "cidade", label: "Cidade", type: "text", required: true },
       { name: "cidadePolo", label: "Cidade/polo", type: "select", options: poloOptions },
       { name: "modalidade", label: "Modalidade", type: "select", options: modalidadeOptions },
+      { name: "formatosJogo", label: "Formatos que a equipe joga", type: "select", options: formatosOptions },
       {
         name: "elencoDefinido",
         label: "Elenco definido?",
@@ -227,7 +257,8 @@ export const leadFormConfigs = {
       },
       { name: "interesseUrPlay", label: "Interesse em UR Play", type: "select", options: yesMaybeOptions },
       { name: "interesseTorneiosOficiais", label: "Interesse em torneios oficiais", type: "select", options: yesMaybeOptions },
-      { name: "disponibilidade", label: "Disponibilidade", type: "textarea", required: true },
+      { name: "diasDisponiveis", label: "Dias disponíveis para jogar", type: "select", options: diasOptions, required: true },
+      { name: "horarioDisponivel", label: "Horário disponível", type: "select", options: horarioOptions, required: true },
       { name: "historiaObjetivo", label: "História/objetivo da equipe", type: "textarea" },
       authorizationField,
     ],
