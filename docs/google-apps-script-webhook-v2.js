@@ -359,11 +359,12 @@ function doPost(e) {
     var leadId = buildLeadId(sheet, config.prefix);
     var now = new Date();
     var rowNumber = sheet.getLastRow() + 1;
-    var row = headers.map(function (header) {
+    var actualHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var row = actualHeaders.map(function (header) {
       return resolveValue(header, payload, config, leadId, now);
     });
 
-    sheet.appendRow(row);
+    sheet.getRange(rowNumber, 1, 1, row.length).setValues([row]);
     applyScoreFormula(sheet, rowNumber);
 
     Logger.log("Lead gravado com ID: " + leadId);
