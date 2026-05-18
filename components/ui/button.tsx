@@ -11,6 +11,8 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   ariaLabel?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
 };
 
 const variants: Record<ButtonVariant, string> = {
@@ -29,6 +31,8 @@ export function Button({
   className,
   type = "button",
   ariaLabel,
+  target,
+  rel,
 }: ButtonProps) {
   const classes = cn(
     "inline-flex min-h-12 max-w-full items-center justify-center gap-2 rounded-lg border px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]",
@@ -37,8 +41,10 @@ export function Button({
   );
 
   if (href) {
+    const safeRel = target === "_blank" ? (rel ?? "noopener noreferrer") : rel;
+
     return (
-      <Link aria-label={ariaLabel} className={classes} href={href}>
+      <Link aria-label={ariaLabel} className={classes} href={href} rel={safeRel} target={target}>
         {children}
       </Link>
     );

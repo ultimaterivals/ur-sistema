@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { conversionRoutes, externalLinks } from "@/lib/links";
+import { externalLinks } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Cadastro UR | Entre no Ecossistema Ultimate Rivals",
@@ -32,6 +32,7 @@ type PathCard = {
   audience: string;
   description: string;
   href: string;
+  isExternal: boolean;
   status: string;
 };
 
@@ -44,6 +45,7 @@ const pathCards: PathCard[] = [
     description:
       "Para quem quer entrar pelo UR Play, construir histórico, disputar ranking, buscar equipe, mídia, CT UR e recompensas futuras.",
     href: externalLinks.formularioAtleta.href,
+    isExternal: externalLinks.formularioAtleta.isConfigured,
     status: externalLinks.formularioAtleta.status,
   },
   {
@@ -54,6 +56,7 @@ const pathCards: PathCard[] = [
     description:
       "Para capitães e representantes que querem preparar uma equipe oficial, com validação de elenco, identidade e temporada.",
     href: externalLinks.formularioEquipe.href,
+    isExternal: externalLinks.formularioEquipe.isConfigured,
     status: externalLinks.formularioEquipe.status,
   },
   {
@@ -64,6 +67,7 @@ const pathCards: PathCard[] = [
     description:
       "Para marcas que querem entrar na jornada do atleta, ativar eventos, ranking, UR Market, mídia, CT UR e comunidade.",
     href: externalLinks.formularioPatrocinador.href,
+    isExternal: externalLinks.formularioPatrocinador.isConfigured,
     status: externalLinks.formularioPatrocinador.status,
   },
   {
@@ -74,6 +78,7 @@ const pathCards: PathCard[] = [
     description:
       "Para quadras interessadas em se tornar polo UR, receber ativações, organizar agenda e participar da expansão regional.",
     href: externalLinks.formularioQuadra.href,
+    isExternal: externalLinks.formularioQuadra.isConfigured,
     status: externalLinks.formularioQuadra.status,
   },
   {
@@ -84,27 +89,28 @@ const pathCards: PathCard[] = [
     description:
       "Para quem quer acompanhar notícias, mídia, ranking em formação, bastidores, eventos e próximos passos do ecossistema.",
     href: externalLinks.comunidade.href,
+    isExternal: externalLinks.comunidade.isConfigured,
     status: externalLinks.comunidade.status,
   },
 ];
 
 const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
-  "O link real será conectado após validação operacional.",
+  "Você abre o formulário Tally oficial em uma nova aba.",
   "A equipe UR valida agenda, polo, categoria e prioridade.",
-  "A orientação oficial é liberada quando a operação estiver pronta.",
+  "O cadastro não garante vaga, parceria, patrocínio ou participação imediata.",
 ] as const;
 
 const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Ainda não. Esta central é visual e estratégica. Os links reais serão conectados após validação operacional.",
+      "Sim, nos formulários Tally conectados. O envio registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata.",
   },
   {
     question: "Existe backend, login ou banco de dados?",
     answer:
-      "Não nesta fase. O MVP mantém a captação organizada sem criar backend, login, pagamento, Supabase ou banco de dados.",
+      "Não nesta fase. O MVP usa links externos do Tally e mantém a captação organizada sem criar backend, login, pagamento, Supabase ou banco de dados.",
   },
   {
     question: "Posso entrar como atleta sem equipe?",
@@ -114,7 +120,7 @@ const quickFaq = [
   {
     question: "Patrocinadores e quadras já podem fechar acordo?",
     answer:
-      "Não por esta página. Interesse comercial e quadras parceiras dependem de proposta, aprovação e validação operacional.",
+      "Podem registrar interesse pelo formulário correto. Acordos, propostas, ativações e polos dependem de aprovação e validação operacional.",
   },
 ] as const;
 
@@ -153,8 +159,13 @@ function PathCard({ item, featured = false }: { item: PathCard; featured?: boole
       <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">{item.title}</h3>
       <p className="mt-2 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#ffe98b]">{item.audience}</p>
       <p className="mt-4 flex-1 text-sm leading-6 text-white/70">{item.description}</p>
-      <Button className="mt-6 w-full" href={item.href} variant={featured ? "primary" : "secondary"}>
-        Escolher caminho
+      <Button
+        className="mt-6 w-full"
+        href={item.href}
+        target={item.isExternal ? "_blank" : undefined}
+        variant={featured ? "primary" : "secondary"}
+      >
+        {item.title}
         <ArrowRight aria-hidden className="h-4 w-4" />
       </Button>
       <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">{item.status}</p>
@@ -227,7 +238,7 @@ export default function CadastroPage() {
 
       <PageSection id="caminhos">
         <SectionHeader
-          description="Cada card representa uma intenção diferente. Os links reais ficam centralizados em configuração para serem conectados quando a operação validar formulários e canais."
+          description="Cada card representa uma intenção diferente. Os formulários oficiais ficam centralizados em configuração e abrem em nova aba via Tally."
           eyebrow="Escolha seu caminho"
           title="Uma porta de entrada para cada perfil."
         />
@@ -242,9 +253,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="O MVP já organiza a intenção. A conexão real com WhatsApp, Instagram, comunidade e formulários entra depois da validação operacional."
+          description="O MVP já organiza a intenção com formulários Tally para os caminhos principais. WhatsApp e Instagram seguem preparados para conexão oficial futura."
           eyebrow="Depois do interesse"
-          title="Captação simples, sem prometer automação que ainda não existe."
+          title="Captação real, validação operacional antes do próximo passo."
         />
         <div className="grid gap-3 md:grid-cols-4">
           {nextSteps.map((item, index) => (
@@ -260,9 +271,9 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="Todos os links externos abaixo são placeholders seguros. Eles existem para deixar a arquitetura pronta sem coletar dados antes da operação."
+          description="Os formulários de atleta, equipe, patrocinador, quadra e comunidade já usam Tally. O cadastro registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata."
           eyebrow="Aviso de validação"
-          title="Links reais entram depois da validação operacional."
+          title="Cadastro conectado. Aprovação continua em validação."
         />
         <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]" premium>
           <div>
@@ -270,11 +281,11 @@ export default function CadastroPage() {
               <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-5 text-[clamp(1.9rem,7vw,2.45rem)] font-black uppercase leading-[0.98] text-white">
-              Nada é enviado ainda.
+              Enviar não garante aprovação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase não cria backend, banco de dados, Supabase, login, pagamento, formulário funcional complexo ou
-              captação automática.
+              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. A equipe UR ainda valida agenda,
+              polo, perfil, proposta e prioridade antes de liberar qualquer próximo passo.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -292,9 +303,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
-          description="Os botões abaixo já têm lugar na experiência, mas apontam para o aviso de validação até os canais oficiais serem conectados."
+          description="A comunidade já tem formulário Tally. O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado."
           eyebrow="CTAs de conversão"
-          title="WhatsApp e comunidade preparados para conexão real."
+          title="WhatsApp preparado e comunidade conectada."
         />
         <div className="grid gap-5 md:grid-cols-2">
           <Card className="p-5 md:p-6" premium>
@@ -322,7 +333,12 @@ export default function CadastroPage() {
             <p className="mt-4 text-sm leading-6 text-white/70">
               Espaço futuro para quem quer acompanhar temporada, mídia, bastidores, eventos e próximos passos do UR.
             </p>
-            <Button className="mt-6 w-full" href={externalLinks.comunidade.href} variant="secondary">
+            <Button
+              className="mt-6 w-full"
+              href={externalLinks.comunidade.href}
+              target="_blank"
+              variant="secondary"
+            >
               {externalLinks.comunidade.label}
             </Button>
             <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">
@@ -334,7 +350,7 @@ export default function CadastroPage() {
 
       <PageSection id="faq">
         <SectionHeader
-          description="Perguntas rápidas para deixar a conversão clara sem criar formulário real ou integração antecipada."
+          description="Perguntas rápidas para deixar a conversão clara sem criar backend, login, pagamento ou integração complexa nesta fase."
           eyebrow="FAQ rápido"
           title="Antes de escolher, entenda a fase atual."
         />
@@ -366,16 +382,18 @@ export default function CadastroPage() {
                 Escolha um caminho. A operação valida o próximo passo.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                O MVP agora tem uma central de conversão preparada para conectar canais reais quando a agenda, os polos,
-                os formulários e a comunidade forem oficialmente validados.
+                O MVP agora tem uma central de conversão com formulários Tally conectados. A equipe UR valida cada
+                interesse antes de liberar agenda, polo, proposta, vaga ou participação.
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href={conversionRoutes.atleta}>Sou atleta</Button>
-              <Button href={conversionRoutes.equipe} variant="secondary">
+              <Button href={externalLinks.formularioAtleta.href} target="_blank">
+                Sou atleta
+              </Button>
+              <Button href={externalLinks.formularioEquipe.href} target="_blank" variant="secondary">
                 Tenho equipe
               </Button>
-              <Button href={conversionRoutes.patrocinador} variant="ghost">
+              <Button href={externalLinks.formularioPatrocinador.href} target="_blank" variant="ghost">
                 Quero patrocinar
               </Button>
             </div>
