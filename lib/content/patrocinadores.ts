@@ -333,6 +333,6 @@ export const sponsorFaq = [
   {
     question: "Como registrar interesse comercial agora?",
     answer:
-      "O formulário é visual nesta fase. Ele demonstra o fluxo de interesse, proposta e aprovação sem backend, CRM ou envio real.",
+      "A central de cadastro registra o interesse comercial para triagem. Proposta, valores, entregas e aprovação dependem de validação oficial.",
   },
 ] as const;

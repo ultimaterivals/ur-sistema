@@ -35,7 +35,7 @@ export const urPlayHighlights = [
   "agenda em formação",
   "polo em formação",
   "ranking em formação",
-  "inscrição será liberada após validação",
+  "participação sujeita à validação",
 ] as const;
 
 export const urPlayIntroCards: URPlayCard[] = [
@@ -99,7 +99,7 @@ export const urPlayJourneySteps: URPlayStep[] = [
   {
     step: "01",
     title: "Registre interesse",
-    description: "O formulário visual indica a intenção do atleta, sem envio real nesta etapa do MVP.",
+    description: "O cadastro de interesse registra a intenção do atleta para triagem operacional da equipe UR.",
   },
   {
     step: "02",
@@ -260,7 +260,7 @@ export const upcomingURPlays = [
     title: "UR Play por nível",
     modality: "formato em formação",
     location: "polo em formação",
-    status: "inscrição será liberada após validação",
+    status: "participação sujeita à validação",
   },
   {
     title: "UR Play equipes",
@@ -289,7 +289,7 @@ export const urPlayFaq = [
   {
     question: "UR Play já tem inscrição ativa?",
     answer:
-      "Ainda não. Nesta fase, a página mostra a estrutura da entrada oficial e usa o placeholder inscrição será liberada após validação.",
+      "Ainda não. Nesta fase, a página mostra a estrutura da entrada oficial e direciona o atleta para cadastro de interesse com participação sujeita à validação.",
   },
   {
     question: "UR Play garante entrada no ranking?",
@@ -304,7 +304,7 @@ export const urPlayFaq = [
   {
     question: "UR Coins já têm valor real?",
     answer:
-      "Nesta etapa, não. UR Coins aparecem como conceito visual planejado para recompensas futuras do ecossistema.",
+      "Nesta etapa, não. UR Coins aparecem como conceito planejado para recompensas futuras do ecossistema.",
   },
   {
     question: "Polos já estão confirmados?",

@@ -800,13 +800,19 @@ function buildLeadId(sheet, prefix) {
 }
 
 function resolveValue(header, payload, config, leadId, now) {
-  if (config.fields[header]) {
-    return payload[config.fields[header]] || "";
+  var configField = getConfigFieldForHeader(header, config);
+  if (configField) {
+    return payload[configField] || "";
+  }
+
+  if (Object.prototype.hasOwnProperty.call(payload, header)) {
+    return payload[header] || "";
   }
 
   var name = payload[config.nameField] || payload.nomeCompleto || payload.responsavel || "";
   var city = payload[config.cityField] || payload.cidade || payload.cidadePolo || payload.cidadeRegiao || "";
   var polo = payload[config.poloField] || payload.poloInteresse || payload.cidadePolo || payload.cidadeRegiao || "";
+  var modality = payload.modalidadePrincipal || payload.modalidade || payload.modalidadesComportadas || payload.modalidadesInteresse || "";
 
   var automaticValues = {
     "ID do lead": leadId,
@@ -835,7 +841,106 @@ function resolveValue(header, payload, config, leadId, now) {
     "Data de atualização": now,
   };
 
-  return Object.prototype.hasOwnProperty.call(automaticValues, header) ? automaticValues[header] : "";
+  if (Object.prototype.hasOwnProperty.call(automaticValues, header)) {
+    return automaticValues[header];
+  }
+
+  var normalizedHeader = normalizeHeader(header);
+  var legacyValues = {
+    iddolead: leadId,
+    idlead: leadId,
+    leadid: leadId,
+    criadoem: payload.createdAt || now,
+    createdem: payload.createdAt || now,
+    dataentrada: payload.createdAt || now,
+    datadeentrada: payload.createdAt || now,
+    perfil: config.profileLabel,
+    profile: config.profileLabel,
+    nome: name,
+    nomecompleto: name,
+    nomedaequipe: name,
+    empresamarca: name,
+    nomequadra: name,
+    whatsapp: payload.whatsapp || "",
+    telefone: payload.whatsapp || "",
+    cidade: city,
+    polo: polo,
+    polodeinteresse: polo,
+    origem: payload.sourceLabel || "Site / Cadastro UR",
+    origemdolead: payload.sourceLabel || "Site / Cadastro UR",
+    utm: payload.utm_source || "",
+    utmsource: payload.utm_source || "",
+    utmmedium: payload.utm_medium || "",
+    utmcampaign: payload.utm_campaign || "",
+    utmcontent: payload.utm_content || "",
+    status: payload.statusInicial || "Novo",
+    prioridade: payload.prioridadeInicial || "A definir",
+    score: "",
+    statussugerido: "",
+    responsavel: payload.responsavelInicial || "Operação UR",
+    responsavelcontato: payload.responsavelInicial || "Operação UR",
+    responsavelpelocontato: payload.responsavelInicial || "Operação UR",
+    proximopasso: payload.proximoPassoInicial || "Triagem inicial",
+    proximadatacontato: "",
+    ultimocontato: "",
+    tentativasdecontato: 0,
+    observacoes: "Lead captado pelo formulário próprio do site.",
+    observacao: "Lead captado pelo formulário próprio do site.",
+    motivodearquivamento: "",
+    datadeatualizacao: now,
+    instagram: payload.instagram || payload.instagramEquipe || payload.instagramSite || "",
+    modalidade: modality,
+    modalidadeprincipal: modality,
+    nivel: payload.nivelPercebido || "",
+    nivelpercebido: payload.nivelPercebido || "",
+    posicao: payload.posicao || "",
+    posicaoprincipal: payload.posicao || "",
+    timeatual: payload.temEquipe || payload.nomeEquipe || "",
+    objetivo: payload.objetivoPrincipal || "",
+    objetivoprincipal: payload.objetivoPrincipal || "",
+  };
+
+  if (Object.prototype.hasOwnProperty.call(legacyValues, normalizedHeader)) {
+    return legacyValues[normalizedHeader];
+  }
+
+  var payloadKey = findPayloadKeyByNormalizedName(payload, normalizedHeader);
+  return payloadKey ? payload[payloadKey] || "" : "";
+}
+
+function getConfigFieldForHeader(header, config) {
+  if (config.fields[header]) {
+    return config.fields[header];
+  }
+
+  var normalizedHeader = normalizeHeader(header);
+  var fieldHeaders = Object.keys(config.fields);
+  for (var i = 0; i < fieldHeaders.length; i += 1) {
+    if (normalizeHeader(fieldHeaders[i]) === normalizedHeader) {
+      return config.fields[fieldHeaders[i]];
+    }
+  }
+
+  return null;
+}
+
+function findPayloadKeyByNormalizedName(payload, normalizedHeader) {
+  var keys = Object.keys(payload);
+  for (var i = 0; i < keys.length; i += 1) {
+    if (normalizeHeader(keys[i]) === normalizedHeader) {
+      return keys[i];
+    }
+  }
+
+  return null;
+}
+
+function normalizeHeader(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
 }
 
 function applyScoreFormula(sheet, rowNumber) {

@@ -41,7 +41,7 @@ export const athleteHeroBadges = [
   "ranking em formação",
   "histórico entra após participação oficial",
   "oportunidades entram após validação",
-  "cadastro será liberado após validação",
+  "cadastro de interesse aberto",
 ] as const;
 
 export const protagonistCards: AthleteCard[] = [
@@ -70,7 +70,7 @@ export const athleteJourneySteps: AthleteJourneyStep[] = [
     step: "01",
     title: "UR Play",
     description: "Entrada planejada para o atleta ser observado, participar da jornada e iniciar histórico oficial.",
-    status: "cadastro será liberado após validação",
+    status: "cadastro de interesse aberto",
     icon: Zap,
   },
   {
@@ -254,7 +254,7 @@ export const interestFields = [
   },
   {
     label: "Status do cadastro",
-    value: "cadastro será liberado após validação",
+    value: "cadastro de interesse aberto",
   },
 ] as const;
 

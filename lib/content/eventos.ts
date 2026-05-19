@@ -39,7 +39,7 @@ export const eventHeroBadges = [
   "agenda em formação",
   "eventos entram após confirmação oficial",
   "polo em formação",
-  "inscrição será liberada após validação",
+  "participação sujeita à validação",
   "temporada em formação",
 ] as const;
 
@@ -109,7 +109,7 @@ export const eventFocusBlocks: EventFocus[] = [
     bullets: [
       "atleta demonstra interesse",
       "equipe UR valida agenda e polo",
-      "inscrição será liberada após validação",
+      "participação sujeita à validação",
       "ranking em formação começa com dados oficiais",
     ],
   },
@@ -227,7 +227,7 @@ export const agendaPreviewRows = [
   {
     label: "UR Play",
     status: "agenda em formação",
-    note: "inscrição será liberada após validação",
+    note: "participação sujeita à validação",
   },
   {
     label: "Mini torneio",
@@ -289,7 +289,7 @@ export const interestFields = [
   },
   {
     label: "Status da inscrição",
-    value: "inscrição será liberada após validação",
+    value: "participação sujeita à validação",
   },
 ] as const;
 

@@ -205,7 +205,7 @@ export const redeemFlow = [
   "Atleta acumula participação validada",
   "UR Coins são calculadas por critérios oficiais",
   "Benefício aprovado entra na vitrine",
-  "Resgate real só será liberado após validação",
+  "Resgate real depende de validação",
 ] as const;
 
 export const ecosystemRelationCards: MarketCard[] = [

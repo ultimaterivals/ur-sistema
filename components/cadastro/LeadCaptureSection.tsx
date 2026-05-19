@@ -80,7 +80,7 @@ export function LeadCaptureSection() {
     >
       <div className="mx-auto max-w-7xl min-w-0">
         <SectionHeader
-          description="Escolha um caminho para abrir o formulário próprio no site. O envio vai para Google Sheets quando o endpoint estiver configurado, com Tally preservado como fallback temporário."
+          description="Escolha um caminho para abrir o formulário próprio no site. O cadastro segue para triagem operacional em Google Sheets, com Tally preservado como fallback temporário."
           eyebrow="Escolha seu caminho"
           title="Uma porta de entrada para cada perfil."
         />

@@ -175,7 +175,7 @@ export default function EquipesPage() {
                   <Shield aria-hidden className="h-6 w-6 text-[#ffd84d]" />
                 </span>
                 <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                  registro será liberado após validação
+                  registro sujeito à validação
                 </span>
               </div>
               <div className="my-6 grid place-items-center">
@@ -240,10 +240,10 @@ export default function EquipesPage() {
         <SectionHeader
           action={
             <Button href="/cadastro#equipe" variant="secondary">
-              Registrar interesse visual
+              Registrar interesse
             </Button>
           }
-          description="Registro oficial depende de validação. A página mostra o caminho previsto antes de qualquer backend, login ou banco de dados."
+          description="Registro oficial depende de validação. A página orienta o caminho da equipe antes de agenda, ranking coletivo e operação ativa."
           eyebrow="Como entrar no UR"
           title="Da intenção do capitão ao ranking coletivo."
         />
@@ -388,9 +388,9 @@ export default function EquipesPage() {
 
       <PageSection id="interesse">
         <SectionHeader
-          description="Este formulário é apenas visual no MVP. Ele demonstra o fluxo desejado sem gravar dados, enviar informações ou integrar backend."
+          description="O cadastro de interesse de equipe acontece pela central oficial. A equipe UR valida capitão, elenco, polo, modalidade e próximos passos."
           eyebrow="Interesse de equipe"
-          title="Registro visual de equipe oficial."
+          title="Registro de interesse de equipe oficial."
         />
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-stretch">
           <Card className="flex min-h-[340px] flex-col" premium>
@@ -398,10 +398,10 @@ export default function EquipesPage() {
               <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-6 text-[clamp(1.9rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Registro será liberado após validação.
+              Registro sujeito à validação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Cadastro real de equipe depende de regulamento, política de dados, critérios de elegibilidade e operação ativa.
+              Cadastro de equipe depende de regulamento, política de dados, critérios de elegibilidade e operação ativa.
             </p>
             <div className="mt-6 grid gap-2">
               {teamInterestFlow.map((item, index) => (
@@ -417,7 +417,7 @@ export default function EquipesPage() {
               ))}
             </div>
             <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-              sem envio real, sem login, sem pagamento e sem banco de dados nesta fase
+              cadastro enviado para triagem operacional pela central UR
             </p>
           </Card>
 
@@ -427,30 +427,26 @@ export default function EquipesPage() {
                 <ClipboardList aria-hidden className="h-5 w-5 text-[#ffd84d]" />
               </span>
               <div>
-                <h3 className="text-lg font-black uppercase leading-tight text-white">Pré-registro visual</h3>
-                <p className="mt-1 text-sm text-white/60">campos bloqueados para evitar coleta real de dados</p>
+                <h3 className="text-lg font-black uppercase leading-tight text-white">Cadastro de interesse aberto</h3>
+                <p className="mt-1 text-sm text-white/60">preenchimento pela central oficial de cadastro</p>
               </div>
             </div>
-            <form aria-label="Formulário visual de interesse de equipe" className="grid gap-3">
+            <div aria-label="Resumo do cadastro de interesse de equipe" className="grid gap-3">
               {teamInterestFields.map((field) => (
                 <label className="grid gap-2" key={field}>
                   <span className="text-xs font-black uppercase tracking-[0.12em] text-[#ffe98b]">{field}</span>
                   <input
                     className="min-h-12 rounded-lg border border-white/10 bg-black/35 px-4 text-sm text-white/70 outline-none placeholder:text-white/35"
-                    placeholder="campo visual em formação"
+                    placeholder="preenchimento na central de cadastro"
                     readOnly
                     type="text"
                   />
                 </label>
               ))}
-              <button
-                className="mt-2 min-h-12 cursor-not-allowed rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 px-5 py-3 text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]/75"
-                disabled
-                type="button"
-              >
-                registro será liberado após validação
-              </button>
-            </form>
+              <Button className="mt-2 w-full" href="/cadastro#equipe">
+                Abrir cadastro de equipe
+              </Button>
+            </div>
           </Card>
         </div>
       </PageSection>
@@ -494,7 +490,7 @@ export default function EquipesPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="/cadastro#equipe">Registrar interesse visual</Button>
+              <Button href="/cadastro#equipe">Registrar interesse</Button>
               <Button href="/ranking" variant="secondary">
                 Entender ranking
               </Button>

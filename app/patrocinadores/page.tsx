@@ -125,11 +125,11 @@ function CommercialInterestPanel() {
           <ClipboardCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
         </span>
         <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-          Interesse comercial sem envio real.
+          Interesse comercial em triagem.
         </h3>
         <p className="mt-4 text-sm leading-6 text-white/72">
-          Este bloco demonstra a etapa de conversa comercial. Não há backend, CRM, pagamento, contrato ou formulário
-          funcional nesta fase.
+          A central de cadastro registra o interesse comercial. A equipe UR avalia aderência, proposta, polo e próximos
+          passos antes de qualquer acordo.
         </p>
         <div className="mt-5 grid gap-2">
           {commercialInterestFlow.map((item, index) => (
@@ -148,8 +148,8 @@ function CommercialInterestPanel() {
 
       <Card className="p-4 md:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Formulário visual</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">sem backend real</span>
+          <Badge>Cadastro comercial</Badge>
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">triagem operacional</span>
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {commercialFormFields.map((field) => (
@@ -166,15 +166,11 @@ function CommercialInterestPanel() {
         <textarea
           className="mt-4 min-h-28 w-full resize-none rounded-lg border border-white/10 bg-black/35 p-4 text-sm font-bold leading-6 text-white/74 outline-none"
           readOnly
-          value="Mensagem comercial será estruturada após contato oficial. Este MVP não envia dados."
+          value="Mensagem comercial enviada para triagem operacional. Proposta, valores e entregas dependem de validação oficial."
         />
-        <button
-          className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]"
-          disabled
-          type="button"
-        >
-          Envio será liberado após validação
-        </button>
+        <Button className="mt-4 w-full" href="/cadastro#patrocinador">
+          Abrir cadastro comercial
+        </Button>
       </Card>
     </div>
   );
@@ -393,7 +389,7 @@ export default function PatrocinadoresPage() {
 
       <PageSection className="bg-[#07080c]" id="interesse">
         <SectionHeader
-          description="Registro de interesse comercial visual para explicar o fluxo. Não há envio real, CRM, backend, contrato, pagamento ou integração."
+          description="Registro de interesse comercial pela central oficial. Proposta, valores, entregas, contratos e ativações dependem de validação."
           eyebrow="Interesse comercial"
           title="Primeiro a marca conversa. Depois a proposta valida."
         />

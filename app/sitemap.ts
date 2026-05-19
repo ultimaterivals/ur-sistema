@@ -13,6 +13,10 @@ const routes = [
   "/ur-market",
   "/patrocinadores",
   "/eventos",
+  "/privacidade",
+  "/termos",
+  "/regulamento",
+  "/contato",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

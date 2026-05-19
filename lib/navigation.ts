@@ -23,10 +23,10 @@ export const footerColumns = [
     title: "Ultimate Rivals",
     links: [
       { label: "O Ecossistema", href: "/#ecossistema" },
-      { label: "Manifesto", href: "/#comunidade" },
       { label: "Temporada", href: "/temporada" },
       { label: "Ranking", href: "/ranking" },
       { label: "Mídia", href: "/#midia" },
+      { label: "Regulamento", href: "/regulamento" },
     ],
   },
   {
@@ -38,6 +38,7 @@ export const footerColumns = [
       { label: "Cadastro de atleta", href: "/cadastro#atleta" },
       { label: "Cadastro de equipe", href: "/cadastro#equipe" },
       { label: "Eventos", href: "/eventos" },
+      { label: "Contato", href: "/contato" },
     ],
   },
   {
@@ -47,7 +48,7 @@ export const footerColumns = [
       { label: "UR Market", href: "/ur-market" },
       { label: "Quadras parceiras", href: "/cadastro#quadra" },
       { label: "Mídia Kit", href: "/patrocinadores" },
-      { label: "Contato comercial", href: "/cadastro#patrocinador" },
+      { label: "Contato comercial", href: "/contato" },
     ],
   },
   {
@@ -58,6 +59,7 @@ export const footerColumns = [
       { label: "WhatsApp", href: "/cadastro#whatsapp" },
       { label: "Blog", href: "/#midia" },
       { label: "Ranking", href: "/ranking" },
+      { label: "Privacidade", href: "/privacidade" },
     ],
   },
 ] as const;

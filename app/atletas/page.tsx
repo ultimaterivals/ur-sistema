@@ -180,11 +180,11 @@ function InterestPanel() {
           <ClipboardCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
         </span>
         <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-          Registro visual, sem cadastro real.
+          Cadastro de interesse aberto.
         </h3>
         <p className="mt-4 text-sm leading-6 text-white/72">
-          O fluxo abaixo demonstra como o atleta deve entrar no ecossistema. Não há backend, login, pagamento,
-          Supabase, ranking real ou envio de formulário nesta fase.
+          O atleta registra interesse pela central oficial. A equipe UR valida perfil, agenda, polo e próximos passos
+          antes de liberar participação, ranking público ou oportunidades.
         </p>
         <div className="mt-5 grid gap-2">
           {interestFlow.map((item, index) => (
@@ -204,7 +204,7 @@ function InterestPanel() {
       <Card className="p-4 md:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Badge>Interesse do atleta</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">sem backend real</span>
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">triagem operacional</span>
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {interestFields.map((field) => (
@@ -221,15 +221,11 @@ function InterestPanel() {
         <textarea
           className="mt-4 min-h-28 w-full resize-none rounded-lg border border-white/10 bg-black/35 p-4 text-sm font-bold leading-6 text-white/74 outline-none"
           readOnly
-          value="Cadastro real será liberado após validação oficial de operação, agenda, polo e critérios."
+          value="Cadastro enviado para triagem operacional. Participação, perfil público, ranking e oportunidades dependem de validação oficial."
         />
-        <button
-          className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]"
-          disabled
-          type="button"
-        >
-          Cadastro será liberado após validação
-        </button>
+        <Button className="mt-4 w-full" href="/cadastro#atleta">
+          Abrir cadastro de atleta
+        </Button>
       </Card>
     </div>
   );
@@ -423,7 +419,7 @@ export default function AtletasPage() {
 
       <PageSection className="bg-[#07080c]" id="interesse">
         <SectionHeader
-          description="Registro visual para mostrar o caminho do atleta. Não há cadastro funcional, backend, login, pagamento ou integração nesta etapa."
+          description="Cadastro de interesse aberto para triagem operacional. Não há login, pagamento, Supabase, ranking real ou aprovação automática nesta etapa."
           eyebrow="Registro de interesse"
           title="Primeiro interesse. Depois validação oficial."
         />

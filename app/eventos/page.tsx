@@ -205,8 +205,8 @@ function InterestPanel() {
 
       <Card className="p-4 md:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Demonstração visual</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">sem envio real</span>
+          <Badge>Cadastro de interesse</Badge>
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">triagem operacional</span>
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {interestFields.map((field) => (
@@ -225,13 +225,9 @@ function InterestPanel() {
           readOnly
           value="Interesse será tratado por canal oficial depois da validação de agenda, polo, modalidade e operação."
         />
-        <button
-          className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]"
-          disabled
-          type="button"
-        >
-          Inscrição será liberada após validação
-        </button>
+        <Button className="mt-4 w-full" href="/cadastro#atleta">
+          Demonstrar interesse
+        </Button>
       </Card>
     </div>
   );
@@ -369,8 +365,8 @@ export default function EventosPage() {
 
       <PageSection id="agenda">
         <SectionHeader
-          description="Preview visual da agenda sem datas reais. A página mostra o tipo de informação que será publicada quando houver confirmação oficial."
-          eyebrow="Preview visual"
+          description="Pré-agenda sem datas reais. A página mostra o tipo de informação que será publicada quando houver confirmação oficial."
+          eyebrow="Pré-agenda"
           title="Agenda pública só depois de validação."
         />
         <AgendaPreviewPanel />
@@ -379,7 +375,7 @@ export default function EventosPage() {
       <PageSection className="bg-[#07080c]" id="interesse">
         <SectionHeader
           description="Atletas demonstram interesse primeiro. Depois a equipe UR valida agenda, polo, nível, modalidade e libera orientação oficial de inscrição."
-          eyebrow="Interesse sem backend"
+          eyebrow="Interesse por eventos"
           title="Participação real depende de validação oficial."
         />
         <InterestPanel />

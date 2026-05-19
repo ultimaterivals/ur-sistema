@@ -84,7 +84,7 @@ function ShowcasePanel() {
     <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
       <Card className="p-4 md:p-6" premium>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Vitrine visual</Badge>
+          <Badge>Vitrine do Market</Badge>
           <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
             market em formação
           </span>
@@ -140,7 +140,7 @@ export default function URMarketPage() {
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="#vitrine">
-                Ver vitrine visual
+                Ver vitrine
                 <ArrowRight aria-hidden className="h-4 w-4" />
               </Button>
               <Button href="/cadastro#patrocinador" variant="secondary">
@@ -307,7 +307,7 @@ export default function URMarketPage() {
       <PageSection className="bg-[#07080c]" id="vitrine">
         <SectionHeader
           description="A vitrine mostra a estrutura planejada. Nenhum produto, marca, preço, saldo, benefício ou patrocinador real foi inventado."
-          eyebrow="Vitrine visual"
+          eyebrow="Vitrine do Market"
           title="Market pronto para itens reais, quando eles forem aprovados."
         />
         <ShowcasePanel />
@@ -315,7 +315,7 @@ export default function URMarketPage() {
 
       <PageSection id="resgate">
         <SectionHeader
-          description="O fluxo de resgate é apenas visual. Não há backend, checkout, carteira, pagamento ou marketplace real nesta etapa."
+          description="O fluxo de resgate é demonstrativo. Não há backend, checkout, carteira, pagamento ou marketplace real nesta etapa."
           eyebrow="Fluxo de resgate"
           title="Resgate real só depois de validação e operação ativa."
         />

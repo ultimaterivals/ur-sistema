@@ -132,7 +132,7 @@ export default function URPlayPage() {
                   <Shield aria-hidden className="h-6 w-6 text-[#ffd84d]" />
                 </span>
                 <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                  inscrição será liberada após validação
+                  participação sujeita à validação
                 </span>
               </div>
               <div className="my-6 grid place-items-center">
@@ -391,7 +391,7 @@ export default function URPlayPage() {
 
       <PageSection id="interesse">
         <SectionHeader
-          description="Este formulário é apenas visual no MVP. Ele demonstra o caminho do atleta sem gravar dados, enviar informações ou integrar backend."
+          description="O cadastro de interesse acontece pela central oficial. A equipe UR valida agenda, polo, perfil e próximos passos antes de liberar participação."
           eyebrow="Interesse do atleta"
           title="Registro de interesse UR Play."
         />
@@ -420,7 +420,7 @@ export default function URPlayPage() {
               ))}
             </div>
             <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-              sem envio real, sem login, sem pagamento e sem banco de dados nesta fase
+              cadastro enviado para triagem operacional pela central UR
             </p>
           </Card>
 
@@ -430,30 +430,26 @@ export default function URPlayPage() {
                 <ClipboardList aria-hidden className="h-5 w-5 text-[#ffd84d]" />
               </span>
               <div>
-                <h3 className="text-lg font-black uppercase leading-tight text-white">Pré-cadastro visual</h3>
-                <p className="mt-1 text-sm text-white/60">campos bloqueados para evitar coleta real de dados</p>
+                <h3 className="text-lg font-black uppercase leading-tight text-white">Cadastro de interesse aberto</h3>
+                <p className="mt-1 text-sm text-white/60">preenchimento pela central oficial de cadastro</p>
               </div>
             </div>
-            <form aria-label="Formulário visual de interesse UR Play" className="grid gap-3">
+            <div aria-label="Resumo do cadastro de interesse UR Play" className="grid gap-3">
               {interestFields.map((field) => (
                 <label className="grid gap-2" key={field}>
                   <span className="text-xs font-black uppercase tracking-[0.12em] text-[#ffe98b]">{field}</span>
                   <input
                     className="min-h-12 rounded-lg border border-white/10 bg-black/35 px-4 text-sm text-white/70 outline-none placeholder:text-white/35"
-                    placeholder="campo visual em formação"
+                    placeholder="preenchimento na central de cadastro"
                     readOnly
                     type="text"
                   />
                 </label>
               ))}
-              <button
-                className="mt-2 min-h-12 cursor-not-allowed rounded-lg border border-[#ffd84d]/25 bg-[#ffd84d]/10 px-5 py-3 text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]/75"
-                disabled
-                type="button"
-              >
-                inscrição será liberada após validação
-              </button>
-            </form>
+              <Button className="mt-2 w-full" href="/cadastro#atleta">
+                Abrir cadastro de interesse
+              </Button>
+            </div>
           </Card>
         </div>
       </PageSection>
@@ -497,7 +493,7 @@ export default function URPlayPage() {
               </p>
             </div>
             <div className="grid gap-3">
-              <Button href="/cadastro#atleta">Registrar interesse visual</Button>
+              <Button href="/cadastro#atleta">Registrar interesse</Button>
               <Button href="/ranking" variant="secondary">
                 Entender ranking
               </Button>

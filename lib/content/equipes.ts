@@ -37,7 +37,7 @@ export const teamHeroBadges = [
   "equipes em formação",
   "ranking coletivo em formação",
   "dados reais entram após validação",
-  "registro será liberado após validação",
+  "registro sujeito à validação",
   "temporada em formação",
 ] as const;
 
@@ -81,7 +81,7 @@ export const teamEntrySteps: TeamStep[] = [
   {
     step: "01",
     title: "Registro de interesse",
-    description: "Capitão ou representante indica intenção de formar equipe oficial, sem envio real nesta fase.",
+    description: "Capitão ou representante indica intenção de formar equipe oficial pela central de cadastro.",
   },
   {
     step: "02",
@@ -243,8 +243,8 @@ export const teamPreviewRows = [
   },
   {
     label: "Capitão e elenco",
-    value: "registro será liberado após validação",
-    note: "sem cadastro real, login ou banco de dados nesta fase",
+    value: "registro sujeito à validação",
+    note: "dados públicos entram após validação oficial",
   },
   {
     label: "Temporada",
@@ -262,17 +262,17 @@ export const teamInterestFields = [
 ] as const;
 
 export const teamInterestFlow = [
-  "Capitão registra interesse visual",
+  "Capitão registra interesse",
   "Equipe UR valida critérios e operação",
   "Elenco recebe orientação de registro",
-  "Registro será liberado após validação",
+  "Registro segue para validação oficial",
 ] as const;
 
 export const teamFaq = [
   {
     question: "Equipes oficiais já podem se registrar?",
     answer:
-      "Ainda não. A página mostra a estrutura planejada e usa registro será liberado após validação para evitar coleta real de dados.",
+      "Sim, como interesse inicial. O registro oficial da equipe segue sujeito à validação de dados, elegibilidade, regulamento e operação.",
   },
   {
     question: "Equipe oficial precisa ter capitão?",

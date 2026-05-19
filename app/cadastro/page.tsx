@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
   "Você preenche o formulário próprio dentro do site.",
-  "O envio vai para Google Sheets quando o endpoint estiver configurado.",
+  "O cadastro é enviado para triagem operacional na base MVP.",
   "A equipe UR valida agenda, polo, perfil e prioridade.",
   "O cadastro não garante vaga, parceria, patrocínio ou participação imediata.",
 ] as const;
@@ -34,7 +34,7 @@ const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Sim, quando a variável NEXT_PUBLIC_GOOGLE_SCRIPT_URL estiver configurada. Enquanto isso, cada formulário mantém o Tally como fallback temporário.",
+      "Sim. Os formulários próprios enviam o interesse para triagem operacional via Google Apps Script e Google Sheets. O Tally segue como fallback temporário.",
   },
   {
     question: "Existe backend, login ou banco de dados?",
@@ -145,7 +145,7 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="O MVP agora organiza a intenção com formulários próprios no site, envio preparado para Google Sheets e Tally preservado como fallback temporário."
+          description="O MVP organiza a intenção com formulários próprios no site, envio para triagem operacional em Google Sheets e Tally preservado como fallback temporário."
           eyebrow="Depois do interesse"
           title="Captação real, validação operacional antes do próximo passo."
         />
@@ -163,9 +163,9 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="Os formulários próprios dependem da URL pública do Google Apps Script. O cadastro registra interesse, mas não garante vaga, parceria, patrocínio ou participação imediata."
+          description="Os formulários próprios registram interesse para triagem operacional. Cadastro não garante vaga, parceria, patrocínio ou participação imediata."
           eyebrow="Aviso de validação"
-          title="Cadastro próprio preparado. Aprovação continua em validação."
+          title="Cadastro próprio ativo. Aprovação continua em validação."
         />
         <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]" premium>
           <div>
@@ -176,9 +176,9 @@ export default function CadastroPage() {
               Enviar não garante aprovação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. O endpoint público guarda apenas
-              a URL do Apps Script, sem credenciais. A equipe UR ainda valida agenda, polo, perfil, proposta e prioridade
-              antes de liberar qualquer próximo passo.
+              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. A camada atual usa Apps Script e
+              Google Sheets como base operacional MVP. A equipe UR ainda valida agenda, polo, perfil, proposta e
+              prioridade antes de liberar qualquer próximo passo.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">

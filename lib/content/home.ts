@@ -378,7 +378,7 @@ export const faqItems = [
   {
     question: "O que são UR Coins?",
     answer:
-      "São moedas internas do ecossistema, planejadas para recompensar presença, missões, conquistas e engajamento. Nesta fase, são apenas conceito visual.",
+      "São moedas internas do ecossistema, planejadas para recompensar presença, missões, conquistas e engajamento. Nesta fase, são conceito em validação.",
   },
   {
     question: "O que é o UR Market?",

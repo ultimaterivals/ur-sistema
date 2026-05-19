@@ -36,7 +36,7 @@ export type SeasonStage = {
 export const seasonHeroBadges = [
   "temporada em formação",
   "calendário em formação",
-  "agenda será liberada após validação",
+  "agenda oficial será publicada após confirmação",
   "eventos entram após confirmação oficial",
   "ranking em formação",
 ] as const;
@@ -89,7 +89,7 @@ export const seasonStages: SeasonStage[] = [
     title: "UR Play",
     description:
       "A temporada começa pelo UR Play, a porta oficial para atletas entrarem no ecossistema com observação e contexto competitivo.",
-    status: "agenda será liberada após validação",
+    status: "agenda oficial será publicada após confirmação",
     icon: Zap,
     bullets: [
       "entrada oficial dos atletas",
@@ -193,7 +193,7 @@ export const seasonStages: SeasonStage[] = [
 export const calendarPreviewRows = [
   {
     label: "UR Play",
-    status: "agenda será liberada após validação",
+    status: "agenda oficial será publicada após confirmação",
     note: "sem data, polo ou inscrição real nesta fase",
   },
   {
@@ -240,7 +240,7 @@ export const seasonFaq = [
   {
     question: "Temporada UR já tem calendário real?",
     answer:
-      "Ainda não. A página usa calendário em formação e agenda será liberada após validação para evitar datas, polos ou eventos inventados.",
+      "Ainda não. A página usa calendário em formação e agenda oficial será publicada após confirmação para evitar datas, polos ou eventos inventados.",
   },
   {
     question: "Por que o ciclo é trimestral?",
