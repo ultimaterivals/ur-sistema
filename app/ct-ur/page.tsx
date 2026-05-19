@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageSection } from "@/components/site/page-section";
+import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
   Activity,
   ArrowRight,
@@ -132,16 +133,15 @@ export default function CTURPage() {
             </div>
           </div>
 
-          <Card className="p-5 md:p-6" premium>
-            <Activity aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-            <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Não é só treino. É formação.
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              O CT UR deve apoiar o atleta como competidor e pessoa, sem promessa milagrosa de resultado e sem agenda
-              pública antes da validação operacional.
-            </p>
-          </Card>
+          <PremiumEmptyState
+            ctaLabel="Entrar como atleta"
+            description="O CT UR deve apoiar o atleta como competidor e pessoa, sem promessa milagrosa de resultado e sem agenda pública antes da validação operacional."
+            footer="agenda oficial será publicada após confirmação"
+            href="/cadastro#atleta"
+            icon={Activity}
+            statusLabel="desenvolvimento em validação"
+            title="Não é só treino. É formação."
+          />
         </div>
       </section>
 

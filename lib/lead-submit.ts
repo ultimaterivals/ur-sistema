@@ -3,7 +3,7 @@ import type { LeadFormData, LeadPayload, LeadProfile } from "@/lib/lead-fields";
 export type LeadSubmitResult = {
   ok: boolean;
   message: string;
-  code?: "missing_endpoint" | "network_error";
+  code?: "missing_configuration" | "network_error";
   usedOpaqueFallback?: boolean;
 };
 
@@ -100,7 +100,7 @@ function buildUrlSearchParams(payload: LeadPayload): URLSearchParams {
  * Por que no-cors?
  * O Google Apps Script redireciona POSTs para script.googleusercontent.com, que não
  * retorna headers CORS. Tentar ler a resposta com redirect:"follow" sempre resulta em
- * CORS error no browser. A única solução compatível sem backend próprio é mode:"no-cors",
+ * CORS error no browser. A solução compatível sem servidor intermediário é mode:"no-cors",
  * que envia o request mas retorna uma resposta opaca (sem body legível).
  *
  * application/x-www-form-urlencoded é um content-type "simples" (sem preflight),
@@ -110,28 +110,28 @@ function buildUrlSearchParams(payload: LeadPayload): URLSearchParams {
  * Verifique a planilha após o envio para validar.
  */
 export async function submitLead(payload: LeadPayload): Promise<LeadSubmitResult> {
-  const endpoint = getGoogleScriptUrl();
+  const scriptUrl = getGoogleScriptUrl();
 
-  if (!endpoint) {
+  if (!scriptUrl) {
     return {
       ok: false,
-      code: "missing_endpoint",
+      code: "missing_configuration",
       message:
-        "Endpoint do Google Sheets ainda não configurado. Use o fallback Tally temporário ou configure NEXT_PUBLIC_GOOGLE_SCRIPT_URL.",
+        "A conexão principal de captação ainda não está ativa nesta versão. Use a alternativa externa para registrar interesse.",
     };
   }
 
   const params = buildUrlSearchParams(payload);
 
   if (process.env.NODE_ENV === "development") {
-    console.log("[lead-submit] POST →", endpoint);
+    console.log("[lead-submit] POST →", scriptUrl);
     console.log("[lead-submit] profile →", params.get("profile"));
     console.log("[lead-submit] payload →", Object.fromEntries(params));
   }
 
   try {
     // Simple request (sem preflight) + no-cors (envia mas não lê resposta)
-    await fetch(endpoint, {
+    await fetch(scriptUrl, {
       method: "POST",
       mode: "no-cors",
       headers: {
@@ -160,7 +160,7 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmitResult
       ok: false,
       code: "network_error",
       message:
-        "Não foi possível enviar ao Google Sheets. Verifique sua conexão ou use o Tally como alternativa.",
+        "Não foi possível concluir o envio agora. Verifique sua conexão ou use a alternativa externa de cadastro.",
     };
   }
 }

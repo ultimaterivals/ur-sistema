@@ -1,260 +1,229 @@
 # QA Final Pré-Lançamento — Site Público Ultimate Rivals
 
-**Sprint 4 — QA completo pré-lançamento**  
-Data: 2026-05-18  
-Versão: Next.js 16.2.6 — Build estático, 22 páginas
+Data: 2026-05-19  
+Escopo: site público MVP, rotas institucionais, páginas estratégicas, CTAs, SEO básico, sitemap, robots, responsividade e central `/cadastro`.
 
----
+## Decisão Final
 
-## Decisão de Lançamento
+**Recomendação: pronto para lançamento controlado.**
 
-> **✅ APROVADO PARA LANÇAMENTO**
->
-> Todos os checks críticos passaram. Nenhum link quebrado, nenhuma frase banida em páginas públicas, build limpo sem erros ou warnings.
+O site está apto para divulgação controlada, captação inicial e validação pública do MVP. Ainda não é recomendada uma divulgação massiva antes de executar testes reais de envio de leads em produção e uma revisão final de conteúdo comercial/mídia.
 
----
+## Ambiente Validado
 
-## Resultado do Build
+- Build: `next build --webpack`
+- Servidor de QA visual: `next start` em `http://127.0.0.1:3010`
+- Navegador automatizado: Chromium/Chrome via Playwright
+- Browser in-app: validado em `/cadastro#patrocinador`
 
-```
-✓ Compiled successfully in 10.1s
-✓ TypeScript — 0 erros
-✓ ESLint — 0 warnings, 0 erros
-✓ Generating static pages using 3 workers (22/22) in 4.5s
-```
+Observação: havia um servidor antigo de desenvolvimento preso na porta `3000`, com falhas de HMR/Turbopack que impediam hidratação confiável. A validação oficial desta rodada foi feita no build de produção local, que passou corretamente.
 
----
+## Rotas Testadas
 
-## Checklist por Área
+Todas responderam `200` no build de produção local:
 
-### 1 — Rotas
+| Rota | Status |
+|------|--------|
+| `/` | OK |
+| `/ecossistema` | OK |
+| `/atletas` | OK |
+| `/ur-play` | OK |
+| `/ranking` | OK |
+| `/equipes` | OK |
+| `/temporada` | OK |
+| `/eventos` | OK |
+| `/ur-market` | OK |
+| `/patrocinadores` | OK |
+| `/ct-ur` | OK |
+| `/midia` | OK |
+| `/quadras-parceiras` | OK |
+| `/cadastro` | OK |
+| `/privacidade` | OK |
+| `/termos` | OK |
+| `/regulamento` | OK |
+| `/contato` | OK |
 
-| Rota | Tipo | Build | Metadata |
-|------|------|-------|----------|
-| `/` | Static | ✓ | Layout default (título + descrição presentes) |
-| `/atletas` | Static | ✓ | ✓ |
-| `/equipes` | Static | ✓ | ✓ |
-| `/patrocinadores` | Static | ✓ | ✓ |
-| `/ur-market` | Static | ✓ | ✓ |
-| `/eventos` | Static | ✓ | ✓ |
-| `/ecossistema` | Static | ✓ | ✓ |
-| `/ct-ur` | Static | ✓ | ✓ |
-| `/midia` | Static | ✓ | ✓ |
-| `/quadras-parceiras` | Static | ✓ | ✓ |
-| `/cadastro` | Static | ✓ | ✓ |
-| `/contato` | Static | ✓ | ✓ |
-| `/ranking` | Static | ✓ | ✓ |
-| `/temporada` | Static | ✓ | ✓ |
-| `/ur-play` | Static | ✓ | ✓ |
-| `/privacidade` | Static | ✓ | ✓ |
-| `/termos` | Static | ✓ | ✓ |
-| `/regulamento` | Static | ✓ | ✓ |
-| `/sitemap.xml` | Static | ✓ | — |
-| `/robots.txt` | Static | ✓ | — |
-| `/_not-found` | Static | ✓ | — |
+Também validados:
 
-**Total: 22/22 páginas geradas com sucesso.**
+- `/robots.txt`: OK, aponta para `https://ultimaterivals.org/sitemap.xml`
+- `/sitemap.xml`: OK, contém todas as rotas públicas principais
 
----
+## Viewports Testados
 
-### 2 — SEO Técnico
+| Viewport | Resultado |
+|----------|-----------|
+| `390x844` mobile | OK, sem overflow horizontal |
+| `768x1024` tablet | OK, sem overflow horizontal |
+| `1366x768` desktop | OK, sem overflow horizontal |
+| `1920x1080` desktop grande | OK, sem overflow horizontal |
 
-| Item | Status | Detalhe |
-|------|--------|---------|
-| `metadataBase` | ✓ | `https://ultimaterivals.org` em `app/layout.tsx` |
-| `lang="pt-BR"` | ✓ | Presente no `<html>` do layout raiz |
-| `title` padrão | ✓ | `"Ultimate Rivals \| Ecossistema esportivo premium"` |
-| `template` de título | ✓ | `"%s \| Ultimate Rivals"` — todas as páginas herdam |
-| `description` padrão | ✓ | Presente no layout raiz |
-| Metadata por página | ✓ | Todas as 17 páginas com título e descrição próprios |
-| `sitemap.xml` | ✓ | 18 rotas, baseUrl `https://ultimaterivals.org` |
-| `robots.txt` | ✓ | `Allow: /`, aponta para `/sitemap.xml` |
-| OpenGraph | ✓ | Definido no layout raiz (title, description, type, locale) |
+## Header
 
----
+Status: **aprovado**
 
-### 3 — Header
+- Header presente em todas as rotas públicas.
+- CTA `Entrar no UR` aponta para `/cadastro`.
+- CTA `Patrocinar` aponta para `/cadastro#patrocinador`.
+- Menu desktop permanece enxuto.
+- Menu mobile abre e fecha corretamente no build de produção local.
+- Sem overflow horizontal nos viewports testados.
 
-| Item | Status | Detalhe |
-|------|--------|---------|
-| Navegação desktop | ✓ | 7 itens: Ecossistema, Atletas, UR Play, Ranking, Equipes, UR Market, Patrocinadores |
-| CTA desktop "Entrar no UR" | ✓ | Destino: `/cadastro` |
-| CTA desktop "Patrocinar" | ✓ | Destino: `/cadastro#patrocinador` |
-| Navegação mobile | ✓ | 13 itens cobrindo todas as rotas principais |
-| CTA mobile principal | ✓ | Destino: `/cadastro#atleta` |
-| `aria-expanded` no menu mobile | ✓ | Acessibilidade implementada |
-| Logo → `/` | ✓ | Link de retorno à home |
+## Footer
 
----
+Status: **aprovado**
 
-### 4 — Footer
+Links reais encontrados e validados:
 
-| Item | Status | Detalhe |
-|------|--------|---------|
-| Coluna "Ultimate Rivals" | ✓ | Ecossistema, Temporada, Ranking, CT UR, Mídia, Regulamento |
-| Coluna "Participar" | ✓ | Cadastro, Atletas, UR Play, Cadastro atleta/equipe, Eventos, Contato |
-| Coluna "Negócios" | ✓ | Patrocinadores, UR Market, Quadras, Mídia Kit, Contato comercial |
-| Coluna "Comunidade" | ✓ | Instagram → `/cadastro#comunidade`, WhatsApp → `/cadastro#whatsapp`, Mídia UR, Quadras, Ranking, Privacidade |
-| Links legais (bottom bar) | ✓ | `/privacidade`, `/termos`, `/regulamento`, `/contato` |
-| Âncora `#whatsapp` | ✓ | Existe em `/cadastro` (linha 197) — seção "WhatsApp preparado" |
-| Âncora `#comunidade` | ✓ | Existe no `LeadCaptureSection` via `lead-fields.ts` (anchor: "comunidade") |
+- `/privacidade`
+- `/termos`
+- `/regulamento`
+- `/contato`
+- `/ecossistema`
+- `/ct-ur`
+- `/midia`
+- `/quadras-parceiras`
 
----
+Nenhum link interno público testado retornou `404`.
 
-### 5 — CTAs e Âncoras
+## CTAs
 
-Todas as âncoras internas verificadas:
+Status: **aprovado**
 
-| Link | Página destino | Âncora existe? |
-|------|----------------|----------------|
-| `/cadastro#atleta` | `/cadastro` → `LeadCaptureSection` | ✓ |
-| `/cadastro#equipe` | `/cadastro` → `LeadCaptureSection` | ✓ |
-| `/cadastro#patrocinador` | `/cadastro` → `LeadCaptureSection` | ✓ |
-| `/cadastro#quadra` | `/cadastro` → `LeadCaptureSection` | ✓ |
-| `/cadastro#comunidade` | `/cadastro` → `LeadCaptureSection` | ✓ |
-| `/cadastro#whatsapp` | `/cadastro` → seção WhatsApp (id="whatsapp") | ✓ |
-| `/cadastro#aviso-validacao` | `/cadastro` → seção Aviso (id="aviso-validacao") | ✓ |
-| `/#caminhos` | `/` → Section (id="caminhos") | ✓ |
-| `/#comunidade` | `/` → Section (id="comunidade") | ✓ |
-| `#market` | `/patrocinadores` → PageSection (id="market") | ✓ |
-| `#cotas` | `/patrocinadores` → PageSection (id="cotas") | ✓ |
-| `#vitrine` | `/ur-market` → PageSection (id="vitrine") | ✓ |
-| `#preview` | `/ranking`, `/equipes` → PageSection (id="preview") | ✓ |
-| `#ranking-coletivo` | `/equipes` → PageSection (id="ranking-coletivo") | ✓ |
-| `#mentalidade-hunter` | `/atletas` → PageSection (id="mentalidade-hunter") | ✓ |
-| `#como-funciona` | `/ur-play`, `/cadastro` → PageSection (id="como-funciona") | ✓ |
+Links obrigatórios encontrados no site:
 
----
+- Atleta: `/cadastro#atleta`
+- Equipe: `/cadastro#equipe`
+- Patrocinador: `/cadastro#patrocinador`
+- Quadra: `/cadastro#quadra`
+- Comunidade: `/cadastro#comunidade`
+- CT UR: `/ct-ur` e `/cadastro#atleta`, conforme contexto
+- Mídia: `/midia`, `/cadastro#comunidade` e `/cadastro#patrocinador`, conforme contexto
 
-### 6 — Copy Pública — Frases Banidas
+## Cadastro
 
-Grep realizado em `app/**/*.tsx` e `components/**/*.tsx` (exceto arquivos de lógica e formulário).
+Status: **aprovado sem envio real**
 
-| Frase banida | Resultado |
-|---|---|
-| "formulário visual" | ✗ Não encontrado |
-| "sem envio real" | ✗ Não encontrado |
-| "não há cadastro funcional" | ✗ Não encontrado |
-| "campo visual" | ✗ Não encontrado |
-| "Registrar interesse visual" | ✗ Não encontrado |
-| "variável" | ✗ Não encontrado |
-| "sem backend" (em páginas) | ✗ Não encontrado em páginas públicas |
-| "sem banco de dados" (em páginas) | ✗ Não encontrado |
-| "NEXT_PUBLIC" (em páginas) | ✗ Não encontrado em páginas públicas |
-| "endpoint" (em páginas) | ✗ Não encontrado em páginas públicas |
+Testes executados em mobile `390x844`:
 
-**Linguagem aceita encontrada:** "cadastro de interesse aberto", "triagem operacional", "validação oficial", "operação em validação", "em formação", "após validação" — todos presentes e consistentes.
+| URL | Formulário exibido | Overflow |
+|-----|--------------------|----------|
+| `/cadastro#atleta` | `Cadastro de atleta UR` | Não |
+| `/cadastro#equipe` | `Cadastro de equipe UR` | Não |
+| `/cadastro#patrocinador` | `Interesse comercial UR` | Não |
+| `/cadastro#quadra` | `Quadra parceira UR` | Não |
+| `/cadastro#comunidade` | `Comunidade Ultimate Rivals` | Não |
 
----
+Não foram enviados leads reais nesta rodada. O teste foi limitado à UX, hash, renderização do formulário, legibilidade e ausência de overflow.
 
-### 7 — Componentes Reutilizáveis (Sprint 3)
+## SEO Básico
 
-| Componente | Arquivo | Páginas usando |
-|------------|---------|----------------|
-| `PageSection` | `components/site/page-section.tsx` | /atletas, /equipes, /patrocinadores, /ur-market, /eventos, /ecossistema, /ct-ur, /midia, /quadras-parceiras, /ranking, /temporada, /ur-play |
-| `IconCard` | `components/site/icon-card.tsx` | /atletas, /equipes, /patrocinadores, /ur-market, /eventos |
-| `SegmentCtaPanel` | `components/site/segment-cta-panel.tsx` | /atletas, /equipes, /patrocinadores, /ur-market, /eventos |
-| `EcosystemFlowPanel` | `components/site/ecosystem-flow-panel.tsx` | /patrocinadores, /ur-market |
-| `PremiumEmptyState` | `components/site/premium-empty-state.tsx` | /ranking, /temporada, /ct-ur, /midia |
-| `AthletePreviewCard` | `components/site/athlete-preview-card.tsx` | /atletas |
-| `TeamPreviewCard` | `components/site/team-preview-card.tsx` | /equipes |
-| `PartnerActivationCard` | `components/site/partner-activation-card.tsx` | /patrocinadores |
-| `RewardPreviewCard` | `components/site/reward-preview-card.tsx` | /ur-market |
+Status: **aprovado**
 
----
+- Todas as páginas públicas têm `title`.
+- Todas as páginas públicas têm `description`.
+- `metadataBase` permanece em `https://ultimaterivals.org`.
+- Open Graph global configurado no layout.
+- `html lang="pt-BR"` mantido.
+- `data-scroll-behavior="smooth"` mantido no `<html>`.
+- Sitemap e robots com domínio oficial.
 
-### 8 — Design System
+## Copy Pública
+
+Status: **corrigido**
+
+Foram removidas da copy pública do site expressões técnicas/protótipo como:
+
+- `formulário visual`
+- `sem envio real`
+- `não há cadastro funcional`
+- `campo visual`
+- `Registrar interesse visual`
+- `endpoint`
+- `sem backend`
+- `sem banco`
+- `Tally` como linguagem principal
+
+Linguagem mantida/reforçada:
+
+- `cadastro de interesse aberto`
+- `triagem operacional`
+- `validação oficial`
+- `operação em validação`
+- `dados públicos entram após validação`
+- `agenda oficial será publicada após confirmação`
+
+Observação técnica: `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` permanece apenas como nome interno da variável de ambiente em `lib/lead-submit.ts`, pois faz parte da configuração real da integração. Essa string não aparece mais como texto público no site.
+
+## Placeholders
+
+Status: **aprovado para MVP**
+
+Os placeholders estão posicionados como estados premium de pré-lançamento, não como erro ou sistema vazio. Não foram identificados atletas, equipes, datas, marcas, rankings, premiações, valores ou métricas reais inventadas nas páginas públicas.
+
+## Problemas Encontrados
+
+1. **Copy técnica exposta em `/cadastro`**
+   - Havia menções públicas a termos de implementação e fallback.
+   - Corrigido com linguagem de captação e triagem operacional.
+
+2. **Fallback externo com rótulo técnico**
+   - Botões alternativos citavam explicitamente Tally.
+   - Corrigido para `cadastro alternativo` / `alternativa externa`.
+
+3. **Servidor antigo de desenvolvimento na porta 3000**
+   - Afetava hidratação no modo dev.
+   - Não reproduzido no build de produção local. Registrar como cuidado operacional, não bug de produto.
+
+## Correções Feitas
+
+- Limpeza de linguagem técnica pública em `/cadastro`.
+- Remoção de menções públicas a fallback específico.
+- Atualização dos rótulos de fallback em `lib/lead-fields.ts`.
+- Mensagens de erro amigáveis em `lib/lead-submit.ts`.
+- Ajuste preventivo no componente legado `PlaceholderPage`.
+- Documento de QA recriado com checklist de lançamento.
+
+## Arquivos Alterados Nesta Rodada
+
+- `app/cadastro/page.tsx`
+- `components/cadastro/LeadCaptureSection.tsx`
+- `components/cadastro/LeadFormBase.tsx`
+- `components/pages/placeholder-page.tsx`
+- `lib/lead-fields.ts`
+- `lib/lead-submit.ts`
+- `lib/links.ts`
+- `docs/qa-final-pre-lancamento.md`
+
+## Checklist de Pronto Para Lançamento
 
 | Item | Status |
 |------|--------|
-| Fundo `#030405` | ✓ Consistente em todas as páginas |
-| Dourado `#ffd84d` / `#ffe98b` | ✓ Usado em ícones, badges e destaques |
-| Off-white `#f5efdd` | ✓ `text-[#f5efdd]` no `<main>` de todas as páginas |
-| `font-black uppercase` em títulos | ✓ Padrão aplicado |
-| `text-white/70` em descritivos | ✓ Padrão aplicado |
-| Premium cards com gradiente dourado | ✓ Via prop `premium` no `Card` |
-| `SectionHeader` padronizado | ✓ eyebrow + title + description em todas as seções |
-| Grid responsivo (mobile-first) | ✓ `md:grid-cols-*`, `lg:grid-cols-*` em todos os grids |
+| Rotas públicas respondem 200 | OK |
+| Header validado | OK |
+| Footer validado | OK |
+| Links internos sem 404 | OK |
+| Sitemap completo | OK |
+| Robots correto | OK |
+| Metadata por página | OK |
+| Domínio oficial configurado | OK |
+| Mobile sem overflow | OK |
+| Tablet sem overflow | OK |
+| Desktop sem overflow | OK |
+| Menu mobile abre e fecha | OK |
+| `/cadastro` por hash funciona | OK |
+| Copy pública sem linguagem de protótipo | OK |
+| Placeholders premium | OK |
+| Lint | OK |
+| Build Webpack | OK |
 
----
+## Pendências Recomendadas
 
-### 9 — Formulários e Captação
+1. Executar teste real de envio em produção com leads `TESTE QA` para cada perfil.
+2. Confirmar entrada dos testes na planilha/CRM e depois arquivar como teste.
+3. Revisar copy comercial com foco em patrocinadores antes de divulgação ampla.
+4. Fazer uma revisão manual final em celular real.
+5. Preparar material de lançamento: mensagem oficial, posts, mídia kit simples e orientação de atendimento.
 
-| Item | Status |
-|------|--------|
-| `LeadCaptureSection` com formulários próprios | ✓ Não alterado |
-| Google Apps Script + Google Sheets | ✓ Não alterado |
-| Tally como fallback | ✓ Preservado em todos os formulários |
-| Honeypot anti-bot | ✓ Presente em `LeadFormBase.tsx` |
-| Autorização de contato (checkbox) | ✓ Presente nos formulários |
-| Captura de UTM | ✓ Não alterado |
-| Âncoras dos perfis (#atleta, #equipe, etc.) | ✓ Todos funcionais |
+## Resultado Final
 
----
-
-## Observações e Notas
-
-### Itens não-críticos / informacional
-
-1. **`LeadFormBase.tsx` — aviso condicional de endpoint** *(não modificável)*  
-   Quando a variável `NEXT_PUBLIC_GOOGLE_SCRIPT_URL` não está configurada, um aviso amber exibe "Endpoint não configurado" com o nome da variável. Visível apenas em builds sem o `.env.local` correto. Em produção com a variável configurada, o aviso fica oculto. Arquivo não pode ser alterado por restrição de formulário.
-
-2. **`PlaceholderPage` — componente não utilizado**  
-   `components/pages/placeholder-page.tsx` contém "sem backend" mas é código morto (0 importações). Sem impacto em produção.
-
-3. **Footer "Instagram" → `/cadastro#comunidade`**  
-   Link interno, não externo. Aceitável para MVP onde canal do Instagram ainda não está ativo oficialmente.
-
-4. **Home page (`app/page.tsx`) usa componente `Section` local**  
-   Por design — a home tem componente próprio com variações de layout distintas do `PageSection` compartilhado. Não é inconsistência.
-
-5. **`app/cadastro/page.tsx` mantém `PageSection` inline**  
-   Intencional — página de formulário foi excluída da refatoração do Sprint 3 para não tocar em lógica de captação.
-
----
-
-## Cobertura de Páginas Auditadas
-
-| Página | Rotas | Metadata | CTAs | Copy | Build |
-|--------|:---:|:---:|:---:|:---:|:---:|
-| `/` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/atletas` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/equipes` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/patrocinadores` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/ur-market` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/eventos` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/ecossistema` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/ct-ur` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/midia` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/quadras-parceiras` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/cadastro` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/contato` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/ranking` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/temporada` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/ur-play` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/privacidade` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/termos` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/regulamento` | ✓ | ✓ | ✓ | ✓ | ✓ |
-| `/sitemap.xml` | ✓ | — | — | — | ✓ |
-| `/robots.txt` | ✓ | — | — | — | ✓ |
-
----
-
-## Resumo Final
-
-| Área | Resultado |
-|------|-----------|
-| Build (22 páginas) | ✅ 100% — sem erros |
-| TypeScript | ✅ 0 erros |
-| ESLint | ✅ 0 warnings / 0 erros |
-| Sitemap + Robots | ✅ Corretos |
-| Metadata SEO | ✅ 18/18 páginas cobertas |
-| Header CTAs | ✅ Todos válidos |
-| Footer links | ✅ Todos válidos (incluindo #whatsapp) |
-| Âncoras internas | ✅ 16/16 verificadas e existentes |
-| Copy — frases banidas | ✅ Nenhuma encontrada em páginas públicas |
-| Design System | ✅ Consistente |
-| Formulários | ✅ Não alterados |
-| Componentes Sprint 3 | ✅ 9 componentes, 12+ páginas refatoradas |
-
-**Lançamento:** ✅ Site aprovado para produção.
+O site está **pronto para lançamento controlado**: liberar para grupo inicial, parceiros próximos e primeiros interessados. Para lançamento público amplo, concluir primeiro o teste real de captação ponta a ponta em produção.

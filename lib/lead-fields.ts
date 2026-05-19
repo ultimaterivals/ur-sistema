@@ -182,7 +182,7 @@ export const leadFormConfigs = {
     formDescription:
       "Registro de interesse para atletas que querem entrar no ecossistema pelo UR Play e evoluir com validação operacional.",
     fallbackHref: externalLinks.formularioAtleta.href,
-    fallbackLabel: "Abrir Tally de atleta",
+    fallbackLabel: "Abrir cadastro alternativo de atleta",
     fields: [
       { name: "nomeCompleto", label: "Nome completo", type: "text", required: true },
       { name: "whatsapp", label: "WhatsApp com DDD", type: "tel", required: true, placeholder: "31999990000" },
@@ -225,7 +225,7 @@ export const leadFormConfigs = {
     formDescription:
       "Registro de interesse para equipes que querem se organizar como ativo competitivo dentro do Ultimate Rivals.",
     fallbackHref: externalLinks.formularioEquipe.href,
-    fallbackLabel: "Abrir Tally de equipe",
+    fallbackLabel: "Abrir cadastro alternativo de equipe",
     fields: [
       { name: "nomeEquipe", label: "Nome da equipe", type: "text", required: true },
       { name: "responsavel", label: "Responsável/capitão", type: "text", required: true },
@@ -274,7 +274,7 @@ export const leadFormConfigs = {
     formDescription:
       "Registro para marcas que querem entrar na jornada do atleta, não apenas comprar exposição de logo.",
     fallbackHref: externalLinks.formularioPatrocinador.href,
-    fallbackLabel: "Abrir Tally comercial",
+    fallbackLabel: "Abrir cadastro comercial alternativo",
     fields: [
       { name: "empresaMarca", label: "Empresa/marca", type: "text", required: true },
       { name: "responsavel", label: "Responsável", type: "text", required: true },
@@ -336,7 +336,7 @@ export const leadFormConfigs = {
     formDescription:
       "Registro para quadras que querem se conectar à expansão por polos do ecossistema Ultimate Rivals.",
     fallbackHref: externalLinks.formularioQuadra.href,
-    fallbackLabel: "Abrir Tally de quadra",
+    fallbackLabel: "Abrir cadastro alternativo de quadra",
     fields: [
       { name: "nomeQuadra", label: "Nome da quadra/arena", type: "text", required: true },
       { name: "responsavel", label: "Responsável", type: "text", required: true },
@@ -374,7 +374,7 @@ export const leadFormConfigs = {
     formDescription:
       "Registro para quem quer acompanhar o crescimento do ecossistema, conteúdos, eventos e oportunidades futuras.",
     fallbackHref: externalLinks.comunidade.href,
-    fallbackLabel: "Abrir Tally da comunidade",
+    fallbackLabel: "Abrir cadastro alternativo da comunidade",
     fields: [
       { name: "nomeCompleto", label: "Nome completo", type: "text", required: true },
       { name: "whatsapp", label: "WhatsApp com DDD", type: "tel", required: true },

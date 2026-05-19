@@ -11,11 +11,12 @@ const colClasses: Record<number, string> = {
   4: "md:grid-cols-4",
   5: "md:grid-cols-5",
   6: "md:grid-cols-6",
+  7: "md:grid-cols-4 xl:grid-cols-7",
 };
 
 type EcosystemFlowPanelProps = {
   items: readonly FlowItem[];
-  cols?: 3 | 4 | 5 | 6;
+  cols?: 3 | 4 | 5 | 6 | 7;
   showArrows?: boolean;
 };
 

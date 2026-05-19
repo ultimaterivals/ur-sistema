@@ -31,7 +31,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
     message: "",
   });
 
-  const endpointConfigured = Boolean(getGoogleScriptUrl());
+  const captureConfigured = Boolean(getGoogleScriptUrl());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -112,13 +112,12 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
             </ul>
           </div>
 
-          {!endpointConfigured ? (
+          {!captureConfigured ? (
             <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
-              <p className="font-black uppercase tracking-wide">Endpoint não configurado</p>
+              <p className="font-black uppercase tracking-wide">Integração operacional em validação</p>
               <p className="mt-1">
-                O Google Sheets ainda não está conectado nesta build. Use o botão abaixo para enviar
-                pelo Tally enquanto <code className="rounded bg-white/10 px-1">NEXT_PUBLIC_GOOGLE_SCRIPT_URL</code> não
-                estiver ativa.
+                A conexão principal de captação ainda não está ativa nesta versão. Use a alternativa externa para registrar
+                interesse enquanto a operação é validada.
               </p>
             </div>
           ) : null}
@@ -199,7 +198,7 @@ function SubmitFeedback({
         <span>{state.message}</span>
       </div>
 
-      {/* Em processamento: mostrar Tally como confirmação alternativa */}
+      {/* Em processamento: mostrar alternativa externa de confirmação */}
       {isProcessing ? (
         <a
           className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest underline underline-offset-2 opacity-70 hover:opacity-100"
@@ -208,7 +207,7 @@ function SubmitFeedback({
           target="_blank"
         >
           <ArrowRight aria-hidden className="h-3 w-3" />
-          {fallbackLabel} — confirme pelo Tally se quiser comprovante
+          {fallbackLabel} — confirme pela alternativa externa se quiser comprovante
         </a>
       ) : null}
     </div>

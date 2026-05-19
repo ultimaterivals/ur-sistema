@@ -263,11 +263,11 @@ export default function Home() {
                 <Dumbbell aria-hidden className="h-6 w-6 text-[#ffd84d]" />
               </span>
               <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                programa em formação
+                programa em preparação
               </span>
             </div>
             <h3 className="mt-6 max-w-md text-[clamp(2rem,8vw,2.75rem)] font-black uppercase leading-[0.96] text-white">
-              Desenvolvimento em formação
+              Desenvolvimento em validação
             </h3>
             <p className="mt-4 max-w-xl text-sm leading-6 text-white/72">
               O ranking mostra onde você está. O CT ajuda você a chegar mais longe.
@@ -284,7 +284,7 @@ export default function Home() {
                   <CheckCircle2 aria-hidden className="h-5 w-5 text-[#ffd84d]" />
                 </span>
                 <div className="mt-4 text-base font-black uppercase leading-tight text-white">{program}</div>
-                <p className="mt-auto pt-3 text-sm font-bold uppercase tracking-[0.1em] text-white/55">programa em formação</p>
+                <p className="mt-auto pt-3 text-sm font-bold uppercase tracking-[0.1em] text-white/55">programa em preparação</p>
               </Card>
             ))}
           </div>
@@ -309,11 +309,11 @@ export default function Home() {
                 <Camera aria-hidden className="h-6 w-6 text-[#ffd84d]" />
               </span>
               <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                mídia em formação
+                mídia em preparação
               </span>
             </div>
             <h3 className="mt-6 max-w-2xl text-[clamp(2rem,8vw,2.75rem)] font-black uppercase leading-[0.96] text-white">
-              Mídia oficial em formação
+              Mídia oficial em preparação
             </h3>
             <p className="mt-4 max-w-2xl text-sm leading-6 text-white/72">
               Sem mídia, o esforço desaparece. Com o UR, a jornada vira memória, conteúdo e oportunidade.
@@ -336,7 +336,7 @@ export default function Home() {
                   <Radio aria-hidden className="h-5 w-5 text-[#ffd84d]" />
                 </span>
                 <div className="mt-3 text-base font-black uppercase leading-tight text-white">{format}</div>
-                <p className="mt-2 text-sm text-white/55">ativo em formação</p>
+                <p className="mt-2 text-sm text-white/55">ativo em preparação</p>
               </Card>
             ))}
           </div>
@@ -363,7 +363,7 @@ export default function Home() {
               <Handshake aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-6 text-[clamp(1.9rem,8vw,2.65rem)] font-black uppercase leading-[0.96] text-white">
-              Proposta comercial em formação
+              Proposta comercial em validação
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
               A marca entra na jornada esportiva, não apenas no espaço de exposição.
@@ -379,7 +379,7 @@ export default function Home() {
                   <Handshake aria-hidden className="h-5 w-5 text-[#ffd84d]" />
                 </span>
                 <div className="mt-3 text-base font-black uppercase leading-tight text-white">{activation}</div>
-                <p className="mt-auto pt-3 text-sm text-white/55">ativação em formação</p>
+                <p className="mt-auto pt-3 text-sm text-white/55">ativação em validação</p>
               </Card>
             ))}
           </div>
@@ -410,7 +410,7 @@ export default function Home() {
                 expansão por polos
               </span>
             </div>
-            <h3 className="mt-6 text-[clamp(2rem,8vw,2.75rem)] font-black uppercase leading-[0.96] text-white">polo em formação</h3>
+            <h3 className="mt-6 text-[clamp(2rem,8vw,2.75rem)] font-black uppercase leading-[0.96] text-white">polo em validação</h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
               Espaços esportivos poderão virar centros vivos de competição, desenvolvimento e relacionamento.
             </p>
@@ -425,7 +425,7 @@ export default function Home() {
                   <CheckCircle2 aria-hidden className="h-5 w-5 text-[#ffd84d]" />
                 </span>
                 <div className="mt-3 text-base font-black uppercase leading-tight text-white">{benefit}</div>
-                <p className="mt-auto pt-3 text-sm text-white/55">polo em formação</p>
+                <p className="mt-auto pt-3 text-sm text-white/55">polo em validação</p>
               </Card>
             ))}
           </div>

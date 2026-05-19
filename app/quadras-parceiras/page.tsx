@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageSection } from "@/components/site/page-section";
+import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
   ArrowRight,
   CalendarDays,
@@ -144,16 +145,15 @@ export default function QuadrasParceirasPage() {
             </div>
           </div>
 
-          <Card className="p-5 md:p-6" premium>
-            <MapPin aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-            <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Polo em formação.
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Polos, agenda, modelos comerciais, CT UR e eventos entram apenas após validação operacional e proposta
-              aprovada. Nenhum valor ou data real foi inventado.
-            </p>
-          </Card>
+          <PremiumEmptyState
+            ctaLabel="Ser quadra parceira"
+            description="Polos, agenda, modelos comerciais, CT UR e eventos entram apenas após validação operacional e proposta aprovada. Nenhum valor ou data real foi inventado."
+            footer="agenda oficial será publicada após confirmação"
+            href="/cadastro#quadra"
+            icon={MapPin}
+            statusLabel="polo em validação"
+            title="Polo em preparação."
+          />
         </div>
       </section>
 

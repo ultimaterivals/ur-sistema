@@ -116,7 +116,7 @@ export default function EquipesPage() {
               </div>
               <div className="rounded-lg border border-white/10 bg-black/45 p-4">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">Equipe oficial</div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">equipes em formação</div>
+                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">equipes após validação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
                   Identidade, elenco e ranking coletivo disponíveis após validação e operação oficial.
                 </p>
@@ -415,6 +415,8 @@ export default function EquipesPage() {
       <SegmentCtaPanel
         description="A estrutura pública está pronta para orientar capitães e atletas enquanto registro, ranking coletivo, elenco, mídia, repasses e temporada passam por validação."
         eyebrow="CTA Equipes UR"
+        items={["elenco", "ranking coletivo", "mídia"]}
+        statusLabel="registro sujeito à validação"
         title="Transforme seu time em uma equipe dentro do ecossistema."
         actions={
           <>

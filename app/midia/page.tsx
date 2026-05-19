@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageSection } from "@/components/site/page-section";
+import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
   ArrowRight,
   BarChart3,
@@ -115,16 +116,15 @@ export default function MidiaPage() {
             </div>
           </div>
 
-          <Card className="p-5 md:p-6" premium>
-            <Megaphone aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-            <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Grade de mídia em validação.
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Conteúdos oficiais entram após operação validada. Nenhum canal, métrica, vídeo, audiência ou entrega real
-              foi inventado nesta página.
-            </p>
-          </Card>
+          <PremiumEmptyState
+            ctaLabel="Acompanhar comunidade"
+            description="Conteúdos oficiais entram após operação validada. Nenhum canal, métrica, vídeo, audiência ou entrega real foi inventado nesta página."
+            footer="conteúdos oficiais entram após operação validada"
+            href="/cadastro#comunidade"
+            icon={Megaphone}
+            statusLabel="grade de mídia em validação"
+            title="Palco em preparação."
+          />
         </div>
       </section>
 

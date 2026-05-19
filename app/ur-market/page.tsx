@@ -38,7 +38,7 @@ function ShowcasePanel() {
       <Card className="p-4 md:p-6" premium>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Badge>Vitrine do Market</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">market em formação</span>
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">vitrine inicial em preparação</span>
         </div>
         <div className="mt-6 space-y-3">
           {marketShowcaseItems.map((item, index) => (
@@ -123,7 +123,7 @@ export default function URMarketPage() {
               </div>
               <div className="rounded-lg border border-white/10 bg-black/45 p-4">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">UR Market</div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">market em formação</div>
+                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">vitrine em preparação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
                   Produtos, benefícios e checkout disponíveis após validação e operação oficial.
                 </p>
@@ -239,7 +239,7 @@ export default function URMarketPage() {
 
       <PageSection id="resgate">
         <SectionHeader
-          description="O fluxo de resgate é demonstrativo. Não há backend, checkout, carteira, pagamento ou marketplace real nesta etapa."
+          description="O fluxo de resgate será liberado após validação operacional, regras de UR Coins, itens aprovados e estrutura oficial de atendimento."
           eyebrow="Fluxo de resgate"
           title="Resgate real só depois de validação e operação ativa."
         />
@@ -312,6 +312,8 @@ export default function URMarketPage() {
       <SegmentCtaPanel
         description="Market fica pronto como estrutura pública enquanto produtos, patrocinadores, UR Coins, resgates e benefícios passam por validação oficial."
         eyebrow="CTA UR Market"
+        items={["UR Coins", "benefícios aprovados", "vitrine em preparação"]}
+        statusLabel="benefícios após aprovação operacional"
         title="Conecte desempenho, ranking e benefícios em uma mesma jornada."
         actions={
           <>

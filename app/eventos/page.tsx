@@ -152,11 +152,11 @@ function InterestPanel() {
           <ClipboardCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
         </span>
         <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-          Interesse sem inscrição funcional.
+          Interesse enviado para triagem operacional.
         </h3>
         <p className="mt-4 text-sm leading-6 text-white/72">
-          Este painel mostra o fluxo planejado. Não há backend, login, pagamento, Supabase, calendário real ou
-          inscrição funcional nesta fase.
+          A central de cadastro organiza interessados por perfil. Participação, vaga, agenda e polo dependem de
+          validação da equipe UR e confirmação oficial de cada ciclo.
         </p>
         <div className="mt-5 grid gap-2">
           {interestFlow.map((item, index) => (
@@ -210,7 +210,7 @@ export default function EventosPage() {
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
           <div className="min-w-0 text-center lg:text-left">
-            <Badge>Eventos UR • agenda em formação</Badge>
+            <Badge>Eventos UR • agenda em validação</Badge>
             <h1 className="mx-auto mt-4 max-w-4xl text-balance text-[clamp(2.75rem,10vw,4rem)] font-black uppercase leading-[0.94] tracking-normal text-white md:text-[clamp(3.45rem,6vw,5rem)] lg:mx-0">
               Cada evento tem uma função na temporada.
             </h1>
@@ -266,7 +266,7 @@ export default function EventosPage() {
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">
                   Agenda pública
                 </div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">agenda em formação</div>
+                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">agenda em validação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
                   Sem datas, horários, locais, polos confirmados, valores, vagas, atletas ou equipes reais nesta etapa.
                 </p>
@@ -379,6 +379,8 @@ export default function EventosPage() {
       <SegmentCtaPanel
         description="A estrutura de eventos está pronta para organizar entrada, ranking, equipes, mídia, UR Coins, patrocinadores e quadras quando a agenda oficial for confirmada."
         eyebrow="CTA Eventos UR"
+        items={["UR Play", "mini torneios", "virada de ranking"]}
+        statusLabel="agenda oficial após confirmação"
         title="Entre pelo UR Play. A agenda real vem depois da validação."
         actions={
           <>

@@ -80,7 +80,7 @@ export function LeadCaptureSection() {
     >
       <div className="mx-auto max-w-7xl min-w-0">
         <SectionHeader
-          description="Escolha um caminho para abrir o formulário próprio no site. O cadastro segue para triagem operacional em Google Sheets, com Tally preservado como fallback temporário."
+          description="Escolha um caminho para abrir o cadastro próprio no site. O interesse segue para triagem operacional, com alternativa externa preservada como contingência."
           eyebrow="Escolha seu caminho"
           title="Uma porta de entrada para cada perfil."
         />
@@ -139,14 +139,14 @@ function PathButton({
           {icon}
         </span>
         <span className="max-w-[58%] rounded-md border border-[#ffd84d]/20 px-2 py-1 text-right text-[10px] font-black uppercase leading-4 tracking-[0.12em] text-[#ffe98b]">
-          {active ? "formulário aberto" : "interesse"}
+          {active ? "cadastro aberto" : "interesse"}
         </span>
       </div>
       <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">{config.cardTitle}</h3>
       <p className="mt-2 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#ffe98b]">{config.audience}</p>
       <p className="mt-4 flex-1 text-sm leading-6 text-white/70">{config.description}</p>
       <span className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#ffd84d]/35 bg-[#ffd84d]/10 px-4 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]">
-        Abrir formulário
+        Abrir cadastro
       </span>
     </button>
   );

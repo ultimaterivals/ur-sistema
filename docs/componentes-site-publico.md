@@ -215,7 +215,7 @@ import { PartnerActivationCard } from "@/components/site/partner-activation-card
 <PartnerActivationCard
   item={{
     label: "Cota Temporada",
-    status: "cotas em formação",
+    status: "cotas em validação",
     description: "Modelo para conectar marca a ranking e mídia.",
     items: ["temporada em formação", "métricas após validação"],
   }}
@@ -303,3 +303,48 @@ import { RewardPreviewCard } from "@/components/site/reward-preview-card";
 - Não alterar formulários, captação, Tally, Apps Script ou Google Sheets
 - Manter linguagem "em formação" / "após validação" como estado honesto do MVP
 - Premium cards usam `bg-[radial-gradient(circle_at_18%_0%,rgba(255,216,77,0.13)...)]` via prop `premium`
+
+---
+
+## Atualização Sprint 3
+
+### Componentes padronizados
+
+- `EcosystemFlowPanel` agora aceita `cols={7}` para fluxos completos do ecossistema, como `Entrar -> Ser avaliado -> Competir -> Evoluir -> Ganhar visibilidade -> Receber recompensas -> Virar referência`.
+- `SegmentCtaPanel` aceita `items` e `statusLabel` para criar CTAs segmentados com contexto operacional sem repetir blocos manuais.
+- `PremiumEmptyState` aceita `statusLabel`, `href` e `ctaLabel`, permitindo transformar estados sem dados reais em painéis premium com ação clara.
+
+### Aplicações novas
+
+| Página | Componente aplicado | Uso |
+|--------|---------------------|-----|
+| `/ecossistema` | `EcosystemFlowPanel` | Fluxo visual completo da jornada do ecossistema |
+| `/ct-ur` | `PremiumEmptyState` | Painel de CT UR em validação operacional com CTA para atleta |
+| `/midia` | `PremiumEmptyState` | Painel de mídia em preparação com CTA de comunidade |
+| `/quadras-parceiras` | `PremiumEmptyState` | Painel de polo em validação com CTA para quadra |
+| `/atletas` | `SegmentCtaPanel.items/statusLabel` | CTA final com marcadores de UR Play, ranking e Mentalidade Hunter |
+| `/equipes` | `SegmentCtaPanel.items/statusLabel` | CTA final com marcadores de elenco, ranking coletivo e mídia |
+| `/ur-market` | `SegmentCtaPanel.items/statusLabel` | CTA final com marcadores de UR Coins, benefícios e vitrine |
+| `/patrocinadores` | `SegmentCtaPanel.items/statusLabel` | CTA final com marcadores comerciais de mídia, ranking, Market e eventos |
+| `/eventos` | `SegmentCtaPanel.items/statusLabel` | CTA final com marcadores de UR Play, mini torneios e Virada de Ranking |
+
+### Padrões de placeholder premium
+
+Use estes estados quando ainda não houver dado público real:
+
+- `operação em validação`
+- `dados públicos entram após validação`
+- `agenda oficial será publicada após confirmação`
+- `ranking será aberto após primeiras participações validadas`
+- `benefícios entram após aprovação operacional`
+- `vitrine inicial em preparação`
+- `mídia em preparação`
+- `polo em validação`
+
+Evite quando possível:
+
+- `formulário visual`
+- `sem envio real`
+- `campo visual`
+- `não há cadastro funcional`
+- repetição excessiva de `em formação`

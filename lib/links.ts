@@ -8,7 +8,7 @@ export const conversionRoutes = {
   avisoValidacao: "/cadastro#aviso-validacao",
 } as const;
 
-const tallyStatus = "formulário Tally conectado";
+const tallyStatus = "alternativa externa conectada";
 const channelPendingStatus = "canal será conectado após validação operacional";
 
 export const tallyLinks = {

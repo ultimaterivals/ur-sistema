@@ -155,7 +155,7 @@ export default function PatrocinadoresPage() {
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">
                   Plataforma comercial
                 </div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">cotas em formação</div>
+                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">cotas em validação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
                   Cotas, valores e entregas disponíveis após validação e proposta aprovada oficialmente.
                 </p>
@@ -233,7 +233,7 @@ export default function PatrocinadoresPage() {
           ))}
         </div>
         <div className="mt-5 grid gap-3 md:grid-cols-3">
-          {["ranking em formação", "mídia em construção", "métricas entram após operação validada"].map((item) => (
+          {["ranking após validação", "mídia em preparação", "métricas entram após operação validada"].map((item) => (
             <span
               className="rounded-lg border border-[#ffd84d]/20 bg-[#ffd84d]/10 px-4 py-3 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#ffe98b]"
               key={item}
@@ -301,7 +301,7 @@ export default function PatrocinadoresPage() {
         <SectionHeader
           description="Modelos abaixo são placeholders comerciais. Valores, cotas e entregas reais dependem de proposta, aprovação e validação oficial."
           eyebrow="Modelos de cota"
-          title="Estrutura comercial em formação, sem valores inventados."
+          title="Estrutura comercial em validação, sem valores inventados."
         />
         <div className="grid gap-5 lg:grid-cols-3">
           {quotaModels.map((quota, index) => (
@@ -347,6 +347,8 @@ export default function PatrocinadoresPage() {
       <SegmentCtaPanel
         description="A página comercial fica pronta como estrutura pública enquanto cotas, valores, entregas, relatórios e marcas reais passam por proposta e aprovação oficial."
         eyebrow="CTA Patrocinadores UR"
+        items={["mídia", "ranking", "UR Market", "eventos"]}
+        statusLabel="proposta comercial sob validação"
         title="Entre na jornada do atleta, não apenas no espaço do evento."
         actions={
           <>

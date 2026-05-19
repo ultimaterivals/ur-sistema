@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 type PremiumEmptyStateProps = {
@@ -8,6 +9,9 @@ type PremiumEmptyStateProps = {
   title: string;
   description: string;
   footer?: string;
+  href?: string;
+  ctaLabel?: string;
+  statusLabel?: string;
   className?: string;
 };
 
@@ -17,9 +21,13 @@ export function PremiumEmptyState({
   title,
   description,
   footer,
+  href,
+  ctaLabel,
+  statusLabel,
   className,
 }: PremiumEmptyStateProps) {
-  const hasHeader = Boolean(Icon) || Boolean(eyebrow);
+  const label = statusLabel ?? eyebrow;
+  const hasHeader = Boolean(Icon) || Boolean(label);
 
   return (
     <Card className={cn("flex min-h-[258px] flex-col", className)} premium>
@@ -30,9 +38,9 @@ export function PremiumEmptyState({
               <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
           ) : null}
-          {eyebrow ? (
+          {label ? (
             <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              {eyebrow}
+              {label}
             </span>
           ) : null}
         </div>
@@ -46,6 +54,11 @@ export function PremiumEmptyState({
         {title}
       </h3>
       <p className="mt-4 text-sm leading-6 text-white/72">{description}</p>
+      {href && ctaLabel ? (
+        <Button className="mt-6 w-full" href={href} variant="secondary">
+          {ctaLabel}
+        </Button>
+      ) : null}
       {footer ? (
         <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
           {footer}

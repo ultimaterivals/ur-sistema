@@ -34,12 +34,12 @@ const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Sim. Os formulários próprios enviam o interesse para triagem operacional via Google Apps Script e Google Sheets. O Tally segue como fallback temporário.",
+      "Sim. O cadastro próprio registra o interesse para triagem operacional e organização interna da equipe UR.",
   },
   {
-    question: "Existe backend, login ou banco de dados?",
+    question: "Preciso criar conta ou pagar agora?",
     answer:
-      "Não nesta fase. O MVP envia o formulário próprio para Google Apps Script e Google Sheets, sem criar backend, login, pagamento, Supabase ou banco de dados.",
+      "Não. Nesta fase o objetivo é registrar interesse e passar por validação operacional antes de qualquer próximo passo.",
   },
   {
     question: "Posso entrar como atleta sem equipe?",
@@ -85,7 +85,7 @@ export default function CadastroPage() {
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
               Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Esta central
-              organiza a captação sem criar backend, login, pagamento ou banco de dados nesta fase.
+              organiza a captação como cadastro de interesse aberto, com validação operacional antes de qualquer próximo passo.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="#caminhos">
@@ -145,7 +145,7 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="O MVP organiza a intenção com formulários próprios no site, envio para triagem operacional em Google Sheets e Tally preservado como fallback temporário."
+          description="O MVP organiza a intenção em uma central própria do site e direciona cada perfil para triagem operacional."
           eyebrow="Depois do interesse"
           title="Captação real, validação operacional antes do próximo passo."
         />
@@ -176,9 +176,8 @@ export default function CadastroPage() {
               Enviar não garante aprovação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase não cria backend, banco de dados, Supabase, login ou pagamento. A camada atual usa Apps Script e
-              Google Sheets como base operacional MVP. A equipe UR ainda valida agenda, polo, perfil, proposta e
-              prioridade antes de liberar qualquer próximo passo.
+              Esta fase registra interesse e organiza a triagem operacional. A equipe UR ainda valida agenda, polo,
+              perfil, proposta e prioridade antes de liberar qualquer próximo passo.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -196,7 +195,7 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
-          description="O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado. A comunidade já pode entrar pelo formulário próprio, com Tally como fallback."
+          description="O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado. A comunidade já pode entrar pela central de cadastro."
           eyebrow="CTAs de conversão"
           title="WhatsApp preparado e comunidade dentro da central."
         />
@@ -234,7 +233,7 @@ export default function CadastroPage() {
               Quero acompanhar
             </Button>
             <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">
-              formulário próprio no site com Tally como fallback
+              cadastro próprio no site com alternativa externa de contingência
             </p>
           </Card>
         </div>
@@ -242,7 +241,7 @@ export default function CadastroPage() {
 
       <PageSection id="faq">
         <SectionHeader
-          description="Perguntas rápidas para deixar a conversão clara sem criar backend, login, pagamento ou integração complexa nesta fase."
+          description="Perguntas rápidas para deixar a conversão clara e reforçar que todo próximo passo depende de validação operacional."
           eyebrow="FAQ rápido"
           title="Antes de escolher, entenda a fase atual."
         />
@@ -274,9 +273,8 @@ export default function CadastroPage() {
                 Escolha um caminho. A operação valida o próximo passo.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                O MVP agora tem uma central de conversão com formulários próprios, Google Sheets via Apps Script e Tally
-                como fallback temporário. A equipe UR valida cada interesse antes de liberar agenda, polo, proposta, vaga
-                ou participação.
+                O MVP agora tem uma central de conversão com cadastro próprio e triagem operacional. A equipe UR valida
+                cada interesse antes de liberar agenda, polo, proposta, vaga ou participação.
               </p>
             </div>
             <div className="grid gap-3">

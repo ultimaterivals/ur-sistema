@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EcosystemFlowPanel } from "@/components/site/ecosystem-flow-panel";
 import { PageSection } from "@/components/site/page-section";
 import {
   ArrowRight,
@@ -124,14 +125,35 @@ const pillars: Pillar[] = [
   },
 ] as const;
 
-const journey = [
-  "Entrar",
-  "Ser avaliado",
-  "Competir",
-  "Evoluir",
-  "Ganhar visibilidade",
-  "Receber recompensas",
-  "Virar referência",
+const journeyFlow = [
+  {
+    label: "Entrar",
+    description: "O primeiro passo acontece pela central de cadastro e triagem operacional.",
+  },
+  {
+    label: "Ser avaliado",
+    description: "Participação, postura e contexto esportivo passam por validação da equipe UR.",
+  },
+  {
+    label: "Competir",
+    description: "UR Play, eventos e torneios alimentam a jornada quando a agenda estiver confirmada.",
+  },
+  {
+    label: "Evoluir",
+    description: "Níveis, feedback e CT UR organizam progresso sem promessa de resultado automático.",
+  },
+  {
+    label: "Ganhar visibilidade",
+    description: "Ranking, mídia e comunidade transformam participação validada em narrativa pública.",
+  },
+  {
+    label: "Receber recompensas",
+    description: "UR Coins, benefícios e ativações entram após aprovação operacional.",
+  },
+  {
+    label: "Virar referência",
+    description: "Histórico, presença e conduta constroem reputação dentro do ecossistema.",
+  },
 ] as const;
 
 const audiencePaths = [
@@ -262,18 +284,7 @@ export default function EcossistemaPage() {
           eyebrow="Fluxo da jornada"
           title="Do primeiro interesse à referência dentro do ecossistema."
         />
-        <Card className="p-4 md:p-6" premium>
-          <div className="grid gap-3 md:grid-cols-7">
-            {journey.map((item, index) => (
-              <div className="rounded-lg border border-white/10 bg-black/25 p-4" key={item}>
-                <span className="grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                  {index + 1}
-                </span>
-                <h2 className="mt-4 text-sm font-black uppercase leading-5 tracking-[0.1em] text-white">{item}</h2>
-              </div>
-            ))}
-          </div>
-        </Card>
+        <EcosystemFlowPanel items={journeyFlow} cols={7} />
       </PageSection>
 
       <PageSection className="bg-[#07080c]">

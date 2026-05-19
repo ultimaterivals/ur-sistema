@@ -218,7 +218,7 @@ export default function AtletasPage() {
               </div>
               <div className="rounded-lg border border-white/10 bg-black/45 p-4">
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">Perfil do atleta</div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">ranking em formação</div>
+                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">ranking após validação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
                   Perfil público, histórico, conquistas e ranking disponíveis após validação oficial.
                 </p>
@@ -387,6 +387,8 @@ export default function AtletasPage() {
       <SegmentCtaPanel
         description="A jornada do atleta está pronta como estrutura pública enquanto perfis, ranking, histórico, equipes, oportunidades e recompensas passam por validação oficial."
         eyebrow="CTA Atletas UR"
+        items={["UR Play", "ranking após validação", "Mentalidade Hunter"]}
+        statusLabel="cadastro de interesse aberto"
         title="Comece pelo UR Play. Construa reputação quando os dados forem oficiais."
         actions={
           <>
