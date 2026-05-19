@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
-import { ArrowRight, Building2, ChevronDown, ClipboardCheck, Handshake, Megaphone } from "lucide-react";
+import { ArrowRight, ChevronDown, ClipboardCheck, Handshake, Megaphone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { EcosystemFlowPanel } from "@/components/site/ecosystem-flow-panel";
+import { IconCard } from "@/components/site/icon-card";
+import { PageSection } from "@/components/site/page-section";
+import { PartnerActivationCard } from "@/components/site/partner-activation-card";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import type { SponsorCard } from "@/lib/content/patrocinadores";
 import {
   activationCards,
@@ -28,94 +32,6 @@ export const metadata: Metadata = {
   description:
     "Conheça as oportunidades para patrocinadores no Ultimate Rivals, um ecossistema esportivo com atletas, equipes, eventos, ranking, mídia, UR Market, CT UR e ativações com dados.",
 };
-
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
-
-function IconCard({ item, premium = false }: { item: SponsorCard; premium?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
-
-function MarketRelationshipPanel() {
-  return (
-    <Card className="p-4 md:p-6" premium>
-      <div className="grid gap-3 md:grid-cols-4">
-        {marketRelationshipFlow.map((item, index) => (
-          <div className="relative rounded-lg border border-white/10 bg-black/25 p-4" key={item.label}>
-            {index < marketRelationshipFlow.length - 1 ? (
-              <ArrowRight
-                aria-hidden
-                className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-[#ffd84d] md:block"
-              />
-            ) : null}
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-              {index + 1}
-            </span>
-            <h3 className="mt-4 text-base font-black uppercase leading-tight text-white">{item.label}</h3>
-            <p className="mt-3 text-sm leading-6 text-white/68">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
-}
-
-function QuotaModelsPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-3">
-      {quotaModels.map((quota, index) => (
-        <Card className="flex min-h-[310px] flex-col p-4 md:p-5" key={quota.label} premium={index === 1}>
-          <div className="flex items-start justify-between gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-              <Building2 aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-            </span>
-            <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              {quota.status}
-            </span>
-          </div>
-          <h3 className="mt-5 text-xl font-black uppercase leading-tight text-white">{quota.label}</h3>
-          <p className="mt-3 text-sm leading-6 text-white/70">{quota.description}</p>
-          <div className="mt-5 space-y-2">
-            {quota.items.map((item) => (
-              <span
-                className="block rounded-md border border-white/10 bg-black/25 px-3 py-2 text-xs font-black uppercase leading-5 tracking-[0.1em] text-white/75"
-                key={item}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </Card>
-      ))}
-    </div>
-  );
-}
 
 function CommercialInterestPanel() {
   return (
@@ -241,7 +157,7 @@ export default function PatrocinadoresPage() {
                 </div>
                 <div className="mt-2 text-2xl font-black uppercase leading-none text-white">cotas em formação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
-                  Sem marcas, contratos, valores, alcance, entregas comerciais ou métricas reais nesta etapa.
+                  Cotas, valores e entregas disponíveis após validação e proposta aprovada oficialmente.
                 </p>
               </div>
             </Card>
@@ -256,10 +172,13 @@ export default function PatrocinadoresPage() {
           title="Patrocínio no UR é presença dentro do ecossistema."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {sponsorNarrativeCards.map((item, index) => (
+          {sponsorNarrativeCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
+        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
+          O patrocinador certo não aparece apenas no evento. Ele participa da jornada do atleta.
+        </p>
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="ecossistema">
@@ -269,7 +188,7 @@ export default function PatrocinadoresPage() {
           title="Vários pontos de contato, uma narrativa contínua."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ecosystemAccessCards.map((item, index) => (
+          {ecosystemAccessCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 4} />
           ))}
         </div>
@@ -282,7 +201,7 @@ export default function PatrocinadoresPage() {
           title="Marca com função real na experiência, no conteúdo e no benefício."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {activationCards.map((item, index) => (
+          {activationCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
@@ -299,7 +218,7 @@ export default function PatrocinadoresPage() {
           eyebrow="UR Market comercial"
           title="Benefício é uma forma mais forte de patrocínio."
         />
-        <MarketRelationshipPanel />
+        <EcosystemFlowPanel items={marketRelationshipFlow} cols={4} />
       </PageSection>
 
       <PageSection id="ranking-midia">
@@ -309,7 +228,7 @@ export default function PatrocinadoresPage() {
           title="Ativos comerciais que vivem além do dia do evento."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {rankingMediaCards.map((item, index) => (
+          {rankingMediaCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
@@ -332,7 +251,7 @@ export default function PatrocinadoresPage() {
           title="A marca participa de momentos que organizam o esporte local."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {eventsCommunityCards.map((item, index) => (
+          {eventsCommunityCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
@@ -353,12 +272,12 @@ export default function PatrocinadoresPage() {
               Impacto esportivo com validação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Nenhuma clínica, treino, avaliação, agenda ou entrega comercial real é prometida antes de validação
-              operacional.
+              Clínicas, treinos, avaliações e entregas comerciais entram somente após validação operacional e proposta
+              aprovada.
             </p>
           </Card>
           <div className="grid gap-3 md:grid-cols-3">
-            {ctImpactCards.map((item) => (
+            {ctImpactCards.map((item: SponsorCard) => (
               <IconCard item={item} key={item.title} />
             ))}
           </div>
@@ -372,7 +291,7 @@ export default function PatrocinadoresPage() {
           title="Dados comerciais entram depois da operação validada."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {reportingCards.map((item, index) => (
+          {reportingCards.map((item: SponsorCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -384,7 +303,11 @@ export default function PatrocinadoresPage() {
           eyebrow="Modelos de cota"
           title="Estrutura comercial em formação, sem valores inventados."
         />
-        <QuotaModelsPanel />
+        <div className="grid gap-5 lg:grid-cols-3">
+          {quotaModels.map((quota, index) => (
+            <PartnerActivationCard item={quota} key={quota.label} premium={index === 1} />
+          ))}
+        </div>
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="interesse">
@@ -421,31 +344,22 @@ export default function PatrocinadoresPage() {
         </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA Patrocinadores UR</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Entre na jornada do atleta, não apenas no espaço do evento.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                A página comercial fica pronta como estrutura pública enquanto cotas, valores, entregas, relatórios e
-                marcas reais passam por proposta e aprovação oficial.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#patrocinador">Registrar interesse</Button>
-              <Button href="/ur-market" variant="secondary">
-                Ver UR Market
-              </Button>
-              <Button href="/ranking" variant="ghost">
-                Entender ranking
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <SegmentCtaPanel
+        description="A página comercial fica pronta como estrutura pública enquanto cotas, valores, entregas, relatórios e marcas reais passam por proposta e aprovação oficial."
+        eyebrow="CTA Patrocinadores UR"
+        title="Entre na jornada do atleta, não apenas no espaço do evento."
+        actions={
+          <>
+            <Button href="/cadastro#patrocinador">Registrar interesse</Button>
+            <Button href="/ur-market" variant="secondary">
+              Ver UR Market
+            </Button>
+            <Button href="/ranking" variant="ghost">
+              Entender ranking
+            </Button>
+          </>
+        }
+      />
     </main>
   );
 }

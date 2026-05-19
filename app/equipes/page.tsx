@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { ArrowRight, ChevronDown, ClipboardList, Lock, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { IconCard } from "@/components/site/icon-card";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
+import { TeamPreviewCard } from "@/components/site/team-preview-card";
 import type { TeamCard, TeamStep } from "@/lib/content/equipes";
 import {
   collectiveRankingCards,
@@ -31,39 +34,6 @@ export const metadata: Metadata = {
     "Conheça as equipes oficiais do Ultimate Rivals, o sistema que transforma times amadores em ativos competitivos com ranking coletivo, elenco, UR Coins, mídia, repasses e oportunidades dentro da temporada.",
 };
 
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
-
-function IconCard({ item, premium = false }: { item: TeamCard; premium?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
-
 function TeamTimeline({ steps }: { steps: readonly TeamStep[] }) {
   return (
     <div className="relative">
@@ -79,50 +49,6 @@ function TeamTimeline({ steps }: { steps: readonly TeamStep[] }) {
               <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
             </Card>
           </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TeamPreviewPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-      <Card className="p-4 md:p-6" premium>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Preview visual</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
-            dados reais entram após validação
-          </span>
-        </div>
-        <div className="mt-6 space-y-3">
-          {teamPreviewRows.map((row, index) => (
-            <div
-              className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-black/30 p-4"
-              key={row.label}
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-base font-black uppercase leading-tight text-white">{row.label}</h3>
-                <p className="mt-1 text-sm font-bold text-[#ffe98b]">{row.value}</p>
-                <p className="mt-2 text-sm leading-6 text-white/62">{row.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {["identidade em formação", "elenco em validação", "capitão em formação", "mídia em formação"].map((item) => (
-          <Card className="min-h-[132px] p-4 md:p-5" key={item}>
-            <span className="grid h-10 w-10 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-              <Shield aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-            </span>
-            <h3 className="mt-3 text-sm font-black uppercase leading-tight tracking-[0.08em] text-white">{item}</h3>
-            <p className="mt-2 text-sm text-white/65">equipes em formação</p>
-          </Card>
         ))}
       </div>
     </div>
@@ -192,7 +118,7 @@ export default function EquipesPage() {
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">Equipe oficial</div>
                 <div className="mt-2 text-2xl font-black uppercase leading-none text-white">equipes em formação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
-                  Sem nomes, escudos, atletas, elencos, posições ou repasses reais nesta etapa.
+                  Identidade, elenco e ranking coletivo disponíveis após validação e operação oficial.
                 </p>
               </div>
             </Card>
@@ -207,7 +133,7 @@ export default function EquipesPage() {
           title="Equipe não é só um grupo de atletas."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {teamIdentityCards.map((item, index) => (
+          {teamIdentityCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -234,6 +160,9 @@ export default function EquipesPage() {
             </div>
           ))}
         </div>
+        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
+          Equipe forte não nasce só no jogo. Nasce com identidade, organização e continuidade.
+        </p>
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="entrada">
@@ -257,7 +186,7 @@ export default function EquipesPage() {
           title="Mais organização para competir, aparecer e crescer."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {teamBenefits.map((item, index) => (
+          {teamBenefits.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
@@ -275,7 +204,7 @@ export default function EquipesPage() {
           title="A equipe também disputa posição, memória e valor."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {collectiveRankingCards.map((item, index) => (
+          {collectiveRankingCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -288,7 +217,7 @@ export default function EquipesPage() {
           title="Equipe oficial exige responsabilidade e registro validado."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {rosterValidationCards.map((item, index) => (
+          {rosterValidationCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 3} />
           ))}
         </div>
@@ -306,7 +235,7 @@ export default function EquipesPage() {
           title="Atletas observados podem virar elenco no futuro."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {draftConnectionCards.map((item, index) => (
+          {draftConnectionCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -324,7 +253,7 @@ export default function EquipesPage() {
           title="Conquistas coletivas podem virar reconhecimento."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {teamCoinsCards.map((item, index) => (
+          {teamCoinsCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -337,10 +266,13 @@ export default function EquipesPage() {
           title="Equipe forte também é produto de mídia."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {mediaRivalryCards.map((item, index) => (
+          {mediaRivalryCards.map((item: TeamCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
+        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
+          Toda rivalidade tem nome. No UR, o confronto vira narrativa, a torcida vira comunidade.
+        </p>
       </PageSection>
 
       <PageSection id="repasses-premiacoes">
@@ -355,10 +287,10 @@ export default function EquipesPage() {
               ciclo competitivo
             </span>
             <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Sem repasse real antes da temporada validada.
+              Repasse real após temporada validada.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Nenhuma premiação, valor, posição ou regra final será exibida antes de validação oficial.
+              Premiação, valores, posição e regras finais são publicados somente após validação operacional oficial.
             </p>
           </Card>
           <div className="grid gap-3 sm:grid-cols-4">
@@ -383,7 +315,11 @@ export default function EquipesPage() {
           eyebrow="Preview de equipes"
           title="Interface pronta para equipes reais, quando elas forem validadas."
         />
-        <TeamPreviewPanel />
+        <TeamPreviewCard
+          eyebrow="Preview visual"
+          rows={teamPreviewRows}
+          sideLabels={["identidade em validação", "elenco em validação", "capitão em validação", "mídia em validação"]}
+        />
       </PageSection>
 
       <PageSection id="interesse">
@@ -476,31 +412,22 @@ export default function EquipesPage() {
         </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA Equipes UR</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Transforme seu time em uma equipe dentro do ecossistema.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                A estrutura pública está pronta para orientar capitães e atletas enquanto registro, ranking coletivo,
-                elenco, mídia, repasses e temporada passam por validação.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#equipe">Registrar interesse</Button>
-              <Button href="/ranking" variant="secondary">
-                Entender ranking
-              </Button>
-              <Button href="/cadastro#atleta" variant="ghost">
-                Começar pelo UR Play
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <SegmentCtaPanel
+        description="A estrutura pública está pronta para orientar capitães e atletas enquanto registro, ranking coletivo, elenco, mídia, repasses e temporada passam por validação."
+        eyebrow="CTA Equipes UR"
+        title="Transforme seu time em uma equipe dentro do ecossistema."
+        actions={
+          <>
+            <Button href="/cadastro#equipe">Registrar interesse</Button>
+            <Button href="/ranking" variant="secondary">
+              Entender ranking
+            </Button>
+            <Button href="/cadastro#atleta" variant="ghost">
+              Começar pelo UR Play
+            </Button>
+          </>
+        }
+      />
     </main>
   );
 }

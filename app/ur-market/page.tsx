@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { ArrowRight, ChevronDown, Coins, Lock, ShoppingBag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { EcosystemFlowPanel } from "@/components/site/ecosystem-flow-panel";
+import { IconCard } from "@/components/site/icon-card";
+import { PageSection } from "@/components/site/page-section";
+import { RewardPreviewCard } from "@/components/site/reward-preview-card";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import type { MarketCard } from "@/lib/content/ur-market";
 import {
   athleteMarketBenefits,
@@ -28,82 +32,17 @@ export const metadata: Metadata = {
     "Conheça o UR Market, a vitrine de recompensas do Ultimate Rivals onde UR Coins, desempenho, ranking, patrocinadores e benefícios se conectam ao ecossistema esportivo.",
 };
 
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
-
-function IconCard({ item, premium = false }: { item: MarketCard; premium?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
-
-function FlowPanel({ items }: { items: readonly string[] }) {
-  return (
-    <div className="grid gap-3 sm:grid-cols-4">
-      {items.map((item, index) => (
-        <div
-          className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm font-black uppercase leading-5 tracking-[0.1em] text-white"
-          key={item}
-        >
-          <span className="mb-3 grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs text-black">
-            {index + 1}
-          </span>
-          {item}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ShowcasePanel() {
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
       <Card className="p-4 md:p-6" premium>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Badge>Vitrine do Market</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
-            market em formação
-          </span>
+          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">market em formação</span>
         </div>
         <div className="mt-6 space-y-3">
           {marketShowcaseItems.map((item, index) => (
-            <div
-              className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-black/30 p-4"
-              key={item.title}
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-base font-black uppercase leading-tight text-white">{item.title}</h3>
-                <p className="mt-1 text-sm font-bold text-[#ffe98b]">{item.category}</p>
-                <p className="mt-2 text-sm leading-6 text-white/62">{item.status}</p>
-              </div>
-            </div>
+            <RewardPreviewCard index={index} item={item} key={item.title} />
           ))}
         </div>
       </Card>
@@ -115,7 +54,7 @@ function ShowcasePanel() {
               <ShoppingBag aria-hidden className="h-5 w-5 text-[#ffd84d]" />
             </span>
             <h3 className="mt-3 text-sm font-black uppercase leading-tight tracking-[0.08em] text-white">{item}</h3>
-            <p className="mt-2 text-sm text-white/65">sem produto real nesta etapa</p>
+            <p className="mt-2 text-sm text-white/65">disponível após validação oficial</p>
           </Card>
         ))}
       </div>
@@ -186,7 +125,7 @@ export default function URMarketPage() {
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">UR Market</div>
                 <div className="mt-2 text-2xl font-black uppercase leading-none text-white">market em formação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
-                  Sem produtos, marcas, preços, checkout, carteira ou benefícios reais nesta etapa.
+                  Produtos, benefícios e checkout disponíveis após validação e operação oficial.
                 </p>
               </div>
             </Card>
@@ -201,7 +140,7 @@ export default function URMarketPage() {
           title="A vitrine de benefícios do ecossistema Ultimate Rivals."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {marketIntroCards.map((item, index) => (
+          {marketIntroCards.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -213,25 +152,10 @@ export default function URMarketPage() {
           eyebrow="Desempenho vira benefício"
           title="Valor para quem participa, evolui e volta ao ciclo."
         />
-        <Card className="p-4 md:p-6" premium>
-          <div className="grid gap-3 md:grid-cols-4">
-            {performanceBenefitFlow.map((item, index) => (
-              <div className="relative rounded-lg border border-white/10 bg-black/25 p-4" key={item.label}>
-                {index < performanceBenefitFlow.length - 1 ? (
-                  <ArrowRight
-                    aria-hidden
-                    className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-[#ffd84d] md:block"
-                  />
-                ) : null}
-                <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <h3 className="mt-3 text-base font-black uppercase leading-tight text-white">{item.label}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/68">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </Card>
+        <EcosystemFlowPanel items={performanceBenefitFlow} cols={4} />
+        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
+          No UR, resultado não acaba no apito final. Ele continua no ranking, no mercado e nas oportunidades.
+        </p>
       </PageSection>
 
       <PageSection id="ur-coins">
@@ -241,7 +165,7 @@ export default function URMarketPage() {
           title="Moeda interna planejada, valores oficiais depois."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {coinMechanicsCards.map((item, index) => (
+          {coinMechanicsCards.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -254,7 +178,7 @@ export default function URMarketPage() {
           title="Benefícios diversos, todos sujeitos a validação oficial."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {rewardCategories.map((item, index) => (
+          {rewardCategories.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -267,7 +191,7 @@ export default function URMarketPage() {
           title="Mais motivos para voltar ao ciclo."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {athleteMarketBenefits.map((item, index) => (
+          {athleteMarketBenefits.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -280,7 +204,7 @@ export default function URMarketPage() {
           title="Recompensas coletivas fortalecem elenco e identidade."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {teamMarketBenefits.map((item, index) => (
+          {teamMarketBenefits.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -298,7 +222,7 @@ export default function URMarketPage() {
           title="Marca deixa de ser banner e passa a entregar valor."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {sponsorMarketBenefits.map((item, index) => (
+          {sponsorMarketBenefits.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -325,13 +249,25 @@ export default function URMarketPage() {
               <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-6 text-[clamp(1.9rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Resgate bloqueado no MVP.
+              Resgate disponível após operação validada.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
               A página demonstra o conceito sem coletar dados, sem vender produtos e sem gerar transações.
             </p>
           </Card>
-          <FlowPanel items={redeemFlow} />
+          <div className="grid gap-3 sm:grid-cols-4">
+            {redeemFlow.map((item, index) => (
+              <div
+                className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm font-black uppercase leading-5 tracking-[0.1em] text-white"
+                key={item}
+              >
+                <span className="mb-3 grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs text-black">
+                  {index + 1}
+                </span>
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </PageSection>
 
@@ -342,7 +278,7 @@ export default function URMarketPage() {
           title="Benefício bom faz o atleta voltar."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {ecosystemRelationCards.map((item, index) => (
+          {ecosystemRelationCards.map((item: MarketCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -373,31 +309,22 @@ export default function URMarketPage() {
         </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA UR Market</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Conecte desempenho, ranking e benefícios em uma mesma jornada.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                Market fica pronto como estrutura pública enquanto produtos, patrocinadores, UR Coins, resgates e
-                benefícios passam por validação oficial.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/ranking">Entender ranking</Button>
-              <Button href="/cadastro#patrocinador" variant="secondary">
-                Quero patrocinar
-              </Button>
-              <Button href="/cadastro#atleta" variant="ghost">
-                Começar pelo UR Play
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <SegmentCtaPanel
+        description="Market fica pronto como estrutura pública enquanto produtos, patrocinadores, UR Coins, resgates e benefícios passam por validação oficial."
+        eyebrow="CTA UR Market"
+        title="Conecte desempenho, ranking e benefícios em uma mesma jornada."
+        actions={
+          <>
+            <Button href="/ranking">Entender ranking</Button>
+            <Button href="/cadastro#patrocinador" variant="secondary">
+              Quero patrocinar
+            </Button>
+            <Button href="/cadastro#atleta" variant="ghost">
+              Começar pelo UR Play
+            </Button>
+          </>
+        }
+      />
     </main>
   );
 }

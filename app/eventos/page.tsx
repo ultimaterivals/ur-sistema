@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { ArrowRight, CalendarDays, ChevronDown, ClipboardCheck, Coins } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
-import type { EventCard, EventFocus } from "@/lib/content/eventos";
+import { IconCard } from "@/components/site/icon-card";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
+import type { EventFocus } from "@/lib/content/eventos";
 import {
   agendaPreviewRows,
   agendaStatusCards,
@@ -28,38 +30,6 @@ export const metadata: Metadata = {
     "Conheça os eventos do Ultimate Rivals, incluindo UR Play, mini torneios, torneios oficiais, Virada de Ranking e experiências conectadas ao ranking, equipes, UR Coins e mídia.",
 };
 
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
-
-function IconCard({ item, premium = false }: { item: EventCard; premium?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
 
 function EventFocusBlock({ event, index }: { event: EventFocus; index: number }) {
   const Icon = event.icon;
@@ -406,31 +376,22 @@ export default function EventosPage() {
         </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA Eventos UR</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Entre pelo UR Play. A agenda real vem depois da validação.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                A estrutura de eventos está pronta para organizar entrada, ranking, equipes, mídia, UR Coins,
-                patrocinadores e quadras sem inventar datas, vagas ou locais reais.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#atleta">Demonstrar interesse</Button>
-              <Button href="/cadastro#atleta" variant="secondary">
-                Conhecer UR Play
-              </Button>
-              <Button href="/temporada" variant="ghost">
-                Ver temporada
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <SegmentCtaPanel
+        description="A estrutura de eventos está pronta para organizar entrada, ranking, equipes, mídia, UR Coins, patrocinadores e quadras quando a agenda oficial for confirmada."
+        eyebrow="CTA Eventos UR"
+        title="Entre pelo UR Play. A agenda real vem depois da validação."
+        actions={
+          <>
+            <Button href="/cadastro#atleta">Demonstrar interesse</Button>
+            <Button href="/cadastro#atleta" variant="secondary">
+              Conhecer UR Play
+            </Button>
+            <Button href="/temporada" variant="ghost">
+              Ver temporada
+            </Button>
+          </>
+        }
+      />
     </main>
   );
 }

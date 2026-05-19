@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { ArrowRight, ChevronDown, ClipboardCheck, Flame, UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { AthletePreviewCard } from "@/components/site/athlete-preview-card";
+import { IconCard } from "@/components/site/icon-card";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import type { AthleteCard, AthleteJourneyStep } from "@/lib/content/atletas";
 import {
   athleteFaq,
@@ -28,39 +31,6 @@ export const metadata: Metadata = {
   description:
     "Conheça a jornada dos atletas no Ultimate Rivals, com UR Play, ranking, níveis, equipes, UR Coins, mídia, CT UR e Mentalidade Hunter para evolução dentro do ecossistema.",
 };
-
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
-
-function IconCard({ item, premium = false }: { item: AthleteCard; premium?: boolean }) {
-  const Icon = item.icon;
-
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
 
 function AthleteJourney({ steps }: { steps: readonly AthleteJourneyStep[] }) {
   return (
@@ -120,52 +90,8 @@ function HunterPanel() {
         </p>
       </Card>
       <div className="grid gap-3 sm:grid-cols-2">
-        {hunterPrinciples.map((item, index) => (
+        {hunterPrinciples.map((item: AthleteCard, index: number) => (
           <IconCard item={item} key={item.title} premium={index === 0} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AthleteProfilesPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-      <Card className="p-4 md:p-6" premium>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Perfis de atleta</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
-            sem perfil real nesta etapa
-          </span>
-        </div>
-        <div className="mt-6 space-y-3">
-          {athleteProfilePlaceholders.map((row, index) => (
-            <div
-              className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-black/30 p-4"
-              key={row.label}
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-base font-black uppercase leading-tight text-white">{row.label}</h3>
-                <p className="mt-1 text-sm font-bold text-[#ffe98b]">{row.status}</p>
-                <p className="mt-2 text-sm leading-6 text-white/62">{row.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {athleteHeroBadges.slice(0, 4).map((item) => (
-          <Card className="min-h-[132px] p-4 md:p-5" key={item}>
-            <span className="grid h-10 w-10 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-              <UserRound aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-            </span>
-            <h3 className="mt-3 text-sm font-black uppercase leading-tight tracking-[0.08em] text-white">{item}</h3>
-            <p className="mt-2 text-sm text-white/65">sem dados reais de atleta nesta etapa</p>
-          </Card>
         ))}
       </div>
     </div>
@@ -294,7 +220,7 @@ export default function AtletasPage() {
                 <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">Perfil do atleta</div>
                 <div className="mt-2 text-2xl font-black uppercase leading-none text-white">ranking em formação</div>
                 <p className="mt-3 text-sm leading-6 text-white/65">
-                  Sem perfil real, nome, foto, número, posição, resultado, conquista ou histórico nesta etapa.
+                  Perfil público, histórico, conquistas e ranking disponíveis após validação oficial.
                 </p>
               </div>
             </Card>
@@ -309,7 +235,7 @@ export default function AtletasPage() {
           title="Não é só participar. É construir trajetória."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {protagonistCards.map((item, index) => (
+          {protagonistCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -345,10 +271,13 @@ export default function AtletasPage() {
           title="Reputação nasce de presença, postura e evolução."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {levelRankingCards.map((item, index) => (
+          {levelRankingCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 1} />
           ))}
         </div>
+        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
+          No UR, cada jogo registrado é um passo na construção da sua reputação esportiva.
+        </p>
       </PageSection>
 
       <PageSection id="visibilidade">
@@ -358,7 +287,7 @@ export default function AtletasPage() {
           title="O atleta vira história quando sustenta a jornada."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {visibilityCards.map((item, index) => (
+          {visibilityCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -371,7 +300,7 @@ export default function AtletasPage() {
           title="Oportunidade no UR precisa de contexto e critério."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {opportunityCards.map((item, index) => (
+          {opportunityCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -389,7 +318,7 @@ export default function AtletasPage() {
           title="Participação validada pode virar benefício futuro."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {rewardsCards.map((item, index) => (
+          {rewardsCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 0} />
           ))}
         </div>
@@ -402,7 +331,7 @@ export default function AtletasPage() {
           title="Evoluir exige preparo, leitura e continuidade."
         />
         <div className="grid gap-5 md:grid-cols-3">
-          {ctDevelopmentCards.map((item, index) => (
+          {ctDevelopmentCards.map((item: AthleteCard, index: number) => (
             <IconCard item={item} key={item.title} premium={index === 2} />
           ))}
         </div>
@@ -414,7 +343,11 @@ export default function AtletasPage() {
           eyebrow="Perfis de atleta"
           title="Pronto para histórico real, quando ele existir."
         />
-        <AthleteProfilesPanel />
+        <AthletePreviewCard
+          eyebrow="Perfis de atleta"
+          rows={athleteProfilePlaceholders}
+          sideCards={athleteHeroBadges.slice(0, 4).map((title) => ({ title }))}
+        />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="interesse">
@@ -451,31 +384,22 @@ export default function AtletasPage() {
         </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA Atletas UR</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Comece pelo UR Play. Construa reputação quando os dados forem oficiais.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                A jornada do atleta está pronta como estrutura pública enquanto perfis, ranking, histórico, equipes,
-                oportunidades e recompensas passam por validação oficial.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
-              <Button href="/cadastro#atleta" variant="secondary">
-                Registrar interesse
-              </Button>
-              <Button href="/ranking" variant="ghost">
-                Entender ranking
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <SegmentCtaPanel
+        description="A jornada do atleta está pronta como estrutura pública enquanto perfis, ranking, histórico, equipes, oportunidades e recompensas passam por validação oficial."
+        eyebrow="CTA Atletas UR"
+        title="Comece pelo UR Play. Construa reputação quando os dados forem oficiais."
+        actions={
+          <>
+            <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
+            <Button href="/cadastro#atleta" variant="secondary">
+              Registrar interesse
+            </Button>
+            <Button href="/ranking" variant="ghost">
+              Entender ranking
+            </Button>
+          </>
+        }
+      />
     </main>
   );
 }

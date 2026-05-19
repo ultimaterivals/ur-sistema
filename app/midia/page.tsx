@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { PageSection } from "@/components/site/page-section";
 import {
   ArrowRight,
   BarChart3,
@@ -88,24 +88,6 @@ const ecosystemLinks = [
   },
 ] as const;
 
-function PageSection({
-  children,
-  className = "",
-  id,
-}: {
-  children: ReactNode;
-  className?: string;
-  id?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
 
 export default function MidiaPage() {
   return (
