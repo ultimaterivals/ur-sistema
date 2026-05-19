@@ -248,7 +248,7 @@ export default function Home() {
       <Section className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="ct-ur">
         <SectionHeader
           action={
-            <Button href="/#ct-ur" variant="secondary">
+            <Button href="/ct-ur" variant="secondary">
               Quero conhecer o CT UR
             </Button>
           }
@@ -294,7 +294,7 @@ export default function Home() {
       <Section id="midia">
         <SectionHeader
           action={
-            <Button href="/#midia" variant="secondary">
+            <Button href="/midia" variant="secondary">
               Assistir conteúdos UR
             </Button>
           }

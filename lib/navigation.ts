@@ -1,4 +1,5 @@
 export const mainNavigation = [
+  { label: "Ecossistema", href: "/ecossistema" },
   { label: "Atletas", href: "/atletas" },
   { label: "UR Play", href: "/ur-play" },
   { label: "Ranking", href: "/ranking" },
@@ -8,13 +9,18 @@ export const mainNavigation = [
 ] as const;
 
 export const mobileNavigation = [
+  { label: "Ecossistema", href: "/ecossistema" },
   { label: "Atletas", href: "/atletas" },
   { label: "Sou atleta", href: "/cadastro#atleta" },
   { label: "Tenho equipe", href: "/cadastro#equipe" },
   { label: "Quero patrocinar", href: "/cadastro#patrocinador" },
   { label: "Tenho quadra", href: "/cadastro#quadra" },
+  { label: "Temporada", href: "/temporada" },
   { label: "Ver ranking", href: "/ranking" },
   { label: "Eventos", href: "/eventos" },
+  { label: "CT UR", href: "/ct-ur" },
+  { label: "Mídia", href: "/midia" },
+  { label: "Quadras", href: "/quadras-parceiras" },
   { label: "UR Market", href: "/ur-market" },
 ] as const;
 
@@ -22,10 +28,11 @@ export const footerColumns = [
   {
     title: "Ultimate Rivals",
     links: [
-      { label: "O Ecossistema", href: "/#ecossistema" },
+      { label: "O Ecossistema", href: "/ecossistema" },
       { label: "Temporada", href: "/temporada" },
       { label: "Ranking", href: "/ranking" },
-      { label: "Mídia", href: "/#midia" },
+      { label: "CT UR", href: "/ct-ur" },
+      { label: "Mídia", href: "/midia" },
       { label: "Regulamento", href: "/regulamento" },
     ],
   },
@@ -46,7 +53,7 @@ export const footerColumns = [
     links: [
       { label: "Patrocinadores", href: "/patrocinadores" },
       { label: "UR Market", href: "/ur-market" },
-      { label: "Quadras parceiras", href: "/cadastro#quadra" },
+      { label: "Quadras parceiras", href: "/quadras-parceiras" },
       { label: "Mídia Kit", href: "/patrocinadores" },
       { label: "Contato comercial", href: "/contato" },
     ],
@@ -55,9 +62,9 @@ export const footerColumns = [
     title: "Comunidade",
     links: [
       { label: "Instagram", href: "/cadastro#comunidade" },
-      { label: "YouTube", href: "/#midia" },
+      { label: "Mídia UR", href: "/midia" },
       { label: "WhatsApp", href: "/cadastro#whatsapp" },
-      { label: "Blog", href: "/#midia" },
+      { label: "Quadras parceiras", href: "/quadras-parceiras" },
       { label: "Ranking", href: "/ranking" },
       { label: "Privacidade", href: "/privacidade" },
     ],
