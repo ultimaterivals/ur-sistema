@@ -1,0 +1,165 @@
+export type SiteImage = {
+  id: string;
+  label: string;
+  src?: string;
+  alt: string;
+  credit?: string;
+  category: "home" | "atletas" | "equipes" | "eventos" | "midia" | "comunidade" | "patrocinadores";
+  fallbackTone?: "match" | "arena" | "media" | "market" | "community";
+};
+
+export const siteImages = {
+  heroArena: {
+    id: "hero-arena",
+    label: "Hero principal com celebração na rede",
+    src: "/images/ur/home/ur-celebracao-rede-noite.jpg",
+    alt: "Atletas comemorando na rede durante jogo de areia do Ultimate Rivals",
+    credit: "Acervo Ultimate Rivals",
+    category: "home",
+    fallbackTone: "match",
+  },
+  urPlayAction: {
+    id: "ur-play-action",
+    label: "Ação de jogo no UR Play",
+    src: "/images/ur/eventos/ur-recepcao-jogo-noite.jpg",
+    alt: "Atleta recebendo a bola durante partida de vôlei de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "eventos",
+    fallbackTone: "arena",
+  },
+  athletePortrait: {
+    id: "athlete-portrait",
+    label: "Retrato editorial de atleta",
+    src: "/images/ur/atletas/ur-atleta-ataque-noite.jpg",
+    alt: "Atleta saltando para ataque em partida de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "atletas",
+    fallbackTone: "match",
+  },
+  teamHuddle: {
+    id: "team-huddle",
+    label: "Equipe reunida",
+    src: "/images/ur/equipes/ur-roda-equipe-dia.jpg",
+    alt: "Equipe reunida em roda durante evento de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "equipes",
+    fallbackTone: "community",
+  },
+  mediaCoverage: {
+    id: "media-coverage",
+    label: "Mídia e premiação",
+    src: "/images/ur/equipes/ur-premiacao-trofeu.jpg",
+    alt: "Atletas celebrando premiação em quadra de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "midia",
+    fallbackTone: "media",
+  },
+  sponsorActivation: {
+    id: "sponsor-activation",
+    label: "Ativação em quadra",
+    src: "/images/ur/eventos/ur-circulacao-quadra-dia.jpg",
+    alt: "Atletas circulando na quadra durante evento esportivo",
+    credit: "Acervo Ultimate Rivals",
+    category: "patrocinadores",
+    fallbackTone: "market",
+  },
+  communityMoment: {
+    id: "community-moment",
+    label: "Comunidade em evento",
+    src: "/images/ur/comunidade/ur-publico-arquibancada-noite.jpg",
+    alt: "Comunidade acompanhando evento esportivo de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "comunidade",
+    fallbackTone: "community",
+  },
+  fairPlayLine: {
+    id: "fair-play-line",
+    label: "Fair play na rede",
+    src: "/images/ur/eventos/ur-fair-play-rede-dia.jpg",
+    alt: "Atletas se cumprimentando na rede depois de partida",
+    credit: "Acervo Ultimate Rivals",
+    category: "eventos",
+    fallbackTone: "arena",
+  },
+  attackBlock: {
+    id: "attack-block",
+    label: "Ataque e bloqueio",
+    src: "/images/ur/eventos/ur-ataque-bloqueio-noite.jpg",
+    alt: "Jogada de ataque e bloqueio em partida noturna de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "eventos",
+    fallbackTone: "match",
+  },
+  wideServe: {
+    id: "wide-serve",
+    label: "Saque em quadra aberta",
+    src: "/images/ur/eventos/ur-saque-amplo-dia.jpg",
+    alt: "Atleta sacando em quadra de areia durante evento diurno",
+    credit: "Acervo Ultimate Rivals",
+    category: "eventos",
+    fallbackTone: "arena",
+  },
+  defenseDive: {
+    id: "defense-dive",
+    label: "Defesa na areia",
+    src: "/images/ur/atletas/ur-defesa-areia-dia.jpg",
+    alt: "Atleta mergulhando na areia para defender a bola",
+    credit: "Acervo Ultimate Rivals",
+    category: "atletas",
+    fallbackTone: "match",
+  },
+  athleteFocus: {
+    id: "athlete-focus",
+    label: "Foco competitivo",
+    src: "/images/ur/midia/ur-atleta-foco-dia.jpg",
+    alt: "Atleta concentrada durante evento de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "midia",
+    fallbackTone: "media",
+  },
+  teamEmbrace: {
+    id: "team-embrace",
+    label: "Abraço de equipe",
+    src: "/images/ur/equipes/ur-abraco-equipe-dia.jpg",
+    alt: "Atletas se abraçando durante partida de areia",
+    credit: "Acervo Ultimate Rivals",
+    category: "equipes",
+    fallbackTone: "community",
+  },
+  timeoutTalk: {
+    id: "timeout-talk",
+    label: "Bastidor de equipe",
+    src: "/images/ur/midia/ur-pausa-timeout-dia.jpg",
+    alt: "Atletas conversando durante pausa de jogo",
+    credit: "Acervo Ultimate Rivals",
+    category: "midia",
+    fallbackTone: "media",
+  },
+} satisfies Record<string, SiteImage>;
+
+export const siteImageGallery = [
+  siteImages.heroArena,
+  siteImages.urPlayAction,
+  siteImages.athletePortrait,
+  siteImages.teamHuddle,
+  siteImages.mediaCoverage,
+  siteImages.sponsorActivation,
+  siteImages.communityMoment,
+  siteImages.fairPlayLine,
+  siteImages.attackBlock,
+  siteImages.wideServe,
+  siteImages.defenseDive,
+  siteImages.athleteFocus,
+  siteImages.teamEmbrace,
+  siteImages.timeoutTalk,
+] as const;
+
+export const imageFolders = [
+  "public/images/ur/home",
+  "public/images/ur/atletas",
+  "public/images/ur/equipes",
+  "public/images/ur/eventos",
+  "public/images/ur/midia",
+  "public/images/ur/comunidade",
+  "public/images/ur/patrocinadores",
+] as const;
