@@ -227,3 +227,23 @@ Os placeholders estão posicionados como estados premium de pré-lançamento, n�
 ## Resultado Final
 
 O site está **pronto para lançamento controlado**: liberar para grupo inicial, parceiros próximos e primeiros interessados. Para lançamento público amplo, concluir primeiro o teste real de captação ponta a ponta em produção.
+## AtualizaÃ§Ã£o PÃ³s-QA â€” CRM v3 Oficial
+
+Data: 2026-05-20
+
+A camada de captaÃ§Ã£o foi validada apÃ³s a migraÃ§Ã£o do CRM v3 para a planilha oficial Google Sheets `1SvK1dNMnmBCnWRO27-J19RCYE_qJ4VKMwycCXnCVHZ8`.
+
+Resultado:
+
+- CRM oficial confirmado como Google Sheets `1SvK...`.
+- Excel v3 mantido como blueprint/backup, nÃ£o fonte diÃ¡ria.
+- Planilha `1LFAG38...` marcada como nÃ£o utilizÃ¡vel.
+- MigraÃ§Ã£o CRM v3 aplicada com backups ocultos.
+- FÃ³rmulas ajustadas para locale `pt_BR`.
+- `Status sugerido` corrigido para `Aguardando score` quando `Score` estÃ¡ vazio.
+- Bug de `ResponsÃ¡vel` em Patrocinadores e Quadras corrigido para `OperaÃ§Ã£o UR`.
+- Testes `TESTE QA ATLETA CRM V3`, `TESTE QA EQUIPE CRM V3`, `TESTE QA PATROCINADOR CRM V3`, `TESTE QA QUADRA CRM V3` e `TESTE QA COMUNIDADE CRM V3` aprovados.
+- Leads QA arquivados com observaÃ§Ã£o `Teste QA CRM v3 â€” nÃ£o considerar como lead real`.
+- AÃ§Ã£o administrativa temporÃ¡ria removida do Web App final.
+
+DecisÃ£o atualizada: site e captaÃ§Ã£o estÃ£o prontos para lanÃ§amento controlado com CRM operacional oficial.

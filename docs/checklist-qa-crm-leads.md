@@ -208,3 +208,39 @@ O CRM está aprovado para uso MVP quando:
 - Score é manual.
 - Dashboard depende da estrutura das colunas.
 - Não há login, backend próprio, Supabase, CRM externo ou automação de WhatsApp.
+## Resultado QA CRM v3 Oficial
+
+Planilha oficial: `1SvK1dNMnmBCnWRO27-J19RCYE_qJ4VKMwycCXnCVHZ8`.
+
+Status da rodada de validaÃ§Ã£o CRM v3:
+
+- [x] MigraÃ§Ã£o aplicada na planilha oficial.
+- [x] Backups ocultos criados antes das alteraÃ§Ãµes.
+- [x] FÃ³rmulas adaptadas para locale `pt_BR` com separador `;`.
+- [x] `Status sugerido` sem `#ERROR!` quando `Score` estÃ¡ vazio.
+- [x] Patrocinadores entram com `ResponsÃ¡vel = OperaÃ§Ã£o UR`.
+- [x] Quadras entram com `ResponsÃ¡vel = OperaÃ§Ã£o UR`.
+- [x] Web App final sem aÃ§Ã£o administrativa temporÃ¡ria.
+- [x] Token temporÃ¡rio removido dos arquivos publicados.
+- [x] Leads de teste arquivados, nÃ£o deletados.
+
+Testes finais executados e aprovados:
+
+- [x] `TESTE QA ATLETA CRM V3`
+- [x] `TESTE QA EQUIPE CRM V3`
+- [x] `TESTE QA PATROCINADOR CRM V3`
+- [x] `TESTE QA QUADRA CRM V3`
+- [x] `TESTE QA COMUNIDADE CRM V3`
+
+Para cada teste foi validado:
+
+- [x] Aba correta.
+- [x] ID correto por prefixo.
+- [x] `Status = Novo` antes do arquivamento.
+- [x] `Prioridade = A definir`.
+- [x] `ResponsÃ¡vel = OperaÃ§Ã£o UR`.
+- [x] `PrÃ³ximo passo = Triagem inicial`.
+- [x] FÃ³rmulas operacionais sem erro.
+- [x] Dashboard e boards atualizados.
+- [x] Status final dos testes: `Arquivado`.
+- [x] ObservaÃ§Ã£o dos testes: `Teste QA CRM v3 â€” nÃ£o considerar como lead real`.

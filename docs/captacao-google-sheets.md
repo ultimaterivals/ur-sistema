@@ -294,3 +294,14 @@ var SPREADSHEET_ID = "COLE_AQUI_O_ID_DA_PLANILHA";
 - `docs/mensagens-primeiro-contato.md`
 - `docs/lead-scoring-ur.md`
 - `docs/rotina-operacional-leads.md`
+## AtualizaÃ§Ã£o CRM v3 na Planilha Oficial
+
+- A fonte oficial do CRM Ã© a planilha Google Sheets `1SvK1dNMnmBCnWRO27-J19RCYE_qJ4VKMwycCXnCVHZ8`.
+- O arquivo Excel v3 Ã© blueprint/backup/modelo operacional e nÃ£o deve substituir a planilha oficial no dia a dia.
+- A planilha `1LFAG38...` nÃ£o deve ser usada.
+- A migraÃ§Ã£o CRM v3 criou backups ocultos antes das alteraÃ§Ãµes e preservou os leads existentes.
+- Foram adicionadas/confirmadas as abas: `Board Funil`, `Board Contatos`, `Board Prioridades`, `Board Canais e Polos`, `Resumo Semanal`, `Guia Operacional` e `VÃ­nculos`.
+- As fÃ³rmulas do Google Sheets oficial usam locale `pt_BR`; portanto, devem usar `;` como separador.
+- Quando `Score` estiver vazio, `Status sugerido` deve mostrar `Aguardando score`, sem `#ERROR!`.
+- O Web App final nÃ£o expÃµe aÃ§Ãµes administrativas de migraÃ§Ã£o; ele aceita apenas envio normal de leads.
+- Tally segue como fallback temporÃ¡rio, nÃ£o como fonte principal.

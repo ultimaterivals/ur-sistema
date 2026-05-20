@@ -1,0 +1,1097 @@
+﻿/* eslint-disable */
+/**
+ * Ultimate Rivals â€” Google Apps Script Webhook v2
+ *
+ * Fluxo:
+ * Site UR -> /cadastro -> Apps Script -> Google Sheets CRM operacional
+ *
+ * Como usar:
+ * 1. Crie uma planilha Google Sheets nativa.
+ * 2. Cole este arquivo no Apps Script.
+ * 3. Substitua SPREADSHEET_ID.
+ * 4. Execute setupSheets().
+ * 5. Publique como Web App e configure NEXT_PUBLIC_GOOGLE_SCRIPT_URL.
+ *
+ * Perfis aceitos:
+ * atleta | equipe | patrocinador | quadra | comunidade
+ */
+
+var SPREADSHEET_ID = "1SvK1dNMnmBCnWRO27-J19RCYE_qJ4VKMwycCXnCVHZ8";
+
+var SUCCESS_MESSAGE =
+  "Cadastro recebido. A equipe Ultimate Rivals farÃ¡ a validaÃ§Ã£o operacional antes de liberar prÃ³ximos passos.";
+
+var STATUS_OPTIONS = [
+  "Novo",
+  "Em triagem",
+  "Qualificado",
+  "Aguardando contato",
+  "Contato feito",
+  "Aguardando retorno",
+  "Aprovado para prÃ³ximo passo",
+  "NÃ£o prioritÃ¡rio agora",
+  "Arquivado",
+];
+
+var PRIORITY_OPTIONS = ["Alta", "MÃ©dia", "Baixa", "A definir"];
+
+var PROFILE_OPTIONS = ["Atleta", "Equipe", "Patrocinador", "Quadra", "Comunidade"];
+
+var RESPONSIBLE_OPTIONS = ["Matheus Walker", "OperaÃ§Ã£o UR", "Comercial UR", "MÃ­dia UR", "A definir"];
+
+var ORIGIN_OPTIONS = [
+  "Site / Cadastro UR",
+  "Site",
+  "Cadastro UR",
+  "Instagram",
+  "WhatsApp",
+  "Comunidade",
+  "IndicaÃ§Ã£o",
+  "Evento",
+  "QR Code",
+  "TrÃ¡fego pago",
+  "Manual",
+  "Outro",
+];
+
+var CONTACT_TYPE_OPTIONS = [
+  "Primeiro contato",
+  "Follow-up",
+  "Envio de informaÃ§Ã£o",
+  "Convite UR Play",
+  "Convite reuniÃ£o",
+  "Proposta comercial",
+  "ValidaÃ§Ã£o de dados",
+  "ReativaÃ§Ã£o",
+];
+
+var TASK_STATUS_OPTIONS = ["Pendente", "Em andamento", "ConcluÃ­da", "Sem resposta", "Reagendar", "Cancelada"];
+
+var CRM_HEADERS = [
+  "ID do lead",
+  "Data de entrada",
+  "Perfil",
+  "Nome",
+  "WhatsApp",
+  "Cidade",
+  "Polo de interesse",
+  "Origem do lead",
+  "UTM source",
+  "UTM medium",
+  "UTM campaign",
+  "UTM content",
+  "Status",
+  "Prioridade",
+  "Score",
+  "Status sugerido",
+  "ResponsÃ¡vel",
+  "PrÃ³ximo passo",
+  "PrÃ³xima data de contato",
+  "Ãšltimo contato",
+  "Tentativas de contato",
+  "ObservaÃ§Ãµes",
+  "Motivo de arquivamento",
+  "Data de atualizaÃ§Ã£o",
+];
+
+var CONTACT_TASK_HEADERS = [
+  "ID da tarefa",
+  "ID do lead",
+  "Perfil",
+  "Nome",
+  "WhatsApp",
+  "ResponsÃ¡vel",
+  "Status atual",
+  "PrÃ³xima data de contato",
+  "Tipo de contato",
+  "Mensagem enviada",
+  "Resultado",
+  "Data de conclusÃ£o",
+];
+
+var CAMPAIGN_HEADERS = [
+  "ID da campanha",
+  "Nome da campanha",
+  "Canal",
+  "Link usado",
+  "PÃ¡gina de destino",
+  "PÃºblico-alvo",
+  "Data de inÃ­cio",
+  "Data de fim",
+  "Leads gerados",
+  "Leads qualificados",
+  "ObservaÃ§Ãµes",
+];
+
+var PROFILE_CONFIG = {
+  atleta: {
+    sheetName: "Atletas",
+    prefix: "ATL",
+    profileLabel: "Atleta",
+    nameField: "nomeCompleto",
+    cityField: "cidade",
+    poloField: "poloInteresse",
+    profileHeaders: [
+      "Instagram",
+      "Modalidade principal",
+      "PosiÃ§Ã£o principal",
+      "Formatos de jogo",
+      "NÃ­vel percebido",
+      "Tem equipe?",
+      "Objetivo principal",
+      "Interesse UR Play",
+      "Interesse Torneios",
+      "Interesse CT UR",
+      "Dias disponÃ­veis",
+      "HorÃ¡rio disponÃ­vel",
+      "Ponto de melhoria",
+      "Autorizou contato?",
+    ],
+    fields: {
+      Instagram: "instagram",
+      "Modalidade principal": "modalidadePrincipal",
+      "PosiÃ§Ã£o principal": "posicao",
+      "Formatos de jogo": "formatosJogo",
+      "NÃ­vel percebido": "nivelPercebido",
+      "Tem equipe?": "temEquipe",
+      "Objetivo principal": "objetivoPrincipal",
+      "Interesse UR Play": "interesseUrPlay",
+      "Interesse Torneios": "interesseTorneios",
+      "Interesse CT UR": "interesseCtUr",
+      "Dias disponÃ­veis": "diasDisponiveis",
+      "HorÃ¡rio disponÃ­vel": "horarioDisponivel",
+      "Ponto de melhoria": "pontoMelhoria",
+      "Autorizou contato?": "autorizacaoContato",
+    },
+  },
+
+  equipe: {
+    sheetName: "Equipes",
+    prefix: "EQP",
+    profileLabel: "Equipe",
+    nameField: "nomeEquipe",
+    cityField: "cidade",
+    poloField: "cidadePolo",
+    profileHeaders: [
+      "ResponsÃ¡vel/capitÃ£o",
+      "Instagram da equipe",
+      "Modalidade",
+      "Formatos de jogo",
+      "Elenco definido?",
+      "Quantidade de atletas",
+      "NÃ­vel percebido",
+      "JÃ¡ participa de torneios?",
+      "Objetivo principal",
+      "Interesse UR Play",
+      "Interesse torneios oficiais",
+      "Dias disponÃ­veis",
+      "HorÃ¡rio disponÃ­vel",
+      "HistÃ³ria/objetivo",
+      "Autorizou contato?",
+    ],
+    fields: {
+      "ResponsÃ¡vel/capitÃ£o": "responsavel",
+      "Instagram da equipe": "instagramEquipe",
+      Modalidade: "modalidade",
+      "Formatos de jogo": "formatosJogo",
+      "Elenco definido?": "elencoDefinido",
+      "Quantidade de atletas": "quantidadeAtletas",
+      "NÃ­vel percebido": "nivelPercebido",
+      "JÃ¡ participa de torneios?": "participaTorneios",
+      "Objetivo principal": "objetivoPrincipal",
+      "Interesse UR Play": "interesseUrPlay",
+      "Interesse torneios oficiais": "interesseTorneiosOficiais",
+      "Dias disponÃ­veis": "diasDisponiveis",
+      "HorÃ¡rio disponÃ­vel": "horarioDisponivel",
+      "HistÃ³ria/objetivo": "historiaObjetivo",
+      "Autorizou contato?": "autorizacaoContato",
+    },
+  },
+
+  patrocinador: {
+    sheetName: "Patrocinadores",
+    prefix: "PAT",
+    profileLabel: "Patrocinador",
+    nameField: "empresaMarca",
+    cityField: "cidade",
+    poloField: "cidadeRegiao",
+    profileHeaders: [
+      "ResponsÃ¡vel",
+      "Cargo/funÃ§Ã£o",
+      "E-mail comercial",
+      "Instagram/site",
+      "Segmento",
+      "Cidade/regiÃ£o",
+      "PÃºblico-alvo",
+      "Objetivo comercial",
+      "Tipo de ativaÃ§Ã£o",
+      "Oferece benefÃ­cios?",
+      "Faixa de investimento",
+      "Expectativa com o UR",
+      "Autorizou contato?",
+    ],
+    fields: {
+      "ResponsÃ¡vel": "responsavel",
+      "Cargo/funÃ§Ã£o": "cargoFuncao",
+      "E-mail comercial": "emailComercial",
+      "Instagram/site": "instagramSite",
+      Segmento: "segmento",
+      "Cidade/regiÃ£o": "cidadeRegiao",
+      "PÃºblico-alvo": "publicoAlvo",
+      "Objetivo comercial": "objetivoComercial",
+      "Tipo de ativaÃ§Ã£o": "tipoAtivacao",
+      "Oferece benefÃ­cios?": "ofereceBeneficios",
+      "Faixa de investimento": "faixaInvestimento",
+      "Expectativa com o UR": "expectativaUr",
+      "Autorizou contato?": "autorizacaoContato",
+    },
+  },
+
+  quadra: {
+    sheetName: "Quadras",
+    prefix: "QDR",
+    profileLabel: "Quadra",
+    nameField: "nomeQuadra",
+    cityField: "cidade",
+    poloField: "cidade",
+    profileHeaders: [
+      "ResponsÃ¡vel",
+      "Instagram",
+      "EndereÃ§o/regiÃ£o",
+      "Modalidades comportadas",
+      "Quantidade de espaÃ§os",
+      "Possui iluminaÃ§Ã£o?",
+      "Possui bar/convivÃªncia?",
+      "Estrutura para pÃºblico",
+      "JÃ¡ realiza eventos?",
+      "Tipo de parceria",
+      "Disponibilidade",
+      "Interesse em patrocinadores?",
+      "Principais desafios",
+      "Motivo de interesse no UR",
+      "Autorizou contato?",
+    ],
+    fields: {
+      "ResponsÃ¡vel": "responsavel",
+      Instagram: "instagram",
+      "EndereÃ§o/regiÃ£o": "enderecoRegiao",
+      "Modalidades comportadas": "modalidadesComportadas",
+      "Quantidade de espaÃ§os": "quantidadeEspacos",
+      "Possui iluminaÃ§Ã£o?": "possuiIluminacao",
+      "Possui bar/convivÃªncia?": "possuiBar",
+      "Estrutura para pÃºblico": "estruturaPublico",
+      "JÃ¡ realiza eventos?": "realizaEventos",
+      "Tipo de parceria": "tipoParceria",
+      Disponibilidade: "disponibilidade",
+      "Interesse em patrocinadores?": "interessePatrocinadores",
+      "Principais desafios": "principaisDesafios",
+      "Motivo de interesse no UR": "motivoInteresse",
+      "Autorizou contato?": "autorizacaoContato",
+    },
+  },
+
+  comunidade: {
+    sheetName: "Comunidade",
+    prefix: "COM",
+    profileLabel: "Comunidade",
+    nameField: "nomeCompleto",
+    cityField: "cidade",
+    poloField: "cidade",
+    profileHeaders: [
+      "Instagram",
+      "Interesse principal",
+      "Perfil da comunidade",
+      "Modalidades de interesse",
+      "Avisos desejados",
+      "SugestÃ£o/observaÃ§Ã£o",
+      "Autorizou contato?",
+    ],
+    fields: {
+      Instagram: "instagram",
+      "Interesse principal": "interessePrincipal",
+      "Perfil da comunidade": "perfilComunidade",
+      "Modalidades de interesse": "modalidadesInteresse",
+      "Avisos desejados": "avisosDesejados",
+      "SugestÃ£o/observaÃ§Ã£o": "sugestaoObservacao",
+      "Autorizou contato?": "autorizacaoContato",
+    },
+  },
+};
+
+function doGet() {
+  return jsonResponse({
+    ok: true,
+    message: "Webhook Ultimate Rivals CRM operacional v2 ativo.",
+    ts: new Date().toISOString(),
+  });
+}
+
+function doPost(e) {
+  try {
+    Logger.log("=== doPost iniciado ===");
+
+    var payload = parsePayload(e);
+
+    var config = PROFILE_CONFIG[payload.profile];
+
+    Logger.log("profile: " + payload.profile);
+    Logger.log("payload: " + JSON.stringify(payload));
+
+    if (!config) {
+      return jsonResponse({
+        ok: false,
+        message: "Perfil invÃ¡lido. Use atleta, equipe, patrocinador, quadra ou comunidade.",
+      });
+    }
+
+    if (payload.website && String(payload.website).trim() !== "") {
+      Logger.log("Honeypot preenchido. Lead descartado silenciosamente.");
+      return jsonResponse({ ok: true, message: SUCCESS_MESSAGE });
+    }
+
+    var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
+    var sheet = getOrCreateSheet(spreadsheet, config.sheetName);
+    var headers = buildLeadHeaders(config);
+
+    ensureHeaders(sheet, headers);
+    if (typeof ensureOperationalHeaders === "function") {
+      ensureOperationalHeaders(sheet);
+    }
+    applyBaseSheetFormatting(sheet);
+    applyLeadValidations(sheet);
+    if (typeof applyCrmV3LeadValidations === "function") {
+      applyCrmV3LeadValidations(sheet);
+    }
+
+    var leadId = buildLeadId(sheet, config.prefix);
+    var now = new Date();
+    var rowNumber = sheet.getLastRow() + 1;
+    var actualHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var row = actualHeaders.map(function (header) {
+      return resolveValue(header, payload, config, leadId, now);
+    });
+
+    sheet.getRange(rowNumber, 1, 1, row.length).setValues([row]);
+    if (typeof normalizeNewLeadCoreValues === "function") {
+      normalizeNewLeadCoreValues(sheet, rowNumber, payload, config, now);
+    }
+    applyScoreFormula(sheet, rowNumber);
+    if (typeof applyOperationalFormulas === "function") {
+      applyOperationalFormulas(sheet, rowNumber);
+    }
+
+    Logger.log("Lead gravado com ID: " + leadId);
+
+    return jsonResponse({
+      ok: true,
+      leadId: leadId,
+      profile: payload.profile,
+      message: SUCCESS_MESSAGE,
+    });
+  } catch (err) {
+    Logger.log("ERRO em doPost: " + (err ? err.toString() : "desconhecido"));
+
+    return jsonResponse({
+      ok: false,
+      message: "Erro interno ao processar cadastro: " + (err ? err.message : "desconhecido"),
+    });
+  }
+}
+
+/**
+ * Cria e prepara:
+ * - Dashboard
+ * - 5 abas de leads
+ * - Tarefas de Contato
+ * - ConfiguraÃ§Ãµes
+ * - Origem dos Leads
+ */
+function setupSheets() {
+  Logger.log("=== setupSheets CRM operacional iniciado ===");
+
+  var spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
+
+  setupConfigSheet(spreadsheet);
+  setupDashboardSheet(spreadsheet);
+  setupContactTasksSheet(spreadsheet);
+  setupOriginsSheet(spreadsheet);
+
+  Object.keys(PROFILE_CONFIG).forEach(function (profile) {
+    var config = PROFILE_CONFIG[profile];
+    var sheet = getOrCreateSheet(spreadsheet, config.sheetName);
+    var headers = buildLeadHeaders(config);
+
+    ensureHeaders(sheet, headers);
+    if (typeof ensureOperationalHeaders === "function") {
+      ensureOperationalHeaders(sheet);
+    }
+    applyBaseSheetFormatting(sheet);
+    applyLeadValidations(sheet);
+    if (typeof applyOperationalFormulasForExistingRows === "function") {
+      applyOperationalFormulasForExistingRows(sheet);
+    }
+    sheet.autoResizeColumns(1, Math.min(headers.length, 24));
+
+    Logger.log("Aba preparada: " + config.sheetName);
+  });
+
+  Logger.log("=== setupSheets CRM operacional concluÃ­do ===");
+}
+
+function setupConfigSheet(spreadsheet) {
+  var sheet = getOrCreateSheet(spreadsheet, "ConfiguraÃ§Ãµes");
+  sheet.clear();
+
+  var columns = [
+    ["Status"].concat(STATUS_OPTIONS),
+    ["Prioridade"].concat(PRIORITY_OPTIONS),
+    ["Perfis"].concat(PROFILE_OPTIONS),
+    ["ResponsÃ¡veis"].concat(RESPONSIBLE_OPTIONS),
+    ["Tipos de contato"].concat(CONTACT_TYPE_OPTIONS),
+    ["Origens"].concat(ORIGIN_OPTIONS),
+    ["ClassificaÃ§Ã£o de score", "80 a 100: lead quente", "50 a 79: lead qualificado", "30 a 49: observaÃ§Ã£o", "0 a 29: baixa prioridade"],
+  ];
+
+  var maxRows = columns.reduce(function (max, column) {
+    return Math.max(max, column.length);
+  }, 0);
+
+  var values = [];
+  for (var row = 0; row < maxRows; row += 1) {
+    values.push(
+      columns.map(function (column) {
+        return column[row] || "";
+      }),
+    );
+  }
+
+  sheet.getRange(1, 1, values.length, values[0].length).setValues(values);
+  applyBaseSheetFormatting(sheet);
+  sheet.autoResizeColumns(1, values[0].length);
+}
+
+function setupDashboardSheet(spreadsheet) {
+  var sheet = getOrCreateSheet(spreadsheet, "Dashboard");
+  sheet.clear();
+
+  var totalFormula = buildTotalCountFormula();
+  var qualifiedFormula = buildStatusCountFormula("Qualificado");
+  var approvedFormula = buildStatusCountFormula("Aprovado para prÃ³ximo passo");
+
+  var rows = [
+    ["MÃ©trica", "Valor", "Uso operacional"],
+    ["Total de leads", totalFormula, "Volume total nas abas de leads."],
+    ["Atletas", '=COUNTA(Atletas!A2:A)', "Leads captados como atletas."],
+    ["Equipes", '=COUNTA(Equipes!A2:A)', "Leads captados como equipes."],
+    ["Patrocinadores", '=COUNTA(Patrocinadores!A2:A)', "Leads comerciais."],
+    ["Quadras", '=COUNTA(Quadras!A2:A)', "Quadras e arenas interessadas."],
+    ["Comunidade", '=COUNTA(Comunidade!A2:A)', "Leads de comunidade."],
+    ["Leads novos da semana", buildNewWeekFormula(), "Entradas nos Ãºltimos 7 dias."],
+    ["Leads qualificados", qualifiedFormula, "Status Qualificado."],
+    ["Leads aprovados para prÃ³ximo passo", approvedFormula, "Status Aprovado para prÃ³ximo passo."],
+    ["Leads aguardando contato", buildStatusCountFormula("Aguardando contato"), "Fila de primeiro contato."],
+    ["Leads sem resposta", buildNoResponseFormula(), "Aguardando retorno com Ãºltimo contato acima de 7 dias."],
+    ["Prioridade Alta", buildPriorityCountFormula("Alta"), "Leads que exigem aÃ§Ã£o rÃ¡pida."],
+    ["Prioridade MÃ©dia", buildPriorityCountFormula("MÃ©dia"), "Leads qualificados para rotina normal."],
+    ["Prioridade Baixa", buildPriorityCountFormula("Baixa"), "Leads de observaÃ§Ã£o."],
+    ["Prioridade A definir", buildPriorityCountFormula("A definir"), "Leads sem priorizaÃ§Ã£o final."],
+    ["Origem com mais leads", buildTopValueFormula("H"), "Maior origem registrada."],
+    ["Cidade/polo com mais interessados", buildTopValueFormula("F"), "Cidade mais frequente."],
+    ["Modalidade com mais interessados", buildTopModalityFormula(), "Modalidade mais frequente entre perfis aplicÃ¡veis."],
+    ["Taxa de qualificaÃ§Ã£o", '=IFERROR((' + qualifiedFormula.substring(1) + ')/(' + totalFormula.substring(1) + ');0)', "Qualificados / total."],
+    ["Taxa de avanÃ§o para prÃ³ximo passo", '=IFERROR((' + approvedFormula.substring(1) + ')/(' + totalFormula.substring(1) + ');0)', "Aprovados / total."],
+  ];
+
+  sheet.getRange(1, 1, rows.length, 3).setValues(rows);
+  applyBaseSheetFormatting(sheet);
+  sheet.getRange("B20:B21").setNumberFormat("0.00%");
+  sheet.autoResizeColumns(1, 3);
+}
+
+function setupContactTasksSheet(spreadsheet) {
+  var sheet = getOrCreateSheet(spreadsheet, "Tarefas de Contato");
+
+  ensureHeaders(sheet, CONTACT_TASK_HEADERS);
+  applyBaseSheetFormatting(sheet);
+  applyListValidation(sheet, "Status atual", STATUS_OPTIONS.concat(TASK_STATUS_OPTIONS));
+  applyListValidation(sheet, "Tipo de contato", CONTACT_TYPE_OPTIONS);
+  applyListValidation(sheet, "ResponsÃ¡vel", RESPONSIBLE_OPTIONS);
+  sheet.autoResizeColumns(1, CONTACT_TASK_HEADERS.length);
+}
+
+function setupOriginsSheet(spreadsheet) {
+  var sheet = getOrCreateSheet(spreadsheet, "Origem dos Leads");
+
+  ensureHeaders(sheet, CAMPAIGN_HEADERS);
+  applyBaseSheetFormatting(sheet);
+  sheet.autoResizeColumns(1, CAMPAIGN_HEADERS.length);
+}
+
+function testWriteAtleta() {
+  Logger.log("=== testWriteAtleta ===");
+  return doPost({
+    parameter: {
+      profile: "atleta",
+      source: "teste",
+      sourceLabel: "Site / Cadastro UR",
+      page: "/teste",
+      createdAt: new Date().toISOString(),
+      utm_source: "teste",
+      utm_medium: "script",
+      utm_campaign: "crm_operacional",
+      utm_content: "atleta",
+      nomeCompleto: "TESTE ATLETA UR",
+      whatsapp: "31900000001",
+      instagram: "@teste_atleta",
+      cidade: "Belo Horizonte",
+      poloInteresse: "Polo em formaÃ§Ã£o",
+      modalidadePrincipal: "VÃ´lei de praia",
+      posicao: "Ponteiro(a)",
+      formatosJogo: "2x2 (praia / areia)",
+      nivelPercebido: "IntermediÃ¡rio",
+      temEquipe: "NÃ£o",
+      objetivoPrincipal: "Entrar no ranking",
+      interesseUrPlay: "Sim",
+      interesseTorneios: "Sim",
+      interesseCtUr: "Talvez",
+      diasDisponiveis: "Fins de semana",
+      horarioDisponivel: "ManhÃ£ (6h - 12h)",
+      pontoMelhoria: "Saque",
+      autorizacaoContato: "Sim",
+    },
+  });
+}
+
+function testWriteEquipe() {
+  Logger.log("=== testWriteEquipe ===");
+  return doPost({
+    parameter: {
+      profile: "equipe",
+      source: "teste",
+      sourceLabel: "Site / Cadastro UR",
+      page: "/teste",
+      createdAt: new Date().toISOString(),
+      utm_source: "teste",
+      utm_medium: "script",
+      utm_campaign: "crm_operacional",
+      utm_content: "equipe",
+      nomeEquipe: "TESTE EQUIPE UR",
+      responsavel: "TESTE CAPITÃƒO UR",
+      whatsapp: "31900000002",
+      instagramEquipe: "@teste_equipe",
+      cidade: "Contagem",
+      cidadePolo: "Polo em formaÃ§Ã£o",
+      modalidade: "Futset",
+      formatosJogo: "4x4",
+      elencoDefinido: "Sim, em ajuste",
+      quantidadeAtletas: "A definir",
+      nivelPercebido: "Competitivo",
+      participaTorneios: "Sim",
+      objetivoPrincipal: "Ranking coletivo",
+      interesseUrPlay: "Sim",
+      interesseTorneiosOficiais: "Sim",
+      diasDisponiveis: "Fins de semana",
+      horarioDisponivel: "Noite (18h - 22h+)",
+      historiaObjetivo: "Lead de teste operacional.",
+      autorizacaoContato: "Sim",
+    },
+  });
+}
+
+function testWritePatrocinador() {
+  Logger.log("=== testWritePatrocinador ===");
+  return doPost({
+    parameter: {
+      profile: "patrocinador",
+      source: "teste",
+      sourceLabel: "Site / Cadastro UR",
+      page: "/teste",
+      createdAt: new Date().toISOString(),
+      utm_source: "teste",
+      utm_medium: "script",
+      utm_campaign: "crm_operacional",
+      utm_content: "patrocinador",
+      empresaMarca: "TESTE PATROCINADOR UR",
+      responsavel: "TESTE RESPONSÃVEL UR",
+      cargoFuncao: "Comercial",
+      whatsapp: "31900000003",
+      emailComercial: "teste@exemplo.com",
+      instagramSite: "@teste_patrocinador",
+      segmento: "Esporte e performance",
+      cidade: "Belo Horizonte",
+      cidadeRegiao: "Grande BH",
+      publicoAlvo: "Atletas",
+      objetivoComercial: "Relacionamento",
+      tipoAtivacao: "Eventos",
+      ofereceBeneficios: "Sim",
+      faixaInvestimento: "Depende da proposta comercial",
+      expectativaUr: "Validar possibilidades comerciais sem promessa de entrega real.",
+      autorizacaoContato: "Sim",
+    },
+  });
+}
+
+function testWriteQuadra() {
+  Logger.log("=== testWriteQuadra ===");
+  return doPost({
+    parameter: {
+      profile: "quadra",
+      source: "teste",
+      sourceLabel: "Site / Cadastro UR",
+      page: "/teste",
+      createdAt: new Date().toISOString(),
+      utm_source: "teste",
+      utm_medium: "script",
+      utm_campaign: "crm_operacional",
+      utm_content: "quadra",
+      nomeQuadra: "TESTE QUADRA UR",
+      responsavel: "TESTE RESPONSÃVEL QUADRA",
+      whatsapp: "31900000004",
+      instagram: "@teste_quadra",
+      enderecoRegiao: "RegiÃ£o em validaÃ§Ã£o",
+      cidade: "Betim",
+      modalidadesComportadas: "VÃ´lei de praia",
+      quantidadeEspacos: "A definir",
+      possuiIluminacao: "Sim",
+      possuiBar: "Em construÃ§Ã£o",
+      estruturaPublico: "Depende do evento",
+      realizaEventos: "Tem interesse",
+      tipoParceria: "Receber UR Play",
+      disponibilidade: "Agenda em formaÃ§Ã£o.",
+      interessePatrocinadores: "Sim",
+      principaisDesafios: "Lead de teste.",
+      motivoInteresse: "Avaliar polo em formaÃ§Ã£o.",
+      autorizacaoContato: "Sim",
+    },
+  });
+}
+
+function testWriteComunidade() {
+  Logger.log("=== testWriteComunidade ===");
+  return doPost({
+    parameter: {
+      profile: "comunidade",
+      source: "teste",
+      sourceLabel: "Site / Cadastro UR",
+      page: "/teste",
+      createdAt: new Date().toISOString(),
+      utm_source: "teste",
+      utm_medium: "script",
+      utm_campaign: "crm_operacional",
+      utm_content: "comunidade",
+      nomeCompleto: "TESTE COMUNIDADE UR",
+      whatsapp: "31900000005",
+      instagram: "@teste_comunidade",
+      cidade: "Belo Horizonte",
+      interessePrincipal: "Acompanhar eventos",
+      perfilComunidade: "Torcedor/fÃ£",
+      modalidadesInteresse: "VÃ´lei de praia",
+      avisosDesejados: "Eventos",
+      sugestaoObservacao: "Lead de teste operacional.",
+      autorizacaoContato: "Sim",
+    },
+  });
+}
+
+function parsePayload(e) {
+  if (e && e.parameter && e.parameter.profile) {
+    return e.parameter;
+  }
+
+  if (e && e.parameters && e.parameters.profile) {
+    var flat = {};
+    Object.keys(e.parameters).forEach(function (key) {
+      var value = e.parameters[key];
+      flat[key] = Array.isArray(value) ? value[0] : value;
+    });
+    return flat;
+  }
+
+  if (e && e.postData && e.postData.contents) {
+    var parsed = JSON.parse(e.postData.contents);
+
+    if (parsed.data && typeof parsed.data === "object") {
+      var flatFromData = {};
+      Object.keys(parsed).forEach(function (key) {
+        if (key !== "data") {
+          flatFromData[key] = parsed[key];
+        }
+      });
+      Object.keys(parsed.data).forEach(function (key) {
+        flatFromData[key] = parsed.data[key];
+      });
+      return flatFromData;
+    }
+
+    return parsed;
+  }
+
+  return {};
+}
+
+function buildLeadHeaders(config) {
+  return CRM_HEADERS.concat(config.profileHeaders);
+}
+
+function getOrCreateSheet(spreadsheet, sheetName) {
+  return spreadsheet.getSheetByName(sheetName) || spreadsheet.insertSheet(sheetName);
+}
+
+function ensureHeaders(sheet, expectedHeaders) {
+  if (sheet.getLastRow() === 0) {
+    sheet.getRange(1, 1, 1, expectedHeaders.length).setValues([expectedHeaders]);
+    sheet.setFrozenRows(1);
+    return;
+  }
+
+  var lastColumn = Math.max(sheet.getLastColumn(), 1);
+  var currentHeaders = sheet.getRange(1, 1, 1, lastColumn).getValues()[0].filter(String);
+  var missingHeaders = expectedHeaders.filter(function (header) {
+    return currentHeaders.indexOf(header) === -1;
+  });
+
+  if (missingHeaders.length > 0) {
+    sheet.getRange(1, currentHeaders.length + 1, 1, missingHeaders.length).setValues([missingHeaders]);
+  }
+
+  sheet.setFrozenRows(1);
+}
+
+function applyBaseSheetFormatting(sheet) {
+  var lastColumn = Math.max(sheet.getLastColumn(), 1);
+  var headerRange = sheet.getRange(1, 1, 1, lastColumn);
+
+  headerRange.setBackground("#050505");
+  headerRange.setFontColor("#ffd84d");
+  headerRange.setFontWeight("bold");
+  headerRange.setWrap(true);
+  sheet.setFrozenRows(1);
+
+  if (!sheet.getFilter()) {
+    sheet.getRange(1, 1, Math.max(sheet.getMaxRows(), 2), lastColumn).createFilter();
+  }
+}
+
+function applyLeadValidations(sheet) {
+  applyListValidation(sheet, "Status", STATUS_OPTIONS);
+  applyListValidation(sheet, "Prioridade", PRIORITY_OPTIONS);
+  // allowInvalid=true para "ResponsÃ¡vel": evita conflito com campo de contato externo
+  // em perfis de Patrocinador e Quadra que reutilizam o mesmo nome de coluna
+  applyListValidation(sheet, "ResponsÃ¡vel", RESPONSIBLE_OPTIONS, true);
+  applyScoreValidation(sheet);
+}
+
+function applyListValidation(sheet, headerName, options, allowInvalid) {
+  var column = findHeaderColumn(sheet, headerName);
+  if (!column) {
+    return;
+  }
+
+  // allowInvalid=true: exibe aviso mas nÃ£o bloqueia gravaÃ§Ã£o programÃ¡tica
+  var rule = SpreadsheetApp.newDataValidation().requireValueInList(options, true).setAllowInvalid(allowInvalid === true).build();
+  sheet.getRange(2, column, Math.max(sheet.getMaxRows() - 1, 1), 1).setDataValidation(rule);
+}
+
+function applyScoreValidation(sheet) {
+  var column = findHeaderColumn(sheet, "Score");
+  if (!column) {
+    return;
+  }
+
+  var rule = SpreadsheetApp.newDataValidation().requireNumberBetween(0, 100).setAllowInvalid(false).build();
+  sheet.getRange(2, column, Math.max(sheet.getMaxRows() - 1, 1), 1).setDataValidation(rule);
+}
+
+function buildLeadId(sheet, prefix) {
+  var idColumn = findHeaderColumn(sheet, "ID do lead") || 1;
+  var lastRow = sheet.getLastRow();
+  var maxNumber = 0;
+
+  if (lastRow > 1) {
+    var values = sheet.getRange(2, idColumn, lastRow - 1, 1).getValues();
+    values.forEach(function (row) {
+      var value = String(row[0] || "");
+      var match = value.match(new RegExp("^" + prefix + "-(\\d+)$"));
+      if (match) {
+        maxNumber = Math.max(maxNumber, Number(match[1]));
+      }
+    });
+  }
+
+  return prefix + "-" + String(maxNumber + 1).padStart(4, "0");
+}
+
+function resolveValue(header, payload, config, leadId, now) {
+  if (normalizeHeader(header) === "responsavel") {
+    return payload.responsavelInicial || "OperaÃ§Ã£o UR";
+  }
+
+  var configField = getConfigFieldForHeader(header, config);
+  if (configField) {
+    return payload[configField] || "";
+  }
+
+  if (Object.prototype.hasOwnProperty.call(payload, header)) {
+    return payload[header] || "";
+  }
+
+  var name = payload[config.nameField] || payload.nomeCompleto || payload.responsavel || "";
+  var city = payload[config.cityField] || payload.cidade || payload.cidadePolo || payload.cidadeRegiao || "";
+  var polo = payload[config.poloField] || payload.poloInteresse || payload.cidadePolo || payload.cidadeRegiao || "";
+  var modality = payload.modalidadePrincipal || payload.modalidade || payload.modalidadesComportadas || payload.modalidadesInteresse || "";
+
+  var automaticValues = {
+    "ID do lead": leadId,
+    "Data de entrada": payload.createdAt || now,
+    "Perfil": config.profileLabel,
+    "Nome": name,
+    "WhatsApp": payload.whatsapp || "",
+    "Cidade": city,
+    "Polo de interesse": polo,
+    "Origem do lead": payload.sourceLabel || "Site / Cadastro UR",
+    "UTM source": payload.utm_source || "",
+    "UTM medium": payload.utm_medium || "",
+    "UTM campaign": payload.utm_campaign || "",
+    "UTM content": payload.utm_content || "",
+    "Status": "Novo",
+    "Prioridade": "A definir",
+    "Score": "",
+    "Status sugerido": "",
+    "ResponsÃ¡vel": payload.responsavelInicial || "OperaÃ§Ã£o UR",
+    "PrÃ³ximo passo": payload.proximoPassoInicial || "Triagem inicial",
+    "PrÃ³xima data de contato": "",
+    "Ãšltimo contato": "",
+    "Tentativas de contato": 0,
+    "ObservaÃ§Ãµes": "Lead captado pelo formulÃ¡rio prÃ³prio do site.",
+    "Motivo de arquivamento": "",
+    "Data de atualizaÃ§Ã£o": now,
+  };
+
+  if (Object.prototype.hasOwnProperty.call(automaticValues, header)) {
+    return automaticValues[header];
+  }
+
+  var normalizedHeader = normalizeHeader(header);
+  var legacyValues = {
+    iddolead: leadId,
+    idlead: leadId,
+    leadid: leadId,
+    criadoem: payload.createdAt || now,
+    createdem: payload.createdAt || now,
+    dataentrada: payload.createdAt || now,
+    datadeentrada: payload.createdAt || now,
+    perfil: config.profileLabel,
+    profile: config.profileLabel,
+    nome: name,
+    nomecompleto: name,
+    nomedaequipe: name,
+    empresamarca: name,
+    nomequadra: name,
+    whatsapp: payload.whatsapp || "",
+    telefone: payload.whatsapp || "",
+    cidade: city,
+    polo: polo,
+    polodeinteresse: polo,
+    origem: payload.sourceLabel || "Site / Cadastro UR",
+    origemdolead: payload.sourceLabel || "Site / Cadastro UR",
+    utm: payload.utm_source || "",
+    utmsource: payload.utm_source || "",
+    utmmedium: payload.utm_medium || "",
+    utmcampaign: payload.utm_campaign || "",
+    utmcontent: payload.utm_content || "",
+    status: payload.statusInicial || "Novo",
+    prioridade: payload.prioridadeInicial || "A definir",
+    score: "",
+    statussugerido: "",
+    responsavel: payload.responsavelInicial || "OperaÃ§Ã£o UR",
+    responsavelcontato: payload.responsavelInicial || "OperaÃ§Ã£o UR",
+    responsavelpelocontato: payload.responsavelInicial || "OperaÃ§Ã£o UR",
+    proximopasso: payload.proximoPassoInicial || "Triagem inicial",
+    proximadatacontato: "",
+    ultimocontato: "",
+    tentativasdecontato: 0,
+    observacoes: "Lead captado pelo formulÃ¡rio prÃ³prio do site.",
+    observacao: "Lead captado pelo formulÃ¡rio prÃ³prio do site.",
+    motivodearquivamento: "",
+    datadeatualizacao: now,
+    instagram: payload.instagram || payload.instagramEquipe || payload.instagramSite || "",
+    modalidade: modality,
+    modalidadeprincipal: modality,
+    nivel: payload.nivelPercebido || "",
+    nivelpercebido: payload.nivelPercebido || "",
+    posicao: payload.posicao || "",
+    posicaoprincipal: payload.posicao || "",
+    timeatual: payload.temEquipe || payload.nomeEquipe || "",
+    objetivo: payload.objetivoPrincipal || "",
+    objetivoprincipal: payload.objetivoPrincipal || "",
+  };
+
+  if (Object.prototype.hasOwnProperty.call(legacyValues, normalizedHeader)) {
+    return legacyValues[normalizedHeader];
+  }
+
+  var payloadKey = findPayloadKeyByNormalizedName(payload, normalizedHeader);
+  return payloadKey ? payload[payloadKey] || "" : "";
+}
+
+function getConfigFieldForHeader(header, config) {
+  if (config.fields[header]) {
+    return config.fields[header];
+  }
+
+  var normalizedHeader = normalizeHeader(header);
+  var fieldHeaders = Object.keys(config.fields);
+  for (var i = 0; i < fieldHeaders.length; i += 1) {
+    if (normalizeHeader(fieldHeaders[i]) === normalizedHeader) {
+      return config.fields[fieldHeaders[i]];
+    }
+  }
+
+  return null;
+}
+
+function findPayloadKeyByNormalizedName(payload, normalizedHeader) {
+  var keys = Object.keys(payload);
+  for (var i = 0; i < keys.length; i += 1) {
+    if (normalizeHeader(keys[i]) === normalizedHeader) {
+      return keys[i];
+    }
+  }
+
+  return null;
+}
+
+function normalizeHeader(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function applyScoreFormula(sheet, rowNumber) {
+  var scoreColumn = findHeaderColumn(sheet, "Score");
+  var suggestedColumn = findHeaderColumn(sheet, "Status sugerido");
+
+  if (!scoreColumn || !suggestedColumn) {
+    return;
+  }
+
+  var scoreCell = columnToLetter(scoreColumn) + rowNumber;
+  var formula =
+    '=IF(' +
+    scoreCell +
+    '="";"Aguardando score";IFERROR(IF(' +
+    scoreCell +
+    '>=80;"Qualificado ou Aguardando contato";IF(' +
+    scoreCell +
+    '>=50;"Em triagem ou Qualificado";IF(' +
+    scoreCell +
+    '>=30;"Em triagem ou NÃ£o prioritÃ¡rio agora";"NÃ£o prioritÃ¡rio agora ou Arquivado")));"Aguardando score"))';
+
+  sheet.getRange(rowNumber, suggestedColumn).setFormula(formula);
+}
+
+function findHeaderColumn(sheet, headerName) {
+  var lastColumn = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet.getRange(1, 1, 1, lastColumn).getValues()[0];
+
+  for (var i = 0; i < headers.length; i += 1) {
+    if (headers[i] === headerName) {
+      return i + 1;
+    }
+  }
+
+  return null;
+}
+
+function columnToLetter(column) {
+  var temp = "";
+  var letter = "";
+
+  while (column > 0) {
+    temp = (column - 1) % 26;
+    letter = String.fromCharCode(temp + 65) + letter;
+    column = (column - temp - 1) / 26;
+  }
+
+  return letter;
+}
+
+function buildTotalCountFormula() {
+  return "=SUM(COUNTA(Atletas!A2:A);COUNTA(Equipes!A2:A);COUNTA(Patrocinadores!A2:A);COUNTA(Quadras!A2:A);COUNTA(Comunidade!A2:A))";
+}
+
+function buildStatusCountFormula(status) {
+  return (
+    '=SUM(COUNTIF(Atletas!M:M;"' +
+    status +
+    '");COUNTIF(Equipes!M:M;"' +
+    status +
+    '");COUNTIF(Patrocinadores!M:M;"' +
+    status +
+    '");COUNTIF(Quadras!M:M;"' +
+    status +
+    '");COUNTIF(Comunidade!M:M;"' +
+    status +
+    '"))'
+  );
+}
+
+function buildPriorityCountFormula(priority) {
+  return (
+    '=SUM(COUNTIF(Atletas!N:N;"' +
+    priority +
+    '");COUNTIF(Equipes!N:N;"' +
+    priority +
+    '");COUNTIF(Patrocinadores!N:N;"' +
+    priority +
+    '");COUNTIF(Quadras!N:N;"' +
+    priority +
+    '");COUNTIF(Comunidade!N:N;"' +
+    priority +
+    '"))'
+  );
+}
+
+function buildNewWeekFormula() {
+  return '=SUM(COUNTIFS(Atletas!B:B;">="&TODAY()-7);COUNTIFS(Equipes!B:B;">="&TODAY()-7);COUNTIFS(Patrocinadores!B:B;">="&TODAY()-7);COUNTIFS(Quadras!B:B;">="&TODAY()-7);COUNTIFS(Comunidade!B:B;">="&TODAY()-7))';
+}
+
+function buildNoResponseFormula() {
+  return '=SUM(COUNTIFS(Atletas!M:M;"Aguardando retorno";Atletas!T:T;"<"&TODAY()-7);COUNTIFS(Equipes!M:M;"Aguardando retorno";Equipes!T:T;"<"&TODAY()-7);COUNTIFS(Patrocinadores!M:M;"Aguardando retorno";Patrocinadores!T:T;"<"&TODAY()-7);COUNTIFS(Quadras!M:M;"Aguardando retorno";Quadras!T:T;"<"&TODAY()-7);COUNTIFS(Comunidade!M:M;"Aguardando retorno";Comunidade!T:T;"<"&TODAY()-7))';
+}
+
+function buildTopValueFormula(columnLetter) {
+  return (
+    '=IFERROR(INDEX(QUERY({Atletas!' +
+    columnLetter +
+    "2:" +
+    columnLetter +
+    ";Equipes!" +
+    columnLetter +
+    "2:" +
+    columnLetter +
+    ";Patrocinadores!" +
+    columnLetter +
+    "2:" +
+    columnLetter +
+    ";Quadras!" +
+    columnLetter +
+    "2:" +
+    columnLetter +
+    ";Comunidade!" +
+    columnLetter +
+    "2:" +
+    columnLetter +
+    '};"select Col1, count(Col1) where Col1 is not null group by Col1 order by count(Col1) desc limit 1 label count(Col1) \'\'";0);1;1);"")'
+  );
+}
+
+function buildTopModalityFormula() {
+  return '=IFERROR(INDEX(QUERY({Atletas!Z2:Z;Equipes!AA2:AA;Quadras!AB2:AB;Comunidade!AB2:AB};"select Col1, count(Col1) where Col1 is not null group by Col1 order by count(Col1) desc limit 1 label count(Col1) \'\'";0);1;1);"")';
+}
+
+function jsonResponse(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}

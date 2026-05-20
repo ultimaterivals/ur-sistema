@@ -1,0 +1,7 @@
+**/node_modules/**
+node_modules/**
+backups/**
+package.json
+package-lock.json
+.claspignore
+.clasp.json

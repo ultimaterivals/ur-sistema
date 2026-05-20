@@ -254,3 +254,15 @@ Use o Dashboard como ponto de partida e registre decisões em `Resumo Semanal` s
 - Marcar leads de teste em Observações.
 - Evitar filtros permanentes que escondam leads novos.
 - Fazer cópia de segurança antes de mudanças grandes.
+## AtualizaÃ§Ã£o Operacional CRM v3
+
+- CRM oficial: Google Sheets `1SvK1dNMnmBCnWRO27-J19RCYE_qJ4VKMwycCXnCVHZ8`.
+- Excel v3 `Leads_Ultimate_Rivals_CRM_v3_operacional_aprimorado.xlsx`: blueprint, backup e modelo operacional; nÃ£o Ã© a fonte diÃ¡ria.
+- A planilha `1LFAG38...` nÃ£o deve ser usada como fonte da verdade.
+- A migraÃ§Ã£o CRM v3 foi aplicada na planilha oficial, preservando leads atuais e criando backups ocultos das abas principais.
+- Foram incorporados Dashboard, boards operacionais, Resumo Semanal, Guia Operacional, VÃ­nculos e colunas de controle como semana de entrada, dias sem contato, SLA, pendÃªncia, link WhatsApp e flag de teste.
+- FÃ³rmulas foram adaptadas para locale `pt_BR`, usando `;` como separador.
+- `Status sugerido` mostra `Aguardando score` quando `Score` estÃ¡ vazio, sem `#ERROR!`.
+- O responsÃ¡vel inicial automÃ¡tico para todos os perfis Ã© `OperaÃ§Ã£o UR`, incluindo Patrocinadores e Quadras.
+- Leads de teste devem ser arquivados, nÃ£o deletados, para preservar auditoria do fluxo.
+- A aÃ§Ã£o administrativa temporÃ¡ria usada na migraÃ§Ã£o foi removida do Web App final.
