@@ -63,7 +63,7 @@ export const footerColumns = [
     links: [
       { label: "Instagram", href: "/cadastro#comunidade" },
       { label: "Mídia UR", href: "/midia" },
-      { label: "WhatsApp", href: "/cadastro#whatsapp" },
+      { label: "WhatsApp", href: "/cadastro#comunidade" },
       { label: "Quadras parceiras", href: "/quadras-parceiras" },
       { label: "Ranking", href: "/ranking" },
       { label: "Privacidade", href: "/privacidade" },

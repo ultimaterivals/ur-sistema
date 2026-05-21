@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   },
   description:
     "Ultimate Rivals profissionaliza o esporte amador com ranking, temporadas, equipes, recompensas, mídia, desenvolvimento e oportunidades reais.",
+  icons: {
+    icon: "/brand/logo-ur.png",
+    shortcut: "/brand/logo-ur.png",
+    apple: "/brand/logo-ur.png",
+  },
   openGraph: {
     title: "Ultimate Rivals",
     description:

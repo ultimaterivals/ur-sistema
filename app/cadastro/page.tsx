@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
   "Você preenche o formulário próprio dentro do site.",
-  "O cadastro é enviado para triagem operacional na base MVP.",
+  "O cadastro é enviado para triagem operacional da equipe UR.",
   "A equipe UR valida agenda, polo, perfil e prioridade.",
   "O cadastro não garante vaga, parceria, patrocínio ou participação imediata.",
 ] as const;

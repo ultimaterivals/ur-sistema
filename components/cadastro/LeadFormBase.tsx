@@ -114,10 +114,10 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
 
           {!captureConfigured ? (
             <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
-              <p className="font-black uppercase tracking-wide">Integração operacional em validação</p>
+              <p className="font-black uppercase tracking-wide">Canal principal em validação</p>
               <p className="mt-1">
-                A conexão principal de captação ainda não está ativa nesta versão. Use a alternativa externa para registrar
-                interesse enquanto a operação é validada.
+                O canal principal de cadastro ainda está sendo validado nesta versão. Use a alternativa externa para
+                registrar interesse enquanto a equipe UR confirma a operação.
               </p>
             </div>
           ) : null}
