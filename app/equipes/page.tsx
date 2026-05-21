@@ -1,31 +1,16 @@
 import type { Metadata } from "next";
-import { ChevronDown, ClipboardList, Lock } from "lucide-react";
+import { BarChart3, Crown, ShieldCheck, Users } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/section-header";
-import { IconCard } from "@/components/site/icon-card";
+import {
+  DataBoard,
+  ImageFeaturePanel,
+  LeaderboardPanel,
+  ProcessTimeline,
+  ProfileMockup,
+} from "@/components/editorial/sports-platform-modules";
 import { PageSection } from "@/components/site/page-section";
 import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import { TeamPreviewCard } from "@/components/site/team-preview-card";
-import type { TeamCard, TeamStep } from "@/lib/content/equipes";
-import {
-  collectiveRankingCards,
-  cycleRewardFlow,
-  draftConnectionCards,
-  mediaRivalryCards,
-  rosterValidationCards,
-  teamBenefits,
-  teamComparisonRows,
-  teamEntrySteps,
-  teamFaq,
-  teamHeroBadges,
-  teamIdentityCards,
-  teamInterestFields,
-  teamInterestFlow,
-  teamCoinsCards,
-  teamPreviewRows,
-} from "@/lib/content/equipes";
+import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -34,355 +19,190 @@ export const metadata: Metadata = {
     "Conheça as equipes oficiais do Ultimate Rivals, o sistema que transforma times amadores em ativos competitivos com ranking coletivo, elenco, UR Coins, mídia, repasses e oportunidades dentro da temporada.",
 };
 
-function TeamTimeline({ steps }: { steps: readonly TeamStep[] }) {
-  return (
-    <div className="relative">
-      <div className="absolute left-[21px] top-0 hidden h-full w-px bg-[#ffd84d]/20 md:block lg:left-0 lg:top-[21px] lg:h-px lg:w-full" />
-      <div className="grid gap-3 md:gap-4 lg:grid-cols-5">
-        {steps.map((item) => (
-          <div className="relative grid grid-cols-[44px_1fr] gap-4 lg:block" key={item.step}>
-            <span className="relative z-10 grid h-11 w-11 place-items-center rounded-md border border-[#ffd84d]/35 bg-[#111218] text-sm font-black text-[#ffe98b] shadow-[0_0_0_6px_rgba(3,4,5,1)]">
-              {item.step}
-            </span>
-            <Card className="min-h-[174px] p-4 md:p-5 lg:mt-5">
-              <h3 className="text-base font-black uppercase leading-tight text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-            </Card>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const teamFields = [
+  { label: "Status", value: "equipes em validação" },
+  { label: "Elenco", value: "após cadastro oficial" },
+  { label: "Capitão", value: "responsável validado" },
+  { label: "Ranking", value: "coletivo em formação" },
+] as const;
+
+const teamJourney = [
+  {
+    label: "01",
+    title: "Registrar equipe",
+    description: "Capitão ou responsável envia interesse com identidade, cidade, modalidade e contexto.",
+    status: "cadastro aberto",
+  },
+  {
+    label: "02",
+    title: "Validar elenco",
+    description: "A equipe UR confere dados, conduta, disponibilidade e relação com a temporada.",
+  },
+  {
+    label: "03",
+    title: "Entrar no ranking",
+    description: "O ranking coletivo só abre com dados reais e regras oficiais do ciclo.",
+  },
+  {
+    label: "04",
+    title: "Criar narrativa",
+    description: "Mídia, rivalidade, torcida e histórico transformam equipe em ativo esportivo.",
+  },
+] as const;
+
+const rosterData = [
+  {
+    label: "Identidade",
+    value: "marca esportiva",
+    detail: "nome, postura, visual e presença precisam formar uma narrativa reconhecível.",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Capitão",
+    value: "liderança",
+    detail: "responsável por comunicação, conduta e ponte com a operação UR.",
+    icon: Crown,
+  },
+  {
+    label: "Elenco",
+    value: "validado",
+    detail: "atletas entram após confirmação, sem inventar nomes ou posições.",
+    icon: Users,
+  },
+  {
+    label: "Temporada",
+    value: "histórico",
+    detail: "participação coletiva alimenta ranking, mídia, eventos e oportunidades.",
+    icon: BarChart3,
+  },
+] as const;
+
+const collectiveRankingRows = [
+  {
+    position: "01",
+    title: "equipe em formação",
+    status: "sem nome real publicado",
+    meta: "ranking coletivo abre após validação oficial de equipes e eventos.",
+  },
+  {
+    position: "02",
+    title: "elenco em validação",
+    status: "dados reais após cadastro",
+    meta: "capitão, atletas e identidade precisam passar pela triagem UR.",
+  },
+  {
+    position: "03",
+    title: "histórico coletivo",
+    status: "temporada estruturada",
+    meta: "resultados e mídia serão conectados ao ciclo oficial.",
+  },
+] as const;
 
 export default function EquipesPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#equipe", label: "Registrar interesse" },
-          { href: "#ranking-coletivo", label: "Ranking coletivo", variant: "secondary" },
-          { href: "/ur-play", label: "Conexão com UR Play", variant: "ghost" },
+          { href: "/cadastro#equipe", label: "Cadastrar equipe" },
+          { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
-        badges={teamHeroBadges}
-        description="Equipes oficiais no Ultimate Rivals organizam identidade, elenco, capitão, ranking coletivo, rivalidade, mídia, UR Coins, repasses e oportunidades dentro da temporada."
-        eyebrow="Equipes UR • ranking coletivo em formação"
+        badges={["Elenco", "Capitão", "Ranking coletivo", "Mídia", "Temporada"]}
+        description="No Ultimate Rivals, equipe deixa de ser um grupo solto e passa a operar como identidade competitiva, midiática e comercial dentro da temporada."
+        eyebrow="Equipes UR • identidade competitiva"
         image={siteImages.teamHuddle}
-        imagePosition="center 46%"
+        imagePosition="center 42%"
         metrics={[
-          { label: "Identidade", value: "escudo, elenco e capitão validados" },
-          { label: "Sistema", value: "ranking coletivo e temporada" },
-          { label: "Status", value: "equipes após validação" },
+          { label: "Base", value: "identidade e elenco" },
+          { label: "Operação", value: "capitão e validação" },
+          { label: "Valor", value: "ranking, mídia e comunidade" },
         ]}
-        statusDescription="Identidade, elenco e ranking coletivo ficam disponíveis após validação e operação oficial."
-        statusLabel="ativos coletivos"
-        statusTitle="Sua equipe pode virar uma marca dentro da temporada."
-        title="Equipes como ativos esportivos e midiáticos."
+        statusDescription="Dados reais de equipes, atletas, resultados e ranking entram apenas após validação oficial."
+        statusLabel="equipes em validação"
+        statusTitle="Equipe não é só grupo. É ativo esportivo."
+        title="Sua equipe pode virar uma marca dentro da temporada."
       />
 
-      <PageSection id="identidade">
-        <SectionHeader
-          description="Time amador pode ser mais que presença em quadra. No UR, equipe oficial é identidade competitiva, mídia, histórico e oportunidade comercial."
-          eyebrow="Identidade competitiva"
-          title="Equipe não é só um grupo de atletas."
+      <PageSection id="card-equipe">
+        <ProfileMockup
+          cta={{ href: "/cadastro#equipe", label: "Registrar equipe" }}
+          description="O card de equipe concentra o que importa para o ecossistema: identidade, capitão, elenco, histórico, ranking coletivo e presença de mídia."
+          eyebrow="Mockup de equipe"
+          fields={teamFields}
+          highlights={["identidade", "elenco", "capitão", "ranking coletivo", "mídia"]}
+          image={siteImages.teamEmbrace}
+          title="A equipe precisa ser reconhecida antes de ser ranqueada."
         />
-        <div className="grid gap-5 md:grid-cols-3">
-          {teamIdentityCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-        <div className="mt-5 overflow-hidden rounded-lg border border-white/10 bg-white/[0.035]">
-          <div className="grid border-b border-white/10 bg-black/35 text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.72fr_1fr_1fr]">
-            <div className="hidden px-5 py-4 md:block">Critério</div>
-            <div className="border-white/10 px-5 py-4 md:border-l">Grupo informal</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Equipe UR</div>
-          </div>
-          {teamComparisonRows.map((row) => (
-            <div
-              className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.72fr_1fr_1fr]"
-              key={row.label}
-            >
-              <div className="bg-white/[0.025] px-5 py-4 text-sm font-black uppercase tracking-[0.1em] text-white">
-                {row.label}
-              </div>
-              <div className="border-t border-white/10 px-5 py-4 text-sm leading-6 text-white/62 md:border-l md:border-t-0">
-                {row.group}
-              </div>
-              <div className="border-t border-[#ffd84d]/15 bg-[#ffd84d]/[0.045] px-5 py-4 text-sm font-semibold leading-6 text-white/78 md:border-l md:border-t-0">
-                {row.official}
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-          Equipe forte não nasce só no jogo. Nasce com identidade, organização e continuidade.
-        </p>
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="entrada">
-        <SectionHeader
-          action={
-            <Button href="/cadastro#equipe" variant="secondary">
-              Registrar interesse
-            </Button>
-          }
-          description="Registro oficial depende de validação. A página orienta o caminho da equipe antes de agenda, ranking coletivo e operação ativa."
-          eyebrow="Como entrar no UR"
-          title="Da intenção do capitão ao ranking coletivo."
-        />
-        <TeamTimeline steps={teamEntrySteps} />
-      </PageSection>
-
-      <PageSection id="beneficios">
-        <SectionHeader
-          description="Equipe oficial cria continuidade: ranking, mídia, torcida, valor comercial, recompensas e conexão com a temporada."
-          eyebrow="Benefícios"
-          title="Mais organização para competir, aparecer e crescer."
-        />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {teamBenefits.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 1} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="ranking-coletivo">
-        <SectionHeader
-          action={
-            <Button href="/ranking" variant="secondary">
-              Ver Ranking UR
-            </Button>
-          }
-          description="Ranking coletivo transforma desempenho de equipe em histórico de temporada, sempre com dados reais apenas após validação oficial."
-          eyebrow="Ranking coletivo"
-          title="A equipe também disputa posição, memória e valor."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {collectiveRankingCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection id="elenco-validacao">
-        <SectionHeader
-          description="Capitão, elenco e identidade precisam de critérios claros para evitar dados soltos, duplicidade ou times inventados."
-          eyebrow="Elenco, capitão e validação"
-          title="Equipe oficial exige responsabilidade e registro validado."
-        />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {rosterValidationCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 3} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="ur-play-draft">
-        <SectionHeader
-          action={
-            <Button href="/ur-play" variant="secondary">
-              Conhecer UR Play
-            </Button>
-          }
-          description="UR Play ajuda a observar atletas e pode alimentar Draft, formação de equipes e ranking quando houver validação."
-          eyebrow="UR Play e Draft"
-          title="Atletas observados podem virar elenco no futuro."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {draftConnectionCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection id="coins-recompensas">
-        <SectionHeader
-          action={
-            <Button href="/ur-market" variant="secondary">
-              Conhecer UR Market
-            </Button>
-          }
-          description="UR Coins coletivas e recompensas dependem de critérios oficiais, parceiros, temporada e operação ativa."
-          eyebrow="UR Coins coletivas"
-          title="Conquistas coletivas podem virar reconhecimento."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {teamCoinsCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="midia">
-        <SectionHeader
-          description="Equipes criam histórias melhores para narrar: confronto, bastidor, torcida, evolução, rivalidade e pertencimento."
-          eyebrow="Mídia, rivalidade e torcida"
-          title="Equipe forte também é produto de mídia."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {mediaRivalryCards.map((item: TeamCard, index: number) => (
-            <IconCard item={item} key={item.title} premium={index === 1} />
-          ))}
-        </div>
-        <p className="mt-8 text-sm font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-          Toda rivalidade tem nome. No UR, o confronto vira narrativa, a torcida vira comunidade.
-        </p>
-      </PageSection>
-
-      <PageSection id="repasses-premiacoes">
-        <SectionHeader
-          description="Repasses e premiações são possibilidades por ciclo, sempre condicionadas a ranking validado, regras oficiais e temporada ativa."
-          eyebrow="Repasses e premiações"
-          title="Reconhecimento financeiro exige critério, ciclo e validação."
-        />
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
-          <Card className="flex min-h-[260px] flex-col" premium>
-            <span className="rounded-md border border-[#ffd84d]/20 bg-black/30 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              ciclo competitivo
-            </span>
-            <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Repasse real após temporada validada.
-            </h3>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Premiação, valores, posição e regras finais são publicados somente após validação operacional oficial.
-            </p>
-          </Card>
-          <div className="grid gap-3 sm:grid-cols-4">
-            {cycleRewardFlow.map((item, index) => (
-              <div
-                className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm font-black uppercase leading-5 tracking-[0.1em] text-white"
-                key={item}
-              >
-                <span className="mb-3 grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs text-black">
-                  {index + 1}
-                </span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="preview">
-        <SectionHeader
-          description="Preview visual para mostrar estrutura de equipe. Não há nomes, escudos, elencos, números, posições ou repasses reais nesta fase."
-          eyebrow="Preview de equipes"
-          title="Interface pronta para equipes reais, quando elas forem validadas."
-        />
-        <TeamPreviewCard
-          eyebrow="Preview visual"
-          rows={teamPreviewRows}
-          sideLabels={["identidade em validação", "elenco em validação", "capitão em validação", "mídia em validação"]}
+        <ProcessTimeline
+          description="O processo foi reduzido ao essencial: registrar, validar, ranquear e construir narrativa coletiva."
+          eyebrow="Entrada da equipe"
+          steps={teamJourney}
+          title="Do grupo de atletas à identidade competitiva."
         />
       </PageSection>
 
-      <PageSection id="interesse">
-        <SectionHeader
-          description="O cadastro de interesse de equipe acontece pela central oficial. A equipe UR valida capitão, elenco, polo, modalidade e próximos passos."
-          eyebrow="Interesse de equipe"
-          title="Registro de interesse de equipe oficial."
+      <PageSection id="elenco-capitao">
+        <DataBoard
+          description="Uma equipe oficial precisa de liderança, conduta, elenco e compromisso com a temporada. Isso protege o ranking e melhora a experiência competitiva."
+          eyebrow="Elenco e capitão"
+          items={rosterData}
+          title="Organização antes do resultado."
         />
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-stretch">
-          <Card className="flex min-h-[340px] flex-col" premium>
-            <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-              <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-            </span>
-            <h3 className="mt-6 text-[clamp(1.9rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Registro sujeito à validação.
-            </h3>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Cadastro de equipe depende de regulamento, política de dados, critérios de elegibilidade e operação ativa.
-            </p>
-            <div className="mt-6 grid gap-2">
-              {teamInterestFlow.map((item, index) => (
-                <div
-                  className="grid grid-cols-[34px_1fr] items-center gap-3 rounded-md border border-white/10 bg-black/25 px-3 py-3"
-                  key={item}
-                >
-                  <span className="grid h-8 w-8 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm font-bold text-white/78">{item}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-              cadastro enviado para triagem operacional pela central UR
-            </p>
-          </Card>
-
-          <Card className="p-4 md:p-5">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-                <ClipboardList aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-              </span>
-              <div>
-                <h3 className="text-lg font-black uppercase leading-tight text-white">Cadastro de interesse aberto</h3>
-                <p className="mt-1 text-sm text-white/60">preenchimento pela central oficial de cadastro</p>
-              </div>
-            </div>
-            <div aria-label="Resumo do cadastro de interesse de equipe" className="grid gap-3">
-              {teamInterestFields.map((field) => (
-                <label className="grid gap-2" key={field}>
-                  <span className="text-xs font-black uppercase tracking-[0.12em] text-[#ffe98b]">{field}</span>
-                  <input
-                    className="min-h-12 rounded-lg border border-white/10 bg-black/35 px-4 text-sm text-white/70 outline-none placeholder:text-white/35"
-                    placeholder="preenchimento na central de cadastro"
-                    readOnly
-                    type="text"
-                  />
-                </label>
-              ))}
-              <Button className="mt-2 w-full" href="/cadastro#equipe">
-                Abrir cadastro de equipe
-              </Button>
-            </div>
-          </Card>
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="faq">
-        <SectionHeader
-          description="Perguntas rápidas para explicar equipes oficiais sem prometer funcionalidades que ainda não existem."
-          eyebrow="FAQ Equipes UR"
-          title="Antes de registrar, entenda a fase atual."
+      <PageSection className="bg-[#07080c]" id="ranking-coletivo">
+        <LeaderboardPanel
+          description="O preview mostra como o ranking coletivo será apresentado, sem publicar equipes reais, posições, pontuação ou resultados nesta fase."
+          eyebrow="Ranking coletivo preview"
+          image={siteImages.fairPlayLine}
+          rows={collectiveRankingRows}
+          tabs={["Coletivo", "Elenco", "Temporada", "Mídia"]}
+          title="Classificação coletiva com histórico."
         />
-        <div className="grid gap-3 md:grid-cols-2">
-          {teamFaq.map((item) => (
-            <details
-              className="group rounded-lg border border-white/10 bg-white/[0.04] transition duration-200 open:border-[#ffd84d]/25 open:bg-white/[0.055]"
-              key={item.question}
-            >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 text-base font-black uppercase leading-tight text-white">
-                <span>{item.question}</span>
-                <ChevronDown
-                  aria-hidden
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#ffd84d] transition duration-200 group-open:rotate-180"
-                />
-              </summary>
-              <p className="px-5 pb-5 text-sm leading-6 text-white/70">{item.answer}</p>
-            </details>
-          ))}
-        </div>
+      </PageSection>
+
+      <PageSection id="midia-mercado">
+        <ImageFeaturePanel
+          actions={[
+            { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
+            { href: "/ur-market", label: "Conhecer UR Market", variant: "ghost" },
+          ]}
+          description="Equipes fortes geram rivalidade, torcida, histórias, ativos comerciais e oportunidades. UR Coins coletivas e recompensas entram com regras oficiais do ciclo."
+          eyebrow="Mídia, rivalidade e mercado"
+          image={siteImages.mediaCoverage}
+          imagePosition="center 45%"
+          points={[
+            {
+              title: "Narrativa de equipe",
+              description: "Bastidores, cortes, rankings e temporada ajudam a construir reputação coletiva.",
+            },
+            {
+              title: "Valor comercial",
+              description: "Patrocinadores e UR Market podem se conectar a equipes após aprovação operacional.",
+            },
+          ]}
+          reverse
+          statusLabel="benefícios após validação"
+          title="Equipe boa vira história. História vira valor."
+        />
       </PageSection>
 
       <SegmentCtaPanel
-        description="A estrutura pública está pronta para orientar capitães e atletas enquanto registro, ranking coletivo, elenco, mídia, repasses e temporada passam por validação."
-        eyebrow="CTA Equipes UR"
-        items={["elenco", "ranking coletivo", "mídia"]}
-        statusLabel="registro sujeito à validação"
-        title="Transforme seu time em uma equipe dentro do ecossistema."
         actions={
           <>
-            <Button href="/cadastro#equipe">Registrar interesse</Button>
-            <Button href="/ranking" variant="secondary">
-              Entender ranking
-            </Button>
-            <Button href="/cadastro#atleta" variant="ghost">
-              Começar pelo UR Play
+            <Button href="/cadastro#equipe">Cadastrar equipe</Button>
+            <Button href="/regulamento" variant="secondary">
+              Ver regulamento
             </Button>
           </>
         }
+        description="O registro da equipe inicia a triagem operacional. Identidade, elenco, capitão, ranking e mídia dependem de validação oficial."
+        eyebrow="Próximo passo"
+        items={["identidade", "elenco", "capitão", "ranking coletivo", "temporada"]}
+        statusLabel="registro sujeito à validação"
+        title="Transforme o grupo em uma equipe reconhecível."
       />
     </main>
   );

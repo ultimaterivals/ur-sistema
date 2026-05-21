@@ -1,30 +1,15 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import { ArrowRight, CalendarDays, ChevronDown, ClipboardList, Lock, MapPin } from "lucide-react";
+import { BarChart3, CheckCircle2, Eye, Radio } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/section-header";
-import type { URPlayCard, URPlayStep } from "@/lib/content/ur-play";
 import {
-  athleteBenefits,
-  coinsRewardCards,
-  interestFields,
-  interestFlow,
-  poloCards,
-  rankingFlow,
-  rankingLevelingCards,
-  rewardFlow,
-  teamBenefitsFromURPlay,
-  upcomingURPlays,
-  urPlayAudienceCards,
-  urPlayComparisonRows,
-  urPlayFaq,
-  urPlayHighlights,
-  urPlayIntroCards,
-  urPlayJourneySteps,
-} from "@/lib/content/ur-play";
+  DataBoard,
+  ImageFeaturePanel,
+  LeaderboardPanel,
+  ProcessTimeline,
+} from "@/components/editorial/sports-platform-modules";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
+import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -33,430 +18,203 @@ export const metadata: Metadata = {
     "Conheça o UR Play, a porta de entrada do Ultimate Rivals para atletas que querem entrar no ranking, evoluir por níveis, ganhar visibilidade, acumular UR Coins e disputar oportunidades no ecossistema.",
 };
 
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
+const dayFlow = [
+  {
+    label: "Cadastro",
+    title: "Interesse registrado",
+    description: "O atleta entra pela central e informa dados básicos para triagem operacional.",
+    status: "cadastro aberto",
+  },
+  {
+    label: "Triagem",
+    title: "Contexto validado",
+    description: "A equipe UR organiza agenda, polo, disponibilidade e orientação de participação.",
+  },
+  {
+    label: "Presença",
+    title: "Chegada e conduta",
+    description: "Presença, postura, compromisso e autorização de contato fazem parte do processo.",
+  },
+  {
+    label: "Jogo",
+    title: "Participação observada",
+    description: "O UR Play observa nível, evolução, contexto técnico e conexão com a comunidade.",
+  },
+  {
+    label: "Registro",
+    title: "Histórico criado",
+    description: "Dados públicos entram apenas após validação oficial e critérios definidos.",
+  },
+  {
+    label: "Ranking",
+    title: "Próximo passo",
+    description: "O ranking, mídia, equipes e oportunidades dependem da temporada estruturada.",
+  },
+] as const;
 
-function IconCard({ item, premium = false }: { item: URPlayCard; premium?: boolean }) {
-  const Icon = item.icon;
+const registeredItems = [
+  {
+    label: "Presença",
+    value: "comparecimento",
+    detail: "base para histórico, compromisso e continuidade dentro do ecossistema.",
+    icon: CheckCircle2,
+  },
+  {
+    label: "Nível",
+    value: "observação",
+    detail: "leitura inicial para organização mais justa por contexto esportivo.",
+    icon: Eye,
+  },
+  {
+    label: "Ranking",
+    value: "em formação",
+    detail: "classificação pública só abre com dados reais validados.",
+    icon: BarChart3,
+  },
+  {
+    label: "Mídia",
+    value: "potencial",
+    detail: "bastidores e destaques podem virar narrativa oficial da temporada.",
+    icon: Radio,
+  },
+] as const;
 
-  return (
-    <Card className="flex h-full min-h-[196px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
-
-function JourneyTimeline({ steps }: { steps: readonly URPlayStep[] }) {
-  return (
-    <div className="relative">
-      <div className="absolute left-[21px] top-0 hidden h-full w-px bg-[#ffd84d]/20 md:block lg:left-0 lg:top-[21px] lg:h-px lg:w-full" />
-      <div className="grid gap-3 md:gap-4 lg:grid-cols-6">
-        {steps.map((item) => (
-          <div className="relative grid grid-cols-[44px_1fr] gap-4 lg:block" key={item.step}>
-            <span className="relative z-10 grid h-11 w-11 place-items-center rounded-md border border-[#ffd84d]/35 bg-[#111218] text-sm font-black text-[#ffe98b] shadow-[0_0_0_6px_rgba(3,4,5,1)]">
-              {item.step}
-            </span>
-            <Card className="min-h-[168px] p-4 md:p-5 lg:mt-5">
-              <h3 className="text-base font-black uppercase leading-tight text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-            </Card>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const rankingRows = [
+  {
+    position: "01",
+    title: "atleta observado",
+    status: "sem posição real nesta etapa",
+    meta: "participação validada será a base para histórico público futuro.",
+  },
+  {
+    position: "02",
+    title: "nível em leitura",
+    status: "critérios operacionais",
+    meta: "nivelamento ajuda a tornar a competição mais justa.",
+  },
+  {
+    position: "03",
+    title: "próxima oportunidade",
+    status: "temporada estruturada",
+    meta: "equipes, eventos e mídia dependem da agenda oficial.",
+  },
+] as const;
 
 export default function URPlayPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#atleta", label: "Registrar interesse" },
-          { href: "#como-funciona", label: "Como funciona", variant: "secondary" },
-          { href: "/ranking", label: "Entender ranking", variant: "ghost" },
+          { href: "/cadastro#atleta", label: "Começar no UR Play" },
+          { href: "/ranking", label: "Ver conexão com ranking", variant: "secondary" },
         ]}
-        badges={urPlayHighlights}
-        description="UR Play organiza a primeira experiência competitiva do atleta: jogar, ser observado, iniciar histórico, entrar no radar de ranking e se conectar a equipes, Draft, torneios, CT UR e recompensas."
-        eyebrow="UR Play • entrada oficial • ranking em formação"
+        badges={["Entrada oficial", "Observação", "Nivelamento", "Histórico"]}
+        description="O UR Play é a porta de entrada para atletas serem vistos, avaliados, organizados por nível e conectados ao ranking, equipes, mídia, temporada e oportunidades do Ultimate Rivals."
+        eyebrow="UR Play • entrada do ecossistema"
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
         metrics={[
-          { label: "Função", value: "entrada oficial no ecossistema" },
-          { label: "Critério", value: "observação e nivelamento" },
-          { label: "Status", value: "agenda em formação" },
+          { label: "Antes", value: "cadastro e triagem" },
+          { label: "Durante", value: "presença, jogo e observação" },
+          { label: "Depois", value: "registro e próximos passos" },
         ]}
-        statusDescription="Participação, polos, atletas e dados públicos dependem de validação operacional. Sem datas ou ranking real inventados nesta etapa."
-        statusLabel="jornada UR Play"
-        statusTitle="Competir é o começo. Evoluir é o caminho."
-        title="A porta de entrada do atleta no Ultimate Rivals."
+        statusDescription="A agenda oficial será publicada após confirmação operacional. Inscrição e participação seguem sujeitas à validação da equipe UR."
+        statusLabel="agenda em organização"
+        statusTitle="UR Play não é rachão. É entrada oficial."
+        title="O primeiro jogo precisa abrir caminho."
       />
 
-      <PageSection id="o-que-e">
-        <SectionHeader
-          description="UR Play é a entrada oficial para atletas começarem uma jornada dentro do Ultimate Rivals sem depender de dados inventados, agenda fictícia ou ranking falso."
-          eyebrow="O que é"
-          title="Mais do que um jogo. É o início de uma trajetória esportiva."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {urPlayIntroCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="para-quem">
-        <SectionHeader
-          description="Voltada a atletas que querem competir melhor, ganhar visibilidade e encontrar caminhos reais dentro do ecossistema."
-          eyebrow="Para quem é"
-          title="Atletas individuais, talentos em evolução e jogadores com equipe."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {urPlayAudienceCards.map((item) => (
-            <IconCard item={item} key={item.title} />
-          ))}
-        </div>
-      </PageSection>
-
       <PageSection id="nao-e-rachao">
-        <SectionHeader
-          description="Diferença central está em dar contexto ao jogo e criar continuidade para a jornada do atleta, sem prometer resultados automáticos."
-          eyebrow="Comparativo"
-          title="UR Play não é rachão. É entrada oficial com estrutura."
+        <ImageFeaturePanel
+          actions={[
+            { href: "/cadastro#atleta", label: "Registrar interesse" },
+            { href: "/regulamento", label: "Ver regulamento", variant: "secondary" },
+          ]}
+          description="Um jogo solto termina no apito final. O UR Play existe para gerar contexto: quem participou, como se comportou, qual nível apresentou e qual próximo passo faz sentido."
+          eyebrow="Posicionamento"
+          image={siteImages.fairPlayLine}
+          imagePosition="center 48%"
+          points={[
+            {
+              title: "Observação com critério",
+              description: "Participação, presença, postura e nível entram na leitura operacional.",
+            },
+            {
+              title: "Conexão com temporada",
+              description: "O UR Play alimenta ranking, equipes, eventos, mídia e oportunidades futuras.",
+            },
+          ]}
+          statusLabel="dados públicos após validação"
+          title="Não é jogo avulso. É começo de histórico."
         />
-        <div className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.035]">
-          <div className="grid border-b border-white/10 bg-black/35 text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.72fr_1fr_1fr]">
-            <div className="hidden px-5 py-4 md:block">Critério</div>
-            <div className="border-white/10 px-5 py-4 md:border-l">Rachão comum</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">UR Play</div>
-          </div>
-          {urPlayComparisonRows.map((row) => (
-            <div
-              className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.72fr_1fr_1fr]"
-              key={row.label}
-            >
-              <div className="bg-white/[0.025] px-5 py-4 text-sm font-black uppercase tracking-[0.1em] text-white">
-                {row.label}
-              </div>
-              <div className="border-t border-white/10 px-5 py-4 text-sm leading-6 text-white/62 md:border-l md:border-t-0">
-                {row.common}
-              </div>
-              <div className="border-t border-[#ffd84d]/15 bg-[#ffd84d]/[0.045] px-5 py-4 text-sm font-semibold leading-6 text-white/78 md:border-l md:border-t-0">
-                {row.urPlay}
-              </div>
-            </div>
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="como-funciona">
-        <SectionHeader
-          action={
-            <Button href="/cadastro#atleta" variant="secondary">
-              Registrar interesse
-            </Button>
-          }
-          description="Jornada desenhada para explicar o caminho do atleta antes de qualquer automação, login, pagamento ou ranking real."
-          eyebrow="Como funciona"
-          title="Da intenção inicial ao radar de oportunidades."
+      <PageSection className="bg-[#07080c]" id="fluxo-do-dia">
+        <ProcessTimeline
+          description="A operação precisa ser simples de entender: o atleta se cadastra, passa por triagem, participa, é observado e recebe orientação de próximo passo."
+          eyebrow="Fluxo do dia"
+          steps={dayFlow}
+          title="Do cadastro ao registro esportivo."
         />
-        <JourneyTimeline steps={urPlayJourneySteps} />
       </PageSection>
 
-      <PageSection id="beneficios-atleta">
-        <SectionHeader
-          description="Participar significa mais do que entrar em quadra: é construir presença, evolução e contexto competitivo."
-          eyebrow="Benefícios para o atleta"
-          title="Participar para ser visto, medido com critério e evoluir."
+      <PageSection id="registro">
+        <DataBoard
+          description="A força do UR Play está no que ele gera depois do jogo: histórico, leitura de nível, base de ranking, mídia e conexão com equipes."
+          eyebrow="O que é registrado"
+          items={registeredItems}
+          title="O valor está no rastro que fica."
         />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {athleteBenefits.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 1} />
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="equipes-draft">
-        <SectionHeader
-          description="UR Play também prepara a conexão com equipes, Draft, torneios e desenvolvimento, sempre sem simular atletas ou movimentos reais."
-          eyebrow="Equipes, Draft e torneios"
-          title="O jogo pode virar radar para oportunidades futuras."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {teamBenefitsFromURPlay.map((item) => (
-            <IconCard item={item} key={item.title} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection id="ranking-nivelamento">
-        <SectionHeader
-          action={
-            <Button href="/ranking" variant="secondary">
-              Ver estrutura do ranking
-            </Button>
-          }
-          description="Nivelamento e ranking são partes centrais da proposta, mas só avançam com critérios, registros e dados reais validados."
+      <PageSection className="bg-[#07080c]" id="ranking-nivelamento">
+        <LeaderboardPanel
+          description="O preview já prepara o ranking como produto central, mas nenhuma posição real é publicada antes da validação oficial."
           eyebrow="Nivelamento e ranking"
-          title="Competir contra perfis próximos e construir posição com validação."
+          image={siteImages.attackBlock}
+          rows={rankingRows}
+          tabs={["UR Play", "Nível", "Presença", "Ranking"]}
+          title="A entrada vira leitura de temporada."
         />
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.62fr)] lg:items-stretch">
-          <Card className="p-4 md:p-5" premium>
-            <div className="grid gap-3 md:grid-cols-4">
-              {rankingFlow.map((item, index) => (
-                <div className="relative rounded-lg border border-white/10 bg-black/25 p-4" key={item.title}>
-                  {index < rankingFlow.length - 1 ? (
-                    <ArrowRight
-                      aria-hidden
-                      className="absolute -right-4 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-[#ffd84d] md:block"
-                    />
-                  ) : null}
-                  <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="mt-3 text-base font-black uppercase leading-tight text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-white/68">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
-          <div className="grid gap-3">
-            {rankingLevelingCards.map((item) => (
-              <IconCard item={item} key={item.title} />
-            ))}
-          </div>
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="ur-coins">
-        <SectionHeader
-          action={
-            <Button href="/ur-market" variant="secondary">
-              Conhecer UR Market
+      <PageSection id="agenda">
+        <ImageFeaturePanel
+          description="Polos, horários, categorias e modalidades entram conforme validação operacional. O objetivo é abrir uma agenda recorrente sem publicar datas não confirmadas."
+          eyebrow="Agenda e polos"
+          image={siteImages.wideServe}
+          imagePosition="center 45%"
+          points={[
+            {
+              title: "Polo em formação",
+              description: "Quadras parceiras e agenda local serão confirmadas antes da divulgação pública.",
+            },
+            {
+              title: "Participação orientada",
+              description: "O cadastro não garante vaga automática; ele inicia triagem e orientação de inscrição.",
+            },
+          ]}
+          reverse
+          statusLabel="agenda será publicada após confirmação"
+          title="O UR Play cresce por polos, não por improviso."
+        />
+      </PageSection>
+
+      <SegmentCtaPanel
+        actions={
+          <>
+            <Button href="/cadastro#atleta">Começar no UR Play</Button>
+            <Button href="/eventos" variant="secondary">
+              Ver eventos UR
             </Button>
-          }
-          description="UR Coins aparecem como conceito planejado de recompensa. Não há moeda real, saldo, pagamento ou carteira nesta fase."
-          eyebrow="UR Coins e recompensas"
-          title="Presença e evolução podem virar recompensa no futuro."
-        />
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
-          <Card className="flex min-h-[260px] flex-col" premium>
-            <span className="rounded-md border border-[#ffd84d]/20 bg-black/30 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              economia em formação
-            </span>
-            <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Do jogo ao benefício, sem moeda real nesta fase.
-            </h3>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Este painel mostra a lógica planejada para recompensas, mantendo claro que ainda não existe saldo,
-              carteira, pagamento ou integração financeira.
-            </p>
-          </Card>
-          <div className="grid gap-3">
-            <div className="grid gap-3 sm:grid-cols-4">
-              {rewardFlow.map((item, index) => (
-                <div
-                  className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm font-black uppercase leading-5 tracking-[0.1em] text-white"
-                  key={item}
-                >
-                  <span className="mb-3 grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs text-black">
-                    {index + 1}
-                  </span>
-                  {item}
-                </div>
-              ))}
-            </div>
-            <div className="grid gap-3 md:grid-cols-3">
-              {coinsRewardCards.map((item) => (
-                <IconCard item={item} key={item.title} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </PageSection>
-
-      <PageSection id="polos">
-        <SectionHeader
-          description="Expansão depende de quadras parceiras, calendário, equipe operacional, regulamento e validação de cada praça."
-          eyebrow="Polos em formação"
-          title="Participação por polos, com agenda validada antes da inscrição."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {poloCards.map((item) => (
-            <IconCard item={item} key={item.title} />
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="proximos-ur-plays">
-        <SectionHeader
-          description="Estes cards mostram a estrutura planejada. Nenhum evento, data ou polo real foi confirmado nesta fase."
-          eyebrow="Próximos UR Plays"
-          title="Agenda pública apenas após validação operacional."
-        />
-        <div className="grid gap-5 md:grid-cols-3">
-          {upcomingURPlays.map((item) => (
-            <Card className="flex h-full min-h-[236px] flex-col" premium key={item.title}>
-              <div className="flex items-start justify-between gap-3">
-                <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-                  <CalendarDays aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-                </span>
-                <span className="max-w-[62%] rounded-md border border-[#ffd84d]/25 px-2 py-1 text-right text-[10px] font-black uppercase leading-4 tracking-[0.14em] text-[#ffe98b]">
-                  {item.status}
-                </span>
-              </div>
-              <h3 className="mt-5 text-[clamp(1.65rem,7vw,2rem)] font-black uppercase leading-[0.98] text-white">
-                {item.title}
-              </h3>
-              <div className="mt-auto grid gap-2 pt-5 text-sm text-white/70">
-                <span className="rounded-md border border-white/10 bg-white/[0.045] px-3 py-2 font-bold">
-                  {item.modality}
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.045] px-3 py-2">
-                  <MapPin aria-hidden className="h-4 w-4 text-[#ffd84d]" />
-                  {item.location}
-                </span>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection id="interesse">
-        <SectionHeader
-          description="O cadastro de interesse acontece pela central oficial. A equipe UR valida agenda, polo, perfil e próximos passos antes de liberar participação."
-          eyebrow="Interesse do atleta"
-          title="Registro de interesse UR Play."
-        />
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-stretch">
-          <Card className="flex min-h-[340px] flex-col" premium>
-            <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-              <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-            </span>
-            <h3 className="mt-6 text-[clamp(1.9rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-              Interesse vem antes da inscrição real.
-            </h3>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              Cadastro público real depende de agenda, regulamento, política de dados e operação ativa.
-            </p>
-            <div className="mt-6 grid gap-2">
-              {interestFlow.map((item, index) => (
-                <div
-                  className="grid grid-cols-[34px_1fr] items-center gap-3 rounded-md border border-white/10 bg-black/25 px-3 py-3"
-                  key={item}
-                >
-                  <span className="grid h-8 w-8 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm font-bold text-white/78">{item}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-              cadastro enviado para triagem operacional pela central UR
-            </p>
-          </Card>
-
-          <Card className="p-4 md:p-5">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-                <ClipboardList aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-              </span>
-              <div>
-                <h3 className="text-lg font-black uppercase leading-tight text-white">Cadastro de interesse aberto</h3>
-                <p className="mt-1 text-sm text-white/60">preenchimento pela central oficial de cadastro</p>
-              </div>
-            </div>
-            <div aria-label="Resumo do cadastro de interesse UR Play" className="grid gap-3">
-              {interestFields.map((field) => (
-                <label className="grid gap-2" key={field}>
-                  <span className="text-xs font-black uppercase tracking-[0.12em] text-[#ffe98b]">{field}</span>
-                  <input
-                    className="min-h-12 rounded-lg border border-white/10 bg-black/35 px-4 text-sm text-white/70 outline-none placeholder:text-white/35"
-                    placeholder="preenchimento na central de cadastro"
-                    readOnly
-                    type="text"
-                  />
-                </label>
-              ))}
-              <Button className="mt-2 w-full" href="/cadastro#atleta">
-                Abrir cadastro de interesse
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="faq">
-        <SectionHeader
-          description="Perguntas rápidas para explicar a etapa atual sem prometer funcionalidades que ainda não existem."
-          eyebrow="FAQ UR Play"
-          title="O que o atleta precisa saber antes de entrar."
-        />
-        <div className="grid gap-3 md:grid-cols-2">
-          {urPlayFaq.map((item) => (
-            <details
-              className="group rounded-lg border border-white/10 bg-white/[0.04] transition duration-200 open:border-[#ffd84d]/25 open:bg-white/[0.055]"
-              key={item.question}
-            >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 text-base font-black uppercase leading-tight text-white">
-                <span>{item.question}</span>
-                <ChevronDown
-                  aria-hidden
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#ffd84d] transition duration-200 group-open:rotate-180"
-                />
-              </summary>
-              <p className="px-5 pb-5 text-sm leading-6 text-white/70">{item.answer}</p>
-            </details>
-          ))}
-        </div>
-      </PageSection>
-
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA UR Play</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Comece pelo UR Play. Evolua dentro do ecossistema.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                Esta página está pronta para orientar atletas enquanto agenda, polos, ranking, inscrições e operação
-                passam por validação.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#atleta">Registrar interesse</Button>
-              <Button href="/ranking" variant="secondary">
-                Entender ranking
-              </Button>
-              <Button href="/equipes" variant="ghost">
-                Ver jornada das equipes
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+          </>
+        }
+        description="Registre interesse para receber orientação da equipe UR quando agenda, polo e participação estiverem validados."
+        eyebrow="Entrada oficial"
+        items={["cadastro", "triagem", "jogo", "registro", "ranking"]}
+        statusLabel="participação sujeita à validação"
+        title="A jornada começa no UR Play, mas não termina no primeiro jogo."
+      />
     </main>
   );
 }
