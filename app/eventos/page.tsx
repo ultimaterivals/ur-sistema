@@ -1,28 +1,15 @@
 import type { Metadata } from "next";
-import { ChevronDown, ClipboardCheck, Coins } from "lucide-react";
+import { BarChart3, Camera, Flag, MapPin, Medal, Swords, Trophy, Zap } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/section-header";
-import { IconCard } from "@/components/site/icon-card";
+import {
+  CommercialAssetPanel,
+  DataBoard,
+  ImageFeaturePanel,
+  ProcessTimeline,
+} from "@/components/editorial/sports-platform-modules";
 import { PageSection } from "@/components/site/page-section";
 import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import type { EventFocus } from "@/lib/content/eventos";
-import {
-  agendaPreviewRows,
-  agendaStatusCards,
-  ecosystemFeedFlow,
-  eventConnectionCards,
-  eventFaq,
-  eventFocusBlocks,
-  eventHeroBadges,
-  eventNarrativeCards,
-  eventTypes,
-  interestFields,
-  interestFlow,
-  segmentationCards,
-} from "@/lib/content/eventos";
+import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -31,178 +18,83 @@ export const metadata: Metadata = {
     "Conheça os eventos do Ultimate Rivals, incluindo UR Play, mini torneios, torneios oficiais, Virada de Ranking e experiências conectadas ao ranking, equipes, UR Coins e mídia.",
 };
 
+const eventTypes = [
+  {
+    label: "Entrada",
+    title: "UR Play",
+    description: "Porta oficial para observação, nivelamento, presença e início de histórico.",
+    icon: Zap,
+  },
+  {
+    label: "Recorrência",
+    title: "Mini torneio",
+    description: "Competição de ciclo para alimentar ranking, mídia e comunidade.",
+    icon: Swords,
+  },
+  {
+    label: "Temporada",
+    title: "Evento oficial",
+    description: "Marco competitivo com regras, validação, cobertura e narrativa pública.",
+    icon: Trophy,
+  },
+  {
+    label: "Fechamento",
+    title: "Virada de ranking",
+    description: "Momento de reconhecer evolução, presença e próximos passos do ciclo.",
+    icon: Flag,
+  },
+] as const;
 
-function EventFocusBlock({ event, index }: { event: EventFocus; index: number }) {
-  const Icon = event.icon;
-  const premium = index === 0 || index === 3;
+const seasonLine = [
+  {
+    label: "Entrada",
+    title: "Entrada pelo UR Play",
+    description: "Atletas e equipes começam com cadastro, triagem e participação orientada.",
+    status: "agenda em organização",
+  },
+  {
+    label: "Ciclo",
+    title: "Eventos de ciclo",
+    description: "Mini torneios e encontros competitivos mantêm a temporada ativa.",
+  },
+  {
+    label: "Mídia",
+    title: "Ranking e mídia",
+    description: "Cada participação validada pode alimentar classificação, narrativa e histórico.",
+  },
+  {
+    label: "Virada",
+    title: "Virada de ranking",
+    description: "O ciclo fecha com reconhecimento e preparação da próxima etapa.",
+  },
+] as const;
 
-  return (
-    <PageSection
-      className={index % 2 === 0 ? "bg-[#07080c]" : "bg-[linear-gradient(180deg,#030405,#08090d)]"}
-      id={event.id}
-    >
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-stretch">
-        <Card className="flex min-h-[290px] flex-col" premium={premium}>
-          <div className="flex items-start justify-between gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-              <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-            </span>
-            <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              {event.eyebrow}
-            </span>
-          </div>
-          <h2 className="mt-6 text-[clamp(2rem,8vw,3.05rem)] font-black uppercase leading-[0.98] text-white">
-            {event.title}
-          </h2>
-          <p className="mt-4 text-sm leading-6 text-white/72">{event.description}</p>
-          <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-            {event.status}
-          </p>
-        </Card>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {event.bullets.map((bullet, bulletIndex) => (
-            <Card className="flex min-h-[118px] flex-col p-4 md:p-5" key={bullet}>
-              <span className="grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                {bulletIndex + 1}
-              </span>
-              <p className="mt-4 text-sm font-black uppercase leading-5 tracking-[0.08em] text-white">{bullet}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </PageSection>
-  );
-}
-
-function EcosystemFeedPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch">
-      <Card className="flex min-h-[268px] flex-col" premium>
-        <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-          <Coins aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-        </span>
-        <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-          Evento vira histórico quando existe dado validado.
-        </h3>
-        <p className="mt-4 text-sm leading-6 text-white/72">
-          Ranking, UR Coins e mídia dependem de critérios oficiais, presença confirmada e operação real. Nada aqui
-          cria pontuação, saldo ou destaque automático.
-        </p>
-      </Card>
-      <div className="grid gap-3 sm:grid-cols-4">
-        {ecosystemFeedFlow.map((item, index) => (
-          <div
-            className="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-sm leading-6 text-white/70"
-            key={item.label}
-          >
-            <span className="mb-3 grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-              {index + 1}
-            </span>
-            <h3 className="text-sm font-black uppercase leading-5 tracking-[0.08em] text-white">{item.label}</h3>
-            <p className="mt-3 text-sm leading-6 text-white/68">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AgendaPreviewPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-      <Card className="p-4 md:p-6" premium>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Preview de agenda</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
-            sem datas reais nesta etapa
-          </span>
-        </div>
-        <div className="mt-6 space-y-3">
-          {agendaPreviewRows.map((row, index) => (
-            <div
-              className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-black/30 p-4"
-              key={row.label}
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-base font-black uppercase leading-tight text-white">{row.label}</h3>
-                <p className="mt-1 text-sm font-bold text-[#ffe98b]">{row.status}</p>
-                <p className="mt-2 text-sm leading-6 text-white/62">{row.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {agendaStatusCards.map((item) => (
-          <IconCard item={item} key={item.title} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function InterestPanel() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch">
-      <Card className="flex min-h-[300px] flex-col" premium>
-        <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-          <ClipboardCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-        </span>
-        <h3 className="mt-6 text-[clamp(1.85rem,7vw,2.35rem)] font-black uppercase leading-[0.98] text-white">
-          Interesse enviado para triagem operacional.
-        </h3>
-        <p className="mt-4 text-sm leading-6 text-white/72">
-          A central de cadastro organiza interessados por perfil. Participação, vaga, agenda e polo dependem de
-          validação da equipe UR e confirmação oficial de cada ciclo.
-        </p>
-        <div className="mt-5 grid gap-2">
-          {interestFlow.map((item, index) => (
-            <div
-              className="grid grid-cols-[36px_1fr] items-center gap-3 rounded-lg border border-white/10 bg-black/25 p-3"
-              key={item}
-            >
-              <span className="grid h-8 w-8 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                {index + 1}
-              </span>
-              <span className="text-xs font-black uppercase leading-5 tracking-[0.1em] text-white/78">{item}</span>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <Card className="p-4 md:p-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Cadastro de interesse</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">triagem operacional</span>
-        </div>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {interestFields.map((field) => (
-            <label className="block" key={field.label}>
-              <span className="text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b]">{field.label}</span>
-              <input
-                className="mt-2 h-12 w-full rounded-lg border border-white/10 bg-black/35 px-4 text-sm font-bold text-white/74 outline-none"
-                readOnly
-                value={field.value}
-              />
-            </label>
-          ))}
-        </div>
-        <textarea
-          className="mt-4 min-h-28 w-full resize-none rounded-lg border border-white/10 bg-black/35 p-4 text-sm font-bold leading-6 text-white/74 outline-none"
-          readOnly
-          value="Interesse será tratado por canal oficial depois da validação de agenda, polo, modalidade e operação."
-        />
-        <Button className="mt-4 w-full" href="/cadastro#atleta">
-          Demonstrar interesse
-        </Button>
-      </Card>
-    </div>
-  );
-}
+const eventData = [
+  {
+    label: "Ranking",
+    value: "histórico",
+    detail: "eventos alimentam presença, contexto e classificação com dados validados.",
+    icon: BarChart3,
+  },
+  {
+    label: "UR Coins",
+    value: "valor",
+    detail: "recompensas dependem de regras oficiais e aprovação operacional.",
+    icon: Medal,
+  },
+  {
+    label: "Mídia",
+    value: "palco",
+    detail: "cobertura transforma participação em narrativa pública.",
+    icon: Camera,
+  },
+  {
+    label: "Polos",
+    value: "território",
+    detail: "eventos podem variar por modalidade, nível, categoria e polo.",
+    icon: MapPin,
+  },
+] as const;
 
 export default function EventosPage() {
   return (
@@ -210,142 +102,111 @@ export default function EventosPage() {
       <PlatformHero
         actions={[
           { href: "/cadastro#atleta", label: "Demonstrar interesse" },
-          { href: "/cadastro#atleta", label: "Começar pelo UR Play", variant: "secondary" },
-          { href: "/temporada", label: "Entender temporada", variant: "ghost" },
+          { href: "/temporada", label: "Entender temporada", variant: "secondary" },
         ]}
-        badges={eventHeroBadges}
-        description="Eventos UR conectam entrada, competição, ranking, equipes, UR Coins, CT UR, mídia, patrocinadores, quadras parceiras e comunidade. Não é uma agenda solta."
-        eyebrow="Eventos UR • agenda em validação"
+        badges={["UR Play", "Mini torneios", "Eventos oficiais", "Virada de ranking"]}
+        description="Eventos no UR são pontos de entrada, competição, ranking, mídia e experiência dentro da temporada estruturada."
+        eyebrow="Eventos UR • calendário esportivo"
         image={siteImages.fairPlayLine}
-        imagePosition="center 42%"
+        imagePosition="center 46%"
         metrics={[
           { label: "Entrada", value: "UR Play" },
-          { label: "Ciclo", value: "mini torneios e virada de ranking" },
-          { label: "Status", value: "agenda pública após confirmação" },
+          { label: "Ciclo", value: "mini torneios e eventos" },
+          { label: "Fechamento", value: "virada de ranking" },
         ]}
-        statusDescription="Sem datas, horários, locais, polos confirmados, valores, vagas, atletas ou equipes reais nesta etapa."
-        statusLabel="calendário esportivo"
-        statusTitle="Cada ponto de agenda precisa ter função no sistema."
-        title="Eventos com função dentro da temporada."
+        statusDescription="Datas, horários, locais, vagas e polos oficiais entram apenas após confirmação operacional."
+        statusLabel="agenda em organização"
+        statusTitle="Cada evento tem função dentro da jornada."
+        title="Calendário esportivo com propósito, não agenda solta."
       />
 
-      <PageSection id="nao-isolado">
-        <SectionHeader
-          description="No Ultimate Rivals, evento bom tem papel claro: abrir entrada, gerar leitura, criar mídia, alimentar ranking ou fortalecer comunidade."
-          eyebrow="Não é ação isolada"
-          title="Evento é ponto de passagem dentro da jornada."
+      <PageSection id="tipos">
+        <CommercialAssetPanel
+          assets={eventTypes}
+          description="Os formatos abaixo organizam a experiência da temporada sem inventar datas, vagas, locais ou eventos confirmados."
+          eyebrow="Tipos de evento"
+          title="Cada formato resolve uma etapa do ecossistema."
         />
-        <div className="grid gap-5 md:grid-cols-3">
-          {eventNarrativeCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="tipos">
-        <SectionHeader
-          description="A estrutura permite eventos com funções diferentes: entrada, disputa, desenvolvimento, fechamento de ciclo, comunidade e mídia."
-          eyebrow="Tipos de eventos"
-          title="Formatos diferentes para momentos diferentes da temporada."
+      <PageSection className="bg-[#07080c]" id="linha-do-tempo">
+        <ProcessTimeline
+          description="A agenda pública deve mostrar a função de cada etapa: entrada, recorrência, ranking, mídia e fechamento de ciclo."
+          eyebrow="Linha do tempo"
+          steps={seasonLine}
+          title="Do primeiro jogo à virada de ranking."
         />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {eventTypes.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
       </PageSection>
 
-      {eventFocusBlocks.map((event, index) => (
-        <EventFocusBlock event={event} index={index} key={event.id} />
-      ))}
-
-      <PageSection id="segmentacao">
-        <SectionHeader
-          description="Eventos podem variar por nível, modalidade, categoria e polo. Essa segmentação ajuda a manter competição justa e operação responsável."
-          eyebrow="Nível, modalidade, categoria e polo"
-          title="Cada evento precisa respeitar o contexto competitivo."
+      <PageSection id="jogo-real">
+        <ImageFeaturePanel
+          actions={[
+            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
+            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
+          ]}
+          description="O evento precisa gerar rastro: quem participou, como competiu, que história nasceu, qual ranking foi alimentado e qual próximo passo faz sentido."
+          eyebrow="Evento como produto esportivo"
+          image={siteImages.attackBlock}
+          imagePosition="center 42%"
+          points={[
+            {
+              title: "Competição com contexto",
+              description: "UR Play, mini torneios e eventos oficiais conectam presença, nível e ranking.",
+            },
+            {
+              title: "Mídia como memória",
+              description: "Fotos, bastidores e cobertura transformam o evento em narrativa do ecossistema.",
+            },
+          ]}
+          title="O jogo termina, mas o histórico continua."
         />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {segmentationCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 3} />
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="ranking-coins-midia">
-        <SectionHeader
-          description="Mini torneios e torneios oficiais podem alimentar ranking, UR Coins e mídia quando houver critérios, presença e operação validados."
-          eyebrow="Ranking, UR Coins e mídia"
-          title="Evento com dado validado gera narrativa e valor."
+      <PageSection className="bg-[#07080c]" id="impacto">
+        <DataBoard
+          description="O evento tem papel esportivo, midiático, comercial e territorial. Ele alimenta mais que o placar."
+          eyebrow="O que o evento alimenta"
+          items={eventData}
+          title="Ranking, UR Coins, mídia e polos no mesmo ciclo."
         />
-        <EcosystemFeedPanel />
-        <div className="mt-5 grid gap-5 md:grid-cols-3">
-          {eventConnectionCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
       </PageSection>
 
       <PageSection id="agenda">
-        <SectionHeader
-          description="Pré-agenda sem datas reais. A página mostra o tipo de informação que será publicada quando houver confirmação oficial."
-          eyebrow="Pré-agenda"
-          title="Agenda pública só depois de validação."
+        <ImageFeaturePanel
+          description="A agenda oficial será publicada por modalidade, nível, categoria e polo quando houver confirmação. Até lá, o cadastro de interesse organiza demanda sem criar promessa."
+          eyebrow="Agenda futura"
+          image={siteImages.wideServe}
+          imagePosition="center 48%"
+          points={[
+            {
+              title: "Eventos entram após confirmação",
+              description: "Nada de datas, horários, valores ou vagas reais sem validação oficial.",
+            },
+            {
+              title: "Polo em formação",
+              description: "Quadras parceiras e calendário local serão ativados conforme operação.",
+            },
+          ]}
+          reverse
+          statusLabel="inscrição sujeita à validação"
+          title="O calendário cresce por ciclo, não por improviso."
         />
-        <AgendaPreviewPanel />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="interesse">
-        <SectionHeader
-          description="Atletas demonstram interesse primeiro. Depois a equipe UR valida agenda, polo, nível, modalidade e libera orientação oficial de inscrição."
-          eyebrow="Interesse por eventos"
-          title="Participação real depende de validação oficial."
-        />
-        <InterestPanel />
-      </PageSection>
-
-      <PageSection id="faq">
-        <SectionHeader
-          description="Perguntas rápidas para explicar os eventos sem prometer calendário, inscrição, vaga, local ou ranking real."
-          eyebrow="FAQ Eventos UR"
-          title="Antes da agenda, entenda a função de cada evento."
-        />
-        <div className="grid gap-3 md:grid-cols-2">
-          {eventFaq.map((item) => (
-            <details
-              className="group rounded-lg border border-white/10 bg-white/[0.04] transition duration-200 open:border-[#ffd84d]/25 open:bg-white/[0.055]"
-              key={item.question}
-            >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 text-base font-black uppercase leading-tight text-white">
-                <span>{item.question}</span>
-                <ChevronDown
-                  aria-hidden
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#ffd84d] transition duration-200 group-open:rotate-180"
-                />
-              </summary>
-              <p className="px-5 pb-5 text-sm leading-6 text-white/70">{item.answer}</p>
-            </details>
-          ))}
-        </div>
       </PageSection>
 
       <SegmentCtaPanel
-        description="A estrutura de eventos está pronta para organizar entrada, ranking, equipes, mídia, UR Coins, patrocinadores e quadras quando a agenda oficial for confirmada."
-        eyebrow="CTA Eventos UR"
-        items={["UR Play", "mini torneios", "virada de ranking"]}
-        statusLabel="agenda oficial após confirmação"
-        title="Entre pelo UR Play. A agenda real vem depois da validação."
         actions={
           <>
             <Button href="/cadastro#atleta">Demonstrar interesse</Button>
-            <Button href="/cadastro#atleta" variant="secondary">
-              Conhecer UR Play
-            </Button>
-            <Button href="/temporada" variant="ghost">
-              Ver temporada
+            <Button href="/cadastro#equipe" variant="secondary">
+              Entrar como equipe
             </Button>
           </>
         }
+        description="Registre interesse para receber orientação quando agenda, polo, categoria e participação estiverem validados pela operação UR."
+        eyebrow="Próximo passo"
+        items={["UR Play", "mini torneios", "ranking", "mídia", "polos"]}
+        statusLabel="agenda em organização"
+        title="Entre na fila certa antes da próxima etapa."
       />
     </main>
   );

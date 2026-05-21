@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import { BarChart3, Coins, Flag, Radio, RefreshCw, ShieldCheck, Swords, Zap } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/section-header";
-import type { SeasonCard, SeasonStage } from "@/lib/content/temporada";
 import {
-  calendarPreviewRows,
-  cycleCards,
-  ecosystemCards,
-  seasonComparisonRows,
-  seasonFaq,
-  seasonHeroBadges,
-  seasonStages,
-  seasonStatusCards,
-} from "@/lib/content/temporada";
+  CommercialAssetPanel,
+  DataBoard,
+  ImageFeaturePanel,
+  ProcessTimeline,
+} from "@/components/editorial/sports-platform-modules";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
+import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -25,286 +18,205 @@ export const metadata: Metadata = {
     "Entenda como funciona a Temporada UR, o ciclo trimestral do Ultimate Rivals com UR Play, nivelamento, ranking, eventos, recompensas, repasses e Virada de Ranking.",
 };
 
-function PageSection({
-  id,
-  children,
-  className = "",
-}: {
-  id?: string;
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:scroll-mt-28 md:py-14 lg:px-8 lg:py-16 ${className}`}
-      id={id}
-    >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
-    </section>
-  );
-}
+const cycleSteps = [
+  {
+    label: "UR Play",
+    title: "UR Play",
+    description: "Entrada oficial para atletas e leitura inicial de presença, nível e contexto.",
+  },
+  {
+    label: "Nível",
+    title: "Nivelamento",
+    description: "Organização por modalidade, categoria, nível e polo quando a operação validar.",
+  },
+  {
+    label: "Ranking",
+    title: "Ranking ativo",
+    description: "Dados públicos entram com critérios e participação oficial.",
+  },
+  {
+    label: "Torneios",
+    title: "Mini torneios",
+    description: "Recorrência competitiva para alimentar temporada, mídia e comunidade.",
+  },
+  {
+    label: "Oficiais",
+    title: "Eventos oficiais",
+    description: "Marcos competitivos com regras, cobertura, ranking e experiência.",
+  },
+  {
+    label: "Virada",
+    title: "Virada de ranking",
+    description: "Fechamento de ciclo, reconhecimento e preparação da próxima temporada.",
+  },
+] as const;
 
-function IconCard({ item, premium = false }: { item: SeasonCard; premium?: boolean }) {
-  const Icon = item.icon;
+const seasonAssets = [
+  {
+    label: "Entrada",
+    title: "UR Play",
+    description: "Ponto de partida da temporada para atletas, equipes e observação.",
+    icon: Zap,
+  },
+  {
+    label: "Disputa",
+    title: "Mini torneios",
+    description: "Eventos recorrentes mantêm o ciclo ativo e alimentam narrativa.",
+    icon: Swords,
+  },
+  {
+    label: "Fechamento",
+    title: "Virada de ranking",
+    description: "Momento de atualizar contexto, reconhecer evolução e reiniciar ciclo.",
+    icon: Flag,
+  },
+  {
+    label: "Recomeço",
+    title: "Novo trimestre",
+    description: "A temporada se renova com histórico, aprendizado e próximos objetivos.",
+    icon: RefreshCw,
+  },
+] as const;
 
-  return (
-    <Card className="flex h-full min-h-[194px] flex-col" premium={premium}>
-      <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
-        <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-      </span>
-      <h3 className="mt-5 text-lg font-black uppercase leading-tight text-white md:text-xl">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-white/70">{item.description}</p>
-    </Card>
-  );
-}
-
-function CycleTimeline() {
-  return (
-    <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-7">
-      {seasonStages.map((stage) => (
-        <li
-          className="min-h-[156px] rounded-lg border border-white/10 bg-[linear-gradient(160deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02))] p-4 transition duration-200 hover:border-[#ffd84d]/25"
-          key={stage.step}
-        >
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#ffd84d]">{stage.step}</span>
-          <h3 className="mt-3 text-base font-black uppercase leading-tight text-white">{stage.title}</h3>
-          <p className="mt-2 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/55">
-            {stage.status}
-          </p>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-function StageBlock({ stage, index }: { stage: SeasonStage; index: number }) {
-  const Icon = stage.icon;
-  const premium = index === 0 || index === 5;
-
-  return (
-    <PageSection
-      className={index % 2 === 0 ? "bg-[#07080c]" : "bg-[linear-gradient(180deg,#030405,#08090d)]"}
-      id={`etapa-${stage.step}`}
-    >
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-stretch">
-        <Card className="flex min-h-[290px] flex-col" premium={premium}>
-          <div className="flex items-start justify-between gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-              <Icon aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-            </span>
-            <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-              {stage.eyebrow}
-            </span>
-          </div>
-          <h2 className="mt-6 text-[clamp(2rem,8vw,3.05rem)] font-black uppercase leading-[0.98] text-white">
-            {stage.title}
-          </h2>
-          <p className="mt-4 text-sm leading-6 text-white/72">{stage.description}</p>
-          <p className="mt-auto pt-6 text-xs font-black uppercase leading-5 tracking-[0.14em] text-[#ffe98b]">
-            {stage.status}
-          </p>
-        </Card>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {stage.bullets.map((bullet, bulletIndex) => (
-            <Card className="flex min-h-[118px] flex-col p-4 md:p-5" key={bullet}>
-              <span className="grid h-9 w-9 place-items-center rounded-md bg-[#ffd84d] text-xs font-black text-black">
-                {bulletIndex + 1}
-              </span>
-              <p className="mt-4 text-sm font-black uppercase leading-5 tracking-[0.08em] text-white">{bullet}</p>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </PageSection>
-  );
-}
-
-function CalendarPreview() {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-      <Card className="p-4 md:p-6" premium>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Calendário visual</Badge>
-          <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
-            sem datas reais nesta etapa
-          </span>
-        </div>
-        <div className="mt-6 space-y-3">
-          {calendarPreviewRows.map((row, index) => (
-            <div
-              className="grid grid-cols-[auto_1fr] gap-4 rounded-lg border border-white/10 bg-black/30 p-4"
-              key={row.label}
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#ffd84d] text-sm font-black text-black">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="text-base font-black uppercase leading-tight text-white">{row.label}</h3>
-                <p className="mt-1 text-sm font-bold text-[#ffe98b]">{row.status}</p>
-                <p className="mt-2 text-sm leading-6 text-white/62">{row.note}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {seasonStatusCards.map((item) => (
-          <IconCard item={item} key={item.title} />
-        ))}
-      </div>
-    </div>
-  );
-}
+const ecosystemData = [
+  {
+    label: "Ranking",
+    value: "ativo",
+    detail: "classificação vira narrativa contínua ao longo do ciclo.",
+    icon: BarChart3,
+  },
+  {
+    label: "Equipes",
+    value: "coletivo",
+    detail: "elencos e capitães constroem identidade competitiva.",
+    icon: ShieldCheck,
+  },
+  {
+    label: "UR Coins",
+    value: "valor",
+    detail: "benefícios e recompensas dependem de regras oficiais.",
+    icon: Coins,
+  },
+  {
+    label: "Mídia",
+    value: "memória",
+    detail: "cobertura transforma temporada em história pública.",
+    icon: Radio,
+  },
+] as const;
 
 export default function TemporadaPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#atleta", label: "Começar pelo UR Play" },
-          { href: "/ranking", label: "Entender ranking", variant: "secondary" },
-          { href: "/eventos", label: "Ver eventos", variant: "ghost" },
+          { href: "/cadastro#atleta", label: "Entrar na temporada" },
+          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
         ]}
-        badges={seasonHeroBadges}
-        description="Temporada UR organiza o trimestre com entrada pelo UR Play, nivelamento, ranking ativo, eventos, recompensas, repasses e Virada de Ranking antes do novo ciclo."
-        eyebrow="Temporada UR • ciclo trimestral"
+        badges={["UR Play", "Nivelamento", "Ranking", "Eventos", "Virada de ranking"]}
+        description="A Temporada UR organiza o esporte amador como ciclo contínuo: entrada, nivelamento, ranking, eventos, mídia, recompensas e recomeço."
+        eyebrow="Temporada UR • ciclo estruturado"
         image={siteImages.wideServe}
         imagePosition="center 48%"
         metrics={[
-          { label: "Entrada", value: "UR Play" },
-          { label: "Ciclo", value: "ranking ativo e virada" },
-          { label: "Status", value: "calendário em formação" },
+          { label: "Início", value: "UR Play" },
+          { label: "Meio", value: "ranking e eventos" },
+          { label: "Fim", value: "virada e novo ciclo" },
         ]}
-        statusDescription="Sem datas, polos, valores, atletas, equipes ou ranking real nesta etapa."
-        statusLabel="ciclo oficial"
-        statusTitle="Um sistema contínuo para manter o esporte vivo."
-        title="Temporada estruturada, não ação isolada."
+        statusDescription="Calendário, repasses, premiações e eventos reais entram apenas após confirmação oficial do ciclo."
+        statusLabel="calendário em organização"
+        statusTitle="A temporada mantém o esporte vivo."
+        title="Um ciclo contínuo para competir, evoluir e recomeçar."
       />
 
-      <PageSection id="nao-evento">
-        <SectionHeader
-          description="Ultimate Rivals não depende de um torneio solto. A temporada cria continuidade, objetivos e memória competitiva."
-          eyebrow="Não é evento isolado"
-          title="O ciclo importa tanto quanto o jogo."
+      <PageSection id="ciclo">
+        <ProcessTimeline
+          description="A temporada trimestral cria recorrência: começa pelo UR Play, organiza nível e ranking, passa por eventos e fecha com Virada de Ranking."
+          eyebrow="Ciclo trimestral"
+          steps={cycleSteps}
+          title="A temporada tem começo, ritmo e virada."
         />
-        <div className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.035]">
-          <div className="grid border-b border-white/10 bg-black/35 text-xs font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.72fr_1fr_1fr]">
-            <div className="hidden px-5 py-4 md:block">Critério</div>
-            <div className="border-white/10 px-5 py-4 md:border-l">Evento isolado</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Temporada UR</div>
-          </div>
-          {seasonComparisonRows.map((row) => (
-            <div
-              className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.72fr_1fr_1fr]"
-              key={row.label}
-            >
-              <div className="bg-white/[0.025] px-5 py-4 text-sm font-black uppercase tracking-[0.1em] text-white">
-                {row.label}
-              </div>
-              <div className="border-t border-white/10 px-5 py-4 text-sm leading-6 text-white/62 md:border-l md:border-t-0">
-                {row.isolated}
-              </div>
-              <div className="border-t border-[#ffd84d]/15 bg-[#ffd84d]/[0.045] px-5 py-4 text-sm font-semibold leading-6 text-white/78 md:border-l md:border-t-0">
-                {row.season}
-              </div>
-            </div>
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="ciclo-trimestral">
-        <SectionHeader
-          description="O trimestre dá ritmo: entrada, leitura de nível, ranking, eventos, recompensas, virada e novo ciclo."
-          eyebrow="Ciclo trimestral UR"
-          title="Três meses para competir, evoluir e recomeçar melhor."
-        />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {cycleCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
-        <div className="mt-5">
-          <CycleTimeline />
-        </div>
-      </PageSection>
-
-      {seasonStages.map((stage, index) => (
-        <StageBlock index={index} key={stage.step} stage={stage} />
-      ))}
-
-      <PageSection id="calendario">
-        <SectionHeader
-          description="Calendário real só entra após confirmação. Até lá, a página mostra estrutura, não datas inventadas."
+      <PageSection className="bg-[#07080c]" id="calendario">
+        <CommercialAssetPanel
+          assets={seasonAssets}
+          description="O calendário visual mostra tipos de etapa sem inventar datas, horários, polos, valores ou eventos confirmados."
           eyebrow="Calendário visual"
-          title="Agenda pública apenas quando houver validação oficial."
+          title="Cada etapa tem função no ciclo."
         />
-        <CalendarPreview />
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="ecossistema">
-        <SectionHeader
-          description="A temporada conecta ranking, equipes, UR Coins, UR Market, eventos e mídia em uma jornada contínua."
-          eyebrow="Conexões do ciclo"
-          title="Cada etapa alimenta outras partes do ecossistema."
+      <PageSection id="evento">
+        <ImageFeaturePanel
+          actions={[
+            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
+            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
+          ]}
+          description="A temporada não depende de um único momento. Ela combina jogo, presença, ranking, mídia e comunidade para manter a jornada esportiva em movimento."
+          eyebrow="Ritmo de temporada"
+          image={siteImages.fairPlayLine}
+          imagePosition="center 46%"
+          points={[
+            {
+              title: "Eventos variáveis",
+              description: "Etapas podem variar por modalidade, nível, categoria e polo.",
+            },
+            {
+              title: "Virada de ranking",
+              description: "O fim do trimestre atualiza contexto e prepara novo ciclo.",
+            },
+          ]}
+          title="O ciclo dá continuidade ao que a quadra começa."
         />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {ecosystemCards.map((item, index) => (
-            <IconCard item={item} key={item.title} premium={index === 0} />
-          ))}
-        </div>
       </PageSection>
 
-      <PageSection id="faq">
-        <SectionHeader
-          description="Perguntas rápidas para explicar o ciclo sem prometer agenda, ranking ou premiação real antes da validação."
-          eyebrow="FAQ Temporada UR"
-          title="Antes da agenda, entenda a lógica do ciclo."
+      <PageSection className="bg-[#07080c]" id="conexoes">
+        <DataBoard
+          description="Ranking, equipes, UR Coins, UR Market, mídia e CT UR são peças conectadas ao ciclo. O valor aparece quando a temporada mantém recorrência."
+          eyebrow="Relação com o ecossistema"
+          items={ecosystemData}
+          title="Temporada é o motor que conecta as áreas."
         />
-        <div className="grid gap-3 md:grid-cols-2">
-          {seasonFaq.map((item) => (
-            <details
-              className="group rounded-lg border border-white/10 bg-white/[0.04] transition duration-200 open:border-[#ffd84d]/25 open:bg-white/[0.055]"
-              key={item.question}
-            >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 text-base font-black uppercase leading-tight text-white">
-                <span>{item.question}</span>
-                <ChevronDown
-                  aria-hidden
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#ffd84d] transition duration-200 group-open:rotate-180"
-                />
-              </summary>
-              <p className="px-5 pb-5 text-sm leading-6 text-white/70">{item.answer}</p>
-            </details>
-          ))}
-        </div>
       </PageSection>
 
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-[linear-gradient(135deg,#090a0f,#030405)] px-5 py-12 md:py-16 lg:px-8 lg:py-[72px]">
-        <div className="mx-auto max-w-7xl">
-          <Card className="grid gap-8 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.52fr)] lg:items-center" premium>
-            <div>
-              <Badge>CTA Temporada UR</Badge>
-              <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Entre no ciclo pelo UR Play. A temporada organiza o resto.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                Estrutura pública pronta para orientar atletas, equipes e parceiros enquanto calendário, ranking,
-                eventos, repasses e premiações passam por validação oficial.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/cadastro#atleta">Começar pelo UR Play</Button>
-              <Button href="/ranking" variant="secondary">
-                Ver Ranking UR
-              </Button>
-              <Button href="/eventos" variant="ghost">
-                Acompanhar eventos
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <PageSection id="recompensas">
+        <ImageFeaturePanel
+          description="Repasses, premiações e recompensas dependem de validação oficial do ciclo. A comunicação pública precisa ser clara: primeiro regra, depois reconhecimento."
+          eyebrow="Premiações e novo ciclo"
+          image={siteImages.mediaCoverage}
+          imagePosition="center 45%"
+          points={[
+            {
+              title: "Reconhecimento com regra",
+              description: "Premiações só fazem sentido quando critérios e operação estão definidos.",
+            },
+            {
+              title: "Novo trimestre",
+              description: "O ciclo reinicia com histórico, aprendizados e novos objetivos.",
+            },
+          ]}
+          reverse
+          statusLabel="recompensas após validação"
+          title="Reconhecer evolução exige critério."
+        />
+      </PageSection>
+
+      <SegmentCtaPanel
+        actions={
+          <>
+            <Button href="/cadastro#atleta">Entrar na temporada</Button>
+            <Button href="/eventos" variant="secondary">
+              Ver calendário UR
+            </Button>
+          </>
+        }
+        description="Registre interesse para receber orientação quando agenda, modalidade, nível, polo e próximos eventos forem confirmados."
+        eyebrow="Próximo passo"
+        items={["UR Play", "ranking", "eventos", "virada", "novo ciclo"]}
+        statusLabel="agenda oficial após confirmação"
+        title="A temporada começa com presença validada."
+      />
     </main>
   );
 }

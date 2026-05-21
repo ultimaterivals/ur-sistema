@@ -1,93 +1,100 @@
 import type { Metadata } from "next";
+import { BarChart3, Camera, Clapperboard, Megaphone, Mic, Play, Radio, Users } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
-import { PageSection } from "@/components/site/page-section";
 import {
-  BarChart3,
-  Camera,
-  Clapperboard,
-  Handshake,
-  Mic2,
-  Radio,
-  Sparkles,
-  Trophy,
-  Users,
-  Video,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+  CommercialAssetPanel,
+  DataBoard,
+  ImageFeaturePanel,
+  ProcessTimeline,
+} from "@/components/editorial/sports-platform-modules";
+import { AdSlotHorizontal } from "@/components/editorial/ad-slot-horizontal";
+import { PageSection } from "@/components/site/page-section";
+import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/section-header";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
-  title: "Mídia UR | Palco, Conteúdo e Narrativa Ultimate Rivals",
+  title: "Mídia UR | Histórias, Bastidores e Palco Ultimate Rivals",
   description:
-    "Conheça a mídia oficial do Ultimate Rivals como ativo estratégico para atletas, ranking, patrocinadores, eventos e comunidade.",
+    "Conheça a mídia oficial do Ultimate Rivals, com histórias de atletas, bastidores, rankings narrativos, comunidade, patrocinadores e cobertura do ecossistema esportivo.",
 };
 
-type MediaCard = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-};
-
-const mediaFormats: MediaCard[] = [
+const editorialAssets = [
   {
-    icon: Video,
-    title: "Transmissões",
-    description: "Coberturas futuras de jogos e eventos quando houver operação, agenda e estrutura validadas.",
-  },
-  {
-    icon: Clapperboard,
-    title: "Cortes",
-    description: "Lances, reações, momentos de ranking e histórias curtas para ampliar alcance da comunidade.",
-  },
-  {
+    label: "Bastidores",
+    title: "O que acontece fora da bola",
+    description: "Pausas, preparação, conversas e ambiente ajudam a construir narrativa real.",
     icon: Camera,
-    title: "Bastidores",
-    description: "Rotina, preparação, rivalidade, torcida, quadras e construção da temporada.",
   },
   {
-    icon: Mic2,
-    title: "Histórias de atletas",
-    description: "Atletas amadores tratados como personagens reais de uma jornada esportiva acompanhável.",
-  },
-  {
+    label: "Ranking",
+    title: "Classificação com história",
+    description: "O ranking vira pauta quando explica evolução, presença e rivalidade com contexto.",
     icon: BarChart3,
-    title: "Rankings narrativos",
-    description: "Ranking como assunto, evolução, disputa, nível, equipe, virada e contexto da temporada.",
   },
   {
-    icon: Radio,
-    title: "Programas futuros",
-    description: "Quadros, resenhas e formatos editoriais entram após validação de grade e operação.",
+    label: "Atletas",
+    title: "Protagonistas do ecossistema",
+    description: "Perfis, cortes e histórias mostram trajetória sem prometer resultado.",
+    icon: Mic,
   },
   {
-    icon: Handshake,
-    title: "Conteúdo para patrocinadores",
-    description: "Marcas podem participar de narrativas, benefícios, ativações e presença recorrente aprovada.",
-  },
-] as const;
-
-const ecosystemLinks = [
-  {
-    title: "Ranking",
-    description: "Transforma desempenho validado em narrativa pública.",
-    icon: Trophy,
-  },
-  {
-    title: "Patrocinadores",
-    description: "Dão sustentação comercial para mídia, eventos e comunidade.",
-    icon: Handshake,
-  },
-  {
-    title: "Comunidade",
-    description: "Acompanha, compartilha e dá vida às histórias do ecossistema.",
+    label: "Comunidade",
+    title: "Público como parte do palco",
+    description: "Torcida, quadras e polos ajudam a transformar jogo em cultura local.",
     icon: Users,
   },
 ] as const;
 
+const productionFlow = [
+  {
+    label: "Captação",
+    title: "Captar momento",
+    description: "Jogo, bastidor, comemoração, torcida e contexto entram como matéria-prima.",
+  },
+  {
+    label: "Narrativa",
+    title: "Dar narrativa",
+    description: "A mídia organiza o que aconteceu em história, destaque e memória pública.",
+  },
+  {
+    label: "Ranking",
+    title: "Conectar ranking",
+    description: "Participação e evolução ganham leitura com dados públicos validados.",
+  },
+  {
+    label: "Oportunidade",
+    title: "Abrir oportunidade",
+    description: "Atletas, equipes, patrocinadores e comunidade se beneficiam do palco.",
+  },
+] as const;
+
+const mediaData = [
+  {
+    label: "Transmissões",
+    value: "futuro",
+    detail: "grade oficial entra após operação validada e calendário confirmado.",
+    icon: Radio,
+  },
+  {
+    label: "Cortes",
+    value: "bastidor",
+    detail: "conteúdo curto ajuda a ampliar presença e comunidade.",
+    icon: Clapperboard,
+  },
+  {
+    label: "Programas",
+    value: "editorial",
+    detail: "formatos recorrentes podem nascer com ranking, atletas e equipes.",
+    icon: Play,
+  },
+  {
+    label: "Patrocínio",
+    value: "nativo",
+    detail: "marcas entram em pautas e ativações com aprovação comercial.",
+    icon: Megaphone,
+  },
+] as const;
 
 export default function MidiaPage() {
   return (
@@ -95,114 +102,112 @@ export default function MidiaPage() {
       <PlatformHero
         actions={[
           { href: "/cadastro#comunidade", label: "Acompanhar comunidade" },
-          { href: "/cadastro#patrocinador", label: "Ativar marca na mídia", variant: "secondary" },
+          { href: "/cadastro#patrocinador", label: "Patrocinar mídia", variant: "secondary" },
         ]}
-        badges={["transmissões futuras", "bastidores", "rankings narrativos", "histórias de atletas", "conteúdo comercial"]}
-        description="A mídia oficial UR transforma jogos, evolução, ranking, bastidores e histórias em conteúdo para atletas, patrocinadores e comunidade."
-        eyebrow="Mídia UR • palco • ranking • comunidade"
-        image={siteImages.mediaCoverage}
+        badges={["Bastidores", "Ranking narrativo", "Atletas", "Comunidade", "Patrocinadores"]}
+        description="A mídia UR transforma participação validada em história, palco, memória e ativo comercial para atletas, equipes, marcas e comunidade."
+        eyebrow="Mídia UR • portal editorial"
+        image={siteImages.communityMoment}
         imagePosition="center 42%"
         metrics={[
-          { label: "Formato", value: "cortes, bastidores e histórias" },
-          { label: "Ativo", value: "mídia própria do ecossistema" },
-          { label: "Status", value: "grade em validação" },
+          { label: "Pauta", value: "atletas e equipes" },
+          { label: "Formato", value: "bastidor, corte e história" },
+          { label: "Valor", value: "palco e patrocínio" },
         ]}
-        statusDescription="Conteúdos oficiais entram após operação validada. Nenhum canal, métrica, vídeo, audiência ou entrega real foi inventado nesta página."
-        statusLabel="palco em preparação"
+        statusDescription="Grade de mídia, transmissões e programas oficiais entram após operação validada."
+        statusLabel="grade em preparação"
         statusTitle="O esporte amador também merece palco."
-        title="Mídia própria para transformar jogo em narrativa."
+        title="Mídia própria para contar a jornada do ecossistema."
       />
 
-      <PageSection>
-        <SectionHeader
-          description="Mídia UR é estrutura de narrativa: dá contexto ao ranking, valor ao patrocinador e pertencimento à comunidade."
-          eyebrow="Mídia oficial"
-          title="Conteúdo como ativo estratégico do ecossistema."
+      <PageSection id="materia-principal">
+        <ImageFeaturePanel
+          actions={[
+            { href: "/cadastro#comunidade", label: "Acompanhar histórias", variant: "secondary" },
+            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
+          ]}
+          description="A matéria principal da mídia UR deve nascer de momentos reais: comemoração, rivalidade, evolução, bastidor, comunidade e contexto da temporada."
+          eyebrow="Matéria principal"
+          image={siteImages.mediaCoverage}
+          imagePosition="center 45%"
+          points={[
+            {
+              title: "Histórias de atletas",
+              description: "Perfis e trajetórias ajudam a valorizar quem constrói presença no ecossistema.",
+            },
+            {
+              title: "Rankings narrativos",
+              description: "A classificação ganha sentido quando vira história, não só lista.",
+            },
+          ]}
+          title="Da quadra para a memória pública."
         />
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {mediaFormats.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <Card className="min-h-[230px]" key={item.title} premium={index === 1}>
-                <Icon aria-hidden className="h-7 w-7 text-[#ffd84d]" />
-                <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">{item.title}</h2>
-                <p className="mt-4 text-sm leading-6 text-white/68">{item.description}</p>
-              </Card>
-            );
-          })}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]">
-        <SectionHeader
-          description="O conteúdo precisa nascer da operação real. Sem ranking validado, agenda confirmada e histórias reais, a mídia permanece em preparação."
-          eyebrow="Pré-lançamento operacional"
-          title="Conteúdos oficiais entram após operação validada."
+      <PageSection className="bg-[#07080c]" id="formatos">
+        <CommercialAssetPanel
+          assets={editorialAssets}
+          description="A mídia UR precisa variar formato e ritmo: bastidor, ranking, atleta, equipe, comunidade, conteúdo comercial e cobertura de temporada."
+          eyebrow="Formatos editoriais"
+          title="Conteúdo recorrente para sustentar o ecossistema."
         />
-        <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]" premium>
-          <div>
-            <Sparkles aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-            <h2 className="mt-5 text-[clamp(2rem,8vw,2.85rem)] font-black uppercase leading-[0.98] text-white">
-              Palco com responsabilidade.
-            </h2>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              "Sem inventar vídeos, canais ou audiência.",
-              "Sem prometer transmissões antes da operação.",
-              "Sem destacar atletas sem validação oficial.",
-              "Sem vender métricas comerciais não existentes.",
-            ].map((item) => (
-              <p className="rounded-lg border border-white/10 bg-black/25 p-4 text-sm font-bold leading-6 text-white/70" key={item}>
-                {item}
-              </p>
-            ))}
-          </div>
-        </Card>
       </PageSection>
 
-      <PageSection>
-        <SectionHeader
-          description="Mídia, ranking e patrocinadores se reforçam: a temporada cria assunto, a mídia amplifica e a marca participa com contexto."
-          eyebrow="Relação com o ecossistema"
-          title="Ranking vira narrativa. Comunidade vira audiência."
+      <PageSection id="bastidores">
+        <ImageFeaturePanel
+          description="A força da mídia está nos detalhes: pausa, conversa, preparação, reação do público e ambiente de quadra. Isso faz o esporte amador parecer vivo e acompanhado."
+          eyebrow="Bastidores e comunidade"
+          image={siteImages.timeoutTalk}
+          imagePosition="center 42%"
+          points={[
+            {
+              title: "Bastidor com função",
+              description: "Mostra preparo, liderança, pressão, disciplina e mentalidade competitiva.",
+            },
+            {
+              title: "Comunidade como palco",
+              description: "Público, quadra e polos ajudam a construir pertencimento e recorrência.",
+            },
+          ]}
+          reverse
+          title="O que acontece ao redor também constrói valor."
         />
-        <div className="grid gap-5 md:grid-cols-3">
-          {ecosystemLinks.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <Card className="min-h-[220px]" key={item.title} premium={index === 0}>
-                <Icon aria-hidden className="h-7 w-7 text-[#ffd84d]" />
-                <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">{item.title}</h2>
-                <p className="mt-4 text-sm leading-6 text-white/68">{item.description}</p>
-              </Card>
-            );
-          })}
-        </div>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]">
-        <Card className="grid gap-6 p-5 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.45fr)] lg:items-center" premium>
-          <div>
-            <Badge>CTA Mídia UR</Badge>
-            <h2 className="mt-5 max-w-3xl text-[clamp(2.2rem,8vw,3.4rem)] font-black uppercase leading-[0.98] text-white">
-              Acompanhe a comunidade ou conecte sua marca ao palco.
-            </h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/74">
-              Comunidade e patrocinadores entram pela central de cadastro. Conteúdos, ativações e entregas dependem de
-              operação validada.
-            </p>
-          </div>
-          <div className="grid gap-3">
+      <PageSection className="bg-[#07080c]" id="video-ads">
+        <DataBoard
+          description="A estrutura editorial prepara vídeo, blog, mídia patrocinada e programas futuros sem ativar scripts de ads nesta etapa."
+          eyebrow="Vídeo, blog e mídia patrocinada"
+          footer={<AdSlotHorizontal label="Espaço futuro para mídia patrocinada ou parceiro editorial" />}
+          items={mediaData}
+          title="Portal preparado para conteúdo e monetização futura."
+        />
+      </PageSection>
+
+      <PageSection id="fluxo-editorial">
+        <ProcessTimeline
+          description="A mídia própria precisa funcionar como sistema: captar o que acontece, organizar narrativa, conectar ranking e abrir oportunidade."
+          eyebrow="Fluxo editorial"
+          steps={productionFlow}
+          title="Como um momento vira história UR."
+        />
+      </PageSection>
+
+      <SegmentCtaPanel
+        actions={
+          <>
             <Button href="/cadastro#comunidade">Acompanhar comunidade</Button>
             <Button href="/cadastro#patrocinador" variant="secondary">
-              Quero patrocinar
+              Patrocinar mídia UR
             </Button>
-          </div>
-        </Card>
-      </PageSection>
+          </>
+        }
+        description="Conteúdos oficiais entram conforme calendário, operação e validação editorial. A comunidade já pode registrar interesse para acompanhar os próximos passos."
+        eyebrow="Próximo passo"
+        items={["bastidores", "ranking", "atletas", "blog", "patrocinadores"]}
+        statusLabel="mídia própria em evolução"
+        title="A próxima história começa na quadra."
+      />
     </main>
   );
 }

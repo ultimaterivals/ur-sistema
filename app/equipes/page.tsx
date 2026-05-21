@@ -28,23 +28,23 @@ const teamFields = [
 
 const teamJourney = [
   {
-    label: "01",
+    label: "Registro",
     title: "Registrar equipe",
     description: "Capitão ou responsável envia interesse com identidade, cidade, modalidade e contexto.",
     status: "cadastro aberto",
   },
   {
-    label: "02",
+    label: "Elenco",
     title: "Validar elenco",
     description: "A equipe UR confere dados, conduta, disponibilidade e relação com a temporada.",
   },
   {
-    label: "03",
+    label: "Ranking",
     title: "Entrar no ranking",
     description: "O ranking coletivo só abre com dados reais e regras oficiais do ciclo.",
   },
   {
-    label: "04",
+    label: "Mídia",
     title: "Criar narrativa",
     description: "Mídia, rivalidade, torcida e histórico transformam equipe em ativo esportivo.",
   },
