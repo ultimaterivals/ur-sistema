@@ -2,11 +2,11 @@
 
 ## Objetivo
 
-Preparar o site publico do Ultimate Rivals para evoluir como portal esportivo, canal de midia oficial e plataforma de monetizacao, sem integrar AdSense, backend ou CMS nesta etapa.
+Preparar o site publico do Ultimate Rivals para evoluir como ecossistema esportivo com midia propria, conteudo editorial e plataforma de monetizacao, sem integrar AdSense, backend ou CMS nesta etapa.
 
 ## Blog e midia
 
-Nesta fase a Home ja recebeu uma area editorial com cards preparados para conteudos como:
+Nesta fase a Home ja recebeu uma area editorial que deve funcionar como extensao da midia propria UR, com cards preparados para conteudos como:
 
 - O que e o Ultimate Rivals.
 - Como funciona o UR Play.
@@ -57,6 +57,13 @@ Uso recomendado:
 - Entre blocos editoriais.
 - Em futuras paginas de blog, entre o conteudo principal e a sidebar.
 - Em secoes comerciais de patrocinadores.
+
+Prioridade comercial:
+
+1. Ativacoes proprias de patrocinadores UR.
+2. Blocos nativos de marca dentro de conteudo editorial.
+3. Espacos de parceiro oficial por temporada, evento ou polo.
+4. Ads programaticos apenas em etapa futura, quando fizer sentido para audiencia e experiencia.
 
 ## Como manter elegante
 

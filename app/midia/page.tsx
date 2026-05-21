@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { PlatformHero } from "@/components/editorial/platform-hero";
 import { PageSection } from "@/components/site/page-section";
-import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
-  ArrowRight,
   BarChart3,
   Camera,
   Clapperboard,
   Handshake,
-  Megaphone,
   Mic2,
   Radio,
   Sparkles,
@@ -20,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
   title: "Mídia UR | Palco, Conteúdo e Narrativa Ultimate Rivals",
@@ -93,40 +92,26 @@ const ecosystemLinks = [
 export default function MidiaPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative overflow-hidden border-t border-white/10 bg-[linear-gradient(180deg,#090a0f_0%,#030405_100%)] px-5 py-12 md:py-16 lg:px-8 lg:py-20">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
-          <div className="min-w-0 text-center lg:text-left">
-            <Badge>Mídia UR • palco • ranking • comunidade</Badge>
-            <h1 className="mx-auto mt-5 max-w-5xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
-              O atleta amador também merece palco.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              A mídia oficial UR transforma jogos, evolução, ranking, bastidores e histórias em conteúdo para atletas,
-              patrocinadores e comunidade.
-            </p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/cadastro#comunidade">
-                Acompanhar comunidade
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/cadastro#patrocinador" variant="secondary">
-                Ativar marca na mídia
-              </Button>
-            </div>
-          </div>
-
-          <PremiumEmptyState
-            ctaLabel="Acompanhar comunidade"
-            description="Conteúdos oficiais entram após operação validada. Nenhum canal, métrica, vídeo, audiência ou entrega real foi inventado nesta página."
-            footer="conteúdos oficiais entram após operação validada"
-            href="/cadastro#comunidade"
-            icon={Megaphone}
-            statusLabel="grade de mídia em validação"
-            title="Palco em preparação."
-          />
-        </div>
-      </section>
+      <PlatformHero
+        actions={[
+          { href: "/cadastro#comunidade", label: "Acompanhar comunidade" },
+          { href: "/cadastro#patrocinador", label: "Ativar marca na mídia", variant: "secondary" },
+        ]}
+        badges={["transmissões futuras", "bastidores", "rankings narrativos", "histórias de atletas", "conteúdo comercial"]}
+        description="A mídia oficial UR transforma jogos, evolução, ranking, bastidores e histórias em conteúdo para atletas, patrocinadores e comunidade."
+        eyebrow="Mídia UR • palco • ranking • comunidade"
+        image={siteImages.mediaCoverage}
+        imagePosition="center 42%"
+        metrics={[
+          { label: "Formato", value: "cortes, bastidores e histórias" },
+          { label: "Ativo", value: "mídia própria do ecossistema" },
+          { label: "Status", value: "grade em validação" },
+        ]}
+        statusDescription="Conteúdos oficiais entram após operação validada. Nenhum canal, métrica, vídeo, audiência ou entrega real foi inventado nesta página."
+        statusLabel="palco em preparação"
+        statusTitle="O esporte amador também merece palco."
+        title="Mídia própria para transformar jogo em narrativa."
+      />
 
       <PageSection>
         <SectionHeader

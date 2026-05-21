@@ -9,6 +9,7 @@ type EditorialImageProps = {
   priority?: boolean;
   sizes?: string;
   label?: string;
+  objectPosition?: string;
 };
 
 const toneClasses: Record<NonNullable<SiteImage["fallbackTone"]>, string> = {
@@ -30,6 +31,7 @@ export function EditorialImage({
   priority = false,
   sizes = "(min-width: 1024px) 50vw, 100vw",
   label,
+  objectPosition = "center",
 }: EditorialImageProps) {
   const tone = image?.fallbackTone ?? "match";
 
@@ -43,6 +45,7 @@ export function EditorialImage({
           priority={priority}
           sizes={sizes}
           src={image.src}
+          style={{ objectPosition }}
         />
       ) : (
         <div className={cn("absolute inset-0", toneClasses[tone])}>

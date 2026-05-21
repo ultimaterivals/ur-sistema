@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import { PlatformHero } from "@/components/editorial/platform-hero";
 import { PageSection } from "@/components/site/page-section";
-import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
-  ArrowRight,
   CalendarDays,
   Camera,
   CheckCircle2,
@@ -21,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
   title: "Quadras Parceiras UR | Polos, Eventos e Comunidade Ultimate Rivals",
@@ -122,40 +122,26 @@ const partnershipModels = [
 export default function QuadrasParceirasPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative overflow-hidden border-t border-white/10 bg-[linear-gradient(180deg,#090a0f_0%,#030405_100%)] px-5 py-12 md:py-16 lg:px-8 lg:py-20">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
-          <div className="min-w-0 text-center lg:text-left">
-            <Badge>Quadras parceiras • polos • operação local</Badge>
-            <h1 className="mx-auto mt-5 max-w-5xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
-              Sua quadra pode virar um polo do Ultimate Rivals.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              A quadra parceira não recebe só um evento. Ela pode entrar em um ciclo recorrente com atletas, mídia,
-              comunidade, patrocinadores, agenda e desenvolvimento.
-            </p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/cadastro#quadra">
-                Cadastrar quadra
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/eventos" variant="secondary">
-                Ver eventos UR
-              </Button>
-            </div>
-          </div>
-
-          <PremiumEmptyState
-            ctaLabel="Ser quadra parceira"
-            description="Polos, agenda, modelos comerciais, CT UR e eventos entram apenas após validação operacional e proposta aprovada. Nenhum valor ou data real foi inventado."
-            footer="agenda oficial será publicada após confirmação"
-            href="/cadastro#quadra"
-            icon={MapPin}
-            statusLabel="polo em validação"
-            title="Polo em preparação."
-          />
-        </div>
-      </section>
+      <PlatformHero
+        actions={[
+          { href: "/cadastro#quadra", label: "Cadastrar quadra" },
+          { href: "/eventos", label: "Ver eventos UR", variant: "secondary" },
+        ]}
+        badges={["polo operacional", "agenda recorrente", "mídia local", "comunidade", "patrocinadores"]}
+        description="A quadra parceira não recebe só uma data. Ela pode entrar em um ciclo recorrente com atletas, mídia, comunidade, patrocinadores, agenda e desenvolvimento."
+        eyebrow="Quadras parceiras • polos • operação local"
+        image={siteImages.wideServe}
+        imagePosition="center 45%"
+        metrics={[
+          { label: "Função", value: "base territorial do ecossistema" },
+          { label: "Validação", value: "estrutura, agenda e operação" },
+          { label: "Status", value: "polo em validação" },
+        ]}
+        statusDescription="Polos, agenda, modelos comerciais, CT UR e eventos entram apenas após validação operacional e proposta aprovada."
+        statusLabel="expansão por polos"
+        statusTitle="Sua quadra pode virar um polo Ultimate Rivals."
+        title="Quadras como base de recorrência esportiva."
+      />
 
       <PageSection>
         <SectionHeader

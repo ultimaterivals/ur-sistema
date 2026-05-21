@@ -154,6 +154,25 @@ export const siteImageGallery = [
   siteImages.timeoutTalk,
 ] as const;
 
+export const homeImageRoles = {
+  hero: siteImages.heroArena,
+  urPlay: siteImages.urPlayAction,
+  ranking: siteImages.attackBlock,
+  eventos: [siteImages.urPlayAction, siteImages.wideServe, siteImages.fairPlayLine],
+  atletas: siteImages.athletePortrait,
+  equipes: siteImages.teamEmbrace,
+  midia: siteImages.mediaCoverage,
+  comunidade: siteImages.communityMoment,
+  patrocinadores: siteImages.sponsorActivation,
+  galeria: [
+    siteImages.teamEmbrace,
+    siteImages.athleteFocus,
+    siteImages.sponsorActivation,
+    siteImages.fairPlayLine,
+    siteImages.defenseDive,
+  ],
+} as const;
+
 export const imageFolders = [
   "public/images/ur/home",
   "public/images/ur/atletas",

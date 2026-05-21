@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
+import { PlatformHero } from "@/components/editorial/platform-hero";
 import { PageSection } from "@/components/site/page-section";
-import { PremiumEmptyState } from "@/components/site/premium-empty-state";
 import {
-  Activity,
-  ArrowRight,
   BarChart3,
   Brain,
   Camera,
@@ -22,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
   title: "CT UR | Desenvolvimento Técnico, Físico e Mental Ultimate Rivals",
@@ -110,40 +109,26 @@ const connections = [
 export default function CTURPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative overflow-hidden border-t border-white/10 bg-[linear-gradient(180deg,#090a0f_0%,#030405_100%)] px-5 py-12 md:py-16 lg:px-8 lg:py-20">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
-          <div className="min-w-0 text-center lg:text-left">
-            <Badge>CT UR • desenvolvimento • Mentalidade Hunter</Badge>
-            <h1 className="mx-auto mt-5 max-w-5xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
-              Desenvolvimento real para atletas que querem evoluir.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              CT UR é o pilar de formação do ecossistema: técnica, físico, mentalidade, liderança, análise, recuperação e
-              educação esportiva conectadas à jornada do atleta.
-            </p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/cadastro#atleta">
-                Quero evoluir no UR
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/atletas" variant="secondary">
-                Jornada do atleta
-              </Button>
-            </div>
-          </div>
-
-          <PremiumEmptyState
-            ctaLabel="Entrar como atleta"
-            description="O CT UR deve apoiar o atleta como competidor e pessoa, sem promessa milagrosa de resultado e sem agenda pública antes da validação operacional."
-            footer="agenda oficial será publicada após confirmação"
-            href="/cadastro#atleta"
-            icon={Activity}
-            statusLabel="desenvolvimento em validação"
-            title="Não é só treino. É formação."
-          />
-        </div>
-      </section>
+      <PlatformHero
+        actions={[
+          { href: "/cadastro#atleta", label: "Quero evoluir no UR" },
+          { href: "/atletas", label: "Jornada do atleta", variant: "secondary" },
+        ]}
+        badges={["treino técnico", "preparação física", "Mentalidade Hunter", "análise", "educação esportiva"]}
+        description="CT UR é o pilar de formação do ecossistema: técnica, físico, mentalidade, liderança, análise, recuperação e educação esportiva conectadas à jornada do atleta."
+        eyebrow="CT UR • desenvolvimento • Mentalidade Hunter"
+        image={siteImages.timeoutTalk}
+        imagePosition="center 45%"
+        metrics={[
+          { label: "Foco", value: "desenvolvimento técnico, físico e mental" },
+          { label: "Cultura", value: "Mentalidade Hunter" },
+          { label: "Status", value: "agenda oficial após confirmação" },
+        ]}
+        statusDescription="O CT UR deve apoiar o atleta como competidor e pessoa, sem promessa milagrosa de resultado e sem agenda pública antes da validação operacional."
+        statusLabel="desenvolvimento em validação"
+        statusTitle="Não é só treino. É formação."
+        title="Desenvolvimento real para atletas que querem evoluir."
+      />
 
       <PageSection>
         <SectionHeader

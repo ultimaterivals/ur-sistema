@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ArrowRight, CalendarDays, ChevronDown, ClipboardCheck, Coins } from "lucide-react";
+import { ChevronDown, ClipboardCheck, Coins } from "lucide-react";
+import { PlatformHero } from "@/components/editorial/platform-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -23,6 +23,7 @@ import {
   interestFlow,
   segmentationCards,
 } from "@/lib/content/eventos";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
   title: "Eventos UR | UR Play, Torneios e Temporada Ultimate Rivals",
@@ -206,75 +207,27 @@ function InterestPanel() {
 export default function EventosPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative overflow-hidden border-t border-white/10 bg-[linear-gradient(180deg,#090a0f_0%,#030405_100%)] px-5 py-10 md:py-12 lg:px-8 lg:py-14">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
-          <div className="min-w-0 text-center lg:text-left">
-            <Badge>Eventos UR • agenda em validação</Badge>
-            <h1 className="mx-auto mt-4 max-w-4xl text-balance text-[clamp(2.75rem,10vw,4rem)] font-black uppercase leading-[0.94] tracking-normal text-white md:text-[clamp(3.45rem,6vw,5rem)] lg:mx-0">
-              Cada evento tem uma função na temporada.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              Eventos UR conectam entrada, competição, ranking, equipes, UR Coins, CT UR, mídia, patrocinadores,
-              quadras parceiras e comunidade. Não é uma agenda solta.
-            </p>
-            <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/cadastro#atleta">
-                Demonstrar interesse
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/cadastro#atleta" variant="secondary">
-                Começar pelo UR Play
-              </Button>
-              <Button href="/temporada" variant="ghost">
-                Entender temporada
-              </Button>
-            </div>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-              {eventHeroBadges.map((item) => (
-                <span
-                  className="rounded-lg border border-white/10 bg-white/[0.045] px-3 py-3 text-xs font-black uppercase leading-5 tracking-[0.1em] text-[#ffe98b]"
-                  key={item}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative mx-auto w-full max-w-[470px]">
-            <Card className="overflow-hidden p-4 md:p-5" premium>
-              <div className="flex items-start justify-between gap-4">
-                <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
-                  <CalendarDays aria-hidden className="h-6 w-6 text-[#ffd84d]" />
-                </span>
-                <span className="rounded-md border border-[#ffd84d]/20 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                  eventos entram após confirmação oficial
-                </span>
-              </div>
-              <div className="my-6 grid place-items-center">
-                <Image
-                  alt="Emblema Ultimate Rivals"
-                  className="h-auto w-36 object-contain drop-shadow-[0_20px_45px_rgba(0,0,0,0.55)] md:w-44"
-                  height={240}
-                  priority
-                  src="/images/hero-ur-emblem.png"
-                  width={240}
-                />
-              </div>
-              <div className="rounded-lg border border-white/10 bg-black/45 p-4">
-                <div className="text-xs font-black uppercase tracking-[0.16em] text-[#ffe98b]">
-                  Agenda pública
-                </div>
-                <div className="mt-2 text-2xl font-black uppercase leading-none text-white">agenda em validação</div>
-                <p className="mt-3 text-sm leading-6 text-white/65">
-                  Sem datas, horários, locais, polos confirmados, valores, vagas, atletas ou equipes reais nesta etapa.
-                </p>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <PlatformHero
+        actions={[
+          { href: "/cadastro#atleta", label: "Demonstrar interesse" },
+          { href: "/cadastro#atleta", label: "Começar pelo UR Play", variant: "secondary" },
+          { href: "/temporada", label: "Entender temporada", variant: "ghost" },
+        ]}
+        badges={eventHeroBadges}
+        description="Eventos UR conectam entrada, competição, ranking, equipes, UR Coins, CT UR, mídia, patrocinadores, quadras parceiras e comunidade. Não é uma agenda solta."
+        eyebrow="Eventos UR • agenda em validação"
+        image={siteImages.fairPlayLine}
+        imagePosition="center 42%"
+        metrics={[
+          { label: "Entrada", value: "UR Play" },
+          { label: "Ciclo", value: "mini torneios e virada de ranking" },
+          { label: "Status", value: "agenda pública após confirmação" },
+        ]}
+        statusDescription="Sem datas, horários, locais, polos confirmados, valores, vagas, atletas ou equipes reais nesta etapa."
+        statusLabel="calendário esportivo"
+        statusTitle="Cada ponto de agenda precisa ter função no sistema."
+        title="Eventos com função dentro da temporada."
+      />
 
       <PageSection id="nao-isolado">
         <SectionHeader

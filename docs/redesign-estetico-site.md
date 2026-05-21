@@ -7,7 +7,7 @@ Elevar a camada visual publica do Ultimate Rivals de uma estrutura institucional
 Nesta etapa foram priorizadas a Fase 1 e a Fase 2:
 
 - Fase 1: sistema visual, biblioteca de imagens e componentes reutilizaveis.
-- Fase 2: redesign da Home com ritmo de portal esportivo e ecossistema de liga.
+- Fase 2: redesign da Home com ritmo de portal esportivo e ecossistema esportivo.
 
 ## Identidade visual aplicada
 
@@ -16,7 +16,7 @@ Nesta etapa foram priorizadas a Fase 1 e a Fase 2:
 - Branco/off-white para leitura.
 - Cards escuros com borda sutil.
 - Composicoes com overlay, imagens editoriais e paineis de status.
-- Linguagem visual de liga, ranking, midia, temporada e comunidade.
+- Linguagem visual de plataforma esportiva, ranking, midia propria, temporada e comunidade.
 
 ## Estrutura de assets
 
@@ -36,6 +36,19 @@ O mapeamento central fica em:
 
 Nesta etapa tambem foram importadas fotos oficiais reais do acervo UR para as pastas de Home, atletas, equipes, eventos, midia e comunidade.
 
+O arquivo `site-images.ts` tambem organiza imagens por funcao em `homeImageRoles`:
+
+- `hero`
+- `urPlay`
+- `ranking`
+- `eventos`
+- `atletas`
+- `equipes`
+- `midia`
+- `comunidade`
+- `patrocinadores`
+- `galeria`
+
 Para inserir uma imagem real:
 
 1. Coloque o arquivo na pasta correspondente em `public/images/ur/...`.
@@ -51,7 +64,11 @@ Para inserir uma imagem real:
 - `FeatureCard`: card editorial com icone, texto e CTA.
 - `ImageFeatureCard`: card visual com imagem, overlay e CTA.
 - `MediaStoryCard`: card para destaques editoriais, midia e futuras chamadas de blog.
-- `GalleryStrip`: faixa editorial para mostrar o acervo real da liga.
+- `GalleryStrip`: faixa editorial para mostrar o acervo real do ecossistema.
+- `MediaPortalSection`: bloco de Home com destaque principal e cards editoriais menores, aproximando a experiencia de portal esportivo.
+- `RankingShowcase`: vitrine visual do ranking com top 3 em formacao e tipos de classificacao.
+- `EventCalendarShowcase`: secao de calendario esportivo com UR Play, Mini Torneio e Virada de Ranking.
+- `CommercialShowcase`: bloco comercial com parceiro oficial, midia, UR Market, ranking e publicidade nativa futura.
 - `AdSlotHorizontal`: slot elegante para midia patrocinada.
 - `SponsoredBlock`: bloco comercial para patrocinadores e ativacoes.
 - `CTASectionPremium`: chamada final premium para conversao.
@@ -60,18 +77,73 @@ Para inserir uma imagem real:
 
 A Home foi reorganizada em blocos mais visuais:
 
-1. Hero editorial com imagem/fallback, overlay, CTAs e painel de liga.
-2. Slot premium para marca parceira.
-3. Resumo do ecossistema.
-4. Escolha de caminho por perfil.
-5. Jornada UR.
-6. Temporada e ranking.
-7. Midia/editorial.
+1. Hero editorial com foto real dominante, overlay escuro, CTAs e painel compacto de status.
+2. Faixa de sinais do ecossistema.
+3. Bloco visual do ecossistema com UR Play, Ranking e Equipes.
+4. Entrada segmentada por perfil.
+5. Midia em formato de portal esportivo.
+6. Ranking Showcase.
+7. Calendario esportivo da temporada.
 8. Acervo visual oficial.
-9. Reconhecimento, UR Coins, CT UR e recompensas.
-10. Patrocinadores e ativacoes.
-11. Comunidade e FAQ.
-12. CTA final.
+9. Jornada UR.
+10. Reconhecimento, UR Coins, CT UR e recompensas.
+11. Patrocinadores, ads e ativacoes comerciais.
+12. Comunidade e FAQ.
+13. CTA final.
+
+## Sprint 5.2
+
+A Sprint 5.2 fortaleceu a Home para reduzir aparencia de landing textual e aproximar a experiencia de uma plataforma esportiva com midia propria:
+
+- Hero com imagem real ocupando mais area visual.
+- Primeira dobra com menos cards pequenos e mais impacto imediato.
+- Bloco de midia com destaque principal e cards por categoria.
+- Ranking tratado como produto central do ecossistema.
+- Eventos/temporada com estetica de calendario esportivo.
+- Secao comercial com parceiro oficial, midia, UR Market e publicidade nativa futura.
+- Uso mais forte das fotos reais de comemoracao, premiacao, ataque, publico, defesa e bastidores.
+
+## Sprint 5.2.1: linguagem e imagens
+
+O posicionamento publico correto e:
+
+- Ultimate Rivals e um ecossistema esportivo.
+- Ultimate Rivals e uma plataforma esportiva com jornada, ranking, midia, temporada, comunidade e oportunidades.
+- UR Play e a porta de entrada, mas nao resume o sistema.
+- Ranking, UR Coins, CT UR, equipes, quadras, patrocinadores e midia fazem parte da mesma estrutura continua.
+
+Termos nao recomendados como definicao principal:
+
+- "cara de liga"
+- "parecer liga"
+- "liga esportiva" como resumo do projeto
+- "torneio" ou "campeonato" como definicao do UR
+
+Termos recomendados:
+
+- ecossistema esportivo
+- plataforma esportiva
+- sistema continuo
+- estrutura de evolucao
+- jornada esportiva
+- midia propria
+- ranking continuo
+- temporada estruturada
+- comunidade competitiva
+- mercado de oportunidades
+- desenvolvimento de atletas e equipes
+
+Regra de imagens:
+
+- A imagem do Hero nao deve repetir como destaque grande logo abaixo.
+- Uma mesma imagem nao deve aparecer mais de duas vezes na Home.
+- UR Play deve priorizar jogo real ou recepcao.
+- Ranking deve priorizar ataque, defesa ou bloqueio.
+- Eventos/temporada devem priorizar premiacao, cumprimento ou quadra em acao.
+- Atletas devem usar retrato forte ou acao individual.
+- Equipes devem usar abraco, huddle, comemoracao ou cumprimento.
+- Comunidade deve usar publico, bastidores e arquibancada.
+- Patrocinadores devem usar contexto real de evento, quadra, publico ou premiacao.
 
 ## Regras de uso
 

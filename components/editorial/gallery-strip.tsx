@@ -14,7 +14,7 @@ export function GalleryStrip({
   images,
   eyebrow = "Acervo oficial",
   title = "O jogo real agora aparece na página.",
-  description = "Fotos oficiais dão textura de liga, comunidade, competição e mídia para a experiência pública do UR.",
+  description = "Fotos oficiais dão textura de ecossistema, comunidade, competição e mídia para a experiência pública do UR.",
   className,
 }: GalleryStripProps) {
   const featured = images[0];

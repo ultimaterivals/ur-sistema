@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { PlatformHero } from "@/components/editorial/platform-hero";
 import { EcosystemFlowPanel } from "@/components/site/ecosystem-flow-panel";
 import { PageSection } from "@/components/site/page-section";
 import {
-  ArrowRight,
   BadgeCheck,
   BarChart3,
   CalendarDays,
@@ -13,7 +13,6 @@ import {
   MapPin,
   Shield,
   ShoppingBag,
-  Trophy,
   Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -21,9 +20,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
-  title: "Ecossistema UR | Ultimate Rivals Não é Evento Isolado",
+  title: "Ecossistema UR | Plataforma Esportiva Ultimate Rivals",
   description:
     "Entenda o Ultimate Rivals como ecossistema esportivo contínuo com UR Play, ranking, temporada, equipes, CT UR, mídia, UR Market, patrocinadores e quadras.",
 };
@@ -38,7 +38,7 @@ type Pillar = {
 const comparisonRows = [
   {
     label: "Finalidade",
-    common: "Evento começa, acaba e deixa pouca continuidade.",
+    common: "Ação isolada começa, acaba e deixa pouca continuidade.",
     ur: "Cada entrada alimenta jornada, ranking, mídia, temporada e novas oportunidades.",
   },
   {
@@ -188,52 +188,37 @@ const audiencePaths = [
 export default function EcossistemaPage() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative overflow-hidden border-t border-white/10 bg-[linear-gradient(180deg,#090a0f_0%,#030405_100%)] px-5 py-12 md:py-16 lg:px-8 lg:py-20">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
-          <div className="min-w-0 text-center lg:text-left">
-            <Badge>Ecossistema UR • temporada • ranking • mídia</Badge>
-            <h1 className="mx-auto mt-5 max-w-5xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
-              O Ultimate Rivals é um ecossistema, não um evento isolado.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              UR conecta atletas, equipes, quadras, patrocinadores, mídia, ranking, recompensas e comunidade em uma
-              jornada contínua para profissionalizar o esporte amador.
-            </p>
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
-              <Button href="/cadastro">
-                Entrar no ecossistema
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/ur-play" variant="secondary">
-                Começar pelo UR Play
-              </Button>
-            </div>
-          </div>
-
-          <Card className="p-5 md:p-6" premium>
-            <Trophy aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-            <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Cada participação precisa deixar rastro.
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-white/72">
-              O objetivo é transformar jogo em histórico, histórico em narrativa, narrativa em oportunidade e
-              oportunidade em valor para a comunidade.
-            </p>
-          </Card>
-        </div>
-      </section>
+      <PlatformHero
+        actions={[
+          { href: "/cadastro", label: "Entrar no ecossistema" },
+          { href: "/ur-play", label: "Começar pelo UR Play", variant: "secondary" },
+        ]}
+        badges={["UR Play", "Ranking contínuo", "Mídia própria", "UR Market", "Quadras parceiras"]}
+        description="UR conecta atletas, equipes, quadras, patrocinadores, mídia, ranking, recompensas e comunidade em uma jornada contínua para profissionalizar o esporte amador."
+        eyebrow="Ecossistema UR • temporada • ranking • mídia"
+        image={siteImages.teamEmbrace}
+        imagePosition="center 45%"
+        metrics={[
+          { label: "Entrada", value: "UR Play e cadastro de interesse" },
+          { label: "Base", value: "dados públicos após validação oficial" },
+          { label: "Saída", value: "histórico, visibilidade e oportunidade" },
+        ]}
+        statusDescription="O objetivo é transformar participação em histórico, histórico em narrativa, narrativa em oportunidade e oportunidade em valor para a comunidade."
+        statusLabel="sistema contínuo"
+        statusTitle="Cada participação precisa deixar rastro."
+        title="O Ultimate Rivals é um ecossistema esportivo contínuo."
+      />
 
       <PageSection>
         <SectionHeader
           description="A diferença central está na continuidade. O UR organiza o que normalmente se perde depois de um jogo."
           eyebrow="Comparativo"
-          title="Torneio comum vs Ultimate Rivals."
+          title="Formato isolado vs Ultimate Rivals."
         />
         <Card className="overflow-hidden p-0" premium>
           <div className="grid border-b border-white/10 bg-[#ffd84d]/10 text-xs font-black uppercase tracking-[0.12em] text-[#ffe98b] md:grid-cols-[0.6fr_1fr_1fr]">
             <div className="px-5 py-4">Critério</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Torneio comum</div>
+            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Formato isolado</div>
             <div className="border-t border-[#ffd84d]/15 px-5 py-4 md:border-l md:border-t-0">Ultimate Rivals</div>
           </div>
           {comparisonRows.map((row) => (
