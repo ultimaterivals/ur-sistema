@@ -80,7 +80,7 @@ export function LeadCaptureSection() {
     >
       <div className="mx-auto max-w-7xl min-w-0">
         <SectionHeader
-          description="Escolha um caminho para abrir o cadastro próprio no site. O interesse segue para triagem operacional, com alternativa externa preservada como contingência."
+          description="Escolha seu caminho e preencha o cadastro no próprio site. Seu perfil entra no radar do UR, com alternativa externa disponível como apoio."
           eyebrow="Escolha seu caminho"
           title="Uma porta de entrada para cada perfil."
         />

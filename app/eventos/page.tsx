@@ -34,7 +34,7 @@ const eventTypes = [
   {
     label: "Temporada",
     title: "Evento oficial",
-    description: "Marco competitivo com regras, validação, cobertura e narrativa pública.",
+    description: "Marco competitivo com regras, cobertura e história pública.",
     icon: Trophy,
   },
   {
@@ -49,7 +49,7 @@ const seasonLine = [
   {
     label: "Entrada",
     title: "Entrada pelo UR Play",
-    description: "Atletas e equipes começam com cadastro, triagem e participação orientada.",
+    description: "Atletas e equipes começam com cadastro, orientação e participação com critério.",
     status: "agenda em organização",
   },
   {
@@ -60,7 +60,7 @@ const seasonLine = [
   {
     label: "Mídia",
     title: "Ranking e mídia",
-    description: "Cada participação validada pode alimentar classificação, narrativa e histórico.",
+    description: "Cada participação confirmada pode alimentar classificação, história e histórico.",
   },
   {
     label: "Virada",
@@ -73,19 +73,19 @@ const eventData = [
   {
     label: "Ranking",
     value: "histórico",
-    detail: "eventos alimentam presença, contexto e classificação com dados validados.",
+    detail: "eventos alimentam presença, contexto e classificação com dados confirmados.",
     icon: BarChart3,
   },
   {
     label: "UR Coins",
     value: "valor",
-    detail: "recompensas dependem de regras oficiais e aprovação operacional.",
+    detail: "recompensas dependem de regras oficiais.",
     icon: Medal,
   },
   {
     label: "Mídia",
     value: "palco",
-    detail: "cobertura transforma participação em narrativa pública.",
+    detail: "cobertura transforma participação em história pública.",
     icon: Camera,
   },
   {
@@ -114,7 +114,7 @@ export default function EventosPage() {
           { label: "Ciclo", value: "mini torneios e eventos" },
           { label: "Fechamento", value: "virada de ranking" },
         ]}
-        statusDescription="Datas, horários, locais, vagas e polos oficiais entram apenas após confirmação operacional."
+        statusDescription="Datas, horários, locais, vagas e polos oficiais entram apenas após confirmação do calendário."
         statusLabel="agenda em organização"
         statusTitle="Cada evento tem função dentro da jornada."
         title="Calendário esportivo com propósito, não agenda solta."
@@ -155,7 +155,7 @@ export default function EventosPage() {
             },
             {
               title: "Mídia como memória",
-              description: "Fotos, bastidores e cobertura transformam o evento em narrativa do ecossistema.",
+              description: "Fotos, bastidores e cobertura transformam o evento em memória do ecossistema.",
             },
           ]}
           title="O jogo termina, mas o histórico continua."
@@ -180,15 +180,15 @@ export default function EventosPage() {
           points={[
             {
               title: "Eventos entram após confirmação",
-              description: "Nada de datas, horários, valores ou vagas reais sem validação oficial.",
+              description: "Nada de datas, horários, valores ou vagas reais sem confirmação oficial.",
             },
             {
               title: "Polo em formação",
-              description: "Quadras parceiras e calendário local serão ativados conforme operação.",
+              description: "Quadras parceiras e calendário local serão ativados conforme confirmação.",
             },
           ]}
           reverse
-          statusLabel="inscrição sujeita à validação"
+          statusLabel="inscrição com critério"
           title="O calendário cresce por ciclo, não por improviso."
         />
       </PageSection>
@@ -202,7 +202,7 @@ export default function EventosPage() {
             </Button>
           </>
         }
-        description="Registre interesse para receber orientação quando agenda, polo, categoria e participação estiverem validados pela operação UR."
+        description="Registre interesse para receber orientação quando agenda, polo, categoria e participação estiverem confirmados."
         eyebrow="Próximo passo"
         items={["UR Play", "mini torneios", "ranking", "mídia", "polos"]}
         statusLabel="agenda em organização"

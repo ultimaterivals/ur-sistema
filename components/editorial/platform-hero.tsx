@@ -39,9 +39,9 @@ export function PlatformHero({
   actions = [],
   badges = [],
   metrics = [],
-  statusLabel = "operação em validação",
-  statusTitle = "Sistema público em construção operacional.",
-  statusDescription = "Dados públicos entram após validação oficial, sem rankings, datas ou promessas inventadas.",
+  statusLabel = "próximo ciclo",
+  statusTitle = "Tudo começa com cadastro, presença e respeito.",
+  statusDescription = "A entrada passa por validação para manter equilíbrio, respeito e organização, sem nomes, datas ou promessas inventadas.",
   className,
   imagePosition = "center",
 }: PlatformHeroProps) {
@@ -66,7 +66,7 @@ export function PlatformHero({
       <div className="mx-auto grid max-w-7xl items-end gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(330px,0.7fr)]">
         <div className="min-w-0">
           <Badge>{eyebrow}</Badge>
-          <h1 className="mt-5 max-w-5xl text-balance text-[clamp(2.9rem,9.5vw,4.8rem)] font-black uppercase leading-[0.92] tracking-normal text-white md:text-[clamp(3.5rem,6vw,5.45rem)]">
+          <h1 className="mt-5 max-w-5xl text-balance text-[clamp(2.55rem,9vw,4.6rem)] font-black uppercase leading-[0.96] tracking-normal text-white md:text-[clamp(3.35rem,5.8vw,5.25rem)]">
             {title}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-white/78 md:text-lg md:leading-8">
@@ -76,7 +76,12 @@ export function PlatformHero({
           {actions.length > 0 ? (
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
               {actions.map((action, index) => (
-                <Button href={action.href} key={action.href} variant={action.variant ?? (index === 0 ? "primary" : "secondary")}>
+                <Button
+                  className={index === 0 ? "w-full sm:w-auto" : "min-h-10 w-full px-3 py-2 text-xs shadow-none sm:w-auto"}
+                  href={action.href}
+                  key={action.href}
+                  variant={action.variant ?? (index === 0 ? "primary" : "secondary")}
+                >
                   {action.label}
                   {index === 0 ? <ArrowRight aria-hidden className="h-4 w-4" /> : null}
                 </Button>
@@ -120,7 +125,7 @@ export function PlatformHero({
             <div className="mt-5 grid gap-2">
               {metrics.map((metric) => (
                 <div
-                  className="grid grid-cols-[110px_1fr] gap-3 rounded-lg border border-white/10 bg-white/[0.045] px-3 py-3"
+                  className="grid grid-cols-1 gap-2 rounded-lg border border-white/10 bg-white/[0.045] px-3 py-3 sm:grid-cols-[110px_1fr] sm:gap-3"
                   key={`${metric.label}-${metric.value}`}
                 >
                   <span className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.12em] text-white/45">

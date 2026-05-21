@@ -78,7 +78,7 @@ const connectionData = [
   {
     label: "Ranking",
     value: "evolução",
-    detail: "histórico público ajuda a visualizar progresso validado.",
+    detail: "histórico público ajuda a visualizar progresso confirmado.",
     icon: BarChart3,
   },
   {
@@ -90,7 +90,7 @@ const connectionData = [
   {
     label: "Mídia",
     value: "reputação",
-    detail: "evolução pode virar narrativa pública com critério.",
+    detail: "evolução pode virar história pública com critério.",
     icon: Camera,
   },
 ] as const;
@@ -113,7 +113,7 @@ export default function CTURPage() {
           { label: "Trabalho", value: "treino e postura" },
           { label: "Retorno", value: "temporada e ranking" },
         ]}
-        statusDescription="Agenda, polos e turmas entram após validação operacional. O CT UR não promete resultado automático."
+        statusDescription="Agenda, polos e turmas entram conforme calendário confirmado. O CT UR não promete resultado automático."
         statusLabel="agenda em organização"
         statusTitle="Desenvolvimento real para atletas que querem evoluir."
         title="Treino é parte da jornada, não promessa milagrosa."
@@ -187,7 +187,7 @@ export default function CTURPage() {
             },
           ]}
           reverse
-          statusLabel="polos após validação"
+          statusLabel="polos com calendário confirmado"
           title="Evolução também é saber sustentar a temporada."
         />
       </PageSection>
@@ -201,10 +201,10 @@ export default function CTURPage() {
             </Button>
           </>
         }
-        description="O cadastro registra interesse. Agenda, polos, treinos e participação no CT UR dependem de validação operacional."
+        description="O cadastro coloca você no radar do UR. Agenda, polos, treinos e participação no CT UR dependem de calendário e critérios claros."
         eyebrow="Próximo passo"
         items={["técnico", "físico", "mental", "liderança", "ranking"]}
-        statusLabel="participação sujeita à validação"
+        statusLabel="entrada com critério"
         title="O desenvolvimento começa com presença."
       />
     </main>

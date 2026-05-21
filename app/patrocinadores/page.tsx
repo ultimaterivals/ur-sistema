@@ -24,7 +24,7 @@ const commercialAssets = [
   {
     label: "Mídia",
     title: "Cobertura e bastidores",
-    description: "Conteúdo oficial, cortes, histórias e presença em narrativas da temporada.",
+    description: "Conteúdo oficial, cortes, histórias e presença em momentos da temporada.",
     icon: Camera,
   },
   {
@@ -42,7 +42,7 @@ const commercialAssets = [
   {
     label: "UR Market",
     title: "Benefício real",
-    description: "Produtos, serviços, descontos e experiências após aprovação comercial.",
+    description: "Produtos, serviços, descontos e experiências com proposta aprovada.",
     icon: ShoppingBag,
   },
 ] as const;
@@ -55,13 +55,13 @@ const brandJourney = [
   },
   {
     label: "Diagnóstico",
-    title: "Fit com o ecossistema",
-    description: "A equipe UR avalia aderência com atletas, quadras, mídia, eventos e comunidade.",
+    title: "Aderência com o público",
+    description: "A equipe UR entende como a marca pode gerar valor para atletas, quadras, mídia, eventos e comunidade.",
   },
   {
     label: "Proposta",
     title: "Cota sob medida",
-    description: "Valores, entregas e contrapartidas reais dependem de proposta e aprovação.",
+    description: "Valores, entregas e contrapartidas reais dependem de proposta comercial.",
   },
   {
     label: "Ativação",
@@ -70,8 +70,8 @@ const brandJourney = [
   },
   {
     label: "Relatório",
-    title: "Métricas futuras",
-    description: "Dados e relatórios entram após operação validada e critérios comerciais claros.",
+    title: "Medição futura",
+    description: "Dados e relatórios entram com calendário real e critérios comerciais claros.",
   },
 ] as const;
 
@@ -79,7 +79,7 @@ const metrics = [
   {
     label: "Alcance",
     value: "a estruturar",
-    detail: "métricas entram após operação validada e calendário comercial ativo.",
+    detail: "métricas entram com calendário comercial ativo.",
     icon: Radio,
   },
   {
@@ -139,8 +139,8 @@ export default function PatrocinadoresPage() {
           { label: "Canal", value: "UR Market e eventos" },
           { label: "Base", value: "comunidade esportiva" },
         ]}
-        statusDescription="Cotas, valores, entregas e métricas reais serão definidos em proposta comercial e aprovação operacional."
-        statusLabel="propostas sob validação"
+        statusDescription="Cotas, valores, entregas e métricas reais serão definidos em proposta comercial."
+        statusLabel="propostas comerciais"
         statusTitle="Marcas entram na jornada, não só no banner."
         title="Patrocínio como plataforma, não espaço de logo."
       />
@@ -210,7 +210,7 @@ export default function PatrocinadoresPage() {
 
       <PageSection id="metricas">
         <DataBoard
-          description="Relatórios, dados e métricas serão estruturados com a operação real. A fase atual já organiza os campos comerciais para medir o que for validado."
+          description="Relatórios, dados e métricas serão estruturados com calendário real. A fase atual organiza os campos comerciais sem prometer números."
           eyebrow="Métricas futuras"
           items={metrics}
           title="Dados comerciais sem inflar promessa."
@@ -251,7 +251,7 @@ export default function PatrocinadoresPage() {
             </Button>
           </>
         }
-        description="O cadastro comercial inicia a triagem. Valores, cotas, entregas, métricas e ativações reais dependem de proposta e aprovação."
+        description="O cadastro comercial coloca sua marca no radar do UR. Valores, cotas, entregas, métricas e ativações reais dependem de proposta."
         eyebrow="Interesse comercial"
         items={["mídia", "eventos", "ranking", "UR Market", "comunidade"]}
         statusLabel="valores sob proposta"

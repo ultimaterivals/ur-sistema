@@ -12,7 +12,7 @@ export function CTASectionPremium() {
               Entre no próximo ciclo do Ultimate Rivals.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
-              Atletas, equipes, quadras, marcas e comunidade já podem registrar interesse para a triagem operacional.
+              Atletas, equipes, quadras, marcas e comunidade já podem entrar no radar do UR para o próximo ciclo.
             </p>
           </div>
           <div className="grid gap-3">
@@ -24,7 +24,7 @@ export function CTASectionPremium() {
               Quero patrocinar
             </Button>
             <p className="text-xs font-bold uppercase leading-5 tracking-[0.12em] text-white/48">
-              Participação sujeita à validação da equipe UR.
+              A entrada passa por validação para manter equilíbrio, respeito e organização.
             </p>
           </div>
         </div>
@@ -32,4 +32,3 @@ export function CTASectionPremium() {
     </section>
   );
 }
-

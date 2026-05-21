@@ -24,32 +24,32 @@ export const metadata: Metadata = {
 
 const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
-  "Você preenche o formulário próprio dentro do site.",
-  "O cadastro é enviado para triagem operacional da equipe UR.",
-  "A equipe UR valida agenda, polo, perfil e prioridade.",
-  "O cadastro não garante vaga, parceria, patrocínio ou participação imediata.",
+  "Você preenche o cadastro dentro do site.",
+  "Seu perfil entra no radar da equipe UR.",
+  "A equipe UR analisa agenda, polo, perfil e próximo passo.",
+  "A entrada passa por validação para manter equilíbrio, respeito e organização.",
 ] as const;
 
 const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Sim. O cadastro próprio registra o interesse para triagem operacional e organização interna da equipe UR.",
+      "Sim. O cadastro coloca seu perfil no radar da equipe UR e ajuda a organizar o próximo contato.",
   },
   {
     question: "Preciso criar conta ou pagar agora?",
     answer:
-      "Não. Nesta fase o objetivo é registrar interesse e passar por validação operacional antes de qualquer próximo passo.",
+      "Não. Nesta fase o objetivo é registrar interesse e entender o melhor caminho antes de qualquer próximo passo.",
   },
   {
     question: "Posso entrar como atleta sem equipe?",
     answer:
-      "Sim. O caminho do atleta começa pelo UR Play, com histórico e ranking apenas após cadastro, validação e participação oficial.",
+      "Sim. O caminho do atleta começa pelo UR Play, com histórico e ranking apenas após cadastro, presença e participação confirmada.",
   },
   {
     question: "Patrocinadores e quadras já podem fechar acordo?",
     answer:
-      "Podem registrar interesse pelo formulário correto. Acordos, propostas, ativações e polos dependem de aprovação e validação operacional.",
+      "Podem registrar interesse pelo cadastro correto. Acordos, propostas, ativações e polos dependem de alinhamento com a equipe UR.",
   },
 ] as const;
 
@@ -82,16 +82,16 @@ export default function CadastroPage() {
           { href: "#aviso-validacao", label: "Aviso de validação", variant: "ghost" },
         ]}
         badges={leadProfileOrder.map((profile) => leadFormConfigs[profile].cardTitle)}
-        description="Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Esta central organiza a captação como cadastro de interesse aberto, com validação operacional antes de qualquer próximo passo."
+        description="Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Seu cadastro coloca você no radar do UR e ajuda a equipe a indicar o próximo caminho."
         eyebrow="Cadastro UR • central de interesse"
         image={siteImages.communityMoment}
         imagePosition="center 45%"
         metrics={[
           { label: "Perfis", value: "atleta, equipe, patrocinador, quadra e comunidade" },
-          { label: "Fluxo", value: "cadastro enviado para triagem operacional" },
-          { label: "Status", value: "participação sujeita à validação UR" },
+          { label: "Fluxo", value: "cadastro analisado pela equipe UR" },
+          { label: "Status", value: "entrada com critério e respeito" },
         ]}
-        statusDescription="Cadastro não garante vaga, parceria, patrocínio ou participação imediata. A equipe UR valida perfil, agenda, polo e prioridade."
+        statusDescription="Cadastro não garante vaga, parceria, patrocínio ou participação imediata. A equipe UR analisa perfil, agenda, polo e prioridade."
         statusLabel="captação real"
         statusTitle="Entre no ecossistema pelo caminho certo."
         title="Central oficial de cadastro de interesse."
@@ -101,9 +101,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="O MVP organiza a intenção em uma central própria do site e direciona cada perfil para triagem operacional."
+          description="A central organiza seu interesse e direciona cada perfil para um próximo passo claro dentro do UR."
           eyebrow="Depois do interesse"
-          title="Captação real, validação operacional antes do próximo passo."
+          title="Cadastro aberto, próximo passo com critério."
         />
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
           {nextSteps.map((item, index) => (
@@ -119,9 +119,9 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="Os formulários próprios registram interesse para triagem operacional. Cadastro não garante vaga, parceria, patrocínio ou participação imediata."
-          eyebrow="Aviso de validação"
-          title="Cadastro próprio ativo. Aprovação continua em validação."
+          description="Os cadastros registram interesse e ajudam a equipe UR a orientar o melhor caminho. Cadastro não garante vaga, parceria, patrocínio ou participação imediata."
+          eyebrow="Aviso importante"
+          title="Cadastro aberto. Entrada com equilíbrio e respeito."
         />
         <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]" premium>
           <div>
@@ -132,8 +132,8 @@ export default function CadastroPage() {
               Enviar não garante aprovação.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase registra interesse e organiza a triagem operacional. A equipe UR ainda valida agenda, polo,
-              perfil, proposta e prioridade antes de liberar qualquer próximo passo.
+              Esta fase registra interesse e ajuda a equipe UR a analisar agenda, polo, perfil, proposta e prioridade
+              antes de liberar qualquer próximo passo.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -151,9 +151,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
-          description="O WhatsApp segue reservado para conexão oficial quando o canal operacional for validado. A comunidade já pode entrar pela central de cadastro."
+          description="O WhatsApp segue como canal de apoio para direcionamento. A comunidade já pode entrar pela central de cadastro."
           eyebrow="CTAs de conversão"
-          title="WhatsApp preparado e comunidade dentro da central."
+          title="Canais claros para quem quer entrar no UR."
         />
         <div className="grid gap-5 md:grid-cols-2">
           <Card className="p-5 md:p-6" premium>
@@ -162,8 +162,8 @@ export default function CadastroPage() {
             </span>
             <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">CTA para WhatsApp</h3>
             <p className="mt-4 text-sm leading-6 text-white/70">
-              Canal preparado para atendimento inicial, dúvidas e direcionamento quando o WhatsApp UR oficial for
-              validado.
+              Canal de apoio para atendimento inicial, dúvidas e direcionamento quando a equipe UR abrir o próximo
+              contato.
             </p>
             <Button className="mt-6 w-full" href={externalLinks.whatsappUr.href}>
               {externalLinks.whatsappUr.label}
@@ -189,7 +189,7 @@ export default function CadastroPage() {
               Quero acompanhar
             </Button>
             <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">
-              cadastro próprio no site com alternativa externa de contingência
+              cadastro no site com alternativa externa de apoio
             </p>
           </Card>
         </div>
@@ -197,7 +197,7 @@ export default function CadastroPage() {
 
       <PageSection id="faq">
         <SectionHeader
-          description="Perguntas rápidas para deixar a conversão clara e reforçar que todo próximo passo depende de validação operacional."
+          description="Perguntas rápidas para deixar o cadastro claro e reforçar que todo próximo passo precisa de critério."
           eyebrow="FAQ rápido"
           title="Antes de escolher, entenda a fase atual."
         />
@@ -226,10 +226,10 @@ export default function CadastroPage() {
             <div>
               <Badge>Central UR</Badge>
               <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Escolha um caminho. A operação valida o próximo passo.
+                Você entra, é avaliado e recebe um caminho claro dentro do UR.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                O MVP agora tem uma central de conversão com cadastro próprio e triagem operacional. A equipe UR valida
+                A central reúne atletas, equipes, marcas, quadras e comunidade em um só caminho. A equipe UR analisa
                 cada interesse antes de liberar agenda, polo, proposta, vaga ou participação.
               </p>
             </div>

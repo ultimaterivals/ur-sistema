@@ -42,7 +42,7 @@ const systemAssets = [
   {
     label: "Palco",
     title: "Mídia própria",
-    description: "Bastidores, histórias, cortes, rankings narrativos e memória esportiva.",
+    description: "Bastidores, histórias, cortes, ranking com contexto e memória esportiva.",
     icon: Camera,
   },
   {
@@ -75,12 +75,12 @@ const ecosystemFlow = [
   {
     label: "Entrada",
     title: "Entrar pelo UR Play",
-    description: "A jornada começa com cadastro, triagem e participação orientada.",
+    description: "A jornada começa com cadastro, orientação e participação com critério.",
   },
   {
     label: "Histórico",
     title: "Gerar histórico",
-    description: "Presença, nível, conduta e participação criam rastro esportivo validado.",
+    description: "Presença, nível, conduta e participação criam rastro esportivo confirmado.",
   },
   {
     label: "Ranking",
@@ -89,7 +89,7 @@ const ecosystemFlow = [
   },
   {
     label: "Mídia",
-    title: "Virar narrativa",
+    title: "Virar história",
     description: "Mídia própria transforma participação em bastidor, destaque e memória.",
   },
   {
@@ -100,7 +100,7 @@ const ecosystemFlow = [
   {
     label: "Polos",
     title: "Expandir polos",
-    description: "Quadras e comunidade sustentam recorrência territorial e crescimento operacional.",
+    description: "Quadras e comunidade sustentam recorrência territorial e crescimento local.",
   },
 ] as const;
 
@@ -167,7 +167,7 @@ export default function EcossistemaPage() {
           { label: "Organização", value: "ranking e temporada" },
           { label: "Valor", value: "mídia, market e polos" },
         ]}
-        statusDescription="O objetivo é transformar participação em histórico, histórico em narrativa, narrativa em oportunidade e oportunidade em valor para a comunidade."
+        statusDescription="O objetivo é transformar participação em histórico, histórico em história pública, história em oportunidade e oportunidade em valor para a comunidade."
         statusLabel="sistema contínuo"
         statusTitle="Cada participação precisa deixar rastro."
         title="O Ultimate Rivals é um ecossistema esportivo contínuo."
@@ -225,14 +225,14 @@ export default function EcossistemaPage() {
         </Card>
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="operacao">
+      <PageSection className="bg-[#07080c]" id="ambiente">
         <ImageFeaturePanel
           actions={[
             { href: "/atletas", label: "Ver atletas", variant: "secondary" },
             { href: "/patrocinadores", label: "Ver patrocinadores", variant: "ghost" },
           ]}
-          description="O ecossistema só faz sentido quando junta esporte real, comunidade, operação e oportunidade comercial. A foto mostra o ambiente que sustenta a plataforma."
-          eyebrow="Esporte, comunidade e operação"
+          description="O ecossistema só faz sentido quando junta esporte real, comunidade, organização e oportunidade comercial. A foto mostra o ambiente que sustenta a plataforma."
+          eyebrow="Esporte, comunidade e organização"
           image={siteImages.communityMoment}
           imagePosition="center 44%"
           points={[
@@ -242,7 +242,7 @@ export default function EcossistemaPage() {
             },
             {
               title: "Crescimento com critério",
-              description: "Dados públicos, agenda e benefícios entram conforme validação oficial.",
+              description: "Dados públicos, agenda e benefícios entram com critérios claros.",
             },
           ]}
           title="O sistema nasce da quadra, não de uma planilha vazia."
@@ -267,7 +267,7 @@ export default function EcossistemaPage() {
             </Button>
           </>
         }
-        description="O cadastro registra interesse para triagem operacional. Participação, ranking, equipe, patrocínio, quadra parceira e comunidade seguem sujeitos à validação oficial."
+        description="O cadastro coloca você no radar do UR. Participação, ranking, equipe, patrocínio, quadra parceira e comunidade seguem critérios para manter equilíbrio e respeito."
         eyebrow="Próximo passo"
         items={["atleta", "equipe", "patrocinador", "quadra", "comunidade"]}
         statusLabel="cadastro aberto"

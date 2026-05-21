@@ -25,7 +25,7 @@ const leaderboardRows = [
     position: "01",
     title: "top 1 em formação",
     status: "sem atleta real publicado",
-    meta: "posição abre apenas com dados reais e participação validada.",
+    meta: "posição abre apenas com dados reais e participação confirmada.",
   },
   {
     position: "02",
@@ -45,7 +45,7 @@ const rankingFlow = [
   {
     label: "Entrada",
     title: "UR Play",
-    description: "A primeira base vem da participação observada e validada.",
+    description: "A primeira base vem da participação observada e confirmada.",
   },
   {
     label: "Leitura",
@@ -60,12 +60,12 @@ const rankingFlow = [
   {
     label: "Publicação",
     title: "Ranking",
-    description: "Dados públicos entram somente após validação oficial da operação.",
+    description: "Seu nome aparece quando houver participação confirmada e critérios claros.",
   },
   {
     label: "Valor",
     title: "Oportunidades",
-    description: "Mídia, Draft, CT UR, recompensas e repasses dependem do ciclo validado.",
+    description: "Mídia, Draft, CT UR, recompensas e repasses dependem de regras claras no ciclo.",
   },
 ] as const;
 
@@ -115,7 +115,7 @@ const criteriaRows = [
   {
     criterion: "Conduta",
     role: "Protege comunidade, fair play e confiança",
-    status: "critério operacional",
+    status: "postura e respeito",
   },
 ] as const;
 
@@ -128,18 +128,18 @@ export default function RankingPage() {
           { href: "/cadastro#atleta", label: "Cadastrar interesse", variant: "secondary" },
         ]}
         badges={["Atletas", "Equipes", "Níveis", "UR Coins", "Mídia"]}
-        description="O Ranking UR organiza atletas, equipes, níveis, polos, modalidades e engajamento como narrativa pública da temporada, sempre com dados reais apenas após validação oficial."
+        description="O Ranking UR organiza atletas, equipes, níveis, polos, modalidades e engajamento como registro público da temporada, sempre com dados reais confirmados."
         eyebrow="Ranking UR • produto central"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
         metrics={[
           { label: "Origem", value: "UR Play" },
-          { label: "Critério", value: "participação validada" },
+          { label: "Critério", value: "participação confirmada" },
           { label: "Impacto", value: "mídia e oportunidades" },
         ]}
         statusDescription="Sem atletas, números, posições ou pontuação real publicada nesta fase. A estrutura mostra a lógica do produto antes da abertura oficial."
         statusLabel="ranking em formação"
-        statusTitle="Ranking é narrativa da temporada."
+        statusTitle="Ranking é história da temporada."
         title="Não é só tabela. É reputação esportiva."
       />
 
@@ -159,7 +159,7 @@ export default function RankingPage() {
           description="O ranking precisa explicar de onde vem cada informação. A jornada abaixo resume a lógica antes da publicação de dados reais."
           eyebrow="Fluxo do ranking"
           steps={rankingFlow}
-          title="Da participação validada à oportunidade."
+          title="Da participação confirmada à oportunidade."
         />
       </PageSection>
 
@@ -219,11 +219,11 @@ export default function RankingPage() {
           points={[
             {
               title: "UR Coins",
-              description: "Conectam participação, desempenho, engajamento e benefícios quando a operação estiver validada.",
+              description: "Conectam participação, desempenho, engajamento e benefícios quando as regras estiverem claras.",
             },
             {
               title: "Mídia própria",
-              description: "Transforma ranking em história, destaque, rivalidade e memória pública do ecossistema.",
+              description: "Transforma ranking em história, destaque, rivalidade e memória esportiva do ecossistema.",
             },
           ]}
           title="Posição só importa quando vira contexto."
@@ -239,10 +239,10 @@ export default function RankingPage() {
             </Button>
           </>
         }
-        description="A entrada no ranking começa com participação validada. Nada de nomes, números ou posições reais será publicado sem confirmação oficial."
+        description="A entrada no ranking começa com participação confirmada. Nenhum nome, número ou posição real será publicado sem critérios claros."
         eyebrow="Entrada no ranking"
         items={["UR Play", "níveis", "equipes", "UR Coins", "mídia"]}
-        statusLabel="dados reais após validação"
+        statusLabel="registro com critério"
         title="O ranking começa antes da tabela: começa na presença."
       />
     </main>

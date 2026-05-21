@@ -86,7 +86,7 @@ const leagueSignals = [
 
 const quickProof = [
   { label: "Esporte real", value: "quadra, areia, atletas e comunidade" },
-  { label: "Operação", value: "temporada em validação" },
+  { label: "Temporada", value: "próximo ciclo em organização" },
   { label: "Entrada", value: "cadastro de interesse aberto" },
 ] as const;
 
@@ -111,8 +111,8 @@ export default function Home() {
           <div className="mx-auto flex min-h-[calc(100svh-68px)] max-w-7xl flex-col justify-end px-5 pb-7 md:min-h-[760px] md:pb-9 lg:px-8">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(340px,0.48fr)] lg:items-end">
               <div className="min-w-0">
-                <Badge>Ultimate Rivals • ecossistema em construção</Badge>
-                <h1 className="mt-4 max-w-5xl text-balance text-[clamp(3.4rem,15vw,7rem)] font-black uppercase leading-[0.82] text-white md:text-[clamp(4.2rem,7vw,7rem)]">
+                <Badge>Ultimate Rivals • ecossistema esportivo</Badge>
+                <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.85rem,11.5vw,5.8rem)] font-black uppercase leading-[0.86] text-white md:text-[clamp(3.6rem,6.3vw,6.4rem)]">
                   O jogo virou ecossistema.
                 </h1>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-white/80 md:text-xl md:leading-8">
@@ -123,7 +123,7 @@ export default function Home() {
                     Entrar no UR
                     <ArrowRight aria-hidden className="h-4 w-4" />
                   </Button>
-                  <Button href="/ecossistema" variant="secondary">
+                  <Button className="min-h-10 px-3 py-2 text-xs shadow-none sm:w-auto" href="/ecossistema" variant="secondary">
                     Ver ecossistema
                   </Button>
                 </div>
@@ -133,7 +133,7 @@ export default function Home() {
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">status da temporada</div>
-                    <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Operação em validação</h2>
+                    <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Próximo ciclo em organização</h2>
                   </div>
                   <Trophy aria-hidden className="h-8 w-8 text-[#ffd84d]" />
                 </div>
@@ -237,7 +237,7 @@ export default function Home() {
 
       <Section className="bg-black" id="acervo">
         <GalleryStrip
-          description="Comemoração, ataque, defesa, premiação, público e bastidores começam a dar textura real para a narrativa pública."
+          description="Comemoração, ataque, defesa, premiação, público e bastidores começam a dar textura real para a memória esportiva."
           images={galleryImages}
           title="A Home agora respira quadra, areia e gente."
         />
@@ -284,7 +284,7 @@ export default function Home() {
 
       <Section id="reconhecimento">
         <SectionHeadingPremium
-          description="O reconhecimento no UR nasce de presença, evolução, ranking, participação validada, mídia e benefícios com critério."
+          description="O reconhecimento no UR nasce de presença, evolução, ranking, participação confirmada, mídia e benefícios com critério."
           eyebrow="Reconhecimento"
           title="Evoluir precisa gerar memória, palco e recompensa."
         />
@@ -313,7 +313,7 @@ export default function Home() {
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
           <ImageFeatureCard
             cta="Acompanhar comunidade"
-            description="A comunidade acompanha agenda, mídia, bastidores, próximos passos e oportunidades à medida que a operação é validada."
+            description="A comunidade acompanha agenda, mídia, bastidores, próximos passos e oportunidades conforme o calendário avança."
             eyebrow="Comunidade"
             href="/cadastro#comunidade"
             image={homeImageRoles.comunidade}
@@ -325,8 +325,8 @@ export default function Home() {
             <div className="mt-6 grid gap-4">
               {[
                 ["É torneio?", "Não. É ecossistema contínuo com UR Play, ranking, equipes, mídia, eventos e recompensas."],
-                ["Já tem ranking real?", "Ainda não. Dados públicos entram após validação oficial e participação confirmada."],
-                ["Cadastro garante vaga?", "Não. O cadastro abre triagem operacional; participação depende da equipe UR."],
+                ["Já tem ranking real?", "Ainda não. Seu nome começa a aparecer conforme presença, desempenho e participação confirmada."],
+                ["Cadastro garante vaga?", "Não. Seu cadastro coloca você no radar do UR; a entrada passa por validação para manter equilíbrio, respeito e organização."],
               ].map(([question, answer]) => (
                 <div className="border-t border-white/10 pt-4" key={question}>
                   <h3 className="text-sm font-black uppercase leading-5 text-white">{question}</h3>

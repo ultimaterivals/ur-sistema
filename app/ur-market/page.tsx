@@ -22,7 +22,7 @@ const coinItems = [
   {
     label: "Participação",
     value: "presença",
-    detail: "UR Coins podem reconhecer recorrência, compromisso e participação validada.",
+    detail: "UR Coins podem reconhecer recorrência, compromisso e participação confirmada.",
     icon: Users,
   },
   {
@@ -34,13 +34,13 @@ const coinItems = [
   {
     label: "Engajamento",
     value: "comunidade",
-    detail: "ações e mídia podem ampliar valor quando a operação estiver madura.",
+    detail: "ações e mídia podem ampliar valor com calendário e parceiros confirmados.",
     icon: Sparkles,
   },
   {
     label: "Resgate",
-    value: "validação",
-    detail: "benefícios reais entram após aprovação operacional e comercial.",
+    value: "critério",
+    detail: "benefícios reais entram com aprovação comercial.",
     icon: ShoppingBag,
   },
 ] as const;
@@ -61,7 +61,7 @@ const rewardAssets = [
   {
     label: "Experiências",
     title: "CT UR e eventos",
-    description: "Acesso, vivências e experiências entram conforme agenda e validação.",
+    description: "Acesso, vivências e experiências entram conforme agenda confirmada.",
     icon: Dumbbell,
   },
   {
@@ -89,8 +89,8 @@ const redemptionFlow = [
     description: "Valores em UR Coins serão definidos oficialmente antes de qualquer resgate real.",
   },
   {
-    label: "Validação",
-    title: "Validar operação",
+    label: "Confirmação",
+    title: "Confirmar resgate",
     description: "A equipe UR confirma disponibilidade, regra, parceiro e próximo passo.",
   },
 ] as const;
@@ -113,7 +113,7 @@ export default function URMarketPage() {
           { label: "Base", value: "ranking e participação" },
           { label: "Saída", value: "benefícios aprovados" },
         ]}
-        statusDescription="Produtos, valores e benefícios reais entram apenas após validação oficial e aprovação comercial."
+        statusDescription="Produtos, valores e benefícios reais entram apenas com regras claras e aprovação comercial."
         statusLabel="market em preparação"
         statusTitle="Desempenho precisa virar benefício com critério."
         title="UR Coins conectam jornada esportiva e recompensa."
@@ -121,7 +121,7 @@ export default function URMarketPage() {
 
       <PageSection id="coins">
         <DataBoard
-          description="UR Coins não são promessa de ganho. São uma camada planejada para reconhecer presença, desempenho e engajamento quando a operação estiver validada."
+          description="UR Coins não são promessa de ganho. São uma camada planejada para reconhecer presença, desempenho e engajamento com regras claras."
           eyebrow="Painel de UR Coins"
           items={coinItems}
           title="Moeda interna para organizar valor, não inflar expectativa."
@@ -140,12 +140,12 @@ export default function URMarketPage() {
           imagePosition="center 46%"
           points={[
             {
-              title: "Produtos entram após validação",
-              description: "A experiência precisa proteger atletas, marcas e operação antes de abrir resgate real.",
+              title: "Produtos entram com critério",
+              description: "A experiência precisa proteger atletas, marcas e comunidade antes de abrir resgate real.",
             },
             {
               title: "Valores em UR Coins serão oficiais",
-              description: "Nenhuma precificação fictícia será exibida no MVP público.",
+              description: "Nenhuma precificação fictícia será exibida no site público.",
             },
           ]}
           title="Recompensa boa parece oportunidade, não vitrine vazia."
@@ -155,7 +155,7 @@ export default function URMarketPage() {
       <PageSection id="categorias">
         <CommercialAssetPanel
           assets={rewardAssets}
-          description="As categorias preparam o Market para produtos, serviços, experiências e ativações comerciais, mantendo clareza de que tudo depende de aprovação operacional."
+          description="As categorias preparam o Market para produtos, serviços, experiências e ativações comerciais, mantendo clareza de que tudo depende de aprovação."
           eyebrow="Categorias de recompensa"
           title="Benefícios que fazem sentido para a jornada."
         />
@@ -163,7 +163,7 @@ export default function URMarketPage() {
 
       <PageSection className="bg-[#07080c]" id="resgate">
         <ProcessTimeline
-          description="O fluxo de resgate precisa ser simples, auditável e honesto: primeiro vem a participação validada, depois a vitrine, depois a aprovação."
+          description="O fluxo de resgate precisa ser simples, auditável e honesto: primeiro vem a participação confirmada, depois a vitrine, depois a aprovação."
           eyebrow="Fluxo de resgate"
           steps={redemptionFlow}
           title="Como valor pode virar benefício."
@@ -201,7 +201,7 @@ export default function URMarketPage() {
             </Button>
           </>
         }
-        description="O Market entra como camada de valor do ecossistema. Itens, valores e resgates reais dependem de validação oficial."
+        description="O Market entra como camada de valor do ecossistema. Itens, valores e resgates reais dependem de regras claras."
         eyebrow="Próximo passo"
         items={["UR Coins", "ranking", "benefícios", "patrocinadores", "comunidade"]}
         statusLabel="vitrine inicial em preparação"

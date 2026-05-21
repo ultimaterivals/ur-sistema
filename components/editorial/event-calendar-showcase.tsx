@@ -26,7 +26,7 @@ const events: EventCard[] = [
   {
     title: "Mini Torneio",
     eyebrow: "Competição recorrente",
-    description: "Formato preparado para alimentar narrativa, ranking e mídia da temporada.",
+    description: "Formato preparado para alimentar história, ranking e mídia da temporada.",
     status: "eventos após confirmação",
     image: homeImageRoles.eventos[1],
     icon: Swords,

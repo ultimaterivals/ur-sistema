@@ -6,9 +6,9 @@ import { homeImageRoles } from "@/lib/content/site-images";
 import { EditorialImage } from "./editorial-image";
 
 const rankingRows = [
-  { label: "Top 1", title: "posição em validação", description: "sem atleta real nesta etapa", icon: Crown },
-  { label: "Top 2", title: "posição em validação", description: "ranking abre após participação oficial", icon: Trophy },
-  { label: "Top 3", title: "posição em validação", description: "dados públicos entram após validação", icon: Shield },
+  { label: "Top 1", title: "top 1 a caminho", description: "seu nome aparece após presença e desempenho confirmados", icon: Crown },
+  { label: "Top 2", title: "top 2 a caminho", description: "ranking abre com participação oficial", icon: Trophy },
+  { label: "Top 3", title: "top 3 a caminho", description: "registro público entra com critério", icon: Shield },
 ] as const;
 
 const rankingTypes = ["Individual", "Equipes", "Engajamento", "Polos"] as const;
@@ -31,7 +31,7 @@ export function RankingShowcase() {
             Ranking com palco, não só tabela.
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-white/72">
-            A classificação pública será construída com presença, evolução, nível, participação e validação operacional.
+            A classificação pública nasce de presença, evolução, nível e participação confirmada.
           </p>
           <div className="mt-6">
             <Button href="/ranking" variant="secondary">
@@ -79,7 +79,7 @@ export function RankingShowcase() {
           {rankingTypes.map((type) => (
             <div className="rounded-lg border border-white/10 bg-white/[0.045] p-3" key={type}>
               <div className="text-xs font-black uppercase tracking-[0.12em] text-white">{type}</div>
-              <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white/42">dados após validação</div>
+              <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-white/42">após confirmação</div>
             </div>
           ))}
         </div>

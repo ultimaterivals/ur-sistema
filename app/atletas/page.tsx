@@ -23,7 +23,7 @@ const athleteJourney = [
   {
     label: "Entrada",
     title: "Cadastrar interesse",
-    description: "O atleta escolhe seu caminho e entra na triagem operacional do ecossistema.",
+    description: "Seu cadastro coloca você no radar do UR e abre o primeiro caminho dentro do ecossistema.",
     status: "cadastro aberto",
   },
   {
@@ -44,7 +44,7 @@ const athleteJourney = [
   {
     label: "Palco",
     title: "Aparecer na mídia",
-    description: "Histórias, bastidores e destaques conectam performance, narrativa e comunidade.",
+    description: "Histórias, bastidores e destaques conectam seu desempenho à comunidade.",
   },
   {
     label: "Valor",
@@ -64,7 +64,7 @@ const athleteData = [
   {
     label: "Presença",
     value: "registrada",
-    detail: "participação e compromisso entram no histórico quando validados.",
+    detail: "participação e compromisso entram no histórico quando confirmados.",
     icon: ShieldCheck,
   },
   {
@@ -76,7 +76,7 @@ const athleteData = [
   {
     label: "Mídia",
     value: "próxima camada",
-    detail: "destaques e bastidores podem virar narrativa pública.",
+    detail: "destaques e bastidores podem virar memória esportiva.",
     icon: Camera,
   },
   {
@@ -90,9 +90,9 @@ const athleteData = [
 const rankingRows = [
   {
     position: "01",
-    title: "posição em validação",
+    title: "seu nome no ranking",
     status: "sem atleta real publicado",
-    meta: "dados públicos entram após participação e validação oficial.",
+    meta: "seu nome aparece conforme presença e desempenho confirmados.",
   },
   {
     position: "02",
@@ -104,7 +104,7 @@ const rankingRows = [
     position: "03",
     title: "destaque futuro",
     status: "mídia própria",
-    meta: "a visibilidade depende da operação e das regras de temporada.",
+    meta: "a visibilidade cresce com presença, postura e temporada.",
   },
 ] as const;
 
@@ -126,8 +126,8 @@ export default function AtletasPage() {
           { label: "Base", value: "histórico validado" },
           { label: "Saída", value: "reputação e oportunidade" },
         ]}
-        statusDescription="Nenhum dado real de atleta é publicado sem cadastro, participação e validação oficial."
-        statusLabel="perfil em validação"
+        statusDescription="Seu perfil só aparece publicamente após cadastro, presença e confirmação oficial."
+        statusLabel="perfil em construção"
         statusTitle="Não é só jogar. É construir trajetória."
         title="O atleta é protagonista do ecossistema."
       />
@@ -135,7 +135,7 @@ export default function AtletasPage() {
       <PageSection id="perfil">
         <ProfileMockup
           cta={{ href: "/cadastro#atleta", label: "Cadastrar interesse" }}
-          description="O perfil do atleta funciona como um passaporte esportivo: presença, nível, histórico, mídia e oportunidades em um só lugar quando a operação validar os dados."
+          description="O perfil do atleta funciona como um passaporte esportivo: presença, nível, histórico, mídia e oportunidades em um só lugar quando seus dados forem confirmados."
           eyebrow="Perfil do atleta em formação"
           fields={profileFields}
           highlights={["disciplina", "presença", "evolução", "respeito", "competitividade saudável"]}
@@ -146,7 +146,7 @@ export default function AtletasPage() {
 
       <PageSection className="bg-[#07080c]" id="jornada">
         <ProcessTimeline
-          description="A jornada foi simplificada para o atleta entender o caminho sem precisar ler blocos longos: entrar, jogar, ser observado, evoluir, aparecer e gerar valor."
+          description="Você entende o caminho em poucos passos: entrar, jogar, ser observado, evoluir, aparecer e gerar valor."
           eyebrow="Jornada visual"
           steps={athleteJourney}
           title="Do primeiro cadastro ao histórico dentro do UR."
@@ -155,7 +155,7 @@ export default function AtletasPage() {
 
       <PageSection id="registro">
         <DataBoard
-          description="O Ultimate Rivals não vende promessa de resultado. A proposta é registrar a trajetória esportiva com critérios, presença e validação."
+          description="O Ultimate Rivals não vende promessa de resultado. A proposta é registrar sua trajetória esportiva com critérios, presença e respeito."
           eyebrow="O que passa a importar"
           items={athleteData}
           title="Ranking, mídia e evolução dependem de rastro real."
@@ -168,7 +168,7 @@ export default function AtletasPage() {
             { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
             { href: "/ct-ur", label: "Conhecer CT UR", variant: "ghost" },
           ]}
-          description="O esporte amador também merece palco. A mídia UR existe para transformar participação validada em narrativa, bastidor, reputação e memória da temporada."
+          description="O esporte amador também merece palco. A mídia UR existe para transformar sua participação em história, bastidor, reputação e memória da temporada."
           eyebrow="Mídia e desenvolvimento"
           image={siteImages.athleteFocus}
           imagePosition="center 36%"
@@ -188,7 +188,7 @@ export default function AtletasPage() {
 
       <PageSection id="ranking-preview">
         <LeaderboardPanel
-          description="O ranking individual será publicado somente com dados reais validados. Nesta fase, o preview mostra a estrutura do produto sem inventar atleta, número ou posição."
+          description="O ranking individual será publicado somente com dados reais confirmados. Nesta fase, o preview mostra a estrutura do produto sem inventar atleta, número ou posição."
           eyebrow="Ranking individual preview"
           image={siteImages.attackBlock}
           rows={rankingRows}
@@ -206,7 +206,7 @@ export default function AtletasPage() {
             </Button>
           </>
         }
-        description="O cadastro de interesse abre a triagem operacional. Participação, ranking, mídia, equipes e oportunidades dependem de validação oficial."
+        description="O cadastro coloca você no radar do UR. Participação, ranking, mídia, equipes e oportunidades passam por validação para manter equilíbrio e respeito."
         eyebrow="Próximo passo"
         items={["UR Play", "ranking", "mídia", "CT UR", "equipes"]}
         statusLabel="cadastro aberto"

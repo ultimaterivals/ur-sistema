@@ -27,7 +27,7 @@ const cycleSteps = [
   {
     label: "Nível",
     title: "Nivelamento",
-    description: "Organização por modalidade, categoria, nível e polo quando a operação validar.",
+    description: "Organização por modalidade, categoria, nível e polo quando o calendário for confirmado.",
   },
   {
     label: "Ranking",
@@ -61,7 +61,7 @@ const seasonAssets = [
   {
     label: "Disputa",
     title: "Mini torneios",
-    description: "Eventos recorrentes mantêm o ciclo ativo e alimentam narrativa.",
+    description: "Eventos recorrentes mantêm o ciclo ativo e alimentam história.",
     icon: Swords,
   },
   {
@@ -82,7 +82,7 @@ const ecosystemData = [
   {
     label: "Ranking",
     value: "ativo",
-    detail: "classificação vira narrativa contínua ao longo do ciclo.",
+    detail: "classificação vira memória esportiva ao longo do ciclo.",
     icon: BarChart3,
   },
   {
@@ -182,14 +182,14 @@ export default function TemporadaPage() {
 
       <PageSection id="recompensas">
         <ImageFeaturePanel
-          description="Repasses, premiações e recompensas dependem de validação oficial do ciclo. A comunicação pública precisa ser clara: primeiro regra, depois reconhecimento."
+          description="Repasses, premiações e recompensas dependem de regras claras do ciclo. A comunicação pública precisa ser direta: primeiro regra, depois reconhecimento."
           eyebrow="Premiações e novo ciclo"
           image={siteImages.mediaCoverage}
           imagePosition="center 45%"
           points={[
             {
               title: "Reconhecimento com regra",
-              description: "Premiações só fazem sentido quando critérios e operação estão definidos.",
+              description: "Premiações só fazem sentido quando critérios e regras estão definidos.",
             },
             {
               title: "Novo trimestre",
@@ -197,7 +197,7 @@ export default function TemporadaPage() {
             },
           ]}
           reverse
-          statusLabel="recompensas após validação"
+          statusLabel="recompensas com regra clara"
           title="Reconhecer evolução exige critério."
         />
       </PageSection>
@@ -215,7 +215,7 @@ export default function TemporadaPage() {
         eyebrow="Próximo passo"
         items={["UR Play", "ranking", "eventos", "virada", "novo ciclo"]}
         statusLabel="agenda oficial após confirmação"
-        title="A temporada começa com presença validada."
+        title="A temporada começa com presença confirmada."
       />
     </main>
   );

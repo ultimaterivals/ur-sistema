@@ -45,7 +45,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
       setSubmitState({
         status: "success",
         message:
-          "Cadastro recebido. A equipe Ultimate Rivals fará a validação operacional antes de liberar próximos passos.",
+          "Cadastro recebido. A equipe Ultimate Rivals vai analisar seu perfil antes de liberar próximos passos.",
       });
       form.reset();
       return;
@@ -64,7 +64,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
 
     setSubmitState({
       status: "submitting",
-      message: "Enviando cadastro para a operação UR...",
+      message: "Enviando cadastro para a equipe UR...",
     });
 
     const payload = buildLeadPayload(config.profile, data, getUtmParams());
@@ -101,12 +101,12 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
 
           <div className="mt-5 rounded-lg border border-white/10 bg-black/30 p-4">
             <p className="text-xs font-black uppercase leading-5 tracking-[0.12em] text-white/58">
-              Dados automáticos enviados
+              Seu cadastro entra com
             </p>
             <ul className="mt-3 grid gap-2 text-sm leading-5 text-white/68">
               <li>Status inicial: Novo</li>
               <li>Prioridade inicial: A definir</li>
-              <li>Responsável inicial: Operação UR</li>
+              <li>Acompanhamento: equipe UR</li>
               <li>Próximo passo: Triagem inicial</li>
               <li>Origem: Site / Cadastro UR</li>
             </ul>
@@ -114,10 +114,9 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
 
           {!captureConfigured ? (
             <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
-              <p className="font-black uppercase tracking-wide">Canal principal em validação</p>
+              <p className="font-black uppercase tracking-wide">Cadastro alternativo disponível</p>
               <p className="mt-1">
-                O canal principal de cadastro ainda está sendo validado nesta versão. Use a alternativa externa para
-                registrar interesse enquanto a equipe UR confirma a operação.
+                Se o cadastro principal não estiver disponível, use a alternativa externa para entrar no radar do UR.
               </p>
             </div>
           ) : null}
@@ -142,8 +141,8 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
           </div>
 
           <div className="rounded-lg border border-white/10 bg-black/25 p-4 text-sm leading-6 text-white/68">
-            O cadastro não garante vaga, parceria, patrocínio ou participação imediata. A equipe UR fará validação
-            operacional antes de liberar próximos passos.
+            Seu cadastro coloca você no radar do UR. A entrada passa por validação para manter equilíbrio, respeito e
+            organização.
           </div>
 
           {submitState.message ? <SubmitFeedback state={submitState} fallbackHref={config.fallbackHref} fallbackLabel={config.fallbackLabel} /> : null}
@@ -207,7 +206,7 @@ function SubmitFeedback({
           target="_blank"
         >
           <ArrowRight aria-hidden className="h-3 w-3" />
-          {fallbackLabel} — confirme pela alternativa externa se quiser comprovante
+          {fallbackLabel} — use a alternativa externa se quiser comprovante
         </a>
       ) : null}
     </div>

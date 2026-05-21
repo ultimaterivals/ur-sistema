@@ -17,7 +17,7 @@ const contactPaths = [
   {
     label: "Atleta",
     title: "Entrar no UR Play",
-    description: "Registro de interesse para triagem, orientação e próximos passos como atleta.",
+    description: "Registro de interesse para orientação e próximos passos como atleta.",
     icon: Zap,
   },
   {
@@ -35,7 +35,7 @@ const contactPaths = [
   {
     label: "Quadra",
     title: "Virar polo parceiro",
-    description: "Triagem para estrutura, agenda recorrente, eventos e comunidade local.",
+    description: "Análise de estrutura, agenda recorrente, eventos e comunidade local.",
     icon: MapPin,
   },
   {
@@ -64,14 +64,14 @@ const contactFlow = [
     description: "A central de cadastro organiza a entrada sem criar promessa automática.",
   },
   {
-    label: "Triagem",
-    title: "Passar por triagem",
-    description: "A equipe UR valida contexto, prioridade e próximo passo.",
+    label: "Análise",
+    title: "Receber análise",
+    description: "A equipe UR entende contexto, prioridade e próximo passo.",
   },
   {
     label: "Retorno",
     title: "Receber orientação",
-    description: "Participação, parceria ou contato comercial seguem conforme validação.",
+    description: "Participação, parceria ou contato comercial seguem com critério.",
   },
 ] as const;
 
@@ -84,17 +84,17 @@ export default function ContatoPage() {
           { href: "/cadastro#patrocinador", label: "Contato comercial", variant: "secondary" },
         ]}
         badges={["Atletas", "Equipes", "Patrocinadores", "Quadras", "Comunidade"]}
-        description="A forma mais rápida de falar com o Ultimate Rivals é escolher o caminho correto na central de cadastro. Assim a equipe UR consegue triar melhor cada interesse."
+        description="A forma mais rápida de falar com o Ultimate Rivals é escolher o caminho correto na central de cadastro. Assim a equipe UR entende melhor cada interesse."
         eyebrow="Contato UR • canais oficiais"
         image={siteImages.communityMoment}
         imagePosition="center 44%"
         metrics={[
           { label: "Principal", value: "central de cadastro" },
           { label: "Comercial", value: "patrocinadores e quadras" },
-          { label: "Operação", value: "triagem UR" },
+          { label: "Retorno", value: "orientação UR" },
         ]}
-        statusDescription="O cadastro não garante vaga, parceria, patrocínio ou participação imediata. Tudo passa por validação operacional."
-        statusLabel="triagem operacional"
+        statusDescription="O cadastro não garante vaga, parceria, patrocínio ou participação imediata. A entrada passa por validação para manter equilíbrio, respeito e organização."
+        statusLabel="caminhos oficiais"
         statusTitle="Contato bom começa pelo caminho certo."
         title="Fale com o UR sem perder o contexto."
       />
@@ -102,7 +102,7 @@ export default function ContatoPage() {
       <PageSection id="caminhos">
         <CommercialAssetPanel
           assets={contactPaths}
-          description="Cada perfil tem uma entrada própria para evitar ruído e acelerar a triagem da operação UR."
+          description="Cada perfil tem uma entrada própria para evitar ruído e ajudar a equipe UR a responder com contexto."
           eyebrow="Caminhos de contato"
           title="Escolha o canal certo para o seu objetivo."
         />
@@ -110,7 +110,7 @@ export default function ContatoPage() {
 
       <PageSection className="bg-[#07080c]" id="fluxo">
         <ProcessTimeline
-          description="A operação de contato precisa ser simples: escolher caminho, registrar interesse, passar por triagem e receber orientação."
+          description="O contato precisa ser simples: escolher caminho, registrar interesse, receber análise e entender o próximo passo."
           eyebrow="Como funciona"
           steps={contactFlow}
           title="Da mensagem ao próximo passo."
@@ -123,7 +123,7 @@ export default function ContatoPage() {
             { href: "/cadastro#quadra", label: "Tenho uma quadra", variant: "secondary" },
             { href: "/cadastro#comunidade", label: "Acompanhar comunidade", variant: "ghost" },
           ]}
-          description="Se você ainda não sabe qual caminho escolher, comece pela central de cadastro. A triagem direciona o interesse para operação, comercial, comunidade ou parcerias."
+          description="Se você ainda não sabe qual caminho escolher, comece pela central de cadastro. A equipe UR direciona o interesse para esporte, comercial, comunidade ou parcerias."
           eyebrow="Orientação rápida"
           image={siteImages.timeoutTalk}
           imagePosition="center 42%"
@@ -150,11 +150,11 @@ export default function ContatoPage() {
             </Button>
           </>
         }
-        description="Atletas, equipes, patrocinadores, quadras e comunidade entram pela mesma central, cada um com seu caminho de triagem."
+        description="Atletas, equipes, patrocinadores, quadras e comunidade entram pela mesma central, cada um com seu caminho claro."
         eyebrow="Central oficial"
-        items={["cadastro", "triagem", "orientação", "próximo passo"]}
+        items={["cadastro", "análise", "orientação", "próximo passo"]}
         statusLabel="cadastro de interesse aberto"
-        title="Escolha seu caminho e deixe a operação organizar o retorno."
+        title="Escolha seu caminho e receba um retorno com contexto."
       />
     </main>
   );

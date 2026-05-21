@@ -22,13 +22,13 @@ const dayFlow = [
   {
     label: "Cadastro",
     title: "Interesse registrado",
-    description: "O atleta entra pela central e informa dados básicos para triagem operacional.",
+    description: "Seu cadastro coloca você no radar do UR com disponibilidade, modalidade e autorização de contato.",
     status: "cadastro aberto",
   },
   {
-    label: "Triagem",
-    title: "Contexto validado",
-    description: "A equipe UR organiza agenda, polo, disponibilidade e orientação de participação.",
+    label: "Caminho",
+    title: "Próximo passo claro",
+    description: "A equipe UR orienta agenda, polo, disponibilidade e próximos passos.",
   },
   {
     label: "Presença",
@@ -43,7 +43,7 @@ const dayFlow = [
   {
     label: "Registro",
     title: "Histórico criado",
-    description: "Dados públicos entram apenas após validação oficial e critérios definidos.",
+    description: "Seu histórico começa com presença, postura e participação confirmadas.",
   },
   {
     label: "Ranking",
@@ -68,13 +68,13 @@ const registeredItems = [
   {
     label: "Ranking",
     value: "em formação",
-    detail: "classificação pública só abre com dados reais validados.",
+    detail: "classificação pública só abre com dados reais confirmados.",
     icon: BarChart3,
   },
   {
     label: "Mídia",
     value: "potencial",
-    detail: "bastidores e destaques podem virar narrativa oficial da temporada.",
+    detail: "bastidores e destaques podem virar história da temporada.",
     icon: Radio,
   },
 ] as const;
@@ -84,12 +84,12 @@ const rankingRows = [
     position: "01",
     title: "atleta observado",
     status: "sem posição real nesta etapa",
-    meta: "participação validada será a base para histórico público futuro.",
+    meta: "participação confirmada será a base para histórico público futuro.",
   },
   {
     position: "02",
     title: "nível em leitura",
-    status: "critérios operacionais",
+    status: "critérios esportivos",
     meta: "nivelamento ajuda a tornar a competição mais justa.",
   },
   {
@@ -114,11 +114,11 @@ export default function URPlayPage() {
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
         metrics={[
-          { label: "Antes", value: "cadastro e triagem" },
+          { label: "Antes", value: "cadastro e orientação" },
           { label: "Durante", value: "presença, jogo e observação" },
           { label: "Depois", value: "registro e próximos passos" },
         ]}
-        statusDescription="A agenda oficial será publicada após confirmação operacional. Inscrição e participação seguem sujeitas à validação da equipe UR."
+        statusDescription="A agenda oficial será publicada após confirmação de polo e calendário. A entrada passa por validação para manter equilíbrio, respeito e organização."
         statusLabel="agenda em organização"
         statusTitle="UR Play não é rachão. É entrada oficial."
         title="O primeiro jogo precisa abrir caminho."
@@ -137,21 +137,21 @@ export default function URPlayPage() {
           points={[
             {
               title: "Observação com critério",
-              description: "Participação, presença, postura e nível entram na leitura operacional.",
+              description: "Sua presença, postura e nível ajudam a definir o caminho.",
             },
             {
               title: "Conexão com temporada",
               description: "O UR Play alimenta ranking, equipes, eventos, mídia e oportunidades futuras.",
             },
           ]}
-          statusLabel="dados públicos após validação"
+          statusLabel="registro com critério"
           title="Não é jogo avulso. É começo de histórico."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="fluxo-do-dia">
         <ProcessTimeline
-          description="A operação precisa ser simples de entender: o atleta se cadastra, passa por triagem, participa, é observado e recebe orientação de próximo passo."
+          description="O atleta entende o dia em poucos passos: cadastra, recebe orientação, joga, é observado e sai com um próximo caminho."
           eyebrow="Fluxo do dia"
           steps={dayFlow}
           title="Do cadastro ao registro esportivo."
@@ -169,7 +169,7 @@ export default function URPlayPage() {
 
       <PageSection className="bg-[#07080c]" id="ranking-nivelamento">
         <LeaderboardPanel
-          description="O preview já prepara o ranking como produto central, mas nenhuma posição real é publicada antes da validação oficial."
+          description="O preview prepara o ranking como produto central, mas nenhuma posição real é publicada sem presença, desempenho e critérios claros."
           eyebrow="Nivelamento e ranking"
           image={siteImages.attackBlock}
           rows={rankingRows}
@@ -180,7 +180,7 @@ export default function URPlayPage() {
 
       <PageSection id="agenda">
         <ImageFeaturePanel
-          description="Polos, horários, categorias e modalidades entram conforme validação operacional. O objetivo é abrir uma agenda recorrente sem publicar datas não confirmadas."
+          description="Polos, horários, categorias e modalidades entram conforme calendário confirmado. O objetivo é abrir uma agenda recorrente sem publicar datas não confirmadas."
           eyebrow="Agenda e polos"
           image={siteImages.wideServe}
           imagePosition="center 45%"
@@ -191,7 +191,7 @@ export default function URPlayPage() {
             },
             {
               title: "Participação orientada",
-              description: "O cadastro não garante vaga automática; ele inicia triagem e orientação de inscrição.",
+              description: "O cadastro inicia a orientação; a entrada depende de equilíbrio de nível, agenda e organização.",
             },
           ]}
           reverse
@@ -209,10 +209,10 @@ export default function URPlayPage() {
             </Button>
           </>
         }
-        description="Registre interesse para receber orientação da equipe UR quando agenda, polo e participação estiverem validados."
+        description="Registre interesse para receber orientação quando agenda, polo e participação estiverem confirmados."
         eyebrow="Entrada oficial"
-        items={["cadastro", "triagem", "jogo", "registro", "ranking"]}
-        statusLabel="participação sujeita à validação"
+        items={["cadastro", "orientação", "jogo", "registro", "ranking"]}
+        statusLabel="entrada com validação"
         title="A jornada começa no UR Play, mas não termina no primeiro jogo."
       />
     </main>

@@ -180,7 +180,7 @@ export const leadFormConfigs = {
       "Entre pelo UR Play, construa histórico, dispute ranking, busque equipe, mídia, CT UR e recompensas futuras.",
     formTitle: "Cadastro de atleta UR",
     formDescription:
-      "Registro de interesse para atletas que querem entrar no ecossistema pelo UR Play e evoluir com validação operacional.",
+      "Registro de interesse para atletas que querem entrar no ecossistema pelo UR Play e evoluir com critério.",
     fallbackHref: externalLinks.formularioAtleta.href,
     fallbackLabel: "Abrir cadastro alternativo de atleta",
     fields: [

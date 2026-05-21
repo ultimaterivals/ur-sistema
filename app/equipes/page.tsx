@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const teamFields = [
-  { label: "Status", value: "equipes em validação" },
+  { label: "Status", value: "equipe no radar" },
   { label: "Elenco", value: "após cadastro oficial" },
   { label: "Capitão", value: "responsável validado" },
   { label: "Ranking", value: "coletivo em formação" },
@@ -35,8 +35,8 @@ const teamJourney = [
   },
   {
     label: "Elenco",
-    title: "Validar elenco",
-    description: "A equipe UR confere dados, conduta, disponibilidade e relação com a temporada.",
+    title: "Confirmar elenco",
+    description: "A equipe UR confirma conduta, disponibilidade e alinhamento com a temporada.",
   },
   {
     label: "Ranking",
@@ -45,7 +45,7 @@ const teamJourney = [
   },
   {
     label: "Mídia",
-    title: "Criar narrativa",
+    title: "Criar história",
     description: "Mídia, rivalidade, torcida e histórico transformam equipe em ativo esportivo.",
   },
 ] as const;
@@ -54,13 +54,13 @@ const rosterData = [
   {
     label: "Identidade",
     value: "marca esportiva",
-    detail: "nome, postura, visual e presença precisam formar uma narrativa reconhecível.",
+    detail: "nome, postura, visual e presença precisam formar uma história reconhecível.",
     icon: ShieldCheck,
   },
   {
     label: "Capitão",
     value: "liderança",
-    detail: "responsável por comunicação, conduta e ponte com a operação UR.",
+    detail: "responsável por comunicação, conduta e conexão com a equipe UR.",
     icon: Crown,
   },
   {
@@ -82,13 +82,13 @@ const collectiveRankingRows = [
     position: "01",
     title: "equipe em formação",
     status: "sem nome real publicado",
-    meta: "ranking coletivo abre após validação oficial de equipes e eventos.",
+    meta: "ranking coletivo abre com equipes e eventos confirmados.",
   },
   {
     position: "02",
-    title: "elenco em validação",
+    title: "elenco em confirmação",
     status: "dados reais após cadastro",
-    meta: "capitão, atletas e identidade precisam passar pela triagem UR.",
+    meta: "capitão, atletas e identidade precisam ser confirmados pela equipe UR.",
   },
   {
     position: "03",
@@ -113,11 +113,11 @@ export default function EquipesPage() {
         imagePosition="center 42%"
         metrics={[
           { label: "Base", value: "identidade e elenco" },
-          { label: "Operação", value: "capitão e validação" },
+          { label: "Base", value: "capitão e organização" },
           { label: "Valor", value: "ranking, mídia e comunidade" },
         ]}
-        statusDescription="Dados reais de equipes, atletas, resultados e ranking entram apenas após validação oficial."
-        statusLabel="equipes em validação"
+        statusDescription="Equipes, atletas, resultados e ranking só aparecem publicamente após confirmação oficial."
+        statusLabel="equipes no radar"
         statusTitle="Equipe não é só grupo. É ativo esportivo."
         title="Sua equipe pode virar uma marca dentro da temporada."
       />
@@ -136,7 +136,7 @@ export default function EquipesPage() {
 
       <PageSection className="bg-[#07080c]" id="entrada">
         <ProcessTimeline
-          description="O processo foi reduzido ao essencial: registrar, validar, ranquear e construir narrativa coletiva."
+          description="O caminho foi reduzido ao essencial: registrar, confirmar elenco, ranquear e construir história coletiva."
           eyebrow="Entrada da equipe"
           steps={teamJourney}
           title="Do grupo de atletas à identidade competitiva."
@@ -175,16 +175,16 @@ export default function EquipesPage() {
           imagePosition="center 45%"
           points={[
             {
-              title: "Narrativa de equipe",
+              title: "História de equipe",
               description: "Bastidores, cortes, rankings e temporada ajudam a construir reputação coletiva.",
             },
             {
               title: "Valor comercial",
-              description: "Patrocinadores e UR Market podem se conectar a equipes após aprovação operacional.",
+              description: "Patrocinadores e UR Market podem se conectar a equipes com regras claras.",
             },
           ]}
           reverse
-          statusLabel="benefícios após validação"
+          statusLabel="benefícios com regras claras"
           title="Equipe boa vira história. História vira valor."
         />
       </PageSection>
@@ -198,10 +198,10 @@ export default function EquipesPage() {
             </Button>
           </>
         }
-        description="O registro da equipe inicia a triagem operacional. Identidade, elenco, capitão, ranking e mídia dependem de validação oficial."
+        description="O registro coloca sua equipe no radar do UR. Identidade, elenco, capitão, ranking e mídia passam por validação para manter equilíbrio e respeito."
         eyebrow="Próximo passo"
         items={["identidade", "elenco", "capitão", "ranking coletivo", "temporada"]}
-        statusLabel="registro sujeito à validação"
+        statusLabel="registro com critério"
         title="Transforme o grupo em uma equipe reconhecível."
       />
     </main>

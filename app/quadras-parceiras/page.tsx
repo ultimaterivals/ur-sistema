@@ -53,8 +53,8 @@ const activationFlow = [
   },
   {
     label: "Estrutura",
-    title: "Validar estrutura",
-    description: "A equipe UR avalia condições de operação, público, segurança e calendário.",
+    title: "Confirmar estrutura",
+    description: "A equipe UR avalia condições de agenda, público, segurança e calendário.",
   },
   {
     label: "Polo",
@@ -70,9 +70,9 @@ const activationFlow = [
 
 const poleAssets = [
   {
-    label: "Operação",
+    label: "Agenda",
     title: "UR Play local",
-    description: "Entrada oficial de atletas com triagem, presença e observação.",
+    description: "Entrada oficial de atletas com orientação, presença e observação.",
     icon: MapPin,
   },
   {
@@ -104,16 +104,16 @@ export default function QuadrasParceirasPage() {
           { href: "/eventos", label: "Ver eventos", variant: "secondary" },
         ]}
         badges={["Polos", "UR Play", "Eventos", "Mídia local", "Patrocinadores"]}
-        description="Quadras parceiras podem virar polos operacionais e comerciais do Ultimate Rivals, conectando atletas, agenda recorrente, mídia, comunidade e marcas."
+        description="Quadras parceiras podem virar polos esportivos e comerciais do Ultimate Rivals, conectando atletas, agenda recorrente, mídia, comunidade e marcas."
         eyebrow="Quadras parceiras • polos UR"
         image={siteImages.wideServe}
         imagePosition="center 47%"
         metrics={[
           { label: "Base", value: "estrutura e localização" },
-          { label: "Operação", value: "agenda e recorrência" },
+          { label: "Agenda", value: "ciclo e recorrência" },
           { label: "Valor", value: "mídia e patrocinadores" },
         ]}
-        statusDescription="Polo, agenda e parceria dependem de validação operacional da equipe UR."
+        statusDescription="Polo, agenda e parceria dependem de análise da equipe UR."
         statusLabel="polo em análise"
         statusTitle="Sua quadra pode virar um polo do ecossistema."
         title="A quadra não recebe só evento. Ela pode receber recorrência."
@@ -125,14 +125,14 @@ export default function QuadrasParceirasPage() {
             { href: "/cadastro#quadra", label: "Cadastrar quadra" },
             { href: "/patrocinadores", label: "Ver ativações", variant: "secondary" },
           ]}
-          description="Um polo UR precisa unir estrutura, comunidade, disponibilidade e compromisso operacional. A quadra vira base de calendário, não só local de aluguel."
+          description="Um polo UR precisa unir estrutura, comunidade, disponibilidade e compromisso com a agenda. A quadra vira base de calendário, não só local de aluguel."
           eyebrow="Polo operacional"
           image={siteImages.fairPlayLine}
           imagePosition="center 48%"
           points={[
             {
               title: "Estrutura adequada",
-              description: "Quadra, iluminação, convivência, segurança e operação precisam ser avaliados.",
+              description: "Quadra, iluminação, convivência, segurança e agenda precisam ser avaliados.",
             },
             {
               title: "Calendário recorrente",
@@ -148,7 +148,7 @@ export default function QuadrasParceirasPage() {
           description="A quadra parceira ganha mais valor quando entra no ciclo do ecossistema: atletas, agenda, mídia, patrocinadores e comunidade."
           eyebrow="Benefícios para a quadra"
           items={poleBenefits}
-          title="O polo concentra operação e oportunidade local."
+          title="O polo concentra esporte e oportunidade local."
         />
       </PageSection>
 
@@ -157,7 +157,7 @@ export default function QuadrasParceirasPage() {
           description="A ativação da quadra precisa ser segura, clara e gradual. Primeiro vem o interesse, depois a validação, então o planejamento do polo."
           eyebrow="Fluxo de ativação"
           steps={activationFlow}
-          title="Da quadra interessada ao polo em operação."
+          title="Da quadra interessada ao polo ativo."
         />
       </PageSection>
 
@@ -200,10 +200,10 @@ export default function QuadrasParceirasPage() {
             </Button>
           </>
         }
-        description="O cadastro da quadra inicia a triagem. Polo oficial, agenda, eventos, mídia e ativações dependem de validação operacional."
+        description="O cadastro da quadra coloca o espaço no radar do UR. Polo oficial, agenda, eventos, mídia e ativações dependem de critérios claros."
         eyebrow="Próximo passo"
         items={["estrutura", "agenda", "comunidade", "mídia", "patrocinadores"]}
-        statusLabel="parceria sujeita à validação"
+        statusLabel="parceria com critério"
         title="Transforme sua quadra em base de temporada."
       />
     </main>
