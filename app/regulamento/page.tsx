@@ -9,13 +9,13 @@ import { SectionHeader } from "@/components/ui/section-header";
 export const metadata: Metadata = {
   title: "Regulamento UR | Regras Gerais MVP Ultimate Rivals",
   description:
-    "Conheça o regulamento geral MVP do Ultimate Rivals, com princípios de conduta, UR Play, ranking em formação, equipes, validação e penalidades.",
+    "Conheça o regulamento geral do Ultimate Rivals, com princípios de conduta, UR Play, ranking em formação, equipes, entrada com critério e penalidades.",
 };
 
 const principles = [
   "Respeito entre atletas, equipes, organização, quadras, patrocinadores e comunidade.",
   "Fair play, competitividade saudável e responsabilidade antes, durante e depois das atividades.",
-  "Nivelamento para tornar disputas mais justas conforme modalidade, contexto e validação.",
+  "Nivelamento para tornar disputas mais justas conforme modalidade, contexto e critérios.",
   "Ranking e pontuação apenas com critérios oficiais, presença registrada e dados validados.",
   "Conduta compatível com a Mentalidade Hunter: disciplina, presença, evolução e respeito.",
 ] as const;
@@ -25,7 +25,7 @@ const ruleBlocks = [
     icon: BadgeCheck,
     title: "Cadastro e validação",
     description:
-      "Todo interessado passa por triagem. Cadastro não garante vaga, aprovação, equipe, patrocínio, parceria ou participação imediata.",
+      "Todo interessado passa por avaliação de perfil. Cadastro não garante vaga, aprovação, equipe, patrocínio, parceria ou participação imediata.",
   },
   {
     icon: Trophy,
@@ -37,7 +37,7 @@ const ruleBlocks = [
     icon: BarChart3,
     title: "Ranking em formação",
     description:
-      "Ranking público só deve receber dados reais após critérios oficiais, validação operacional e participação confirmada.",
+      "Ranking público só deve receber dados reais após critérios oficiais e participação confirmada.",
   },
   {
     icon: Users,
@@ -52,7 +52,7 @@ const prohibitedConducts = [
   "Racismo, homofobia, machismo, assédio, discriminação ou discurso de ódio.",
   "Fraude de identidade, dados falsos, manipulação de resultado ou conduta antidesportiva.",
   "Uso indevido da marca Ultimate Rivals, de logos, conteúdos ou materiais oficiais.",
-  "Atitudes que prejudiquem atletas, quadras, equipe operacional, patrocinadores ou comunidade.",
+      "Atitudes que prejudiquem atletas, quadras, equipe UR, patrocinadores ou comunidade.",
 ] as const;
 
 function PageSection({
@@ -103,7 +103,7 @@ export default function RegulamentoPage() {
           <Card className="p-5 md:p-6" premium>
             <Scale aria-hidden className="h-8 w-8 text-[#ffd84d]" />
             <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Operação em validação.
+              Regras em evolução.
             </h2>
             <p className="mt-4 text-sm leading-6 text-white/72">
               As regras podem ser atualizadas conforme agenda, modalidades, polos, ranking, equipes e eventos forem
@@ -135,7 +135,7 @@ export default function RegulamentoPage() {
 
       <PageSection className="bg-[#07080c]">
         <SectionHeader
-          description="A operação pública começa com interesse, triagem e validação. Nenhuma etapa do MVP deve ser tratada como aprovação automática."
+          description="A entrada começa com interesse, avaliação de perfil e regras claras. Nenhuma etapa deve ser tratada como aprovação automática."
           eyebrow="Funcionamento geral"
           title="Entrada, ranking e equipes com critério."
         />
@@ -189,7 +189,7 @@ export default function RegulamentoPage() {
 
       <PageSection className="bg-[#07080c]">
         <SectionHeader
-          description="Penalidades reais dependem do caso, da etapa, das regras específicas publicadas e da decisão operacional da equipe UR."
+          description="Penalidades reais dependem do caso, da etapa, das regras específicas publicadas e da decisão da equipe UR."
           eyebrow="Penalidades gerais"
           title="A proteção do ecossistema vem antes da participação individual."
         />
@@ -229,7 +229,7 @@ export default function RegulamentoPage() {
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/74">
               Modalidade, categoria, nível, pontuação, check-in, arbitragem, ranking, premiações, repasses e eventos
-              terão regras próprias quando a operação oficial for confirmada.
+              terão regras próprias quando o calendário oficial for confirmado.
             </p>
           </div>
           <div className="grid gap-3">

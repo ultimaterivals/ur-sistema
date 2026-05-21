@@ -26,8 +26,8 @@ const nextSteps = [
   "Você escolhe o caminho mais próximo do seu perfil.",
   "Você preenche o cadastro dentro do site.",
   "Seu perfil entra no radar da equipe UR.",
-  "A equipe UR analisa agenda, polo, perfil e próximo passo.",
-  "A entrada passa por validação para manter equilíbrio, respeito e organização.",
+  "A equipe UR avalia seu perfil e orienta o próximo passo.",
+  "A entrada acontece com critério para manter nível, respeito e equilíbrio.",
 ] as const;
 
 const quickFaq = [
@@ -83,7 +83,7 @@ export default function CadastroPage() {
         ]}
         badges={leadProfileOrder.map((profile) => leadFormConfigs[profile].cardTitle)}
         description="Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Seu cadastro coloca você no radar do UR e ajuda a equipe a indicar o próximo caminho."
-        eyebrow="Cadastro UR • central de interesse"
+        eyebrow="Cadastro UR • porta de entrada"
         image={siteImages.communityMoment}
         imagePosition="center 45%"
         metrics={[
@@ -91,17 +91,17 @@ export default function CadastroPage() {
           { label: "Fluxo", value: "cadastro analisado pela equipe UR" },
           { label: "Status", value: "entrada com critério e respeito" },
         ]}
-        statusDescription="Cadastro não garante vaga, parceria, patrocínio ou participação imediata. A equipe UR analisa perfil, agenda, polo e prioridade."
-        statusLabel="captação real"
-        statusTitle="Entre no ecossistema pelo caminho certo."
-        title="Central oficial de cadastro de interesse."
+        statusDescription="O cadastro é o primeiro passo. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
+        statusLabel="cadastro aberto"
+        statusTitle="Você se cadastra, nós avaliamos o perfil e orientamos o próximo passo."
+        title="Escolha seu perfil e dê o primeiro passo."
       />
 
       <LeadCaptureSection />
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="A central organiza seu interesse e direciona cada perfil para um próximo passo claro dentro do UR."
+          description="Você entra no radar do Ultimate Rivals e recebe um caminho mais claro: UR Play, equipe, ranking, parceria, quadra ou comunidade."
           eyebrow="Depois do interesse"
           title="Cadastro aberto, próximo passo com critério."
         />
@@ -119,7 +119,7 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="Os cadastros registram interesse e ajudam a equipe UR a orientar o melhor caminho. Cadastro não garante vaga, parceria, patrocínio ou participação imediata."
+          description="O cadastro coloca você no radar do UR. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
           eyebrow="Aviso importante"
           title="Cadastro aberto. Entrada com equilíbrio e respeito."
         />
@@ -129,11 +129,11 @@ export default function CadastroPage() {
               <Lock aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-5 text-[clamp(1.9rem,7vw,2.45rem)] font-black uppercase leading-[0.98] text-white">
-              Enviar não garante aprovação.
+              O cadastro é o primeiro passo.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Esta fase registra interesse e ajuda a equipe UR a analisar agenda, polo, perfil, proposta e prioridade
-              antes de liberar qualquer próximo passo.
+              Depois do envio, a equipe UR avalia seu perfil e orienta o caminho certo antes de liberar vaga,
+              parceria, patrocínio ou participação.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -151,7 +151,7 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
-          description="O WhatsApp segue como canal de apoio para direcionamento. A comunidade já pode entrar pela central de cadastro."
+          description="O WhatsApp apoia dúvidas rápidas. A comunidade já pode dar o primeiro passo pela página de cadastro."
           eyebrow="CTAs de conversão"
           title="Canais claros para quem quer entrar no UR."
         />
@@ -162,8 +162,7 @@ export default function CadastroPage() {
             </span>
             <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">CTA para WhatsApp</h3>
             <p className="mt-4 text-sm leading-6 text-white/70">
-              Canal de apoio para atendimento inicial, dúvidas e direcionamento quando a equipe UR abrir o próximo
-              contato.
+              Canal de apoio para dúvidas iniciais e orientação sobre o caminho mais adequado dentro do UR.
             </p>
             <Button className="mt-6 w-full" href={externalLinks.whatsappUr.href}>
               {externalLinks.whatsappUr.label}
@@ -189,7 +188,7 @@ export default function CadastroPage() {
               Quero acompanhar
             </Button>
             <p className="mt-3 text-xs font-bold uppercase leading-5 tracking-[0.1em] text-white/48">
-              cadastro no site com alternativa externa de apoio
+              cadastro pelo site com canal de apoio
             </p>
           </Card>
         </div>
@@ -197,7 +196,7 @@ export default function CadastroPage() {
 
       <PageSection id="faq">
         <SectionHeader
-          description="Perguntas rápidas para deixar o cadastro claro e reforçar que todo próximo passo precisa de critério."
+          description="Perguntas rápidas para deixar claro como entrar no radar do UR sem promessa automática de vaga."
           eyebrow="FAQ rápido"
           title="Antes de escolher, entenda a fase atual."
         />
@@ -230,7 +229,7 @@ export default function CadastroPage() {
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
                 A central reúne atletas, equipes, marcas, quadras e comunidade em um só caminho. A equipe UR analisa
-                cada interesse antes de liberar agenda, polo, proposta, vaga ou participação.
+                cada perfil antes de orientar agenda, polo, proposta, vaga ou participação.
               </p>
             </div>
             <div className="grid gap-3">

@@ -126,7 +126,7 @@ export default function QuadrasParceirasPage() {
             { href: "/patrocinadores", label: "Ver ativações", variant: "secondary" },
           ]}
           description="Um polo UR precisa unir estrutura, comunidade, disponibilidade e compromisso com a agenda. A quadra vira base de calendário, não só local de aluguel."
-          eyebrow="Polo operacional"
+          eyebrow="Polo UR"
           image={siteImages.fairPlayLine}
           imagePosition="center 48%"
           points={[

@@ -148,7 +148,7 @@ export const seasonStages: SeasonStage[] = [
     eyebrow: "Etapa 5",
     title: "Torneios oficiais",
     description:
-      "Torneios oficiais concentram disputa, mídia, ranking, premiações e narrativa competitiva do ciclo.",
+      "Torneios oficiais concentram disputa, mídia, ranking, premiações e história competitiva do ciclo.",
     status: "calendário em formação",
     icon: Trophy,
     bullets: [
@@ -178,7 +178,7 @@ export const seasonStages: SeasonStage[] = [
     eyebrow: "Etapa 7",
     title: "Repasses, premiações e novo ciclo",
     description:
-      "Repasses, premiações e recompensas dependem de regras oficiais, parceiros, ranking validado e operação ativa.",
+      "Repasses, premiações e recompensas dependem de regras oficiais, parceiros, ranking confirmado e temporada ativa.",
     status: "recompensas após validação",
     icon: Award,
     bullets: [
@@ -265,7 +265,7 @@ export const seasonFaq = [
   {
     question: "Repasses e premiações já existem?",
     answer:
-      "Não nesta etapa. Repasses e premiações dependem da validação oficial do ciclo, critérios, parceiros e operação ativa.",
+      "Não nesta etapa. Repasses e premiações dependem da confirmação do ciclo, critérios e parceiros.",
   },
 ] as const;
 
@@ -273,7 +273,7 @@ export const seasonStatusCards: SeasonCard[] = [
   {
     icon: CheckCircle2,
     title: "Validação oficial",
-    description: "Datas reais entram apenas após confirmação de operação, regulamento, polo e equipe responsável.",
+    description: "Datas reais entram apenas após confirmação de regulamento, polo e equipe responsável.",
   },
   {
     icon: Users,

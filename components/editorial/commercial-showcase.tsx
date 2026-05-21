@@ -8,7 +8,7 @@ import { EditorialImage } from "./editorial-image";
 const activations = [
   { label: "Parceiro oficial", icon: BadgeCheck, description: "cotas e entregas após proposta comercial" },
   { label: "Mídia UR", icon: Radio, description: "conteúdo, bastidores e cobertura de temporada" },
-  { label: "UR Market", icon: Store, description: "benefícios reais após aprovação operacional" },
+  { label: "UR Market", icon: Store, description: "benefícios reais após aprovação comercial" },
   { label: "Ranking", icon: Trophy, description: "visibilidade conectada à jornada esportiva" },
 ] as const;
 

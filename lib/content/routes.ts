@@ -3,13 +3,13 @@ export const routePlaceholders = {
     eyebrow: "UR Play",
     title: "A porta de entrada do ecossistema.",
     description:
-      "Página preparada para explicar inscrição, observação, nivelamento e início da jornada do atleta. Conteúdo operacional em formação.",
+      "Página preparada para explicar inscrição, observação, nivelamento e início da jornada do atleta.",
     status: "temporada em forma\u00e7\u00e3o",
     cta: "Voltar para a Home",
   },
   "/ranking": {
     eyebrow: "Ranking UR",
-    title: "O ranking como narrativa da temporada.",
+    title: "O ranking como história da temporada.",
     description:
       "Estrutura pronta para receber rankings por atleta, equipe, nível, polo e modalidade quando houver dados reais validados.",
     status: "ranking em forma\u00e7\u00e3o",

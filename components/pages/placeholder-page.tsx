@@ -34,8 +34,8 @@ export function PlaceholderPage({ eyebrow, title, description, status, cta }: Pl
             <Construction aria-hidden className="h-8 w-8 text-[#ffd84d]" />
             <h2 className="mt-5 text-2xl font-black uppercase text-white">Página preparada</h2>
             <p className="mt-3 text-sm leading-6 text-white/60">
-              {status}. Esta rota existe para sustentar a arquitetura pública do MVP com conteúdo em validação
-              operacional e sem prometer dados oficiais antes da confirmação.
+              {status}. Esta rota existe para sustentar a arquitetura pública com conteúdo em preparação e sem
+              prometer dados oficiais antes da confirmação.
             </p>
           </Card>
         </div>

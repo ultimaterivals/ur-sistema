@@ -77,7 +77,7 @@ export const entrySteps: RankingStep[] = [
   {
     step: "03",
     title: "Critérios",
-    description: "Dados só avançam quando regras, registros e operação estiverem oficialmente validados.",
+    description: "Seu desempenho só vira registro público quando houver regras claras e dados confirmados.",
   },
   {
     step: "04",
@@ -105,7 +105,7 @@ export const rankingTypes: RankingCard[] = [
   {
     icon: MapPin,
     title: "Polos",
-    description: "Leitura por praças e quadras parceiras quando houver operação validada.",
+    description: "Leitura por praças e quadras parceiras quando houver calendário e dados confirmados.",
   },
   {
     icon: Trophy,
@@ -171,7 +171,7 @@ export const scoringCriteria: RankingCard[] = [
   {
     icon: Shield,
     title: "Regulamento",
-    description: "Todo dado público depende de critérios, aceite de termos e revisão operacional.",
+    description: "Todo dado público depende de critérios, aceite de termos e revisão da equipe UR.",
   },
 ];
 
@@ -188,8 +188,8 @@ export const individualRankingCards: RankingCard[] = [
   },
   {
     icon: Radio,
-    title: "Narrativa",
-    description: "Atletas deixam de ser presença isolada e passam a compor uma história acompanhável.",
+    title: "História pública",
+    description: "Atletas deixam de ser presença isolada e passam a construir uma trajetória acompanhável.",
   },
 ];
 
@@ -244,7 +244,7 @@ export const mediaImpactCards: RankingCard[] = [
   },
   {
     icon: Radio,
-    title: "Narrativas oficiais",
+    title: "Histórias oficiais",
     description: "Ranking ajuda a organizar rivalidades, viradas, evolução e momentos da temporada.",
   },
   {
@@ -296,7 +296,7 @@ export const rankingFaq = [
   {
     question: "Ranking gera UR Coins automaticamente?",
     answer:
-      "Não nesta etapa. UR Coins aparecem como conceito planejado e dependem de regras futuras, validação e operação ativa.",
+      "Não nesta etapa. UR Coins aparecem como conceito planejado e dependem de regras futuras e critérios públicos.",
   },
   {
     question: "Ranking influencia equipes e Draft?",

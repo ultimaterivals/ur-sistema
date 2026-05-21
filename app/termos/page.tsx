@@ -9,7 +9,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 export const metadata: Metadata = {
   title: "Termos de Uso UR | Site e Cadastro Ultimate Rivals",
   description:
-    "Leia os termos de uso do site Ultimate Rivals, incluindo cadastro de interesse, validação operacional, conduta e limitações da fase MVP.",
+    "Leia os termos de uso do site Ultimate Rivals, incluindo cadastro de interesse, entrada com critério, conduta e limites da fase atual.",
 };
 
 const terms = [
@@ -35,13 +35,13 @@ const terms = [
     icon: Users,
     title: "Conduta",
     description:
-      "Participantes devem respeitar atletas, equipes, quadras, comunidade, equipe operacional, regras e canais oficiais.",
+      "Participantes devem respeitar atletas, equipes, quadras, comunidade, equipe UR, regras e canais oficiais.",
   },
 ] as const;
 
 const limitations = [
-  "O MVP não cria login, pagamento, ranking real público, calendário definitivo ou aprovação automática.",
-  "Informações sobre ranking, temporada, UR Coins, eventos, CT UR e UR Market podem evoluir conforme validação oficial.",
+  "A fase atual não cria login, pagamento, ranking real público, calendário definitivo ou aprovação automática.",
+  "Informações sobre ranking, temporada, UR Coins, eventos, CT UR e UR Market podem evoluir conforme critérios oficiais.",
   "Datas, vagas, valores, premiações, repasses, marcas, equipes e atletas reais só devem aparecer após confirmação.",
   "Conteúdos do site não substituem regulamentos específicos de eventos, contratos ou propostas comerciais futuras.",
 ] as const;
@@ -77,7 +77,7 @@ export default function TermosPage() {
               Participar começa com clareza.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              Estes termos explicam o uso do site, a natureza do cadastro de interesse e as limitações da fase MVP do
+              Estes termos explicam o uso do site, a natureza do cadastro de interesse e os limites da fase atual do
               Ultimate Rivals.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
@@ -97,8 +97,8 @@ export default function TermosPage() {
               Cadastro não é aprovação.
             </h2>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Todo interesse enviado pelo site passa por triagem operacional. A equipe UR decide os próximos passos
-              conforme validação, agenda, polo, perfil e regras aplicáveis.
+              Todo interesse enviado pelo site passa por avaliação de perfil. A equipe UR orienta os próximos passos
+              conforme agenda, polo, perfil e regras aplicáveis.
             </p>
           </Card>
         </div>
@@ -127,8 +127,8 @@ export default function TermosPage() {
 
       <PageSection className="bg-[#07080c]">
         <SectionHeader
-          description="O Ultimate Rivals está em fase de MVP público. Algumas experiências, integrações e produtos ainda dependem de validação técnica, operacional, comercial e jurídica."
-          eyebrow="Limitações da fase MVP"
+          description="O Ultimate Rivals está em fase pública inicial. Algumas experiências, integrações e produtos ainda dependem de critérios técnicos, comerciais e jurídicos."
+          eyebrow="Limites da fase atual"
           title="O que ainda não deve ser interpretado como promessa final."
         />
         <Card className="p-5 md:p-6" premium>
@@ -187,11 +187,11 @@ export default function TermosPage() {
           <div>
             <Badge>Próximo passo</Badge>
             <h2 className="mt-5 max-w-3xl text-[clamp(2.2rem,8vw,3.4rem)] font-black uppercase leading-[0.98] text-white">
-              Entre com responsabilidade. A operação valida o caminho.
+              Entre com responsabilidade. O caminho tem critério.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/74">
-              O cadastro de interesse ajuda a equipe UR a organizar demanda, perfil e prioridade. Participação,
-              parcerias e aprovações continuam sujeitas à validação oficial.
+              O cadastro de interesse ajuda a equipe UR a entender demanda, perfil e prioridade. Participação,
+              parcerias e aprovações dependem de critérios oficiais.
             </p>
           </div>
           <div className="grid gap-3">

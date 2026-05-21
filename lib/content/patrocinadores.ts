@@ -40,7 +40,7 @@ export type SponsorQuota = {
 export const sponsorHeroBadges = [
   "cotas em formação",
   "valores definidos após proposta comercial",
-  "métricas entram após operação validada",
+  "métricas entram após dados confirmados",
   "marcas entram após aprovação",
   "relatórios em formação",
 ] as const;
@@ -75,7 +75,7 @@ export const ecosystemAccessCards: SponsorCard[] = [
   {
     icon: BarChart3,
     title: "Ranking",
-    description: "Narrativa de evolução, níveis, destaques, equipes e recorrência competitiva.",
+    description: "História de evolução, níveis, destaques, equipes e recorrência competitiva.",
   },
   {
     icon: Shield,
@@ -113,7 +113,7 @@ export const activationCards: SponsorCard[] = [
   {
     icon: Megaphone,
     title: "Ativação em eventos",
-    description: "Presença de marca em eventos e experiências quando agenda, operação e entregas forem validadas.",
+    description: "Presença de marca em eventos e experiências quando agenda, formato e entregas forem aprovados.",
   },
   {
     icon: Coins,
@@ -123,7 +123,7 @@ export const activationCards: SponsorCard[] = [
   {
     icon: Camera,
     title: "Conteúdo e mídia",
-    description: "A marca pode se conectar a quadros, bastidores, histórias, highlights e narrativas da temporada.",
+    description: "A marca pode se conectar a quadros, bastidores, histórias, highlights e momentos da temporada.",
   },
   {
     icon: Shield,
@@ -145,7 +145,7 @@ export const activationCards: SponsorCard[] = [
 export const marketRelationshipFlow: SponsorFlowItem[] = [
   {
     label: "Benefício aprovado",
-    description: "A marca propõe uma entrega real, validada comercialmente e operacionalmente pela equipe UR.",
+    description: "A marca propõe uma entrega real, analisada comercialmente pela equipe UR.",
   },
   {
     label: "Entrada no Market",
@@ -164,7 +164,7 @@ export const marketRelationshipFlow: SponsorFlowItem[] = [
 export const rankingMediaCards: SponsorCard[] = [
   {
     icon: BarChart3,
-    title: "Ranking como narrativa",
+    title: "Ranking como história",
     description:
       "Ranking público cria assunto contínuo: evolução, disputa, níveis, equipes, viradas e temporada em formação.",
   },
@@ -193,7 +193,7 @@ export const eventsCommunityCards: SponsorCard[] = [
     icon: MapPin,
     title: "Polos em formação",
     description:
-      "A expansão por polo permite presença local, leitura de comunidade e propostas ajustadas por operação validada.",
+      "A expansão por polo permite presença local, leitura de comunidade e propostas ajustadas ao calendário.",
   },
   {
     icon: Users,
@@ -226,13 +226,13 @@ export const reportingCards: SponsorCard[] = [
     icon: ClipboardCheck,
     title: "Relatórios em formação",
     description:
-      "Relatórios comerciais serão estruturados apenas depois de operação, agenda, eventos e dados reais validados.",
+      "Relatórios comerciais serão estruturados apenas depois de agenda, eventos e dados reais confirmados.",
   },
   {
     icon: LineChart,
     title: "Métricas futuras",
     description:
-      "Métricas entram após operação validada, sem alcance, conversão, público ou números inventados nesta etapa.",
+      "Métricas entram após dados confirmados, sem alcance, conversão, público ou números inventados nesta etapa.",
   },
   {
     icon: BarChart3,
@@ -261,7 +261,7 @@ export const quotaModels: SponsorQuota[] = [
       "Modelo para conectar marca a ranking, mídia, eventos, equipes e viradas de ciclo com entregas oficiais.",
     items: [
       "temporada em formação",
-      "métricas entram após operação validada",
+      "métricas entram após dados confirmados",
       "relatórios em formação",
     ],
   },
@@ -269,7 +269,7 @@ export const quotaModels: SponsorQuota[] = [
     label: "Cota Market",
     status: "cotas em formação",
     description:
-      "Modelo para benefícios, produtos, serviços ou experiências no UR Market após aprovação comercial e operacional.",
+      "Modelo para benefícios, produtos, serviços ou experiências no UR Market após aprovação comercial.",
     items: [
       "benefícios entram após validação",
       "valores definidos após proposta comercial",
@@ -323,7 +323,7 @@ export const sponsorFaq = [
   {
     question: "A página mostra métricas comerciais reais?",
     answer:
-      "Não. Métricas entram após operação validada. Nenhum alcance, público, conversão, contrato ou número real foi inventado.",
+      "Não. Métricas entram após dados confirmados. Nenhum alcance, público, conversão, contrato ou número real foi inventado.",
   },
   {
     question: "A marca pode apoiar CT UR e desenvolvimento?",
@@ -333,6 +333,6 @@ export const sponsorFaq = [
   {
     question: "Como registrar interesse comercial agora?",
     answer:
-      "A central de cadastro registra o interesse comercial para triagem. Proposta, valores, entregas e aprovação dependem de validação oficial.",
+      "A página de cadastro coloca sua marca no radar comercial do UR. Proposta, valores, entregas e aprovação dependem de avaliação oficial.",
   },
 ] as const;

@@ -60,8 +60,8 @@ export const performanceBenefitFlow = [
     description: "Atleta ou equipe participa de UR Play, temporada, ranking e ações oficiais.",
   },
   {
-    label: "Validação",
-    description: "Dados reais, presença e critérios passam por validação operacional.",
+    label: "Critério",
+    description: "Presença, desempenho e critérios precisam estar claros antes de virar benefício.",
   },
   {
     label: "UR Coins",
@@ -95,7 +95,7 @@ export const rewardCategories: MarketCard[] = [
   {
     icon: Package,
     title: "Produtos esportivos",
-    description: "Itens reais só entram após validação de parceiros, estoque, regras e operação.",
+    description: "Itens reais só entram após aprovação de parceiros, estoque e regras públicas.",
   },
   {
     icon: Dumbbell,
@@ -240,7 +240,7 @@ export const marketFaq = [
   {
     question: "UR Coins já têm valor oficial?",
     answer:
-      "Não. Valores em UR Coins serão definidos oficialmente apenas após regras, operação e validação do ecossistema.",
+      "Não. Valores em UR Coins serão definidos oficialmente apenas após regras e critérios do ecossistema.",
   },
   {
     question: "Atletas já podem resgatar benefícios?",

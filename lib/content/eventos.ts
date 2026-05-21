@@ -54,7 +54,7 @@ export const eventNarrativeCards: EventCard[] = [
     icon: BarChart3,
     title: "Memória competitiva",
     description:
-      "Participação validada pode virar histórico, leitura de nível, ranking em formação e narrativa pública.",
+      "Sua presença pode virar histórico, leitura de nível, ranking em formação e registro público.",
   },
   {
     icon: Camera,
@@ -88,7 +88,7 @@ export const eventTypes: EventCard[] = [
   {
     icon: Dumbbell,
     title: "CT UR",
-    description: "Experiências de desenvolvimento podem entrar após validação de agenda, operação e critérios.",
+    description: "Experiências de desenvolvimento podem entrar quando agenda, equipe e critérios estiverem definidos.",
   },
   {
     icon: Sparkles,
@@ -133,13 +133,13 @@ export const eventFocusBlocks: EventFocus[] = [
     eyebrow: "Competição oficial",
     title: "Torneios oficiais conectam equipes, mídia e ranking",
     description:
-      "Eventos oficiais podem concentrar equipes, narrativa de temporada, ranking coletivo, mídia e oportunidades comerciais.",
+      "Eventos oficiais podem concentrar equipes, história da temporada, ranking coletivo, mídia e oportunidades comerciais.",
     status: "temporada em formação",
     icon: Crown,
     bullets: [
       "equipes entram após validação",
       "regulamento precisa ser confirmado",
-      "mídia e destaques dependem da operação",
+      "mídia e destaques dependem do formato confirmado",
       "premiações entram apenas após aprovação",
     ],
   },
@@ -169,7 +169,7 @@ export const segmentationCards: EventCard[] = [
   {
     icon: Flag,
     title: "Por modalidade",
-    description: "Modalidades entram conforme operação, quadras, equipe responsável e validação oficial.",
+    description: "Modalidades entram conforme quadras, equipe responsável e critérios oficiais.",
   },
   {
     icon: BadgeCheck,
@@ -186,7 +186,7 @@ export const segmentationCards: EventCard[] = [
 export const ecosystemFeedFlow = [
   {
     label: "Presença",
-    description: "Atleta, equipe ou comunidade participa de evento aprovado e com operação validada.",
+    description: "Atleta, equipe ou comunidade participa de evento aprovado, com regras e formato claros.",
   },
   {
     label: "Critérios",
@@ -219,7 +219,7 @@ export const eventConnectionCards: EventCard[] = [
     icon: MapPin,
     title: "Quadras parceiras",
     description:
-      "Quadras podem se conectar a polos, agenda e experiências locais após validação operacional.",
+      "Quadras podem se conectar a polos, agenda e experiências locais após avaliação de estrutura.",
   },
 ];
 
@@ -251,7 +251,7 @@ export const agendaStatusCards: EventCard[] = [
     icon: CheckCircle2,
     title: "Confirmação oficial",
     description:
-      "Datas reais entram apenas após confirmação de agenda, equipe, quadra, regulamento, polo e operação.",
+      "Datas reais entram apenas após confirmação de agenda, equipe, quadra, regulamento e polo.",
   },
   {
     icon: Target,
@@ -263,7 +263,7 @@ export const agendaStatusCards: EventCard[] = [
     icon: Radio,
     title: "Mídia planejada",
     description:
-      "Cobertura, transmissão e conteúdo entram quando houver operação, formato e confirmação oficial.",
+      "Cobertura, transmissão e conteúdo entram quando houver formato e confirmação oficial.",
   },
 ];
 
@@ -307,7 +307,7 @@ export const eventFaq = [
   {
     question: "Mini torneios alimentam ranking?",
     answer:
-      "Podem alimentar ranking e mídia quando houver critérios oficiais, dados reais e operação validada.",
+      "Podem alimentar ranking e mídia quando houver critérios oficiais e dados reais confirmados.",
   },
   {
     question: "Torneios oficiais envolvem equipes?",
@@ -322,6 +322,6 @@ export const eventFaq = [
   {
     question: "Patrocinadores e quadras podem participar?",
     answer:
-      "Podem se conectar aos eventos após aprovação comercial, validação operacional, definição de polo e confirmação oficial.",
+      "Podem se conectar aos eventos após aprovação comercial, definição de polo e confirmação oficial.",
   },
 ] as const;

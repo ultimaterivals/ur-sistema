@@ -90,7 +90,7 @@ export const urPlayComparisonRows = [
   },
   {
     label: "Visibilidade",
-    common: "Bons jogos podem desaparecer sem registro ou narrativa.",
+    common: "Bons jogos podem desaparecer sem registro ou história.",
     urPlay: "Atleta entra no radar de mídia, equipes, Draft, torneios e CT UR.",
   },
 ] as const;
@@ -99,12 +99,12 @@ export const urPlayJourneySteps: URPlayStep[] = [
   {
     step: "01",
     title: "Registre interesse",
-    description: "O cadastro de interesse registra a intenção do atleta para triagem operacional da equipe UR.",
+    description: "Seu cadastro coloca você no radar do UR e ajuda a equipe a orientar o próximo passo.",
   },
   {
     step: "02",
     title: "Escolha modalidade e polo",
-    description: "Agenda e polos aparecem como estrutura em formação até validação operacional.",
+    description: "Agenda e polos aparecem aos poucos, conforme critérios, quadras e calendário forem confirmados.",
   },
   {
     step: "03",
@@ -137,7 +137,7 @@ export const athleteBenefits: URPlayCard[] = [
   {
     icon: Award,
     title: "Visibilidade",
-    description: "Jornada pode virar mídia, destaque, narrativa e oportunidade dentro do ecossistema.",
+    description: "Sua jornada pode virar mídia, destaque, história e oportunidade dentro do ecossistema.",
   },
   {
     icon: Coins,
@@ -165,7 +165,7 @@ export const teamBenefitsFromURPlay: URPlayCard[] = [
   {
     icon: Handshake,
     title: "Conexão comercial",
-    description: "Equipes fortes ganham narrativa, mídia e potencial de relacionamento com patrocinadores.",
+    description: "Equipes fortes ganham história, mídia e potencial de relacionamento com patrocinadores.",
   },
 ];
 
@@ -194,7 +194,7 @@ export const rankingFlow = [
   },
   {
     title: "Critérios",
-    description: "Métricas e regras entram apenas depois de validação operacional.",
+    description: "Critérios e regras entram quando o ranking estiver pronto para acompanhar sua evolução.",
   },
   {
     title: "Nível",
@@ -210,7 +210,7 @@ export const coinsRewardCards: URPlayCard[] = [
   {
     icon: Coins,
     title: "Presença validada",
-    description: "UR Coins podem ser ligadas a participação real quando a operação estiver ativa.",
+    description: "UR Coins podem reconhecer presença e participação real quando as regras forem abertas ao público.",
   },
   {
     icon: Sparkles,
@@ -235,17 +235,17 @@ export const poloCards: URPlayCard[] = [
   {
     icon: MapPin,
     title: "Polos em formação",
-    description: "Expansão por quadras parceiras depende de validação operacional e calendário real.",
+    description: "Expansão por quadras parceiras depende de avaliação de estrutura, agenda e calendário real.",
   },
   {
     icon: CalendarDays,
     title: "Agenda em formação",
-    description: "Nenhuma data real será publicada antes da confirmação oficial da operação.",
+    description: "Nenhuma data real será publicada antes de confirmação de agenda, quadra e formato.",
   },
   {
     icon: CheckCircle2,
-    title: "Validação antes da inscrição",
-    description: "Inscrição será liberada após validação de polo, formato, regulamento e equipe operacional.",
+    title: "Entrada com critério",
+    description: "A inscrição abre quando polo, formato, regulamento e equipe estiverem definidos.",
   },
 ];
 
@@ -280,7 +280,7 @@ export const interestFields = [
 
 export const interestFlow = [
   "Atleta registra interesse",
-  "Equipe UR valida agenda e polo",
+  "Equipe UR avalia agenda e polo",
   "Atleta recebe orientação de inscrição",
   "Participação é liberada após validação",
 ] as const;
@@ -289,12 +289,12 @@ export const urPlayFaq = [
   {
     question: "UR Play já tem inscrição ativa?",
     answer:
-      "Ainda não. Nesta fase, a página mostra a estrutura da entrada oficial e direciona o atleta para cadastro de interesse com participação sujeita à validação.",
+      "Ainda não. A página mostra como a entrada oficial funciona e direciona o atleta para o cadastro de interesse.",
   },
   {
     question: "UR Play garante entrada no ranking?",
     answer:
-      "Entrada no ranking não é automática. Ranking real depende de dados validados, critérios definidos e operação ativa.",
+      "Entrada no ranking não é automática. Seu nome começa a aparecer conforme presença, desempenho e critérios definidos.",
   },
   {
     question: "Preciso ter equipe para participar?",

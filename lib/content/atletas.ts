@@ -141,7 +141,7 @@ export const visibilityCards: AthleteCard[] = [
   {
     icon: Camera,
     title: "Mídia e destaque",
-    description: "Conteúdo, bastidores, highlights e narrativas podem ampliar visibilidade quando houver operação.",
+    description: "Conteúdo, bastidores, highlights e histórias podem ampliar sua visibilidade dentro do UR.",
   },
   {
     icon: Eye,
@@ -195,7 +195,7 @@ export const ctDevelopmentCards: AthleteCard[] = [
   {
     icon: Dumbbell,
     title: "Preparo físico",
-    description: "CT UR pode apoiar condicionamento e rotina quando houver operação e agenda validada.",
+    description: "CT UR pode apoiar condicionamento e rotina quando houver agenda e critérios definidos.",
   },
   {
     icon: Target,

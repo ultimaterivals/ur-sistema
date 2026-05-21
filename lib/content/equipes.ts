@@ -55,7 +55,7 @@ export const teamIdentityCards: TeamCard[] = [
   {
     icon: Camera,
     title: "Ativo midiático",
-    description: "Rivalidades, bastidores, conteúdo e torcida criam narrativa para mídia e patrocinadores.",
+    description: "Rivalidades, bastidores, conteúdo e torcida criam história para mídia e patrocinadores.",
   },
 ];
 
@@ -96,7 +96,7 @@ export const teamEntrySteps: TeamStep[] = [
   {
     step: "04",
     title: "Validação oficial",
-    description: "Dados reais entram após validação de regras, aceite, elegibilidade e operação.",
+    description: "Dados reais entram após regras, aceite, elegibilidade e critérios confirmados.",
   },
   {
     step: "05",
@@ -114,7 +114,7 @@ export const teamBenefits: TeamCard[] = [
   {
     icon: Radio,
     title: "Mídia e rivalidade",
-    description: "Bastidores, histórias, confrontos e narrativas podem virar conteúdo oficial.",
+    description: "Bastidores, histórias e confrontos podem virar conteúdo oficial.",
   },
   {
     icon: Coins,
@@ -142,7 +142,7 @@ export const collectiveRankingCards: TeamCard[] = [
   {
     icon: Medal,
     title: "Repasses e premiações",
-    description: "Premiações dependem de ranking validado, regras oficiais e operação ativa.",
+    description: "Premiações dependem de ranking confirmado, regras oficiais e temporada ativa.",
   },
 ];
 
@@ -150,7 +150,7 @@ export const rosterValidationCards: TeamCard[] = [
   {
     icon: Crown,
     title: "Capitão",
-    description: "Responsável pela organização inicial, comunicação e alinhamento com a operação UR.",
+    description: "Responsável pela organização inicial, comunicação e alinhamento com a equipe UR.",
   },
   {
     icon: Users,
@@ -165,7 +165,7 @@ export const rosterValidationCards: TeamCard[] = [
   {
     icon: FileCheck2,
     title: "Validação",
-    description: "Registro será liberado após validação de dados, elegibilidade, regulamento e operação.",
+    description: "Registro será liberado após avaliação de dados, elegibilidade, regulamento e critérios.",
   },
 ];
 
@@ -201,7 +201,7 @@ export const teamCoinsCards: TeamCard[] = [
   {
     icon: Sparkles,
     title: "Recompensas",
-    description: "Recompensas dependem de critérios oficiais, parceiros, calendário e validação operacional.",
+    description: "Recompensas dependem de critérios oficiais, parceiros, calendário e regras publicadas.",
   },
 ];
 
@@ -209,7 +209,7 @@ export const mediaRivalryCards: TeamCard[] = [
   {
     icon: Camera,
     title: "Bastidores",
-    description: "Treinos, preparação, elenco e desafios podem se tornar narrativa da temporada.",
+    description: "Treinos, preparação, elenco e desafios podem se tornar história da temporada.",
   },
   {
     icon: Flame,
@@ -263,7 +263,7 @@ export const teamInterestFields = [
 
 export const teamInterestFlow = [
   "Capitão registra interesse",
-  "Equipe UR valida critérios e operação",
+  "Equipe UR avalia critérios e perfil",
   "Elenco recebe orientação de registro",
   "Registro segue para validação oficial",
 ] as const;
@@ -272,7 +272,7 @@ export const teamFaq = [
   {
     question: "Equipes oficiais já podem se registrar?",
     answer:
-      "Sim, como interesse inicial. O registro oficial da equipe segue sujeito à validação de dados, elegibilidade, regulamento e operação.",
+      "Sim, como interesse inicial. O registro oficial da equipe segue sujeito à avaliação de dados, elegibilidade e regulamento.",
   },
   {
     question: "Equipe oficial precisa ter capitão?",
@@ -292,11 +292,11 @@ export const teamFaq = [
   {
     question: "Equipes podem disputar repasses?",
     answer:
-      "Podem disputar em etapas futuras, desde que exista temporada validada, ranking coletivo, regras oficiais e operação ativa.",
+      "Podem disputar em etapas futuras, desde que exista temporada ativa, ranking coletivo e regras oficiais.",
   },
   {
     question: "Dados reais entram quando?",
     answer:
-      "Dados reais entram após validação oficial de regulamento, elegibilidade, agenda, política de dados e operação.",
+      "Dados reais entram após confirmação de regulamento, elegibilidade, agenda e política de dados.",
   },
 ] as const;

@@ -45,7 +45,7 @@ export const problemCards: IconContent[] = [
   {
     icon: CalendarDays,
     title: "Sem calendário",
-    description: "Torneios acontecem de forma solta, sem temporada, sequência ou construção de narrativa.",
+    description: "Jogos acontecem de forma solta, sem temporada, sequência ou história para acompanhar.",
   },
   {
     icon: BarChart3,
@@ -83,7 +83,7 @@ export const pillarCards: IconContent[] = [
   {
     icon: TrendingUp,
     title: "Ranking por níveis",
-    description: "Desempenho vira posição, narrativa, oportunidade e disputa justa entre perfis próximos.",
+    description: "Desempenho vira posição, reputação, oportunidade e disputa justa entre perfis próximos.",
   },
   {
     icon: Users,
@@ -214,7 +214,7 @@ export const teamBenefits: IconContent[] = [
   {
     icon: Flame,
     title: "Mídia e rivalidade",
-    description: "A equipe ganha narrativa, torcida, bastidores e presença nas transmissões.",
+    description: "A equipe ganha história, torcida, bastidores e presença nas transmissões.",
   },
 ];
 
@@ -261,7 +261,7 @@ export const rewardCards: IconContent[] = [
   {
     icon: Camera,
     title: "Visibilidade",
-    description: "Conteúdo, entrevistas, rankings, destaques e presença nas narrativas oficiais.",
+    description: "Conteúdo, entrevistas, rankings, destaques e presença nas histórias da temporada.",
   },
 ];
 
@@ -327,7 +327,7 @@ export const eventCards = [
     modality: "Temporada trimestral",
     location: "polo em forma\u00e7\u00e3o",
     status: "ranking em forma\u00e7\u00e3o",
-    description: "Fechamento de ciclo, narrativa, recompensas e novo começo.",
+    description: "Fechamento de ciclo, memória da temporada, recompensas e novo começo.",
   },
 ];
 
@@ -392,7 +392,7 @@ export const faqItems = [
   {
     question: "Como uma quadra vira parceira?",
     answer:
-      "A quadra poderá se cadastrar como interessada, passar por avaliação e se tornar um polo UR quando a operação estiver validada.",
+      "A quadra poderá se cadastrar como interessada, passar por avaliação e se tornar um polo UR quando houver calendário e critérios confirmados.",
   },
 ];
 

@@ -7,30 +7,30 @@ import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
-  title: "Privacidade UR | Dados, Captação e Validação Ultimate Rivals",
+  title: "Privacidade UR | Dados e Cadastro Ultimate Rivals",
   description:
-    "Entenda como o Ultimate Rivals trata dados de interesse, contato, triagem e organização operacional na fase MVP do ecossistema.",
+    "Entenda como o Ultimate Rivals trata dados de interesse, contato, avaliação de perfil e organização da fase atual do ecossistema.",
 };
 
 const dataCategories = [
   {
     title: "Dados de identificação",
-    description: "Nome, perfil de interesse, cidade, polo desejado, modalidade e informações necessárias para triagem.",
+    description: "Nome, perfil de interesse, cidade, polo desejado, modalidade e informações necessárias para orientar o próximo passo.",
   },
   {
     title: "Dados de contato",
     description: "WhatsApp, e-mail, Instagram ou canal informado pelo próprio interessado para retorno da equipe UR.",
   },
   {
-    title: "Dados operacionais",
-    description: "Origem do lead, UTM, status, prioridade, responsável, observações e próximo passo de atendimento.",
+    title: "Dados de acompanhamento",
+    description: "Origem do cadastro, status, prioridade, responsável, observações e próximo passo de atendimento.",
   },
 ] as const;
 
 const purposes = [
   "Responder interesses enviados pelo site.",
-  "Organizar triagem operacional por perfil: atleta, equipe, patrocinador, quadra ou comunidade.",
-  "Planejar agenda, polos, modalidades, eventos e próximos passos do MVP.",
+  "Organizar avaliação por perfil: atleta, equipe, patrocinador, quadra ou comunidade.",
+  "Planejar agenda, polos, modalidades, eventos e próximos passos da fase atual.",
   "Preparar ranking, histórico e relacionamento futuro apenas com dados validados oficialmente.",
   "Melhorar comunicação, atendimento e leitura de demanda do ecossistema Ultimate Rivals.",
 ] as const;
@@ -66,7 +66,7 @@ export default function PrivacidadePage() {
               Dados tratados com finalidade clara.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              O Ultimate Rivals usa dados de interesse para contato, triagem, organização operacional e evolução do
+              O Ultimate Rivals usa dados de interesse para contato, avaliação de perfil, organização de agenda e evolução do
               ecossistema. Cadastro não significa aprovação automática, vaga ou participação imediata.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
@@ -85,11 +85,11 @@ export default function PrivacidadePage() {
               <ShieldCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Base operacional em validação.
+              Base de dados em revisão.
             </h2>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Nesta fase, a captação pode usar formulários próprios, Google Apps Script e Google Sheets como base
-              operacional MVP. Não há venda de dados pessoais.
+              Nesta fase, o cadastro pode usar formulários próprios, Google Apps Script e Google Sheets como primeira
+              base de acompanhamento. Não há venda de dados pessoais.
             </p>
           </Card>
         </div>
@@ -97,7 +97,7 @@ export default function PrivacidadePage() {
 
       <PageSection>
         <SectionHeader
-          description="A coleta deve ser proporcional ao caminho escolhido e ao atendimento necessário. Nenhum dado sensível deve ser solicitado sem necessidade operacional."
+          description="A coleta deve ser proporcional ao caminho escolhido e ao atendimento necessário. Nenhum dado sensível deve ser solicitado sem necessidade real."
           eyebrow="Dados coletados"
           title="O que pode ser informado pelo visitante."
         />
@@ -116,7 +116,7 @@ export default function PrivacidadePage() {
 
       <PageSection className="bg-[#07080c]">
         <SectionHeader
-          description="Os dados são usados para organizar o primeiro contato e preparar a operação do ecossistema, sempre sujeitos à validação oficial da equipe UR."
+          description="Os dados são usados para organizar o primeiro contato e preparar os próximos passos do ecossistema, sempre com análise da equipe UR."
           eyebrow="Finalidade"
           title="Por que o Ultimate Rivals coleta esses dados."
         />
@@ -136,14 +136,14 @@ export default function PrivacidadePage() {
 
       <PageSection>
         <SectionHeader
-          description="O MVP prioriza simplicidade, rastreabilidade e operação manual. A infraestrutura poderá evoluir conforme o sistema crescer."
-          eyebrow="Base operacional MVP"
+          description="A fase inicial prioriza simplicidade, rastreabilidade e acompanhamento humano. A infraestrutura poderá evoluir conforme o sistema crescer."
+          eyebrow="Base inicial"
           title="Google Sheets e Apps Script como primeira camada."
         />
         <div className="grid gap-5 md:grid-cols-3">
           <Card premium>
             <Database aria-hidden className="h-7 w-7 text-[#ffd84d]" />
-            <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">Registro operacional</h2>
+            <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">Registro de interesse</h2>
             <p className="mt-4 text-sm leading-6 text-white/68">
               Leads podem ser registrados em Google Sheets para triagem manual, acompanhamento e organização da equipe.
             </p>
@@ -159,7 +159,7 @@ export default function PrivacidadePage() {
             <Lock aria-hidden className="h-7 w-7 text-[#ffd84d]" />
             <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">Sem venda de dados</h2>
             <p className="mt-4 text-sm leading-6 text-white/68">
-              O Ultimate Rivals não vende dados pessoais. O uso deve permanecer conectado à operação e ao relacionamento UR.
+              O Ultimate Rivals não vende dados pessoais. O uso deve permanecer conectado ao relacionamento UR.
             </p>
           </Card>
         </div>
@@ -181,7 +181,7 @@ export default function PrivacidadePage() {
           <div>
             <p className="text-base leading-7 text-white/74">
               Use a página de contato para solicitar orientação, correção de informações, exclusão de dados de interesse
-              ou esclarecimentos sobre a operação. A política poderá evoluir conforme o UR avance para novas camadas de
+              ou esclarecimentos sobre o uso dos dados. A política poderá evoluir conforme o UR avance para novas camadas de
               tecnologia, ranking, eventos e comunidade.
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
