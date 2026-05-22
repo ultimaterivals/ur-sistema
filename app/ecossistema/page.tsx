@@ -182,10 +182,10 @@ export default function EcossistemaPage() {
         />
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="fluxo">
+      <PageSection className="bg-[#07080c]" id="caminho">
         <ProcessTimeline
           description="A lógica do ecossistema é simples: criar entrada, registrar contexto, organizar ranking, contar histórias, gerar valor e expandir polos."
-          eyebrow="Fluxo do ecossistema"
+          eyebrow="Caminho do ecossistema"
           steps={ecosystemFlow}
           title="Do primeiro interesse à oportunidade pública."
         />

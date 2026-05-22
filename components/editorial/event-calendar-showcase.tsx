@@ -19,7 +19,7 @@ const events: EventCard[] = [
     title: "UR Play",
     eyebrow: "Entrada oficial",
     description: "Jogo, observação, nivelamento e início de histórico dentro do ecossistema.",
-    status: "agenda em validação",
+    status: "agenda em organização",
     image: homeImageRoles.eventos[0],
     icon: Zap,
   },

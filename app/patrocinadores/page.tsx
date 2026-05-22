@@ -139,10 +139,10 @@ export default function PatrocinadoresPage() {
           { label: "Canal", value: "UR Market e eventos" },
           { label: "Base", value: "comunidade esportiva" },
         ]}
-        statusDescription="Cotas, valores, entregas e métricas reais serão definidos em proposta comercial."
+        statusDescription="Cotas, valores, entregas e métricas reais são definidos em proposta comercial."
         statusLabel="propostas comerciais"
-        statusTitle="Marcas entram na jornada, não só no banner."
-        title="Patrocínio como plataforma, não espaço de logo."
+        statusTitle="Sua marca entra na jornada esportiva, não apenas em um banner."
+        title="Patrocínio com presença real na jornada."
       />
 
       <PageSection id="ativos">
@@ -194,7 +194,7 @@ export default function PatrocinadoresPage() {
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              Esta estrutura prepara o site para propostas comerciais sem inventar cotas, valores, alcance ou contratos reais.
+              Esta estrutura mostra possibilidades comerciais com clareza, sem inventar cotas, valores, alcance ou contratos reais.
             </p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-4">
@@ -210,10 +210,10 @@ export default function PatrocinadoresPage() {
 
       <PageSection id="metricas">
         <DataBoard
-          description="Relatórios, dados e métricas serão estruturados com calendário real. A fase atual organiza os campos comerciais sem prometer números."
+          description="Relatórios, dados e métricas serão organizados com calendário real e entregas aprovadas. A proposta comercial define o que será medido."
           eyebrow="Métricas futuras"
           items={metrics}
-          title="Dados comerciais sem inflar promessa."
+          title="Métricas claras para evoluir a entrega."
         />
       </PageSection>
 

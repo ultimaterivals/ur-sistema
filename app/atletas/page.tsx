@@ -54,7 +54,7 @@ const athleteJourney = [
 ] as const;
 
 const profileFields = [
-  { label: "Perfil", value: "liberado após validação" },
+  { label: "Perfil", value: "liberado após análise" },
   { label: "Ranking", value: "ranking em formação" },
   { label: "Histórico", value: "após participação oficial" },
   { label: "Oportunidades", value: "com critério UR" },
@@ -206,7 +206,7 @@ export default function AtletasPage() {
             </Button>
           </>
         }
-        description="O cadastro coloca você no radar do UR. Participação, ranking, mídia, equipes e oportunidades passam por validação para manter equilíbrio e respeito."
+        description="O cadastro coloca você no radar do UR. Participação, ranking, mídia, equipes e oportunidades passam por análise da equipe UR para manter equilíbrio e respeito."
         eyebrow="Próximo passo"
         items={["UR Play", "ranking", "mídia", "CT UR", "equipes"]}
         statusLabel="cadastro aberto"

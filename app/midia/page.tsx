@@ -184,10 +184,10 @@ export default function MidiaPage() {
         />
       </PageSection>
 
-      <PageSection id="fluxo-editorial">
+      <PageSection id="caminho-editorial">
         <ProcessTimeline
           description="A mídia própria precisa funcionar como sistema: captar o que acontece, organizar histórias, conectar ranking e abrir oportunidade."
-          eyebrow="Fluxo editorial"
+          eyebrow="Caminho editorial"
           steps={productionFlow}
           title="Como um momento vira história UR."
         />

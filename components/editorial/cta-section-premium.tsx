@@ -24,7 +24,7 @@ export function CTASectionPremium() {
               Quero patrocinar
             </Button>
             <p className="text-xs font-bold uppercase leading-5 tracking-[0.12em] text-white/48">
-              A entrada passa por validação para manter equilíbrio, respeito e organização.
+              A entrada tem critério para manter equilíbrio, respeito e organização.
             </p>
           </div>
         </div>

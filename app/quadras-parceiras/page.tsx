@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const poleBenefits = [
   {
-    label: "Fluxo",
+    label: "Caminho",
     value: "atletas",
     detail: "polo bem posicionado pode receber recorrência de atletas e equipes.",
     icon: Users,
@@ -154,8 +154,8 @@ export default function QuadrasParceirasPage() {
 
       <PageSection id="ativacao">
         <ProcessTimeline
-          description="A ativação da quadra precisa ser segura, clara e gradual. Primeiro vem o interesse, depois a validação, então o planejamento do polo."
-          eyebrow="Fluxo de ativação"
+          description="A ativação da quadra precisa ser segura, clara e gradual. Primeiro vem o interesse, depois a análise da equipe UR, então o planejamento do polo."
+          eyebrow="Caminho de ativação"
           steps={activationFlow}
           title="Da quadra interessada ao polo ativo."
         />

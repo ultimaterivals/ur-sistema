@@ -96,7 +96,7 @@ export default function Home() {
   return (
     <main className="bg-[#030405] text-[#f5efdd]">
       <section className="relative isolate overflow-hidden bg-black">
-        <div className="relative min-h-[calc(100svh-68px)] pt-24 md:min-h-[760px] md:pt-28">
+        <div className="relative py-2 md:min-h-[600px] md:py-4 lg:min-h-[560px] lg:py-6">
           <EditorialImage
             className="absolute inset-0 -z-20 rounded-none border-0"
             image={homeImageRoles.hero}
@@ -108,17 +108,17 @@ export default function Home() {
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92),rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.26)_72%),linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.28)_48%,#030405_100%)]" />
           <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-[linear-gradient(180deg,transparent,#030405)]" />
 
-          <div className="mx-auto flex min-h-[calc(100svh-68px)] max-w-7xl flex-col justify-end px-5 pb-7 md:min-h-[760px] md:pb-9 lg:px-8">
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(340px,0.48fr)] lg:items-end">
+          <div className="mx-auto flex max-w-7xl flex-col px-5 lg:px-8">
+            <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(340px,0.48fr)] lg:items-start">
               <div className="min-w-0">
                 <Badge>Ultimate Rivals • ecossistema esportivo</Badge>
                 <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.85rem,11.5vw,5.8rem)] font-black uppercase leading-[0.86] text-white md:text-[clamp(3.6rem,6.3vw,6.4rem)]">
                   O jogo virou ecossistema.
                 </h1>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-white/80 md:text-xl md:leading-8">
+                <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:mt-5 md:text-xl md:leading-8">
                   O esporte amador ganhou estrutura: competição, ranking, equipes, mídia, temporada e oportunidades no mesmo sistema.
                 </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-6">
                   <Button href="/cadastro#atleta">
                     Entrar no UR
                     <ArrowRight aria-hidden className="h-4 w-4" />
@@ -132,7 +132,7 @@ export default function Home() {
               <aside className="rounded-lg border border-[#ffd84d]/24 bg-black/62 p-4 shadow-[0_26px_80px_rgba(0,0,0,0.42)] backdrop-blur md:p-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">status da temporada</div>
+                      <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">fase da temporada</div>
                     <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Próximo ciclo em organização</h2>
                   </div>
                   <Trophy aria-hidden className="h-8 w-8 text-[#ffd84d]" />
@@ -326,7 +326,7 @@ export default function Home() {
               {[
                 ["É torneio?", "Não. É ecossistema contínuo com UR Play, ranking, equipes, mídia, eventos e recompensas."],
                 ["Já tem ranking real?", "Ainda não. Seu nome começa a aparecer conforme presença, desempenho e participação confirmada."],
-                ["Cadastro garante vaga?", "Não. Seu cadastro coloca você no radar do UR; a entrada passa por validação para manter equilíbrio, respeito e organização."],
+                ["Cadastro garante vaga?", "Não. Seu cadastro coloca você no radar do UR; a entrada tem critério para manter equilíbrio, respeito e organização."],
               ].map(([question, answer]) => (
                 <div className="border-t border-white/10 pt-4" key={question}>
                   <h3 className="text-sm font-black uppercase leading-5 text-white">{question}</h3>

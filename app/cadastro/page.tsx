@@ -79,7 +79,7 @@ export default function CadastroPage() {
         actions={[
           { href: "#caminhos", label: "Escolher caminho" },
           { href: "#whatsapp", label: "WhatsApp UR", variant: "secondary" },
-          { href: "#aviso-validacao", label: "Aviso de validação", variant: "ghost" },
+          { href: "#aviso-validacao", label: "Como funciona", variant: "ghost" },
         ]}
         badges={leadProfileOrder.map((profile) => leadFormConfigs[profile].cardTitle)}
         description="Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Seu cadastro coloca você no radar do UR e ajuda a equipe a indicar o próximo caminho."
@@ -88,12 +88,12 @@ export default function CadastroPage() {
         imagePosition="center 45%"
         metrics={[
           { label: "Perfis", value: "atleta, equipe, patrocinador, quadra e comunidade" },
-          { label: "Fluxo", value: "cadastro analisado pela equipe UR" },
-          { label: "Status", value: "entrada com critério e respeito" },
+          { label: "Caminho", value: "cadastro analisado pela equipe UR" },
+          { label: "Momento", value: "entrada com critério e respeito" },
         ]}
         statusDescription="O cadastro é o primeiro passo. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
         statusLabel="cadastro aberto"
-        statusTitle="Você se cadastra, nós avaliamos o perfil e orientamos o próximo passo."
+        statusTitle="Você se cadastra, a equipe UR analisa seu perfil e indica o melhor caminho."
         title="Escolha seu perfil e dê o primeiro passo."
       />
 
@@ -121,7 +121,7 @@ export default function CadastroPage() {
         <SectionHeader
           description="O cadastro coloca você no radar do UR. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
           eyebrow="Aviso importante"
-          title="Cadastro aberto. Entrada com equilíbrio e respeito."
+          title="Entrada aberta, com critério e respeito."
         />
         <Card className="grid gap-5 p-5 md:p-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]" premium>
           <div>
@@ -152,8 +152,8 @@ export default function CadastroPage() {
       <PageSection className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="whatsapp">
         <SectionHeader
           description="O WhatsApp apoia dúvidas rápidas. A comunidade já pode dar o primeiro passo pela página de cadastro."
-          eyebrow="CTAs de conversão"
-          title="Canais claros para quem quer entrar no UR."
+          eyebrow="Caminhos de entrada"
+          title="Escolha o melhor caminho para começar."
         />
         <div className="grid gap-5 md:grid-cols-2">
           <Card className="p-5 md:p-6" premium>
@@ -198,7 +198,7 @@ export default function CadastroPage() {
         <SectionHeader
           description="Perguntas rápidas para deixar claro como entrar no radar do UR sem promessa automática de vaga."
           eyebrow="FAQ rápido"
-          title="Antes de escolher, entenda a fase atual."
+          title="Antes de entrar, veja como funciona."
         />
         <div className="grid gap-3 md:grid-cols-2">
           {quickFaq.map((item) => (

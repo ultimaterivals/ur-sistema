@@ -220,7 +220,7 @@ export const leadFormConfigs = {
     cardTitle: "Tenho uma equipe",
     audience: "elenco, identidade e ranking coletivo",
     description:
-      "Registre uma equipe para validação de elenco, identidade, ranking coletivo, temporada, mídia e oportunidades.",
+      "Registre uma equipe para avaliação de elenco, identidade, ranking coletivo, temporada, mídia e oportunidades.",
     formTitle: "Cadastro de equipe UR",
     formDescription:
       "Registro de interesse para equipes que querem se organizar como ativo competitivo dentro do Ultimate Rivals.",
@@ -316,7 +316,7 @@ export const leadFormConfigs = {
         options: [
           "A definir",
           "Quero entender modelos",
-          "Tenho verba em validação",
+          "Verba ainda em definição",
           "Depende da proposta comercial",
           "Prefiro falar com Comercial UR",
         ],

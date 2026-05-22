@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 const teamFields = [
-  { label: "Status", value: "equipe no radar" },
+  { label: "Momento", value: "equipe no radar" },
   { label: "Elenco", value: "após cadastro oficial" },
   { label: "Capitão", value: "responsável validado" },
   { label: "Ranking", value: "coletivo em formação" },
@@ -107,7 +107,7 @@ export default function EquipesPage() {
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
         badges={["Elenco", "Capitão", "Ranking coletivo", "Mídia", "Temporada"]}
-        description="No Ultimate Rivals, equipe deixa de ser um grupo solto e passa a operar como identidade competitiva, midiática e comercial dentro da temporada."
+        description="No Ultimate Rivals, equipe deixa de ser um grupo solto e passa a funcionar como identidade competitiva, midiática e comercial dentro da temporada."
         eyebrow="Equipes UR • identidade competitiva"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
@@ -116,7 +116,7 @@ export default function EquipesPage() {
           { label: "Base", value: "capitão e organização" },
           { label: "Valor", value: "ranking, mídia e comunidade" },
         ]}
-        statusDescription="Equipes, atletas, resultados e ranking só aparecem publicamente após confirmação oficial."
+        statusDescription="Equipes, atletas, resultados e ranking aparecem publicamente depois que identidade, elenco e regras estiverem confirmados."
         statusLabel="equipes no radar"
         statusTitle="Equipe não é só grupo. É ativo esportivo."
         title="Sua equipe pode virar uma marca dentro da temporada."
@@ -198,7 +198,7 @@ export default function EquipesPage() {
             </Button>
           </>
         }
-        description="O registro coloca sua equipe no radar do UR. Identidade, elenco, capitão, ranking e mídia passam por validação para manter equilíbrio e respeito."
+        description="O registro coloca sua equipe no radar do UR. Identidade, elenco, capitão, ranking e mídia passam por análise da equipe UR para manter equilíbrio e respeito."
         eyebrow="Próximo passo"
         items={["identidade", "elenco", "capitão", "ranking coletivo", "temporada"]}
         statusLabel="registro com critério"

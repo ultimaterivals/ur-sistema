@@ -104,16 +104,16 @@ export default function URMarketPage() {
           { href: "/patrocinadores", label: "Ativar marca", variant: "secondary" },
         ]}
         badges={["UR Coins", "Benefícios", "Patrocinadores", "Recompensas", "Recorrência"]}
-        description="O UR Market é a vitrine de valor do ecossistema: conecta participação, desempenho, ranking, patrocinadores, benefícios e experiências aprovadas."
+        description="O UR Market é a vitrine de valor do ecossistema: conecta participação, desempenho, ranking, patrocinadores, benefícios reais e experiências aprovadas pela UR."
         eyebrow="UR Market • vitrine de valor"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
         metrics={[
-          { label: "Moeda", value: "UR Coins" },
+          { label: "Pontos", value: "UR Coins" },
           { label: "Base", value: "ranking e participação" },
           { label: "Saída", value: "benefícios aprovados" },
         ]}
-        statusDescription="Produtos, valores e benefícios reais entram apenas com regras claras e aprovação comercial."
+        statusDescription="UR Coins não são dinheiro. São pontos internos de reconhecimento e acesso a benefícios aprovados pela UR."
         statusLabel="market em preparação"
         statusTitle="Desempenho precisa virar benefício com critério."
         title="UR Coins conectam jornada esportiva e recompensa."
@@ -121,10 +121,10 @@ export default function URMarketPage() {
 
       <PageSection id="coins">
         <DataBoard
-          description="UR Coins não são promessa de ganho. São uma camada planejada para reconhecer presença, desempenho e engajamento com regras claras."
+          description="UR Coins não são dinheiro nem promessa de ganho. São pontos internos para reconhecer presença, desempenho, postura e engajamento com regras claras."
           eyebrow="Painel de UR Coins"
           items={coinItems}
-          title="Moeda interna para organizar valor, não inflar expectativa."
+          title="Pontos internos para transformar presença em reconhecimento."
         />
       </PageSection>
 
@@ -155,7 +155,7 @@ export default function URMarketPage() {
       <PageSection id="categorias">
         <CommercialAssetPanel
           assets={rewardAssets}
-          description="As categorias preparam o Market para produtos, serviços, experiências e ativações comerciais, mantendo clareza de que tudo depende de aprovação."
+          description="As categorias preparam o Market para produtos, serviços, experiências e ativações comerciais, sempre com benefícios reais aprovados pela UR."
           eyebrow="Categorias de recompensa"
           title="Benefícios que fazem sentido para a jornada."
         />
@@ -163,8 +163,8 @@ export default function URMarketPage() {
 
       <PageSection className="bg-[#07080c]" id="resgate">
         <ProcessTimeline
-          description="O fluxo de resgate precisa ser simples, auditável e honesto: primeiro vem a participação confirmada, depois a vitrine, depois a aprovação."
-          eyebrow="Fluxo de resgate"
+          description="O caminho de resgate precisa ser simples e confiável: primeiro vem a participação confirmada, depois a vitrine, depois a aprovação."
+          eyebrow="Caminho de resgate"
           steps={redemptionFlow}
           title="Como valor pode virar benefício."
         />
@@ -201,7 +201,7 @@ export default function URMarketPage() {
             </Button>
           </>
         }
-        description="O Market entra como camada de valor do ecossistema. Itens, valores e resgates reais dependem de regras claras."
+        description="O Market entra como camada de valor do ecossistema. Itens, valores e resgates reais dependem de regras claras e aprovação da equipe UR."
         eyebrow="Próximo passo"
         items={["UR Coins", "ranking", "benefícios", "patrocinadores", "comunidade"]}
         statusLabel="vitrine inicial em preparação"

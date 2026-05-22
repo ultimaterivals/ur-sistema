@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export const metadata: Metadata = {
-  title: "Regulamento UR | Regras Gerais MVP Ultimate Rivals",
+  title: "Regulamento UR | Regras Gerais Ultimate Rivals",
   description:
     "Conheça o regulamento geral do Ultimate Rivals, com princípios de conduta, UR Play, ranking em formação, equipes, entrada com critério e penalidades.",
 };
@@ -81,13 +81,13 @@ export default function RegulamentoPage() {
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
           <div className="min-w-0 text-center lg:text-left">
-            <Badge>Regulamento Geral • MVP</Badge>
+            <Badge>Regulamento Geral • fase inicial</Badge>
             <h1 className="mx-auto mt-5 max-w-4xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
               Regras claras para elevar o jogo.
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 md:text-lg md:leading-8 lg:mx-0">
-              Este regulamento apresenta a base de conduta, validação e funcionamento do Ultimate Rivals em fase
-              MVP/pré-lançamento. Regras específicas de eventos serão publicadas por etapa.
+              Este regulamento apresenta a base de conduta, avaliação e funcionamento do Ultimate Rivals na fase
+              inicial. Regras específicas de eventos serão publicadas por etapa.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="/cadastro">
@@ -117,7 +117,7 @@ export default function RegulamentoPage() {
         <SectionHeader
           description="O UR organiza competição, desenvolvimento e comunidade. A base do regulamento é proteger a experiência e a credibilidade do ecossistema."
           eyebrow="Princípios UR"
-          title="Respeito, fair play, presença e validação."
+          title="Respeito, fair play, presença e critério."
         />
         <Card className="p-5 md:p-6" premium>
           <div className="grid gap-3 md:grid-cols-5">

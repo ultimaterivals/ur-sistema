@@ -8,8 +8,8 @@ export const conversionRoutes = {
   avisoValidacao: "/cadastro#aviso-validacao",
 } as const;
 
-const tallyStatus = "alternativa externa conectada";
-const channelPendingStatus = "canal será conectado quando o atendimento oficial estiver disponível";
+const tallyStatus = "cadastro alternativo disponível";
+const channelPendingStatus = "canal será aberto quando o atendimento oficial estiver disponível";
 
 export const tallyLinks = {
   atleta: "https://tally.so/r/RGb84l",

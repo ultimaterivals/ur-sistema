@@ -104,10 +104,10 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
               Seu cadastro entra com
             </p>
             <ul className="mt-3 grid gap-2 text-sm leading-5 text-white/68">
-              <li>Status inicial: Novo</li>
-              <li>Prioridade inicial: A definir</li>
+              <li>Fase inicial: cadastro recebido</li>
+              <li>Acompanhamento inicial: a definir</li>
               <li>Acompanhamento: equipe UR</li>
-              <li>Próximo passo: Triagem inicial</li>
+              <li>Próximo passo: análise de perfil</li>
               <li>Origem: Site / Cadastro UR</li>
             </ul>
           </div>
@@ -141,7 +141,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
           </div>
 
           <div className="rounded-lg border border-white/10 bg-black/25 p-4 text-sm leading-6 text-white/68">
-            Seu cadastro coloca você no radar do UR. A entrada passa por validação para manter equilíbrio, respeito e
+            Seu cadastro coloca você no radar do UR. A entrada tem critério para manter equilíbrio, respeito e
             organização.
           </div>
 

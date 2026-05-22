@@ -25,7 +25,7 @@ export function SponsoredBlock({ items }: SponsoredBlockProps) {
           {items.map((item) => (
             <div className="rounded-lg border border-white/10 bg-white/[0.045] p-4" key={item}>
               <div className="text-sm font-black uppercase leading-tight text-white">{item}</div>
-              <div className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#ffe98b]/78">em validação comercial</div>
+              <div className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-[#ffe98b]/78">por proposta comercial</div>
             </div>
           ))}
         </div>
@@ -36,4 +36,3 @@ export function SponsoredBlock({ items }: SponsoredBlockProps) {
     </section>
   );
 }
-

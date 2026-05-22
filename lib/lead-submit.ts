@@ -27,7 +27,7 @@ const PROFILE_PT: Record<LeadProfile, string> = {
 };
 
 const MSG_PROCESSING =
-  "Cadastro enviado para processamento. Confirme na planilha antes de considerar o lead validado.";
+  "Cadastro recebido. A equipe Ultimate Rivals vai analisar seu perfil antes de orientar os próximos passos.";
 
 export function getGoogleScriptUrl() {
   return process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL?.trim() ?? "";
@@ -117,7 +117,7 @@ export async function submitLead(payload: LeadPayload): Promise<LeadSubmitResult
       ok: false,
       code: "missing_configuration",
       message:
-        "A conexão principal de captação ainda não está ativa nesta versão. Use a alternativa externa para registrar interesse.",
+        "A conexão principal de cadastro ainda não está disponível no momento. Use a alternativa externa para registrar interesse.",
     };
   }
 

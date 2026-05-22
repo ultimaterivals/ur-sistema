@@ -118,7 +118,7 @@ export default function URPlayPage() {
           { label: "Durante", value: "presença, jogo e observação" },
           { label: "Depois", value: "registro e próximos passos" },
         ]}
-        statusDescription="A agenda oficial será publicada após confirmação de polo e calendário. A entrada passa por validação para manter equilíbrio, respeito e organização."
+        statusDescription="A agenda oficial será publicada após confirmação de polo e calendário. A entrada tem critério para manter equilíbrio, respeito e organização."
         statusLabel="agenda em organização"
         statusTitle="UR Play não é rachão. É entrada oficial."
         title="O primeiro jogo precisa abrir caminho."
@@ -152,7 +152,7 @@ export default function URPlayPage() {
       <PageSection className="bg-[#07080c]" id="fluxo-do-dia">
         <ProcessTimeline
           description="O atleta entende o dia em poucos passos: cadastra, recebe orientação, joga, é observado e sai com um próximo caminho."
-          eyebrow="Fluxo do dia"
+          eyebrow="Caminho do dia"
           steps={dayFlow}
           title="Do cadastro ao registro esportivo."
         />
@@ -212,7 +212,7 @@ export default function URPlayPage() {
         description="Registre interesse para receber orientação quando agenda, polo e participação estiverem confirmados."
         eyebrow="Entrada oficial"
         items={["cadastro", "orientação", "jogo", "registro", "ranking"]}
-        statusLabel="entrada com validação"
+        statusLabel="entrada com critério"
         title="A jornada começa no UR Play, mas não termina no primeiro jogo."
       />
     </main>

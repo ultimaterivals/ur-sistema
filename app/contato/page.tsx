@@ -93,7 +93,7 @@ export default function ContatoPage() {
           { label: "Comercial", value: "patrocinadores e quadras" },
           { label: "Retorno", value: "orientação UR" },
         ]}
-        statusDescription="O cadastro não garante vaga, parceria, patrocínio ou participação imediata. A entrada passa por validação para manter equilíbrio, respeito e organização."
+        statusDescription="O cadastro não garante vaga, parceria, patrocínio ou participação imediata. A entrada tem critério para manter equilíbrio, respeito e organização."
         statusLabel="caminhos oficiais"
         statusTitle="Contato bom começa pelo caminho certo."
         title="Fale com o UR sem perder o contexto."
@@ -108,7 +108,7 @@ export default function ContatoPage() {
         />
       </PageSection>
 
-      <PageSection className="bg-[#07080c]" id="fluxo">
+      <PageSection className="bg-[#07080c]" id="caminho">
         <ProcessTimeline
           description="O contato precisa ser simples: escolher caminho, registrar interesse, receber análise e entender o próximo passo."
           eyebrow="Como funciona"
@@ -129,8 +129,8 @@ export default function ContatoPage() {
           imagePosition="center 42%"
           points={[
             {
-              title: "Captação centralizada",
-              description: "A página de contato apenas orienta. A entrada oficial continua na central de cadastro.",
+              title: "Entrada centralizada",
+              description: "A página de contato orienta. A entrada oficial continua na central de cadastro.",
             },
             {
               title: "Contato com contexto",

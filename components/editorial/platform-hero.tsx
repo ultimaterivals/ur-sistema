@@ -41,14 +41,14 @@ export function PlatformHero({
   metrics = [],
   statusLabel = "próximo ciclo",
   statusTitle = "Tudo começa com cadastro, presença e respeito.",
-  statusDescription = "A entrada passa por validação para manter equilíbrio, respeito e organização, sem nomes, datas ou promessas inventadas.",
+  statusDescription = "A entrada tem critério para manter equilíbrio, respeito e organização, sem nomes, datas ou promessas inventadas.",
   className,
   imagePosition = "center",
 }: PlatformHeroProps) {
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden border-t border-white/10 bg-[#030405] px-5 pb-10 pt-24 md:pb-14 md:pt-28 lg:px-8 lg:pb-16",
+        "relative isolate overflow-hidden border-t border-white/10 bg-[#030405] px-5 pb-10 pt-16 md:pb-14 md:pt-20 lg:px-8 lg:pb-16",
         className,
       )}
     >
@@ -66,21 +66,25 @@ export function PlatformHero({
       <div className="mx-auto grid max-w-7xl items-end gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(330px,0.7fr)]">
         <div className="min-w-0">
           <Badge>{eyebrow}</Badge>
-          <h1 className="mt-5 max-w-5xl text-balance text-[clamp(2.55rem,9vw,4.6rem)] font-black uppercase leading-[0.96] tracking-normal text-white md:text-[clamp(3.35rem,5.8vw,5.25rem)]">
+          <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.35rem,8.5vw,4.45rem)] font-black uppercase leading-[0.98] tracking-normal text-white md:mt-5 md:text-[clamp(3.2rem,5.5vw,5.1rem)] md:leading-[0.96]">
             {title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-white/78 md:text-lg md:leading-8">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/78 md:mt-5 md:text-lg md:leading-8">
             {description}
           </p>
 
           {actions.length > 0 ? (
-            <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
+            <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap md:mt-7">
               {actions.map((action, index) => (
                 <Button
-                  className={index === 0 ? "w-full sm:w-auto" : "min-h-10 w-full px-3 py-2 text-xs shadow-none sm:w-auto"}
+                  className={
+                    index === 0
+                      ? "w-full sm:w-auto"
+                      : "min-h-10 w-full border-white/12 bg-black/30 px-3 py-2 text-xs text-white/72 shadow-none hover:border-[#ffd84d]/30 hover:bg-white/[0.06] hover:text-white sm:w-auto"
+                  }
                   href={action.href}
                   key={action.href}
-                  variant={action.variant ?? (index === 0 ? "primary" : "secondary")}
+                  variant={index === 0 ? (action.variant ?? "primary") : "ghost"}
                 >
                   {action.label}
                   {index === 0 ? <ArrowRight aria-hidden className="h-4 w-4" /> : null}
@@ -90,7 +94,7 @@ export function PlatformHero({
           ) : null}
 
           {badges.length > 0 ? (
-            <div className="mt-7 flex max-w-3xl flex-wrap gap-2">
+            <div className="mt-6 flex max-w-3xl flex-wrap gap-2 md:mt-7">
               {badges.map((badge) => (
                 <span
                   className="rounded-md border border-white/10 bg-black/35 px-3 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-white/70"

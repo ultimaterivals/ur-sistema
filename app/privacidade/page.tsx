@@ -61,7 +61,7 @@ export default function PrivacidadePage() {
         <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:64px_64px]" />
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.72fr)] lg:items-center">
           <div className="min-w-0 text-center lg:text-left">
-            <Badge>Política de Privacidade • MVP</Badge>
+            <Badge>Política de Privacidade • fase inicial</Badge>
             <h1 className="mx-auto mt-5 max-w-4xl text-balance text-[clamp(2.8rem,10vw,4.65rem)] font-black uppercase leading-[0.94] tracking-normal text-white lg:mx-0">
               Dados tratados com finalidade clara.
             </h1>
@@ -85,7 +85,7 @@ export default function PrivacidadePage() {
               <ShieldCheck aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h2 className="mt-6 text-[clamp(2rem,8vw,2.8rem)] font-black uppercase leading-[0.98] text-white">
-              Base de dados em revisão.
+              Dados com uso claro.
             </h2>
             <p className="mt-4 text-sm leading-6 text-white/72">
               Nesta fase, o cadastro pode usar formulários próprios, Google Apps Script e Google Sheets como primeira
@@ -145,7 +145,7 @@ export default function PrivacidadePage() {
             <Database aria-hidden className="h-7 w-7 text-[#ffd84d]" />
             <h2 className="mt-5 text-2xl font-black uppercase leading-none text-white">Registro de interesse</h2>
             <p className="mt-4 text-sm leading-6 text-white/68">
-              Leads podem ser registrados em Google Sheets para triagem manual, acompanhamento e organização da equipe.
+              Cadastros podem ser registrados em Google Sheets para análise manual, acompanhamento e organização da equipe.
             </p>
           </Card>
           <Card>
@@ -202,7 +202,7 @@ export default function PrivacidadePage() {
               A política acompanha o crescimento do ecossistema.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/74">
-              Esta versão cobre a fase MVP. Novas funcionalidades, integrações, rankings, eventos, pagamentos ou áreas
+              Esta versão cobre a fase inicial. Novas funcionalidades, integrações, rankings, eventos, pagamentos ou áreas
               logadas exigirão atualização da política antes de uso público.
             </p>
           </div>

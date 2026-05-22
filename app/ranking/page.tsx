@@ -100,7 +100,7 @@ const criteriaRows = [
   {
     criterion: "Participação",
     role: "Registra presença e continuidade",
-    status: "após validação",
+    status: "após confirmação",
   },
   {
     criterion: "Nível",
@@ -157,7 +157,7 @@ export default function RankingPage() {
       <PageSection className="bg-[#07080c]" id="fluxo">
         <ProcessTimeline
           description="O ranking precisa explicar de onde vem cada informação. A jornada abaixo resume a lógica antes da publicação de dados reais."
-          eyebrow="Fluxo do ranking"
+          eyebrow="Caminho do ranking"
           steps={rankingFlow}
           title="Da participação confirmada à oportunidade."
         />
@@ -188,7 +188,7 @@ export default function RankingPage() {
           <div className="grid border-b border-white/10 bg-[#ffd84d]/10 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.55fr_1fr_0.55fr]">
             <div className="px-5 py-4">Critério</div>
             <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Função</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Status</div>
+            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Momento</div>
           </div>
           {criteriaRows.map((row) => (
             <div className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.55fr_1fr_0.55fr]" key={row.criterion}>
