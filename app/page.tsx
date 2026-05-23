@@ -239,7 +239,7 @@ export default function Home() {
         <GalleryStrip
           description="Comemoração, ataque, defesa, premiação, público e bastidores começam a dar textura real para a memória esportiva."
           images={galleryImages}
-          title="A Home agora respira quadra, areia e gente."
+          title="O ecossistema respira quadra, areia e gente."
         />
       </Section>
 

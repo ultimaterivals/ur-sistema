@@ -96,7 +96,7 @@ const rankingRows = [
   },
   {
     position: "02",
-    title: "histórico em construção",
+    title: "histórico em primeira fase",
     status: "ranking individual",
     meta: "presença, evolução e participação serão tratados com critério.",
   },
@@ -127,7 +127,7 @@ export default function AtletasPage() {
           { label: "Saída", value: "reputação e oportunidade" },
         ]}
         statusDescription="Seu perfil só aparece publicamente após cadastro, presença e confirmação oficial."
-        statusLabel="perfil em construção"
+        statusLabel="perfil inicial"
         statusTitle="Não é só jogar. É construir trajetória."
         title="O atleta é protagonista do ecossistema."
       />
@@ -188,8 +188,8 @@ export default function AtletasPage() {
 
       <PageSection id="ranking-preview">
         <LeaderboardPanel
-          description="O ranking individual será publicado somente com dados reais confirmados. Nesta fase, o preview mostra a estrutura do produto sem inventar atleta, número ou posição."
-          eyebrow="Ranking individual preview"
+          description="O ranking individual será publicado somente com dados reais confirmados. Nesta fase, a prévia mostra a estrutura do produto sem inventar atleta, número ou posição."
+          eyebrow="Prévia do ranking individual"
           image={siteImages.attackBlock}
           rows={rankingRows}
           tabs={["Individual", "Níveis", "Presença", "Mídia"]}

@@ -126,7 +126,7 @@ export default function EquipesPage() {
         <ProfileMockup
           cta={{ href: "/cadastro#equipe", label: "Registrar equipe" }}
           description="O card de equipe concentra o que importa para o ecossistema: identidade, capitão, elenco, histórico, ranking coletivo e presença de mídia."
-          eyebrow="Mockup de equipe"
+          eyebrow="Exemplo de equipe"
           fields={teamFields}
           highlights={["identidade", "elenco", "capitão", "ranking coletivo", "mídia"]}
           image={siteImages.teamEmbrace}
@@ -154,8 +154,8 @@ export default function EquipesPage() {
 
       <PageSection className="bg-[#07080c]" id="ranking-coletivo">
         <LeaderboardPanel
-          description="O preview mostra como o ranking coletivo será apresentado, sem publicar equipes reais, posições, pontuação ou resultados nesta fase."
-          eyebrow="Ranking coletivo preview"
+          description="A prévia mostra como o ranking coletivo será apresentado, sem publicar equipes reais, posições, pontuação ou resultados nesta fase."
+          eyebrow="Prévia do ranking coletivo"
           image={siteImages.fairPlayLine}
           rows={collectiveRankingRows}
           tabs={["Coletivo", "Elenco", "Temporada", "Mídia"]}

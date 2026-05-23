@@ -8,7 +8,7 @@ export function FinalCTA() {
       <div className="mx-auto max-w-7xl min-w-0">
         <div className="grid gap-8 rounded-lg border border-[#ffd84d]/25 bg-[radial-gradient(circle_at_18%_0%,rgba(255,216,77,0.15),transparent_34%),#030405] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.34)] md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.62fr)] lg:items-center">
           <div className="min-w-0">
-            <Badge>CTA final</Badge>
+            <Badge>Próximo passo</Badge>
             <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] tracking-normal text-white">
               O próximo nível do esporte amador começa agora.
             </h2>

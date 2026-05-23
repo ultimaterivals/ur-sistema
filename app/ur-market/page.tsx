@@ -135,7 +135,7 @@ export default function URMarketPage() {
             { href: "/cadastro#patrocinador", label: "Oferecer benefício", variant: "ghost" },
           ]}
           description="A vitrine nasce para mostrar benefícios futuros de forma premium, sem publicar marcas, preços, produtos ou experiências não confirmadas."
-          eyebrow="Vitrine futura"
+          eyebrow="Vitrine de benefícios UR"
           image={siteImages.teamEmbrace}
           imagePosition="center 46%"
           points={[

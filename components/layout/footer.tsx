@@ -30,8 +30,8 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-6 text-white/65">
-            Plataforma esportiva em construção para profissionalizar o esporte amador com ranking,
-            temporadas, equipes, mídia, recompensas e comunidade.
+            Plataforma esportiva para profissionalizar o esporte amador com ranking, temporadas,
+            equipes, mídia, recompensas e comunidade.
           </p>
           <p className="mt-5 inline-flex max-w-full rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10 px-3 py-2 text-xs font-bold uppercase leading-4 tracking-[0.14em] text-[#ffe98b]">
             Polo em formação • Expansão planejada

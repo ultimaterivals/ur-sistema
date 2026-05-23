@@ -166,7 +166,7 @@ export default function PatrocinadoresPage() {
       <PageSection id="mockup-entrega">
         <ImageFeaturePanel
           description="A entrega comercial deve combinar presença visual, experiência, conteúdo e benefício real. O UR Market é o canal para ativação recorrente, não apenas exposição pontual."
-          eyebrow="Mockup de entrega"
+          eyebrow="Como sua marca aparece"
           image={siteImages.mediaCoverage}
           imagePosition="center 46%"
           points={[

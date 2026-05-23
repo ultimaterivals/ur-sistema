@@ -13,7 +13,7 @@ export function RankingPreview() {
     <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
       <div className="rounded-lg border border-[#ffd84d]/25 bg-[radial-gradient(circle_at_18%_0%,rgba(255,216,77,0.12),transparent_32%),#050607] p-5 shadow-[0_22px_64px_rgba(0,0,0,0.28)] md:p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Badge>Ranking preview</Badge>
+          <Badge>Prévia do ranking</Badge>
           <span className="text-xs font-black uppercase tracking-[0.14em] text-white/60">
             Sem dados reais ainda
           </span>

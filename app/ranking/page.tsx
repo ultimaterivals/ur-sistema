@@ -145,8 +145,8 @@ export default function RankingPage() {
 
       <PageSection id="leaderboard">
         <LeaderboardPanel
-          description="O top 3 fica preparado para publicação futura, mas sem inventar nomes, pontos ou posições. O ranking começa a ser alimentado pelo UR Play."
-          eyebrow="Leaderboard preview"
+          description="A prévia do top 3 fica preparada para publicação futura, mas sem inventar nomes, pontos ou posições. O ranking começa a ser alimentado pelo UR Play."
+          eyebrow="Prévia do ranking"
           image={siteImages.defenseDive}
           rows={leaderboardRows}
           tabs={["Individual", "Equipes", "Engajamento", "Polos", "Níveis"]}

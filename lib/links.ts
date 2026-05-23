@@ -8,7 +8,7 @@ export const conversionRoutes = {
   avisoValidacao: "/cadastro#aviso-validacao",
 } as const;
 
-const tallyStatus = "cadastro alternativo disponível";
+const tallyStatus = "formulário de apoio disponível";
 const channelPendingStatus = "canal será aberto quando o atendimento oficial estiver disponível";
 
 export const tallyLinks = {

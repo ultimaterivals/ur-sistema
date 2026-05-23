@@ -46,7 +46,7 @@ export function RankingShowcase() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">ranking em formação</div>
-            <h3 className="mt-3 text-3xl font-black uppercase leading-[0.9] text-white md:text-4xl">Top 3 preview</h3>
+            <h3 className="mt-3 text-3xl font-black uppercase leading-[0.9] text-white md:text-4xl">Prévia do ranking</h3>
           </div>
           <span className="grid h-12 w-12 place-items-center rounded-lg bg-[#ffd84d] text-black">
             <BarChart3 aria-hidden className="h-6 w-6" />

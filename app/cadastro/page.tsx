@@ -160,7 +160,7 @@ export default function CadastroPage() {
             <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/25 bg-black/30">
               <MessageCircle aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
-            <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">CTA para WhatsApp</h3>
+            <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">Falar com a equipe UR</h3>
             <p className="mt-4 text-sm leading-6 text-white/70">
               Canal de apoio para dúvidas iniciais e orientação sobre o caminho mais adequado dentro do UR.
             </p>
@@ -176,7 +176,7 @@ export default function CadastroPage() {
             <span className="grid h-12 w-12 place-items-center rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10">
               <Radio aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
-            <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">CTA para comunidade</h3>
+            <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">Entrar na comunidade UR</h3>
             <p className="mt-4 text-sm leading-6 text-white/70">
               Espaço para quem quer acompanhar temporada, mídia, bastidores, eventos e próximos passos do UR.
             </p>

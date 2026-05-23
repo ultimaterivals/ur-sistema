@@ -169,7 +169,7 @@ export default function URPlayPage() {
 
       <PageSection className="bg-[#07080c]" id="ranking-nivelamento">
         <LeaderboardPanel
-          description="O preview prepara o ranking como produto central, mas nenhuma posição real é publicada sem presença, desempenho e critérios claros."
+          description="A prévia prepara o ranking como produto central, mas nenhuma posição real é publicada sem presença, desempenho e critérios claros."
           eyebrow="Nivelamento e ranking"
           image={siteImages.attackBlock}
           rows={rankingRows}

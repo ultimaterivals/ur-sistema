@@ -114,7 +114,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
 
           {!captureConfigured ? (
             <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
-              <p className="font-black uppercase tracking-wide">Cadastro alternativo disponível</p>
+              <p className="font-black uppercase tracking-wide">Formulário de apoio disponível</p>
               <p className="mt-1">
                 Se o cadastro principal não estiver disponível, use a alternativa externa para entrar no radar do UR.
               </p>
