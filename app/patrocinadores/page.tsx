@@ -24,26 +24,32 @@ const commercialAssets = [
   {
     label: "Mídia",
     title: "Cobertura e bastidores",
-    description: "Conteúdo oficial, cortes, histórias e presença em momentos da temporada.",
+    description: "Presença em conteúdos, bastidores, destaques, chamadas e cobertura.",
     icon: Camera,
   },
   {
     label: "Ranking",
-    title: "Visibilidade contínua",
-    description: "Associação com evolução, desempenho, presença e reconhecimento público.",
+    title: "Ranking e reconhecimento",
+    description: "A marca pode estar ligada a destaques, conquistas e momentos da temporada.",
     icon: BarChart3,
   },
   {
     label: "Eventos",
-    title: "Experiência local",
-    description: "Ativações conectadas a UR Play, torneios, comunidade e quadras parceiras.",
+    title: "Eventos e experiências",
+    description: "Ativação em jogos, encontros, torneios, premiações e ações presenciais.",
     icon: CalendarDays,
   },
   {
     label: "UR Market",
-    title: "Benefício real",
-    description: "Produtos, serviços, descontos e experiências com proposta aprovada.",
+    title: "UR Market",
+    description: "Produtos e serviços podem virar benefícios dentro do sistema de UR Coins.",
     icon: ShoppingBag,
+  },
+  {
+    label: "Quadras",
+    title: "Quadras parceiras",
+    description: "Presença local em polos, comunidade e calendário recorrente.",
+    icon: MapPin,
   },
 ] as const;
 
@@ -126,12 +132,12 @@ export default function PatrocinadoresPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#patrocinador", label: "Quero patrocinar" },
+          { href: "/cadastro#patrocinador", label: "Quero ativar minha marca no UR" },
           { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
         ]}
         badges={["Mídia própria", "Ranking", "Eventos", "UR Market", "Comunidade"]}
-        description="Patrocinar o Ultimate Rivals é entrar em uma jornada esportiva contínua, conectando marca a atletas, equipes, quadras, mídia, ranking, benefícios e comunidade."
-        eyebrow="Patrocinadores UR • mídia kit"
+        description="O Ultimate Rivals conecta marcas a atletas, equipes, quadras, mídia, ranking, eventos e comunidade. Não é só aparecer: é participar de uma experiência esportiva com presença real."
+        eyebrow="Para marcas e parceiros"
         image={siteImages.sponsorActivation}
         imagePosition="center 45%"
         metrics={[
@@ -139,33 +145,33 @@ export default function PatrocinadoresPage() {
           { label: "Canal", value: "UR Market e eventos" },
           { label: "Base", value: "comunidade esportiva" },
         ]}
-        statusDescription="Cotas, valores, entregas e métricas reais são definidos em proposta comercial."
+        statusDescription="A marca entra em pontos reais da jornada: onde o atleta joga, evolui, aparece, acompanha ranking, participa de eventos e se conecta com a comunidade."
         statusLabel="propostas comerciais"
-        statusTitle="Sua marca entra na jornada esportiva, não apenas em um banner."
-        title="Patrocínio com presença real na jornada."
+        statusTitle="Patrocínio com contexto."
+        title="Sua marca dentro da jornada esportiva."
       />
 
       <PageSection id="ativos">
         <CommercialAssetPanel
           assets={commercialAssets}
-          description="O patrocinador certo participa de pontos reais do ecossistema: mídia, ranking, eventos, quadras, CT UR, UR Market e comunidade competitiva."
-          eyebrow="Inventário comercial"
-          title="Ativos que conectam marca e jornada esportiva."
+          description="A marca entra em pontos reais da jornada: mídia, eventos, ranking, UR Market, quadras parceiras e comunidade."
+          eyebrow="Ativos comerciais"
+          title="Pontos de presença da marca."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="jornada">
         <ProcessTimeline
-          description="A relação comercial precisa ser clara desde o início: entender objetivo, validar aderência, criar proposta, ativar e medir."
+          description="A marca participa de uma jornada com atletas, equipes, quadras e comunidade, com entregas combinadas por proposta."
           eyebrow="Jornada da marca"
           steps={brandJourney}
           title="Do interesse à presença dentro do ecossistema."
         />
       </PageSection>
 
-      <PageSection id="mockup-entrega">
+      <PageSection id="como-a-marca-aparece">
         <ImageFeaturePanel
-          description="A entrega comercial deve combinar presença visual, experiência, conteúdo e benefício real. O UR Market é o canal para ativação recorrente, não apenas exposição pontual."
+          description="A entrega comercial pode combinar presença visual, experiência, conteúdo e benefício real. O UR Market é o canal para ativação recorrente."
           eyebrow="Como sua marca aparece"
           image={siteImages.mediaCoverage}
           imagePosition="center 46%"
@@ -188,13 +194,13 @@ export default function PatrocinadoresPage() {
         <Card className="overflow-hidden p-0" premium>
           <div className="grid gap-4 border-b border-white/10 p-5 md:p-7 lg:grid-cols-[0.72fr_1fr] lg:items-end">
             <div>
-              <Badge>Pacote comercial em formação</Badge>
+              <Badge>Ativos comerciais</Badge>
               <h2 className="mt-5 text-balance text-[clamp(2.2rem,7vw,3.8rem)] font-black uppercase leading-[0.9] text-white">
-                Entrega comercial com múltiplos pontos de contato.
+                Como sua marca aparece.
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              Esta estrutura mostra possibilidades comerciais com clareza, sem inventar cotas, valores, alcance ou contratos reais.
+              Esta estrutura mostra possibilidades comerciais com clareza. Valores, cotas e entregas reais dependem de proposta.
             </p>
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-4">
@@ -210,7 +216,7 @@ export default function PatrocinadoresPage() {
 
       <PageSection id="metricas">
         <DataBoard
-          description="Relatórios, dados e métricas serão organizados com calendário real e entregas aprovadas. A proposta comercial define o que será medido."
+          description="Métricas claras ajudam a evoluir a entrega. A proposta comercial define o que será acompanhado em cada ativação."
           eyebrow="Métricas futuras"
           items={metrics}
           title="Métricas claras para evoluir a entrega."
@@ -245,17 +251,17 @@ export default function PatrocinadoresPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#patrocinador">Quero patrocinar</Button>
+            <Button href="/cadastro#patrocinador">Quero ativar minha marca no UR</Button>
             <Button href="/contato" variant="secondary">
               Falar com o UR
             </Button>
           </>
         }
-        description="O cadastro comercial coloca sua marca no radar do UR. Valores, cotas, entregas, métricas e ativações reais dependem de proposta."
+        description="Sua marca pode participar da jornada esportiva com mídia, eventos, ranking, UR Market, quadras parceiras e comunidade."
         eyebrow="Interesse comercial"
         items={["mídia", "eventos", "ranking", "UR Market", "comunidade"]}
         statusLabel="valores sob proposta"
-        title="Entre na jornada do atleta com critério."
+        title="Sua marca dentro da jornada esportiva."
       />
     </main>
   );

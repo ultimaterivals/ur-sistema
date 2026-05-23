@@ -96,26 +96,14 @@ const rankingData = [
   },
 ] as const;
 
-const criteriaRows = [
+const comparisonCards = [
   {
-    criterion: "Participação",
-    role: "Registra presença e continuidade",
-    status: "após confirmação",
+    title: "Participação solta",
+    text: "Você joga, termina a partida e quase nada fica registrado.",
   },
   {
-    criterion: "Nível",
-    role: "Ajuda a organizar competição mais justa",
-    status: "por contexto",
-  },
-  {
-    criterion: "Resultado",
-    role: "Compõe histórico quando houver regra oficial",
-    status: "sem números reais agora",
-  },
-  {
-    criterion: "Conduta",
-    role: "Protege comunidade, fair play e confiança",
-    status: "postura e respeito",
+    title: "Dentro do UR",
+    text: "Sua presença, desempenho e evolução passam a fazer parte da sua história esportiva.",
   },
 ] as const;
 
@@ -128,8 +116,8 @@ export default function RankingPage() {
           { href: "/cadastro#atleta", label: "Cadastrar interesse", variant: "secondary" },
         ]}
         badges={["Atletas", "Equipes", "Níveis", "UR Coins", "Mídia"]}
-        description="O Ranking UR organiza atletas, equipes, níveis, polos, modalidades e engajamento como registro público da temporada, sempre com dados reais confirmados."
-        eyebrow="Ranking UR • produto central"
+        description="O ranking UR organiza participação, postura, desempenho e evolução para que o atleta e a equipe tenham uma trajetória acompanhada dentro da temporada."
+        eyebrow="Ranking UR"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
         metrics={[
@@ -137,38 +125,38 @@ export default function RankingPage() {
           { label: "Critério", value: "participação confirmada" },
           { label: "Impacto", value: "mídia e oportunidades" },
         ]}
-        statusDescription="Sem atletas, números, posições ou pontuação real publicada nesta fase. A estrutura mostra a lógica do produto antes da abertura oficial."
+        statusDescription="Sua presença vira histórico. Seu desempenho ganha contexto. Sua evolução passa a ser acompanhada."
         statusLabel="ranking em formação"
-        statusTitle="Ranking é história da temporada."
-        title="Não é só tabela. É reputação esportiva."
+        statusTitle="Ranking não é promessa. É registro."
+        title="Sua presença vira histórico. Seu desempenho vira posição."
       />
 
       <PageSection id="leaderboard">
         <LeaderboardPanel
-          description="A prévia do top 3 fica preparada para publicação futura, mas sem inventar nomes, pontos ou posições. O ranking começa a ser alimentado pelo UR Play."
-          eyebrow="Prévia do ranking"
+          description="O objetivo é dar clareza para quem participa: quem joga, comparece, evolui e se compromete começa a aparecer dentro do sistema."
+          eyebrow="Ranking em destaque"
           image={siteImages.defenseDive}
           rows={leaderboardRows}
           tabs={["Individual", "Equipes", "Engajamento", "Polos", "Níveis"]}
-          title="Top 3 em formação."
+          title="Ranking não é promessa. É registro."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="fluxo">
         <ProcessTimeline
-          description="O ranking precisa explicar de onde vem cada informação. A jornada abaixo resume a lógica antes da publicação de dados reais."
-          eyebrow="Caminho do ranking"
+          description="O ranking começa a ser alimentado pelo UR Play e cresce com presença, postura, desempenho e evolução."
+          eyebrow="Como o atleta entra"
           steps={rankingFlow}
-          title="Da participação confirmada à oportunidade."
+          title="Da presença ao histórico público."
         />
       </PageSection>
 
       <PageSection id="tipos">
         <DataBoard
-          description="O Ranking UR será dividido por atletas, equipes, níveis, polos, modalidades e engajamento. Isso evita misturar contextos diferentes como se fossem iguais."
+          description="O Ranking UR será dividido por atletas, equipes, níveis, polos, modalidades e engajamento para permitir competição mais justa."
           eyebrow="Tipos de ranking"
           items={rankingData}
-          title="Classificação com leitura de ecossistema."
+          title="Ranking por atletas, equipes e níveis."
         />
       </PageSection>
 
@@ -176,33 +164,26 @@ export default function RankingPage() {
         <Card className="overflow-hidden p-0" premium>
           <div className="grid gap-4 border-b border-white/10 p-5 md:p-7 lg:grid-cols-[0.72fr_1fr] lg:items-end">
             <div>
-              <Badge>Critérios de pontuação</Badge>
+              <Badge>Comparação</Badge>
               <h2 className="mt-5 text-balance text-[clamp(2.2rem,7vw,3.8rem)] font-black uppercase leading-[0.9] text-white">
-                A regra precisa ser clara antes do número.
+                O jogo precisa deixar registro.
               </h2>
             </div>
             <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              As pontuações reais serão publicadas com regulamento específico. Nesta etapa, o site apresenta a estrutura de critérios sem simular resultado.
+              O ranking organiza participação, desempenho e evolução sem transformar a experiência em tabela fria.
             </p>
           </div>
-          <div className="grid border-b border-white/10 bg-[#ffd84d]/10 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.55fr_1fr_0.55fr]">
-            <div className="px-5 py-4">Critério</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Função</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Momento</div>
-          </div>
-          {criteriaRows.map((row) => (
-            <div className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.55fr_1fr_0.55fr]" key={row.criterion}>
-              <div className="bg-white/[0.035] px-5 py-4 text-sm font-black uppercase tracking-[0.1em] text-white">
-                {row.criterion}
-              </div>
-              <div className="border-t border-white/10 px-5 py-4 text-sm leading-6 text-white/66 md:border-l md:border-t-0">
-                {row.role}
-              </div>
-              <div className="border-t border-[#ffd84d]/15 bg-[#ffd84d]/[0.045] px-5 py-4 text-sm font-bold uppercase tracking-[0.08em] text-[#ffe98b] md:border-l md:border-t-0">
-                {row.status}
-              </div>
+          <div className="grid gap-4 p-5 md:grid-cols-2 md:p-7">
+          {comparisonCards.map((card, index) => (
+            <div
+              className={index === 1 ? "rounded-lg border border-[#ffd84d]/24 bg-[#ffd84d]/10 p-5" : "rounded-lg border border-white/10 bg-black/28 p-5"}
+              key={card.title}
+            >
+              <h3 className="text-2xl font-black uppercase leading-none text-white">{card.title}</h3>
+              <p className="mt-4 text-sm leading-6 text-white/68">{card.text}</p>
             </div>
           ))}
+          </div>
         </Card>
       </PageSection>
 
@@ -212,14 +193,14 @@ export default function RankingPage() {
             { href: "/ur-market", label: "Conhecer UR Market", variant: "secondary" },
             { href: "/midia", label: "Ver mídia UR", variant: "ghost" },
           ]}
-          description="Ranking não termina na posição. Ele se conecta a UR Coins, recompensas, mídia, Draft, CT UR, premiações e oportunidades comerciais dentro da temporada."
+          description="Ranking não termina na posição. Ele se conecta a UR Coins, recompensas, mídia, CT UR, premiações e oportunidades dentro da temporada."
           eyebrow="UR Coins e mídia"
           image={siteImages.mediaCoverage}
           imagePosition="center 45%"
           points={[
             {
               title: "UR Coins",
-              description: "Conectam participação, desempenho, engajamento e benefícios quando as regras estiverem claras.",
+              description: "Pontuação e participação podem abrir acesso a benefícios aprovados pela UR.",
             },
             {
               title: "Mídia própria",
@@ -239,11 +220,11 @@ export default function RankingPage() {
             </Button>
           </>
         }
-        description="A entrada no ranking começa com participação confirmada. Nenhum nome, número ou posição real será publicado sem critérios claros."
+        description="A entrada no ranking começa pelo UR Play. Seu nome aparece conforme presença, desempenho, postura e evolução."
         eyebrow="Entrada no ranking"
         items={["UR Play", "níveis", "equipes", "UR Coins", "mídia"]}
         statusLabel="registro com critério"
-        title="O ranking começa antes da tabela: começa na presença."
+        title="Entrar no ranking pelo UR Play."
       />
     </main>
   );

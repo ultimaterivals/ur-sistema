@@ -11,7 +11,14 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#ffd84d]/15 bg-black/85 backdrop-blur-xl">
+    <header
+      className="sticky top-0 z-50 border-b border-[#ffd84d]/15 bg-black/85 backdrop-blur-xl"
+      onClickCapture={(event) => {
+        if ((event.target as Element).closest("a")) {
+          setOpen(false);
+        }
+      }}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
         <Link className="flex min-w-0 shrink-0 items-center gap-3" href="/" onClick={() => setOpen(false)}>
           <Image

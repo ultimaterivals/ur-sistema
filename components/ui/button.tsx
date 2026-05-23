@@ -35,7 +35,7 @@ export function Button({
   rel,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex min-h-12 max-w-full items-center justify-center gap-2 rounded-lg border px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d]",
+    "inline-flex min-h-10 max-w-full items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d] sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm",
     variants[variant],
     className,
   );

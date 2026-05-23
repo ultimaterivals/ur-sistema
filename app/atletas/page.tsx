@@ -22,41 +22,41 @@ export const metadata: Metadata = {
 const athleteJourney = [
   {
     label: "Entrada",
-    title: "Cadastrar interesse",
-    description: "Seu cadastro coloca você no radar do UR e abre o primeiro caminho dentro do ecossistema.",
+    title: "Entrar",
+    description: "Você escolhe seu perfil, envia seu cadastro e entra no radar da equipe UR.",
     status: "cadastro aberto",
   },
   {
-    label: "Base",
-    title: "Começar pelo UR Play",
-    description: "A participação cria contexto para observação, presença e leitura inicial de nível.",
+    label: "Jogo",
+    title: "Jogar",
+    description: "Você participa do UR Play e começa a criar presença dentro do ecossistema.",
   },
   {
-    label: "Registro",
+    label: "Olhar",
     title: "Ser observado",
-    description: "Postura, evolução, participação e histórico passam a formar uma base validada.",
+    description: "Postura, presença e desempenho ajudam a dar contexto ao seu momento esportivo.",
   },
   {
     label: "Evolução",
-    title: "Subir de patamar",
-    description: "Nível, CT UR, temporada e equipes criam caminhos para desenvolvimento com critério.",
+    title: "Evoluir",
+    description: "Você não precisa ser o melhor hoje. Precisa entrar, competir e evoluir.",
   },
   {
     label: "Palco",
-    title: "Aparecer na mídia",
-    description: "Histórias, bastidores e destaques conectam seu desempenho à comunidade.",
+    title: "Aparecer",
+    description: "Bons momentos, histórias e evolução podem ganhar espaço nos canais UR.",
   },
   {
     label: "Valor",
-    title: "Gerar oportunidade",
-    description: "Ranking, equipes, UR Coins e eventos transformam presença em reputação pública.",
+    title: "Gerar valor",
+    description: "Ranking, equipes, UR Coins e eventos conectam presença a novas oportunidades.",
   },
 ] as const;
 
 const profileFields = [
-  { label: "Perfil", value: "liberado após análise" },
+  { label: "Perfil", value: "perfil inicial" },
   { label: "Ranking", value: "ranking em formação" },
-  { label: "Histórico", value: "após participação oficial" },
+  { label: "Histórico", value: "após participação" },
   { label: "Oportunidades", value: "com critério UR" },
 ] as const;
 
@@ -117,8 +117,8 @@ export default function AtletasPage() {
           { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
         ]}
         badges={["UR Play", "Ranking contínuo", "Mídia própria", "Mentalidade Hunter"]}
-        description="O atleta entra pelo UR Play, constrói histórico, evolui por níveis, ganha visibilidade e se conecta a equipes, CT UR, eventos, UR Coins e oportunidades."
-        eyebrow="Atletas UR • jornada esportiva"
+        description="No Ultimate Rivals, sua presença, postura e desempenho começam a construir histórico. Você não entra apenas para jogar; entra para evoluir, aparecer e fazer parte de uma temporada organizada."
+        eyebrow="Para atletas"
         image={siteImages.athletePortrait}
         imagePosition="center 18%"
         metrics={[
@@ -126,39 +126,39 @@ export default function AtletasPage() {
           { label: "Base", value: "histórico validado" },
           { label: "Saída", value: "reputação e oportunidade" },
         ]}
-        statusDescription="Seu perfil só aparece publicamente após cadastro, presença e confirmação oficial."
+        statusDescription="Aqui, sua postura, presença e desempenho começam a contar."
         statusLabel="perfil inicial"
-        statusTitle="Não é só jogar. É construir trajetória."
-        title="O atleta é protagonista do ecossistema."
+        statusTitle="Não é só participar. É criar trajetória."
+        title="Seu jogo precisa contar."
       />
 
       <PageSection id="perfil">
         <ProfileMockup
           cta={{ href: "/cadastro#atleta", label: "Cadastrar interesse" }}
-          description="O perfil do atleta funciona como um passaporte esportivo: presença, nível, histórico, mídia e oportunidades em um só lugar quando seus dados forem confirmados."
-          eyebrow="Perfil do atleta em formação"
+          description="Aqui, o atleta deixa de ser apenas mais um participante. Cada presença pode ajudar a construir trajetória, ranking, mídia, oportunidades e reconhecimento."
+          eyebrow="O atleta é protagonista do UR"
           fields={profileFields}
           highlights={["disciplina", "presença", "evolução", "respeito", "competitividade saudável"]}
           image={siteImages.defenseDive}
-          title="Histórico público com contexto, não vitrine vazia."
+          title="Perfil do atleta com presença, postura e evolução."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="jornada">
         <ProcessTimeline
-          description="Você entende o caminho em poucos passos: entrar, jogar, ser observado, evoluir, aparecer e gerar valor."
-          eyebrow="Jornada visual"
+          description="Entre, jogue, evolua e construa seu histórico. Sua presença vira registro e seu desempenho ganha contexto."
+          eyebrow="Jornada do atleta"
           steps={athleteJourney}
-          title="Do primeiro cadastro ao histórico dentro do UR."
+          title="Sua trajetória começa pelo primeiro passo."
         />
       </PageSection>
 
       <PageSection id="registro">
         <DataBoard
-          description="O Ultimate Rivals não vende promessa de resultado. A proposta é registrar sua trajetória esportiva com critérios, presença e respeito."
-          eyebrow="O que passa a importar"
+          description="Cada participação pode ajudar a construir presença, reputação, mídia e reconhecimento dentro do UR."
+          eyebrow="O que passa a contar"
           items={athleteData}
-          title="Ranking, mídia e evolução dependem de rastro real."
+          title="Presença, desempenho e postura contam."
         />
       </PageSection>
 
@@ -188,7 +188,7 @@ export default function AtletasPage() {
 
       <PageSection id="ranking-preview">
         <LeaderboardPanel
-          description="O ranking individual será publicado somente com dados reais confirmados. Nesta fase, a prévia mostra a estrutura do produto sem inventar atleta, número ou posição."
+          description="Seu nome começa a aparecer quando sua presença é registrada. A posição nasce de participação, postura e desempenho confirmados."
           eyebrow="Prévia do ranking individual"
           image={siteImages.attackBlock}
           rows={rankingRows}
@@ -200,17 +200,17 @@ export default function AtletasPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#atleta">Entrar como atleta</Button>
+            <Button href="/cadastro#atleta">Quero construir minha trajetória</Button>
             <Button href="/ur-play" variant="secondary">
               Começar pelo UR Play
             </Button>
           </>
         }
-        description="O cadastro coloca você no radar do UR. Participação, ranking, mídia, equipes e oportunidades passam por análise da equipe UR para manter equilíbrio e respeito."
+        description="O cadastro coloca você no radar do UR. A equipe analisa seu perfil e orienta o caminho certo para você começar."
         eyebrow="Próximo passo"
         items={["UR Play", "ranking", "mídia", "CT UR", "equipes"]}
         statusLabel="cadastro aberto"
-        title="Sua jornada começa antes do primeiro destaque."
+        title="Quero construir minha trajetória."
       />
     </main>
   );

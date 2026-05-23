@@ -49,15 +49,15 @@ const ecosystemCards = [
   {
     eyebrow: "Entrada oficial",
     title: "UR Play",
-    description: "Jogo real, observação, nivelamento e início de histórico dentro da plataforma.",
+    description: "O primeiro passo para jogar, ser visto e entrar no radar da equipe UR.",
     href: "/ur-play",
-    cta: "Começar",
+    cta: "Conhecer",
     icon: Zap,
   },
   {
-    eyebrow: "Produto central",
+    eyebrow: "Histórico esportivo",
     title: "Ranking",
-    description: "A temporada ganha memória pública com classificação individual, coletiva e por engajamento.",
+    description: "Sua presença, postura e desempenho começam a virar histórico.",
     href: "/ranking",
     cta: "Ver ranking",
     icon: BarChart3,
@@ -65,7 +65,7 @@ const ecosystemCards = [
   {
     eyebrow: "Identidade competitiva",
     title: "Equipes",
-    description: "Times deixam de ser apenas grupos e passam a ter elenco, história, mídia e ranking coletivo.",
+    description: "Times ganham identidade, calendário, ranking coletivo e visibilidade.",
     href: "/equipes",
     cta: "Cadastrar",
     icon: Shield,
@@ -84,10 +84,23 @@ const leagueSignals = [
   "patrocinadores",
 ] as const;
 
-const quickProof = [
-  { label: "Esporte real", value: "quadra, areia, atletas e comunidade" },
-  { label: "Temporada", value: "próximo ciclo em organização" },
-  { label: "Entrada", value: "cadastro de interesse aberto" },
+const heroCards = [
+  {
+    title: "UR Play",
+    text: "O primeiro passo para jogar, ser visto e entrar no radar da equipe UR.",
+  },
+  {
+    title: "Ranking",
+    text: "Sua presença, postura e desempenho começam a virar histórico.",
+  },
+  {
+    title: "Equipes",
+    text: "Times ganham identidade, calendário, ranking coletivo e visibilidade.",
+  },
+  {
+    title: "Mídia UR",
+    text: "Jogos, bastidores, destaques e histórias ganham palco próprio.",
+  },
 ] as const;
 
 const galleryImages = homeImageRoles.galeria;
@@ -111,20 +124,21 @@ export default function Home() {
           <div className="mx-auto flex max-w-7xl flex-col px-5 lg:px-8">
             <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(340px,0.48fr)] lg:items-start">
               <div className="min-w-0">
-                <Badge>Ultimate Rivals • ecossistema esportivo</Badge>
+                <Badge>Ultimate Rivals | Ecossistema esportivo</Badge>
                 <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.85rem,11.5vw,5.8rem)] font-black uppercase leading-[0.86] text-white md:text-[clamp(3.6rem,6.3vw,6.4rem)]">
-                  O jogo virou ecossistema.
+                  Entre no jogo. Construa sua história.
                 </h1>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:mt-5 md:text-xl md:leading-8">
-                  O esporte amador ganhou estrutura: competição, ranking, equipes, mídia, temporada e oportunidades no mesmo sistema.
+                  O Ultimate Rivals organiza atletas, equipes, quadras e parceiros em uma temporada com UR Play,
+                  ranking, mídia, benefícios e oportunidades reais para quem quer evoluir no esporte.
                 </p>
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-6">
                   <Button href="/cadastro#atleta">
                     Entrar no UR
                     <ArrowRight aria-hidden className="h-4 w-4" />
                   </Button>
-                  <Button className="min-h-10 px-3 py-2 text-xs shadow-none sm:w-auto" href="/ecossistema" variant="secondary">
-                    Ver ecossistema
+                  <Button className="min-h-10 px-3 py-2 text-xs shadow-none sm:w-auto" href="/ur-play" variant="secondary">
+                    Conhecer o UR Play
                   </Button>
                 </div>
               </div>
@@ -132,16 +146,16 @@ export default function Home() {
               <aside className="rounded-lg border border-[#ffd84d]/24 bg-black/62 p-4 shadow-[0_26px_80px_rgba(0,0,0,0.42)] backdrop-blur md:p-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                      <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">fase da temporada</div>
-                    <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Próximo ciclo em organização</h2>
+                    <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">temporada UR</div>
+                    <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Cadastro aberto</h2>
                   </div>
                   <Trophy aria-hidden className="h-8 w-8 text-[#ffd84d]" />
                 </div>
-                <div className="mt-5 grid gap-3">
-                  {quickProof.map((item) => (
-                    <div className="border-t border-white/10 pt-3" key={item.label}>
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#ffe98b]">{item.label}</div>
-                      <div className="mt-1 text-sm font-extrabold uppercase leading-5 text-white/76">{item.value}</div>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                  {heroCards.map((item) => (
+                    <div className="rounded-lg border border-white/10 bg-white/[0.045] p-3" key={item.title}>
+                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#ffe98b]">{item.title}</div>
+                      <div className="mt-2 text-sm font-semibold leading-5 text-white/76">{item.text}</div>
                     </div>
                   ))}
                 </div>
@@ -195,9 +209,9 @@ export default function Home() {
 
       <Section className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="caminhos">
         <SectionHeadingPremium
-          description="O visitante escolhe rapidamente seu papel dentro do ecossistema: atleta, equipe, patrocinador, quadra ou comunidade."
+          description="Escolha seu perfil e envie seu cadastro. A equipe UR analisa as informações e orienta o melhor caminho para você começar."
           eyebrow="Como entrar"
-          title="Um ecossistema cresce quando cada público tem uma porta clara."
+          title="Um caminho claro para quem quer participar."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           {entryPaths.map((path) => {
@@ -239,7 +253,7 @@ export default function Home() {
         <GalleryStrip
           description="Comemoração, ataque, defesa, premiação, público e bastidores começam a dar textura real para a memória esportiva."
           images={galleryImages}
-          title="O ecossistema respira quadra, areia e gente."
+          title="O UR respira quadra, areia e gente."
         />
       </Section>
 
@@ -248,10 +262,11 @@ export default function Home() {
           <div>
             <Badge>Jornada UR</Badge>
             <h2 className="mt-4 text-balance text-[clamp(2.55rem,8vw,4.4rem)] font-black uppercase leading-[0.88] text-white">
-              Do primeiro jogo à reputação pública.
+              Um caminho claro para quem quer participar.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-white/72 md:text-lg">
-              O ecossistema transforma participação em histórico, histórico em evolução e evolução em oportunidade.
+              Você entra no radar, recebe orientação e começa pelo caminho certo: UR Play, equipe, ranking,
+              comunidade, parceria ou quadra.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button href="/atletas" variant="secondary">
@@ -284,9 +299,9 @@ export default function Home() {
 
       <Section id="reconhecimento">
         <SectionHeadingPremium
-          description="O reconhecimento no UR nasce de presença, evolução, ranking, participação confirmada, mídia e benefícios com critério."
+          description="Aqui, cada participação pode virar histórico, cada equipe pode ganhar identidade e cada atleta pode construir uma trajetória dentro de uma estrutura organizada."
           eyebrow="Reconhecimento"
-          title="Evoluir precisa gerar memória, palco e recompensa."
+          title="O UR foi criado para quem quer mais do que jogar por jogar."
         />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {recognitionCards.map((card) => {
@@ -324,7 +339,7 @@ export default function Home() {
             <h2 className="mt-5 text-3xl font-black uppercase leading-[0.9] text-white">FAQ rápido</h2>
             <div className="mt-6 grid gap-4">
               {[
-                ["É torneio?", "Não. É ecossistema contínuo com UR Play, ranking, equipes, mídia, eventos e recompensas."],
+                ["É torneio?", "Não. É um ecossistema contínuo com UR Play, ranking, equipes, mídia, eventos e benefícios."],
                 ["Já tem ranking real?", "Ainda não. Seu nome começa a aparecer conforme presença, desempenho e participação confirmada."],
                 ["Cadastro garante vaga?", "Não. Seu cadastro coloca você no radar do UR; a entrada tem critério para manter equilíbrio, respeito e organização."],
               ].map(([question, answer]) => (

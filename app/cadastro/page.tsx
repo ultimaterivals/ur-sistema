@@ -23,18 +23,18 @@ export const metadata: Metadata = {
 };
 
 const nextSteps = [
-  "Você escolhe o caminho mais próximo do seu perfil.",
-  "Você preenche o cadastro dentro do site.",
-  "Seu perfil entra no radar da equipe UR.",
-  "A equipe UR avalia seu perfil e orienta o próximo passo.",
-  "A entrada acontece com critério para manter nível, respeito e equilíbrio.",
+  "Você se cadastra.",
+  "A equipe UR analisa as informações.",
+  "A equipe indica o próximo passo.",
+  "Você começa pelo caminho certo.",
+  "Sua jornada dentro do UR pode avançar.",
 ] as const;
 
 const quickFaq = [
   {
     question: "Este cadastro já envia dados?",
     answer:
-      "Sim. O cadastro coloca seu perfil no radar da equipe UR e ajuda a organizar o próximo contato.",
+      "Sim. Seu cadastro coloca você no radar do UR e ajuda a equipe a orientar o próximo passo.",
   },
   {
     question: "Preciso criar conta ou pagar agora?",
@@ -77,23 +77,22 @@ export default function CadastroPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "#caminhos", label: "Escolher caminho" },
-          { href: "#whatsapp", label: "WhatsApp UR", variant: "secondary" },
-          { href: "#aviso-validacao", label: "Como funciona", variant: "ghost" },
+          { href: "#caminhos", label: "Escolher perfil" },
+          { href: "#como-funciona", label: "Como funciona", variant: "secondary" },
         ]}
         badges={leadProfileOrder.map((profile) => leadFormConfigs[profile].cardTitle)}
-        description="Escolha se você entra como atleta, equipe, patrocinador, quadra parceira ou comunidade. Seu cadastro coloca você no radar do UR e ajuda a equipe a indicar o próximo caminho."
-        eyebrow="Cadastro UR • porta de entrada"
+        description="Seu cadastro coloca você no radar do Ultimate Rivals. Depois disso, a equipe UR analisa seu perfil e orienta o melhor caminho: UR Play, equipe, ranking, parceria, quadra ou comunidade."
+        eyebrow="Porta de entrada UR"
         image={siteImages.communityMoment}
         imagePosition="center 45%"
         metrics={[
           { label: "Perfis", value: "atleta, equipe, patrocinador, quadra e comunidade" },
-          { label: "Caminho", value: "cadastro analisado pela equipe UR" },
+          { label: "Caminho", value: "perfil analisado pela equipe UR" },
           { label: "Momento", value: "entrada com critério e respeito" },
         ]}
         statusDescription="O cadastro é o primeiro passo. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
         statusLabel="cadastro aberto"
-        statusTitle="Você se cadastra, a equipe UR analisa seu perfil e indica o melhor caminho."
+        statusTitle="Você se cadastra, a equipe UR analisa seu perfil e orienta o melhor caminho."
         title="Escolha seu perfil e dê o primeiro passo."
       />
 
@@ -101,9 +100,9 @@ export default function CadastroPage() {
 
       <PageSection className="bg-[#07080c]" id="como-funciona">
         <SectionHeader
-          description="Você entra no radar do Ultimate Rivals e recebe um caminho mais claro: UR Play, equipe, ranking, parceria, quadra ou comunidade."
-          eyebrow="Depois do interesse"
-          title="Cadastro aberto, próximo passo com critério."
+          description="Você se cadastra, a equipe UR analisa as informações e indica o próximo passo. O cadastro não garante entrada imediata, mas inicia sua jornada dentro do UR."
+          eyebrow="Como funciona"
+          title="Entrada com critério e respeito."
         />
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
           {nextSteps.map((item, index) => (
@@ -119,7 +118,7 @@ export default function CadastroPage() {
 
       <PageSection id="aviso-validacao">
         <SectionHeader
-          description="O cadastro coloca você no radar do UR. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
+          description="O cadastro é o primeiro passo. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
           eyebrow="Aviso importante"
           title="Entrada aberta, com critério e respeito."
         />
@@ -132,8 +131,8 @@ export default function CadastroPage() {
               O cadastro é o primeiro passo.
             </h3>
             <p className="mt-4 text-sm leading-6 text-white/72">
-              Depois do envio, a equipe UR avalia seu perfil e orienta o caminho certo antes de liberar vaga,
-              parceria, patrocínio ou participação.
+              Depois do envio, a equipe UR analisa seu perfil e orienta o caminho certo antes de liberar vaga,
+              parceria, conversa comercial ou participação.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -161,7 +160,7 @@ export default function CadastroPage() {
               <MessageCircle aria-hidden className="h-6 w-6 text-[#ffd84d]" />
             </span>
             <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">Falar com a equipe UR</h3>
-            <p className="mt-4 text-sm leading-6 text-white/70">
+              <p className="mt-4 text-sm leading-6 text-white/70">
               Canal de apoio para dúvidas iniciais e orientação sobre o caminho mais adequado dentro do UR.
             </p>
             <Button className="mt-6 w-full" href={externalLinks.whatsappUr.href}>
@@ -225,11 +224,11 @@ export default function CadastroPage() {
             <div>
               <Badge>Central UR</Badge>
               <h2 className="mt-5 max-w-3xl text-[clamp(2.3rem,8vw,3.55rem)] font-black uppercase leading-[0.96] text-white">
-                Você entra, é avaliado e recebe um caminho claro dentro do UR.
+                Seu cadastro coloca você no radar do UR.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/75">
-                A central reúne atletas, equipes, marcas, quadras e comunidade em um só caminho. A equipe UR analisa
-                cada perfil antes de orientar agenda, polo, proposta, vaga ou participação.
+                A equipe UR analisa seu perfil e orienta o melhor caminho: UR Play, equipe, ranking, parceria,
+                quadra ou comunidade.
               </p>
             </div>
             <div className="grid gap-3">

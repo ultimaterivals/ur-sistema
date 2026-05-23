@@ -9,7 +9,7 @@ export const conversionRoutes = {
 } as const;
 
 const tallyStatus = "formulário de apoio disponível";
-const channelPendingStatus = "canal será aberto quando o atendimento oficial estiver disponível";
+const channelPendingStatus = "fale com a equipe UR pela página de cadastro";
 
 export const tallyLinks = {
   atleta: "https://tally.so/r/RGb84l",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BarChart3, CheckCircle2, Eye, Radio } from "lucide-react";
+import { BarChart3, CheckCircle2, Eye } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
   DataBoard,
@@ -21,61 +21,45 @@ export const metadata: Metadata = {
 const dayFlow = [
   {
     label: "Cadastro",
-    title: "Interesse registrado",
-    description: "Seu cadastro coloca você no radar do UR com disponibilidade, modalidade e autorização de contato.",
+    title: "Você se cadastra",
+    description: "Escolhe seu perfil e entra no radar da equipe UR.",
     status: "cadastro aberto",
   },
   {
-    label: "Caminho",
-    title: "Próximo passo claro",
-    description: "A equipe UR orienta agenda, polo, disponibilidade e próximos passos.",
+    label: "Orientação",
+    title: "A equipe orienta o próximo passo",
+    description: "A entrada acontece com critério para manter nível, respeito e equilíbrio.",
   },
   {
-    label: "Presença",
-    title: "Chegada e conduta",
-    description: "Presença, postura, compromisso e autorização de contato fazem parte do processo.",
+    label: "UR Play",
+    title: "Você participa do UR Play",
+    description: "Joga com organização, presença registrada e acompanhamento.",
   },
   {
-    label: "Jogo",
-    title: "Participação observada",
-    description: "O UR Play observa nível, evolução, contexto técnico e conexão com a comunidade.",
-  },
-  {
-    label: "Registro",
-    title: "Histórico criado",
-    description: "Seu histórico começa com presença, postura e participação confirmadas.",
-  },
-  {
-    label: "Ranking",
-    title: "Próximo passo",
-    description: "O ranking, mídia, equipes e oportunidades dependem da temporada estruturada.",
+    label: "Histórico",
+    title: "Seu desempenho começa a contar",
+    description: "Presença, postura e evolução ajudam a construir histórico.",
   },
 ] as const;
 
 const registeredItems = [
   {
-    label: "Presença",
-    value: "comparecimento",
-    detail: "base para histórico, compromisso e continuidade dentro do ecossistema.",
+    label: "Para quem quer jogar mais",
+    value: "estrutura",
+    detail: "um caminho para atletas que querem sair do improviso e entrar em uma estrutura.",
     icon: CheckCircle2,
   },
   {
-    label: "Nível",
-    value: "observação",
-    detail: "leitura inicial para organização mais justa por contexto esportivo.",
+    label: "Para quem quer ser visto",
+    value: "radar UR",
+    detail: "o UR Play aproxima o atleta do ranking, das equipes e da mídia UR.",
     icon: Eye,
   },
   {
-    label: "Ranking",
-    value: "em formação",
-    detail: "classificação pública só abre com dados reais confirmados.",
+    label: "Para quem quer evoluir",
+    value: "contexto",
+    detail: "cada participação ajuda a entender nível, postura e momento esportivo.",
     icon: BarChart3,
-  },
-  {
-    label: "Mídia",
-    value: "potencial",
-    detail: "bastidores e destaques podem virar história da temporada.",
-    icon: Radio,
   },
 ] as const;
 
@@ -106,11 +90,11 @@ export default function URPlayPage() {
       <PlatformHero
         actions={[
           { href: "/cadastro#atleta", label: "Começar no UR Play" },
-          { href: "/ranking", label: "Ver conexão com ranking", variant: "secondary" },
+          { href: "/ranking", label: "Ver ranking", variant: "secondary" },
         ]}
         badges={["Entrada oficial", "Observação", "Nivelamento", "Histórico"]}
-        description="O UR Play é a porta de entrada para atletas serem vistos, avaliados, organizados por nível e conectados ao ranking, equipes, mídia, temporada e oportunidades do Ultimate Rivals."
-        eyebrow="UR Play • entrada do ecossistema"
+        description="Você joga, é observado, cria presença e entra no radar do ecossistema. Não é só uma partida: é o primeiro passo para ranking, equipes, mídia e oportunidades dentro do UR."
+        eyebrow="Porta de entrada"
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
         metrics={[
@@ -118,10 +102,10 @@ export default function URPlayPage() {
           { label: "Durante", value: "presença, jogo e observação" },
           { label: "Depois", value: "registro e próximos passos" },
         ]}
-        statusDescription="A agenda oficial será publicada após confirmação de polo e calendário. A entrada tem critério para manter equilíbrio, respeito e organização."
+        statusDescription="Você joga, é visto, recebe contexto e começa a construir sua trajetória."
         statusLabel="agenda em organização"
-        statusTitle="UR Play não é rachão. É entrada oficial."
-        title="O primeiro jogo precisa abrir caminho."
+        statusTitle="O UR Play é onde seu jogo começa a ser observado."
+        title="UR Play é onde sua trajetória começa."
       />
 
       <PageSection id="nao-e-rachao">
@@ -130,7 +114,7 @@ export default function URPlayPage() {
             { href: "/cadastro#atleta", label: "Registrar interesse" },
             { href: "/regulamento", label: "Ver regulamento", variant: "secondary" },
           ]}
-          description="Um jogo solto termina no apito final. O UR Play existe para gerar contexto: quem participou, como se comportou, qual nível apresentou e qual próximo passo faz sentido."
+          description="O UR Play é a porta de entrada para ser visto, avaliado e conectado ao ecossistema. Cada participação pode virar ponto, história, mídia e oportunidade."
           eyebrow="Posicionamento"
           image={siteImages.fairPlayLine}
           imagePosition="center 48%"
@@ -145,14 +129,14 @@ export default function URPlayPage() {
             },
           ]}
           statusLabel="registro com critério"
-          title="Não é jogo avulso. É começo de histórico."
+          title="Não é só uma partida. É começo de histórico."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="fluxo-do-dia">
         <ProcessTimeline
-          description="O atleta entende o dia em poucos passos: cadastra, recebe orientação, joga, é observado e sai com um próximo caminho."
-          eyebrow="Caminho do dia"
+          description="Você entende o dia em poucos passos: cadastro, orientação, participação e histórico."
+          eyebrow="Como funciona"
           steps={dayFlow}
           title="Do cadastro ao registro esportivo."
         />
@@ -160,16 +144,16 @@ export default function URPlayPage() {
 
       <PageSection id="registro">
         <DataBoard
-          description="A força do UR Play está no que ele gera depois do jogo: histórico, leitura de nível, base de ranking, mídia e conexão com equipes."
+          description="O UR Play aproxima o atleta do ranking, das equipes e da mídia UR. Cada participação ajuda a entender nível, postura e momento esportivo."
           eyebrow="O que é registrado"
           items={registeredItems}
-          title="O valor está no rastro que fica."
+          title="Para quem quer jogar mais, ser visto e evoluir."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="ranking-nivelamento">
         <LeaderboardPanel
-          description="A prévia prepara o ranking como produto central, mas nenhuma posição real é publicada sem presença, desempenho e critérios claros."
+          description="Seu nome começa a aparecer conforme sua presença e desempenho. O ranking só ganha dados reais com participação confirmada."
           eyebrow="Nivelamento e ranking"
           image={siteImages.attackBlock}
           rows={rankingRows}
@@ -211,7 +195,7 @@ export default function URPlayPage() {
         }
         description="Registre interesse para receber orientação quando agenda, polo e participação estiverem confirmados."
         eyebrow="Entrada oficial"
-        items={["cadastro", "orientação", "jogo", "registro", "ranking"]}
+        items={["cadastro", "orientação", "jogo", "histórico", "ranking"]}
         statusLabel="entrada com critério"
         title="A jornada começa no UR Play, mas não termina no primeiro jogo."
       />

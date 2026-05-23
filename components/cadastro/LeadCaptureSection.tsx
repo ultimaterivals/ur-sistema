@@ -80,9 +80,9 @@ export function LeadCaptureSection() {
     >
       <div className="mx-auto max-w-7xl min-w-0">
         <SectionHeader
-          description="Escolha seu caminho e preencha o cadastro no próprio site. Seu perfil entra no radar do UR, com alternativa externa disponível como apoio."
+          description="Escolha o perfil que mais combina com você. Seu cadastro coloca você no radar do UR e ajuda a equipe a orientar o melhor caminho."
           eyebrow="Escolha seu caminho"
-          title="Uma porta de entrada para cada perfil."
+          title="Escolha seu perfil e dê o primeiro passo."
         />
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
@@ -145,8 +145,8 @@ function PathButton({
       <h3 className="mt-5 text-2xl font-black uppercase leading-none text-white">{config.cardTitle}</h3>
       <p className="mt-2 text-xs font-black uppercase leading-5 tracking-[0.12em] text-[#ffe98b]">{config.audience}</p>
       <p className="mt-4 flex-1 text-sm leading-6 text-white/70">{config.description}</p>
-      <span className="mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#ffd84d]/35 bg-[#ffd84d]/10 px-4 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b]">
-        Abrir cadastro
+      <span className="mt-6 inline-flex min-h-10 w-full items-center justify-center rounded-lg border border-[#ffd84d]/35 bg-[#ffd84d]/10 px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] text-[#ffe98b] sm:min-h-12 sm:py-3 sm:text-sm">
+        {config.cardButtonLabel}
       </span>
     </button>
   );

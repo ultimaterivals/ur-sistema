@@ -19,6 +19,7 @@ export type LeadFormConfig = {
   cardTitle: string;
   audience: string;
   description: string;
+  cardButtonLabel: string;
   formTitle: string;
   formDescription: string;
   fallbackHref: string;
@@ -175,14 +176,14 @@ export const leadFormConfigs = {
     profile: "athlete",
     anchor: "atleta",
     cardTitle: "Sou atleta",
-    audience: "UR Play, ranking e evolução",
-    description:
-      "Entre pelo UR Play, construa histórico, dispute ranking, busque equipe, mídia, CT UR e recompensas futuras.",
+    audience: "seu jogo, sua evolução e sua trajetória",
+    description: "Quero jogar, ser visto, criar histórico e construir minha trajetória no UR.",
+    cardButtonLabel: "Cadastrar como atleta",
     formTitle: "Cadastro de atleta UR",
     formDescription:
-      "Registro de interesse para atletas que querem entrar no ecossistema pelo UR Play e evoluir com critério.",
+      "O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma experiência melhor para todos.",
     fallbackHref: externalLinks.formularioAtleta.href,
-    fallbackLabel: "Usar formulário de apoio do atleta",
+    fallbackLabel: "Usar formulário de apoio",
     fields: [
       { name: "nomeCompleto", label: "Nome completo", type: "text", required: true },
       { name: "whatsapp", label: "WhatsApp com DDD", type: "tel", required: true, placeholder: "31999990000" },
@@ -217,15 +218,15 @@ export const leadFormConfigs = {
   team: {
     profile: "team",
     anchor: "equipe",
-    cardTitle: "Tenho uma equipe",
-    audience: "elenco, identidade e ranking coletivo",
-    description:
-      "Registre uma equipe para avaliação de elenco, identidade, ranking coletivo, temporada, mídia e oportunidades.",
+    cardTitle: "Tenho equipe",
+    audience: "identidade, temporada e mídia UR",
+    description: "Quero cadastrar meu time para entrar no radar da temporada, ranking e mídia UR.",
+    cardButtonLabel: "Cadastrar equipe",
     formTitle: "Cadastro de equipe UR",
     formDescription:
-      "Registro de interesse para equipes que querem se organizar como ativo competitivo dentro do Ultimate Rivals.",
+      "O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma experiência melhor para todos.",
     fallbackHref: externalLinks.formularioEquipe.href,
-    fallbackLabel: "Usar formulário de apoio da equipe",
+    fallbackLabel: "Usar formulário de apoio",
     fields: [
       { name: "nomeEquipe", label: "Nome da equipe", type: "text", required: true },
       { name: "responsavel", label: "Responsável/capitão", type: "text", required: true },
@@ -266,15 +267,15 @@ export const leadFormConfigs = {
   sponsor: {
     profile: "sponsor",
     anchor: "patrocinador",
-    cardTitle: "Quero patrocinar",
-    audience: "marca, mídia e ativação comercial",
-    description:
-      "Registre interesse comercial para ativações em eventos, ranking, mídia, UR Market, CT UR e comunidade.",
+    cardTitle: "Sou patrocinador",
+    audience: "marca, mídia e jornada esportiva",
+    description: "Quero entender como minha marca pode aparecer dentro da jornada esportiva.",
+    cardButtonLabel: "Cadastrar interesse comercial",
     formTitle: "Interesse comercial UR",
     formDescription:
-      "Registro para marcas que querem entrar na jornada do atleta, não apenas comprar exposição de logo.",
+      "O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma experiência melhor para todos.",
     fallbackHref: externalLinks.formularioPatrocinador.href,
-    fallbackLabel: "Usar formulário comercial de apoio",
+    fallbackLabel: "Usar formulário de apoio",
     fields: [
       { name: "empresaMarca", label: "Empresa/marca", type: "text", required: true },
       { name: "responsavel", label: "Responsável", type: "text", required: true },
@@ -329,14 +330,14 @@ export const leadFormConfigs = {
     profile: "court",
     anchor: "quadra",
     cardTitle: "Tenho uma quadra",
-    audience: "polo, agenda e comunidade local",
-    description:
-      "Registre uma quadra ou arena para possível polo, eventos, UR Play, mídia e ativações regionais.",
+    audience: "polo parceiro, agenda e comunidade",
+    description: "Quero avaliar minha quadra como possível polo parceiro do Ultimate Rivals.",
+    cardButtonLabel: "Cadastrar quadra",
     formTitle: "Quadra parceira UR",
     formDescription:
-      "Registro para quadras que querem se conectar à expansão por polos do ecossistema Ultimate Rivals.",
+      "O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma experiência melhor para todos.",
     fallbackHref: externalLinks.formularioQuadra.href,
-    fallbackLabel: "Usar formulário de apoio da quadra",
+    fallbackLabel: "Usar formulário de apoio",
     fields: [
       { name: "nomeQuadra", label: "Nome da quadra/arena", type: "text", required: true },
       { name: "responsavel", label: "Responsável", type: "text", required: true },
@@ -366,15 +367,15 @@ export const leadFormConfigs = {
   community: {
     profile: "community",
     anchor: "comunidade",
-    cardTitle: "Quero acompanhar a comunidade",
-    audience: "conteúdo, temporada e bastidores",
-    description:
-      "Entre na base de comunidade para acompanhar notícias, eventos, ranking em formação, mídia e próximos passos.",
+    cardTitle: "Quero acompanhar",
+    audience: "novidades, bastidores e comunidade UR",
+    description: "Quero receber novidades, bastidores, chamadas e próximos passos do UR.",
+    cardButtonLabel: "Entrar na comunidade",
     formTitle: "Comunidade Ultimate Rivals",
     formDescription:
-      "Registro para quem quer acompanhar o crescimento do ecossistema, conteúdos, eventos e oportunidades futuras.",
+      "O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma experiência melhor para todos.",
     fallbackHref: externalLinks.comunidade.href,
-    fallbackLabel: "Usar formulário de apoio da comunidade",
+    fallbackLabel: "Usar formulário de apoio",
     fields: [
       { name: "nomeCompleto", label: "Nome completo", type: "text", required: true },
       { name: "whatsapp", label: "WhatsApp com DDD", type: "tel", required: true },

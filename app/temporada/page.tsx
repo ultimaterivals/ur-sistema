@@ -110,12 +110,12 @@ export default function TemporadaPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar na temporada" },
-          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
+          { href: "/eventos", label: "Ver temporada UR" },
+          { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
         ]}
         badges={["UR Play", "Nivelamento", "Ranking", "Eventos", "Virada de ranking"]}
-        description="A Temporada UR organiza o esporte amador como ciclo contínuo: entrada, nivelamento, ranking, eventos, mídia, recompensas e recomeço."
-        eyebrow="Temporada UR • ciclo estruturado"
+        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
+        eyebrow="Temporada UR"
         image={siteImages.wideServe}
         imagePosition="center 48%"
         metrics={[
@@ -123,18 +123,18 @@ export default function TemporadaPage() {
           { label: "Meio", value: "ranking e eventos" },
           { label: "Fim", value: "virada e novo ciclo" },
         ]}
-        statusDescription="Calendário, repasses, premiações e eventos reais entram apenas após confirmação oficial do ciclo."
+        statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
         statusLabel="calendário em organização"
-        statusTitle="A temporada mantém o esporte vivo."
-        title="Um ciclo contínuo para competir, evoluir e recomeçar."
+        statusTitle="Uma temporada para jogar com constância."
+        title="Uma temporada para jogar com constância."
       />
 
       <PageSection id="ciclo">
         <ProcessTimeline
-          description="A temporada trimestral cria recorrência: começa pelo UR Play, organiza nível e ranking, passa por eventos e fecha com Virada de Ranking."
+          description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
           eyebrow="Ciclo trimestral"
           steps={cycleSteps}
-          title="A temporada tem começo, ritmo e virada."
+          title="UR Play, ranking contínuo e virada de ranking."
         />
       </PageSection>
 
@@ -205,7 +205,7 @@ export default function TemporadaPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#atleta">Entrar na temporada</Button>
+            <Button href="/eventos">Ver temporada UR</Button>
             <Button href="/eventos" variant="secondary">
               Ver calendário UR
             </Button>

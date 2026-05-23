@@ -101,12 +101,12 @@ export default function EventosPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#atleta", label: "Demonstrar interesse" },
-          { href: "/temporada", label: "Entender temporada", variant: "secondary" },
+          { href: "/temporada", label: "Ver temporada UR" },
+          { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
         ]}
         badges={["UR Play", "Mini torneios", "Eventos oficiais", "Virada de ranking"]}
-        description="Eventos no UR são pontos de entrada, competição, ranking, mídia e experiência dentro da temporada estruturada."
-        eyebrow="Eventos UR • calendário esportivo"
+        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
+        eyebrow="Temporada UR"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"
         metrics={[
@@ -114,27 +114,27 @@ export default function EventosPage() {
           { label: "Ciclo", value: "mini torneios e eventos" },
           { label: "Fechamento", value: "virada de ranking" },
         ]}
-        statusDescription="Datas, horários, locais, vagas e polos oficiais entram apenas após confirmação do calendário."
+        statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
         statusLabel="agenda em organização"
-        statusTitle="Cada evento tem função dentro da jornada."
-        title="Calendário esportivo com propósito, não agenda solta."
+        statusTitle="Uma temporada para jogar com constância."
+        title="Uma temporada para jogar com constância."
       />
 
       <PageSection id="tipos">
         <CommercialAssetPanel
           assets={eventTypes}
-          description="Os formatos abaixo organizam a experiência da temporada sem inventar datas, vagas, locais ou eventos confirmados."
+          description="Os formatos abaixo organizam a experiência da temporada: UR Play, eventos oficiais, ranking contínuo e virada de ranking."
           eyebrow="Tipos de evento"
-          title="Cada formato resolve uma etapa do ecossistema."
+          title="Cada etapa tem função dentro da temporada."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="linha-do-tempo">
         <ProcessTimeline
-          description="A agenda pública deve mostrar a função de cada etapa: entrada, recorrência, ranking, mídia e fechamento de ciclo."
+          description="A temporada registra presença, desempenho e evolução para criar continuidade no esporte amador."
           eyebrow="Linha do tempo"
           steps={seasonLine}
-          title="Do primeiro jogo à virada de ranking."
+          title="UR Play, eventos oficiais e virada de ranking."
         />
       </PageSection>
 
@@ -196,7 +196,7 @@ export default function EventosPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#atleta">Demonstrar interesse</Button>
+            <Button href="/temporada">Ver temporada UR</Button>
             <Button href="/cadastro#equipe" variant="secondary">
               Entrar como equipe
             </Button>

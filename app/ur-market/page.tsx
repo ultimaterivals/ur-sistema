@@ -20,27 +20,27 @@ export const metadata: Metadata = {
 
 const coinItems = [
   {
-    label: "Participação",
-    value: "presença",
-    detail: "UR Coins podem reconhecer recorrência, compromisso e participação confirmada.",
+    label: "Produtos e experiências",
+    value: "benefícios",
+    detail: "benefícios podem incluir produtos, serviços, experiências e ações com parceiros.",
     icon: Users,
   },
   {
-    label: "Desempenho",
-    value: "critério",
-    detail: "ranking e temporada ajudam a conectar mérito esportivo a benefícios.",
+    label: "Atletas e equipes",
+    value: "participação",
+    detail: "atletas e equipes podem acumular e usar moedas conforme as regras da temporada.",
     icon: Trophy,
   },
   {
-    label: "Engajamento",
-    value: "comunidade",
-    detail: "ações e mídia podem ampliar valor com calendário e parceiros confirmados.",
+    label: "Parceiros integrados",
+    value: "benefício real",
+    detail: "marcas podem entrar oferecendo benefícios reais para a comunidade UR.",
     icon: Sparkles,
   },
   {
-    label: "Resgate",
+    label: "Resgate com aprovação",
     value: "critério",
-    detail: "benefícios reais entram com aprovação comercial.",
+    detail: "todo benefício precisa respeitar critérios, disponibilidade e equilíbrio do sistema.",
     icon: ShoppingBag,
   },
 ] as const;
@@ -100,12 +100,12 @@ export default function URMarketPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar no ecossistema" },
+          { href: "#coins", label: "Conhecer o UR Market" },
           { href: "/patrocinadores", label: "Ativar marca", variant: "secondary" },
         ]}
         badges={["UR Coins", "Benefícios", "Patrocinadores", "Recompensas", "Recorrência"]}
-        description="O UR Market é a vitrine de valor do ecossistema: conecta participação, desempenho, ranking, patrocinadores, benefícios reais e experiências aprovadas pela UR."
-        eyebrow="UR Market • vitrine de valor"
+        description="UR Coins são pontos internos do Ultimate Rivals. Elas conectam presença, desempenho e participação a benefícios, experiências e oportunidades aprovadas pela UR."
+        eyebrow="UR Coins e benefícios"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
         metrics={[
@@ -113,18 +113,18 @@ export default function URMarketPage() {
           { label: "Base", value: "ranking e participação" },
           { label: "Saída", value: "benefícios aprovados" },
         ]}
-        statusDescription="UR Coins não são dinheiro. São pontos internos de reconhecimento e acesso a benefícios aprovados pela UR."
-        statusLabel="market em preparação"
-        statusTitle="Desempenho precisa virar benefício com critério."
-        title="UR Coins conectam jornada esportiva e recompensa."
+        statusDescription="As UR Coins não são dinheiro. São pontos internos de reconhecimento e acesso a benefícios aprovados pela UR."
+        statusLabel="benefícios aprovados pela UR"
+        statusTitle="Não é prêmio fácil. É reconhecimento com regra."
+        title="Benefícios com critério. Evolução com valor."
       />
 
       <PageSection id="coins">
         <DataBoard
-          description="UR Coins não são dinheiro nem promessa de ganho. São pontos internos para reconhecer presença, desempenho, postura e engajamento com regras claras."
+          description="As UR Coins ajudam a transformar participação em valor dentro do ecossistema. O uso depende de critérios, disponibilidade e aprovação da UR."
           eyebrow="Painel de UR Coins"
           items={coinItems}
-          title="Pontos internos para transformar presença em reconhecimento."
+          title="Não é prêmio fácil. É reconhecimento com regra."
         />
       </PageSection>
 
@@ -134,7 +134,7 @@ export default function URMarketPage() {
             { href: "/ranking", label: "Ver ranking", variant: "secondary" },
             { href: "/cadastro#patrocinador", label: "Oferecer benefício", variant: "ghost" },
           ]}
-          description="A vitrine nasce para mostrar benefícios futuros de forma premium, sem publicar marcas, preços, produtos ou experiências não confirmadas."
+          description="A vitrine nasce para mostrar benefícios com critério, sem prometer produtos, marcas, preços ou experiências antes da aprovação da UR."
           eyebrow="Vitrine de benefícios UR"
           image={siteImages.teamEmbrace}
           imagePosition="center 46%"
@@ -148,23 +148,23 @@ export default function URMarketPage() {
               description: "Nenhuma precificação fictícia será exibida no site público.",
             },
           ]}
-          title="Recompensa boa parece oportunidade, não vitrine vazia."
+          title="Vitrine de benefícios UR."
         />
       </PageSection>
 
       <PageSection id="categorias">
         <CommercialAssetPanel
           assets={rewardAssets}
-          description="As categorias preparam o Market para produtos, serviços, experiências e ativações comerciais, sempre com benefícios reais aprovados pela UR."
+          description="As categorias preparam produtos, serviços, experiências e ativações comerciais, sempre com benefícios reais aprovados pela UR."
           eyebrow="Categorias de recompensa"
-          title="Benefícios que fazem sentido para a jornada."
+          title="Recompensas com critério."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="resgate">
         <ProcessTimeline
-          description="O caminho de resgate precisa ser simples e confiável: primeiro vem a participação confirmada, depois a vitrine, depois a aprovação."
-          eyebrow="Caminho de resgate"
+          description="Primeiro vem presença, desempenho e participação. Depois, benefícios aprovados conforme regra, disponibilidade e equilíbrio do sistema."
+          eyebrow="Resgate com aprovação"
           steps={redemptionFlow}
           title="Como valor pode virar benefício."
         />
@@ -201,11 +201,11 @@ export default function URMarketPage() {
             </Button>
           </>
         }
-        description="O Market entra como camada de valor do ecossistema. Itens, valores e resgates reais dependem de regras claras e aprovação da equipe UR."
+        description="UR Coins conectam presença, desempenho e participação a benefícios, experiências e oportunidades aprovadas pela UR."
         eyebrow="Próximo passo"
         items={["UR Coins", "ranking", "benefícios", "patrocinadores", "comunidade"]}
-        statusLabel="vitrine inicial em preparação"
-        title="O valor do jogo precisa voltar para a comunidade."
+        statusLabel="benefícios aprovados pela UR"
+        title="Conhecer o UR Market."
       />
     </main>
   );

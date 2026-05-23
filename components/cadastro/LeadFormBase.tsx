@@ -45,7 +45,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
       setSubmitState({
         status: "success",
         message:
-          "Cadastro recebido. A equipe Ultimate Rivals vai analisar seu perfil antes de liberar próximos passos.",
+          "Cadastro recebido. A equipe Ultimate Rivals vai analisar seu perfil e orientar o próximo passo.",
       });
       form.reset();
       return;
@@ -104,10 +104,10 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
               Seu cadastro entra com
             </p>
             <ul className="mt-3 grid gap-2 text-sm leading-5 text-white/68">
-              <li>Fase inicial: cadastro recebido</li>
-              <li>Acompanhamento inicial: a definir</li>
-              <li>Acompanhamento: equipe UR</li>
+              <li>Primeiro passo: cadastro recebido</li>
               <li>Próximo passo: análise de perfil</li>
+              <li>Orientação: equipe UR</li>
+              <li>Caminho indicado: perfil, agenda e interesse</li>
               <li>Origem: Site / Cadastro UR</li>
             </ul>
           </div>
@@ -116,7 +116,7 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
             <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/10 p-4 text-sm leading-6 text-amber-200">
               <p className="font-black uppercase tracking-wide">Formulário de apoio disponível</p>
               <p className="mt-1">
-                Se o cadastro principal não estiver disponível, use a alternativa externa para entrar no radar do UR.
+                Se o cadastro principal não carregar, use o formulário de apoio para entrar no radar do UR.
               </p>
             </div>
           ) : null}
@@ -141,14 +141,14 @@ export function LeadFormBase({ config }: LeadFormBaseProps) {
           </div>
 
           <div className="rounded-lg border border-white/10 bg-black/25 p-4 text-sm leading-6 text-white/68">
-            Seu cadastro coloca você no radar do UR. A entrada tem critério para manter equilíbrio, respeito e
-            organização.
+            O cadastro é o primeiro passo. A equipe UR analisa cada perfil para manter organização, equilíbrio e uma
+            experiência melhor para todos.
           </div>
 
           {submitState.message ? <SubmitFeedback state={submitState} fallbackHref={config.fallbackHref} fallbackLabel={config.fallbackLabel} /> : null}
 
           <button
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] px-5 py-3 text-center text-sm font-extrabold uppercase leading-5 tracking-[0.08em] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm"
             disabled={submitState.status === "submitting"}
             type="submit"
           >
@@ -206,7 +206,7 @@ function SubmitFeedback({
           target="_blank"
         >
           <ArrowRight aria-hidden className="h-3 w-3" />
-          {fallbackLabel} — use a alternativa externa se quiser comprovante
+          {fallbackLabel} — use o formulário de apoio se quiser comprovante
         </a>
       ) : null}
     </div>

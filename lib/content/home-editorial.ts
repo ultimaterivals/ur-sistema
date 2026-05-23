@@ -66,11 +66,11 @@ export const ecosystemHighlights: EditorialCard[] = [
 ] as const;
 
 export const entryPaths = [
-  { label: "Sou atleta", href: "/cadastro#atleta", icon: Users, description: "Começar no UR Play e construir trajetória." },
-  { label: "Tenho equipe", href: "/cadastro#equipe", icon: Shield, description: "Registrar elenco, capitão e identidade." },
-  { label: "Quero patrocinar", href: "/cadastro#patrocinador", icon: Handshake, description: "Ativar marca dentro da jornada esportiva." },
-  { label: "Tenho quadra", href: "/cadastro#quadra", icon: MapPin, description: "Avaliar polo e calendário recorrente." },
-  { label: "Acompanhar comunidade", href: "/cadastro#comunidade", icon: Radio, description: "Receber conteúdos e próximos passos." },
+  { label: "Sou atleta", href: "/cadastro#atleta", icon: Users, description: "Jogar, ser visto e construir trajetória." },
+  { label: "Tenho equipe", href: "/cadastro#equipe", icon: Shield, description: "Entrar no radar da temporada, ranking e mídia UR." },
+  { label: "Quero patrocinar", href: "/cadastro#patrocinador", icon: Handshake, description: "Aparecer dentro da jornada esportiva." },
+  { label: "Tenho quadra", href: "/cadastro#quadra", icon: MapPin, description: "Avaliar minha quadra como polo parceiro." },
+  { label: "Quero acompanhar", href: "/cadastro#comunidade", icon: Radio, description: "Receber novidades, bastidores e chamadas." },
 ] as const;
 
 export const seasonSignals = [
@@ -80,11 +80,11 @@ export const seasonSignals = [
 ] as const;
 
 export const journeyEditorial = [
-  { step: "01", title: "Entrar", description: "O atleta ou equipe demonstra interesse pela central oficial." },
-  { step: "02", title: "Ser observado", description: "O UR Play inicia a leitura de nível, presença, postura e potencial." },
-  { step: "03", title: "Competir", description: "Participações confirmadas alimentam histórico e memória esportiva." },
-  { step: "04", title: "Evoluir", description: "Ranking, CT UR e temporada ajudam a transformar jogo em desenvolvimento." },
-  { step: "05", title: "Ganhar palco", description: "Mídia, destaques e equipes criam reputação dentro do ecossistema." },
+  { step: "01", title: "Você entra no radar", description: "Escolha seu perfil e envie seu cadastro." },
+  { step: "02", title: "A equipe UR analisa seu perfil", description: "A entrada acontece com critério para manter organização, equilíbrio e respeito." },
+  { step: "03", title: "Você começa pelo caminho certo", description: "UR Play, equipe, ranking, comunidade, parceria ou quadra." },
+  { step: "04", title: "Sua participação passa a contar", description: "Presença, desempenho, postura e evolução entram no histórico." },
+  { step: "05", title: "Sua história ganha espaço", description: "Ranking, mídia, oportunidades, benefícios e novos desafios." },
 ] as const;
 
 export const editorialStories: EditorialCard[] = [

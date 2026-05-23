@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BarChart3, Camera, Dumbbell, Handshake, MapPin, ShieldCheck, ShoppingBag, Users, Zap } from "lucide-react";
+import { BarChart3, Camera, Handshake, MapPin, ShieldCheck, Users, Zap } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
   CommercialAssetPanel,
@@ -22,52 +22,28 @@ export const metadata: Metadata = {
 
 const systemAssets = [
   {
-    label: "Entrada",
-    title: "UR Play",
-    description: "Porta de entrada para observar atletas, iniciar histórico e orientar próximos passos.",
+    label: "Jogar",
+    title: "Jogar",
+    description: "UR Play, eventos e calendário.",
     icon: Zap,
   },
   {
-    label: "Organização",
-    title: "Ranking",
-    description: "Classificação pública por atletas, equipes, níveis, polos e engajamento.",
+    label: "Evoluir",
+    title: "Evoluir",
+    description: "Treinos, postura, mentalidade e desenvolvimento.",
     icon: BarChart3,
   },
   {
-    label: "Identidade",
-    title: "Equipes",
-    description: "Elenco, capitão, histórico, rivalidade e presença coletiva dentro da temporada.",
+    label: "Aparecer",
+    title: "Aparecer",
+    description: "Mídia UR, destaques, histórias e comunidade.",
     icon: Users,
   },
   {
-    label: "Palco",
-    title: "Mídia própria",
-    description: "Bastidores, histórias, cortes, ranking com contexto e memória esportiva.",
+    label: "Construir valor",
+    title: "Construir valor",
+    description: "Ranking, UR Coins, equipes, parceiros e oportunidades.",
     icon: Camera,
-  },
-  {
-    label: "Valor",
-    title: "UR Market",
-    description: "Benefícios, recompensas, ativações e experiências conectadas a UR Coins.",
-    icon: ShoppingBag,
-  },
-  {
-    label: "Base",
-    title: "CT UR",
-    description: "Desenvolvimento técnico, físico, mental e humano conectado ao desempenho.",
-    icon: Dumbbell,
-  },
-  {
-    label: "Negócio",
-    title: "Patrocinadores",
-    description: "Marcas entram na jornada esportiva por mídia, eventos, market e comunidade.",
-    icon: Handshake,
-  },
-  {
-    label: "Território",
-    title: "Quadras",
-    description: "Polos operacionais para agenda, comunidade, mídia local e recorrência.",
-    icon: MapPin,
   },
 ] as const;
 
@@ -158,8 +134,8 @@ export default function EcossistemaPage() {
           { href: "/ur-play", label: "Começar pelo UR Play", variant: "secondary" },
         ]}
         badges={["UR Play", "Ranking contínuo", "Equipes", "Mídia própria", "UR Market"]}
-        description="UR conecta atletas, equipes, quadras, patrocinadores, mídia, ranking, recompensas e comunidade em uma jornada contínua para profissionalizar o esporte amador."
-        eyebrow="Mapa do ecossistema UR"
+        description="O Ultimate Rivals conecta jogo, ranking, equipes, quadras, mídia, benefícios e parceiros em uma estrutura criada para organizar, valorizar e desenvolver o esporte amador."
+        eyebrow="Ecossistema UR"
         image={siteImages.teamEmbrace}
         imagePosition="center 45%"
         metrics={[
@@ -167,27 +143,27 @@ export default function EcossistemaPage() {
           { label: "Organização", value: "ranking e temporada" },
           { label: "Valor", value: "mídia, market e polos" },
         ]}
-        statusDescription="O objetivo é transformar participação em histórico, histórico em história pública, história em oportunidade e oportunidade em valor para a comunidade."
+        statusDescription="O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades dentro do UR."
         statusLabel="sistema contínuo"
-        statusTitle="Cada participação precisa deixar rastro."
-        title="O Ultimate Rivals é um ecossistema esportivo contínuo."
+        statusTitle="Tudo começa no jogo, mas não termina nele."
+        title="Um caminho completo para o esporte amador."
       />
 
       <PageSection id="mapa">
         <CommercialAssetPanel
           assets={systemAssets}
-          description="O mapa abaixo mostra as peças que fazem o UR funcionar como plataforma: entrada, organização, desenvolvimento, mídia, mercado, território e negócio."
-          eyebrow="Mapa visual"
-          title="As áreas do sistema trabalham juntas."
+          description="Tudo começa no jogo, mas não termina nele. O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades dentro do UR."
+          eyebrow="Tudo conectado"
+          title="Tudo começa no jogo, mas não termina nele."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="caminho">
         <ProcessTimeline
-          description="A lógica do ecossistema é simples: criar entrada, registrar contexto, organizar ranking, contar histórias, gerar valor e expandir polos."
+          description="O caminho conecta entrada, histórico, ranking, mídia, benefícios, equipes, quadras e parceiros."
           eyebrow="Caminho do ecossistema"
           steps={ecosystemFlow}
-          title="Do primeiro interesse à oportunidade pública."
+          title="Do primeiro jogo à oportunidade."
         />
       </PageSection>
 

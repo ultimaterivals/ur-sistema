@@ -20,27 +20,27 @@ export const metadata: Metadata = {
 
 const poleBenefits = [
   {
-    label: "Caminho",
+    label: "Movimento qualificado",
     value: "atletas",
-    detail: "polo bem posicionado pode receber recorrência de atletas e equipes.",
+    detail: "atletas e equipes com interesse real em jogar, evoluir e participar.",
     icon: Users,
   },
   {
-    label: "Agenda",
-    value: "ciclo",
-    detail: "eventos e UR Play criam calendário, não ações soltas.",
+    label: "Calendário recorrente",
+    value: "agenda",
+    detail: "UR Play, eventos, treinos, experiências e ativações.",
     icon: CalendarDays,
   },
   {
-    label: "Mídia",
-    value: "local",
-    detail: "quadra vira cenário de histórias, bastidores e comunidade.",
+    label: "Visibilidade local",
+    value: "mídia",
+    detail: "conteúdo, mídia, comunidade e presença digital.",
     icon: Camera,
   },
   {
-    label: "Negócios",
-    value: "ativação",
-    detail: "patrocinadores podem se conectar ao polo com contexto real.",
+    label: "Potencial comercial",
+    value: "parceiros",
+    detail: "mais público, mais relacionamento e novas oportunidades com parceiros.",
     icon: Handshake,
   },
 ] as const;
@@ -100,12 +100,12 @@ export default function QuadrasParceirasPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "/cadastro#quadra", label: "Ser quadra parceira" },
-          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
+          { href: "/cadastro#quadra", label: "Cadastrar minha quadra" },
+          { href: "/eventos", label: "Ver temporada", variant: "secondary" },
         ]}
         badges={["Polos", "UR Play", "Eventos", "Mídia local", "Patrocinadores"]}
-        description="Quadras parceiras podem virar polos esportivos e comerciais do Ultimate Rivals, conectando atletas, agenda recorrente, mídia, comunidade e marcas."
-        eyebrow="Quadras parceiras • polos UR"
+        description="O Ultimate Rivals busca quadras parceiras para criar calendário, comunidade, mídia, eventos e presença recorrente de atletas e equipes."
+        eyebrow="Para quadras"
         image={siteImages.wideServe}
         imagePosition="center 47%"
         metrics={[
@@ -113,10 +113,10 @@ export default function QuadrasParceirasPage() {
           { label: "Agenda", value: "ciclo e recorrência" },
           { label: "Valor", value: "mídia e patrocinadores" },
         ]}
-        statusDescription="Polo, agenda e parceria dependem de análise da equipe UR."
-        statusLabel="polo em análise"
-        statusTitle="Sua quadra pode virar um polo do ecossistema."
-        title="A quadra não recebe só evento. Ela pode receber recorrência."
+        statusDescription="A quadra pode virar um polo de experiência, comunidade e calendário."
+        statusLabel="polo UR"
+        statusTitle="Sua quadra pode virar um polo UR."
+        title="Sua quadra pode virar um polo UR."
       />
 
       <PageSection id="polo">
@@ -125,7 +125,7 @@ export default function QuadrasParceirasPage() {
             { href: "/cadastro#quadra", label: "Cadastrar quadra" },
             { href: "/patrocinadores", label: "Ver ativações", variant: "secondary" },
           ]}
-          description="Um polo UR precisa unir estrutura, comunidade, disponibilidade e compromisso com a agenda. A quadra vira base de calendário, não só local de aluguel."
+          description="A quadra não recebe só evento. Ela entra em um ciclo com calendário, comunidade, mídia, eventos e possíveis parceiros."
           eyebrow="Polo UR"
           image={siteImages.fairPlayLine}
           imagePosition="center 48%"
@@ -148,7 +148,7 @@ export default function QuadrasParceirasPage() {
           description="A quadra parceira ganha mais valor quando entra no ciclo do ecossistema: atletas, agenda, mídia, patrocinadores e comunidade."
           eyebrow="Benefícios para a quadra"
           items={poleBenefits}
-          title="O polo concentra esporte e oportunidade local."
+          title="Movimento, calendário, visibilidade e potencial comercial."
         />
       </PageSection>
 
@@ -194,7 +194,7 @@ export default function QuadrasParceirasPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#quadra">Ser quadra parceira</Button>
+            <Button href="/cadastro#quadra">Cadastrar minha quadra</Button>
             <Button href="/contato" variant="secondary">
               Falar com o UR
             </Button>
@@ -204,7 +204,7 @@ export default function QuadrasParceirasPage() {
         eyebrow="Próximo passo"
         items={["estrutura", "agenda", "comunidade", "mídia", "patrocinadores"]}
         statusLabel="parceria com critério"
-        title="Transforme sua quadra em base de temporada."
+        title="Cadastrar minha quadra."
       />
     </main>
   );

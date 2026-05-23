@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { RouteScrollManager } from "@/components/layout/route-scroll-manager";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ultimaterivals.org"),
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html data-scroll-behavior="smooth" lang="pt-BR">
       <body>
+        <RouteScrollManager />
         <Header />
         {children}
         <Footer />

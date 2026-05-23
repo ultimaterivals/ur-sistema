@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 const teamFields = [
   { label: "Momento", value: "equipe no radar" },
-  { label: "Elenco", value: "após cadastro oficial" },
-  { label: "Capitão", value: "responsável validado" },
+  { label: "Elenco", value: "após cadastro" },
+  { label: "Capitão", value: "responsável definido" },
   { label: "Ranking", value: "coletivo em formação" },
 ] as const;
 
@@ -80,7 +80,7 @@ const rosterData = [
 const collectiveRankingRows = [
   {
     position: "01",
-    title: "equipe em formação",
+    title: "equipe no radar",
     status: "sem nome real publicado",
     meta: "ranking coletivo abre com equipes e eventos confirmados.",
   },
@@ -107,8 +107,8 @@ export default function EquipesPage() {
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
         badges={["Elenco", "Capitão", "Ranking coletivo", "Mídia", "Temporada"]}
-        description="No Ultimate Rivals, equipe deixa de ser um grupo solto e passa a funcionar como identidade competitiva, midiática e comercial dentro da temporada."
-        eyebrow="Equipes UR • identidade competitiva"
+        description="No Ultimate Rivals, equipes ganham nome, presença, ranking coletivo, mídia, rivalidades, mercado e participação em uma temporada organizada."
+        eyebrow="Para equipes"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
         metrics={[
@@ -116,50 +116,50 @@ export default function EquipesPage() {
           { label: "Base", value: "capitão e organização" },
           { label: "Valor", value: "ranking, mídia e comunidade" },
         ]}
-        statusDescription="Equipes, atletas, resultados e ranking aparecem publicamente depois que identidade, elenco e regras estiverem confirmados."
+        statusDescription="Equipe boa não é só grupo. É identidade, presença, organização e compromisso."
         statusLabel="equipes no radar"
-        statusTitle="Equipe não é só grupo. É ativo esportivo."
-        title="Sua equipe pode virar uma marca dentro da temporada."
+        statusTitle="Sua equipe pode construir história dentro da temporada."
+        title="Equipe boa não é só grupo. É identidade."
       />
 
       <PageSection id="card-equipe">
         <ProfileMockup
-          cta={{ href: "/cadastro#equipe", label: "Registrar equipe" }}
-          description="O card de equipe concentra o que importa para o ecossistema: identidade, capitão, elenco, histórico, ranking coletivo e presença de mídia."
-          eyebrow="Exemplo de equipe"
+          cta={{ href: "/cadastro#equipe", label: "Cadastrar minha equipe" }}
+          description="O UR cria um ambiente para equipes que querem competir com mais organização, fortalecer identidade e aparecer de forma profissional."
+          eyebrow="Sua equipe pode construir história dentro da temporada"
           fields={teamFields}
           highlights={["identidade", "elenco", "capitão", "ranking coletivo", "mídia"]}
           image={siteImages.teamEmbrace}
-          title="A equipe precisa ser reconhecida antes de ser ranqueada."
+          title="Identidade, elenco, capitão e histórico coletivo."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="entrada">
         <ProcessTimeline
-          description="O caminho foi reduzido ao essencial: registrar, confirmar elenco, ranquear e construir história coletiva."
+          description="Equipe boa não é só grupo. É identidade, presença, organização e compromisso com a temporada."
           eyebrow="Entrada da equipe"
           steps={teamJourney}
-          title="Do grupo de atletas à identidade competitiva."
+          title="Do grupo de atletas à equipe reconhecível."
         />
       </PageSection>
 
       <PageSection id="elenco-capitao">
         <DataBoard
-          description="Uma equipe oficial precisa de liderança, conduta, elenco e compromisso com a temporada. Isso protege o ranking e melhora a experiência competitiva."
+          description="Nome, capitão, elenco, postura e presença ajudam a construir identidade dentro do ecossistema."
           eyebrow="Elenco e capitão"
           items={rosterData}
-          title="Organização antes do resultado."
+          title="Identidade da equipe antes do resultado."
         />
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="ranking-coletivo">
         <LeaderboardPanel
-          description="A prévia mostra como o ranking coletivo será apresentado, sem publicar equipes reais, posições, pontuação ou resultados nesta fase."
-          eyebrow="Prévia do ranking coletivo"
+          description="A equipe começa a construir histórico por participação, resultado e consistência."
+          eyebrow="Ranking coletivo"
           image={siteImages.fairPlayLine}
           rows={collectiveRankingRows}
           tabs={["Coletivo", "Elenco", "Temporada", "Mídia"]}
-          title="Classificação coletiva com histórico."
+          title="Ranking coletivo com identidade."
         />
       </PageSection>
 
@@ -169,7 +169,7 @@ export default function EquipesPage() {
             { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
             { href: "/ur-market", label: "Conhecer UR Market", variant: "ghost" },
           ]}
-          description="Equipes fortes geram rivalidade, torcida, histórias, ativos comerciais e oportunidades. UR Coins coletivas e recompensas entram com regras oficiais do ciclo."
+          description="Jogos, bastidores e confrontos ganham mais valor quando existe história. A equipe pode participar de um sistema mais estratégico conforme a temporada evolui."
           eyebrow="Mídia, rivalidade e mercado"
           image={siteImages.mediaCoverage}
           imagePosition="center 45%"
@@ -192,17 +192,17 @@ export default function EquipesPage() {
       <SegmentCtaPanel
         actions={
           <>
-            <Button href="/cadastro#equipe">Cadastrar equipe</Button>
+            <Button href="/cadastro#equipe">Cadastrar minha equipe</Button>
             <Button href="/regulamento" variant="secondary">
               Ver regulamento
             </Button>
           </>
         }
-        description="O registro coloca sua equipe no radar do UR. Identidade, elenco, capitão, ranking e mídia passam por análise da equipe UR para manter equilíbrio e respeito."
+        description="O cadastro coloca sua equipe no radar do UR. A equipe analisa identidade, elenco, capitão e disponibilidade antes do próximo passo."
         eyebrow="Próximo passo"
         items={["identidade", "elenco", "capitão", "ranking coletivo", "temporada"]}
         statusLabel="registro com critério"
-        title="Transforme o grupo em uma equipe reconhecível."
+        title="Cadastrar minha equipe."
       />
     </main>
   );

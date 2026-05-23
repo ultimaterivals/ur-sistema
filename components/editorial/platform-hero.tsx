@@ -80,7 +80,7 @@ export function PlatformHero({
                   className={
                     index === 0
                       ? "w-full sm:w-auto"
-                      : "min-h-10 w-full border-white/12 bg-black/30 px-3 py-2 text-xs text-white/72 shadow-none hover:border-[#ffd84d]/30 hover:bg-white/[0.06] hover:text-white sm:w-auto"
+                      : "min-h-10 w-full border-white/12 bg-black/30 px-3 py-2 text-xs text-white/72 shadow-none hover:border-[#ffd84d]/30 hover:bg-white/[0.06] hover:text-white sm:w-auto sm:min-h-10 sm:px-3 sm:py-2 sm:text-xs"
                   }
                   href={action.href}
                   key={action.href}
