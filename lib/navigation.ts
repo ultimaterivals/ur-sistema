@@ -11,17 +11,18 @@ export const mainNavigation = [
 export const mobileNavigation = [
   { label: "Ecossistema", href: "/ecossistema" },
   { label: "Atletas", href: "/atletas" },
-  { label: "Sou atleta", href: "/cadastro#atleta" },
-  { label: "Tenho equipe", href: "/cadastro#equipe" },
-  { label: "Quero patrocinar", href: "/cadastro#patrocinador" },
-  { label: "Tenho quadra", href: "/cadastro#quadra" },
-  { label: "Temporada", href: "/temporada" },
-  { label: "Ver ranking", href: "/ranking" },
-  { label: "Eventos", href: "/eventos" },
-  { label: "CT UR", href: "/ct-ur" },
-  { label: "Mídia", href: "/midia" },
-  { label: "Quadras", href: "/quadras-parceiras" },
+  { label: "UR Play", href: "/ur-play" },
+  { label: "Ranking", href: "/ranking" },
+  { label: "Equipes", href: "/equipes" },
   { label: "UR Market", href: "/ur-market" },
+  { label: "Mídia", href: "/midia" },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Temporada", href: "/temporada" },
+  { label: "CT UR", href: "/ct-ur" },
+  { label: "Cadastro", href: "/cadastro" },
+  { label: "Regulamento", href: "/regulamento" },
+  { label: "Patrocinadores", href: "/patrocinadores" },
+  { label: "Quadras Parceiras", href: "/quadras-parceiras" },
 ] as const;
 
 export const footerColumns = [

@@ -1,22 +1,38 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function RouteScrollManager() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === 'undefined') return;
 
-    window.history.scrollRestoration = "manual";
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
 
-    if (window.location.hash) return;
+    const hasHash = window.location.hash && window.location.hash.length > 1;
 
-    window.requestAnimationFrame(() => {
-      window.scrollTo({ behavior: "auto", left: 0, top: 0 });
-    });
+    if (hasHash) return;
+
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    };
+
+    scrollToTop();
+
+    const frame = window.requestAnimationFrame(scrollToTop);
+    const timeout = window.setTimeout(scrollToTop, 120);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
   }, [pathname]);
 
   return null;
 }
+
+export default RouteScrollManager;

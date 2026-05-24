@@ -67,15 +67,15 @@ export function Header() {
         </button>
       </div>
 
-      <div className="border-t border-white/10 px-5 pb-3 pt-3 lg:hidden">
-        <Button className="w-full" href="/cadastro#atleta">
-          Quero entrar no UR Play
-        </Button>
-        {open ? (
-          <nav className="mt-3 grid gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
+      {open ? (
+        <div className="border-t border-white/10 px-5 pb-4 pt-3 lg:hidden">
+          <Button className="w-full" href="/cadastro#atleta">
+            Entrar no UR
+          </Button>
+          <nav className="mt-3 grid gap-1 rounded-lg border border-white/10 bg-[#111218] p-2">
             {mobileNavigation.map((item) => (
               <Link
-                className="rounded-md px-3 py-3 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
                 href={item.href}
                 key={item.href}
                 onClick={() => setOpen(false)}
@@ -84,15 +84,15 @@ export function Header() {
               </Link>
             ))}
           </nav>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
 
       {open ? (
-        <div className="hidden border-t border-white/10 px-8 pb-3 pt-3 lg:block xl:hidden">
+        <div className="hidden border-t border-white/10 px-8 pb-4 pt-3 lg:block xl:hidden">
           <nav className="grid grid-cols-4 gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
             {mobileNavigation.map((item) => (
               <Link
-                className="rounded-md px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                className="rounded-md px-3 py-2.5 text-center text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
                 href={item.href}
                 key={item.href}
                 onClick={() => setOpen(false)}
