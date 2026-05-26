@@ -40,6 +40,12 @@ function S({
   );
 }
 
+const heroStats = [
+  { label: "Polos", value: season1.poles.length },
+  { label: "Eventos", value: "4" },
+  { label: "Modalidades", value: season1.modalities.length },
+] as const;
+
 export default function Home() {
   return (
     <main style={{ background: "#0A0A0B", color: "#F4F0E6" }}>
@@ -64,53 +70,135 @@ export default function Home() {
           <div className="absolute inset-x-0 bottom-0 -z-10 h-40 pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, #0A0A0B)" }} />
 
           <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
-            <div className="max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2 mb-5">
-                <span
-                  className="inline-flex items-center gap-1.5 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.1)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+
+              {/* Left: headline */}
+              <div className="max-w-2xl">
+                <div className="flex flex-wrap items-center gap-2 mb-5">
+                  <span
+                    className="inline-flex items-center gap-1.5 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.1)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]"
+                    style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437] animate-pulse" />
+                    UR Temporada 1 · Territórios em Disputa
+                  </span>
+                </div>
+                <h1
+                  className="text-[clamp(3rem,12vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
+                  style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6" }}
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437] animate-pulse" />
-                  Temporada 1 · Territórios em Disputa
-                </span>
+                  QUEM MANDA<br />
+                  <span style={{ color: "#D4A437" }}>NA REGIÃO?</span>
+                </h1>
+                <p
+                  className="mt-5 max-w-lg text-base md:text-lg leading-7"
+                  style={{ color: "rgba(244,240,230,0.75)", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                >
+                  BH, Betim e Contagem entram na primeira temporada do Ultimate Rivals. Atletas começam no UR Play e os melhores chegam ao UR Legends.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Button href="/cadastro#atleta">
+                    Entrar na Temporada
+                    <ArrowRight aria-hidden className="h-4 w-4" />
+                  </Button>
+                  <Button href="/temporada" variant="secondary">
+                    Ver como funciona
+                  </Button>
+                </div>
+                {/* Pole shields */}
+                <div className="mt-8 flex items-center gap-5">
+                  {season1.poles.map((p) => (
+                    <div key={p.id} className="flex flex-col items-center gap-1.5">
+                      <img alt={p.name} className="h-10 w-auto opacity-80" loading="lazy" src={p.shieldPath} />
+                      <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>{p.short}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h1
-                className="text-[clamp(3rem,12vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
-                style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6" }}
+
+              {/* Right: scoreboard panel */}
+              <div
+                className="hidden lg:block w-[280px] rounded-lg overflow-hidden"
+                style={{
+                  border: "1px solid rgba(212,164,55,0.20)",
+                  background: "#14141A",
+                  boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+                }}
               >
-                QUEM MANDA<br />
-                <span style={{ color: "#D4A437" }}>NA REGIÃO?</span>
-              </h1>
-              <p
-                className="mt-5 max-w-xl text-base md:text-lg leading-7"
-                style={{ color: "rgba(244,240,230,0.75)", fontFamily: "'Manrope', system-ui, sans-serif" }}
-              >
-                BH, Betim e Contagem entram na primeira temporada oficial do Ultimate Rivals. Atletas começam no UR Play, equipes registram suas formações, modalidades somam pontos, polos disputam força e os melhores chegam ao UR Legends para fechar o ciclo.
-              </p>
-              <p
-                className="mt-3 text-sm"
-                style={{ color: "rgba(212,164,55,0.65)", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.08em" }}
-              >
-                {season1.message}
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button href="/cadastro#atleta">
-                  Entrar na Temporada
-                  <ArrowRight aria-hidden className="h-4 w-4" />
-                </Button>
-                <Button href="/temporada" variant="secondary">
-                  Ver como funciona
-                </Button>
-              </div>
-              {/* Pole shields */}
-              <div className="mt-8 flex items-center gap-5">
-                {season1.poles.map((p) => (
-                  <div key={p.id} className="flex flex-col items-center gap-1.5">
-                    <img alt={p.name} className="h-10 w-auto opacity-80" loading="lazy" src={p.shieldPath} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>{p.short}</span>
+                {/* Panel header */}
+                <div
+                  className="px-4 py-3 border-b border-[rgba(255,255,255,0.06)] flex items-center gap-2"
+                >
+                  <span
+                    className="text-xs font-bold uppercase tracking-widest text-[#D4A437]"
+                    style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.1em" }}
+                  >
+                    A ESCALADA
+                  </span>
+                </div>
+
+                {/* Ladder items */}
+                <div className="divide-y divide-[rgba(255,255,255,0.04)]">
+                  {season1.ladder.map((product, idx) => (
+                    <div key={product.id} className="flex items-center gap-3 px-4 py-3">
+                      <img
+                        alt={product.name}
+                        src={product.symbolSolid}
+                        loading="lazy"
+                        style={{ width: 28, height: 28, opacity: 0.85 }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="text-sm font-bold uppercase text-[#F4F0E6] truncate"
+                          style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                        >
+                          {product.name}
+                        </p>
+                      </div>
+                      {idx < season1.ladder.length - 1 && (
+                        <ArrowRight className="h-3.5 w-3.5 shrink-0" style={{ color: "rgba(212,164,55,0.45)" }} />
+                      )}
+                      {idx === season1.ladder.length - 1 && (
+                        <span
+                          className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                          style={{ background: "rgba(212,164,55,0.15)", color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                        >
+                          Apex
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Divider + stats */}
+                <div className="px-4 py-2 border-t border-[rgba(255,255,255,0.06)]">
+                  <p
+                    className="text-[9px] text-center font-bold uppercase tracking-widest text-[#8A8A93] mb-2"
+                    style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
+                  >
+                    Temporada 1
+                  </p>
+                  <div className="grid grid-cols-3 gap-1">
+                    {heroStats.map((s) => (
+                      <div key={s.label} className="flex flex-col items-center">
+                        <span
+                          className="text-base font-bold text-[#D4A437]"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          {s.value}
+                        </span>
+                        <span
+                          className="text-[9px] text-[#8A8A93]"
+                          style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
+                        >
+                          {s.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -130,9 +218,12 @@ export default function Home() {
             Cada etapa tem critério. Cada atleta evolui no seu ritmo.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Mobile: horizontal scroll snap; Desktop: grid */}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {season1.ladder.map((product) => (
-            <ProductArtCard key={product.id} product={product} />
+            <div className="snap-start shrink-0 w-[72vw] sm:w-auto" key={product.id}>
+              <ProductArtCard product={product} />
+            </div>
           ))}
         </div>
       </S>
@@ -171,9 +262,12 @@ export default function Home() {
             Três territórios.<br />Uma disputa.
           </h2>
         </div>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {season1.poles.map((p) => (
-            <TerritoryArtCard key={p.id} pole={p} />
+        {/* Mobile: horizontal scroll snap; Desktop: grid */}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-3">
+          {season1.poles.map((p, i) => (
+            <div className="snap-start shrink-0 w-[80vw] sm:w-auto" key={p.id}>
+              <TerritoryArtCard pole={p} rank={i + 1} />
+            </div>
           ))}
         </div>
       </S>
