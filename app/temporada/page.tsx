@@ -4,13 +4,14 @@ import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
   CommercialAssetPanel,
   DataBoard,
-  ImageFeaturePanel,
   ProcessTimeline,
 } from "@/components/editorial/sports-platform-modules";
 import { PageSection } from "@/components/site/page-section";
 import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
+import { URBracketPreview, TerritoryArtCard, LegendsArtPanel } from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 
 export const metadata: Metadata = {
   title: "Temporada UR | Ciclo Trimestral, Ranking e Eventos Ultimate Rivals",
@@ -113,8 +114,8 @@ export default function TemporadaPage() {
           { href: "/eventos", label: "Ver temporada UR" },
           { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
         ]}
-        badges={["UR Play", "Nivelamento", "Ranking", "Eventos", "Virada de ranking"]}
-        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
+        badges={["UR Play", "Ciclo trimestral", "Ranking", "Premiações", "Virada de ranking"]}
+        description="Ciclos trimestrais com UR Play, ranking, eventos, premiações e Virada de Ranking. Cada temporada é uma chance de conquistar, evoluir e escrever história."
         eyebrow="Temporada UR"
         image={siteImages.wideServe}
         imagePosition="center 48%"
@@ -125,8 +126,8 @@ export default function TemporadaPage() {
         ]}
         statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
         statusLabel="calendário em organização"
-        statusTitle="Uma temporada para jogar com constância."
-        title="Uma temporada para jogar com constância."
+        statusTitle="Todo atleta tem uma temporada para disputar."
+        title="Todo atleta tem uma temporada para disputar."
       />
 
       <PageSection id="ciclo">
@@ -147,30 +148,6 @@ export default function TemporadaPage() {
         />
       </PageSection>
 
-      <PageSection id="evento">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
-            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
-          ]}
-          description="A temporada não depende de um único momento. Ela combina jogo, presença, ranking, mídia e comunidade para manter a jornada esportiva em movimento."
-          eyebrow="Ritmo de temporada"
-          image={siteImages.fairPlayLine}
-          imagePosition="center 46%"
-          points={[
-            {
-              title: "Eventos variáveis",
-              description: "Etapas podem variar por modalidade, nível, categoria e polo.",
-            },
-            {
-              title: "Virada de ranking",
-              description: "O fim do trimestre atualiza contexto e prepara novo ciclo.",
-            },
-          ]}
-          title="O ciclo dá continuidade ao que a quadra começa."
-        />
-      </PageSection>
-
       <PageSection className="bg-[#07080c]" id="conexoes">
         <DataBoard
           description="Ranking, equipes, UR Coins, UR Market, mídia e CT UR são peças conectadas ao ciclo. O valor aparece quando a temporada mantém recorrência."
@@ -180,26 +157,31 @@ export default function TemporadaPage() {
         />
       </PageSection>
 
-      <PageSection id="recompensas">
-        <ImageFeaturePanel
-          description="Repasses, premiações e recompensas dependem de regras claras do ciclo. A comunicação pública precisa ser direta: primeiro regra, depois reconhecimento."
-          eyebrow="Premiações e novo ciclo"
-          image={siteImages.mediaCoverage}
-          imagePosition="center 45%"
-          points={[
-            {
-              title: "Reconhecimento com regra",
-              description: "Premiações só fazem sentido quando critérios e regras estão definidos.",
-            },
-            {
-              title: "Novo trimestre",
-              description: "O ciclo reinicia com histórico, aprendizados e novos objetivos.",
-            },
-          ]}
-          reverse
-          statusLabel="recompensas com regra clara"
-          title="Reconhecer evolução exige critério."
+      <PageSection id="bracket">
+        <URBracketPreview
+          stage={season1.mockBracket.stage}
+          quarterfinals={[...season1.mockBracket.quarterfinals]}
+          semifinals={[...season1.mockBracket.semifinals]}
+          final={season1.mockBracket.final}
         />
+      </PageSection>
+
+      <PageSection id="territorios">
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#D4A437]" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>Polos da Temporada 1</p>
+          <h2 className="mt-2 text-3xl font-bold uppercase leading-[0.9] text-[#F4F0E6]" style={{ fontFamily: "'Oswald', sans-serif" }}>
+            Três territórios. Uma disputa.
+          </h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((p) => (
+            <TerritoryArtCard key={p.id} pole={p} />
+          ))}
+        </div>
+      </PageSection>
+
+      <PageSection id="legends">
+        <LegendsArtPanel />
       </PageSection>
 
       <SegmentCtaPanel

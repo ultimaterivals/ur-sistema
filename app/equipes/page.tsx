@@ -1,30 +1,21 @@
 import type { Metadata } from "next";
-import { BarChart3, Crown, ShieldCheck, Users } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
-  DataBoard,
   ImageFeaturePanel,
   LeaderboardPanel,
   ProcessTimeline,
-  ProfileMockup,
 } from "@/components/editorial/sports-platform-modules";
 import { PageSection } from "@/components/site/page-section";
 import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
+import { TeamFormationArtCard } from "@/components/season";
 
 export const metadata: Metadata = {
   title: "Equipes UR | Ranking Coletivo, Elencos e Temporada Ultimate Rivals",
   description:
     "Conheça as equipes oficiais do Ultimate Rivals, o sistema que transforma times amadores em ativos competitivos com ranking coletivo, elenco, UR Coins, mídia, repasses e oportunidades dentro da temporada.",
 };
-
-const teamFields = [
-  { label: "Momento", value: "equipe no radar" },
-  { label: "Elenco", value: "após cadastro" },
-  { label: "Capitão", value: "responsável definido" },
-  { label: "Ranking", value: "coletivo em formação" },
-] as const;
 
 const teamJourney = [
   {
@@ -47,33 +38,6 @@ const teamJourney = [
     label: "Mídia",
     title: "Criar história",
     description: "Mídia, rivalidade, torcida e histórico transformam equipe em ativo esportivo.",
-  },
-] as const;
-
-const rosterData = [
-  {
-    label: "Identidade",
-    value: "marca esportiva",
-    detail: "nome, postura, visual e presença precisam formar uma história reconhecível.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Capitão",
-    value: "liderança",
-    detail: "responsável por comunicação, conduta e conexão com a equipe UR.",
-    icon: Crown,
-  },
-  {
-    label: "Elenco",
-    value: "validado",
-    detail: "atletas entram após confirmação, sem inventar nomes ou posições.",
-    icon: Users,
-  },
-  {
-    label: "Temporada",
-    value: "histórico",
-    detail: "participação coletiva alimenta ranking, mídia, eventos e oportunidades.",
-    icon: BarChart3,
   },
 ] as const;
 
@@ -107,7 +71,7 @@ export default function EquipesPage() {
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
         badges={["Elenco", "Capitão", "Ranking coletivo", "Mídia", "Temporada"]}
-        description="No Ultimate Rivals, equipes ganham nome, presença, ranking coletivo, mídia, rivalidades, mercado e participação em uma temporada organizada."
+        description="No Ultimate Rivals, equipes constroem ranking coletivo, identidade, elenco e repasse dentro de uma temporada organizada por nível."
         eyebrow="Para equipes"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
@@ -122,18 +86,6 @@ export default function EquipesPage() {
         title="Equipe boa não é só grupo. É identidade."
       />
 
-      <PageSection id="card-equipe">
-        <ProfileMockup
-          cta={{ href: "/cadastro#equipe", label: "Cadastrar minha equipe" }}
-          description="O UR cria um ambiente para equipes que querem competir com mais organização, fortalecer identidade e aparecer de forma profissional."
-          eyebrow="Sua equipe pode construir história dentro da temporada"
-          fields={teamFields}
-          highlights={["identidade", "elenco", "capitão", "ranking coletivo", "mídia"]}
-          image={siteImages.teamEmbrace}
-          title="Identidade, elenco, capitão e histórico coletivo."
-        />
-      </PageSection>
-
       <PageSection className="bg-[#07080c]" id="entrada">
         <ProcessTimeline
           description="Equipe boa não é só grupo. É identidade, presença, organização e compromisso com a temporada."
@@ -143,13 +95,17 @@ export default function EquipesPage() {
         />
       </PageSection>
 
-      <PageSection id="elenco-capitao">
-        <DataBoard
-          description="Nome, capitão, elenco, postura e presença ajudam a construir identidade dentro do ecossistema."
-          eyebrow="Elenco e capitão"
-          items={rosterData}
-          title="Identidade da equipe antes do resultado."
-        />
+      <PageSection id="formacoes">
+        <div className="mb-6">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#D4A437]" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>Exemplos de formação</p>
+          <h2 className="mt-2 text-2xl font-bold uppercase leading-[0.9] text-[#F4F0E6]" style={{ fontFamily: "'Oswald', sans-serif" }}>
+            Formações em análise.
+          </h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <TeamFormationArtCard teamName="Formação BH Elite" pole="BH" modality="Quartetos" isOfficial={false} />
+          <TeamFormationArtCard teamName="Dupla Betim" pole="Betim" modality="Duplas Mistas" isOfficial={false} />
+        </div>
       </PageSection>
 
       <PageSection className="bg-[#07080c]" id="ranking-coletivo">

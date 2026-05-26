@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <circle cx="60" cy="60" r="55" fill="#D4A437" opacity="0.15"></circle>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#D4A437" stroke-width="2"></circle>
+  <text x="60" y="75" font-family="&#39;Oswald&#39;" font-size="48" font-weight="700" fill="#D4A437" text-anchor="middle">1</text>
+</svg>

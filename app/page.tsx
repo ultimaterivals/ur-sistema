@@ -1,384 +1,355 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
-import {
-  ArrowRight,
-  BarChart3,
-  MapPin,
-  Radio,
-  Shield,
-  Trophy,
-  Users,
-  Zap,
-} from "lucide-react";
-import { CommercialShowcase } from "@/components/editorial/commercial-showcase";
+import type { CSSProperties, ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { CTASectionPremium } from "@/components/editorial/cta-section-premium";
-import { EditorialImage } from "@/components/editorial/editorial-image";
-import { EventCalendarShowcase } from "@/components/editorial/event-calendar-showcase";
-import { FeatureCard } from "@/components/editorial/feature-card";
-import { GalleryStrip } from "@/components/editorial/gallery-strip";
-import { ImageFeatureCard } from "@/components/editorial/image-feature-card";
-import { MediaPortalSection } from "@/components/editorial/media-portal-section";
-import { RankingShowcase } from "@/components/editorial/ranking-showcase";
-import { SectionHeadingPremium } from "@/components/editorial/section-heading-premium";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { entryPaths, journeyEditorial, recognitionCards } from "@/lib/content/home-editorial";
+import { entryPaths } from "@/lib/content/home-editorial";
 import { homeImageRoles } from "@/lib/content/site-images";
+import { EditorialImage } from "@/components/editorial/editorial-image";
+import {
+  ProductArtCard,
+  TerritoryArtCard,
+  RankingBroadcastPanel,
+  URBracketPreview,
+  LegendsArtPanel,
+  AthleteArtCard,
+  TeamFormationArtCard,
+  RewardArtCard,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 
-function Section({
+function S({
   id,
   children,
   className = "",
+  style,
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
 }) {
   return (
     <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-12 md:scroll-mt-28 md:py-16 lg:px-8 lg:py-20 ${className}`}
+      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-12 md:py-16 lg:px-8 lg:py-20 ${className}`}
       id={id}
+      style={style}
     >
-      <div className="mx-auto max-w-7xl min-w-0">{children}</div>
+      <div className="mx-auto max-w-7xl">{children}</div>
     </section>
   );
 }
 
-const ecosystemCards = [
-  {
-    eyebrow: "Entrada oficial",
-    title: "UR Play",
-    description: "O primeiro passo para jogar, ser visto e entrar no radar da equipe UR.",
-    href: "/ur-play",
-    cta: "Conhecer",
-    icon: Zap,
-  },
-  {
-    eyebrow: "Histórico esportivo",
-    title: "Ranking",
-    description: "Sua presença, postura e desempenho começam a virar histórico.",
-    href: "/ranking",
-    cta: "Ver ranking",
-    icon: BarChart3,
-  },
-  {
-    eyebrow: "Identidade competitiva",
-    title: "Equipes",
-    description: "Times ganham identidade, calendário, ranking coletivo e visibilidade.",
-    href: "/equipes",
-    cta: "Cadastrar",
-    icon: Shield,
-  },
-] as const;
-
-const leagueSignals = [
-  "UR Play",
-  "ranking",
-  "equipes",
-  "temporada",
-  "mídia",
-  "UR Coins",
-  "UR Market",
-  "CT UR",
-  "patrocinadores",
-] as const;
-
-const heroCards = [
-  {
-    title: "UR Play",
-    text: "O primeiro passo para jogar, ser visto e entrar no radar da equipe UR.",
-  },
-  {
-    title: "Ranking",
-    text: "Sua presença, postura e desempenho começam a virar histórico.",
-  },
-  {
-    title: "Equipes",
-    text: "Times ganham identidade, calendário, ranking coletivo e visibilidade.",
-  },
-  {
-    title: "Mídia UR",
-    text: "Jogos, bastidores, destaques e histórias ganham palco próprio.",
-  },
-] as const;
-
-const galleryImages = homeImageRoles.galeria;
-
 export default function Home() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <section className="relative isolate overflow-hidden bg-black">
-        <div className="relative py-2 md:min-h-[600px] md:py-4 lg:min-h-[560px] lg:py-6">
+    <main style={{ background: "#0A0A0B", color: "#F4F0E6" }}>
+
+      {/* ── 1. HERO TEMPORADA 1 ── */}
+      <section className="relative isolate overflow-hidden" style={{ background: "#0A0A0B" }}>
+        <div className="relative min-h-[520px] md:min-h-[640px] py-16 md:py-20">
           <EditorialImage
-            className="absolute inset-0 -z-20 rounded-none border-0"
+            className="absolute inset-0 -z-20 rounded-none border-0 opacity-30"
             image={homeImageRoles.hero}
-            label="Ultimate Rivals"
-            objectPosition="center 46%"
+            label="Temporada 1 — Territórios em Disputa"
+            objectPosition="center 40%"
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(0,0,0,0.92),rgba(0,0,0,0.72)_38%,rgba(0,0,0,0.26)_72%),linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.28)_48%,#030405_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-[linear-gradient(180deg,transparent,#030405)]" />
+          {/* Sand texture */}
+          <div
+            className="absolute inset-0 -z-10 opacity-[0.12] pointer-events-none"
+            style={{ backgroundImage: "url(/season-1/textures/bg-sand-texture.svg)", backgroundSize: "cover" }}
+          />
+          <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(90deg, rgba(10,10,11,0.96) 0%, rgba(10,10,11,0.80) 50%, rgba(10,10,11,0.50) 100%)" }} />
+          <div className="absolute inset-x-0 bottom-0 -z-10 h-40 pointer-events-none" style={{ background: "linear-gradient(180deg, transparent, #0A0A0B)" }} />
 
-          <div className="mx-auto flex max-w-7xl flex-col px-5 lg:px-8">
-            <div className="grid gap-5 lg:grid-cols-[minmax(0,0.92fr)_minmax(340px,0.48fr)] lg:items-start">
-              <div className="min-w-0">
-                <Badge>Ultimate Rivals | Ecossistema esportivo</Badge>
-                <h1 className="mt-4 max-w-5xl text-balance text-[clamp(2.85rem,11.5vw,5.8rem)] font-black uppercase leading-[0.86] text-white md:text-[clamp(3.6rem,6.3vw,6.4rem)]">
-                  Entre no jogo. Construa sua história.
-                </h1>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:mt-5 md:text-xl md:leading-8">
-                  O Ultimate Rivals organiza atletas, equipes, quadras e parceiros em uma temporada com UR Play,
-                  ranking, mídia, benefícios e oportunidades reais para quem quer evoluir no esporte.
-                </p>
-                <div className="mt-5 flex flex-col gap-3 sm:flex-row md:mt-6">
-                  <Button href="/cadastro#atleta">
-                    Entrar no UR
-                    <ArrowRight aria-hidden className="h-4 w-4" />
-                  </Button>
-                  <Button className="min-h-10 px-3 py-2 text-xs shadow-none sm:w-auto" href="/ur-play" variant="secondary">
-                    Conhecer o UR Play
-                  </Button>
-                </div>
+          <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
+            <div className="max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2 mb-5">
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.1)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]"
+                  style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437] animate-pulse" />
+                  Temporada 1 · Territórios em Disputa
+                </span>
               </div>
-
-              <aside className="rounded-lg border border-[#ffd84d]/24 bg-black/62 p-4 shadow-[0_26px_80px_rgba(0,0,0,0.42)] backdrop-blur md:p-5">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">temporada UR</div>
-                    <h2 className="mt-2 text-2xl font-black uppercase leading-none text-white">Cadastro aberto</h2>
+              <h1
+                className="text-[clamp(3rem,12vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
+                style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6" }}
+              >
+                QUEM MANDA<br />
+                <span style={{ color: "#D4A437" }}>NA REGIÃO?</span>
+              </h1>
+              <p
+                className="mt-5 max-w-xl text-base md:text-lg leading-7"
+                style={{ color: "rgba(244,240,230,0.75)", fontFamily: "'Manrope', system-ui, sans-serif" }}
+              >
+                BH, Betim e Contagem entram na primeira temporada oficial do Ultimate Rivals. Atletas começam no UR Play, equipes registram suas formações, modalidades somam pontos, polos disputam força e os melhores chegam ao UR Legends para fechar o ciclo.
+              </p>
+              <p
+                className="mt-3 text-sm"
+                style={{ color: "rgba(212,164,55,0.65)", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.08em" }}
+              >
+                {season1.message}
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Button href="/cadastro#atleta">
+                  Entrar na Temporada
+                  <ArrowRight aria-hidden className="h-4 w-4" />
+                </Button>
+                <Button href="/temporada" variant="secondary">
+                  Ver como funciona
+                </Button>
+              </div>
+              {/* Pole shields */}
+              <div className="mt-8 flex items-center gap-5">
+                {season1.poles.map((p) => (
+                  <div key={p.id} className="flex flex-col items-center gap-1.5">
+                    <img alt={p.name} className="h-10 w-auto opacity-80" loading="lazy" src={p.shieldPath} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>{p.short}</span>
                   </div>
-                  <Trophy aria-hidden className="h-8 w-8 text-[#ffd84d]" />
-                </div>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-                  {heroCards.map((item) => (
-                    <div className="rounded-lg border border-white/10 bg-white/[0.045] p-3" key={item.title}>
-                      <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#ffe98b]">{item.title}</div>
-                      <div className="mt-2 text-sm font-semibold leading-5 text-white/76">{item.text}</div>
-                    </div>
-                  ))}
-                </div>
-              </aside>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="overflow-hidden border-y border-[#ffd84d]/14 bg-black px-5 py-3 lg:px-8">
-        <div className="mx-auto flex max-w-7xl gap-3 overflow-hidden">
-          <div className="flex min-w-max items-center gap-3">
-            {leagueSignals.map((signal) => (
+      {/* ── 2. ESCADA OFICIAL — 4 PRODUTOS ── */}
+      <S id="ladder" className="border-t border-[rgba(212,164,55,0.12)]" style={{ background: "#0A0A0B" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Escada oficial</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            UR Play → Sprint → Series → Legends
+          </h2>
+          <p className="mt-3 text-sm" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Cada etapa tem critério. Cada atleta evolui no seu ritmo.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {season1.ladder.map((product) => (
+            <ProductArtCard key={product.id} product={product} />
+          ))}
+        </div>
+      </S>
+
+      {/* ── 3. RANKING BROADCAST ── */}
+      <S id="ranking" style={{ background: "#0D0D12" }}>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Ranking em formação</p>
+            <h2
+              className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+              style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+            >
+              Quem está<br />
+              na disputa?
+            </h2>
+            <p className="mt-4 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+              O ranking começa a ser alimentado pelo UR Play. Presença, postura e desempenho constroem histórico dentro do ciclo.
+            </p>
+            <div className="mt-5">
+              <Button href="/ranking" variant="secondary">Ver estrutura do ranking</Button>
+            </div>
+          </div>
+          <RankingBroadcastPanel rows={season1.mockRankings} />
+        </div>
+      </S>
+
+      {/* ── 4. TERRITÓRIOS ── */}
+      <S id="territorios" style={{ background: "#0A0A0B" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Polos da Temporada 1</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Três territórios.<br />Uma disputa.
+          </h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((p) => (
+            <TerritoryArtCard key={p.id} pole={p} />
+          ))}
+        </div>
+      </S>
+
+      {/* ── 5. MODALIDADES ── */}
+      <S id="modalidades" style={{ background: "#0D0D12" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Modalidades</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Cada formato.<br />Cada ponto conta.
+          </h2>
+        </div>
+        <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
+          {season1.modalities.map((m) => (
+            <div
+              key={m.id}
+              className="flex flex-col items-center gap-3 rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 hover:border-[rgba(212,164,55,0.4)] transition-colors"
+            >
+              <img alt={m.name} className="h-12 w-12 opacity-80" loading="lazy" src={m.symbolSolid} />
               <span
-                className="rounded-md border border-white/10 bg-white/[0.045] px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-white/70"
-                key={signal}
+                className="text-center text-sm font-bold uppercase leading-tight"
+                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.05em" }}
               >
-                {signal}
+                {m.name}
               </span>
-            ))}
+            </div>
+          ))}
+        </div>
+      </S>
+
+      {/* ── 6. ATLETA EDITORIAL + FORMAÇÃO ── */}
+      <S id="atletas-formacoes" style={{ background: "#0A0A0B" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Atletas e formações</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Quem entra<br />representa.
+          </h2>
+          <p className="mt-3 text-sm" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Dados editoriais — exemplos visuais. Ranking real abre conforme participação confirmada.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <AthleteArtCard name="Atleta Destaque" pole="BH" level="N1" points={0} rank={1} />
+          <AthleteArtCard name="Atleta Destaque" pole="Betim" level="N2" points={0} />
+          <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
+            <TeamFormationArtCard teamName="Formação BH Elite" pole="BH" modality="Quartetos" isOfficial={false} />
+            <TeamFormationArtCard teamName="Dupla Betim" pole="Betim" modality="Duplas Mistas" isOfficial={false} />
           </div>
         </div>
-      </section>
+      </S>
 
-      <Section id="ecossistema">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)]">
-          <ImageFeatureCard
-            cta="Entrar pelo UR Play"
-            description="A porta de entrada para jogar, ser observado, iniciar histórico e entrar no radar do ranking."
-            eyebrow="Esporte real + sistema"
-            href="/ur-play"
-            image={homeImageRoles.urPlay}
-            title="A jornada começa jogando, mas não termina no jogo."
-          />
-          <div className="grid gap-4">
-            {ecosystemCards.map((card, index) => (
-              <FeatureCard
-                cta={card.cta}
-                description={card.description}
-                eyebrow={card.eyebrow}
-                featured={index === 1}
-                href={card.href}
-                icon={card.icon}
-                key={card.title}
-                title={card.title}
-              />
-            ))}
-          </div>
+      {/* ── 7. BRACKET PREVIEW ── */}
+      <S id="bracket" style={{ background: "#0D0D12" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Chaveamento</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            O bracket<br />define o nome.
+          </h2>
         </div>
-      </Section>
-
-      <Section className="bg-[linear-gradient(180deg,#030405,#08090d)]" id="caminhos">
-        <SectionHeadingPremium
-          description="Escolha seu perfil e envie seu cadastro. A equipe UR analisa as informações e orienta o melhor caminho para você começar."
-          eyebrow="Como entrar"
-          title="Um caminho claro para quem quer participar."
+        <URBracketPreview
+          stage={season1.mockBracket.stage}
+          quarterfinals={[...season1.mockBracket.quarterfinals]}
+          semifinals={[...season1.mockBracket.semifinals]}
+          final={season1.mockBracket.final}
         />
+      </S>
+
+      {/* ── 8. LEGENDS PANEL ── */}
+      <S id="legends" style={{ background: "#0A0A0B" }}>
+        <LegendsArtPanel />
+      </S>
+
+      {/* ── 9. RECOMPENSAS ── */}
+      <S id="recompensas" style={{ background: "#0D0D12" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>UR Coins · UR Market</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Participação<br />gera valor.
+          </h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <RewardArtCard
+            icon="/season-1/symbols/ur-coins-line.svg"
+            title="UR Coins"
+            description="Moedas que conectam presença e desempenho a benefícios aprovados."
+          />
+          <RewardArtCard
+            icon="/season-1/symbols/ur-play-line.svg"
+            title="Produtos e serviços"
+            description="Itens aprovados por parceiros confirmados dentro da temporada."
+          />
+          <RewardArtCard
+            icon="/season-1/symbols/ur-legends-line.svg"
+            title="Premiações e repasses"
+            description="Reconhecimento por resultado, evolução, constância e participação."
+            note="Repasses dependem de caixa, margem, confirmação e regra oficial."
+          />
+          <RewardArtCard
+            icon="/season-1/symbols/ur-sprint-line.svg"
+            title="Serviços de performance"
+            description="Fisio, nutrição, avaliação e treino especializado com parceiros."
+          />
+          <RewardArtCard
+            icon="/season-1/symbols/ur-series-line.svg"
+            title="Mídia oficial"
+            description="Cobertura, bastidores e destaques que transformam o ciclo em história."
+          />
+          <RewardArtCard
+            icon="/season-1/symbols/forca-dos-polos-line.svg"
+            title="Força dos Polos"
+            description="O polo com mais pontos leva reconhecimento e benefícios de território."
+          />
+        </div>
+        <div className="mt-6 text-center">
+          <Button href="/ur-market" variant="secondary">Ver UR Market</Button>
+        </div>
+      </S>
+
+      {/* ── 10. CAMINHOS ── */}
+      <S id="caminhos" style={{ background: "#0A0A0B" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Caminhos de entrada</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Escolha seu caminho<br />na temporada.
+          </h2>
+        </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
           {entryPaths.map((path) => {
             const Icon = path.icon;
-
             return (
               <Link
-                className="group relative min-h-[210px] overflow-hidden rounded-lg border border-white/10 bg-[linear-gradient(145deg,rgba(255,255,255,0.07),rgba(255,255,255,0.025))] p-5 transition hover:-translate-y-0.5 hover:border-[#ffd84d]/35"
+                className="group relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
                 href={path.href}
                 key={path.label}
+                style={{ transition: "all 250ms cubic-bezier(0.4,0,0.2,1)" }}
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-[#ffd84d] opacity-0 transition group-hover:opacity-100" />
-                <Icon aria-hidden className="h-7 w-7 text-[#ffd84d]" />
-                <h3 className="mt-6 text-2xl font-black uppercase leading-[0.92] text-white">{path.label}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/64">{path.description}</p>
-                <div className="absolute bottom-5 left-5 flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#ffe98b]">
-                  Iniciar
-                  <ArrowRight aria-hidden className="h-4 w-4 transition group-hover:translate-x-1" />
+                <div className="absolute inset-x-0 top-0 h-0.5 bg-[#D4A437] opacity-0 transition-opacity group-hover:opacity-100" />
+                <Icon aria-hidden className="h-6 w-6" style={{ color: "#D4A437" }} />
+                <h3
+                  className="mt-5 text-xl font-bold uppercase leading-[0.92]"
+                  style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                >
+                  {path.label}
+                </h3>
+                <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                  {path.description}
+                </p>
+                <div
+                  className="mt-4 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                  style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                >
+                  Entrar
+                  <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
             );
           })}
         </div>
-      </Section>
+      </S>
 
-      <Section id="midia">
-        <MediaPortalSection />
-      </Section>
-
-      <Section className="bg-[#07080b]" id="ranking">
-        <RankingShowcase />
-      </Section>
-
-      <Section id="temporada">
-        <EventCalendarShowcase />
-      </Section>
-
-      <Section className="bg-black" id="acervo">
-        <GalleryStrip
-          description="Comemoração, ataque, defesa, premiação, público e bastidores começam a dar textura real para a memória esportiva."
-          images={galleryImages}
-          title="O UR respira quadra, areia e gente."
-        />
-      </Section>
-
-      <Section className="bg-[linear-gradient(180deg,#030405,#090a0e)]" id="jornada">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center">
-          <div>
-            <Badge>Jornada UR</Badge>
-            <h2 className="mt-4 text-balance text-[clamp(2.55rem,8vw,4.4rem)] font-black uppercase leading-[0.88] text-white">
-              Um caminho claro para quem quer participar.
-            </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-white/72 md:text-lg">
-              Você entra no radar, recebe orientação e começa pelo caminho certo: UR Play, equipe, ranking,
-              comunidade, parceria ou quadra.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button href="/atletas" variant="secondary">
-                Jornada do atleta
-              </Button>
-              <Button href="/equipes" variant="ghost">
-                Equipes oficiais
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid gap-3">
-            {journeyEditorial.map((step) => (
-              <article
-                className="grid gap-3 rounded-lg border border-white/10 bg-white/[0.045] p-4 md:grid-cols-[auto_1fr] md:p-5"
-                key={step.step}
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-lg bg-[#ffd84d] text-xs font-black text-black">
-                  {step.step}
-                </span>
-                <div>
-                  <h3 className="text-xl font-black uppercase leading-none text-white">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-white/68">{step.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <Section id="reconhecimento">
-        <SectionHeadingPremium
-          description="Aqui, cada participação pode virar histórico, cada equipe pode ganhar identidade e cada atleta pode construir uma trajetória dentro de uma estrutura organizada."
-          eyebrow="Reconhecimento"
-          title="O UR foi criado para quem quer mais do que jogar por jogar."
-        />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {recognitionCards.map((card) => {
-            const Icon = card.icon;
-
-            return (
-              <Card className="p-5" key={card.title}>
-                <span className="grid h-12 w-12 place-items-center rounded-lg border border-[#ffd84d]/20 bg-[#ffd84d]/10 text-[#ffd84d]">
-                  <Icon aria-hidden className="h-6 w-6" />
-                </span>
-                <h3 className="mt-5 text-xl font-black uppercase leading-tight text-white">{card.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/68">{card.description}</p>
-              </Card>
-            );
-          })}
-        </div>
-      </Section>
-
-      <Section className="bg-[#07080b]" id="patrocinadores">
-        <CommercialShowcase />
-      </Section>
-
-      <Section id="comunidade">
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-          <ImageFeatureCard
-            cta="Acompanhar comunidade"
-            description="A comunidade acompanha agenda, mídia, bastidores, próximos passos e oportunidades conforme o calendário avança."
-            eyebrow="Comunidade"
-            href="/cadastro#comunidade"
-            image={homeImageRoles.comunidade}
-            title="A comunidade cresce com quem vive o jogo."
-          />
-          <Card premium className="p-5 md:p-7">
-            <Radio aria-hidden className="h-7 w-7 text-[#ffd84d]" />
-            <h2 className="mt-5 text-3xl font-black uppercase leading-[0.9] text-white">FAQ rápido</h2>
-            <div className="mt-6 grid gap-4">
-              {[
-                ["É torneio?", "Não. É um ecossistema contínuo com UR Play, ranking, equipes, mídia, eventos e benefícios."],
-                ["Já tem ranking real?", "Ainda não. Seu nome começa a aparecer conforme presença, desempenho e participação confirmada."],
-                ["Cadastro garante vaga?", "Não. Seu cadastro coloca você no radar do UR; a entrada tem critério para manter equilíbrio, respeito e organização."],
-              ].map(([question, answer]) => (
-                <div className="border-t border-white/10 pt-4" key={question}>
-                  <h3 className="text-sm font-black uppercase leading-5 text-white">{question}</h3>
-                  <p className="mt-2 text-sm leading-6 text-white/66">{answer}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-      </Section>
-
-      <section className="border-t border-white/10 bg-black px-5 py-8 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          {[
-            { icon: Users, label: "Sou atleta", href: "/cadastro#atleta" },
-            { icon: Shield, label: "Tenho equipe", href: "/cadastro#equipe" },
-            { icon: MapPin, label: "Tenho quadra", href: "/cadastro#quadra" },
-          ].map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <Link
-                className="group flex items-center justify-between gap-4 rounded-lg border border-white/10 bg-white/[0.045] p-4 transition hover:border-[#ffd84d]/35 hover:bg-[#ffd84d]/10"
-                href={item.href}
-                key={item.label}
-              >
-                <span className="flex items-center gap-3">
-                  <Icon aria-hidden className="h-5 w-5 text-[#ffd84d]" />
-                  <span className="text-sm font-black uppercase tracking-[0.1em] text-white">{item.label}</span>
-                </span>
-                <ArrowRight aria-hidden className="h-4 w-4 text-white/50 transition group-hover:translate-x-1 group-hover:text-[#ffd84d]" />
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
+      {/* ── 11. CTA FINAL ── */}
       <CTASectionPremium />
     </main>
   );

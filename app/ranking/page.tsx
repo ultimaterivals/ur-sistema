@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { BarChart3, Radio, ShieldCheck, Target } from "lucide-react";
 import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
-  DataBoard,
-  ImageFeaturePanel,
   LeaderboardPanel,
   ProcessTimeline,
 } from "@/components/editorial/sports-platform-modules";
@@ -13,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { siteImages } from "@/lib/content/site-images";
+import { RankingBroadcastPanel } from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 
 export const metadata: Metadata = {
   title: "Ranking UR | Ranking de Atletas, Equipes e Temporada Ultimate Rivals",
@@ -69,33 +68,6 @@ const rankingFlow = [
   },
 ] as const;
 
-const rankingData = [
-  {
-    label: "Atletas",
-    value: "individual",
-    detail: "histórico, presença e evolução por nível e modalidade.",
-    icon: Target,
-  },
-  {
-    label: "Equipes",
-    value: "coletivo",
-    detail: "identidade, elenco, resultados e presença na temporada.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Engajamento",
-    value: "comunidade",
-    detail: "participação, mídia, presença e relação com o ecossistema.",
-    icon: Radio,
-  },
-  {
-    label: "Polos",
-    value: "território",
-    detail: "ranking pode variar por modalidade, categoria, nível e polo.",
-    icon: BarChart3,
-  },
-] as const;
-
 const comparisonCards = [
   {
     title: "Participação solta",
@@ -115,9 +87,9 @@ export default function RankingPage() {
           { href: "/ur-play", label: "Entrar pelo UR Play" },
           { href: "/cadastro#atleta", label: "Cadastrar interesse", variant: "secondary" },
         ]}
-        badges={["Atletas", "Equipes", "Níveis", "UR Coins", "Mídia"]}
-        description="O ranking UR organiza participação, postura, desempenho e evolução para que o atleta e a equipe tenham uma trajetória acompanhada dentro da temporada."
-        eyebrow="Ranking UR"
+        badges={["Atletas", "Equipes", "Níveis", "Virada de Ranking", "UR Coins"]}
+        description="O ranking UR organiza participação, postura, desempenho e evolução por nível — com Virada de Ranking no fechamento de cada ciclo trimestral."
+        eyebrow="Reputação esportiva"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
         metrics={[
@@ -126,9 +98,9 @@ export default function RankingPage() {
           { label: "Impacto", value: "mídia e oportunidades" },
         ]}
         statusDescription="Sua presença vira histórico. Seu desempenho ganha contexto. Sua evolução passa a ser acompanhada."
-        statusLabel="ranking em formação"
-        statusTitle="Ranking não é promessa. É registro."
-        title="Sua presença vira histórico. Seu desempenho vira posição."
+        statusLabel="disputa por nível"
+        statusTitle="Seu nome sobe a cada ciclo trimestral."
+        title="Reputação esportiva com critério. Disputa por nível."
       />
 
       <PageSection id="leaderboard">
@@ -142,21 +114,16 @@ export default function RankingPage() {
         />
       </PageSection>
 
+      <PageSection id="broadcast">
+        <RankingBroadcastPanel rows={season1.mockRankings} />
+      </PageSection>
+
       <PageSection className="bg-[#07080c]" id="fluxo">
         <ProcessTimeline
           description="O ranking começa a ser alimentado pelo UR Play e cresce com presença, postura, desempenho e evolução."
           eyebrow="Como o atleta entra"
           steps={rankingFlow}
           title="Da presença ao histórico público."
-        />
-      </PageSection>
-
-      <PageSection id="tipos">
-        <DataBoard
-          description="O Ranking UR será dividido por atletas, equipes, níveis, polos, modalidades e engajamento para permitir competição mais justa."
-          eyebrow="Tipos de ranking"
-          items={rankingData}
-          title="Ranking por atletas, equipes e níveis."
         />
       </PageSection>
 
@@ -185,30 +152,6 @@ export default function RankingPage() {
           ))}
           </div>
         </Card>
-      </PageSection>
-
-      <PageSection id="coins-midia">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ur-market", label: "Conhecer UR Market", variant: "secondary" },
-            { href: "/midia", label: "Ver mídia UR", variant: "ghost" },
-          ]}
-          description="Ranking não termina na posição. Ele se conecta a UR Coins, recompensas, mídia, CT UR, premiações e oportunidades dentro da temporada."
-          eyebrow="UR Coins e mídia"
-          image={siteImages.mediaCoverage}
-          imagePosition="center 45%"
-          points={[
-            {
-              title: "UR Coins",
-              description: "Pontuação e participação podem abrir acesso a benefícios aprovados pela UR.",
-            },
-            {
-              title: "Mídia própria",
-              description: "Transforma ranking em história, destaque, rivalidade e memória esportiva do ecossistema.",
-            },
-          ]}
-          title="Posição só importa quando vira contexto."
-        />
       </PageSection>
 
       <SegmentCtaPanel

@@ -4,13 +4,14 @@ import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
   CommercialAssetPanel,
   DataBoard,
-  ImageFeaturePanel,
   ProcessTimeline,
 } from "@/components/editorial/sports-platform-modules";
 import { PageSection } from "@/components/site/page-section";
 import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
 import { siteImages } from "@/lib/content/site-images";
+import { URBracketPreview } from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 
 export const metadata: Metadata = {
   title: "Eventos UR | UR Play, Torneios e Temporada Ultimate Rivals",
@@ -104,9 +105,9 @@ export default function EventosPage() {
           { href: "/temporada", label: "Ver temporada UR" },
           { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
         ]}
-        badges={["UR Play", "Mini torneios", "Eventos oficiais", "Virada de ranking"]}
-        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
-        eyebrow="Temporada UR"
+        badges={["UR Play", "Ciclo trimestral", "Mini torneios", "Virada de Ranking"]}
+        description="O UR organiza ciclos trimestrais com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
+        eyebrow="Ciclo trimestral"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"
         metrics={[
@@ -115,9 +116,9 @@ export default function EventosPage() {
           { label: "Fechamento", value: "virada de ranking" },
         ]}
         statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
-        statusLabel="agenda em organização"
-        statusTitle="Uma temporada para jogar com constância."
-        title="Uma temporada para jogar com constância."
+        statusLabel="ciclo trimestral com Virada de Ranking"
+        statusTitle="Todo ciclo fecha na Virada de Ranking."
+        title="Todo ciclo começa aqui. Todo ciclo fecha na Virada."
       />
 
       <PageSection id="tipos">
@@ -126,6 +127,15 @@ export default function EventosPage() {
           description="Os formatos abaixo organizam a experiência da temporada: UR Play, eventos oficiais, ranking contínuo e virada de ranking."
           eyebrow="Tipos de evento"
           title="Cada etapa tem função dentro da temporada."
+        />
+      </PageSection>
+
+      <PageSection id="bracket">
+        <URBracketPreview
+          stage={season1.mockBracket.stage}
+          quarterfinals={[...season1.mockBracket.quarterfinals]}
+          semifinals={[...season1.mockBracket.semifinals]}
+          final={season1.mockBracket.final}
         />
       </PageSection>
 
@@ -138,58 +148,12 @@ export default function EventosPage() {
         />
       </PageSection>
 
-      <PageSection id="jogo-real">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
-            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
-          ]}
-          description="O evento precisa gerar rastro: quem participou, como competiu, que história nasceu, qual ranking foi alimentado e qual próximo passo faz sentido."
-          eyebrow="Evento como produto esportivo"
-          image={siteImages.attackBlock}
-          imagePosition="center 42%"
-          points={[
-            {
-              title: "Competição com contexto",
-              description: "UR Play, mini torneios e eventos oficiais conectam presença, nível e ranking.",
-            },
-            {
-              title: "Mídia como memória",
-              description: "Fotos, bastidores e cobertura transformam o evento em memória do ecossistema.",
-            },
-          ]}
-          title="O jogo termina, mas o histórico continua."
-        />
-      </PageSection>
-
       <PageSection className="bg-[#07080c]" id="impacto">
         <DataBoard
           description="O evento tem papel esportivo, midiático, comercial e territorial. Ele alimenta mais que o placar."
           eyebrow="O que o evento alimenta"
           items={eventData}
           title="Ranking, UR Coins, mídia e polos no mesmo ciclo."
-        />
-      </PageSection>
-
-      <PageSection id="agenda">
-        <ImageFeaturePanel
-          description="A agenda oficial será publicada por modalidade, nível, categoria e polo quando houver confirmação. Até lá, o cadastro de interesse organiza demanda sem criar promessa."
-          eyebrow="Agenda futura"
-          image={siteImages.wideServe}
-          imagePosition="center 48%"
-          points={[
-            {
-              title: "Eventos entram após confirmação",
-              description: "Nada de datas, horários, valores ou vagas reais sem confirmação oficial.",
-            },
-            {
-              title: "Polo em formação",
-              description: "Quadras parceiras e calendário local serão ativados conforme confirmação.",
-            },
-          ]}
-          reverse
-          statusLabel="inscrição com critério"
-          title="O calendário cresce por ciclo, não por improviso."
         />
       </PageSection>
 

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320">
+  <rect width="1200" height="320" fill="#14141A"></rect>
+  <text x="40" y="50" font-family="&#39;Oswald&#39;" font-size="32" font-weight="700" fill="#D4A437">RANKING AO VIVO</text>
+  <g transform="translate(40,100)">
+    <rect width="350" height="60" fill="#1C1610" rx="4"></rect>
+    <circle cx="30" cy="30" r="12" fill="#D4A437"></circle>
+    <text x="30" y="35" font-family="&#39;Oswald&#39;" font-size="16" font-weight="700" fill="#0A0A0B" text-anchor="middle">1</text>
+    <text x="60" y="40" font-family="&#39;Manrope&#39;" font-size="18" font-weight="600" fill="#F4F0E6">Atleta Nome · BH</text>
+    <text x="320" y="40" font-family="&#39;JetBrains Mono&#39;" font-size="18" font-weight="600" fill="#D4A437" text-anchor="end">1500</text>
+  </g>
+  <g transform="translate(40,180)">
+    <rect width="350" height="60" fill="#1C1610" rx="4"></rect>
+    <circle cx="30" cy="30" r="12" fill="#8A8A93"></circle>
+    <text x="30" y="35" font-family="&#39;Oswald&#39;" font-size="16" font-weight="700" fill="#0A0A0B" text-anchor="middle">2</text>
+    <text x="60" y="40" font-family="&#39;Manrope&#39;" font-size="18" font-weight="600" fill="#F4F0E6">Atleta Nome · Betim</text>
+    <text x="320" y="40" font-family="&#39;JetBrains Mono&#39;" font-size="18" font-weight="600" fill="#8A8A93" text-anchor="end">1320</text>
+  </g>
+  <circle cx="1150" cy="40" r="20" fill="#FF4D4D"></circle>
+  <text x="1150" y="48" font-family="&#39;JetBrains Mono&#39;" font-size="12" font-weight="700" fill="#0A0A0B" text-anchor="middle">LIVE</text>
+</svg>
