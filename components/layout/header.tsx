@@ -3,16 +3,43 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import type { PointerEvent } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { mainNavigation, mobileNavigationGroups } from "@/lib/navigation";
 
+const MOBILE_MENU_ID = "site-mobile-menu";
+
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pointerToggleHandled = useRef(false);
+
+  const toggleMenu = () => {
+    setOpen((value) => !value);
+  };
+
+  const handlePointerToggle = (event: PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    pointerToggleHandled.current = true;
+    toggleMenu();
+
+    window.setTimeout(() => {
+      pointerToggleHandled.current = false;
+    }, 0);
+  };
+
+  const handleClickToggle = () => {
+    if (pointerToggleHandled.current) {
+      pointerToggleHandled.current = false;
+      return;
+    }
+
+    toggleMenu();
+  };
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[#ffd84d]/15 bg-black/85 backdrop-blur-xl"
+      className="sticky top-0 z-[100] border-b border-[#ffd84d]/15 bg-black/85 backdrop-blur-xl"
       onClickCapture={(event) => {
         if ((event.target as Element).closest("a")) {
           setOpen(false);
@@ -57,10 +84,14 @@ export function Header() {
         </div>
 
         <button
+          aria-controls={MOBILE_MENU_ID}
           aria-expanded={open}
+          aria-haspopup="menu"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
-          className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white 2xl:hidden"
-          onClick={() => setOpen((value) => !value)}
+          className="relative z-[120] grid h-12 w-12 touch-manipulation select-none place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white pointer-events-auto 2xl:hidden"
+          data-mobile-menu-trigger
+          onClick={handleClickToggle}
+          onPointerUp={handlePointerToggle}
           type="button"
         >
           {open ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
@@ -68,7 +99,10 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] lg:px-8 2xl:hidden">
+        <div
+          className="relative z-[110] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:px-8 2xl:hidden"
+          id={MOBILE_MENU_ID}
+        >
           <Button className="w-full" href="/cadastro#atleta">
             Entrar no UR
           </Button>
