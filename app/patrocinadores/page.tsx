@@ -1,268 +1,125 @@
 import type { Metadata } from "next";
-import { BarChart3, CalendarDays, Camera, MapPin, Radio, ShoppingBag, Target, Users } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import {
+  RewardArtCard,
+  SeasonInfoCard,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
-  title: "Patrocinadores UR | Marcas, Mídia, Ranking e UR Market Ultimate Rivals",
+  title: "Patrocinadores UR | Marca, Mídia, Eventos e UR Market",
   description:
-    "Conheça as oportunidades para patrocinadores no Ultimate Rivals, um ecossistema esportivo com atletas, equipes, eventos, ranking, mídia, UR Market, CT UR e ativações com dados.",
+    "Patrocinadores Ultimate Rivals podem entrar na jornada esportiva com mídia oficial, eventos, UR Market, ativações nos polos, recompensas e conteúdo.",
 };
 
-const commercialAssets = [
+const commercialCards = [
   {
-    label: "Mídia",
-    title: "Cobertura e bastidores",
-    description: "Presença em conteúdos, bastidores, destaques, chamadas e cobertura.",
-    icon: Camera,
+    title: "Mídia oficial",
+    description: "Marca integrada a conteúdo, bastidores, histórias e cobertura da temporada.",
+    icon: "/season-1/symbols/ur-series-line.svg",
   },
   {
-    label: "Ranking",
-    title: "Ranking e reconhecimento",
-    description: "A marca pode estar ligada a destaques, conquistas e momentos da temporada.",
-    icon: BarChart3,
+    title: "Eventos",
+    description: "Presença em etapas, ações de quadra e experiências com público esportivo.",
+    icon: "/season-1/symbols/ur-sprint-line.svg",
   },
   {
-    label: "Eventos",
-    title: "Eventos e experiências",
-    description: "Ativação em jogos, encontros, torneios, premiações e ações presenciais.",
-    icon: CalendarDays,
-  },
-  {
-    label: "UR Market",
     title: "UR Market",
-    description: "Produtos e serviços podem virar benefícios dentro do sistema de UR Coins.",
-    icon: ShoppingBag,
+    description: "Produtos e serviços podem entrar como benefícios aprovados para atletas.",
+    icon: "/season-1/symbols/ur-coins-line.svg",
   },
   {
-    label: "Quadras",
-    title: "Quadras parceiras",
-    description: "Presença local em polos, comunidade e calendário recorrente.",
-    icon: MapPin,
-  },
-] as const;
-
-const brandJourney = [
-  {
-    label: "Entrada",
-    title: "Interesse comercial",
-    description: "A marca informa objetivo, público, segmento e intenção de ativação.",
+    title: "Ativações nos polos",
+    description: "BH, Betim e Contagem criam contexto local para relacionamento.",
+    icon: "/season-1/symbols/forca-dos-polos-line.svg",
   },
   {
-    label: "Diagnóstico",
-    title: "Aderência com o público",
-    description: "A equipe UR entende como a marca pode gerar valor para atletas, quadras, mídia, eventos e comunidade.",
+    title: "Recompensas",
+    description: "Benefícios para atletas entram com regra, estoque, critério e disponibilidade.",
+    icon: "/season-1/badges/badge-atleta-evolucao.svg",
   },
   {
-    label: "Proposta",
-    title: "Cota sob medida",
-    description: "Valores, entregas e contrapartidas reais dependem de proposta comercial.",
-  },
-  {
-    label: "Ativação",
-    title: "Presença na jornada",
-    description: "A marca aparece em experiências, benefícios, mídia e pontos de contato relevantes.",
-  },
-  {
-    label: "Relatório",
-    title: "Medição futura",
-    description: "Dados e relatórios entram com calendário real e critérios comerciais claros.",
-  },
-] as const;
-
-const metrics = [
-  {
-    label: "Alcance",
-    value: "a estruturar",
-    detail: "métricas entram com calendário comercial ativo.",
-    icon: Radio,
-  },
-  {
-    label: "Ativações",
-    value: "por proposta",
-    detail: "entregas dependem do objetivo da marca, polo, evento e canal.",
-    icon: Target,
-  },
-  {
-    label: "Comunidade",
-    value: "relacionamento",
-    detail: "marcas podem criar benefícios reais para atletas e público.",
-    icon: Users,
-  },
-  {
-    label: "Polos",
-    value: "expansão",
-    detail: "quadras e eventos criam presença territorial com contexto.",
-    icon: MapPin,
-  },
-] as const;
-
-const deliveryRows = [
-  {
-    label: "Mídia oficial",
-    value: "conteúdo, cortes e bastidores",
-  },
-  {
-    label: "Evento",
-    value: "presença em quadra e experiência local",
-  },
-  {
-    label: "Ranking",
-    value: "associação com evolução esportiva",
-  },
-  {
-    label: "UR Market",
-    value: "benefícios e ativações aprovadas",
+    title: "Dados e presença",
+    description: "Relatórios só devem usar dados confirmados, sem prometer audiência ou ROI sem base.",
+    icon: "/season-1/badges/badge-top-ranking.svg",
   },
 ] as const;
 
 export default function PatrocinadoresPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "/cadastro#patrocinador", label: "Quero ativar minha marca no UR" },
-          { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
+          { href: "/cadastro#patrocinador", label: "Quero patrocinar" },
+          { href: "/midia", label: "Ver Mídia UR", variant: "secondary" },
         ]}
-        badges={["Mídia própria", "Ranking", "Eventos", "UR Market", "Comunidade"]}
-        description="O Ultimate Rivals conecta marcas a atletas, equipes, quadras, mídia, ranking, eventos e comunidade. Não é só aparecer: é participar de uma experiência esportiva com presença real."
-        eyebrow="Para marcas e parceiros"
+        badges={["mídia", "eventos", "UR Market", "polos", "conteúdo", "benefícios"]}
+        description="Sua marca entra dentro da jornada esportiva: atleta, ranking, mídia, eventos, polos e benefícios com critério."
+        eyebrow="Proposta comercial"
         image={siteImages.sponsorActivation}
         imagePosition="center 45%"
-        metrics={[
-          { label: "Ativo", value: "mídia + ranking" },
-          { label: "Canal", value: "UR Market e eventos" },
-          { label: "Base", value: "comunidade esportiva" },
+        stats={[
+          { label: "ativo", value: "mídia" },
+          { label: "presença", value: "eventos" },
+          { label: "canal", value: "UR Market" },
         ]}
-        statusDescription="A marca entra em pontos reais da jornada: onde o atleta joga, evolui, aparece, acompanha ranking, participa de eventos e se conecta com a comunidade."
-        statusLabel="propostas comerciais"
-        statusTitle="Patrocínio com contexto."
-        title="Sua marca dentro da jornada esportiva."
+        title="Sua marca dentro da temporada."
       />
 
-      <PageSection id="ativos">
-        <CommercialAssetPanel
-          assets={commercialAssets}
-          description="A marca entra em pontos reais da jornada: mídia, eventos, ranking, UR Market, quadras parceiras e comunidade."
-          eyebrow="Ativos comerciais"
-          title="Pontos de presença da marca."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O patrocinador entra melhor quando cria utilidade para atleta, comunidade e operação."
+        eyebrow="Ativos comerciais"
+        id="ativos"
+        title="Marca não é só logo."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {commercialCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="jornada">
-        <ProcessTimeline
-          description="A marca participa de uma jornada com atletas, equipes, quadras e comunidade, com entregas combinadas por proposta."
-          eyebrow="Jornada da marca"
-          steps={brandJourney}
-          title="Do interesse à presença dentro do ecossistema."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Produtos e serviços de patrocinadores podem virar benefícios no UR Market quando aprovados pela UR."
+        eyebrow="UR Market"
+        id="market"
+        title="Benefício bom entra com regra."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          <RewardArtCard
+            description="Marcas podem oferecer produtos, serviços e experiências conectadas à temporada."
+            icon="/season-1/symbols/ur-coins-line.svg"
+            title="Produtos e serviços"
+          />
+          <RewardArtCard
+            description="Toda oferta precisa respeitar disponibilidade, regra oficial e comunicação clara."
+            icon="/season-1/symbols/ur-play-line.svg"
+            title="Benefícios aprovados"
+          />
+          <RewardArtCard
+            description="Conteúdo, eventos e ativações ampliam presença sem prometer métricas não validadas."
+            icon="/season-1/symbols/ur-series-line.svg"
+            title="Conteúdo e presença"
+          />
+        </div>
+      </SeasonSection>
 
-      <PageSection id="como-a-marca-aparece">
-        <ImageFeaturePanel
-          description="A entrega comercial pode combinar presença visual, experiência, conteúdo e benefício real. O UR Market é o canal para ativação recorrente."
-          eyebrow="Como sua marca aparece"
-          image={siteImages.mediaCoverage}
-          imagePosition="center 46%"
-          points={[
-            {
-              title: "Mídia + evento",
-              description: "Cobertura, bastidores, cortes e presença em experiências com atletas e comunidade.",
-            },
-            {
-              title: "Benefício + relacionamento",
-              description: "Produtos, serviços e experiências podem entrar como benefícios aprovados no UR Market.",
-            },
-          ]}
-          statusLabel="entregas por proposta"
-          title="A marca aparece onde a jornada acontece."
-        />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="entregas">
-        <Card className="overflow-hidden p-0" premium>
-          <div className="grid gap-4 border-b border-white/10 p-5 md:p-7 lg:grid-cols-[0.72fr_1fr] lg:items-end">
-            <div>
-              <Badge>Ativos comerciais</Badge>
-              <h2 className="mt-5 text-balance text-[clamp(2.2rem,7vw,3.8rem)] font-black uppercase leading-[0.9] text-white">
-                Como sua marca aparece.
-              </h2>
-            </div>
-            <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              Esta estrutura mostra possibilidades comerciais com clareza. Valores, cotas e entregas reais dependem de proposta.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4">
-            {deliveryRows.map((row) => (
-              <div className="border-b border-white/10 p-5 md:border-r xl:last:border-r-0" key={row.label}>
-                <div className="text-[10px] font-black uppercase tracking-[0.16em] text-[#ffe98b]">{row.label}</div>
-                <div className="mt-4 text-xl font-black uppercase leading-[0.95] text-white">{row.value}</div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </PageSection>
-
-      <PageSection id="metricas">
-        <DataBoard
-          description="Métricas claras ajudam a evoluir a entrega. A proposta comercial define o que será acompanhado em cada ativação."
-          eyebrow="Métricas futuras"
-          items={metrics}
-          title="Métricas claras para evoluir a entrega."
-        />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="contexto">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/quadras-parceiras", label: "Quadras parceiras", variant: "secondary" },
-            { href: "/eventos", label: "Eventos UR", variant: "ghost" },
-          ]}
-          description="Quadras, eventos e comunidade criam contexto local para ativação. A marca pode participar da experiência, não apenas decorar a comunicação."
-          eyebrow="Eventos, polos e comunidade"
-          image={siteImages.communityMoment}
-          imagePosition="center 44%"
-          points={[
-            {
-              title: "Contexto real",
-              description: "Ativações precisam conversar com atleta, equipe, público e território.",
-            },
-            {
-              title: "Recorrência",
-              description: "Temporada, ranking e mídia tornam a relação mais contínua que uma ação isolada.",
-            },
-          ]}
-          reverse
-          title="O melhor patrocínio participa do ambiente."
-        />
-      </PageSection>
-
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#patrocinador">Quero ativar minha marca no UR</Button>
-            <Button href="/contato" variant="secondary">
-              Falar com o UR
-            </Button>
-          </>
-        }
-        description="Sua marca pode participar da jornada esportiva com mídia, eventos, ranking, UR Market, quadras parceiras e comunidade."
-        eyebrow="Interesse comercial"
-        items={["mídia", "eventos", "ranking", "UR Market", "comunidade"]}
-        statusLabel="valores sob proposta"
-        title="Sua marca dentro da jornada esportiva."
-      />
+      <SeasonSection id="cta" title="Ative sua marca com critério e contexto esportivo.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#patrocinador">Quero patrocinar</Button>
+          <Button href="/ur-market" variant="secondary">
+            Ver UR Market
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

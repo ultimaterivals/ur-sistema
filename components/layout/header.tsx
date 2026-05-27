@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { mainNavigation, mobileNavigation } from "@/lib/navigation";
+import { mainNavigation, mobileNavigation, mobileNavigationGroups } from "@/lib/navigation";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -68,20 +68,29 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="border-t border-white/10 px-5 pb-4 pt-3 lg:hidden">
+        <div className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/10 px-5 pb-4 pt-3 lg:hidden">
           <Button className="w-full" href="/cadastro#atleta">
             Entrar no UR
           </Button>
-          <nav className="mt-3 grid gap-1 rounded-lg border border-white/10 bg-[#111218] p-2">
-            {mobileNavigation.map((item) => (
-              <Link
-                className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
+          <nav className="mt-3 grid gap-3">
+            {mobileNavigationGroups.map((group) => (
+              <div className="rounded-lg border border-white/10 bg-[#111218] p-2" key={group.label}>
+                <div className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
+                  {group.label}
+                </div>
+                <div className="grid gap-1">
+                  {group.items.map((item) => (
+                    <Link
+                      className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                      href={item.href}
+                      key={item.href}
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </nav>
         </div>
@@ -89,7 +98,7 @@ export function Header() {
 
       {open ? (
         <div className="hidden border-t border-white/10 px-8 pb-4 pt-3 lg:block xl:hidden">
-          <nav className="grid grid-cols-4 gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
+          <nav className="grid grid-cols-5 gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
             {mobileNavigation.map((item) => (
               <Link
                 className="rounded-md px-3 py-2.5 text-center text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"

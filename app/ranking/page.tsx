@@ -1,174 +1,125 @@
 import type { Metadata } from "next";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  LeaderboardPanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { siteImages } from "@/lib/content/site-images";
-import { RankingBroadcastPanel } from "@/components/season";
+import {
+  LegendsArtPanel,
+  RankingBroadcastPanel,
+  SeasonInfoCard,
+  SeasonPageHero,
+  SeasonSection,
+  TerritoryArtCard,
+} from "@/components/season";
 import { season1 } from "@/lib/content/season1";
+import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
-  title: "Ranking UR | Ranking de Atletas, Equipes e Temporada Ultimate Rivals",
+  title: "Ranking UR | Mérito, Níveis, Equipes e Polos Ultimate Rivals",
   description:
-    "Conheça o Ranking UR, o sistema público de classificação do Ultimate Rivals que organiza atletas, equipes, níveis, desempenho, UR Coins, recompensas e oportunidades dentro da temporada.",
+    "Ranking UR transforma mérito em histórico, organiza atletas por nível, formações, força dos polos e caminho ao UR Legends.",
 };
 
-const leaderboardRows = [
+const rankingCards = [
   {
-    position: "01",
-    title: "top 1 em formação",
-    status: "sem atleta real publicado",
-    meta: "posição abre apenas com dados reais e participação confirmada.",
+    title: "Individual por nível",
+    description: "Cada atleta disputa dentro do próprio contexto. N1, N2 e N3 não misturam leitura competitiva.",
+    icon: "/season-1/badges/badge-n1.svg",
   },
   {
-    position: "02",
-    title: "top 2 em formação",
-    status: "temporada em organização",
-    meta: "sem números, pontos ou nomes reais nesta etapa.",
+    title: "Equipes e formações",
+    description: "Escudos, formações registradas e elencos ganham critérios próprios de evolução.",
+    icon: "/season-1/badges/badge-equipe-registrada.svg",
   },
   {
-    position: "03",
-    title: "top 3 em formação",
-    status: "ranking em formação",
-    meta: "ranking será alimentado pelo UR Play e eventos oficiais.",
-  },
-] as const;
-
-const rankingFlow = [
-  {
-    label: "Entrada",
-    title: "UR Play",
-    description: "A primeira base vem da participação observada e confirmada.",
+    title: "Força dos Polos",
+    description: "BH, Betim e Contagem disputam território com pontuação coletiva.",
+    icon: "/season-1/symbols/forca-dos-polos-line.svg",
   },
   {
-    label: "Leitura",
-    title: "Critérios",
-    description: "Presença, evolução, nível, conduta e participação formam contexto.",
-  },
-  {
-    label: "Organização",
-    title: "Níveis",
-    description: "A competição fica mais justa quando atletas e equipes são comparados por contexto.",
-  },
-  {
-    label: "Publicação",
-    title: "Ranking",
-    description: "Seu nome aparece quando houver participação confirmada e critérios claros.",
-  },
-  {
-    label: "Valor",
-    title: "Oportunidades",
-    description: "Mídia, Draft, CT UR, recompensas e repasses dependem de regras claras no ciclo.",
-  },
-] as const;
-
-const comparisonCards = [
-  {
-    title: "Participação solta",
-    text: "Você joga, termina a partida e quase nada fica registrado.",
-  },
-  {
-    title: "Dentro do UR",
-    text: "Sua presença, desempenho e evolução passam a fazer parte da sua história esportiva.",
+    title: "Caminho ao Legends",
+    description: "O topo da temporada convoca atletas qualificados para representar nome, escudo e polo.",
+    icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
 
 export default function RankingPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
           { href: "/ur-play", label: "Entrar pelo UR Play" },
           { href: "/cadastro#atleta", label: "Cadastrar interesse", variant: "secondary" },
         ]}
-        badges={["Atletas", "Equipes", "Níveis", "Virada de Ranking", "UR Coins"]}
-        description="O ranking UR organiza participação, postura, desempenho e evolução por nível — com Virada de Ranking no fechamento de cada ciclo trimestral."
-        eyebrow="Reputação esportiva"
+        badges={["ranking individual", "formações", "polos", "níveis", "Legends"]}
+        description="Mérito vira histórico. Ranking define reputação, classificação, força das equipes e caminho ao UR Legends."
+        eyebrow="Central competitiva"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
-        metrics={[
-          { label: "Origem", value: "UR Play" },
-          { label: "Critério", value: "participação confirmada" },
-          { label: "Impacto", value: "mídia e oportunidades" },
+        stats={[
+          { label: "entrada", value: "UR Play" },
+          { label: "níveis", value: "N1 / N2 / N3" },
+          { label: "disputa", value: "polos" },
         ]}
-        statusDescription="Sua presença vira histórico. Seu desempenho ganha contexto. Sua evolução passa a ser acompanhada."
-        statusLabel="disputa por nível"
-        statusTitle="Seu nome sobe a cada ciclo trimestral."
-        title="Reputação esportiva com critério. Disputa por nível."
+        title="Mérito vira histórico."
       />
 
-      <PageSection id="leaderboard">
-        <LeaderboardPanel
-          description="O objetivo é dar clareza para quem participa: quem joga, comparece, evolui e se compromete começa a aparecer dentro do sistema."
-          eyebrow="Ranking em destaque"
-          image={siteImages.defenseDive}
-          rows={leaderboardRows}
-          tabs={["Individual", "Equipes", "Engajamento", "Polos", "Níveis"]}
-          title="Ranking não é promessa. É registro."
-        />
-      </PageSection>
-
-      <PageSection id="broadcast">
+      <SeasonSection
+        description="O ranking só publica contexto real após participação confirmada. Até lá, o painel mostra a estrutura editorial da disputa."
+        eyebrow="Broadcast competitivo"
+        id="broadcast"
+        title="Quem está na disputa?"
+      >
         <RankingBroadcastPanel rows={season1.mockRankings} />
-      </PageSection>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="fluxo">
-        <ProcessTimeline
-          description="O ranking começa a ser alimentado pelo UR Play e cresce com presença, postura, desempenho e evolução."
-          eyebrow="Como o atleta entra"
-          steps={rankingFlow}
-          title="Da presença ao histórico público."
-        />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="criterios">
-        <Card className="overflow-hidden p-0" premium>
-          <div className="grid gap-4 border-b border-white/10 p-5 md:p-7 lg:grid-cols-[0.72fr_1fr] lg:items-end">
-            <div>
-              <Badge>Comparação</Badge>
-              <h2 className="mt-5 text-balance text-[clamp(2.2rem,7vw,3.8rem)] font-black uppercase leading-[0.9] text-white">
-                O jogo precisa deixar registro.
-              </h2>
-            </div>
-            <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              O ranking organiza participação, desempenho e evolução sem transformar a experiência em tabela fria.
-            </p>
-          </div>
-          <div className="grid gap-4 p-5 md:grid-cols-2 md:p-7">
-          {comparisonCards.map((card, index) => (
-            <div
-              className={index === 1 ? "rounded-lg border border-[#ffd84d]/24 bg-[#ffd84d]/10 p-5" : "rounded-lg border border-white/10 bg-black/28 p-5"}
+      <SeasonSection
+        description="Ranking não é só tabela. Ele conecta atleta, equipe, formação, polo e progressão."
+        eyebrow="Sistemas de ranking"
+        id="sistemas"
+        title="Quatro disputas conectadas."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {rankingCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
               key={card.title}
-            >
-              <h3 className="text-2xl font-black uppercase leading-none text-white">{card.title}</h3>
-              <p className="mt-4 text-sm leading-6 text-white/68">{card.text}</p>
-            </div>
+              title={card.title}
+            />
           ))}
-          </div>
-        </Card>
-      </PageSection>
+        </div>
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/ur-play">Começar pelo UR Play</Button>
-            <Button href="/cadastro#atleta" variant="secondary">
-              Cadastrar interesse
-            </Button>
-          </>
-        }
-        description="A entrada no ranking começa pelo UR Play. Seu nome aparece conforme presença, desempenho, postura e evolução."
-        eyebrow="Entrada no ranking"
-        items={["UR Play", "níveis", "equipes", "UR Coins", "mídia"]}
-        statusLabel="registro com critério"
-        title="Entrar no ranking pelo UR Play."
-      />
+      <SeasonSection
+        description="A força dos polos transforma participação local em rivalidade territorial."
+        eyebrow="Territórios"
+        id="polos"
+        title="Cada ponto fortalece um polo."
+      >
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((pole, index) => (
+            <TerritoryArtCard key={pole.id} pole={pole} rank={index + 1} />
+          ))}
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="No Legends, a pontuação individual e a pontuação das equipes seguem a tabela oficial normal. Apenas o Ranking de Força dos Polos recebe multiplicador especial."
+        eyebrow="Regra Legends"
+        id="legends"
+        title="O atleta joga pelo nome. O polo leva o resultado."
+        variant="raised"
+      >
+        <LegendsArtPanel />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="Entre pelo UR Play e comece a construir histórico.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/ur-play">Começar pelo UR Play</Button>
+          <Button href="/cadastro#atleta" variant="secondary">
+            Cadastrar interesse
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

@@ -1,211 +1,114 @@
 import type { Metadata } from "next";
-import { CalendarDays, Camera, Handshake, MapPin, Megaphone, Store, Users } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  SeasonInfoCard,
+  SeasonPageHero,
+  SeasonSection,
+  TerritoryArtCard,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
-  title: "Quadras Parceiras UR | Polos, Eventos e Comunidade Ultimate Rivals",
+  title: "Quadras Parceiras UR | Polos Oficiais Ultimate Rivals",
   description:
-    "Veja como quadras podem se tornar polos do Ultimate Rivals, recebendo eventos, comunidade, mídia, patrocinadores, calendário recorrente e oportunidades futuras.",
+    "Quadras parceiras podem virar polos UR com calendário, eventos, mídia, comunidade, patrocinadores e ocupação organizada dentro da temporada.",
 };
 
-const poleBenefits = [
+const poleCards = [
   {
-    label: "Movimento qualificado",
-    value: "atletas",
-    detail: "atletas e equipes com interesse real em jogar, evoluir e participar.",
-    icon: Users,
+    title: "Polo oficial",
+    description: "A quadra ganha função dentro da temporada e da disputa territorial.",
+    icon: "/season-1/badges/badge-polo-ativo.svg",
   },
   {
-    label: "Calendário recorrente",
-    value: "agenda",
-    detail: "UR Play, eventos, treinos, experiências e ativações.",
-    icon: CalendarDays,
+    title: "Ocupação",
+    description: "UR Play e eventos ajudam a criar rotina com critérios e agenda confirmada.",
+    icon: "/season-1/symbols/ur-play-line.svg",
   },
   {
-    label: "Visibilidade local",
-    value: "mídia",
-    detail: "conteúdo, mídia, comunidade e presença digital.",
-    icon: Camera,
+    title: "Eventos",
+    description: "A quadra pode receber etapas conforme operação, estrutura e calendário.",
+    icon: "/season-1/symbols/ur-sprint-line.svg",
   },
   {
-    label: "Potencial comercial",
-    value: "parceiros",
-    detail: "mais público, mais relacionamento e novas oportunidades com parceiros.",
-    icon: Handshake,
-  },
-] as const;
-
-const activationFlow = [
-  {
-    label: "Interesse",
-    title: "Registrar interesse",
-    description: "A quadra informa estrutura, localização, modalidades e disponibilidade.",
+    title: "Mídia",
+    description: "O polo aparece quando existe movimento real, história e comunidade.",
+    icon: "/season-1/symbols/ur-series-line.svg",
   },
   {
-    label: "Estrutura",
-    title: "Confirmar estrutura",
-    description: "A equipe UR avalia condições de agenda, público, segurança e calendário.",
+    title: "Comunidade",
+    description: "Atletas, equipes e público criam pertencimento quando a rotina volta.",
+    icon: "/season-1/badges/badge-equipe-registrada.svg",
   },
   {
-    label: "Polo",
-    title: "Planejar polo",
-    description: "UR Play, eventos, mídia e patrocinadores entram conforme capacidade local.",
-  },
-  {
-    label: "Recorrência",
-    title: "Ativar recorrência",
-    description: "O objetivo é criar agenda contínua e comunidade competitiva no território.",
-  },
-] as const;
-
-const poleAssets = [
-  {
-    label: "Agenda",
-    title: "UR Play local",
-    description: "Entrada oficial de atletas com orientação, presença e observação.",
-    icon: MapPin,
-  },
-  {
-    label: "Calendário",
-    title: "Eventos recorrentes",
-    description: "Mini torneios e etapas podem movimentar a quadra ao longo do ciclo.",
-    icon: CalendarDays,
-  },
-  {
-    label: "Mídia",
-    title: "Cenário de conteúdo",
-    description: "Fotos, bastidores e histórias fortalecem o polo e a comunidade local.",
-    icon: Megaphone,
-  },
-  {
-    label: "Comercial",
-    title: "Ativações no polo",
-    description: "Marcas podem aparecer em experiências reais após aprovação comercial.",
-    icon: Store,
+    title: "Patrocinadores",
+    description: "Marcas locais entram melhor quando a quadra tem calendário e narrativa.",
+    icon: "/season-1/symbols/ur-coins-line.svg",
   },
 ] as const;
 
 export default function QuadrasParceirasPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
           { href: "/cadastro#quadra", label: "Cadastrar minha quadra" },
-          { href: "/eventos", label: "Ver temporada", variant: "secondary" },
+          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
         ]}
-        badges={["Polos", "UR Play", "Eventos", "Mídia local", "Patrocinadores"]}
-        description="O Ultimate Rivals busca quadras parceiras para criar calendário, comunidade, mídia, eventos e presença recorrente de atletas e equipes."
-        eyebrow="Para quadras"
+        badges={["polo oficial", "ocupação", "eventos", "mídia", "comunidade", "patrocinadores"]}
+        description="Sua quadra pode virar um território vivo da temporada, com calendário, atletas, mídia e relação com marcas locais."
+        eyebrow="Polos oficiais"
         image={siteImages.wideServe}
         imagePosition="center 47%"
-        metrics={[
-          { label: "Base", value: "estrutura e localização" },
-          { label: "Agenda", value: "ciclo e recorrência" },
-          { label: "Valor", value: "mídia e patrocinadores" },
+        stats={[
+          { label: "polo", value: "quadra" },
+          { label: "força", value: "comunidade" },
+          { label: "ritmo", value: "calendário" },
         ]}
-        statusDescription="A quadra pode virar um polo de experiência, comunidade e calendário."
-        statusLabel="polo UR"
-        statusTitle="Sua quadra pode virar um polo UR."
         title="Sua quadra pode virar um polo UR."
       />
 
-      <PageSection id="polo">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/cadastro#quadra", label: "Cadastrar quadra" },
-            { href: "/patrocinadores", label: "Ver ativações", variant: "secondary" },
-          ]}
-          description="A quadra não recebe só evento. Ela entra em um ciclo com calendário, comunidade, mídia, eventos e possíveis parceiros."
-          eyebrow="Polo UR"
-          image={siteImages.fairPlayLine}
-          imagePosition="center 48%"
-          points={[
-            {
-              title: "Estrutura adequada",
-              description: "Quadra, iluminação, convivência, segurança e agenda precisam ser avaliados.",
-            },
-            {
-              title: "Calendário recorrente",
-              description: "O objetivo é abrir ciclos com UR Play, eventos e comunidade local.",
-            },
-          ]}
-          title="Polo bom cria rotina esportiva."
-        />
-      </PageSection>
+      <SeasonSection
+        description="BH, Betim e Contagem são a base visual inicial da Temporada 1."
+        eyebrow="Territórios iniciais"
+        id="polos"
+        title="Três polos. Uma disputa."
+      >
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((pole, index) => (
+            <TerritoryArtCard key={pole.id} pole={pole} rank={index + 1} />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="beneficios">
-        <DataBoard
-          description="A quadra parceira ganha mais valor quando entra no ciclo do ecossistema: atletas, agenda, mídia, patrocinadores e comunidade."
-          eyebrow="Benefícios para a quadra"
-          items={poleBenefits}
-          title="Movimento, calendário, visibilidade e potencial comercial."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A quadra parceira precisa entregar experiência, operação e presença recorrente."
+        eyebrow="O que um polo ativa"
+        id="ativacoes"
+        title="Calendário, mídia e comunidade."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {poleCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection id="ativacao">
-        <ProcessTimeline
-          description="A ativação da quadra precisa ser segura, clara e gradual. Primeiro vem o interesse, depois a análise da equipe UR, então o planejamento do polo."
-          eyebrow="Caminho de ativação"
-          steps={activationFlow}
-          title="Da quadra interessada ao polo ativo."
-        />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="ativos">
-        <CommercialAssetPanel
-          assets={poleAssets}
-          description="A quadra vira ponto de encontro entre esporte, mídia, comunidade e negócio. Cada ativo depende de estrutura e validação local."
-          eyebrow="Ativos do polo"
-          title="O que uma quadra pode receber dentro do UR."
-        />
-      </PageSection>
-
-      <PageSection id="comunidade">
-        <ImageFeaturePanel
-          description="A força de um polo está na comunidade que volta, acompanha, joga, torce e cria pertencimento. Mídia local e patrocinadores entram melhor quando existe rotina."
-          eyebrow="Comunidade local"
-          image={siteImages.communityMoment}
-          imagePosition="center 44%"
-          points={[
-            {
-              title: "Mídia do território",
-              description: "Fotos, bastidores e histórias dão visibilidade para a quadra e para os atletas.",
-            },
-            {
-              title: "Patrocinadores com contexto",
-              description: "A marca participa de uma experiência viva, não de um espaço isolado.",
-            },
-          ]}
-          reverse
-          title="Quadra forte vira ponto de encontro."
-        />
-      </PageSection>
-
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#quadra">Cadastrar minha quadra</Button>
-            <Button href="/contato" variant="secondary">
-              Falar com o UR
-            </Button>
-          </>
-        }
-        description="O cadastro da quadra coloca o espaço no radar do UR. Polo oficial, agenda, eventos, mídia e ativações dependem de critérios claros."
-        eyebrow="Próximo passo"
-        items={["estrutura", "agenda", "comunidade", "mídia", "patrocinadores"]}
-        statusLabel="parceria com critério"
-        title="Cadastrar minha quadra."
-      />
+      <SeasonSection id="cta" title="Transforme sua quadra em ponto de temporada.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#quadra">Cadastrar minha quadra</Button>
+          <Button href="/patrocinadores" variant="secondary">
+            Ver parcerias
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

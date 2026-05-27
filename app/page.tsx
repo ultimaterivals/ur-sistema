@@ -351,6 +351,7 @@ export default function Home() {
 
       {/* ── 9. RECOMPENSAS ── */}
       <S id="recompensas" style={{ background: "#0D0D12" }}>
+        <span aria-hidden className="block scroll-mt-24" id="premiacoes" />
         <div className="mb-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>UR Coins · UR Market</p>
           <h2
