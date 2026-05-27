@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   LegendsArtPanel,
   ProductArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
   SeasonJourney,
   SeasonPageHero,
@@ -12,6 +14,7 @@ import {
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import { cycleCards, seasonFaq, seasonStatusCards } from "@/lib/content/temporada";
 
 export const metadata: Metadata = {
   title: "Temporada UR | Territórios em Disputa Ultimate Rivals",
@@ -106,6 +109,16 @@ export default function TemporadaPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A explicação histórica sobre ciclo trimestral, novo começo, ranking ativo e eventos conectados volta para reforçar a sensação de liga contínua."
+        eyebrow="Temporada contínua"
+        id="continuidade"
+        title="A disputa tem começo, virada e novo ciclo."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={cycleCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Cada produto tem função dentro da progressão do atleta."
         eyebrow="Escada oficial"
         id="escada"
@@ -167,6 +180,25 @@ export default function TemporadaPage() {
 
       <SeasonSection id="legends" variant="raised">
         <LegendsArtPanel />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Datas, agenda, ranking e recompensas dependem de validação. O objetivo é manter a temporada clara sem inventar calendário ou premiação."
+        eyebrow="Status oficial"
+        id="status"
+        title="O que precisa estar confirmado."
+      >
+        <SeasonBenefitGrid items={seasonStatusCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para explicar calendário, ciclo, UR Play, Virada de Ranking, eventos e premiações com linguagem segura."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como a temporada funciona sem prometer o que ainda depende de regra."
+        variant="raised"
+      >
+        <SeasonAccordion items={seasonFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="A temporada começa com presença confirmada.">

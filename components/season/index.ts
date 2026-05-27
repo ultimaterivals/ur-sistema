@@ -12,3 +12,5 @@ export { SeasonPageHero } from "./SeasonPageHero";
 export { SeasonSection } from "./SeasonSection";
 export { SeasonInfoCard } from "./SeasonInfoCard";
 export { SeasonJourney } from "./SeasonJourney";
+export { SeasonAccordion } from "./SeasonAccordion";
+export { SeasonBenefitGrid } from "./SeasonBenefitGrid";

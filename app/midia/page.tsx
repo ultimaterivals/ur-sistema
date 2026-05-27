@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import { BarChart3, Camera, Clapperboard, Megaphone, Mic, Play, Radio, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AthleteArtCard,
   RankingBroadcastPanel,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
+  SeasonJourney,
   SeasonPageHero,
   SeasonSection,
   TeamFormationArtCard,
@@ -65,6 +69,104 @@ const sponsorCards = [
   },
 ] as const;
 
+const mediaAssets = [
+  {
+    label: "Bastidores",
+    title: "Bastidores",
+    description: "Treinos, preparação, ambiente, torcida e momentos que constroem memória de temporada.",
+    icon: Camera,
+  },
+  {
+    label: "Atletas",
+    title: "Atletas em destaque",
+    description: "Quem joga, evolui e se compromete pode ganhar espaço editorial com contexto.",
+    icon: BarChart3,
+  },
+  {
+    label: "Equipes",
+    title: "Equipes e rivalidades",
+    description: "Escudos e confrontos ficam mais fortes quando existe história por trás.",
+    icon: Mic,
+  },
+  {
+    label: "Conteúdo oficial",
+    title: "Conteúdo oficial",
+    description: "Fotos, vídeos, cortes, chamadas, entrevistas e cobertura da temporada.",
+    icon: Users,
+  },
+] as const;
+
+const productionFlow = [
+  {
+    label: "registro",
+    title: "Registrar momento",
+    description: "Jogo, bastidor, comemoração, torcida e contexto entram como matéria-prima.",
+  },
+  {
+    label: "história",
+    title: "Dar contexto",
+    description: "A mídia organiza o que aconteceu em destaque, matéria e memória pública.",
+  },
+  {
+    label: "ranking",
+    title: "Conectar ranking",
+    description: "Participação e evolução ganham leitura com dados públicos confirmados.",
+  },
+  {
+    label: "oportunidade",
+    title: "Abrir oportunidade",
+    description: "Atletas, equipes, patrocinadores e comunidade se beneficiam do palco.",
+  },
+] as const;
+
+const mediaProducts = [
+  {
+    label: "Transmissões",
+    title: "Transmissões",
+    description: "Grade oficial entra com calendário, operação e parceiros confirmados.",
+    icon: Radio,
+  },
+  {
+    label: "Cortes",
+    title: "Cortes da rodada",
+    description: "Conteúdo curto ajuda a ampliar presença, bastidores e comunidade.",
+    icon: Clapperboard,
+  },
+  {
+    label: "Programa",
+    title: "Rivais em Jogo",
+    description: "Formato editorial para comentar ranking, atletas, equipes e histórias da temporada.",
+    icon: Play,
+  },
+  {
+    label: "Série",
+    title: "Documentários",
+    description: "Histórias longas podem acompanhar evolução, polos, rivalidades e bastidores com profundidade.",
+    icon: Camera,
+  },
+  {
+    label: "Marca",
+    title: "Mídia patrocinada",
+    description: "Marcas entram em pautas e ativações com aprovação comercial e contexto útil.",
+    icon: Megaphone,
+  },
+] as const;
+
+const mediaFaq = [
+  {
+    question: "A Mídia UR já publica dados reais de ranking?",
+    answer: "Dados reais entram apenas após participação confirmada, critérios oficiais e validação pública.",
+  },
+  {
+    question: "O atleta precisa ser profissional para aparecer?",
+    answer: "Não. A proposta é dar palco ao esporte amador com seriedade, contexto e história real.",
+  },
+  {
+    question: "Marcas podem participar do conteúdo?",
+    answer: "Podem, desde que a entrega tenha aprovação comercial, utilidade para a comunidade e regra clara.",
+  },
+] as const;
+
 export default function MidiaPage() {
   return (
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
@@ -105,6 +207,16 @@ export default function MidiaPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A página antiga reforçava que a mídia nasce de bastidores, atletas, rivalidades e conteúdo oficial. Essa camada volta para dar peso de portal esportivo."
+        eyebrow="Matéria-prima"
+        id="materia-prima"
+        title="O que acontece ao redor também vira valor."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={mediaAssets} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Exemplos visuais mostram como atleta, formação e ranking podem aparecer no portal."
         eyebrow="Visual de transmissão"
         id="portal"
@@ -118,6 +230,25 @@ export default function MidiaPage() {
           </div>
           <RankingBroadcastPanel rows={season1.mockRankings} />
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="A mídia própria registra o momento, dá contexto, conecta ranking e abre oportunidade para atletas, equipes, marcas e comunidade."
+        eyebrow="Caminho editorial"
+        id="caminho-editorial"
+        title="Como uma jogada vira história UR."
+      >
+        <SeasonJourney steps={productionFlow} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Transmissões, cortes, Rivais em Jogo, documentários e mídia patrocinada entram conforme calendário, pauta, operação e parceiros."
+        eyebrow="Produtos de mídia"
+        id="formatos"
+        title="Portal preparado para conteúdo recorrente."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={mediaProducts} />
       </SeasonSection>
 
       <SeasonSection
@@ -135,6 +266,15 @@ export default function MidiaPage() {
             />
           ))}
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para manter o tom forte sem prometer audiência, dados ou exposição sem base real."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Palco sim. Número inventado, não."
+      >
+        <SeasonAccordion items={mediaFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Acompanhe a temporada como quem acompanha uma liga.">

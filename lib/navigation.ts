@@ -4,27 +4,31 @@ export const mainNavigation = [
   { label: "Ranking", href: "/ranking" },
   { label: "Eventos", href: "/eventos" },
   { label: "Mídia", href: "/midia" },
+  { label: "UR Market", href: "/ur-market" },
   { label: "Atletas", href: "/atletas" },
   { label: "Equipes", href: "/equipes" },
+  { label: "Patrocinadores", href: "/patrocinadores" },
+  { label: "Quadras", href: "/quadras-parceiras" },
 ] as const;
 
 export const mobileNavigationGroups = [
   {
     label: "Participar",
     items: [
-      { label: "Temporada", href: "/temporada" },
-      { label: "UR Play", href: "/ur-play" },
-      { label: "Atletas", href: "/atletas" },
+      { label: "Entrar na Temporada", href: "/cadastro#atleta" },
       { label: "Cadastro", href: "/cadastro" },
+      { label: "Atletas", href: "/atletas" },
+      { label: "Equipes", href: "/equipes" },
+      { label: "UR Play", href: "/ur-play" },
     ],
   },
   {
     label: "Competir",
     items: [
+      { label: "Temporada", href: "/temporada" },
       { label: "Ranking", href: "/ranking" },
       { label: "Eventos", href: "/eventos" },
-      { label: "Equipes", href: "/equipes" },
-      { label: "Mídia", href: "/midia" },
+      { label: "Regulamento", href: "/regulamento" },
       { label: "CT UR", href: "/ct-ur" },
     ],
   },
@@ -32,15 +36,14 @@ export const mobileNavigationGroups = [
     label: "Benefícios",
     items: [
       { label: "UR Market", href: "/ur-market" },
-      { label: "Recompensas", href: "/#recompensas" },
       { label: "Premiações", href: "/#premiacoes" },
-      { label: "Regulamento", href: "/regulamento" },
+      { label: "UR Coins", href: "/ur-market#coins" },
+      { label: "Mídia", href: "/midia" },
     ],
   },
   {
     label: "Parcerias",
     items: [
-      { label: "Ecossistema", href: "/ecossistema" },
       { label: "Patrocinadores", href: "/patrocinadores" },
       { label: "Quadras Parceiras", href: "/quadras-parceiras" },
       { label: "Contato", href: "/contato" },

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { mainNavigation, mobileNavigation, mobileNavigationGroups } from "@/lib/navigation";
+import { mainNavigation, mobileNavigationGroups } from "@/lib/navigation";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ export function Header() {
         }
       }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
         <Link className="flex min-w-0 shrink-0 items-center gap-3" href="/" onClick={() => setOpen(false)}>
           <Image
             alt="Ultimate Rivals"
@@ -39,7 +39,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/65 xl:flex xl:gap-5 xl:text-xs">
+        <nav className="hidden min-w-0 items-center justify-center gap-5 text-xs font-extrabold uppercase tracking-[0.1em] text-white/65 2xl:flex">
           {mainNavigation.map((item) => (
             <Link className="whitespace-nowrap transition hover:text-[#ffe98b]" href={item.href} key={item.href}>
               {item.label}
@@ -59,7 +59,7 @@ export function Header() {
         <button
           aria-expanded={open}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
-          className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white xl:hidden"
+          className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white 2xl:hidden"
           onClick={() => setOpen((value) => !value)}
           type="button"
         >
@@ -68,11 +68,11 @@ export function Header() {
       </div>
 
       {open ? (
-        <div className="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-white/10 px-5 pb-4 pt-3 lg:hidden">
+        <div className="max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] lg:px-8 2xl:hidden">
           <Button className="w-full" href="/cadastro#atleta">
             Entrar no UR
           </Button>
-          <nav className="mt-3 grid gap-3">
+          <nav className="mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {mobileNavigationGroups.map((group) => (
               <div className="rounded-lg border border-white/10 bg-[#111218] p-2" key={group.label}>
                 <div className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
@@ -91,23 +91,6 @@ export function Header() {
                   ))}
                 </div>
               </div>
-            ))}
-          </nav>
-        </div>
-      ) : null}
-
-      {open ? (
-        <div className="hidden border-t border-white/10 px-8 pb-4 pt-3 lg:block xl:hidden">
-          <nav className="grid grid-cols-5 gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
-            {mobileNavigation.map((item) => (
-              <Link
-                className="rounded-md px-3 py-2.5 text-center text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
             ))}
           </nav>
         </div>

@@ -2,11 +2,25 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
   RewardArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
+  SeasonJourney,
   SeasonPageHero,
   SeasonSection,
 } from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteMarketBenefits,
+  coinMechanicsCards,
+  ecosystemRelationCards,
+  marketFaq,
+  marketIntroCards,
+  performanceBenefitFlow,
+  rewardCategories,
+  sponsorMarketBenefits,
+  teamMarketBenefits,
+} from "@/lib/content/ur-market";
 
 export const metadata: Metadata = {
   title: "UR Market | UR Coins, Benefícios e Recompensas Ultimate Rivals",
@@ -46,6 +60,12 @@ const marketCards = [
     icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
+
+const marketFlowSteps = performanceBenefitFlow.map(({ label, description }) => ({
+  label,
+  title: label,
+  description,
+}));
 
 export default function URMarketPage() {
   return (
@@ -87,6 +107,44 @@ export default function URMarketPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A explicação antiga sobre vitrine, UR Coins e patrocinadores volta para deixar claro que o Market é canal de possibilidades, não promessa de resgate."
+        eyebrow="Como o Market funciona"
+        id="como-funciona"
+        title="Benefício aprovado precisa de regra."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={marketIntroCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Presença e desempenho podem virar leitura de benefício apenas quando existirem critérios oficiais, saldo definido e disponibilidade aprovada."
+        eyebrow="Fluxo de valor"
+        id="fluxo"
+        title="Participação, critério, UR Coins e benefícios."
+      >
+        <SeasonJourney steps={marketFlowSteps} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="UR Coins ainda não são carteira real. Elas organizam uma lógica futura de reconhecimento por presença, ranking, missões e engajamento validado."
+        eyebrow="UR Coins"
+        id="coins"
+        title="Moeda interna em formação."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={coinMechanicsCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Produtos oficiais, serviços de performance, experiências, mídia e recompensas entram somente após aprovação, estoque, regra e parceiro confirmados."
+        eyebrow="Categorias"
+        id="categorias"
+        title="O que pode entrar no catálogo."
+      >
+        <SeasonBenefitGrid items={rewardCategories} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Repasses e premiações não são promessa. Eles dependem de caixa, margem, confirmação e regra oficial."
         eyebrow="Economia responsável"
         id="regras"
@@ -116,6 +174,38 @@ export default function URMarketPage() {
             note="Nada automático ou garantido nesta etapa."
           />
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Atletas, equipes e patrocinadores entram no Market por razões diferentes. O ponto comum é utilidade real com regra clara."
+        eyebrow="Por público"
+        id="publicos"
+        title="Benefício precisa fazer sentido para quem participa."
+      >
+        <div className="grid gap-5">
+          <SeasonBenefitGrid columns={2} items={athleteMarketBenefits} />
+          <SeasonBenefitGrid columns={2} items={teamMarketBenefits} />
+          <SeasonBenefitGrid columns={2} items={sponsorMarketBenefits} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="O Market se conecta a ranking, temporada, UR Play e CT UR para criar recorrência sem prometer prêmio automático."
+        eyebrow="Ecossistema"
+        id="ecossistema"
+        title="O catálogo não vive separado da temporada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={ecosystemRelationCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Regras preservadas para não prometer produto, saldo, resgate ou retorno financeiro sem validação."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="O que existe, o que é futuro e o que depende de regra."
+      >
+        <SeasonAccordion items={marketFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="O UR Market cresce junto com a temporada.">

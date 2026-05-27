@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
   ProductArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
+  SeasonJourney,
   SeasonPageHero,
   SeasonSection,
   URBracketPreview,
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  agendaStatusCards,
+  ecosystemFeedFlow,
+  eventConnectionCards,
+  eventFaq,
+  eventNarrativeCards,
+  eventTypes,
+  segmentationCards,
+} from "@/lib/content/eventos";
 
 export const metadata: Metadata = {
   title: "Eventos UR | Calendário Competitivo Ultimate Rivals",
@@ -58,6 +70,12 @@ const details = [
   },
 ] as const;
 
+const ecosystemFlowSteps = ecosystemFeedFlow.map(({ label, description }) => ({
+  label,
+  title: label,
+  description,
+}));
+
 export default function EventosPage() {
   return (
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
@@ -93,6 +111,25 @@ export default function EventosPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A versão histórica explicava por que evento não é ação isolada: ele cria ciclo, memória competitiva, experiência e mídia."
+        eyebrow="Função dos eventos"
+        id="funcao"
+        title="Evento bom alimenta a temporada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={eventNarrativeCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="UR Play, mini torneios, torneios oficiais, Virada de Ranking, CT UR e ativações especiais podem existir conforme calendário e regra confirmados."
+        eyebrow="Formatos possíveis"
+        id="formatos"
+        title="Cada formato tem uma função."
+      >
+        <SeasonBenefitGrid items={eventTypes} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Cards editoriais para comunicar status, polo, modalidade, nível, inscrições e pontuação sem inventar evento confirmado."
         eyebrow="Calendário vivo"
         id="eventos"
@@ -113,6 +150,15 @@ export default function EventosPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="Nível, modalidade, categoria e polo ajudam a organizar disputas justas e evitar mistura de contextos competitivos."
+        eyebrow="Segmentação"
+        id="segmentacao"
+        title="Agenda precisa respeitar contexto."
+      >
+        <SeasonBenefitGrid columns={4} items={segmentationCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="O bracket mostra a sensação esportiva da disputa, sem publicar confrontos reais antes da confirmação."
         eyebrow="Chaveamento"
         id="bracket"
@@ -124,6 +170,19 @@ export default function EventosPage() {
           semifinals={[...season1.mockBracket.semifinals]}
           stage={season1.mockBracket.stage}
         />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Quando existe presença aprovada, o evento pode alimentar critérios, ranking, UR Coins, mídia, equipes, patrocinadores e quadras."
+        eyebrow="O que o evento alimenta"
+        id="ecossistema"
+        title="A rodada vira dado, história e oportunidade."
+        variant="raised"
+      >
+        <SeasonJourney steps={ecosystemFlowSteps} />
+        <div className="mt-5">
+          <SeasonBenefitGrid items={eventConnectionCards} />
+        </div>
       </SeasonSection>
 
       <SeasonSection
@@ -142,6 +201,18 @@ export default function EventosPage() {
             />
           ))}
         </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={agendaStatusCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para deixar claro que calendário, inscrições, pontuação e parcerias dependem de confirmação oficial."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Eventos em ciclos, sem inventar data."
+      >
+        <SeasonAccordion items={eventFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Entre na temporada e acompanhe as próximas etapas.">

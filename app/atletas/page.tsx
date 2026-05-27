@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   AthleteArtCard,
   RankingBroadcastPanel,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
   SeasonJourney,
   SeasonPageHero,
@@ -10,11 +12,21 @@ import {
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteFaq,
+  ctDevelopmentCards,
+  hunterPrinciples,
+  levelRankingCards,
+  opportunityCards,
+  protagonistCards,
+  rewardsCards,
+  visibilityCards,
+} from "@/lib/content/atletas";
 
 export const metadata: Metadata = {
   title: "Atletas UR | Jornada, Ranking e Temporada Ultimate Rivals",
   description:
-    "Jornada do atleta no Ultimate Rivals: entrar pelo UR Play, ser observado, pontuar, evoluir, ganhar UR Coins, entrar no ranking, aparecer na mídia e buscar classificação.",
+    "Jornada do atleta no Ultimate Rivals: entrar pelo UR Play, ser observado, pontuar, evoluir, acumular UR Coins conforme critérios, entrar no ranking, aparecer na mídia e buscar classificação.",
 };
 
 const athleteJourney = [
@@ -109,6 +121,16 @@ export default function AtletasPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A versão anterior deixava claro que o atleta é protagonista da própria trajetória: presença, histórico, equipe e oportunidade precisam aparecer."
+        eyebrow="Protagonismo"
+        id="protagonismo"
+        title="Não precisa ser profissional para ser tratado com seriedade."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={protagonistCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="A divisão por nível reduz comparação injusta e melhora a experiência competitiva."
         eyebrow="Níveis"
         id="niveis"
@@ -125,6 +147,18 @@ export default function AtletasPage() {
             />
           ))}
         </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={levelRankingCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Mentalidade Hunter volta como cultura de postura: disciplina, respeito, evolução e competitividade saudável, sem promessa milagrosa."
+        eyebrow="Mentalidade"
+        id="mentalidade"
+        title="Postura também constrói reputação."
+      >
+        <SeasonBenefitGrid columns={4} items={hunterPrinciples} />
       </SeasonSection>
 
       <SeasonSection
@@ -140,6 +174,32 @@ export default function AtletasPage() {
           </div>
           <RankingBroadcastPanel rows={season1.mockRankings} />
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Mídia, ranking, equipes, Draft, CT UR e recompensas entram como possibilidades conectadas a presença, regra e validação oficial."
+        eyebrow="Oportunidades"
+        id="oportunidades"
+        title="Sua trajetória pode abrir novos caminhos."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={visibilityCards} />
+          <SeasonBenefitGrid columns={2} items={opportunityCards} />
+        </div>
+        <div className="mt-5 grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={rewardsCards} />
+          <SeasonBenefitGrid columns={2} items={ctDevelopmentCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para reforçar cadastro, ranking em formação, reputação, mentalidade, equipes e publicação de dados."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como entrar sem perder contexto."
+      >
+        <SeasonAccordion items={athleteFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Entre pelo UR Play e comece sua temporada.">

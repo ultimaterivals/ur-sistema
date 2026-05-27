@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
+  SeasonAccordion,
+  SeasonBenefitGrid,
   ProductArtCard,
   RankingBroadcastPanel,
   RewardArtCard,
@@ -11,6 +13,15 @@ import {
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteBenefits,
+  coinsRewardCards,
+  rankingLevelingCards,
+  teamBenefitsFromURPlay,
+  urPlayAudienceCards,
+  urPlayFaq,
+  urPlayIntroCards,
+} from "@/lib/content/ur-play";
 
 export const metadata: Metadata = {
   title: "UR Play | Motor da Temporada Ultimate Rivals",
@@ -115,6 +126,25 @@ export default function URPlayPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="O conteúdo antigo deixava claro que o UR Play não é rachão: é cadastro, orientação, observação, nivelamento e registro. Essa explicação volta em formato compacto."
+        eyebrow="Porta de entrada oficial"
+        id="entrada"
+        title="Jogar mais, ser visto e evoluir."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={urPlayIntroCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="O UR Play atende atletas individuais, atletas com equipe e novos talentos. A entrada não depende de ser profissional: depende de cadastro, agenda, nível e critério."
+        eyebrow="Para todos os níveis"
+        id="publicos"
+        title="Cada atleta entra pelo caminho certo."
+      >
+        <SeasonBenefitGrid items={urPlayAudienceCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="O UR Play não é uma partida solta. Ele alimenta ranking, UR Coins, mídia, eventos, equipes e progressão."
         eyebrow="O que o UR Play alimenta"
         id="motor"
@@ -155,6 +185,31 @@ export default function URPlayPage() {
             />
           </div>
         </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={rankingLevelingCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Participar pode abrir leitura individual, radar para equipes, mídia e benefícios futuros. Nada é automático: tudo depende de presença validada e regras oficiais."
+        eyebrow="Depois do jogo"
+        id="oportunidades"
+        title="A participação passa a construir valor."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={athleteBenefits} />
+          <SeasonBenefitGrid columns={2} items={teamBenefitsFromURPlay} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="UR Coins aparecem como camada planejada de reconhecimento por presença, missões, conquistas e engajamento validados."
+        eyebrow="UR Coins"
+        id="coins"
+        title="Benefício só entra com critério."
+      >
+        <SeasonBenefitGrid items={coinsRewardCards} />
       </SeasonSection>
 
       <SeasonSection
@@ -169,6 +224,16 @@ export default function URPlayPage() {
             <ProductArtCard key={product.id} product={product} />
           ))}
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="As dúvidas mais importantes foram preservadas para evitar promessa exagerada e orientar o próximo passo do atleta."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como começa, o que conta e o que ainda depende de validação."
+        variant="raised"
+      >
+        <SeasonAccordion items={urPlayFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Todo atleta tem uma temporada para disputar.">

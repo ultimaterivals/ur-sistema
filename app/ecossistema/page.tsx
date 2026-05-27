@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import { BarChart3, Camera, Handshake, MapPin, ShieldCheck, Users, Zap } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
 import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import { Badge } from "@/components/ui/badge";
+  BarChart3,
+  Camera,
+  Coins,
+  Dumbbell,
+  Handshake,
+  MapPin,
+  Radio,
+  ShieldCheck,
+  ShoppingBag,
+  Users,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import {
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -24,231 +33,261 @@ const systemAssets = [
   {
     label: "Jogar",
     title: "Jogar",
-    description: "UR Play, eventos e calendário.",
+    description: "UR Play, eventos, temporada e calendário com critérios claros.",
     icon: Zap,
   },
   {
     label: "Evoluir",
     title: "Evoluir",
-    description: "Treinos, postura, mentalidade e desenvolvimento.",
+    description: "Treino, postura, mentalidade, nivelamento e desenvolvimento esportivo.",
     icon: BarChart3,
   },
   {
     label: "Aparecer",
     title: "Aparecer",
-    description: "Mídia UR, destaques, histórias e comunidade.",
-    icon: Users,
+    description: "Mídia UR, destaques, bastidores, histórias e comunidade.",
+    icon: Camera,
   },
   {
-    label: "Construir valor",
+    label: "Valor",
     title: "Construir valor",
-    description: "Ranking, UR Coins, equipes, parceiros e oportunidades.",
-    icon: Camera,
+    description: "Ranking, UR Coins, equipes, parceiros e oportunidades com validação.",
+    icon: Coins,
   },
 ] as const;
 
 const ecosystemFlow = [
   {
-    label: "Entrada",
+    label: "entrada",
     title: "Entrar pelo UR Play",
     description: "A jornada começa com cadastro, orientação e participação com critério.",
   },
   {
-    label: "Histórico",
+    label: "histórico",
     title: "Gerar histórico",
     description: "Presença, nível, conduta e participação criam rastro esportivo confirmado.",
   },
   {
-    label: "Ranking",
+    label: "ranking",
     title: "Organizar ranking",
     description: "Dados públicos entram por critérios oficiais, sem inventar posição ou número.",
   },
   {
-    label: "Mídia",
+    label: "mídia",
     title: "Virar história",
-    description: "Mídia própria transforma participação em bastidor, destaque e memória.",
+    description: "A mídia própria transforma participação em bastidor, destaque e memória.",
   },
   {
-    label: "Valor",
+    label: "valor",
     title: "Conectar valor",
     description: "UR Coins, Market, CT UR e patrocinadores ampliam oportunidades com critério.",
   },
   {
-    label: "Polos",
+    label: "polos",
     title: "Expandir polos",
     description: "Quadras e comunidade sustentam recorrência territorial e crescimento local.",
   },
 ] as const;
 
-const impactItems = [
+const ecosystemModules = [
   {
-    label: "Atleta",
-    value: "trajetória",
-    detail: "deixa de ser presença solta e passa a construir histórico público.",
+    label: "Atletas",
+    title: "Atletas",
+    description: "Entram para jogar, serem observados, evoluírem, pontuarem e construírem trajetória.",
     icon: ShieldCheck,
+    href: "/atletas",
   },
   {
-    label: "Equipe",
-    value: "identidade",
-    detail: "vira ativo competitivo, midiático e comercial dentro da temporada.",
+    label: "Equipes",
+    title: "Equipes",
+    description: "Escudos, formações, capitães e elencos ganham identidade, mídia e ranking coletivo.",
     icon: Users,
+    href: "/equipes",
   },
   {
-    label: "Quadra",
-    value: "polo",
-    detail: "recebe recorrência, comunidade, agenda e possibilidade de ativação local.",
-    icon: MapPin,
+    label: "Ranking",
+    title: "Ranking",
+    description: "Mérito vira histórico por nível, equipe, modalidade, polo e critérios oficiais.",
+    icon: BarChart3,
+    href: "/ranking",
   },
   {
-    label: "Marca",
-    value: "jornada",
-    detail: "participa da experiência esportiva, não apenas de um espaço de exposição.",
+    label: "Mídia",
+    title: "Mídia UR",
+    description: "Transmissões, cortes, bastidores, Rivais em Jogo e histórias da temporada.",
+    icon: Radio,
+    href: "/midia",
+  },
+  {
+    label: "Benefícios",
+    title: "UR Coins e Market",
+    description: "Moeda interna e catálogo em expansão conectam presença a benefícios aprovados.",
+    icon: ShoppingBag,
+    href: "/ur-market",
+  },
+  {
+    label: "Desenvolvimento",
+    title: "CT UR",
+    description: "Técnico, físico, mentalidade, análise e evolução sem promessa automática.",
+    icon: Dumbbell,
+    href: "/ct-ur",
+  },
+  {
+    label: "Parcerias",
+    title: "Patrocinadores",
+    description: "Marcas entram em mídia, eventos, UR Market, polos e conteúdo com proposta aprovada.",
     icon: Handshake,
+    href: "/patrocinadores",
+  },
+  {
+    label: "Território",
+    title: "Quadras e polos",
+    description: "Quadras parceiras podem virar polos com calendário, comunidade e mídia local.",
+    icon: MapPin,
+    href: "/quadras-parceiras",
   },
 ] as const;
 
 const comparisonRows = [
   {
-    label: "Continuidade",
-    isolated: "Ação começa, acaba e deixa pouco histórico.",
-    ecosystem: "Cada entrada alimenta temporada, ranking, mídia e próximos passos.",
+    title: "Continuidade",
+    description: "A ação não acaba no apito. Cada entrada alimenta temporada, ranking, mídia e próximos passos.",
   },
   {
-    label: "Atleta",
-    isolated: "Participa e volta para o anonimato.",
-    ecosystem: "Constrói presença, reputação, nível e oportunidade com critério.",
+    title: "Atleta",
+    description: "A participação deixa de sumir e passa a construir presença, reputação, nível e oportunidade.",
   },
   {
-    label: "Valor",
-    isolated: "Patrocínio e público aparecem apenas no momento.",
-    ecosystem: "Marcas, quadras e comunidade participam de uma jornada recorrente.",
+    title: "Valor",
+    description: "Marcas, quadras e comunidade participam de uma jornada recorrente, não de uma ação isolada.",
+  },
+] as const;
+
+const ecosystemFaq = [
+  {
+    question: "A Home virou a página da Temporada 1?",
+    answer:
+      "Sim. A página inicial é a porta emocional e competitiva da Temporada 1. O conteúdo institucional completo fica organizado aqui.",
+  },
+  {
+    question: "O Ultimate Rivals é só torneio?",
+    answer:
+      "Não. O UR conecta UR Play, ranking, equipes, mídia, Market, CT UR, eventos, patrocinadores e quadras em ciclo contínuo.",
+  },
+  {
+    question: "Benefícios e dados já são garantidos?",
+    answer:
+      "Não. Dados, benefícios, repasses e premiações dependem de participação validada, disponibilidade, regra oficial e confirmação operacional.",
   },
 ] as const;
 
 export default function EcossistemaPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
           { href: "/cadastro", label: "Entrar no ecossistema" },
           { href: "/ur-play", label: "Começar pelo UR Play", variant: "secondary" },
         ]}
-        badges={["UR Play", "Ranking contínuo", "Equipes", "Mídia própria", "UR Market"]}
+        badges={["UR Play", "ranking contínuo", "equipes", "mídia própria", "UR Market", "polos"]}
         description="O Ultimate Rivals conecta jogo, ranking, equipes, quadras, mídia, benefícios e parceiros em uma estrutura criada para organizar, valorizar e desenvolver o esporte amador."
         eyebrow="Ecossistema UR"
         image={siteImages.teamEmbrace}
         imagePosition="center 45%"
-        metrics={[
-          { label: "Entrada", value: "UR Play" },
-          { label: "Organização", value: "ranking e temporada" },
-          { label: "Valor", value: "mídia, market e polos" },
+        stats={[
+          { label: "entrada", value: "UR Play" },
+          { label: "organização", value: "temporada" },
+          { label: "valor", value: "mídia e market" },
         ]}
-        statusDescription="O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades dentro do UR."
-        statusLabel="sistema contínuo"
-        statusTitle="Tudo começa no jogo, mas não termina nele."
-        title="Um caminho completo para o esporte amador."
+        title="Um sistema completo para o esporte amador."
       />
 
-      <PageSection id="mapa">
-        <CommercialAssetPanel
-          assets={systemAssets}
-          description="Tudo começa no jogo, mas não termina nele. O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades dentro do UR."
-          eyebrow="Tudo conectado"
-          title="Tudo começa no jogo, mas não termina nele."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Tudo começa no jogo, mas não termina nele. O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades com critério."
+        eyebrow="Tudo conectado"
+        id="mapa"
+        title="Jogar, evoluir, aparecer e construir valor."
+      >
+        <SeasonBenefitGrid columns={4} items={systemAssets} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="caminho">
-        <ProcessTimeline
-          description="O caminho conecta entrada, histórico, ranking, mídia, benefícios, equipes, quadras e parceiros."
-          eyebrow="Caminho do ecossistema"
-          steps={ecosystemFlow}
-          title="Do primeiro jogo à oportunidade."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O caminho conecta entrada, histórico, ranking, mídia, benefícios, equipes, quadras e parceiros."
+        eyebrow="Caminho do ecossistema"
+        id="caminho"
+        title="Do primeiro jogo à oportunidade."
+        variant="raised"
+      >
+        <SeasonJourney steps={ecosystemFlow} />
+      </SeasonSection>
 
-      <PageSection id="comparativo">
-        <Card className="overflow-hidden p-0" premium>
-          <div className="grid gap-4 border-b border-white/10 p-5 md:p-7 lg:grid-cols-[0.72fr_1fr] lg:items-end">
-            <div>
-              <Badge>Comparativo visual</Badge>
-              <h2 className="mt-5 text-balance text-[clamp(2.2rem,7vw,3.8rem)] font-black uppercase leading-[0.9] text-white">
-                Formato isolado vs ecossistema contínuo.
-              </h2>
-            </div>
-            <p className="max-w-2xl text-base leading-7 text-white/68 lg:justify-self-end">
-              A diferença está no que acontece depois da participação: o UR organiza o que normalmente se perde.
-            </p>
-          </div>
-          <div className="grid border-b border-white/10 bg-[#ffd84d]/10 text-[10px] font-black uppercase tracking-[0.14em] text-[#ffe98b] md:grid-cols-[0.5fr_1fr_1fr]">
-            <div className="px-5 py-4">Critério</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Formato isolado</div>
-            <div className="border-t border-white/10 px-5 py-4 md:border-l md:border-t-0">Ultimate Rivals</div>
-          </div>
+      <SeasonSection
+        description="A Home antiga carregava a explicação institucional inteira. Agora esse conteúdo fica distribuído em módulos claros, cada um com sua página."
+        eyebrow="Módulos do sistema"
+        id="modulos"
+        title="A temporada liga todos os públicos."
+      >
+        <SeasonBenefitGrid columns={4} items={ecosystemModules} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="A diferença está no que acontece depois da participação: o UR organiza o que normalmente se perde."
+        eyebrow="Por que existe"
+        id="comparativo"
+        title="Formato isolado vs ecossistema contínuo."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-3">
           {comparisonRows.map((row) => (
-            <div className="grid border-b border-white/10 last:border-b-0 md:grid-cols-[0.5fr_1fr_1fr]" key={row.label}>
-              <div className="bg-white/[0.035] px-5 py-4 text-sm font-black uppercase tracking-[0.1em] text-white">
-                {row.label}
-              </div>
-              <div className="border-t border-white/10 px-5 py-4 text-sm leading-6 text-white/62 md:border-l md:border-t-0">
-                {row.isolated}
-              </div>
-              <div className="border-t border-[#ffd84d]/15 bg-[#ffd84d]/[0.045] px-5 py-4 text-sm font-semibold leading-6 text-white/78 md:border-l md:border-t-0">
-                {row.ecosystem}
-              </div>
-            </div>
+            <SeasonInfoCard description={row.description} key={row.title} title={row.title} />
           ))}
-        </Card>
-      </PageSection>
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="ambiente">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/atletas", label: "Ver atletas", variant: "secondary" },
-            { href: "/patrocinadores", label: "Ver patrocinadores", variant: "ghost" },
-          ]}
-          description="O ecossistema só faz sentido quando junta esporte real, comunidade, organização e oportunidade comercial. A foto mostra o ambiente que sustenta a plataforma."
-          eyebrow="Esporte, comunidade e organização"
-          image={siteImages.communityMoment}
-          imagePosition="center 44%"
-          points={[
-            {
-              title: "Base real",
-              description: "Atletas, público, quadra e bastidor são a matéria-prima do ecossistema.",
-            },
-            {
-              title: "Crescimento com critério",
-              description: "Dados públicos, agenda e benefícios entram com critérios claros.",
-            },
-          ]}
-          title="O sistema nasce da quadra, não de uma planilha vazia."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Cada público entra por uma porta diferente, mas todos se conectam ao mesmo ciclo: participação, histórico, mídia, oportunidade e recorrência."
+        eyebrow="Impacto por público"
+        id="impacto"
+        title="O ecossistema cria valor para mais de um lado."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <SeasonInfoCard
+            description="Deixa de ser presença solta e passa a construir histórico público."
+            title="Atleta: trajetória"
+          />
+          <SeasonInfoCard
+            description="Vira ativo competitivo, midiático e comercial dentro da temporada."
+            title="Equipe: identidade"
+          />
+          <SeasonInfoCard
+            description="Recebe recorrência, comunidade, agenda e possibilidade de ativação local."
+            title="Quadra: polo"
+          />
+          <SeasonInfoCard
+            description="Participa da experiência esportiva, não apenas de um espaço de exposição."
+            title="Marca: jornada"
+          />
+        </div>
+      </SeasonSection>
 
-      <PageSection id="impacto">
-        <DataBoard
-          description="Cada público entra por uma porta diferente, mas todos se conectam ao mesmo ciclo: participação, histórico, mídia, oportunidade e recorrência."
-          eyebrow="Impacto por público"
-          items={impactItems}
-          title="O ecossistema cria valor para mais de um lado."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A página institucional preserva o conteúdo de visão, mas sem tirar da Home o papel de abrir a Temporada 1."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="O que a Home mostra e o que o ecossistema explica."
+        variant="raised"
+      >
+        <SeasonAccordion items={ecosystemFaq} />
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro">Escolher meu caminho</Button>
-            <Button href="/regulamento" variant="secondary">
-              Ver regulamento
-            </Button>
-          </>
-        }
-        description="O cadastro coloca você no radar do UR. Participação, ranking, equipe, patrocínio, quadra parceira e comunidade seguem critérios para manter equilíbrio e respeito."
-        eyebrow="Próximo passo"
-        items={["atleta", "equipe", "patrocinador", "quadra", "comunidade"]}
-        statusLabel="cadastro aberto"
-        title="Entre pela porta certa do ecossistema."
-      />
+      <SeasonSection id="cta" title="Escolha sua porta de entrada no ecossistema.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro">Escolher meu caminho</Button>
+          <Button href="/regulamento" variant="secondary">
+            Ver regulamento
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { BarChart3, Brain, Camera, Dumbbell, ShieldCheck, Target, Users } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
 
 export const metadata: Metadata = {
@@ -47,22 +45,22 @@ const formationPillars = [
 
 const evolutionFlow = [
   {
-    label: "Observação",
+    label: "observação",
     title: "Ser observado",
     description: "UR Play e ranking ajudam a entender contexto, presença e ponto de partida.",
   },
   {
-    label: "Foco",
+    label: "foco",
     title: "Definir foco",
     description: "Treino técnico, físico, mental ou liderança entram conforme necessidade.",
   },
   {
-    label: "Treino",
+    label: "treino",
     title: "Treinar com critério",
-    description: "A evolução precisa ser mensurável, segura e conectada à jornada esportiva.",
+    description: "A evolução precisa ser segura e conectada à jornada esportiva.",
   },
   {
-    label: "Temporada",
+    label: "temporada",
     title: "Voltar para a temporada",
     description: "O atleta retorna para competir, gerar histórico e testar evolução real.",
   },
@@ -71,142 +69,111 @@ const evolutionFlow = [
 const connectionData = [
   {
     label: "UR Play",
-    value: "observação",
-    detail: "porta de entrada para entender contexto e ponto de partida.",
+    title: "Observação",
+    description: "Porta de entrada para entender contexto e ponto de partida.",
     icon: Target,
   },
   {
     label: "Ranking",
-    value: "evolução",
-    detail: "histórico público ajuda a visualizar progresso confirmado.",
+    title: "Evolução",
+    description: "Histórico público ajuda a visualizar progresso confirmado.",
     icon: BarChart3,
   },
   {
     label: "Equipes",
-    value: "liderança",
-    detail: "capitão, elenco e conduta também são parte do desenvolvimento.",
+    title: "Liderança",
+    description: "Capitão, elenco e conduta também fazem parte do desenvolvimento.",
     icon: Users,
   },
   {
     label: "Mídia",
-    value: "reputação",
-    detail: "evolução pode virar história pública com critério.",
+    title: "Reputação",
+    description: "Evolução pode virar história pública com critério.",
     icon: Camera,
   },
 ] as const;
 
 export default function CTURPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
           { href: "/cadastro#atleta", label: "Entrar como atleta" },
           { href: "/atletas", label: "Ver jornada do atleta", variant: "secondary" },
         ]}
-        badges={["Técnico", "Físico", "Mental", "Liderança", "Análise"]}
+        badges={["técnico", "físico", "mental", "liderança", "análise"]}
         description="O CT UR é a camada de desenvolvimento do ecossistema: formação técnica, física, mental e humana conectada a UR Play, ranking, equipes, mídia e temporada."
-        eyebrow="CT UR • desenvolvimento"
+        eyebrow="CT UR - desenvolvimento"
         image={siteImages.timeoutTalk}
         imagePosition="center 42%"
-        metrics={[
-          { label: "Base", value: "observação" },
-          { label: "Trabalho", value: "treino e postura" },
-          { label: "Retorno", value: "temporada e ranking" },
+        stats={[
+          { label: "base", value: "observação" },
+          { label: "trabalho", value: "treino" },
+          { label: "retorno", value: "temporada" },
         ]}
-        statusDescription="Agenda, polos e turmas entram conforme calendário confirmado. O CT UR não promete resultado automático."
-        statusLabel="agenda em organização"
-        statusTitle="Desenvolvimento real para atletas que querem evoluir."
         title="Treino é parte da jornada, não promessa milagrosa."
       />
 
-      <PageSection id="pilares">
-        <CommercialAssetPanel
-          assets={formationPillars}
-          description="O CT UR trabalha desenvolvimento como cultura esportiva: fundamento, preparo, mentalidade, liderança e responsabilidade com equipe e comunidade."
-          eyebrow="Pilares de formação"
-          title="Técnico, físico, mental e humano no mesmo sistema."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O CT UR trabalha desenvolvimento como cultura esportiva: fundamento, preparo, mentalidade, liderança e responsabilidade com equipe e comunidade."
+        eyebrow="Pilares de formação"
+        id="pilares"
+        title="Técnico, físico, mental e humano no mesmo sistema."
+      >
+        <SeasonBenefitGrid columns={4} items={formationPillars} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="jornada">
-        <ProcessTimeline
-          description="O desenvolvimento começa com observação, vira foco de treino e retorna para a temporada como teste real de evolução."
-          eyebrow="Jornada de evolução"
-          steps={evolutionFlow}
-          title="Evoluir precisa voltar para a quadra."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O desenvolvimento começa com observação, vira foco de treino e retorna para a temporada como teste real de evolução."
+        eyebrow="Jornada de evolução"
+        id="jornada"
+        title="Evoluir precisa voltar para a quadra."
+        variant="raised"
+      >
+        <SeasonJourney steps={evolutionFlow} />
+      </SeasonSection>
 
-      <PageSection id="mentalidade">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/atletas", label: "Ver atletas", variant: "secondary" },
-            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
-          ]}
-          description="Mentalidade Hunter é padrão de postura: disciplina, presença, responsabilidade, evolução contínua, competitividade saudável, respeito e preparo físico, técnico e mental."
-          eyebrow="Mentalidade Hunter"
-          image={siteImages.athleteFocus}
-          imagePosition="center 38%"
-          points={[
-            {
-              title: "Cultura, não promessa",
-              description: "Não é método milagroso. É compromisso com comportamento e evolução.",
-            },
-            {
-              title: "Excelência sem arrogância",
-              description: "Competir forte, respeitar o ambiente e assumir responsabilidade.",
-            },
-          ]}
-          title="Postura também é performance."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Mentalidade Hunter é padrão de postura: disciplina, presença, responsabilidade, evolução contínua, competitividade saudável, respeito e preparo."
+        eyebrow="Mentalidade Hunter"
+        id="mentalidade"
+        title="Postura também é performance."
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          <SeasonInfoCard
+            description="Não é método milagroso. É compromisso com comportamento, rotina e evolução."
+            title="Cultura, não promessa"
+          />
+          <SeasonInfoCard
+            description="Competir forte, respeitar o ambiente e assumir responsabilidade pelo próprio caminho."
+            title="Excelência sem arrogância"
+          />
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="conexoes">
-        <DataBoard
-          description="O CT UR não fica separado do site: ele se conecta com UR Play, ranking, equipes, mídia e temporada para sustentar evolução real."
-          eyebrow="Conexão com o ecossistema"
-          items={connectionData}
-          title="Desenvolvimento precisa aparecer na jornada."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O CT UR não fica separado do site: ele se conecta com UR Play, ranking, equipes, mídia e temporada para sustentar evolução real."
+        eyebrow="Conexão com o ecossistema"
+        id="conexoes"
+        title="Desenvolvimento precisa aparecer na jornada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={connectionData} />
+      </SeasonSection>
 
-      <PageSection id="recuperacao-educacao">
-        <ImageFeaturePanel
-          description="Preparação, recuperação e educação esportiva ajudam o atleta a competir com mais consciência. A base é evoluir com segurança, não acelerar promessa."
-          eyebrow="Preparação e recuperação"
-          image={siteImages.defenseDive}
-          imagePosition="center 42%"
-          points={[
-            {
-              title: "Preparo físico e prevenção",
-              description: "Corpo preparado sustenta calendário, treino e participação recorrente.",
-            },
-            {
-              title: "Análise de desempenho",
-              description: "Evolução precisa de leitura, feedback e conexão com contexto competitivo.",
-            },
-          ]}
-          reverse
-          statusLabel="polos com calendário confirmado"
-          title="Evolução também é saber sustentar a temporada."
-        />
-      </PageSection>
-
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#atleta">Entrar na jornada</Button>
-            <Button href="/ur-play" variant="secondary">
-              Começar pelo UR Play
-            </Button>
-          </>
-        }
-        description="O cadastro coloca você no radar do UR. Agenda, polos, treinos e participação no CT UR dependem de calendário e critérios claros."
+      <SeasonSection
+        description="Agenda, polos e turmas entram conforme calendário confirmado. O CT UR não promete resultado automático."
         eyebrow="Próximo passo"
-        items={["técnico", "físico", "mental", "liderança", "ranking"]}
-        statusLabel="entrada com critério"
+        id="cta"
         title="O desenvolvimento começa com presença."
-      />
+      >
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Entrar na jornada</Button>
+          <Button href="/ur-play" variant="secondary">
+            Começar pelo UR Play
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

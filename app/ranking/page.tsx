@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   LegendsArtPanel,
   RankingBroadcastPanel,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
   SeasonPageHero,
   SeasonSection,
@@ -10,6 +12,16 @@ import {
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  engagementRankingCards,
+  individualRankingCards,
+  mediaImpactCards,
+  rankingFaq,
+  rankingNarrativeCards,
+  rankingTypes,
+  scoringCriteria,
+  teamRankingCards,
+} from "@/lib/content/ranking";
 
 export const metadata: Metadata = {
   title: "Ranking UR | Mérito, Níveis, Equipes e Polos Ultimate Rivals",
@@ -71,6 +83,16 @@ export default function RankingPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A versão histórica explicava que ranking não é só lista. Ele precisa dar contexto, visibilidade e memória de temporada sem inventar posição pública."
+        eyebrow="Ranking com contexto"
+        id="contexto"
+        title="Classificação precisa virar reputação."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={rankingNarrativeCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Ranking não é só tabela. Ele conecta atleta, equipe, formação, polo e progressão."
         eyebrow="Sistemas de ranking"
         id="sistemas"
@@ -86,6 +108,35 @@ export default function RankingPage() {
               title={card.title}
             />
           ))}
+        </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid columns={3} items={rankingTypes} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Pontuação só vira histórico quando passa por presença real, desempenho, evolução por nível, conquistas e regulamento publicado."
+        eyebrow="Critérios"
+        id="criterios"
+        title="O que pode alimentar o ranking."
+      >
+        <SeasonBenefitGrid items={scoringCriteria} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="O ranking organiza reputação individual, força coletiva, engajamento validado e mídia da temporada."
+        eyebrow="Impacto"
+        id="impacto"
+        title="Quando o mérito aparece, o ecossistema se move."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={individualRankingCards} />
+          <SeasonBenefitGrid columns={2} items={teamRankingCards} />
+        </div>
+        <div className="mt-5 grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={engagementRankingCards} />
+          <SeasonBenefitGrid columns={2} items={mediaImpactCards} />
         </div>
       </SeasonSection>
 
@@ -110,6 +161,15 @@ export default function RankingPage() {
         variant="raised"
       >
         <LegendsArtPanel />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Regras preservadas para deixar claro o que já é estrutura e o que depende de dados reais validados."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Ranking em formação, com critério público."
+      >
+        <SeasonAccordion items={rankingFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Entre pelo UR Play e comece a construir histórico.">

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { CalendarDays, Camera, Handshake, MapPin, Megaphone, Store, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
+  SeasonJourney,
   SeasonPageHero,
   SeasonSection,
   TerritoryArtCard,
@@ -48,6 +52,98 @@ const poleCards = [
   },
 ] as const;
 
+const poleBenefits = [
+  {
+    label: "Movimento",
+    title: "Movimento qualificado",
+    description: "Atletas e equipes com interesse real em jogar, evoluir e participar.",
+    icon: Users,
+  },
+  {
+    label: "Agenda",
+    title: "Calendário recorrente",
+    description: "UR Play, eventos, treinos, experiências e ativações podem ocupar a quadra com critério.",
+    icon: CalendarDays,
+  },
+  {
+    label: "Mídia",
+    title: "Visibilidade local",
+    description: "Conteúdo, bastidores, comunidade e presença digital fortalecem o território.",
+    icon: Camera,
+  },
+  {
+    label: "Parcerias",
+    title: "Potencial comercial",
+    description: "Mais rotina pode criar relacionamento com parceiros locais sem promessa de receita automática.",
+    icon: Handshake,
+  },
+] as const;
+
+const activationFlow = [
+  {
+    label: "interesse",
+    title: "Registrar interesse",
+    description: "A quadra informa estrutura, localização, modalidades e disponibilidade.",
+  },
+  {
+    label: "estrutura",
+    title: "Confirmar estrutura",
+    description: "A equipe UR avalia agenda, público, segurança, convivência e calendário.",
+  },
+  {
+    label: "polo",
+    title: "Planejar polo",
+    description: "UR Play, eventos, mídia e patrocinadores entram conforme capacidade local.",
+  },
+  {
+    label: "recorrência",
+    title: "Ativar recorrência",
+    description: "O objetivo é criar agenda contínua e comunidade competitiva no território.",
+  },
+] as const;
+
+const poleAssets = [
+  {
+    label: "Agenda",
+    title: "UR Play local",
+    description: "Entrada oficial de atletas com orientação, presença e observação.",
+    icon: MapPin,
+  },
+  {
+    label: "Calendário",
+    title: "Eventos recorrentes",
+    description: "Mini torneios e etapas podem movimentar a quadra ao longo do ciclo.",
+    icon: CalendarDays,
+  },
+  {
+    label: "Mídia",
+    title: "Cenário de conteúdo",
+    description: "Fotos, bastidores e histórias fortalecem o polo e a comunidade local.",
+    icon: Megaphone,
+  },
+  {
+    label: "Comercial",
+    title: "Ativações no polo",
+    description: "Marcas podem aparecer em experiências reais após aprovação comercial.",
+    icon: Store,
+  },
+] as const;
+
+const courtFaq = [
+  {
+    question: "Cadastrar a quadra garante virar polo?",
+    answer: "Não. O cadastro coloca a quadra no radar, mas polo oficial depende de estrutura, agenda, segurança e validação UR.",
+  },
+  {
+    question: "A quadra precisa estar em BH, Betim ou Contagem?",
+    answer: "Esses são os polos iniciais da Temporada 1. A expansão territorial pode acontecer conforme operação e demanda.",
+  },
+  {
+    question: "Patrocinadores locais podem participar?",
+    answer: "Podem, desde que a ativação tenha proposta aprovada, entrega real e comunicação clara para atletas e comunidade.",
+  },
+] as const;
+
 export default function QuadrasParceirasPage() {
   return (
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
@@ -83,6 +179,16 @@ export default function QuadrasParceirasPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="O conteúdo histórico falava de movimento qualificado, agenda, mídia e potencial comercial. Isso volta como benefício realista para a quadra parceira."
+        eyebrow="Benefícios para a quadra"
+        id="beneficios"
+        title="Movimento, calendário, visibilidade e parceiros."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={poleBenefits} />
+      </SeasonSection>
+
+      <SeasonSection
         description="A quadra parceira precisa entregar experiência, operação e presença recorrente."
         eyebrow="O que um polo ativa"
         id="ativacoes"
@@ -99,6 +205,57 @@ export default function QuadrasParceirasPage() {
             />
           ))}
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="A ativação precisa ser gradual: interesse, análise de estrutura, planejamento de polo e recorrência."
+        eyebrow="Caminho de ativação"
+        id="ativacao"
+        title="Da quadra interessada ao polo ativo."
+      >
+        <SeasonJourney steps={activationFlow} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="A quadra vira ponto de encontro quando junta agenda, mídia, comunidade, convivência e ativações com critério."
+        eyebrow="Ativos do polo"
+        id="ativos"
+        title="O que uma quadra pode receber dentro do UR."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={poleAssets} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="A força de um polo está na comunidade que volta, acompanha, joga, torce e cria pertencimento."
+        eyebrow="Comunidade local"
+        id="comunidade"
+        title="Quadra forte vira ponto de encontro."
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          <SeasonInfoCard
+            description="Iluminação, segurança, bar ou área de convivência e fluxo precisam sustentar a experiência."
+            title="Estrutura e convivência"
+          />
+          <SeasonInfoCard
+            description="Fotos, bastidores e histórias dão visibilidade para a quadra e para os atletas."
+            title="Mídia do território"
+          />
+          <SeasonInfoCard
+            description="Marcas locais entram melhor quando existe rotina, calendário e comunidade real."
+            title="Patrocinadores com contexto"
+          />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para explicar cadastro, polos iniciais e participação de patrocinadores sem prometer ocupação ou receita garantida."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como virar polo sem pular validação."
+        variant="raised"
+      >
+        <SeasonAccordion items={courtFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Transforme sua quadra em ponto de temporada.">

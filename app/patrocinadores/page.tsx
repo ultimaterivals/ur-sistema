@@ -2,11 +2,25 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import {
   RewardArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
   SeasonInfoCard,
+  SeasonJourney,
   SeasonPageHero,
   SeasonSection,
 } from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  activationCards,
+  ecosystemAccessCards,
+  eventsCommunityCards,
+  marketRelationshipFlow,
+  quotaModels,
+  rankingMediaCards,
+  reportingCards,
+  sponsorFaq,
+  sponsorNarrativeCards,
+} from "@/lib/content/patrocinadores";
 
 export const metadata: Metadata = {
   title: "Patrocinadores UR | Marca, Mídia, Eventos e UR Market",
@@ -46,6 +60,18 @@ const commercialCards = [
     icon: "/season-1/badges/badge-top-ranking.svg",
   },
 ] as const;
+
+const marketFlowSteps = marketRelationshipFlow.map(({ label, description }) => ({
+  label,
+  title: label,
+  description,
+}));
+
+const quotaCards = quotaModels.map(({ label, status, description }) => ({
+  label: status,
+  title: label,
+  description,
+}));
 
 export default function PatrocinadoresPage() {
   return (
@@ -87,6 +113,25 @@ export default function PatrocinadoresPage() {
       </SeasonSection>
 
       <SeasonSection
+        description="A versão histórica deixava claro: a marca entra na jornada do atleta, não apenas em um espaço de logo."
+        eyebrow="Posicionamento"
+        id="posicionamento"
+        title="Jornada, ativo competitivo e comunidade."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={sponsorNarrativeCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="A marca pode aparecer conectada a UR Play, ranking, equipes, mídia, Market, CT UR, polos e eventos conforme proposta aprovada."
+        eyebrow="Acesso ao ecossistema"
+        id="ecossistema"
+        title="A temporada dá contexto para a presença comercial."
+      >
+        <SeasonBenefitGrid columns={4} items={ecosystemAccessCards} />
+      </SeasonSection>
+
+      <SeasonSection
         description="Produtos e serviços de patrocinadores podem virar benefícios no UR Market quando aprovados pela UR."
         eyebrow="UR Market"
         id="market"
@@ -110,6 +155,59 @@ export default function PatrocinadoresPage() {
             title="Conteúdo e presença"
           />
         </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Benefícios entram no Market quando a entrega é real, analisada comercialmente e comunicada com regra oficial."
+        eyebrow="Relação com o Market"
+        id="fluxo-market"
+        title="Benefício aprovado vira relacionamento."
+      >
+        <SeasonJourney steps={marketFlowSteps} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Eventos, mídia, UR Market, polos, equipes e desafios podem virar ativações, sempre sem prometer métricas ou ROI sem dados reais."
+        eyebrow="Ativações"
+        id="ativacoes"
+        title="Marca aparece melhor quando participa da experiência."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={activationCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Ranking, mídia, eventos e comunidade criam leitura comercial futura, mas relatórios e métricas dependem de dados confirmados."
+        eyebrow="Mídia e dados"
+        id="dados"
+        title="Sem número inventado. Com contexto real."
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={rankingMediaCards} />
+          <SeasonBenefitGrid columns={2} items={eventsCommunityCards} />
+        </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={reportingCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Cotas existiam no conteúdo histórico como modelos em formação. Elas voltam com aviso explícito: valores e entregas dependem de proposta aprovada."
+        eyebrow="Cotas em formação"
+        id="cotas"
+        title="Modelos comerciais sem promessa fechada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={quotaCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para proteger a promessa comercial: nada de ROI, audiência, alcance ou entrega sem validação."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como patrocinar com segurança."
+      >
+        <SeasonAccordion items={sponsorFaq} />
       </SeasonSection>
 
       <SeasonSection id="cta" title="Ative sua marca com critério e contexto esportivo.">

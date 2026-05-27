@@ -375,7 +375,7 @@ export default function Home() {
           <RewardArtCard
             icon="/season-1/symbols/ur-legends-line.svg"
             title="Premiações e repasses"
-            description="Reconhecimento por resultado, evolução, constância e participação."
+            description="Reconhecimento pode acontecer por resultado, evolução, constância e participação conforme regra oficial."
             note="Repasses dependem de caixa, margem, confirmação e regra oficial."
           />
           <RewardArtCard
@@ -391,7 +391,7 @@ export default function Home() {
           <RewardArtCard
             icon="/season-1/symbols/forca-dos-polos-line.svg"
             title="Força dos Polos"
-            description="O polo com mais pontos leva reconhecimento e benefícios de território."
+            description="O polo com mais pontos pode acessar reconhecimento e benefícios de território conforme regra oficial."
           />
         </div>
         <div className="mt-6 text-center">
