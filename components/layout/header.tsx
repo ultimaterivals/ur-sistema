@@ -1,26 +1,25 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { mainNavigation, mobileNavigation } from "@/lib/navigation";
+import { mainNavigation, mobileNavigationGroups } from "@/lib/navigation";
+
+const MOBILE_MENU_ID = "mobile-menu-panel";
 
 export function Header() {
-  const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header
-      className="sticky top-0 z-50 border-b border-[#ffd84d]/15 bg-black/85 backdrop-blur-xl"
-      onClickCapture={(event) => {
-        if ((event.target as Element).closest("a")) {
-          setOpen(false);
-        }
-      }}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
-        <Link className="flex min-w-0 shrink-0 items-center gap-3" href="/" onClick={() => setOpen(false)}>
+    <header className="sticky top-0 z-[9999] border-b border-[#ffd84d]/15 bg-black/90 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-3 px-5 py-3 lg:px-8">
+        <Link
+          className="flex min-w-0 shrink-0 items-center gap-3"
+          href="/"
+          onClick={() => setMobileMenuOpen(false)}
+        >
           <Image
             alt="Ultimate Rivals"
             className="h-11 w-11 object-contain"
@@ -39,7 +38,10 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] font-extrabold uppercase tracking-[0.1em] text-white/65 xl:flex xl:gap-5 xl:text-xs">
+        <nav
+          className="hidden min-w-0 flex-1 items-center justify-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em] text-white/65 lg:flex xl:gap-3 xl:text-[11px] 2xl:gap-5 2xl:text-xs"
+          data-testid="desktop-nav"
+        >
           {mainNavigation.map((item) => (
             <Link className="whitespace-nowrap transition hover:text-[#ffe98b]" href={item.href} key={item.href}>
               {item.label}
@@ -47,7 +49,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-2 lg:flex">
+        <div className="hidden shrink-0 items-center gap-2 lg:flex" data-testid="desktop-ctas">
           <Button className="min-h-10 px-4 py-2 text-xs" href="/cadastro">
             Entrar no UR
           </Button>
@@ -56,49 +58,54 @@ export function Header() {
           </Button>
         </div>
 
-        <button
-          aria-expanded={open}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          className="grid h-11 w-11 place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white xl:hidden"
-          onClick={() => setOpen((value) => !value)}
-          type="button"
-        >
-          {open ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
-        </button>
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          <button
+            aria-controls={MOBILE_MENU_ID}
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            className="relative z-[10000] grid h-12 min-h-[48px] w-12 min-w-[48px] touch-manipulation select-none place-items-center rounded-lg border border-white/10 bg-white/[0.06] text-white shadow-[0_12px_28px_rgba(0,0,0,0.35)] pointer-events-auto [&_svg]:pointer-events-none"
+            data-testid="mobile-menu-button"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            type="button"
+          >
+            {mobileMenuOpen ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
-      {open ? (
-        <div className="border-t border-white/10 px-5 pb-4 pt-3 lg:hidden">
-          <Button className="w-full" href="/cadastro#atleta">
+      {mobileMenuOpen ? (
+        <div
+          className="fixed inset-x-0 top-[72px] z-[9990] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[120px] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:hidden"
+          data-testid="mobile-menu-panel"
+          id={MOBILE_MENU_ID}
+          role="menu"
+        >
+          <Link
+            className="inline-flex min-h-10 w-full max-w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d] sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm"
+            href="/cadastro#atleta"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             Entrar no UR
-          </Button>
-          <nav className="mt-3 grid gap-1 rounded-lg border border-white/10 bg-[#111218] p-2">
-            {mobileNavigation.map((item) => (
-              <Link
-                className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      ) : null}
-
-      {open ? (
-        <div className="hidden border-t border-white/10 px-8 pb-4 pt-3 lg:block xl:hidden">
-          <nav className="grid grid-cols-4 gap-2 rounded-lg border border-white/10 bg-[#111218] p-2">
-            {mobileNavigation.map((item) => (
-              <Link
-                className="rounded-md px-3 py-2.5 text-center text-xs font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
+          </Link>
+          <nav className="mt-3 grid gap-3 md:grid-cols-2">
+            {mobileNavigationGroups.map((group) => (
+              <div className="rounded-lg border border-white/10 bg-[#111218] p-2" key={group.label}>
+                <div className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
+                  {group.label}
+                </div>
+                <div className="grid gap-1">
+                  {group.items.map((item) => (
+                    <Link
+                      className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                      href={item.href}
+                      key={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </nav>
         </div>

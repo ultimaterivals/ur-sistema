@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,164,55,0.08)" stroke-width="1"></path>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="#0A0A0B"></rect>
+  <rect width="1200" height="800" fill="url(#grid)"></rect>
+  <circle cx="600" cy="400" r="300" fill="radial-gradient(circle, rgba(212,164,55,0.12) 0%, transparent 70%)"></circle>
+</svg>

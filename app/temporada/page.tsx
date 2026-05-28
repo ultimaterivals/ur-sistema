@@ -1,222 +1,214 @@
 import type { Metadata } from "next";
-import { BarChart3, Coins, Flag, Radio, RefreshCw, ShieldCheck, Swords, Zap } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  LegendsArtPanel,
+  ProductArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+  TerritoryArtCard,
+  URBracketPreview,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import { cycleCards, seasonFaq, seasonStatusCards } from "@/lib/content/temporada";
 
 export const metadata: Metadata = {
-  title: "Temporada UR | Ciclo Trimestral, Ranking e Eventos Ultimate Rivals",
+  title: "Temporada UR | Territórios em Disputa Ultimate Rivals",
   description:
-    "Entenda como funciona a Temporada UR, o ciclo trimestral do Ultimate Rivals com UR Play, nivelamento, ranking, eventos, recompensas, repasses e Virada de Ranking.",
+    "Temporada UR conecta UR Play, Sprint, Series, Legends, ranking, UR Coins, polos, bracket, mídia e Virada de Ranking.",
 };
 
 const cycleSteps = [
   {
-    label: "UR Play",
+    label: "entrada",
     title: "UR Play",
-    description: "Entrada oficial para atletas e leitura inicial de presença, nível e contexto.",
+    description: "O atleta entra, joga e começa a construir presença.",
   },
   {
-    label: "Nível",
+    label: "leitura",
     title: "Nivelamento",
-    description: "Organização por modalidade, categoria, nível e polo quando o calendário for confirmado.",
+    description: "Nível, modalidade e contexto ajudam a equilibrar a disputa.",
   },
   {
-    label: "Ranking",
-    title: "Ranking ativo",
-    description: "Dados públicos entram com critérios e participação oficial.",
+    label: "mérito",
+    title: "Ranking",
+    description: "Participação confirmada vira histórico competitivo.",
   },
   {
-    label: "Torneios",
-    title: "Mini torneios",
-    description: "Recorrência competitiva para alimentar temporada, mídia e comunidade.",
+    label: "disputa",
+    title: "Sprint",
+    description: "Eventos mais intensos classificam e movimentam a temporada.",
   },
   {
-    label: "Oficiais",
-    title: "Eventos oficiais",
-    description: "Marcos competitivos com regras, cobertura, ranking e experiência.",
+    label: "liga",
+    title: "Series",
+    description: "A competição ganha estrutura, narrativa e sequência.",
   },
   {
-    label: "Virada",
-    title: "Virada de ranking",
-    description: "Fechamento de ciclo, reconhecimento e preparação da próxima temporada.",
-  },
-] as const;
-
-const seasonAssets = [
-  {
-    label: "Entrada",
-    title: "UR Play",
-    description: "Ponto de partida da temporada para atletas, equipes e observação.",
-    icon: Zap,
-  },
-  {
-    label: "Disputa",
-    title: "Mini torneios",
-    description: "Eventos recorrentes mantêm o ciclo ativo e alimentam história.",
-    icon: Swords,
-  },
-  {
-    label: "Fechamento",
-    title: "Virada de ranking",
-    description: "Momento de atualizar contexto, reconhecer evolução e reiniciar ciclo.",
-    icon: Flag,
-  },
-  {
-    label: "Recomeço",
-    title: "Novo trimestre",
-    description: "A temporada se renova com histórico, aprendizado e próximos objetivos.",
-    icon: RefreshCw,
+    label: "ápice",
+    title: "Legends",
+    description: "Atletas classificados representam nome, escudo e território.",
   },
 ] as const;
 
-const ecosystemData = [
+const systemCards = [
   {
-    label: "Ranking",
-    value: "ativo",
-    detail: "classificação vira memória esportiva ao longo do ciclo.",
-    icon: BarChart3,
+    title: "Ranking",
+    description: "Classificação por nível, presença e desempenho com critério público.",
+    icon: "/season-1/symbols/forca-dos-polos-line.svg",
   },
   {
-    label: "Equipes",
-    value: "coletivo",
-    detail: "elencos e capitães constroem identidade competitiva.",
-    icon: ShieldCheck,
+    title: "UR Coins",
+    description: "Moedas internas conectadas a benefícios aprovados e regras oficiais.",
+    icon: "/season-1/symbols/ur-coins-line.svg",
   },
   {
-    label: "UR Coins",
-    value: "valor",
-    detail: "benefícios e recompensas dependem de regras oficiais.",
-    icon: Coins,
+    title: "Mídia",
+    description: "A temporada vira história por meio de ranking, bastidores e destaques.",
+    icon: "/season-1/symbols/ur-series-line.svg",
   },
   {
-    label: "Mídia",
-    value: "memória",
-    detail: "cobertura transforma temporada em história pública.",
-    icon: Radio,
+    title: "Polos",
+    description: "BH, Betim e Contagem disputam força territorial ao longo do ciclo.",
+    icon: "/season-1/symbols/forca-dos-polos-line.svg",
   },
 ] as const;
 
 export default function TemporadaPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "/eventos", label: "Ver temporada UR" },
-          { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
+          { href: "/cadastro#atleta", label: "Entrar na temporada" },
+          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
         ]}
-        badges={["UR Play", "Nivelamento", "Ranking", "Eventos", "Virada de ranking"]}
-        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
-        eyebrow="Temporada UR"
+        badges={["UR Play", "Sprint", "Series", "Legends", "polos", "Virada de Ranking"]}
+        description="Todo atleta tem uma temporada para disputar. A Temporada 1 transforma presença em ranking, escudo em identidade e polo em território."
+        eyebrow="Temporada 1 - Territórios em Disputa"
         image={siteImages.wideServe}
         imagePosition="center 48%"
-        metrics={[
-          { label: "Início", value: "UR Play" },
-          { label: "Meio", value: "ranking e eventos" },
-          { label: "Fim", value: "virada e novo ciclo" },
+        stats={[
+          { label: "polos", value: String(season1.poles.length) },
+          { label: "produtos", value: String(season1.ladder.length) },
+          { label: "modalidades", value: String(season1.modalities.length) },
         ]}
-        statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
-        statusLabel="calendário em organização"
-        statusTitle="Uma temporada para jogar com constância."
-        title="Uma temporada para jogar com constância."
+        title="Todo atleta tem uma temporada para disputar."
       />
 
-      <PageSection id="ciclo">
-        <ProcessTimeline
-          description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
-          eyebrow="Ciclo trimestral"
-          steps={cycleSteps}
-          title="UR Play, ranking contínuo e virada de ranking."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A temporada não é torneio isolado. Ela tem entrada, leitura, disputa, ranking, mídia e ápice."
+        eyebrow="Ciclo competitivo"
+        id="ciclo"
+        title="Da presença ao Legends."
+      >
+        <SeasonJourney steps={cycleSteps} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="calendario">
-        <CommercialAssetPanel
-          assets={seasonAssets}
-          description="O calendário visual mostra tipos de etapa sem inventar datas, horários, polos, valores ou eventos confirmados."
-          eyebrow="Calendário visual"
-          title="Cada etapa tem função no ciclo."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A explicação histórica sobre ciclo trimestral, novo começo, ranking ativo e eventos conectados volta para reforçar a sensação de liga contínua."
+        eyebrow="Temporada contínua"
+        id="continuidade"
+        title="A disputa tem começo, virada e novo ciclo."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={cycleCards} />
+      </SeasonSection>
 
-      <PageSection id="evento">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
-            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
-          ]}
-          description="A temporada não depende de um único momento. Ela combina jogo, presença, ranking, mídia e comunidade para manter a jornada esportiva em movimento."
-          eyebrow="Ritmo de temporada"
-          image={siteImages.fairPlayLine}
-          imagePosition="center 46%"
-          points={[
-            {
-              title: "Eventos variáveis",
-              description: "Etapas podem variar por modalidade, nível, categoria e polo.",
-            },
-            {
-              title: "Virada de ranking",
-              description: "O fim do trimestre atualiza contexto e prepara novo ciclo.",
-            },
-          ]}
-          title="O ciclo dá continuidade ao que a quadra começa."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Cada produto tem função dentro da progressão do atleta."
+        eyebrow="Escada oficial"
+        id="escada"
+        title="Play, Sprint, Series, Legends."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {season1.ladder.map((product) => (
+            <ProductArtCard key={product.id} product={product} />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="conexoes">
-        <DataBoard
-          description="Ranking, equipes, UR Coins, UR Market, mídia e CT UR são peças conectadas ao ciclo. O valor aparece quando a temporada mantém recorrência."
-          eyebrow="Relação com o ecossistema"
-          items={ecosystemData}
-          title="Temporada é o motor que conecta as áreas."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A camada competitiva conecta ranking individual, força de polos, UR Coins e mídia oficial."
+        eyebrow="Sistema da temporada"
+        id="sistema"
+        title="Tudo conversa com o jogo."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {systemCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection id="recompensas">
-        <ImageFeaturePanel
-          description="Repasses, premiações e recompensas dependem de regras claras do ciclo. A comunicação pública precisa ser direta: primeiro regra, depois reconhecimento."
-          eyebrow="Premiações e novo ciclo"
-          image={siteImages.mediaCoverage}
-          imagePosition="center 45%"
-          points={[
-            {
-              title: "Reconhecimento com regra",
-              description: "Premiações só fazem sentido quando critérios e regras estão definidos.",
-            },
-            {
-              title: "Novo trimestre",
-              description: "O ciclo reinicia com histórico, aprendizados e novos objetivos.",
-            },
-          ]}
-          reverse
-          statusLabel="recompensas com regra clara"
-          title="Reconhecer evolução exige critério."
+      <SeasonSection
+        description="A chave mostra a camada de disputa da temporada. Confrontos reais entram apenas após confirmação."
+        eyebrow="Bracket"
+        id="bracket"
+        title="O caminho também precisa ser visual."
+        variant="raised"
+      >
+        <URBracketPreview
+          final={season1.mockBracket.final}
+          quarterfinals={[...season1.mockBracket.quarterfinals]}
+          semifinals={[...season1.mockBracket.semifinals]}
+          stage={season1.mockBracket.stage}
         />
-      </PageSection>
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/eventos">Ver temporada UR</Button>
-            <Button href="/eventos" variant="secondary">
-              Ver calendário UR
-            </Button>
-          </>
-        }
-        description="Registre interesse para receber orientação quando agenda, modalidade, nível, polo e próximos eventos forem confirmados."
-        eyebrow="Próximo passo"
-        items={["UR Play", "ranking", "eventos", "virada", "novo ciclo"]}
-        statusLabel="agenda oficial após confirmação"
-        title="A temporada começa com presença confirmada."
-      />
+      <SeasonSection
+        description="Cada polo soma presença, escudos, atletas e histórias."
+        eyebrow="Polos"
+        id="territorios"
+        title="Três territórios. Uma disputa."
+      >
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((pole, index) => (
+            <TerritoryArtCard key={pole.id} pole={pole} rank={index + 1} />
+          ))}
+        </div>
+      </SeasonSection>
+
+      <SeasonSection id="legends" variant="raised">
+        <LegendsArtPanel />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Datas, agenda, ranking e recompensas dependem de validação. O objetivo é manter a temporada clara sem inventar calendário ou premiação."
+        eyebrow="Status oficial"
+        id="status"
+        title="O que precisa estar confirmado."
+      >
+        <SeasonBenefitGrid items={seasonStatusCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para explicar calendário, ciclo, UR Play, Virada de Ranking, eventos e premiações com linguagem segura."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como a temporada funciona sem prometer o que ainda depende de regra."
+        variant="raised"
+      >
+        <SeasonAccordion items={seasonFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="A temporada começa com presença confirmada.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Entrar na temporada</Button>
+          <Button href="/ranking" variant="secondary">
+            Ver ranking
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

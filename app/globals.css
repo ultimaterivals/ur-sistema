@@ -8,6 +8,29 @@
   --panel: #111218;
 }
 
+/* ── Season 1 design tokens ── */
+:root {
+  --ur-ink: #0A0A0B;
+  --ur-panel: #14141A;
+  --ur-gold: #D4A437;
+  --ur-cream: #F4F0E6;
+  --ur-mute: #8A8A93;
+  --ur-sand: #1C1610;
+  --ur-live: #FF4D4D;
+  --ur-line: rgba(255,255,255,0.10);
+  --ur-gold-dim: rgba(212,164,55,0.15);
+  --ur-gold-glow: rgba(212,164,55,0.25);
+  --ur-overlay: rgba(10,10,11,0.85);
+  --ur-shadow-card: 0 4px 24px rgba(0,0,0,0.30);
+  --ur-shadow-hover: 0 8px 48px rgba(212,164,55,0.15);
+  --ur-shadow-glow: 0 0 40px rgba(212,164,55,0.30);
+  --ur-easing: cubic-bezier(0.4,0,0.2,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; transform: none !important; }
+}
+
 * {
   box-sizing: border-box;
 }

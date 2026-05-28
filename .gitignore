@@ -27,3 +27,6 @@ output/
 Thumbs.db
 
 .vercel
+
+# Claude Code
+.claude/

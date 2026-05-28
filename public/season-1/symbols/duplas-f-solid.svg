@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="75" cy="100" r="30" fill="#D4A437"></circle>
+  <circle cx="125" cy="100" r="30" fill="#D4A437"></circle>
+  <text x="75" y="110" font-family="&#39;Oswald&#39;" font-size="28" font-weight="700" fill="#0A0A0B" text-anchor="middle">F</text>
+  <text x="125" y="110" font-family="&#39;Oswald&#39;" font-size="28" font-weight="700" fill="#0A0A0B" text-anchor="middle">F</text>
+</svg>

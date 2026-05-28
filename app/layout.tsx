@@ -7,20 +7,19 @@ import { RouteScrollManager } from "@/components/layout/route-scroll-manager";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ultimaterivals.org"),
   title: {
-    default: "Ultimate Rivals | Ecossistema esportivo premium",
+    default: "Ultimate Rivals | Temporada 1 — Territórios em Disputa",
     template: "%s | Ultimate Rivals",
   },
   description:
-    "Ultimate Rivals profissionaliza o esporte amador com ranking, temporadas, equipes, recompensas, mídia, desenvolvimento e oportunidades reais.",
+    "UR Temporada 1 — Territórios em Disputa. Atletas pontuam, equipes somam, polos disputam respeito. Quem manda na região?",
   icons: {
     icon: "/brand/logo-ur.png",
     shortcut: "/brand/logo-ur.png",
     apple: "/brand/logo-ur.png",
   },
   openGraph: {
-    title: "Ultimate Rivals",
-    description:
-      "Ecossistema esportivo premium para profissionalizar o esporte amador com ranking, temporada, equipes, mídia e recompensas.",
+    title: "Ultimate Rivals — Temporada 1",
+    description: "Quem manda na região? BH, Betim e Contagem entram na disputa.",
     images: ["/brand/logo-ur.png"],
     locale: "pt_BR",
     siteName: "Ultimate Rivals",
@@ -31,6 +30,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <RouteScrollManager />
         <Header />

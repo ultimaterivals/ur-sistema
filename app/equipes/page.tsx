@@ -1,209 +1,220 @@
 import type { Metadata } from "next";
-import { BarChart3, Crown, ShieldCheck, Users } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  DataBoard,
-  ImageFeaturePanel,
-  LeaderboardPanel,
-  ProcessTimeline,
-  ProfileMockup,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+  TeamFormationArtCard,
+  TerritoryArtCard,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  draftConnectionCards,
+  mediaRivalryCards,
+  rosterValidationCards,
+  teamBenefits,
+  teamCoinsCards,
+  teamEntrySteps,
+  teamFaq,
+  teamIdentityCards,
+} from "@/lib/content/equipes";
 
 export const metadata: Metadata = {
-  title: "Equipes UR | Ranking Coletivo, Elencos e Temporada Ultimate Rivals",
+  title: "Equipes UR | Escudos, Formações e Ranking Coletivo Ultimate Rivals",
   description:
-    "Conheça as equipes oficiais do Ultimate Rivals, o sistema que transforma times amadores em ativos competitivos com ranking coletivo, elenco, UR Coins, mídia, repasses e oportunidades dentro da temporada.",
+    "Equipes UR organiza escudos, formações registradas, quartetos, duplas, ranking coletivo, mídia e disputa por polos na Temporada 1.",
 };
 
-const teamFields = [
-  { label: "Momento", value: "equipe no radar" },
-  { label: "Elenco", value: "após cadastro" },
-  { label: "Capitão", value: "responsável definido" },
-  { label: "Ranking", value: "coletivo em formação" },
-] as const;
-
-const teamJourney = [
+const formationRules = [
   {
-    label: "Registro",
-    title: "Registrar equipe",
-    description: "Capitão ou responsável envia interesse com identidade, cidade, modalidade e contexto.",
-    status: "cadastro aberto",
+    title: "Equipe e organização",
+    description: "O escudo organiza identidade, comunidade, capitão, mídia e histórico coletivo.",
+    icon: "/season-1/badges/badge-equipe-registrada.svg",
   },
   {
-    label: "Elenco",
-    title: "Confirmar elenco",
-    description: "A equipe UR confirma conduta, disponibilidade e alinhamento com a temporada.",
+    title: "Formação registrada",
+    description: "Cada quarteto ou dupla pode ser registrado para disputar, pontuar e aparecer.",
+    icon: "/season-1/badges/badge-formacao-oficial.svg",
   },
   {
-    label: "Ranking",
-    title: "Entrar no ranking",
-    description: "O ranking coletivo só abre com dados reais e regras oficiais do ciclo.",
+    title: "Equipe 1, Equipe 2",
+    description: "Uma mesma organização pode ter formações diferentes conforme nível e modalidade.",
+    icon: "/season-1/symbols/quartetos-line.svg",
   },
   {
-    label: "Mídia",
-    title: "Criar história",
-    description: "Mídia, rivalidade, torcida e histórico transformam equipe em ativo esportivo.",
+    title: "Legends pelo escudo",
+    description: "Atleta qualificado no Legends representa o escudo vinculado e fortalece o território.",
+    icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
 
-const rosterData = [
-  {
-    label: "Identidade",
-    value: "marca esportiva",
-    detail: "nome, postura, visual e presença precisam formar uma história reconhecível.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Capitão",
-    value: "liderança",
-    detail: "responsável por comunicação, conduta e conexão com a equipe UR.",
-    icon: Crown,
-  },
-  {
-    label: "Elenco",
-    value: "validado",
-    detail: "atletas entram após confirmação, sem inventar nomes ou posições.",
-    icon: Users,
-  },
-  {
-    label: "Temporada",
-    value: "histórico",
-    detail: "participação coletiva alimenta ranking, mídia, eventos e oportunidades.",
-    icon: BarChart3,
-  },
-] as const;
-
-const collectiveRankingRows = [
-  {
-    position: "01",
-    title: "equipe no radar",
-    status: "sem nome real publicado",
-    meta: "ranking coletivo abre com equipes e eventos confirmados.",
-  },
-  {
-    position: "02",
-    title: "elenco em confirmação",
-    status: "dados reais após cadastro",
-    meta: "capitão, atletas e identidade precisam ser confirmados pela equipe UR.",
-  },
-  {
-    position: "03",
-    title: "histórico coletivo",
-    status: "temporada estruturada",
-    meta: "resultados e mídia serão conectados ao ciclo oficial.",
-  },
-] as const;
+const officialTeamJourney = teamEntrySteps.map(({ step, title, description }) => ({
+  label: step,
+  title,
+  description,
+}));
 
 export default function EquipesPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
           { href: "/cadastro#equipe", label: "Cadastrar equipe" },
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
-        badges={["Elenco", "Capitão", "Ranking coletivo", "Mídia", "Temporada"]}
-        description="No Ultimate Rivals, equipes ganham nome, presença, ranking coletivo, mídia, rivalidades, mercado e participação em uma temporada organizada."
-        eyebrow="Para equipes"
+        badges={["escudo", "formações", "quartetos", "duplas", "polos", "Legends"]}
+        description="Times deixam de ser só grupo. O escudo entra na temporada, forma atletas, disputa ranking coletivo e cria presença pública."
+        eyebrow="Equipes e formações"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
-        metrics={[
-          { label: "Base", value: "identidade e elenco" },
-          { label: "Base", value: "capitão e organização" },
-          { label: "Valor", value: "ranking, mídia e comunidade" },
+        stats={[
+          { label: "base", value: "escudo" },
+          { label: "disputa", value: "formações" },
+          { label: "força", value: "polo" },
         ]}
-        statusDescription="Equipe boa não é só grupo. É identidade, presença, organização e compromisso."
-        statusLabel="equipes no radar"
-        statusTitle="Sua equipe pode construir história dentro da temporada."
-        title="Equipe boa não é só grupo. É identidade."
+        title="Seu escudo também entra na disputa."
       />
 
-      <PageSection id="card-equipe">
-        <ProfileMockup
-          cta={{ href: "/cadastro#equipe", label: "Cadastrar minha equipe" }}
-          description="O UR cria um ambiente para equipes que querem competir com mais organização, fortalecer identidade e aparecer de forma profissional."
-          eyebrow="Sua equipe pode construir história dentro da temporada"
-          fields={teamFields}
-          highlights={["identidade", "elenco", "capitão", "ranking coletivo", "mídia"]}
-          image={siteImages.teamEmbrace}
-          title="Identidade, elenco, capitão e histórico coletivo."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Exemplos editoriais para mostrar como escudos e formações podem aparecer. Dados reais entram apenas após confirmação."
+        eyebrow="Cards oficiais"
+        id="formacoes"
+        title="Formações com identidade."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <TeamFormationArtCard athleteCount={4} isOfficial teamName="BH Elite 1" pole="BH" modality="Quartetos" />
+          <TeamFormationArtCard athleteCount={4} teamName="Betim Arena 1" pole="Betim" modality="Quartetos" />
+          <TeamFormationArtCard athleteCount={2} teamName="Contagem Dupla" pole="Contagem" modality="Duplas Mistas" />
+          <TeamFormationArtCard athleteCount={2} teamName="BH Feminino" pole="BH" modality="Duplas Femininas" />
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="entrada">
-        <ProcessTimeline
-          description="Equipe boa não é só grupo. É identidade, presença, organização e compromisso com a temporada."
-          eyebrow="Entrada da equipe"
-          steps={teamJourney}
-          title="Do grupo de atletas à equipe reconhecível."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O conteúdo histórico mostrava a equipe como identidade competitiva, ativo esportivo e ativo midiático. Essa camada volta para deixar claro por que o escudo importa."
+        eyebrow="Identidade oficial"
+        id="identidade"
+        title="Equipe não é só grupo de WhatsApp."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={teamIdentityCards} />
+      </SeasonSection>
 
-      <PageSection id="elenco-capitao">
-        <DataBoard
-          description="Nome, capitão, elenco, postura e presença ajudam a construir identidade dentro do ecossistema."
-          eyebrow="Elenco e capitão"
-          items={rosterData}
-          title="Identidade da equipe antes do resultado."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A equipe é a camada que conecta atleta, formação, mídia, ranking, UR Coins e território."
+        eyebrow="Como funciona"
+        id="estrutura"
+        title="Escudo, formação e polo."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {formationRules.map((rule) => (
+            <SeasonInfoCard
+              description={rule.description}
+              icon={rule.icon}
+              key={rule.title}
+              title={rule.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="ranking-coletivo">
-        <LeaderboardPanel
-          description="A equipe começa a construir histórico por participação, resultado e consistência."
-          eyebrow="Ranking coletivo"
-          image={siteImages.fairPlayLine}
-          rows={collectiveRankingRows}
-          tabs={["Coletivo", "Elenco", "Temporada", "Mídia"]}
-          title="Ranking coletivo com identidade."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O registro oficial começa com interesse, identidade, capitão, elenco e validação. Dados reais só entram depois de critério e aceite."
+        eyebrow="Entrada da equipe"
+        id="entrada"
+        title="Do interesse ao ranking coletivo."
+      >
+        <SeasonJourney steps={officialTeamJourney} />
+      </SeasonSection>
 
-      <PageSection id="midia-mercado">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
-            { href: "/ur-market", label: "Conhecer UR Market", variant: "ghost" },
-          ]}
-          description="Jogos, bastidores e confrontos ganham mais valor quando existe história. A equipe pode participar de um sistema mais estratégico conforme a temporada evolui."
-          eyebrow="Mídia, rivalidade e mercado"
-          image={siteImages.mediaCoverage}
-          imagePosition="center 45%"
-          points={[
-            {
-              title: "História de equipe",
-              description: "Bastidores, cortes, rankings e temporada ajudam a construir reputação coletiva.",
-            },
-            {
-              title: "Valor comercial",
-              description: "Patrocinadores e UR Market podem se conectar a equipes com regras claras.",
-            },
-          ]}
-          reverse
-          statusLabel="benefícios com regras claras"
-          title="Equipe boa vira história. História vira valor."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Capitão, elenco, identidade e validação reduzem bagunça e criam base para ranking, mídia, UR Coins e oportunidades comerciais."
+        eyebrow="Critérios de registro"
+        id="registro"
+        title="O escudo precisa ter responsável e regra."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={rosterValidationCards} />
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#equipe">Cadastrar minha equipe</Button>
-            <Button href="/regulamento" variant="secondary">
-              Ver regulamento
-            </Button>
-          </>
-        }
-        description="O cadastro coloca sua equipe no radar do UR. A equipe analisa identidade, elenco, capitão e disponibilidade antes do próximo passo."
-        eyebrow="Próximo passo"
-        items={["identidade", "elenco", "capitão", "ranking coletivo", "temporada"]}
-        statusLabel="registro com critério"
-        title="Cadastrar minha equipe."
-      />
+      <SeasonSection
+        description="Quartetos, duplas masculinas, duplas femininas e duplas mistas podem compor a identidade competitiva de cada organização."
+        eyebrow="Modalidades"
+        id="modalidades"
+        title="Cada formação disputa do seu jeito."
+      >
+        <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+          {season1.modalities.map((modality) => (
+            <SeasonInfoCard
+              description="Modalidade vinculada a critérios oficiais, nível e calendário confirmado."
+              icon={modality.symbolLine}
+              key={modality.id}
+              title={modality.name}
+            />
+          ))}
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="A equipe cria continuidade competitiva, rivalidade, mídia e possibilidades futuras de benefícios coletivos sem prometer repasse automático."
+        eyebrow="Valor coletivo"
+        id="valor"
+        title="Escudo bom constrói temporada."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={teamBenefits} />
+          <SeasonBenefitGrid columns={2} items={teamCoinsCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="UR Play, Draft em formação e ranking validado ajudam equipes a observar atletas, construir elenco e gerar rivalidade saudável."
+        eyebrow="Radar de atletas"
+        id="radar"
+        title="Mercado interno começa com observação."
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={draftConnectionCards} />
+          <SeasonBenefitGrid columns={2} items={mediaRivalryCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="O escudo também soma na disputa territorial. Cada polo cresce com atletas, formações e presença confirmada."
+        eyebrow="Força dos polos"
+        id="polos"
+        title="O território também joga."
+        variant="raised"
+      >
+        <div className="grid gap-4 sm:grid-cols-3">
+          {season1.poles.map((pole, index) => (
+            <TerritoryArtCard key={pole.id} pole={pole} rank={index + 1} />
+          ))}
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Regras preservadas para explicar registro, capitão, ranking coletivo, UR Play, repasses e publicação de dados."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como uma equipe entra sem inventar histórico."
+      >
+        <SeasonAccordion items={teamFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="Registre seu escudo para entrar na temporada.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#equipe">Cadastrar equipe</Button>
+          <Button href="/eventos" variant="secondary">
+            Ver eventos
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

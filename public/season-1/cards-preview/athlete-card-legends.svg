@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480">
+  <defs>
+    <linearGradient id="legendsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2A1F0C;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#14141A;stop-opacity:1"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="480" fill="url(#legendsGrad)" rx="6"></rect>
+  <rect x="15" y="15" width="330" height="330" fill="#1C1610" rx="4"></rect>
+  <polygon points="180,140 190,165 218,165 196,183 203,208 180,193 157,208 164,183 142,165 170,165" fill="#D4A437"></polygon>
+  <text x="180" y="390" font-family="&#39;Oswald&#39;" font-size="24" font-weight="700" fill="#D4A437" text-anchor="middle">LEGENDS</text>
+  <text x="180" y="420" font-family="&#39;Manrope&#39;" font-size="14" fill="#D4A437" text-anchor="middle">Elite · Convocado</text>
+  <rect x="1" y="1" width="358" height="478" fill="none" stroke="#D4A437" stroke-width="3" rx="6"></rect>
+</svg>

@@ -1,213 +1,228 @@
 import type { Metadata } from "next";
-import { BarChart3, Camera, Flag, MapPin, Medal, Swords, Trophy, Zap } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  ProductArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+  URBracketPreview,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  agendaStatusCards,
+  ecosystemFeedFlow,
+  eventConnectionCards,
+  eventFaq,
+  eventNarrativeCards,
+  eventTypes,
+  segmentationCards,
+} from "@/lib/content/eventos";
 
 export const metadata: Metadata = {
-  title: "Eventos UR | UR Play, Torneios e Temporada Ultimate Rivals",
+  title: "Eventos UR | Calendário Competitivo Ultimate Rivals",
   description:
-    "Conheça os eventos do Ultimate Rivals, incluindo UR Play, mini torneios, torneios oficiais, Virada de Ranking e experiências conectadas ao ranking, equipes, UR Coins e mídia.",
+    "Eventos UR organiza UR Play, UR Sprint, UR Series, UR Legends, bracket, polos, modalidades, níveis e pontuação dentro da temporada.",
 };
 
-const eventTypes = [
+const eventCards = [
   {
-    label: "Entrada",
     title: "UR Play",
-    description: "Porta oficial para observação, nivelamento, presença e início de histórico.",
-    icon: Zap,
+    description: "Entrada recorrente para presença, leitura de nível, ranking e mídia.",
+    meta: "status: agenda em organização",
+    icon: "/season-1/symbols/ur-play-line.svg",
   },
   {
-    label: "Recorrência",
-    title: "Mini torneio",
-    description: "Competição de ciclo para alimentar ranking, mídia e comunidade.",
-    icon: Swords,
+    title: "UR Sprint",
+    description: "Confrontos curtos, classificação direta e tensão competitiva.",
+    meta: "polo: conforme confirmação",
+    icon: "/season-1/symbols/ur-sprint-line.svg",
   },
   {
-    label: "Temporada",
-    title: "Evento oficial",
-    description: "Marco competitivo com regras, cobertura e história pública.",
-    icon: Trophy,
+    title: "UR Series",
+    description: "Liga oficial para atletas e formações com contexto competitivo.",
+    meta: "modalidade: duplas e quartetos",
+    icon: "/season-1/symbols/ur-series-line.svg",
   },
   {
-    label: "Fechamento",
-    title: "Virada de ranking",
-    description: "Momento de reconhecer evolução, presença e próximos passos do ciclo.",
-    icon: Flag,
+    title: "UR Legends",
+    description: "O ápice da temporada. Atletas representam nome, escudo e polo.",
+    meta: "nível: classificados",
+    icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
 
-const seasonLine = [
+const details = [
   {
-    label: "Entrada",
-    title: "Entrada pelo UR Play",
-    description: "Atletas e equipes começam com cadastro, orientação e participação com critério.",
-    status: "agenda em organização",
+    title: "Inscrições",
+    description: "Abertura acontece apenas após confirmação de polo, modalidade, nível e operação.",
   },
   {
-    label: "Ciclo",
-    title: "Eventos de ciclo",
-    description: "Mini torneios e encontros competitivos mantêm a temporada ativa.",
+    title: "Pontuação",
+    description: "Critérios oficiais conectam participação, ranking individual, formação e polo.",
   },
   {
-    label: "Mídia",
-    title: "Ranking e mídia",
-    description: "Cada participação confirmada pode alimentar classificação, história e histórico.",
-  },
-  {
-    label: "Virada",
-    title: "Virada de ranking",
-    description: "O ciclo fecha com reconhecimento e preparação da próxima etapa.",
+    title: "Bracket",
+    description: "Chaveamento entra quando a etapa exige disputa eliminatória ou fase final.",
   },
 ] as const;
 
-const eventData = [
-  {
-    label: "Ranking",
-    value: "histórico",
-    detail: "eventos alimentam presença, contexto e classificação com dados confirmados.",
-    icon: BarChart3,
-  },
-  {
-    label: "UR Coins",
-    value: "valor",
-    detail: "recompensas dependem de regras oficiais.",
-    icon: Medal,
-  },
-  {
-    label: "Mídia",
-    value: "palco",
-    detail: "cobertura transforma participação em história pública.",
-    icon: Camera,
-  },
-  {
-    label: "Polos",
-    value: "território",
-    detail: "eventos podem variar por modalidade, nível, categoria e polo.",
-    icon: MapPin,
-  },
-] as const;
+const ecosystemFlowSteps = ecosystemFeedFlow.map(({ label, description }) => ({
+  label,
+  title: label,
+  description,
+}));
 
 export default function EventosPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "/temporada", label: "Ver temporada UR" },
+          { href: "/temporada", label: "Ver temporada" },
           { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
         ]}
-        badges={["UR Play", "Mini torneios", "Eventos oficiais", "Virada de ranking"]}
-        description="O UR organiza ciclos com UR Play, ranking, equipes, eventos, mídia e oportunidades para que o esporte amador tenha sequência, critério e história."
-        eyebrow="Temporada UR"
+        badges={["UR Play", "UR Sprint", "UR Series", "UR Legends", "bracket", "polos"]}
+        description="A temporada acontece em ciclos. Cada etapa tem função: entrada, disputa, classificação, narrativa e fechamento competitivo."
+        eyebrow="Calendário competitivo"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"
-        metrics={[
-          { label: "Entrada", value: "UR Play" },
-          { label: "Ciclo", value: "mini torneios e eventos" },
-          { label: "Fechamento", value: "virada de ranking" },
+        stats={[
+          { label: "ritmo", value: "ciclos" },
+          { label: "entrada", value: "UR Play" },
+          { label: "ápice", value: "Legends" },
         ]}
-        statusDescription="UR Play, eventos oficiais, ranking contínuo e virada de ranking criam uma sequência para jogar com constância."
-        statusLabel="agenda em organização"
-        statusTitle="Uma temporada para jogar com constância."
-        title="Uma temporada para jogar com constância."
+        title="A temporada não para."
       />
 
-      <PageSection id="tipos">
-        <CommercialAssetPanel
-          assets={eventTypes}
-          description="Os formatos abaixo organizam a experiência da temporada: UR Play, eventos oficiais, ranking contínuo e virada de ranking."
-          eyebrow="Tipos de evento"
-          title="Cada etapa tem função dentro da temporada."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A escada oficial ajuda o atleta a entender onde entra, como evolui e para onde pode avançar."
+        eyebrow="Escada de eventos"
+        id="escada"
+        title="Play, Sprint, Series, Legends."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {season1.ladder.map((product) => (
+            <ProductArtCard key={product.id} product={product} />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="linha-do-tempo">
-        <ProcessTimeline
-          description="A temporada registra presença, desempenho e evolução para criar continuidade no esporte amador."
-          eyebrow="Linha do tempo"
-          steps={seasonLine}
-          title="UR Play, eventos oficiais e virada de ranking."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A versão histórica explicava por que evento não é ação isolada: ele cria ciclo, memória competitiva, experiência e mídia."
+        eyebrow="Função dos eventos"
+        id="funcao"
+        title="Evento bom alimenta a temporada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={eventNarrativeCards} />
+      </SeasonSection>
 
-      <PageSection id="jogo-real">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
-            { href: "/ranking", label: "Ver ranking", variant: "ghost" },
-          ]}
-          description="O evento precisa gerar rastro: quem participou, como competiu, que história nasceu, qual ranking foi alimentado e qual próximo passo faz sentido."
-          eyebrow="Evento como produto esportivo"
-          image={siteImages.attackBlock}
-          imagePosition="center 42%"
-          points={[
-            {
-              title: "Competição com contexto",
-              description: "UR Play, mini torneios e eventos oficiais conectam presença, nível e ranking.",
-            },
-            {
-              title: "Mídia como memória",
-              description: "Fotos, bastidores e cobertura transformam o evento em memória do ecossistema.",
-            },
-          ]}
-          title="O jogo termina, mas o histórico continua."
-        />
-      </PageSection>
+      <SeasonSection
+        description="UR Play, mini torneios, torneios oficiais, Virada de Ranking, CT UR e ativações especiais podem existir conforme calendário e regra confirmados."
+        eyebrow="Formatos possíveis"
+        id="formatos"
+        title="Cada formato tem uma função."
+      >
+        <SeasonBenefitGrid items={eventTypes} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="impacto">
-        <DataBoard
-          description="O evento tem papel esportivo, midiático, comercial e territorial. Ele alimenta mais que o placar."
-          eyebrow="O que o evento alimenta"
-          items={eventData}
-          title="Ranking, UR Coins, mídia e polos no mesmo ciclo."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Cards editoriais para comunicar status, polo, modalidade, nível, inscrições e pontuação sem inventar evento confirmado."
+        eyebrow="Calendário vivo"
+        id="eventos"
+        title="Cada etapa tem uma função."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {eventCards.map((event) => (
+            <SeasonInfoCard
+              description={event.description}
+              icon={event.icon}
+              key={event.title}
+              meta={event.meta}
+              title={event.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection id="agenda">
-        <ImageFeaturePanel
-          description="A agenda oficial será publicada por modalidade, nível, categoria e polo quando houver confirmação. Até lá, o cadastro de interesse organiza demanda sem criar promessa."
-          eyebrow="Agenda futura"
-          image={siteImages.wideServe}
-          imagePosition="center 48%"
-          points={[
-            {
-              title: "Eventos entram após confirmação",
-              description: "Nada de datas, horários, valores ou vagas reais sem confirmação oficial.",
-            },
-            {
-              title: "Polo em formação",
-              description: "Quadras parceiras e calendário local serão ativados conforme confirmação.",
-            },
-          ]}
-          reverse
-          statusLabel="inscrição com critério"
-          title="O calendário cresce por ciclo, não por improviso."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Nível, modalidade, categoria e polo ajudam a organizar disputas justas e evitar mistura de contextos competitivos."
+        eyebrow="Segmentação"
+        id="segmentacao"
+        title="Agenda precisa respeitar contexto."
+      >
+        <SeasonBenefitGrid columns={4} items={segmentationCards} />
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/temporada">Ver temporada UR</Button>
-            <Button href="/cadastro#equipe" variant="secondary">
-              Entrar como equipe
-            </Button>
-          </>
-        }
-        description="Registre interesse para receber orientação quando agenda, polo, categoria e participação estiverem confirmados."
-        eyebrow="Próximo passo"
-        items={["UR Play", "mini torneios", "ranking", "mídia", "polos"]}
-        statusLabel="agenda em organização"
-        title="Entre na fila certa antes da próxima etapa."
-      />
+      <SeasonSection
+        description="O bracket mostra a sensação esportiva da disputa, sem publicar confrontos reais antes da confirmação."
+        eyebrow="Chaveamento"
+        id="bracket"
+        title="A chave define o nome."
+      >
+        <URBracketPreview
+          final={season1.mockBracket.final}
+          quarterfinals={[...season1.mockBracket.quarterfinals]}
+          semifinals={[...season1.mockBracket.semifinals]}
+          stage={season1.mockBracket.stage}
+        />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Quando existe presença aprovada, o evento pode alimentar critérios, ranking, UR Coins, mídia, equipes, patrocinadores e quadras."
+        eyebrow="O que o evento alimenta"
+        id="ecossistema"
+        title="A rodada vira dado, história e oportunidade."
+        variant="raised"
+      >
+        <SeasonJourney steps={ecosystemFlowSteps} />
+        <div className="mt-5">
+          <SeasonBenefitGrid items={eventConnectionCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Cada evento precisa respeitar operação, regras e comunicação pública."
+        eyebrow="Critérios"
+        id="criterios"
+        title="Evento bom nasce organizado."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          {details.map((detail) => (
+            <SeasonInfoCard
+              description={detail.description}
+              key={detail.title}
+              title={detail.title}
+            />
+          ))}
+        </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={agendaStatusCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para deixar claro que calendário, inscrições, pontuação e parcerias dependem de confirmação oficial."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Eventos em ciclos, sem inventar data."
+      >
+        <SeasonAccordion items={eventFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="Entre na temporada e acompanhe as próximas etapas.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Entrar no UR</Button>
+          <Button href="/temporada" variant="secondary">
+            Ver temporada
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

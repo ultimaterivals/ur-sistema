@@ -1,217 +1,215 @@
 import type { Metadata } from "next";
-import { Camera, Dumbbell, ShieldCheck, Target } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  DataBoard,
-  ImageFeaturePanel,
-  LeaderboardPanel,
-  ProcessTimeline,
-  ProfileMockup,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  AthleteArtCard,
+  RankingBroadcastPanel,
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteFaq,
+  ctDevelopmentCards,
+  hunterPrinciples,
+  levelRankingCards,
+  opportunityCards,
+  protagonistCards,
+  rewardsCards,
+  visibilityCards,
+} from "@/lib/content/atletas";
 
 export const metadata: Metadata = {
-  title: "Atletas UR | Jornada, Ranking e Mentalidade Hunter Ultimate Rivals",
+  title: "Atletas UR | Jornada, Ranking e Temporada Ultimate Rivals",
   description:
-    "Conheça a jornada dos atletas no Ultimate Rivals, com UR Play, ranking, níveis, equipes, UR Coins, mídia, CT UR e Mentalidade Hunter para evolução dentro do ecossistema.",
+    "Jornada do atleta no Ultimate Rivals: entrar pelo UR Play, ser observado, pontuar, evoluir, acumular UR Coins conforme critérios, entrar no ranking, aparecer na mídia e buscar classificação.",
 };
 
 const athleteJourney = [
   {
-    label: "Entrada",
+    label: "entrada",
     title: "Entrar",
-    description: "Você escolhe seu perfil, envia seu cadastro e entra no radar da equipe UR.",
-    status: "cadastro aberto",
+    description: "O cadastro abre a conversa e coloca o atleta no radar da temporada.",
   },
   {
-    label: "Jogo",
+    label: "UR Play",
     title: "Jogar",
-    description: "Você participa do UR Play e começa a criar presença dentro do ecossistema.",
+    description: "A presença confirmada inicia a leitura esportiva.",
   },
   {
-    label: "Olhar",
-    title: "Ser observado",
-    description: "Postura, presença e desempenho ajudam a dar contexto ao seu momento esportivo.",
+    label: "observação",
+    title: "Ser visto",
+    description: "Nível, postura e contexto ajudam a orientar o próximo passo.",
   },
   {
-    label: "Evolução",
+    label: "mérito",
+    title: "Pontuar",
+    description: "Desempenho e constância começam a virar histórico.",
+  },
+  {
+    label: "evolução",
     title: "Evoluir",
-    description: "Você não precisa ser o melhor hoje. Precisa entrar, competir e evoluir.",
+    description: "A temporada mostra onde melhorar e como avançar.",
   },
   {
-    label: "Palco",
+    label: "valor",
+    title: "UR Coins",
+    description: "Participação pode se conectar a benefícios aprovados.",
+  },
+  {
+    label: "reputação",
+    title: "Ranking",
+    description: "Seu nome entra quando houver participação e critério.",
+  },
+  {
+    label: "palco",
     title: "Aparecer",
-    description: "Bons momentos, histórias e evolução podem ganhar espaço nos canais UR.",
-  },
-  {
-    label: "Valor",
-    title: "Gerar valor",
-    description: "Ranking, equipes, UR Coins e eventos conectam presença a novas oportunidades.",
+    description: "Mídia, eventos e Legends ampliam a trajetória.",
   },
 ] as const;
 
-const profileFields = [
-  { label: "Perfil", value: "perfil inicial" },
-  { label: "Ranking", value: "ranking em formação" },
-  { label: "Histórico", value: "após participação" },
-  { label: "Oportunidades", value: "com critério UR" },
-] as const;
-
-const athleteData = [
+const levelCards = [
   {
-    label: "Presença",
-    value: "registrada",
-    detail: "participação e compromisso entram no histórico quando confirmados.",
-    icon: ShieldCheck,
+    title: "N1",
+    description: "Atletas de elite disputam protagonismo, ranking, convocações e alto rendimento.",
+    icon: "/season-1/badges/badge-n1.svg",
   },
   {
-    label: "Nível",
-    value: "observado",
-    detail: "leitura esportiva para competir com mais justiça e contexto.",
-    icon: Target,
+    title: "N2",
+    description: "Atletas avançados disputam consistência, evolução e oportunidades maiores.",
+    icon: "/season-1/badges/badge-n2.svg",
   },
   {
-    label: "Mídia",
-    value: "próxima camada",
-    detail: "destaques e bastidores podem virar memória esportiva.",
-    icon: Camera,
-  },
-  {
-    label: "Evolução",
-    value: "contínua",
-    detail: "CT UR, equipes e temporada conectam desenvolvimento e jornada.",
-    icon: Dumbbell,
-  },
-] as const;
-
-const rankingRows = [
-  {
-    position: "01",
-    title: "seu nome no ranking",
-    status: "sem atleta real publicado",
-    meta: "seu nome aparece conforme presença e desempenho confirmados.",
-  },
-  {
-    position: "02",
-    title: "histórico em primeira fase",
-    status: "ranking individual",
-    meta: "presença, evolução e participação serão tratados com critério.",
-  },
-  {
-    position: "03",
-    title: "destaque futuro",
-    status: "mídia própria",
-    meta: "a visibilidade cresce com presença, postura e temporada.",
+    title: "N3",
+    description: "Atletas em desenvolvimento disputam progresso, frequência e primeiras conquistas.",
+    icon: "/season-1/badges/badge-n3.svg",
   },
 ] as const;
 
 export default function AtletasPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar como atleta" },
+          { href: "/cadastro#atleta", label: "Cadastrar como atleta" },
           { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
         ]}
-        badges={["UR Play", "Ranking contínuo", "Mídia própria", "Mentalidade Hunter"]}
-        description="No Ultimate Rivals, sua presença, postura e desempenho começam a construir histórico. Você não entra apenas para jogar; entra para evoluir, aparecer e fazer parte de uma temporada organizada."
-        eyebrow="Para atletas"
+        badges={["UR Play", "N1 a N3", "ranking", "UR Coins", "mídia", "Legends"]}
+        description="Todo atleta tem espaço para entrar, evoluir, pontuar, aparecer e construir trajetória. Do iniciante ao elite, cada um disputa a própria temporada."
+        eyebrow="Jornada do atleta"
         image={siteImages.athletePortrait}
         imagePosition="center 18%"
-        metrics={[
-          { label: "Entrada", value: "UR Play e cadastro" },
-          { label: "Base", value: "histórico validado" },
-          { label: "Saída", value: "reputação e oportunidade" },
+        stats={[
+          { label: "entrada", value: "UR Play" },
+          { label: "níveis", value: "N1 / N2 / N3" },
+          { label: "trajetória", value: "ranking" },
         ]}
-        statusDescription="Aqui, sua postura, presença e desempenho começam a contar."
-        statusLabel="perfil inicial"
-        statusTitle="Não é só participar. É criar trajetória."
         title="Seu jogo precisa contar."
       />
 
-      <PageSection id="perfil">
-        <ProfileMockup
-          cta={{ href: "/cadastro#atleta", label: "Cadastrar interesse" }}
-          description="Aqui, o atleta deixa de ser apenas mais um participante. Cada presença pode ajudar a construir trajetória, ranking, mídia, oportunidades e reconhecimento."
-          eyebrow="O atleta é protagonista do UR"
-          fields={profileFields}
-          highlights={["disciplina", "presença", "evolução", "respeito", "competitividade saudável"]}
-          image={siteImages.defenseDive}
-          title="Perfil do atleta com presença, postura e evolução."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A jornada individual fica clara quando cada passo tem função dentro da temporada."
+        eyebrow="Para todos os níveis"
+        id="jornada"
+        title="Entrar, evoluir, pontuar e aparecer."
+      >
+        <SeasonJourney steps={athleteJourney} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="jornada">
-        <ProcessTimeline
-          description="Entre, jogue, evolua e construa seu histórico. Sua presença vira registro e seu desempenho ganha contexto."
-          eyebrow="Jornada do atleta"
-          steps={athleteJourney}
-          title="Sua trajetória começa pelo primeiro passo."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A versão anterior deixava claro que o atleta é protagonista da própria trajetória: presença, histórico, equipe e oportunidade precisam aparecer."
+        eyebrow="Protagonismo"
+        id="protagonismo"
+        title="Não precisa ser profissional para ser tratado com seriedade."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={protagonistCards} />
+      </SeasonSection>
 
-      <PageSection id="registro">
-        <DataBoard
-          description="Cada participação pode ajudar a construir presença, reputação, mídia e reconhecimento dentro do UR."
-          eyebrow="O que passa a contar"
-          items={athleteData}
-          title="Presença, desempenho e postura contam."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A divisão por nível reduz comparação injusta e melhora a experiência competitiva."
+        eyebrow="Níveis"
+        id="niveis"
+        title="Cada atleta disputa no seu contexto."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          {levelCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={levelRankingCards} />
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="midia">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/midia", label: "Ver mídia UR", variant: "secondary" },
-            { href: "/ct-ur", label: "Conhecer CT UR", variant: "ghost" },
-          ]}
-          description="O esporte amador também merece palco. A mídia UR existe para transformar sua participação em história, bastidor, reputação e memória da temporada."
-          eyebrow="Mídia e desenvolvimento"
-          image={siteImages.athleteFocus}
-          imagePosition="center 36%"
-          points={[
-            {
-              title: "Mentalidade Hunter",
-              description: "Cultura de disciplina, presença, respeito, preparo e evolução contínua, sem discurso milagroso.",
-            },
-            {
-              title: "CT UR",
-              description: "Base futura para desenvolvimento técnico, físico, mental e humano conectado à jornada.",
-            },
-          ]}
-          title="Competir é o começo. Evoluir é o caminho."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Mentalidade Hunter volta como cultura de postura: disciplina, respeito, evolução e competitividade saudável, sem promessa milagrosa."
+        eyebrow="Mentalidade"
+        id="mentalidade"
+        title="Postura também constrói reputação."
+      >
+        <SeasonBenefitGrid columns={4} items={hunterPrinciples} />
+      </SeasonSection>
 
-      <PageSection id="ranking-preview">
-        <LeaderboardPanel
-          description="Seu nome começa a aparecer quando sua presença é registrada. A posição nasce de participação, postura e desempenho confirmados."
-          eyebrow="Prévia do ranking individual"
-          image={siteImages.attackBlock}
-          rows={rankingRows}
-          tabs={["Individual", "Níveis", "Presença", "Mídia"]}
-          title="Reputação esportiva com critério."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Exemplos editoriais demonstram como perfil e ranking podem aparecer sem publicar atleta real antes de validação."
+        eyebrow="Perfil esportivo"
+        id="perfil"
+        title="O atleta ganha identidade pública."
+      >
+        <div className="grid gap-5 lg:grid-cols-[0.7fr_1fr]">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <AthleteArtCard name="Atleta Destaque" pole="BH" level="N1" points={0} rank={1} />
+            <AthleteArtCard name="Atleta Evolução" pole="Contagem" level="N3" points={0} />
+          </div>
+          <RankingBroadcastPanel rows={season1.mockRankings} />
+        </div>
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#atleta">Quero construir minha trajetória</Button>
-            <Button href="/ur-play" variant="secondary">
-              Começar pelo UR Play
-            </Button>
-          </>
-        }
-        description="O cadastro coloca você no radar do UR. A equipe analisa seu perfil e orienta o caminho certo para você começar."
-        eyebrow="Próximo passo"
-        items={["UR Play", "ranking", "mídia", "CT UR", "equipes"]}
-        statusLabel="cadastro aberto"
-        title="Quero construir minha trajetória."
-      />
+      <SeasonSection
+        description="Mídia, ranking, equipes, Draft, CT UR e recompensas entram como possibilidades conectadas a presença, regra e validação oficial."
+        eyebrow="Oportunidades"
+        id="oportunidades"
+        title="Sua trajetória pode abrir novos caminhos."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={visibilityCards} />
+          <SeasonBenefitGrid columns={2} items={opportunityCards} />
+        </div>
+        <div className="mt-5 grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={rewardsCards} />
+          <SeasonBenefitGrid columns={2} items={ctDevelopmentCards} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Dúvidas preservadas para reforçar cadastro, ranking em formação, reputação, mentalidade, equipes e publicação de dados."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como entrar sem perder contexto."
+      >
+        <SeasonAccordion items={athleteFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="Entre pelo UR Play e comece sua temporada.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Cadastrar como atleta</Button>
+          <Button href="/ranking" variant="secondary">
+            Ver ranking
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

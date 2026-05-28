@@ -1,204 +1,249 @@
 import type { Metadata } from "next";
-import { BarChart3, CheckCircle2, Eye } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  DataBoard,
-  ImageFeaturePanel,
-  LeaderboardPanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  ProductArtCard,
+  RankingBroadcastPanel,
+  RewardArtCard,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
+import { season1 } from "@/lib/content/season1";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteBenefits,
+  coinsRewardCards,
+  rankingLevelingCards,
+  teamBenefitsFromURPlay,
+  urPlayAudienceCards,
+  urPlayFaq,
+  urPlayIntroCards,
+} from "@/lib/content/ur-play";
 
 export const metadata: Metadata = {
-  title: "UR Play | Entrada Oficial no Ecossistema Ultimate Rivals",
+  title: "UR Play | Motor da Temporada Ultimate Rivals",
   description:
-    "Conheça o UR Play, a porta de entrada do Ultimate Rivals para atletas que querem entrar no ranking, evoluir por níveis, ganhar visibilidade, acumular UR Coins e disputar oportunidades no ecossistema.",
+    "UR Play e a porta de entrada do Ultimate Rivals para presença, nivelamento, ranking, UR Coins, midia, evolução e progressão dentro da temporada.",
 };
 
-const dayFlow = [
+const journeySteps = [
   {
-    label: "Cadastro",
-    title: "Você se cadastra",
-    description: "Escolhe seu perfil e entra no radar da equipe UR.",
-    status: "cadastro aberto",
+    label: "entrada",
+    title: "Entrar",
+    description: "Cadastro e orientação colocam o atleta no radar da temporada.",
   },
   {
-    label: "Orientação",
-    title: "A equipe orienta o próximo passo",
-    description: "A entrada acontece com critério para manter nível, respeito e equilíbrio.",
+    label: "presença",
+    title: "Jogar",
+    description: "Cada participação confirma presença, postura e contexto.",
   },
   {
-    label: "UR Play",
-    title: "Você participa do UR Play",
-    description: "Joga com organização, presença registrada e acompanhamento.",
+    label: "leitura",
+    title: "Ser observado",
+    description: "Nivelamento e comportamento ajudam a definir o próximo passo.",
   },
   {
-    label: "Histórico",
-    title: "Seu desempenho começa a contar",
-    description: "Presença, postura e evolução ajudam a construir histórico.",
-  },
-] as const;
-
-const registeredItems = [
-  {
-    label: "Para quem quer jogar mais",
-    value: "estrutura",
-    detail: "um caminho para atletas que querem sair do improviso e entrar em uma estrutura.",
-    icon: CheckCircle2,
+    label: "ranking",
+    title: "Pontuar",
+    description: "Desempenho e constância alimentam histórico competitivo.",
   },
   {
-    label: "Para quem quer ser visto",
-    value: "radar UR",
-    detail: "o UR Play aproxima o atleta do ranking, das equipes e da mídia UR.",
-    icon: Eye,
+    label: "progresso",
+    title: "Evoluir",
+    description: "O atleta ganha clareza sobre nível, função e oportunidade.",
   },
   {
-    label: "Para quem quer evoluir",
-    value: "contexto",
-    detail: "cada participação ajuda a entender nível, postura e momento esportivo.",
-    icon: BarChart3,
+    label: "palco",
+    title: "Aparecer",
+    description: "Mídia, ranking e eventos transformam presença em trajetória.",
   },
 ] as const;
 
-const rankingRows = [
+const motorCards = [
   {
-    position: "01",
-    title: "atleta observado",
-    status: "sem posição real nesta etapa",
-    meta: "participação confirmada será a base para histórico público futuro.",
+    title: "Pontos",
+    description: "Participação confirmada, desempenho e postura começam a formar base pública.",
+    icon: "/season-1/symbols/ur-play-line.svg",
   },
   {
-    position: "02",
-    title: "nível em leitura",
-    status: "critérios esportivos",
-    meta: "nivelamento ajuda a tornar a competição mais justa.",
+    title: "UR Coins",
+    description: "Moedas internas conectam presença e mérito a benefícios aprovados.",
+    icon: "/season-1/symbols/ur-coins-line.svg",
   },
   {
-    position: "03",
-    title: "próxima oportunidade",
-    status: "temporada estruturada",
-    meta: "equipes, eventos e mídia dependem da agenda oficial.",
+    title: "Ranking",
+    description: "O ranking nasce do jogo real e evolui com critérios oficiais.",
+    icon: "/season-1/symbols/forca-dos-polos-line.svg",
+  },
+  {
+    title: "Nivelamento",
+    description: "N1, N2 e N3 ajudam a equilibrar disputa e leitura esportiva.",
+    icon: "/season-1/badges/badge-n1.svg",
+  },
+  {
+    title: "Mídia",
+    description: "Histórias, bastidores e destaques ganham palco quando existe recorrência.",
+    icon: "/season-1/symbols/ur-series-line.svg",
+  },
+  {
+    title: "Caminho ao Legends",
+    description: "Quem constrói temporada pode buscar classificação para os níveis acima.",
+    icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
 
 export default function URPlayPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Começar no UR Play" },
+          { href: "/cadastro#atleta", label: "Entrar no UR Play" },
           { href: "/ranking", label: "Ver ranking", variant: "secondary" },
         ]}
-        badges={["Entrada oficial", "Observação", "Nivelamento", "Histórico"]}
-        description="Você joga, é observado, cria presença e entra no radar do ecossistema. Não é só uma partida: é o primeiro passo para ranking, equipes, mídia e oportunidades dentro do UR."
-        eyebrow="Porta de entrada"
+        badges={["presença", "pontuação", "UR Coins", "nivelamento", "mídia", "Legends"]}
+        description="A principal porta de entrada da temporada. Você joga, é observado, pontua, evolui e começa a construir histórico dentro do ecossistema."
+        eyebrow="Motor da temporada"
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
-        metrics={[
-          { label: "Antes", value: "cadastro e orientação" },
-          { label: "Durante", value: "presença, jogo e observação" },
-          { label: "Depois", value: "registro e próximos passos" },
+        stats={[
+          { label: "origem", value: "UR Play" },
+          { label: "impacto", value: "ranking" },
+          { label: "progressão", value: "Legends" },
         ]}
-        statusDescription="Você joga, é visto, recebe contexto e começa a construir sua trajetória."
-        statusLabel="agenda em organização"
-        statusTitle="O UR Play é onde seu jogo começa a ser observado."
-        title="UR Play é onde sua trajetória começa."
+        title="O jogo começa no UR Play."
       />
 
-      <PageSection id="nao-e-rachao">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/cadastro#atleta", label: "Registrar interesse" },
-            { href: "/regulamento", label: "Ver regulamento", variant: "secondary" },
-          ]}
-          description="O UR Play é a porta de entrada para ser visto, avaliado e conectado ao ecossistema. Cada participação pode virar ponto, história, mídia e oportunidade."
-          eyebrow="Posicionamento"
-          image={siteImages.fairPlayLine}
-          imagePosition="center 48%"
-          points={[
-            {
-              title: "Observação com critério",
-              description: "Sua presença, postura e nível ajudam a definir o caminho.",
-            },
-            {
-              title: "Conexão com temporada",
-              description: "O UR Play alimenta ranking, equipes, eventos, mídia e oportunidades futuras.",
-            },
-          ]}
-          statusLabel="registro com critério"
-          title="Não é só uma partida. É começo de histórico."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Presença vira histórico. Desempenho vira posição. Evolução vira oportunidade."
+        eyebrow="Jornada visual"
+        id="jornada"
+        title="Da entrada ao palco."
+      >
+        <SeasonJourney steps={journeySteps} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="fluxo-do-dia">
-        <ProcessTimeline
-          description="Você entende o dia em poucos passos: cadastro, orientação, participação e histórico."
-          eyebrow="Como funciona"
-          steps={dayFlow}
-          title="Do cadastro ao registro esportivo."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O conteúdo antigo deixava claro que o UR Play não é rachão: é cadastro, orientação, observação, nivelamento e registro. Essa explicação volta em formato compacto."
+        eyebrow="Porta de entrada oficial"
+        id="entrada"
+        title="Jogar mais, ser visto e evoluir."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={urPlayIntroCards} />
+      </SeasonSection>
 
-      <PageSection id="registro">
-        <DataBoard
-          description="O UR Play aproxima o atleta do ranking, das equipes e da mídia UR. Cada participação ajuda a entender nível, postura e momento esportivo."
-          eyebrow="O que é registrado"
-          items={registeredItems}
-          title="Para quem quer jogar mais, ser visto e evoluir."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O UR Play atende atletas individuais, atletas com equipe e novos talentos. A entrada não depende de ser profissional: depende de cadastro, agenda, nível e critério."
+        eyebrow="Para todos os níveis"
+        id="publicos"
+        title="Cada atleta entra pelo caminho certo."
+      >
+        <SeasonBenefitGrid items={urPlayAudienceCards} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="ranking-nivelamento">
-        <LeaderboardPanel
-          description="Seu nome começa a aparecer conforme sua presença e desempenho. O ranking só ganha dados reais com participação confirmada."
-          eyebrow="Nivelamento e ranking"
-          image={siteImages.attackBlock}
-          rows={rankingRows}
-          tabs={["UR Play", "Nível", "Presença", "Ranking"]}
-          title="A entrada vira leitura de temporada."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O UR Play não é uma partida solta. Ele alimenta ranking, UR Coins, mídia, eventos, equipes e progressão."
+        eyebrow="O que o UR Play alimenta"
+        id="motor"
+        title="Tudo começa no jogo real."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {motorCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection id="agenda">
-        <ImageFeaturePanel
-          description="Polos, horários, categorias e modalidades entram conforme calendário confirmado. O objetivo é abrir uma agenda recorrente sem publicar datas não confirmadas."
-          eyebrow="Agenda e polos"
-          image={siteImages.wideServe}
-          imagePosition="center 45%"
-          points={[
-            {
-              title: "Polo em formação",
-              description: "Quadras parceiras e agenda local serão confirmadas antes da divulgação pública.",
-            },
-            {
-              title: "Participação orientada",
-              description: "O cadastro inicia a orientação; a entrada depende de equilíbrio de nível, agenda e organização.",
-            },
-          ]}
-          reverse
-          statusLabel="agenda será publicada após confirmação"
-          title="O UR Play cresce por polos, não por improviso."
-        />
-      </PageSection>
+      <SeasonSection
+        description="O ranking só ganha peso quando nasce de presença confirmada. A leitura inicial do UR Play prepara a disputa por nível."
+        eyebrow="Ranking em formação"
+        id="ranking"
+        title="Seu jogo começa a contar."
+      >
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.55fr)]">
+          <RankingBroadcastPanel rows={season1.mockRankings} />
+          <div className="grid gap-4">
+            <RewardArtCard
+              description="O atleta entra, joga, cria presença e começa a disputar posição."
+              icon="/season-1/symbols/ur-play-line.svg"
+              title="Porta de entrada"
+            />
+            <RewardArtCard
+              description="A temporada aponta o caminho para Sprint, Series e Legends."
+              icon="/season-1/symbols/ur-legends-line.svg"
+              title="Progressão"
+              note="Classificação depende de regra oficial e participação confirmada."
+            />
+          </div>
+        </div>
+        <div className="mt-5">
+          <SeasonBenefitGrid items={rankingLevelingCards} />
+        </div>
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#atleta">Começar no UR Play</Button>
-            <Button href="/eventos" variant="secondary">
-              Ver eventos UR
-            </Button>
-          </>
-        }
-        description="Registre interesse para receber orientação quando agenda, polo e participação estiverem confirmados."
-        eyebrow="Entrada oficial"
-        items={["cadastro", "orientação", "jogo", "histórico", "ranking"]}
-        statusLabel="entrada com critério"
-        title="A jornada começa no UR Play, mas não termina no primeiro jogo."
-      />
+      <SeasonSection
+        description="Participar pode abrir leitura individual, radar para equipes, mídia e benefícios futuros. Nada é automático: tudo depende de presença validada e regras oficiais."
+        eyebrow="Depois do jogo"
+        id="oportunidades"
+        title="A participação passa a construir valor."
+        variant="raised"
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <SeasonBenefitGrid columns={2} items={athleteBenefits} />
+          <SeasonBenefitGrid columns={2} items={teamBenefitsFromURPlay} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="UR Coins aparecem como camada planejada de reconhecimento por presença, missões, conquistas e engajamento validados."
+        eyebrow="UR Coins"
+        id="coins"
+        title="Benefício só entra com critério."
+      >
+        <SeasonBenefitGrid items={coinsRewardCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="A escada oficial mostra por que o UR Play importa: ele é o primeiro degrau da temporada."
+        eyebrow="Escada oficial"
+        id="escada"
+        title="Play, Sprint, Series, Legends."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {season1.ladder.map((product) => (
+            <ProductArtCard key={product.id} product={product} />
+          ))}
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="As dúvidas mais importantes foram preservadas para evitar promessa exagerada e orientar o próximo passo do atleta."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="Como começa, o que conta e o que ainda depende de validação."
+        variant="raised"
+      >
+        <SeasonAccordion items={urPlayFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="Todo atleta tem uma temporada para disputar.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Entrar no UR Play</Button>
+          <Button href="/temporada" variant="secondary">
+            Ver temporada
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }

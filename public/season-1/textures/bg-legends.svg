@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="legendsGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#2A1F0C;stop-opacity:1"></stop>
+      <stop offset="100%" style="stop-color:#0A0A0B;stop-opacity:1"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#legendsGrad)"></rect>
+  <g opacity="0.15" fill="#D4A437">
+    <polygon points="600,100 620,150 675,150 635,185 650,235 600,205 550,235 565,185 525,150 580,150" transform="translate(-200,-50) scale(0.8)"></polygon>
+    <polygon points="600,100 620,150 675,150 635,185 650,235 600,205 550,235 565,185 525,150 580,150" transform="translate(200,150) scale(0.6)"></polygon>
+    <polygon points="600,100 620,150 675,150 635,185 650,235 600,205 550,235 565,185 525,150 580,150" transform="translate(-150,200) scale(0.5)"></polygon>
+  </g>
+</svg>

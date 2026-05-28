@@ -1,212 +1,221 @@
 import type { Metadata } from "next";
-import { BadgePercent, Dumbbell, Gift, Handshake, ShoppingBag, Sparkles, Trophy, Users } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import {
-  CommercialAssetPanel,
-  DataBoard,
-  ImageFeaturePanel,
-  ProcessTimeline,
-} from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
 import { Button } from "@/components/ui/button";
+import {
+  RewardArtCard,
+  SeasonAccordion,
+  SeasonBenefitGrid,
+  SeasonInfoCard,
+  SeasonJourney,
+  SeasonPageHero,
+  SeasonSection,
+} from "@/components/season";
 import { siteImages } from "@/lib/content/site-images";
+import {
+  athleteMarketBenefits,
+  coinMechanicsCards,
+  ecosystemRelationCards,
+  marketFaq,
+  marketIntroCards,
+  performanceBenefitFlow,
+  rewardCategories,
+  sponsorMarketBenefits,
+  teamMarketBenefits,
+} from "@/lib/content/ur-market";
 
 export const metadata: Metadata = {
-  title: "UR Market | Recompensas, UR Coins e Benefícios Ultimate Rivals",
+  title: "UR Market | UR Coins, Benefícios e Recompensas Ultimate Rivals",
   description:
-    "Conheça o UR Market, a vitrine de recompensas do Ultimate Rivals onde UR Coins, desempenho, ranking, patrocinadores e benefícios se conectam ao ecossistema esportivo.",
+    "UR Market e a vitrine de benefícios aprovados do Ultimate Rivals, conectando presença, mérito, UR Coins, patrocinadores e experiências com regras oficiais.",
 };
 
-const coinItems = [
+const marketCards = [
   {
-    label: "Produtos e experiências",
-    value: "benefícios",
-    detail: "benefícios podem incluir produtos, serviços, experiências e ações com parceiros.",
-    icon: Users,
+    title: "UR Coins",
+    description: "Pontos internos que conectam presença, desempenho e participação a possibilidades futuras.",
+    icon: "/season-1/symbols/ur-coins-line.svg",
   },
   {
-    label: "Atletas e equipes",
-    value: "participação",
-    detail: "atletas e equipes podem acumular e usar moedas conforme as regras da temporada.",
-    icon: Trophy,
+    title: "UR Market",
+    description: "Catálogo em expansão com benefícios aprovados e sujeitos a disponibilidade.",
+    icon: "/season-1/symbols/ur-play-line.svg",
   },
   {
-    label: "Parceiros integrados",
-    value: "benefício real",
-    detail: "marcas podem entrar oferecendo benefícios reais para a comunidade UR.",
-    icon: Sparkles,
+    title: "Produtos oficiais",
+    description: "Itens da temporada podem entrar no catálogo quando houver regra e estoque confirmados.",
+    icon: "/season-1/cards-preview/product-card-play.svg",
   },
   {
-    label: "Resgate com aprovação",
-    value: "critério",
-    detail: "todo benefício precisa respeitar critérios, disponibilidade e equilíbrio do sistema.",
-    icon: ShoppingBag,
-  },
-] as const;
-
-const rewardAssets = [
-  {
-    label: "Produtos",
-    title: "Itens esportivos",
-    description: "Vitrine preparada para produtos aprovados, sem preços ou marcas inventadas.",
-    icon: Gift,
+    title: "Performance",
+    description: "Serviços de fisio, nutrição, treino e avaliação dependem de parceiros aprovados.",
+    icon: "/season-1/symbols/ur-sprint-line.svg",
   },
   {
-    label: "Serviços",
-    title: "Apoio ao atleta",
-    description: "Benefícios de parceiros podem incluir serviços úteis à jornada esportiva.",
-    icon: BadgePercent,
-  },
-  {
-    label: "Experiências",
-    title: "CT UR e eventos",
-    description: "Acesso, vivências e experiências entram conforme agenda confirmada.",
-    icon: Dumbbell,
-  },
-  {
-    label: "Ativações",
     title: "Patrocinadores",
-    description: "Marcas podem oferecer benefícios reais para atletas e comunidade.",
-    icon: Handshake,
+    description: "Marcas podem oferecer produtos e serviços conectados à jornada esportiva.",
+    icon: "/season-1/symbols/ur-series-line.svg",
+  },
+  {
+    title: "Experiências",
+    description: "Acesso, prioridade e ações especiais entram apenas com disponibilidade e regra pública.",
+    icon: "/season-1/symbols/ur-legends-line.svg",
   },
 ] as const;
 
-const redemptionFlow = [
-  {
-    label: "Contexto",
-    title: "Ganhar contexto",
-    description: "Participação, ranking, presença e engajamento criam base para UR Coins.",
-  },
-  {
-    label: "Vitrine",
-    title: "Acessar vitrine",
-    description: "Benefícios aprovados aparecem em categorias claras e sem promessa inflada.",
-  },
-  {
-    label: "Resgate",
-    title: "Solicitar resgate",
-    description: "Valores em UR Coins serão definidos oficialmente antes de qualquer resgate real.",
-  },
-  {
-    label: "Confirmação",
-    title: "Confirmar resgate",
-    description: "A equipe UR confirma disponibilidade, regra, parceiro e próximo passo.",
-  },
-] as const;
+const marketFlowSteps = performanceBenefitFlow.map(({ label, description }) => ({
+  label,
+  title: label,
+  description,
+}));
 
 export default function URMarketPage() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
+    <main className="bg-[#0A0A0B] text-[#F4F0E6]">
+      <SeasonPageHero
         actions={[
-          { href: "#coins", label: "Conhecer o UR Market" },
+          { href: "#catalogo", label: "Ver UR Market" },
           { href: "/patrocinadores", label: "Ativar marca", variant: "secondary" },
         ]}
-        badges={["UR Coins", "Benefícios", "Patrocinadores", "Recompensas", "Recorrência"]}
-        description="UR Coins são pontos internos do Ultimate Rivals. Elas conectam presença, desempenho e participação a benefícios, experiências e oportunidades aprovadas pela UR."
-        eyebrow="UR Coins e benefícios"
+        badges={["UR Coins", "benefícios aprovados", "catálogo em expansão", "regras oficiais"]}
+        description="Presença, mérito e participação podem abrir acesso a benefícios aprovados. Sem promessa automática, sem resgate sem regra."
+        eyebrow="Benefícios e vitrine"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
-        metrics={[
-          { label: "Pontos", value: "UR Coins" },
-          { label: "Base", value: "ranking e participação" },
-          { label: "Saída", value: "benefícios aprovados" },
+        stats={[
+          { label: "moeda", value: "UR Coins" },
+          { label: "status", value: "em expansão" },
+          { label: "regra", value: "oficial" },
         ]}
-        statusDescription="As UR Coins não são dinheiro. São pontos internos de reconhecimento e acesso a benefícios aprovados pela UR."
-        statusLabel="benefícios aprovados pela UR"
-        statusTitle="Não é prêmio fácil. É reconhecimento com regra."
-        title="Benefícios com critério. Evolução com valor."
+        title="Jogue, pontue e desbloqueie possibilidades."
       />
 
-      <PageSection id="coins">
-        <DataBoard
-          description="As UR Coins ajudam a transformar participação em valor dentro do ecossistema. O uso depende de critérios, disponibilidade e aprovação da UR."
-          eyebrow="Painel de UR Coins"
-          items={coinItems}
-          title="Não é prêmio fácil. É reconhecimento com regra."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A vitrine organiza possibilidades. Todo benefício depende de regra oficial, disponibilidade, parceiro e validação."
+        eyebrow="Catálogo em expansão"
+        id="catalogo"
+        title="Benefícios com critério."
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {marketCards.map((card) => (
+            <SeasonInfoCard
+              description={card.description}
+              icon={card.icon}
+              key={card.title}
+              title={card.title}
+            />
+          ))}
+        </div>
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="vitrine">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/ranking", label: "Ver ranking", variant: "secondary" },
-            { href: "/cadastro#patrocinador", label: "Oferecer benefício", variant: "ghost" },
-          ]}
-          description="A vitrine nasce para mostrar benefícios com critério, sem prometer produtos, marcas, preços ou experiências antes da aprovação da UR."
-          eyebrow="Vitrine de benefícios UR"
-          image={siteImages.teamEmbrace}
-          imagePosition="center 46%"
-          points={[
-            {
-              title: "Produtos entram com critério",
-              description: "A experiência precisa proteger atletas, marcas e comunidade antes de abrir resgate real.",
-            },
-            {
-              title: "Valores em UR Coins serão oficiais",
-              description: "Nenhuma precificação fictícia será exibida no site público.",
-            },
-          ]}
-          title="Vitrine de benefícios UR."
-        />
-      </PageSection>
+      <SeasonSection
+        description="A explicação antiga sobre vitrine, UR Coins e patrocinadores volta para deixar claro que o Market é canal de possibilidades, não promessa de resgate."
+        eyebrow="Como o Market funciona"
+        id="como-funciona"
+        title="Benefício aprovado precisa de regra."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={marketIntroCards} />
+      </SeasonSection>
 
-      <PageSection id="categorias">
-        <CommercialAssetPanel
-          assets={rewardAssets}
-          description="As categorias preparam produtos, serviços, experiências e ativações comerciais, sempre com benefícios reais aprovados pela UR."
-          eyebrow="Categorias de recompensa"
-          title="Recompensas com critério."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Presença e desempenho podem virar leitura de benefício apenas quando existirem critérios oficiais, saldo definido e disponibilidade aprovada."
+        eyebrow="Fluxo de valor"
+        id="fluxo"
+        title="Participação, critério, UR Coins e benefícios."
+      >
+        <SeasonJourney steps={marketFlowSteps} />
+      </SeasonSection>
 
-      <PageSection className="bg-[#07080c]" id="resgate">
-        <ProcessTimeline
-          description="Primeiro vem presença, desempenho e participação. Depois, benefícios aprovados conforme regra, disponibilidade e equilíbrio do sistema."
-          eyebrow="Resgate com aprovação"
-          steps={redemptionFlow}
-          title="Como valor pode virar benefício."
-        />
-      </PageSection>
+      <SeasonSection
+        description="UR Coins ainda não são carteira real. Elas organizam uma lógica futura de reconhecimento por presença, ranking, missões e engajamento validado."
+        eyebrow="UR Coins"
+        id="coins"
+        title="Moeda interna em formação."
+        variant="raised"
+      >
+        <SeasonBenefitGrid items={coinMechanicsCards} />
+      </SeasonSection>
 
-      <PageSection id="patrocinadores">
-        <ImageFeaturePanel
-          description="Patrocinadores podem entrar no Market oferecendo benefícios reais para atletas, equipes e comunidade. Isso fortalece retenção, engajamento e recorrência sem depender de exposição vazia."
-          eyebrow="Patrocinadores no Market"
-          image={siteImages.sponsorActivation}
-          imagePosition="center 44%"
-          points={[
-            {
-              title: "Benefício real",
-              description: "Produtos, serviços, descontos ou experiências precisam ser úteis para a comunidade.",
-            },
-            {
-              title: "Relacionamento contínuo",
-              description: "A marca participa da jornada esportiva antes, durante e depois da temporada.",
-            },
-          ]}
-          reverse
-          statusLabel="patrocinadores após aprovação"
-          title="Marcas podem gerar valor além do banner."
-        />
-      </PageSection>
+      <SeasonSection
+        description="Produtos oficiais, serviços de performance, experiências, mídia e recompensas entram somente após aprovação, estoque, regra e parceiro confirmados."
+        eyebrow="Categorias"
+        id="categorias"
+        title="O que pode entrar no catálogo."
+      >
+        <SeasonBenefitGrid items={rewardCategories} />
+      </SeasonSection>
 
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro#atleta">Entrar como atleta</Button>
-            <Button href="/cadastro#patrocinador" variant="secondary">
-              Quero oferecer benefício
-            </Button>
-          </>
-        }
-        description="UR Coins conectam presença, desempenho e participação a benefícios, experiências e oportunidades aprovadas pela UR."
-        eyebrow="Próximo passo"
-        items={["UR Coins", "ranking", "benefícios", "patrocinadores", "comunidade"]}
-        statusLabel="benefícios aprovados pela UR"
-        title="Conhecer o UR Market."
-      />
+      <SeasonSection
+        description="Repasses e premiações não são promessa. Eles dependem de caixa, margem, confirmação e regra oficial."
+        eyebrow="Economia responsável"
+        id="regras"
+        title="Valor só entra quando a operação sustenta."
+        variant="raised"
+      >
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <RewardArtCard
+            description="Moedas internas de reconhecimento e acesso a benefícios aprovados."
+            icon="/season-1/symbols/ur-coins-line.svg"
+            title="UR Coins"
+          />
+          <RewardArtCard
+            description="Produtos, serviços e experiências entram com disponibilidade confirmada."
+            icon="/season-1/symbols/ur-play-line.svg"
+            title="Benefícios aprovados"
+          />
+          <RewardArtCard
+            description="Marcas podem entrar na jornada com ofertas úteis para atletas."
+            icon="/season-1/symbols/ur-series-line.svg"
+            title="Patrocinadores"
+          />
+          <RewardArtCard
+            description="Repasses dependem de caixa, margem, confirmação e regra oficial."
+            icon="/season-1/symbols/ur-legends-line.svg"
+            title="Repasses sustentáveis"
+            note="Nada automático ou garantido nesta etapa."
+          />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="Atletas, equipes e patrocinadores entram no Market por razões diferentes. O ponto comum é utilidade real com regra clara."
+        eyebrow="Por público"
+        id="publicos"
+        title="Benefício precisa fazer sentido para quem participa."
+      >
+        <div className="grid gap-5">
+          <SeasonBenefitGrid columns={2} items={athleteMarketBenefits} />
+          <SeasonBenefitGrid columns={2} items={teamMarketBenefits} />
+          <SeasonBenefitGrid columns={2} items={sponsorMarketBenefits} />
+        </div>
+      </SeasonSection>
+
+      <SeasonSection
+        description="O Market se conecta a ranking, temporada, UR Play e CT UR para criar recorrência sem prometer prêmio automático."
+        eyebrow="Ecossistema"
+        id="ecossistema"
+        title="O catálogo não vive separado da temporada."
+        variant="raised"
+      >
+        <SeasonBenefitGrid columns={4} items={ecosystemRelationCards} />
+      </SeasonSection>
+
+      <SeasonSection
+        description="Regras preservadas para não prometer produto, saldo, resgate ou retorno financeiro sem validação."
+        eyebrow="Dúvidas rápidas"
+        id="faq"
+        title="O que existe, o que é futuro e o que depende de regra."
+      >
+        <SeasonAccordion items={marketFaq} />
+      </SeasonSection>
+
+      <SeasonSection id="cta" title="O UR Market cresce junto com a temporada.">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button href="/cadastro#atleta">Entrar na temporada</Button>
+          <Button href="/cadastro#patrocinador" variant="secondary">
+            Oferecer benefício
+          </Button>
+        </div>
+      </SeasonSection>
     </main>
   );
 }
