@@ -16,42 +16,41 @@ export const mobileNavigationGroups = [
     label: "Começar",
     items: [
       { label: "Como funciona", href: "/#como-funciona" },
-      { label: "Primeiro passo", href: "/#primeiro-passo" },
-      { label: "Cadastro", href: "/cadastro" },
       { label: "UR Play", href: "/ur-play" },
+      { label: "Cadastro", href: "/cadastro" },
     ],
   },
   {
-    label: "Participação",
+    label: "Temporada",
     items: [
       { label: "Modalidades", href: "/#modalidades" },
       { label: "Polos", href: "/#polos" },
+      { label: "Eventos", href: "/eventos" },
+      { label: "Ranking", href: "/ranking" },
       { label: "Equipes", href: "/equipes" },
-      { label: "Temporada", href: "/temporada" },
     ],
   },
   {
     label: "Evolução",
     items: [
-      { label: "Ranking", href: "/ranking" },
-      { label: "Eventos", href: "/eventos" },
+      { label: "Atletas", href: "/atletas" },
+      { label: "CT UR", href: "/ct-ur" },
       { label: "Mídia", href: "/midia" },
     ],
   },
   {
     label: "Benefícios",
     items: [
-      { label: "Benefícios", href: "/#recompensas" },
       { label: "UR Market", href: "/ur-market" },
       { label: "Patrocinadores", href: "/patrocinadores" },
+      { label: "Quadras", href: "/quadras-parceiras" },
     ],
   },
   {
     label: "Apoio",
     items: [
       { label: "Regulamento", href: "/regulamento" },
-      { label: "Quadras parceiras", href: "/quadras-parceiras" },
-      { label: "CT UR", href: "/ct-ur" },
+      { label: "Ecossistema", href: "/ecossistema" },
     ],
   },
 ] as const;
@@ -79,24 +78,20 @@ export const footerColumns = [
   {
     title: "Ultimate Rivals",
     links: [
-      { label: "O Ecossistema", href: "/ecossistema" },
       { label: "Temporada", href: "/temporada" },
+      { label: "Como funciona", href: "/#como-funciona" },
       { label: "Ranking", href: "/ranking" },
-      { label: "CT UR", href: "/ct-ur" },
-      { label: "Mídia", href: "/midia" },
       { label: "Regulamento", href: "/regulamento" },
     ],
   },
   {
     title: "Participar",
     links: [
+      { label: "UR Play", href: "/ur-play" },
       { label: "Cadastro UR", href: "/cadastro" },
       { label: "Atletas", href: "/atletas" },
-      { label: "UR Play", href: "/ur-play" },
+      { label: "Equipes", href: "/equipes" },
       { label: "Cadastro de atleta", href: "/cadastro#atleta" },
-      { label: "Cadastro de equipe", href: "/cadastro#equipe" },
-      { label: "Eventos", href: "/eventos" },
-      { label: "Contato", href: "/contato" },
     ],
   },
   {
@@ -105,18 +100,15 @@ export const footerColumns = [
       { label: "Patrocinadores", href: "/patrocinadores" },
       { label: "Quadras parceiras", href: "/quadras-parceiras" },
       { label: "UR Market", href: "/ur-market" },
-      { label: "Mídia Kit", href: "/patrocinadores" },
       { label: "Contato comercial", href: "/contato" },
     ],
   },
   {
     title: "Comunidade",
     links: [
-      { label: "Instagram", href: "/cadastro#comunidade" },
       { label: "Mídia UR", href: "/midia" },
+      { label: "Ecossistema", href: "/ecossistema" },
       { label: "WhatsApp", href: "/cadastro#comunidade" },
-      { label: "Quadras parceiras", href: "/quadras-parceiras" },
-      { label: "Ranking", href: "/ranking" },
       { label: "Privacidade", href: "/privacidade" },
     ],
   },
