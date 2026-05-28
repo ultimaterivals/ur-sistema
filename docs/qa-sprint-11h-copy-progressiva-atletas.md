@@ -148,6 +148,37 @@ Resultados do refino:
 - Polos aparecem com 3 cards destacados.
 - Ordem das secoes principais validada por script.
 
+## Resolucao de conflitos com main
+
+Arquivos resolvidos:
+
+- `app/page.tsx`
+- `app/equipes/page.tsx`
+- `docs/qa-sprint-11h-copy-progressiva-atletas.md`
+
+Decisao aplicada:
+
+- Em `app/page.tsx`, foi preservada a versao da Sprint 11H-2 para manter o hero `Escolha seu primeiro passo no UR.`, a Home iniciando por explicacao, a ordem mobile Hero, Como funciona, Modalidades, Polos, Proximos passos, Evolucao, Beneficios e Apoio, as modalidades reduzidas a `Dupla` e `Quarteto` e os polos com cards maiores, area visual, escudo, subtitulo e CTA.
+- Em `app/equipes/page.tsx`, foram preservados os refinamentos de copy e organizacao da Sprint 11H, incluindo badges e exemplos editoriais com `Dupla` e `Quarteto`.
+- Neste QA, foram mantidos os registros da Sprint 11H original e do refino 11H-2, com esta secao adicional de merge contra `origin/main`.
+
+Confirmacao:
+
+- A Home nao voltou para linguagem anterior.
+- A Home nao inicia com cadastro ou "Entrar na temporada" antes de explicar a jornada.
+- O refinamento de navegacao mobile e hierarquia da Home foi preservado.
+- Nenhum formulario, endpoint, hash, integracao ou arquivo `.patch` foi incluido na resolucao.
+
+Validacao apos resolucao:
+
+- `git grep -n "^<<<<<<<\|^=======$\|^>>>>>>>"`: sem marcadores de conflito.
+- `npm.cmd run lint`: aprovado, mantendo apenas warnings existentes de fonte customizada em `app/layout.tsx` e uso de `<img>` em `app/page.tsx`.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `set NODE_OPTIONS=--max-old-space-size=8192` + `npm.cmd run build`: aprovado.
+- QA minimo Playwright aprovado em `390x844`, `430x932`, `768x1024` e `1366x768`.
+- Rotas do QA minimo: `/`, `/equipes`, `/temporada`, `/ur-play` e `/cadastro`.
+- Evidencia: `output/playwright/merge-11h2-summary.json`.
+
 ## Escopo preservado
 
 - Backend nao alterado.
