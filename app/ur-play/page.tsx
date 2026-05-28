@@ -32,33 +32,33 @@ export const metadata: Metadata = {
 const journeySteps = [
   {
     label: "entrada",
-    title: "Entrar",
-    description: "Cadastro e orientação colocam o atleta no radar da temporada.",
+    title: "Você se cadastra",
+    description: "Informações básicas ajudam a organizar presença, nível e participação.",
   },
   {
     label: "presença",
-    title: "Jogar",
-    description: "Cada participação confirma presença, postura e contexto.",
+    title: "Você participa",
+    description: "Comparece aos jogos, treinos, encontros ou atividades abertas do ecossistema.",
   },
   {
     label: "leitura",
-    title: "Ser observado",
-    description: "Nivelamento e comportamento ajudam a definir o próximo passo.",
+    title: "Você é observado",
+    description: "Critérios técnicos, comportamentais e de presença ajudam a entender sua evolução.",
   },
   {
     label: "ranking",
-    title: "Pontuar",
-    description: "Desempenho e constância alimentam histórico competitivo.",
+    title: "Você começa a pontuar",
+    description: "Participação, postura e desempenho começam a formar seu histórico.",
   },
   {
     label: "progresso",
-    title: "Evoluir",
-    description: "O atleta ganha clareza sobre nível, função e oportunidade.",
+    title: "Você evolui de etapa",
+    description: "Com o tempo, pode acessar eventos, equipes, ranking e experiências maiores.",
   },
   {
     label: "palco",
-    title: "Aparecer",
-    description: "Mídia, ranking e eventos transformam presença em trajetória.",
+    title: "Você ganha contexto",
+    description: "Mídia, ranking e eventos ajudam a transformar presença em trajetória.",
   },
 ] as const;
 
@@ -104,8 +104,8 @@ export default function URPlayPage() {
           { href: "/ranking", label: "Ver ranking", variant: "secondary" },
         ]}
         badges={["presença", "pontuação", "UR Coins", "nivelamento", "mídia", "Legends"]}
-        description="A principal porta de entrada da temporada. Você joga, é observado, pontua, evolui e começa a construir histórico dentro do ecossistema."
-        eyebrow="Motor da temporada"
+        description="O UR Play é a porta de entrada do Ultimate Rivals. É onde o atleta participa, é observado, começa a formar histórico e entende como pode evoluir dentro do ecossistema."
+        eyebrow="Porta de entrada"
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
         stats={[
@@ -113,14 +113,14 @@ export default function URPlayPage() {
           { label: "impacto", value: "ranking" },
           { label: "progressão", value: "Legends" },
         ]}
-        title="O jogo começa no UR Play."
+        title="O primeiro passo da sua temporada."
       />
 
       <SeasonSection
-        description="Presença vira histórico. Desempenho vira posição. Evolução vira oportunidade."
+        description="Você não precisa começar em uma grande competição. O UR Play existe para criar entrada, ritmo, avaliação e pertencimento."
         eyebrow="Jornada visual"
         id="jornada"
-        title="Da entrada ao palco."
+        title="O primeiro passo é jogar."
       >
         <SeasonJourney steps={journeySteps} />
       </SeasonSection>
@@ -129,7 +129,7 @@ export default function URPlayPage() {
         description="O conteúdo antigo deixava claro que o UR Play não é rachão: é cadastro, orientação, observação, nivelamento e registro. Essa explicação volta em formato compacto."
         eyebrow="Porta de entrada oficial"
         id="entrada"
-        title="Jogar mais, ser visto e evoluir."
+        title="Jogar, ser observado e evoluir."
         variant="raised"
       >
         <SeasonBenefitGrid items={urPlayIntroCards} />
@@ -236,7 +236,7 @@ export default function URPlayPage() {
         <SeasonAccordion items={urPlayFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Todo atleta tem uma temporada para disputar.">
+      <SeasonSection id="cta" title="Você não precisa chegar pronto. Precisa começar.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button href="/cadastro#atleta">Entrar no UR Play</Button>
           <Button href="/temporada" variant="secondary">

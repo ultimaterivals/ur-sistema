@@ -98,11 +98,11 @@ export default function CTURPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar como atleta" },
-          { href: "/atletas", label: "Ver jornada do atleta", variant: "secondary" },
+          { href: "#pilares", label: "Conhecer metodologia" },
+          { href: "/ur-play", label: "Entrar pelo UR Play", variant: "secondary" },
         ]}
         badges={["técnico", "físico", "mental", "liderança", "análise"]}
-        description="O CT UR é a camada de desenvolvimento do ecossistema: formação técnica, física, mental e humana conectada a UR Play, ranking, equipes, mídia e temporada."
+        description="O CT UR conecta desenvolvimento técnico, físico, mental e comportamental para atletas que querem evoluir com mais clareza."
         eyebrow="CT UR - desenvolvimento"
         image={siteImages.timeoutTalk}
         imagePosition="center 42%"
@@ -111,11 +111,11 @@ export default function CTURPage() {
           { label: "trabalho", value: "treino" },
           { label: "retorno", value: "temporada" },
         ]}
-        title="Treino é parte da jornada, não promessa milagrosa."
+        title="Treino para evoluir com direção."
       />
 
       <SeasonSection
-        description="O CT UR trabalha desenvolvimento como cultura esportiva: fundamento, preparo, mentalidade, liderança e responsabilidade com equipe e comunidade."
+        description="Treinar não é apenas repetir movimentos. É entender onde você está, corrigir pontos, melhorar postura e construir evolução real."
         eyebrow="Pilares de formação"
         id="pilares"
         title="Técnico, físico, mental e humano no mesmo sistema."
@@ -165,10 +165,10 @@ export default function CTURPage() {
         description="Agenda, polos e turmas entram conforme calendário confirmado. O CT UR não promete resultado automático."
         eyebrow="Próximo passo"
         id="cta"
-        title="O desenvolvimento começa com presença."
+        title="Evolução começa com direção e presença."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/cadastro#atleta">Entrar na jornada</Button>
+          <Button href="#pilares">Conhecer metodologia</Button>
           <Button href="/ur-play" variant="secondary">
             Começar pelo UR Play
           </Button>

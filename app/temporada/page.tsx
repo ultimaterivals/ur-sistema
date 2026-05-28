@@ -87,7 +87,7 @@ export default function TemporadaPage() {
           { href: "/eventos", label: "Ver eventos", variant: "secondary" },
         ]}
         badges={["UR Play", "Sprint", "Series", "Legends", "polos", "Virada de Ranking"]}
-        description="Todo atleta tem uma temporada para disputar. A Temporada 1 transforma presença em ranking, escudo em identidade e polo em território."
+        description="A Temporada 1 organiza entrada, UR Play, ranking, equipes, polos, mídia e recompensas para que atletas de diferentes níveis saibam como começar e evoluir."
         eyebrow="Temporada 1 - Territórios em Disputa"
         image={siteImages.wideServe}
         imagePosition="center 48%"
@@ -96,14 +96,14 @@ export default function TemporadaPage() {
           { label: "produtos", value: String(season1.ladder.length) },
           { label: "modalidades", value: String(season1.modalities.length) },
         ]}
-        title="Todo atleta tem uma temporada para disputar."
+        title="Entre na temporada. Evolua no seu ritmo."
       />
 
       <SeasonSection
-        description="A temporada não é torneio isolado. Ela tem entrada, leitura, disputa, ranking, mídia e ápice."
+        description="A temporada não é torneio isolado. Ela tem entrada, leitura de nível, disputa, ranking, mídia e fechamento de ciclo."
         eyebrow="Ciclo competitivo"
         id="ciclo"
-        title="Da presença ao Legends."
+        title="Da presença ao histórico."
       >
         <SeasonJourney steps={cycleSteps} />
       </SeasonSection>
@@ -119,10 +119,10 @@ export default function TemporadaPage() {
       </SeasonSection>
 
       <SeasonSection
-        description="Cada produto tem função dentro da progressão do atleta."
+        description="Cada produto tem função dentro da progressão do atleta, do primeiro jogo às etapas maiores."
         eyebrow="Escada oficial"
         id="escada"
-        title="Play, Sprint, Series, Legends."
+        title="Um caminho progressivo para jogar e evoluir."
         variant="raised"
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -201,7 +201,7 @@ export default function TemporadaPage() {
         <SeasonAccordion items={seasonFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="A temporada começa com presença confirmada.">
+      <SeasonSection id="cta" title="A temporada começa com o primeiro passo.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button href="/cadastro#atleta">Entrar na temporada</Button>
           <Button href="/ranking" variant="secondary">

@@ -72,11 +72,11 @@ export default function URMarketPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar na temporada" },
-          { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
+          { href: "#catalogo", label: "Conhecer benefícios" },
+          { href: "/cadastro#atleta", label: "Entrar na temporada", variant: "secondary" },
         ]}
         badges={["UR Coins", "benefícios aprovados", "catálogo em expansão", "regras oficiais"]}
-        description="Presença, mérito e participação podem abrir acesso a benefícios aprovados. Sem promessa automática, sem resgate sem regra."
+        description="O UR Market conecta participação, mérito e parceiros em um sistema de benefícios controlado, progressivo e sustentável."
         eyebrow="Consequência da temporada"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
@@ -85,15 +85,21 @@ export default function URMarketPage() {
           { label: "status", value: "em expansão" },
           { label: "regra", value: "oficial" },
         ]}
-        title="Benefícios entram com critério."
+        title="Recompensas que acompanham a jornada."
       />
 
       <SeasonSection
-        description="A vitrine organiza possibilidades. Todo benefício depende de regra oficial, disponibilidade, parceiro e validação."
+        description="UR Coins, produtos e serviços não são o motivo principal para entrar. Eles são uma consequência da participação e da evolução dentro do ecossistema."
         eyebrow="Catálogo em expansão"
         id="catalogo"
-        title="Benefícios com critério."
+        title="Benefícios com critério, não promessa."
       >
+        <p
+          className="mb-5 text-xs font-bold uppercase leading-5 tracking-[0.12em] text-[#D4A437]/75"
+          style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
+        >
+          Todos os benefícios dependem de disponibilidade, parceiros ativos, regras oficiais e validação operacional.
+        </p>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {marketCards.map((card) => (
             <SeasonInfoCard

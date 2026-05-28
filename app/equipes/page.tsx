@@ -67,7 +67,7 @@ export default function EquipesPage() {
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
         badges={["escudo", "formações", "quartetos", "duplas", "polos", "Legends"]}
-        description="Times deixam de ser só grupo. O escudo entra na temporada, forma atletas, disputa ranking coletivo e cria presença pública."
+        description="As equipes dão identidade à temporada. Elas organizam atletas, criam pertencimento, fortalecem polos e transformam jogos em rivalidades saudáveis."
         eyebrow="Equipes e formações"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
@@ -76,7 +76,7 @@ export default function EquipesPage() {
           { label: "disputa", value: "formações" },
           { label: "força", value: "polo" },
         ]}
-        title="Seu escudo também entra na disputa."
+        title="Forme sua equipe. Represente sua história."
       />
 
       <SeasonSection
@@ -86,7 +86,7 @@ export default function EquipesPage() {
         title="Formações com identidade."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <TeamFormationArtCard athleteCount={4} isOfficial teamName="BH Elite 1" pole="BH" modality="Quartetos" />
+          <TeamFormationArtCard athleteCount={4} isOfficial teamName="BH Formação 1" pole="BH" modality="Quartetos" />
           <TeamFormationArtCard athleteCount={4} teamName="Betim Arena 1" pole="Betim" modality="Quartetos" />
           <TeamFormationArtCard athleteCount={2} teamName="Contagem Dupla" pole="Contagem" modality="Duplas Mistas" />
           <TeamFormationArtCard athleteCount={2} teamName="BH Feminino" pole="BH" modality="Duplas Femininas" />
@@ -94,10 +94,10 @@ export default function EquipesPage() {
       </SeasonSection>
 
       <SeasonSection
-        description="O conteúdo histórico mostrava a equipe como identidade competitiva, ativo esportivo e ativo midiático. Essa camada volta para deixar claro por que o escudo importa."
+        description="Uma equipe não é apenas um grupo de jogadores. É escudo, presença, formação, compromisso e trajetória coletiva."
         eyebrow="Identidade oficial"
         id="identidade"
-        title="Equipe não é só grupo de WhatsApp."
+        title="Escudo também constrói pertencimento."
         variant="raised"
       >
         <SeasonBenefitGrid items={teamIdentityCards} />
@@ -207,11 +207,11 @@ export default function EquipesPage() {
         <SeasonAccordion items={teamFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Registre seu escudo para entrar na temporada.">
+      <SeasonSection id="cta" title="Forme sua equipe e entre na temporada com identidade.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button href="/cadastro#equipe">Cadastrar equipe</Button>
-          <Button href="/eventos" variant="secondary">
-            Ver eventos
+          <Button href="#formacoes" variant="secondary">
+            Entender formações
           </Button>
         </div>
       </SeasonSection>

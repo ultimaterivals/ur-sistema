@@ -3,8 +3,8 @@
 export const season1 = {
   name: "UR Temporada 1",
   subtitle: "Territórios em Disputa",
-  slogan: "Quem manda na região?",
-  message: "Cada atleta pontua. Cada equipe soma. Cada polo disputa respeito.",
+  slogan: "Entre na temporada. Evolua no seu ritmo.",
+  message: "Cada presença conta. Cada jogo constrói histórico. Cada atleta tem um caminho.",
   poles: [
     {
       id: "bh",
@@ -38,7 +38,7 @@ export const season1 = {
     {
       id: "ur-play",
       name: "UR Play",
-      description: "Porta de entrada. Jogue, pontue e entre no radar.",
+      description: "Entrada, observação e nivelamento. O primeiro passo para jogar e formar histórico.",
       symbolSolid: "/season-1/symbols/ur-play-solid.svg",
       symbolLine: "/season-1/symbols/ur-play-line.svg",
       symbolBadge: "/season-1/symbols/ur-play-badge.svg",
@@ -50,7 +50,7 @@ export const season1 = {
     {
       id: "ur-sprint",
       name: "UR Sprint",
-      description: "Confrontos intensos. Classificação direta para o próximo nível.",
+      description: "Primeiras disputas organizadas para ganhar ritmo, somar pontos e entender seu nível.",
       symbolSolid: "/season-1/symbols/ur-sprint-solid.svg",
       symbolLine: "/season-1/symbols/ur-sprint-line.svg",
       symbolBadge: "/season-1/symbols/ur-sprint-badge.svg",
@@ -62,7 +62,7 @@ export const season1 = {
     {
       id: "ur-series",
       name: "UR Series",
-      description: "Liga oficial. Os melhores do ciclo disputam a série.",
+      description: "Etapas maiores da temporada, com mais mídia e maior impacto no ranking.",
       symbolSolid: "/season-1/symbols/ur-series-solid.svg",
       symbolLine: "/season-1/symbols/ur-series-line.svg",
       symbolBadge: "/season-1/symbols/ur-series-badge.svg",
@@ -74,7 +74,7 @@ export const season1 = {
     {
       id: "ur-legends",
       name: "UR Legends",
-      description: "O ápice. Convocados representam seu polo e jogam pelo nome.",
+      description: "Fechamento do ciclo para atletas, equipes e polos em destaque dentro da temporada.",
       symbolSolid: "/season-1/symbols/ur-legends-solid.svg",
       symbolLine: "/season-1/symbols/ur-legends-line.svg",
       symbolBadge: "/season-1/symbols/ur-legends-badge.svg",
