@@ -44,7 +44,7 @@ export function SeasonPageHero({
   return (
     <section
       className={cn(
-        "relative isolate overflow-hidden bg-[#0A0A0B] px-5 py-14 md:py-18 lg:px-8 lg:py-20",
+        "relative isolate overflow-hidden bg-[#0A0A0B] px-5 pb-12 pt-12 md:py-18 lg:px-8 lg:py-20",
         className,
       )}
     >
@@ -72,7 +72,7 @@ export function SeasonPageHero({
       />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-[linear-gradient(180deg,transparent,#0A0A0B)]" />
 
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.46fr)] lg:items-end">
+      <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.46fr)] lg:items-end">
         <div className="min-w-0">
           <span
             className="inline-flex items-center gap-2 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.10)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#D4A437]"
@@ -82,13 +82,13 @@ export function SeasonPageHero({
             {eyebrow}
           </span>
           <h1
-            className="mt-5 max-w-5xl text-balance text-[clamp(2.7rem,10vw,5.7rem)] font-bold uppercase leading-[0.9] text-[#F4F0E6]"
+            className="mt-5 max-w-5xl text-balance text-[clamp(3rem,13vw,5.7rem)] font-bold uppercase leading-[0.88] text-[#F4F0E6]"
             style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.02em" }}
           >
             {title}
           </h1>
           <p
-            className="mt-5 max-w-2xl text-base leading-7 md:text-lg md:leading-8"
+            className="mt-5 max-w-2xl text-[15px] leading-7 md:text-lg md:leading-8"
             style={{ color: "rgba(244,240,230,0.74)", fontFamily: "'Manrope', system-ui, sans-serif" }}
           >
             {description}
@@ -125,9 +125,15 @@ export function SeasonPageHero({
           ) : null}
         </div>
 
-        <aside className="rounded-lg border border-[rgba(212,164,55,0.18)] bg-[#14141A]/88 p-4 shadow-[0_8px_40px_rgba(0,0,0,0.55)] backdrop-blur">
+        <aside className="rounded-lg border border-[rgba(212,164,55,0.18)] bg-[#14141A]/90 p-3 shadow-[0_8px_40px_rgba(0,0,0,0.55)] backdrop-blur sm:p-4">
           {panel ?? (
             <div className="grid gap-3">
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#D4A437]"
+                style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
+              >
+                Resumo rápido
+              </p>
               {stats.map((stat) => (
                 <div
                   className="flex items-center justify-between gap-3 rounded border border-white/10 bg-white/[0.035] px-3 py-3"

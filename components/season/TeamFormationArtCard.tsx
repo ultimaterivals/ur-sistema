@@ -28,7 +28,7 @@ export function TeamFormationArtCard({
   return (
     <URArtCard
       variant={isOfficial ? "active" : "default"}
-      className={`flex flex-col gap-4 p-5 ${className ?? ""}`}
+      className={`flex min-h-[240px] flex-col gap-4 p-5 sm:p-6 ${className ?? ""}`}
     >
       {/* Arena grid texture */}
       <div
@@ -81,7 +81,7 @@ export function TeamFormationArtCard({
             </span>
           )}
           <p
-            className="mt-1 text-xs text-[#8A8A93]"
+            className="mt-1 text-sm leading-6 text-[#8A8A93]"
             style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
           >
             {pole} · {modality}
@@ -120,7 +120,7 @@ export function TeamFormationArtCard({
       {/* Status */}
       <div className="relative z-10 border-t border-[rgba(255,255,255,0.06)] pt-3">
         <p
-          className="text-[10px] text-[#8A8A93]"
+          className="text-xs leading-5 text-[#8A8A93]"
           style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
         >
           {isOfficial

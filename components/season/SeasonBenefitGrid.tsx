@@ -17,6 +17,7 @@ type SeasonBenefitGridProps = {
   items: readonly SeasonBenefitItem[];
   columns?: 2 | 3 | 4;
   className?: string;
+  mobileMode?: "auto" | "stack" | "carousel";
 };
 
 const columnClasses = {
@@ -28,7 +29,7 @@ const columnClasses = {
 function BenefitCard({ item }: { item: SeasonBenefitItem }) {
   const Icon = item.icon;
   const content = (
-    <URArtCard className="flex min-h-[220px] flex-col gap-4 p-5">
+    <URArtCard className="flex min-h-[236px] flex-col gap-4 p-5 sm:p-6">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
@@ -60,7 +61,7 @@ function BenefitCard({ item }: { item: SeasonBenefitItem }) {
         ) : null}
       </div>
       <p
-        className="relative z-10 text-sm leading-6 text-[#8A8A93]"
+        className="relative z-10 text-[15px] leading-7 text-[#8A8A93]"
         style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
       >
         {item.description}
@@ -96,11 +97,36 @@ function BenefitCard({ item }: { item: SeasonBenefitItem }) {
   return content;
 }
 
-export function SeasonBenefitGrid({ items, columns = 3, className }: SeasonBenefitGridProps) {
+export function SeasonBenefitGrid({
+  items,
+  columns = 3,
+  className,
+  mobileMode = "auto",
+}: SeasonBenefitGridProps) {
+  const useMobileCarousel =
+    mobileMode === "carousel" || (mobileMode === "auto" && items.length > 3);
+
   return (
-    <div className={cn("grid gap-4", columnClasses[columns], className)}>
+    <div
+      className={cn(
+        useMobileCarousel
+          ? "-mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [-webkit-overflow-scrolling:touch] md:mx-0 md:grid md:overflow-visible md:px-0 md:pb-0"
+          : "grid gap-4",
+        columnClasses[columns],
+        className,
+      )}
+    >
       {items.map((item) => (
-        <BenefitCard item={item} key={`${item.title}-${item.label ?? "card"}`} />
+        <div
+          className={
+            useMobileCarousel
+              ? "w-[82vw] max-w-[340px] shrink-0 snap-start md:w-auto md:max-w-none"
+              : undefined
+          }
+          key={`${item.title}-${item.label ?? "card"}`}
+        >
+          <BenefitCard item={item} />
+        </div>
       ))}
     </div>
   );
