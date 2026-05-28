@@ -56,23 +56,25 @@ export function Header() {
             </Button>
           </div>
 
-          <button
-            aria-controls={MOBILE_MENU_ID}
-            aria-expanded={mobileMenuOpen}
-            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-            className="relative z-[100] grid h-12 w-12 touch-manipulation select-none place-items-center rounded-lg border border-white/10 bg-white/[0.045] text-white pointer-events-auto 2xl:hidden"
-            data-testid={mobileMenuOpen ? "mobile-menu-close" : "mobile-menu-button"}
-            onClick={() => setMobileMenuOpen((value) => !value)}
-            type="button"
-          >
-            {mobileMenuOpen ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
-          </button>
         </div>
       </header>
 
+      <button
+        aria-controls={MOBILE_MENU_ID}
+        aria-expanded={mobileMenuOpen}
+        aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+        className="fixed right-4 z-[9999] grid h-12 min-h-[48px] w-12 min-w-[48px] touch-manipulation select-none place-items-center rounded-lg border border-white/10 bg-black/90 text-white shadow-[0_14px_36px_rgba(0,0,0,0.45)] pointer-events-auto 2xl:hidden"
+        data-testid={mobileMenuOpen ? "mobile-menu-close" : "mobile-menu-button"}
+        onClick={() => setMobileMenuOpen((open) => !open)}
+        style={{ top: "max(0.75rem, env(safe-area-inset-top))" }}
+        type="button"
+      >
+        {mobileMenuOpen ? <X aria-hidden className="h-5 w-5" /> : <Menu aria-hidden className="h-5 w-5" />}
+      </button>
+
       {mobileMenuOpen ? (
         <div
-          className="fixed inset-x-0 top-[72px] z-[90] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[120px] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:px-8 2xl:hidden"
+          className="fixed inset-x-0 top-0 z-[9990] max-h-[100dvh] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[120px] pt-[calc(72px+env(safe-area-inset-top))] shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:px-8 2xl:hidden"
           data-testid="mobile-menu-panel"
           id={MOBILE_MENU_ID}
           role="menu"
