@@ -3,19 +3,13 @@ import type { CSSProperties, ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { CTASectionPremium } from "@/components/editorial/cta-section-premium";
 import { Button } from "@/components/ui/button";
-import { entryPaths } from "@/lib/content/home-editorial";
 import { homeImageRoles } from "@/lib/content/site-images";
 import { EditorialImage } from "@/components/editorial/editorial-image";
 import {
   ProductArtCard,
   TerritoryArtCard,
   RankingBroadcastPanel,
-  URBracketPreview,
-  LegendsArtPanel,
-  AthleteArtCard,
-  TeamFormationArtCard,
   RewardArtCard,
-  SeasonInfoCard,
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 
@@ -47,22 +41,113 @@ const heroStats = [
   { label: "Modalidades", value: season1.modalities.length },
 ] as const;
 
-const audienceCards = [
+const howItWorksSteps = [
   {
-    title: "Iniciante",
-    description: "Para quem quer entrar no ambiente, ganhar confiança e entender seu nível.",
+    title: "Entenda a jornada",
+    description: "Veja como UR Play, modalidade, polo, ranking e eventos se conectam antes de escolher seu caminho.",
   },
   {
-    title: "Em evolução",
-    description: "Para quem já joga, mas precisa de mais ritmo, orientação e histórico.",
+    title: "Escolha onde começar",
+    description: "Você pode iniciar por cadastro, UR Play, Dupla ou Quarteto, sempre respeitando seu momento.",
   },
   {
-    title: "Competitivo",
-    description: "Para quem busca ranking, equipe, eventos maiores e destaque na temporada.",
+    title: "Jogue e acompanhe",
+    description: "Cada presença ajuda a formar histórico, entender nível e abrir próximos passos dentro da temporada.",
+  },
+] as const;
+
+const modalityDetails = {
+  dupla: {
+    meta: "2 atletas",
+    description: "Formato mais direto para começar, jogar com parceria fixa e entrar no radar do UR.",
+  },
+  quarteto: {
+    meta: "4 atletas",
+    description: "Formato coletivo para criar identidade, representar escudo e evoluir como formação.",
+  },
+} as const;
+
+const poleDetails = {
+  bh: {
+    subtitle: "Capital como ponto de entrada para atletas, equipes e primeiras ativações.",
+    href: "/quadras-parceiras#polos",
+  },
+  betim: {
+    subtitle: "Território em formação para jogos, comunidade local e evolução por presença.",
+    href: "/quadras-parceiras#polos",
+  },
+  contagem: {
+    subtitle: "Polo inicial para fortalecer calendário, quadras parceiras e novas formações.",
+    href: "/quadras-parceiras#polos",
+  },
+} as const;
+
+const nextStepCards = [
+  {
+    title: "Primeiro passo",
+    description: "Conheça o UR Play e entenda como entrar sem precisar chegar pronto.",
+    href: "/ur-play",
+    cta: "Conhecer UR Play",
   },
   {
-    title: "Equipe ou grupo",
-    description: "Para quem quer representar um escudo, formar elenco e disputar como coletivo.",
+    title: "Cadastro",
+    description: "Registre seu perfil para entrar no radar certo: atleta, equipe, quadra ou parceiro.",
+    href: "/cadastro",
+    cta: "Fazer cadastro",
+  },
+  {
+    title: "Equipes",
+    description: "Veja como escudos, duplas e quartetos criam identidade dentro da temporada.",
+    href: "/equipes",
+    cta: "Ver equipes",
+  },
+  {
+    title: "Temporada",
+    description: "Entenda as etapas maiores depois do primeiro contato com o ecossistema.",
+    href: "/temporada",
+    cta: "Ver temporada",
+  },
+] as const;
+
+const evolutionCards = [
+  {
+    title: "Ranking",
+    description: "Organiza níveis, presença e evolução para criar disputas mais justas.",
+    href: "/ranking",
+    cta: "Entender ranking",
+  },
+  {
+    title: "Eventos",
+    description: "Transformam presença em calendário: Play, Sprint, Series e Legends.",
+    href: "/eventos",
+    cta: "Ver eventos",
+  },
+  {
+    title: "Mídia",
+    description: "Conta histórias de atletas, equipes, bastidores e evolução ao longo do ciclo.",
+    href: "/midia",
+    cta: "Conhecer mídia",
+  },
+] as const;
+
+const supportCards = [
+  {
+    title: "Regulamento",
+    description: "Regras, critérios e limites para participar com clareza.",
+    href: "/regulamento",
+    cta: "Ler regras",
+  },
+  {
+    title: "Quadras parceiras",
+    description: "Entenda como uma quadra pode se tornar polo ativo do UR.",
+    href: "/quadras-parceiras",
+    cta: "Ver quadras",
+  },
+  {
+    title: "CT UR",
+    description: "Apoio de desenvolvimento para evoluir técnica, postura e mentalidade.",
+    href: "/ct-ur",
+    cta: "Conhecer CT",
   },
 ] as const;
 
@@ -104,32 +189,32 @@ export default function Home() {
                   </span>
                 </div>
                 <h1
-                  className="text-[clamp(2.45rem,10.5vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
+                  className="text-[clamp(2.5rem,10vw,6rem)] font-bold uppercase leading-[0.9] tracking-[0.01em]"
                   style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6" }}
                 >
-                  ENTRE NA TEMPORADA.<br />
-                  <span style={{ color: "#D4A437" }}>EVOLUA NO SEU RITMO.</span>
+                  Escolha seu{" "}<br />
+                  <span style={{ color: "#D4A437" }}>primeiro passo no UR.</span>
                 </h1>
                 <p
                   className="mt-5 max-w-lg text-base md:text-lg leading-7"
                   style={{ color: "rgba(244,240,230,0.75)", fontFamily: "'Manrope', system-ui, sans-serif" }}
                 >
-                  O Ultimate Rivals é uma temporada esportiva para atletas de diferentes níveis. Você entra pelo UR Play, joga, é observado, entende seu nível, soma histórico e evolui dentro de um sistema organizado.
+                  Entenda como funciona a jornada, escolha sua modalidade, conheça os polos e comece no seu ritmo.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Button href="/ur-play">
-                    Começar pelo UR Play
+                  <Button href="#como-funciona">
+                    Como funciona
                     <ArrowRight aria-hidden className="h-4 w-4" />
                   </Button>
-                  <Button href="/temporada" variant="secondary">
-                    Entender como funciona
+                  <Button href="/cadastro" variant="secondary">
+                    Fazer cadastro
                   </Button>
                 </div>
                 <p
                   className="mt-4 max-w-xl text-sm leading-6"
                   style={{ color: "rgba(244,240,230,0.62)", fontFamily: "'Manrope', system-ui, sans-serif" }}
                 >
-                  Não precisa ser atleta profissional. O sistema existe para organizar níveis, dar clareza e criar oportunidades progressivas. Do primeiro jogo ao ranking, cada etapa ajuda o atleta a construir sua própria trajetória.
+                  Primeiro entenda o caminho. Depois escolha se o seu ponto de partida é UR Play, cadastro, Dupla, Quarteto ou um polo perto de você.
                 </p>
                 {/* Pole shields */}
                 <div className="mt-7 flex items-center gap-4 sm:gap-5">
@@ -253,96 +338,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 2. ESCADA OFICIAL — 4 PRODUTOS ── */}
-      <S id="ladder" className="border-t border-[rgba(212,164,55,0.12)]" style={{ background: "#0A0A0B" }}>
+      {/* ── 2. COMO FUNCIONA ── */}
+      <S id="como-funciona" className="border-t border-[rgba(212,164,55,0.12)]" style={{ background: "#0A0A0B" }}>
         <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Escada oficial</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Como funciona</p>
           <h2
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            Um caminho claro para todo atleta.
-          </h2>
-          <p className="mt-3 text-sm" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-            A temporada é dividida em etapas para que cada jogador saiba onde está, como evoluir e quais caminhos pode seguir.
-          </p>
-        </div>
-        {/* Mobile: horizontal scroll snap; Desktop: grid */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-2 lg:grid-cols-4">
-          {season1.ladder.map((product) => (
-            <div className="snap-start shrink-0 w-[72vw] sm:w-auto" key={product.id}>
-              <ProductArtCard product={product} />
-            </div>
-          ))}
-        </div>
-      </S>
-
-      {/* ── 3. PARA QUEM É ── */}
-      <S id="para-quem" style={{ background: "#0D0D12" }}>
-        <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Para quem é</p>
-          <h2
-            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
-            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
-          >
-            O UR é para quem quer jogar, evoluir e ser visto.
+            Primeiro entenda.<br />Depois escolha.
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-            Você pode estar começando, voltando a jogar, buscando evolução ou querendo competir em alto nível. O sistema organiza caminhos diferentes para perfis diferentes.
+            O UR não começa cobrando performance. Ele organiza o caminho para você saber onde entrar, como jogar e como acompanhar sua evolução.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {audienceCards.map((card) => (
-            <SeasonInfoCard description={card.description} key={card.title} title={card.title} />
-          ))}
-        </div>
-      </S>
-
-      {/* ── 3. RANKING BROADCAST ── */}
-      <S id="ranking" style={{ background: "#0A0A0B" }}>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Ranking com clareza</p>
-            <h2
-              className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
-              style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+        <div className="grid gap-4 md:grid-cols-3">
+          {howItWorksSteps.map((step, index) => (
+            <div
+              className="relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.14)] bg-[#14141A] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.22)]"
+              key={step.title}
             >
-              Ranking para organizar,<br />
-              não para excluir.
-            </h2>
-            <p className="mt-4 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-              O ranking existe para dar clareza. Ele ajuda atletas a entenderem seu nível, acompanharem evolução e encontrarem disputas mais justas.
-            </p>
-            <div className="mt-5">
-              <Button href="/ranking" variant="secondary">Ver estrutura do ranking</Button>
-            </div>
-          </div>
-          <RankingBroadcastPanel rows={season1.mockRankings} />
-        </div>
-      </S>
-
-      {/* ── 4. TERRITÓRIOS ── */}
-      <S id="territorios" style={{ background: "#0A0A0B" }}>
-        <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Polos da Temporada 1</p>
-          <h2
-            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
-            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
-          >
-            Três territórios.<br />Uma disputa.
-          </h2>
-        </div>
-        {/* Mobile: horizontal scroll snap; Desktop: grid */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-3">
-          {season1.poles.map((p, i) => (
-            <div className="snap-start shrink-0 w-[80vw] sm:w-auto" key={p.id}>
-              <TerritoryArtCard pole={p} rank={i + 1} />
+              <span
+                className="text-xs font-bold uppercase tracking-[0.18em]"
+                style={{ color: "#D4A437", fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3
+                className="mt-5 text-2xl font-bold uppercase leading-[0.9]"
+                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+              >
+                {step.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
       </S>
 
-      {/* ── 5. MODALIDADES ── */}
+      {/* ── 3. MODALIDADES ── */}
       <S id="modalidades" style={{ background: "#0D0D12" }}>
         <div className="mb-8">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Modalidades</p>
@@ -350,76 +386,185 @@ export default function Home() {
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            Cada formato.<br />Cada ponto conta.
+            Escolha entre<br />Dupla e Quarteto.
           </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            A primeira decisão é simples: jogar com uma parceria ou construir uma formação maior. O restante da jornada vem depois.
+          </p>
         </div>
-        <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
-          {season1.modalities.map((m) => (
-            <div
-              key={m.id}
-              className="flex flex-col items-center gap-3 rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 hover:border-[rgba(212,164,55,0.4)] transition-colors"
-            >
-              <img alt={m.name} className="h-12 w-12 opacity-80" loading="lazy" src={m.symbolSolid} />
-              <span
-                className="text-center text-sm font-bold uppercase leading-tight"
-                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.05em" }}
+        <div className="grid gap-4 sm:grid-cols-2">
+          {season1.modalities.map((m) => {
+            const detail = modalityDetails[m.id];
+
+            return (
+              <Link
+                className="group relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.16)] bg-[#14141A] p-6 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
+                href="/cadastro#atleta"
+                key={m.id}
               >
-                {m.name}
+                <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "url(/season-1/textures/bg-sand-texture.svg)", backgroundSize: "cover" }} />
+                <div className="relative z-10 flex items-start gap-5">
+                  <div className="grid h-16 w-16 shrink-0 place-items-center rounded-lg border border-[rgba(212,164,55,0.18)] bg-black/25">
+                    <img alt={m.name} className="h-10 w-10 opacity-90" loading="lazy" src={m.symbolSolid} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                      {detail.meta}
+                    </p>
+                    <h3
+                      className="mt-2 text-3xl font-bold uppercase leading-[0.88]"
+                      style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                    >
+                      {m.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                      {detail.description}
+                    </p>
+                    <span
+                      className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                      style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                    >
+                      Ver caminho
+                      <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </S>
+
+      {/* ── 4. POLOS ── */}
+      <S id="polos" style={{ background: "#0A0A0B" }}>
+        <span aria-hidden className="block scroll-mt-24" id="territorios" />
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Polos iniciais</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Conheça onde<br />a temporada ganha chão.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            BH, Betim e Contagem são os polos iniciais. Cada território ajuda a organizar presença, quadras, equipes e comunidade local.
+          </p>
+        </div>
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 md:overflow-visible md:grid md:grid-cols-3">
+          {season1.poles.map((p, i) => {
+            const details = poleDetails[p.id];
+
+            return (
+              <div className="snap-start shrink-0 w-[84vw] max-w-[360px] md:w-auto md:max-w-none" key={p.id}>
+                <TerritoryArtCard
+                  ctaHref={details.href}
+                  ctaLabel="Ver polo"
+                  featured
+                  pole={p}
+                  rank={i + 1}
+                  subtitle={details.subtitle}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </S>
+
+      {/* ── 5. PRIMEIRO PASSO ── */}
+      <S id="primeiro-passo" style={{ background: "#0D0D12" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Próximos passos</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            Agora escolha<br />por onde entrar.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Depois de entender o caminho, o cadastro e o UR Play viram portas de entrada claras para começar no seu ritmo.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {nextStepCards.map((card) => (
+            <Link
+              className="group rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
+              href={card.href}
+              key={card.title}
+            >
+              <h3
+                className="text-2xl font-bold uppercase leading-[0.9]"
+                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+              >
+                {card.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                {card.description}
+              </p>
+              <span
+                className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+              >
+                {card.cta}
+                <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </span>
-            </div>
+            </Link>
           ))}
         </div>
       </S>
 
-      {/* ── 6. ATLETA EDITORIAL + FORMAÇÃO ── */}
-      <S id="atletas-formacoes" style={{ background: "#0A0A0B" }}>
+      {/* ── 6. EVOLUÇÃO ── */}
+      <S id="evolucao" style={{ background: "#0A0A0B" }}>
         <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Atletas e formações</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Evolução</p>
           <h2
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            Quem entra<br />representa.
+            Do primeiro jogo<br />ao histórico.
           </h2>
-          <p className="mt-3 text-sm" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-            Dados editoriais — exemplos visuais. Ranking real abre conforme participação confirmada.
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            A evolução aparece em etapas: jogar, ser observado, entrar no ranking, disputar eventos e ganhar narrativa na mídia.
           </p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <AthleteArtCard name="Atleta Destaque" pole="BH" level="N1" points={0} rank={1} />
-          <AthleteArtCard name="Atleta Destaque" pole="Betim" level="N2" points={0} />
-          <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
-            <TeamFormationArtCard teamName="Formação BH Evolução" pole="BH" modality="Quartetos" isOfficial={false} />
-            <TeamFormationArtCard teamName="Dupla Betim" pole="Betim" modality="Duplas Mistas" isOfficial={false} />
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 sm:overflow-visible sm:grid sm:grid-cols-2 lg:grid-cols-4">
+          {season1.ladder.map((product) => (
+            <div className="snap-start shrink-0 w-[72vw] sm:w-auto" key={product.id}>
+              <ProductArtCard product={product} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+          <div className="grid gap-4">
+            {evolutionCards.map((card) => (
+              <Link
+                className="group rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
+                href={card.href}
+                key={card.title}
+              >
+                <h3
+                  className="text-2xl font-bold uppercase leading-[0.9]"
+                  style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                >
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                  {card.description}
+                </p>
+                <span
+                  className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                  style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                >
+                  {card.cta}
+                  <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
           </div>
+          <RankingBroadcastPanel rows={season1.mockRankings} />
         </div>
       </S>
 
-      {/* ── 7. BRACKET PREVIEW ── */}
-      <S id="bracket" style={{ background: "#0D0D12" }}>
-        <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Chaveamento</p>
-          <h2
-            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
-            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
-          >
-            O bracket<br />define o nome.
-          </h2>
-        </div>
-        <URBracketPreview
-          stage={season1.mockBracket.stage}
-          quarterfinals={[...season1.mockBracket.quarterfinals]}
-          semifinals={[...season1.mockBracket.semifinals]}
-          final={season1.mockBracket.final}
-        />
-      </S>
-
-      {/* ── 8. LEGENDS PANEL ── */}
-      <S id="legends" style={{ background: "#0A0A0B" }}>
-        <LegendsArtPanel />
-      </S>
-
-      {/* ── 9. RECOMPENSAS ── */}
+      {/* ── 7. BENEFÍCIOS ── */}
       <S id="recompensas" style={{ background: "#0D0D12" }}>
         <span aria-hidden className="block scroll-mt-24" id="premiacoes" />
         <div className="mb-8">
@@ -449,25 +594,9 @@ export default function Home() {
             description="Itens aprovados por parceiros confirmados dentro da temporada."
           />
           <RewardArtCard
-            icon="/season-1/symbols/ur-legends-line.svg"
-            title="Premiações e repasses"
-            description="Reconhecimento pode acontecer por resultado, evolução, constância e participação conforme regra oficial."
-            note="Repasses dependem de caixa, margem, confirmação e regra oficial."
-          />
-          <RewardArtCard
-            icon="/season-1/symbols/ur-sprint-line.svg"
-            title="Serviços de performance"
-            description="Fisio, nutrição, avaliação e treino especializado com parceiros."
-          />
-          <RewardArtCard
             icon="/season-1/symbols/ur-series-line.svg"
-            title="Mídia oficial"
-            description="Cobertura, bastidores e destaques que transformam o ciclo em história."
-          />
-          <RewardArtCard
-            icon="/season-1/symbols/forca-dos-polos-line.svg"
-            title="Força dos Polos"
-            description="O polo com mais pontos pode acessar reconhecimento e benefícios de território conforme regra oficial."
+            title="Patrocinadores"
+            description="Parceiros podem conectar produtos, serviços e ativações à jornada esportiva aprovada."
           />
         </div>
         <div className="mt-6 text-center">
@@ -475,48 +604,45 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 10. CAMINHOS ── */}
-      <S id="caminhos" style={{ background: "#0A0A0B" }}>
+      {/* ── 8. APOIO ── */}
+      <S id="apoio" style={{ background: "#0A0A0B" }}>
         <div className="mb-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Caminhos de entrada</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Apoio</p>
           <h2
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            Escolha seu caminho<br />na temporada.
+            O que ajuda<br />a jogar com clareza.
           </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Regras, quadras e desenvolvimento completam a experiência para quem está começando ou quer evoluir com direção.
+          </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-          {entryPaths.map((path) => {
-            const Icon = path.icon;
-            return (
-              <Link
-                className="group relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
-                href={path.href}
-                key={path.label}
-                style={{ transition: "all 250ms cubic-bezier(0.4,0,0.2,1)" }}
+        <div className="grid gap-4 md:grid-cols-3">
+          {supportCards.map((card) => (
+            <Link
+              className="group rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-5 transition-all hover:border-[#D4A437] hover:bg-[rgba(212,164,55,0.04)]"
+              href={card.href}
+              key={card.title}
+            >
+              <h3
+                className="text-2xl font-bold uppercase leading-[0.9]"
+                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
               >
-                <div className="absolute inset-x-0 top-0 h-0.5 bg-[#D4A437] opacity-0 transition-opacity group-hover:opacity-100" />
-                <Icon aria-hidden className="h-6 w-6" style={{ color: "#D4A437" }} />
-                <h3
-                  className="mt-5 text-xl font-bold uppercase leading-[0.92]"
-                  style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
-                >
-                  {path.label}
-                </h3>
-                <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-                  {path.description}
-                </p>
-                <div
-                  className="mt-4 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
-                  style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
-                >
-                  Entrar
-                  <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            );
-          })}
+                {card.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                {card.description}
+              </p>
+              <span
+                className="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.14em]"
+                style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}
+              >
+                {card.cta}
+                <ArrowRight aria-hidden className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
         </div>
       </S>
 

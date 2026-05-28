@@ -13,57 +13,45 @@ export const mainNavigation = [
 
 export const mobileNavigationGroups = [
   {
-    label: "Participar",
+    label: "Começar",
     items: [
-      { label: "Entrar na Temporada", href: "/cadastro#atleta" },
+      { label: "Como funciona", href: "/#como-funciona" },
+      { label: "Primeiro passo", href: "/#primeiro-passo" },
       { label: "Cadastro", href: "/cadastro" },
-      { label: "Atletas", href: "/atletas" },
-      { label: "Equipes", href: "/equipes" },
       { label: "UR Play", href: "/ur-play" },
     ],
   },
   {
-    label: "Competir",
+    label: "Participação",
     items: [
+      { label: "Modalidades", href: "/#modalidades" },
+      { label: "Polos", href: "/#polos" },
+      { label: "Equipes", href: "/equipes" },
       { label: "Temporada", href: "/temporada" },
-      { label: "Ranking", href: "/ranking" },
-      { label: "Eventos", href: "/eventos" },
-      { label: "Regulamento", href: "/regulamento" },
     ],
   },
   {
-    label: "Evoluir",
+    label: "Evolução",
     items: [
-      { label: "CT UR", href: "/ct-ur" },
-      { label: "Mídia UR", href: "/midia" },
-      { label: "Jornada do atleta", href: "/atletas" },
-      { label: "Escudos e formações", href: "/equipes" },
-      { label: "Ecossistema", href: "/ecossistema" },
+      { label: "Ranking", href: "/ranking" },
+      { label: "Eventos", href: "/eventos" },
+      { label: "Mídia", href: "/midia" },
     ],
   },
   {
     label: "Benefícios",
     items: [
+      { label: "Benefícios", href: "/#recompensas" },
       { label: "UR Market", href: "/ur-market" },
-      { label: "UR Coins", href: "/ur-market#coins" },
-      { label: "Recompensas", href: "/#recompensas" },
-    ],
-  },
-  {
-    label: "Negócios",
-    items: [
       { label: "Patrocinadores", href: "/patrocinadores" },
-      { label: "Quadras Parceiras", href: "/quadras-parceiras" },
-      { label: "Contato comercial", href: "/contato" },
     ],
   },
   {
-    label: "Comunidade",
+    label: "Apoio",
     items: [
-      { label: "Mídia UR", href: "/midia" },
-      { label: "WhatsApp", href: "/cadastro#comunidade" },
-      { label: "Contato", href: "/contato" },
-      { label: "Privacidade", href: "/privacidade" },
+      { label: "Regulamento", href: "/regulamento" },
+      { label: "Quadras parceiras", href: "/quadras-parceiras" },
+      { label: "CT UR", href: "/ct-ur" },
     ],
   },
 ] as const;

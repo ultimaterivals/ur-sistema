@@ -226,7 +226,7 @@ export default function MidiaPage() {
         <div className="grid gap-5 lg:grid-cols-[0.62fr_1fr]">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <AthleteArtCard name="Atleta Destaque" pole="BH" level="N1" points={0} rank={1} />
-            <TeamFormationArtCard athleteCount={4} teamName="Formação em Alta" pole="Betim" modality="Quartetos" />
+            <TeamFormationArtCard athleteCount={4} teamName="Formação em Alta" pole="Betim" modality="Quarteto" />
           </div>
           <RankingBroadcastPanel rows={season1.mockRankings} />
         </div>

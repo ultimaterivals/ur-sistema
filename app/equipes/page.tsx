@@ -26,7 +26,7 @@ import {
 export const metadata: Metadata = {
   title: "Equipes UR | Escudos, Formações e Ranking Coletivo Ultimate Rivals",
   description:
-    "Equipes UR organiza escudos, formações registradas, quartetos, duplas, ranking coletivo, mídia e disputa por polos na Temporada 1.",
+    "Equipes UR organiza escudos, formações registradas, Dupla, Quarteto, ranking coletivo, mídia e disputa por polos na Temporada 1.",
 };
 
 const formationRules = [
@@ -66,7 +66,7 @@ export default function EquipesPage() {
           { href: "/cadastro#equipe", label: "Cadastrar equipe" },
           { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
         ]}
-        badges={["escudo", "formações", "quartetos", "duplas", "polos", "Legends"]}
+        badges={["escudo", "formações", "Quarteto", "Dupla", "polos", "Legends"]}
         description="As equipes dão identidade à temporada. Elas organizam atletas, criam pertencimento, fortalecem polos e transformam jogos em rivalidades saudáveis."
         eyebrow="Equipes e formações"
         image={siteImages.teamHuddle}
@@ -86,10 +86,10 @@ export default function EquipesPage() {
         title="Formações com identidade."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <TeamFormationArtCard athleteCount={4} isOfficial teamName="BH Formação 1" pole="BH" modality="Quartetos" />
-          <TeamFormationArtCard athleteCount={4} teamName="Betim Arena 1" pole="Betim" modality="Quartetos" />
-          <TeamFormationArtCard athleteCount={2} teamName="Contagem Dupla" pole="Contagem" modality="Duplas Mistas" />
-          <TeamFormationArtCard athleteCount={2} teamName="BH Feminino" pole="BH" modality="Duplas Femininas" />
+          <TeamFormationArtCard athleteCount={4} isOfficial teamName="BH Formação 1" pole="BH" modality="Quarteto" />
+          <TeamFormationArtCard athleteCount={4} teamName="Betim Arena 1" pole="Betim" modality="Quarteto" />
+          <TeamFormationArtCard athleteCount={2} teamName="Contagem Dupla" pole="Contagem" modality="Dupla" />
+          <TeamFormationArtCard athleteCount={2} teamName="BH Dupla" pole="BH" modality="Dupla" />
         </div>
       </SeasonSection>
 
@@ -142,7 +142,7 @@ export default function EquipesPage() {
       </SeasonSection>
 
       <SeasonSection
-        description="Quartetos, duplas masculinas, duplas femininas e duplas mistas podem compor a identidade competitiva de cada organização."
+        description="Dupla e Quarteto organizam a identidade competitiva de cada equipe sem criar excesso de caminhos para quem está começando."
         eyebrow="Modalidades"
         id="modalidades"
         title="Cada formação disputa do seu jeito."

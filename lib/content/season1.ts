@@ -85,10 +85,8 @@ export const season1 = {
     },
   ] as const,
   modalities: [
-    { id: "quartetos", name: "Quartetos", symbolSolid: "/season-1/symbols/quartetos-solid.svg", symbolLine: "/season-1/symbols/quartetos-line.svg" },
-    { id: "duplas-m", name: "Duplas Masculinas", symbolSolid: "/season-1/symbols/duplas-m-solid.svg", symbolLine: "/season-1/symbols/duplas-m-line.svg" },
-    { id: "duplas-f", name: "Duplas Femininas", symbolSolid: "/season-1/symbols/duplas-f-solid.svg", symbolLine: "/season-1/symbols/duplas-f-line.svg" },
-    { id: "duplas-mistas", name: "Duplas Mistas", symbolSolid: "/season-1/symbols/duplas-mistas-solid.svg", symbolLine: "/season-1/symbols/duplas-mistas-line.svg" },
+    { id: "dupla", name: "Dupla", symbolSolid: "/season-1/symbols/duplas-mistas-solid.svg", symbolLine: "/season-1/symbols/duplas-mistas-line.svg" },
+    { id: "quarteto", name: "Quarteto", symbolSolid: "/season-1/symbols/quartetos-solid.svg", symbolLine: "/season-1/symbols/quartetos-line.svg" },
   ] as const,
   mockRankings: [
     { rank: 1, name: "Atleta #1", pole: "BH", level: "N1", points: 0, variation: 0 },
