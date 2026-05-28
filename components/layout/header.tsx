@@ -80,23 +80,16 @@ export function Header() {
           id={MOBILE_MENU_ID}
           role="menu"
         >
-          <Link
-            className="inline-flex min-h-10 w-full max-w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d] sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm"
-            href="/cadastro#atleta"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Entrar no UR
-          </Link>
-          <nav className="mt-3 grid gap-3 md:grid-cols-2">
+          <nav className="grid gap-2 md:grid-cols-2">
             {mobileNavigationGroups.map((group) => (
               <div className="rounded-lg border border-white/10 bg-[#111218] p-2" key={group.label}>
-                <div className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
+                <div className="px-2 pb-0.5 text-[9px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
                   {group.label}
                 </div>
                 <div className="grid gap-1">
                   {group.items.map((item) => (
                     <Link
-                      className="rounded-md px-3 py-2.5 text-sm font-bold uppercase tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                      className="rounded-md px-3 py-2 text-xs font-bold uppercase leading-4 tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
                       href={item.href}
                       key={item.href}
                       onClick={() => setMobileMenuOpen(false)}

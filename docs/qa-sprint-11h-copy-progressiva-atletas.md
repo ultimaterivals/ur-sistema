@@ -114,6 +114,40 @@ Resultados do script visual:
 - `npx.cmd tsc --noEmit`: aprovado.
 - `set NODE_OPTIONS=--max-old-space-size=8192` + `npm.cmd run build`: aprovado.
 
+## Refino mobile de navegacao e hierarquia
+
+Apos revisao visual em celular, a Home recebeu um refinamento adicional para deixar a entrada mais clara para atletas iniciantes:
+
+- Hero alterado para `Escolha seu primeiro passo no UR.`
+- CTA principal alterado para `Como funciona`.
+- CTA secundario alterado para `Fazer cadastro`.
+- Menu mobile reorganizado em `Comecar`, `Participacao`, `Evolucao`, `Beneficios` e `Apoio`.
+- A primeira entrada do menu passou a explicar `Como funciona`, antes de conduzir para cadastro ou temporada.
+- Modalidades foram reduzidas para apenas `Dupla` e `Quarteto`.
+- Polos receberam cards maiores, com area visual superior, escudo em destaque, subtitulo curto e CTA.
+- Estrutura mobile da Home passou a seguir: Hero, Como funciona, Modalidades, Polos, Proximos passos, Evolucao, Beneficios e Apoio.
+
+Arquivo de evidencia do refino:
+
+- `output/playwright/refino-mobile-nav-summary.json`
+
+Viewports testados no refino:
+
+- `390x844`
+- `430x932`
+- `768x1024`
+- `1366x768`
+- `1920x1080`
+
+Resultados do refino:
+
+- Sem overflow horizontal.
+- Menu mobile abriu e fechou.
+- Desktop manteve navegacao principal visivel e sem hamburger.
+- Modalidades aparecem como `Dupla` e `Quarteto`.
+- Polos aparecem com 3 cards destacados.
+- Ordem das secoes principais validada por script.
+
 ## Escopo preservado
 
 - Backend nao alterado.
