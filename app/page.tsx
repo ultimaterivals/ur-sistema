@@ -15,6 +15,7 @@ import {
   AthleteArtCard,
   TeamFormationArtCard,
   RewardArtCard,
+  SeasonInfoCard,
 } from "@/components/season";
 import { season1 } from "@/lib/content/season1";
 
@@ -44,6 +45,25 @@ const heroStats = [
   { label: "Polos", value: season1.poles.length },
   { label: "Eventos", value: "4" },
   { label: "Modalidades", value: season1.modalities.length },
+] as const;
+
+const audienceCards = [
+  {
+    title: "Iniciante",
+    description: "Para quem quer entrar no ambiente, ganhar confiança e entender seu nível.",
+  },
+  {
+    title: "Em evolução",
+    description: "Para quem já joga, mas precisa de mais ritmo, orientação e histórico.",
+  },
+  {
+    title: "Competitivo",
+    description: "Para quem busca ranking, equipe, eventos maiores e destaque na temporada.",
+  },
+  {
+    title: "Equipe ou grupo",
+    description: "Para quem quer representar um escudo, formar elenco e disputar como coletivo.",
+  },
 ] as const;
 
 export default function Home() {
@@ -84,27 +104,33 @@ export default function Home() {
                   </span>
                 </div>
                 <h1
-                  className="text-[clamp(3rem,12vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
+                  className="text-[clamp(2.45rem,10.5vw,6.5rem)] font-bold uppercase leading-[0.88] tracking-[0.01em]"
                   style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6" }}
                 >
-                  QUEM MANDA<br />
-                  <span style={{ color: "#D4A437" }}>NA REGIÃO?</span>
+                  ENTRE NA TEMPORADA.<br />
+                  <span style={{ color: "#D4A437" }}>EVOLUA NO SEU RITMO.</span>
                 </h1>
                 <p
                   className="mt-5 max-w-lg text-base md:text-lg leading-7"
                   style={{ color: "rgba(244,240,230,0.75)", fontFamily: "'Manrope', system-ui, sans-serif" }}
                 >
-                  BH, Betim e Contagem entram na primeira temporada do Ultimate Rivals. Atletas começam no UR Play e os melhores chegam ao UR Legends.
+                  O Ultimate Rivals é uma temporada esportiva para atletas de diferentes níveis. Você entra pelo UR Play, joga, é observado, entende seu nível, soma histórico e evolui dentro de um sistema organizado.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Button href="/cadastro#atleta">
-                    Entrar na Temporada
+                  <Button href="/ur-play">
+                    Começar pelo UR Play
                     <ArrowRight aria-hidden className="h-4 w-4" />
                   </Button>
                   <Button href="/temporada" variant="secondary">
-                    Ver como funciona
+                    Entender como funciona
                   </Button>
                 </div>
+                <p
+                  className="mt-4 max-w-xl text-sm leading-6"
+                  style={{ color: "rgba(244,240,230,0.62)", fontFamily: "'Manrope', system-ui, sans-serif" }}
+                >
+                  Não precisa ser atleta profissional. O sistema existe para organizar níveis, dar clareza e criar oportunidades progressivas. Do primeiro jogo ao ranking, cada etapa ajuda o atleta a construir sua própria trajetória.
+                </p>
                 {/* Pole shields */}
                 <div className="mt-7 flex items-center gap-4 sm:gap-5">
                   {season1.poles.map((p) => (
@@ -235,10 +261,10 @@ export default function Home() {
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            UR Play → Sprint → Series → Legends
+            Um caminho claro para todo atleta.
           </h2>
           <p className="mt-3 text-sm" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-            Cada etapa tem critério. Cada atleta evolui no seu ritmo.
+            A temporada é dividida em etapas para que cada jogador saiba onde está, como evoluir e quais caminhos pode seguir.
           </p>
         </div>
         {/* Mobile: horizontal scroll snap; Desktop: grid */}
@@ -251,20 +277,41 @@ export default function Home() {
         </div>
       </S>
 
+      {/* ── 3. PARA QUEM É ── */}
+      <S id="para-quem" style={{ background: "#0D0D12" }}>
+        <div className="mb-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Para quem é</p>
+          <h2
+            className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+            style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+          >
+            O UR é para quem quer jogar, evoluir e ser visto.
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Você pode estar começando, voltando a jogar, buscando evolução ou querendo competir em alto nível. O sistema organiza caminhos diferentes para perfis diferentes.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {audienceCards.map((card) => (
+            <SeasonInfoCard description={card.description} key={card.title} title={card.title} />
+          ))}
+        </div>
+      </S>
+
       {/* ── 3. RANKING BROADCAST ── */}
-      <S id="ranking" style={{ background: "#0D0D12" }}>
+      <S id="ranking" style={{ background: "#0A0A0B" }}>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Ranking em formação</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Ranking com clareza</p>
             <h2
               className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
               style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
             >
-              Quem está<br />
-              na disputa?
+              Ranking para organizar,<br />
+              não para excluir.
             </h2>
             <p className="mt-4 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
-              O ranking começa a ser alimentado pelo UR Play. Presença, postura e desempenho constroem histórico dentro do ciclo.
+              O ranking existe para dar clareza. Ele ajuda atletas a entenderem seu nível, acompanharem evolução e encontrarem disputas mais justas.
             </p>
             <div className="mt-5">
               <Button href="/ranking" variant="secondary">Ver estrutura do ranking</Button>
@@ -342,7 +389,7 @@ export default function Home() {
           <AthleteArtCard name="Atleta Destaque" pole="BH" level="N1" points={0} rank={1} />
           <AthleteArtCard name="Atleta Destaque" pole="Betim" level="N2" points={0} />
           <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
-            <TeamFormationArtCard teamName="Formação BH Elite" pole="BH" modality="Quartetos" isOfficial={false} />
+            <TeamFormationArtCard teamName="Formação BH Evolução" pole="BH" modality="Quartetos" isOfficial={false} />
             <TeamFormationArtCard teamName="Dupla Betim" pole="Betim" modality="Duplas Mistas" isOfficial={false} />
           </div>
         </div>
@@ -381,8 +428,14 @@ export default function Home() {
             className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
             style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
           >
-            Participação<br />gera valor.
+            Benefícios são consequência<br />da jornada.
           </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            UR Coins, recompensas e benefícios fazem parte do sistema de engajamento, mas sempre conectados à presença, mérito, evolução e regras oficiais.
+          </p>
+          <p className="mt-3 max-w-3xl text-xs font-bold uppercase leading-5 tracking-[0.12em]" style={{ color: "rgba(212,164,55,0.72)", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+            Benefícios, produtos e recompensas dependem de validação, disponibilidade, regras oficiais e parceiros ativos.
+          </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <RewardArtCard

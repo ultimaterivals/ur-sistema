@@ -78,11 +78,11 @@ export default function PatrocinadoresPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#patrocinador", label: "Quero patrocinar" },
-          { href: "/midia", label: "Ver Mídia UR", variant: "secondary" },
+          { href: "/cadastro#patrocinador", label: "Solicitar proposta" },
+          { href: "#ativos", label: "Conhecer formatos", variant: "secondary" },
         ]}
         badges={["mídia", "eventos", "UR Market", "polos", "conteúdo", "benefícios"]}
-        description="Sua marca entra dentro da jornada esportiva: atleta, ranking, mídia, eventos, polos e benefícios com critério."
+        description="O Ultimate Rivals conecta marcas a atletas, equipes, quadras e comunidades por meio de eventos, mídia, ranking, benefícios e experiências reais."
         eyebrow="Proposta comercial"
         image={siteImages.sponsorActivation}
         imagePosition="center 45%"
@@ -91,11 +91,11 @@ export default function PatrocinadoresPage() {
           { label: "presença", value: "eventos" },
           { label: "canal", value: "UR Market" },
         ]}
-        title="Sua marca dentro da temporada."
+        title="Sua marca dentro da jornada do atleta."
       />
 
       <SeasonSection
-        description="O patrocinador entra melhor quando cria utilidade para atleta, comunidade e operação."
+        description="O patrocinador não aparece apenas em uma arte. Ele pode participar da jornada esportiva antes, durante e depois dos jogos."
         eyebrow="Ativos comerciais"
         id="ativos"
         title="Marca não é só logo."
@@ -210,11 +210,11 @@ export default function PatrocinadoresPage() {
         <SeasonAccordion items={sponsorFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Ative sua marca com critério e contexto esportivo.">
+      <SeasonSection id="cta" title="Ative sua marca dentro da jornada esportiva.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/cadastro#patrocinador">Quero patrocinar</Button>
-          <Button href="/ur-market" variant="secondary">
-            Ver UR Market
+          <Button href="/cadastro#patrocinador">Solicitar proposta</Button>
+          <Button href="#ativos" variant="secondary">
+            Conhecer formatos
           </Button>
         </div>
       </SeasonSection>

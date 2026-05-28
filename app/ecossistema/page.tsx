@@ -186,11 +186,11 @@ export default function EcossistemaPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro", label: "Entrar no ecossistema" },
-          { href: "/ur-play", label: "Começar pelo UR Play", variant: "secondary" },
+          { href: "#mapa", label: "Entender o ecossistema" },
+          { href: "/ur-play", label: "Entrar pelo UR Play", variant: "secondary" },
         ]}
         badges={["UR Play", "ranking contínuo", "equipes", "mídia própria", "UR Market", "polos"]}
-        description="O Ultimate Rivals conecta jogo, ranking, equipes, quadras, mídia, benefícios e parceiros em uma estrutura criada para organizar, valorizar e desenvolver o esporte amador."
+        description="O Ultimate Rivals organiza atletas, equipes, quadras, mídia, parceiros e desenvolvimento em uma jornada contínua, clara e sustentável."
         eyebrow="Ecossistema UR"
         image={siteImages.teamEmbrace}
         imagePosition="center 45%"
@@ -199,11 +199,11 @@ export default function EcossistemaPage() {
           { label: "organização", value: "temporada" },
           { label: "valor", value: "mídia e market" },
         ]}
-        title="Um sistema completo para o esporte amador."
+        title="O esporte amador precisa de caminho."
       />
 
       <SeasonSection
-        description="Tudo começa no jogo, mas não termina nele. O atleta entra, joga, é observado, cria histórico, aparece, evolui e pode acessar novas oportunidades com critério."
+        description="Não é apenas um torneio. É um sistema para dar continuidade, histórico, pertencimento e evolução ao esporte amador."
         eyebrow="Tudo conectado"
         id="mapa"
         title="Jogar, evoluir, aparecer e construir valor."
@@ -280,11 +280,11 @@ export default function EcossistemaPage() {
         <SeasonAccordion items={ecosystemFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Escolha sua porta de entrada no ecossistema.">
+      <SeasonSection id="cta" title="O caminho começa pelo primeiro jogo.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/cadastro">Escolher meu caminho</Button>
-          <Button href="/regulamento" variant="secondary">
-            Ver regulamento
+          <Button href="#mapa">Entender o ecossistema</Button>
+          <Button href="/ur-play" variant="secondary">
+            Entrar pelo UR Play
           </Button>
         </div>
       </SeasonSection>

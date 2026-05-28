@@ -57,12 +57,12 @@ export default function RankingPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/ur-play", label: "Entrar pelo UR Play" },
-          { href: "/cadastro#atleta", label: "Cadastrar interesse", variant: "secondary" },
+          { href: "#broadcast", label: "Ver ranking" },
+          { href: "#criterios", label: "Entender pontuação", variant: "secondary" },
         ]}
         badges={["ranking individual", "formações", "polos", "níveis", "Legends"]}
-        description="Mérito vira histórico. Ranking define reputação, classificação, força das equipes e caminho ao UR Legends."
-        eyebrow="Central competitiva"
+        description="O ranking do Ultimate Rivals organiza atletas, equipes e polos com base em participação, desempenho e critérios oficiais."
+        eyebrow="Central de evolução"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
         stats={[
@@ -70,14 +70,14 @@ export default function RankingPage() {
           { label: "níveis", value: "N1 / N2 / N3" },
           { label: "disputa", value: "polos" },
         ]}
-        title="Mérito vira histórico."
+        title="Ranking para dar clareza à evolução."
       />
 
       <SeasonSection
-        description="O ranking só publica contexto real após participação confirmada. Até lá, o painel mostra a estrutura editorial da disputa."
+        description="Ele não existe para afastar iniciantes. Existe para criar disputas mais justas, acompanhar evolução e valorizar quem participa da temporada."
         eyebrow="Broadcast competitivo"
         id="broadcast"
-        title="Quem está na disputa?"
+        title="Organização, nível e histórico."
       >
         <RankingBroadcastPanel rows={season1.mockRankings} />
       </SeasonSection>

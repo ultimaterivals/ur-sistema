@@ -149,11 +149,11 @@ export default function QuadrasParceirasPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#quadra", label: "Cadastrar minha quadra" },
-          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
+          { href: "/cadastro#quadra", label: "Cadastrar quadra" },
+          { href: "/contato", label: "Falar sobre parceria", variant: "secondary" },
         ]}
         badges={["polo oficial", "ocupação", "eventos", "mídia", "comunidade", "patrocinadores"]}
-        description="Sua quadra pode virar um território vivo da temporada, com calendário, atletas, mídia e relação com marcas locais."
+        description="O Ultimate Rivals ajuda quadras a gerar movimento, organizar eventos, fortalecer comunidade local e ganhar presença como território esportivo."
         eyebrow="Polos oficiais"
         image={siteImages.wideServe}
         imagePosition="center 47%"
@@ -162,7 +162,7 @@ export default function QuadrasParceirasPage() {
           { label: "força", value: "comunidade" },
           { label: "ritmo", value: "calendário" },
         ]}
-        title="Sua quadra pode virar um polo UR."
+        title="Sua quadra como polo de uma temporada."
       />
 
       <SeasonSection
@@ -179,7 +179,7 @@ export default function QuadrasParceirasPage() {
       </SeasonSection>
 
       <SeasonSection
-        description="O conteúdo histórico falava de movimento qualificado, agenda, mídia e potencial comercial. Isso volta como benefício realista para a quadra parceira."
+        description="A quadra deixa de ser apenas um espaço alugado e passa a ser ponto ativo de uma jornada esportiva organizada."
         eyebrow="Benefícios para a quadra"
         id="beneficios"
         title="Movimento, calendário, visibilidade e parceiros."
@@ -258,11 +258,11 @@ export default function QuadrasParceirasPage() {
         <SeasonAccordion items={courtFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Transforme sua quadra em ponto de temporada.">
+      <SeasonSection id="cta" title="Transforme sua quadra em ponto ativo da temporada.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/cadastro#quadra">Cadastrar minha quadra</Button>
-          <Button href="/patrocinadores" variant="secondary">
-            Ver parcerias
+          <Button href="/cadastro#quadra">Cadastrar quadra</Button>
+          <Button href="/contato" variant="secondary">
+            Falar sobre parceria
           </Button>
         </div>
       </SeasonSection>

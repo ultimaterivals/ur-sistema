@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Ultimate Rivals",
   },
   description:
-    "UR Temporada 1 — Territórios em Disputa. Atletas pontuam, equipes somam, polos disputam respeito. Quem manda na região?",
+    "UR Temporada 1 — Entre na temporada. Evolua no seu ritmo. Atletas entram pelo UR Play, constroem histórico e avançam com critério.",
   icons: {
     icon: "/brand/logo-ur.png",
     shortcut: "/brand/logo-ur.png",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Ultimate Rivals — Temporada 1",
-    description: "Quem manda na região? BH, Betim e Contagem entram na disputa.",
+    description: "Entre na temporada. Evolua no seu ritmo. O UR Play é a porta de entrada para atletas de diferentes níveis.",
     images: ["/brand/logo-ur.png"],
     locale: "pt_BR",
     siteName: "Ultimate Rivals",

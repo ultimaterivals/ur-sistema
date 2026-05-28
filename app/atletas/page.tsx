@@ -75,7 +75,7 @@ const athleteJourney = [
 const levelCards = [
   {
     title: "N1",
-    description: "Atletas de elite disputam protagonismo, ranking, convocações e alto rendimento.",
+    description: "Atletas competitivos disputam protagonismo, ranking, convocações e alto rendimento.",
     icon: "/season-1/badges/badge-n1.svg",
   },
   {
@@ -99,7 +99,7 @@ export default function AtletasPage() {
           { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
         ]}
         badges={["UR Play", "N1 a N3", "ranking", "UR Coins", "mídia", "Legends"]}
-        description="Todo atleta tem espaço para entrar, evoluir, pontuar, aparecer e construir trajetória. Do iniciante ao elite, cada um disputa a própria temporada."
+        description="No Ultimate Rivals, cada atleta constrói histórico com presença, desempenho, evolução e atitude. O sistema foi criado para dar clareza ao caminho de quem quer jogar melhor e ser visto."
         eyebrow="Jornada do atleta"
         image={siteImages.athletePortrait}
         imagePosition="center 18%"
@@ -108,14 +108,14 @@ export default function AtletasPage() {
           { label: "níveis", value: "N1 / N2 / N3" },
           { label: "trajetória", value: "ranking" },
         ]}
-        title="Seu jogo precisa contar."
+        title="Sua trajetória começa pelo primeiro jogo."
       />
 
       <SeasonSection
-        description="A jornada individual fica clara quando cada passo tem função dentro da temporada."
+        description="Você pode estar começando, voltando ao jogo ou buscando alto rendimento. O importante é entrar no processo certo."
         eyebrow="Para todos os níveis"
         id="jornada"
-        title="Entrar, evoluir, pontuar e aparecer."
+        title="Entrada, níveis, reputação, mídia e oportunidades."
       >
         <SeasonJourney steps={athleteJourney} />
       </SeasonSection>
@@ -202,11 +202,11 @@ export default function AtletasPage() {
         <SeasonAccordion items={athleteFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Entre pelo UR Play e comece sua temporada.">
+      <SeasonSection id="cta" title="Comece pelo primeiro jogo e construa sua trajetória.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button href="/cadastro#atleta">Cadastrar como atleta</Button>
-          <Button href="/ranking" variant="secondary">
-            Ver ranking
+          <Button href="/ur-play" variant="secondary">
+            Conhecer UR Play
           </Button>
         </div>
       </SeasonSection>

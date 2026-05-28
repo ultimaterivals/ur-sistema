@@ -172,11 +172,11 @@ export default function MidiaPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#comunidade", label: "Acompanhar Mídia UR" },
-          { href: "/patrocinadores", label: "Ver mídia para marcas", variant: "secondary" },
+          { href: "#editorias", label: "Conhecer mídia UR" },
+          { href: "/patrocinadores", label: "Ver oportunidades", variant: "secondary" },
         ]}
         badges={["histórias", "ranking", "bastidores", "transmissões", "patrocinadores"]}
-        description="O esporte amador também merece palco. A Mídia UR transforma jogo, ranking, bastidores e evolução em narrativa pública."
+        description="A mídia oficial do UR transforma UR Play, jogos, atletas, equipes, rankings e bastidores em conteúdo para fortalecer o esporte amador."
         eyebrow="Portal esportivo"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
@@ -185,11 +185,11 @@ export default function MidiaPage() {
           { label: "base", value: "histórias" },
           { label: "ritmo", value: "temporada" },
         ]}
-        title="O esporte amador também merece palco."
+        title="A temporada também precisa ser contada."
       />
 
       <SeasonSection
-        description="Os formatos editoriais dão cara de liga para o que acontece na quadra e fora dela."
+        description="Cada atleta pode virar personagem. Cada equipe pode criar narrativa. Cada etapa pode gerar história."
         eyebrow="Editorias"
         id="editorias"
         title="A rodada vira história."
@@ -277,11 +277,11 @@ export default function MidiaPage() {
         <SeasonAccordion items={mediaFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Acompanhe a temporada como quem acompanha uma liga.">
+      <SeasonSection id="cta" title="Acompanhe a temporada como história em construção.">
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button href="/cadastro#comunidade">Acompanhar Mídia UR</Button>
+          <Button href="#editorias">Conhecer mídia UR</Button>
           <Button href="/cadastro#patrocinador" variant="secondary">
-            Ativar marca
+            Ver oportunidades
           </Button>
         </div>
       </SeasonSection>

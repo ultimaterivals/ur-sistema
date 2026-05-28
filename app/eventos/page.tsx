@@ -81,11 +81,11 @@ export default function EventosPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/temporada", label: "Ver temporada" },
-          { href: "/cadastro#atleta", label: "Entrar no UR", variant: "secondary" },
+          { href: "#eventos", label: "Ver próximos eventos" },
+          { href: "#formatos", label: "Entender formatos", variant: "secondary" },
         ]}
         badges={["UR Play", "UR Sprint", "UR Series", "UR Legends", "bracket", "polos"]}
-        description="A temporada acontece em ciclos. Cada etapa tem função: entrada, disputa, classificação, narrativa e fechamento competitivo."
+        description="A temporada combina entradas abertas, disputas curtas, etapas maiores e momentos de destaque. Cada evento tem uma função dentro da jornada."
         eyebrow="Calendário competitivo"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"
@@ -94,11 +94,11 @@ export default function EventosPage() {
           { label: "entrada", value: "UR Play" },
           { label: "ápice", value: "Legends" },
         ]}
-        title="A temporada não para."
+        title="Eventos para cada etapa da temporada."
       />
 
       <SeasonSection
-        description="A escada oficial ajuda o atleta a entender onde entra, como evolui e para onde pode avançar."
+        description="Você começa no ambiente certo, ganha ritmo e pode avançar conforme presença, nível e evolução."
         eyebrow="Escada de eventos"
         id="escada"
         title="Play, Sprint, Series, Legends."
@@ -215,7 +215,7 @@ export default function EventosPage() {
         <SeasonAccordion items={eventFaq} />
       </SeasonSection>
 
-      <SeasonSection id="cta" title="Entre na temporada e acompanhe as próximas etapas.">
+      <SeasonSection id="cta" title="Comece no ambiente certo e acompanhe as próximas etapas.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button href="/cadastro#atleta">Entrar no UR</Button>
           <Button href="/temporada" variant="secondary">
