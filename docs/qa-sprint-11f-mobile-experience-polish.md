@@ -96,3 +96,47 @@ Resultados:
 - Arquivos `.patch` não foram adicionados.
 - Home da Temporada 1 foi preservada como página principal.
 - Header/menu mobile funcional foi preservado.
+
+## Resolução de conflitos com main
+
+Arquivos resolvidos:
+
+- `app/page.tsx`
+- `app/ur-market/page.tsx`
+- `components/season/ProductArtCard.tsx`
+- `components/season/RankingBroadcastPanel.tsx`
+- `components/season/RewardArtCard.tsx`
+- `components/season/SeasonBenefitGrid.tsx`
+- `components/season/SeasonInfoCard.tsx`
+- `components/season/SeasonJourney.tsx`
+- `components/season/SeasonPageHero.tsx`
+- `components/season/SeasonSection.tsx`
+- `components/season/TeamFormationArtCard.tsx`
+- `components/season/URBracketPreview.tsx`
+- `lib/navigation.ts`
+
+Decisões tomadas:
+
+- A versão da Sprint 11F foi preservada nos conflitos de layout mobile, espaçamento, cards, carrossel/snap, footer e navegação.
+- A Home continuou como Temporada 1, com o painel compacto mobile e hierarquia mais respirável.
+- `/ur-market` continuou posicionado como consequência de participação, mérito e validação, com CTA principal para entrada na temporada.
+- A navegação mobile manteve os grupos Participar, Competir, Evoluir, Benefícios, Negócios e Comunidade.
+- O footer em accordion foi preservado também no viewport tablet/mobile `768x1024`, acompanhando o breakpoint mobile do header.
+- Não havia ajuste funcional novo da `origin/main` nesses blocos conflitantes que justificasse reverter o refino mobile da 11F.
+
+Validação executada após a resolução:
+
+- Checagem ancorada de marcadores reais de conflito: sem ocorrências.
+- Checagem restrita aos arquivos resolvidos: sem ocorrências.
+- `npm.cmd run lint`: aprovado com os mesmos warnings já registrados.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `$env:NODE_OPTIONS='--max-old-space-size=8192'; npm.cmd run build`: aprovado.
+- QA Playwright responsivo: rotas e viewports obrigatórios aprovados.
+- Evidência pós-merge: `output/playwright/sprint-11f-merge-playwright-summary.json`.
+
+Confirmação:
+
+- A Sprint 11F foi preservada.
+- Desktop continuou com header, navegação e CTAs em `1366x768` e `1920x1080`.
+- Mobile continuou com menu abrindo/fechando, footer em accordion e sem overflow horizontal nas rotas testadas.
+- Backend, formulários, hashes, endpoints e integrações permaneceram fora do escopo.

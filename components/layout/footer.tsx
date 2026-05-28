@@ -40,7 +40,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="grid gap-2 sm:hidden">
+        <div className="grid gap-2 lg:hidden">
           {footerColumns.map((column) => (
             <details
               className="group rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3"
@@ -66,7 +66,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        <div className="hidden gap-4 lg:grid lg:grid-cols-4">
           {footerColumns.map((column) => (
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-4" key={column.title}>
               <h3 className="text-sm font-black uppercase tracking-[0.14em] text-white">
