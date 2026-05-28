@@ -45,7 +45,7 @@ export function ProductArtCard({ product, className }: ProductArtCardProps) {
         variant={isLegends ? "legends" : "default"}
         className={[
           "flex flex-col items-center justify-between p-6 md:p-8 cursor-pointer",
-          "min-h-[320px] md:min-h-[400px]",
+          "min-h-[330px] md:min-h-[400px]",
           // Scale only on non-touch devices
           "sm:hover:scale-[1.02]",
           className ?? "",
@@ -92,7 +92,7 @@ export function ProductArtCard({ product, className }: ProductArtCardProps) {
               {product.name}
             </h3>
             <p
-              className="text-sm text-[#8A8A93] leading-5 max-w-[200px]"
+              className="max-w-[220px] text-[15px] leading-6 text-[#8A8A93]"
               style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
             >
               {product.description}

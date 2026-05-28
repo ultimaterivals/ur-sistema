@@ -71,8 +71,8 @@ export function RankingBroadcastPanel({
       />
 
       {/* Header — broadcast style */}
-      <div className="relative z-10 flex items-center justify-between border-b border-[rgba(255,255,255,0.08)] px-5 py-4">
-        <div className="flex items-center gap-3">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-[rgba(255,255,255,0.08)] px-4 py-4 sm:px-5">
+        <div className="flex min-w-0 items-center gap-3">
           <img
             alt="Força dos Polos"
             className="h-6 w-6 opacity-80"
@@ -80,7 +80,7 @@ export function RankingBroadcastPanel({
             src="/season-1/symbols/forca-dos-polos-line.svg"
           />
           <h3
-            className="text-base font-bold uppercase tracking-widest text-[#F4F0E6]"
+            className="text-sm font-bold uppercase tracking-widest text-[#F4F0E6] sm:text-base"
             style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.1em" }}
           >
             {title}
@@ -88,7 +88,7 @@ export function RankingBroadcastPanel({
         </div>
         {showLive && (
           <span
-            className="flex items-center gap-1.5 rounded-full border border-[#FF4D4D]/40 bg-[#FF4D4D]/10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-[#FF4D4D]"
+            className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#FF4D4D]/40 bg-[#FF4D4D]/10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest text-[#FF4D4D]"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#FF4D4D]" />
@@ -102,7 +102,7 @@ export function RankingBroadcastPanel({
         {rows.map((row, idx) => (
           <div
             key={row.rank}
-            className="group relative flex items-center gap-4 px-5 py-3.5 transition-all hover:bg-[rgba(212,164,55,0.05)]"
+            className="group relative flex items-center gap-3 px-4 py-4 transition-all hover:bg-[rgba(212,164,55,0.05)] sm:gap-4 sm:px-5"
             style={{
               borderBottom:
                 idx < rows.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",

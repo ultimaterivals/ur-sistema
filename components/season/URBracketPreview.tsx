@@ -185,7 +185,7 @@ export function URBracketPreview({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.15)] bg-[#14141A] p-5 md:p-7 ${className ?? ""}`}
+      className={`relative overflow-hidden rounded-lg border border-[rgba(212,164,55,0.15)] bg-[#14141A] p-4 md:p-7 ${className ?? ""}`}
     >
       {/* Bracket texture */}
       <div
@@ -197,16 +197,16 @@ export function URBracketPreview({
       />
 
       {/* Header */}
-      <div className="relative z-10 mb-6 flex items-center gap-3">
+      <div className="relative z-10 mb-5 flex flex-wrap items-center gap-3 md:mb-6">
         <img alt={stage} className="h-8 w-8" loading="lazy" src={symbolPath} />
         <h3
-          className="text-lg font-bold uppercase tracking-widest text-[#F4F0E6]"
+          className="text-base font-bold uppercase tracking-widest text-[#F4F0E6] md:text-lg"
           style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.08em" }}
         >
           {stageNames[stage]} · Bracket
         </h3>
         <span
-          className="ml-auto rounded-full border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.08)] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#D4A437] flex items-center gap-1.5"
+          className="rounded-full border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.08)] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#D4A437] flex items-center gap-1.5 md:ml-auto"
           style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437] animate-pulse" />
@@ -215,8 +215,8 @@ export function URBracketPreview({
       </div>
 
       {/* Bracket grid — scrollable horizontal on mobile */}
-      <div className="relative z-10 overflow-x-auto pb-2">
-        <div className="flex gap-0 min-w-max">
+      <div className="relative z-10 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
+        <div className="flex min-w-max snap-x snap-mandatory gap-0">
           {/* QF column */}
           <div className="flex flex-col" style={{ gap: 8 }}>
             {phaseLabel("Quartas")}

@@ -21,7 +21,7 @@ export function SeasonInfoCard({
   className,
 }: SeasonInfoCardProps) {
   return (
-    <URArtCard className={`flex min-h-[210px] flex-col gap-4 p-5 ${className ?? ""}`}>
+    <URArtCard className={`flex min-h-[232px] flex-col gap-4 p-5 sm:p-6 ${className ?? ""}`}>
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.07]"
         style={{
@@ -53,7 +53,7 @@ export function SeasonInfoCard({
         ) : null}
       </div>
       <p
-        className="relative z-10 text-sm leading-6 text-[#8A8A93]"
+        className="relative z-10 text-[15px] leading-7 text-[#8A8A93]"
         style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
       >
         {description}

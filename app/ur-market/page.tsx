@@ -72,12 +72,12 @@ export default function URMarketPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "#catalogo", label: "Ver UR Market" },
-          { href: "/patrocinadores", label: "Ativar marca", variant: "secondary" },
+          { href: "/cadastro#atleta", label: "Entrar na temporada" },
+          { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
         ]}
         badges={["UR Coins", "benefícios aprovados", "catálogo em expansão", "regras oficiais"]}
         description="Presença, mérito e participação podem abrir acesso a benefícios aprovados. Sem promessa automática, sem resgate sem regra."
-        eyebrow="Benefícios e vitrine"
+        eyebrow="Consequência da temporada"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
         stats={[
@@ -85,7 +85,7 @@ export default function URMarketPage() {
           { label: "status", value: "em expansão" },
           { label: "regra", value: "oficial" },
         ]}
-        title="Jogue, pontue e desbloqueie possibilidades."
+        title="Benefícios entram com critério."
       />
 
       <SeasonSection

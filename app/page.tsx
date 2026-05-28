@@ -31,7 +31,7 @@ function S({
 }) {
   return (
     <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-12 md:py-16 lg:px-8 lg:py-20 ${className}`}
+      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-10 md:py-16 lg:px-8 lg:py-20 ${className}`}
       id={id}
       style={style}
     >
@@ -52,7 +52,7 @@ export default function Home() {
 
       {/* ── 1. HERO TEMPORADA 1 ── */}
       <section className="relative isolate overflow-hidden" style={{ background: "#0A0A0B" }}>
-        <div className="relative min-h-[520px] md:min-h-[640px] py-16 md:py-20">
+        <div className="relative min-h-[520px] py-14 md:min-h-[640px] md:py-20">
           <EditorialImage
             className="absolute inset-0 -z-20 rounded-none border-0 opacity-30"
             image={homeImageRoles.hero}
@@ -106,11 +106,34 @@ export default function Home() {
                   </Button>
                 </div>
                 {/* Pole shields */}
-                <div className="mt-8 flex items-center gap-5">
+                <div className="mt-7 flex items-center gap-4 sm:gap-5">
                   {season1.poles.map((p) => (
                     <div key={p.id} className="flex flex-col items-center gap-1.5">
                       <img alt={p.name} className="h-10 w-auto opacity-80" loading="lazy" src={p.shieldPath} />
                       <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>{p.short}</span>
+                    </div>
+                  ))}
+                </div>
+                <div
+                  className="mt-6 grid grid-cols-3 gap-2 rounded-lg border border-[rgba(212,164,55,0.18)] bg-[#14141A]/82 p-2 shadow-[0_8px_32px_rgba(0,0,0,0.42)] backdrop-blur lg:hidden"
+                >
+                  {heroStats.map((s) => (
+                    <div
+                      className="rounded border border-white/10 bg-white/[0.035] px-2 py-3 text-center"
+                      key={s.label}
+                    >
+                      <span
+                        className="block text-lg font-bold text-[#D4A437]"
+                        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                      >
+                        {s.value}
+                      </span>
+                      <span
+                        className="mt-1 block text-[9px] font-bold uppercase tracking-[0.14em] text-[#8A8A93]"
+                        style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}
+                      >
+                        {s.label}
+                      </span>
                     </div>
                   ))}
                 </div>
