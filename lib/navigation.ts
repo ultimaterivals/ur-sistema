@@ -16,18 +16,25 @@ export const mobileNavigationGroups = [
     label: "Começar",
     items: [
       { label: "Como funciona", href: "/#como-funciona" },
-      { label: "UR Play", href: "/ur-play" },
+      { label: "UR Play", href: "/#ur-play" },
       { label: "Cadastro", href: "/cadastro" },
+    ],
+  },
+  {
+    label: "Ecossistema",
+    items: [
+      { label: "Visão geral", href: "/#ecossistema" },
+      { label: "Modalidades", href: "/#modalidades" },
+      { label: "Polos", href: "/#polos" },
+      { label: "Equipes", href: "/equipes" },
     ],
   },
   {
     label: "Temporada",
     items: [
-      { label: "Modalidades", href: "/#modalidades" },
-      { label: "Polos", href: "/#polos" },
       { label: "Eventos", href: "/eventos" },
       { label: "Ranking", href: "/ranking" },
-      { label: "Equipes", href: "/equipes" },
+      { label: "Regulamento", href: "/#regulamento" },
     ],
   },
   {
@@ -46,19 +53,15 @@ export const mobileNavigationGroups = [
       { label: "Quadras", href: "/quadras-parceiras" },
     ],
   },
-  {
-    label: "Apoio",
-    items: [
-      { label: "Regulamento", href: "/regulamento" },
-      { label: "Ecossistema", href: "/ecossistema" },
-    ],
-  },
 ] as const;
 
 export const mobileNavigation = [
   { label: "Temporada", href: "/temporada" },
-  { label: "UR Play", href: "/ur-play" },
+  { label: "UR Play", href: "/#ur-play" },
   { label: "Cadastro", href: "/cadastro" },
+  { label: "Ecossistema", href: "/#ecossistema" },
+  { label: "Modalidades", href: "/#modalidades" },
+  { label: "Polos", href: "/#polos" },
   { label: "Atletas", href: "/atletas" },
   { label: "Equipes", href: "/equipes" },
   { label: "Ranking", href: "/ranking" },
@@ -67,8 +70,7 @@ export const mobileNavigation = [
   { label: "CT UR", href: "/ct-ur" },
   { label: "UR Market", href: "/ur-market" },
   { label: "Recompensas", href: "/#recompensas" },
-  { label: "Regulamento", href: "/regulamento" },
-  { label: "Ecossistema", href: "/ecossistema" },
+  { label: "Regulamento", href: "/#regulamento" },
   { label: "Patrocinadores", href: "/patrocinadores" },
   { label: "Quadras Parceiras", href: "/quadras-parceiras" },
   { label: "Contato", href: "/contato" },
