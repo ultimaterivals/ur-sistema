@@ -36,15 +36,13 @@ function SectionHeading({
   eyebrow,
   title,
   subtitle,
-  className = "",
 }: {
   eyebrow: string;
   title: ReactNode;
   subtitle?: string;
-  className?: string;
 }) {
   return (
-    <div className={`mb-6 ${className}`}>
+    <div className="mb-6">
       <p
         className="text-[11px] font-bold uppercase tracking-[0.22em]"
         style={{ color: "#D4A437", fontFamily: bodyFont }}
@@ -73,7 +71,6 @@ function InfoCard({
   href,
   cta,
   id,
-  children,
 }: {
   title: string;
   description: string;
@@ -81,7 +78,6 @@ function InfoCard({
   href?: string;
   cta?: string;
   id?: string;
-  children?: ReactNode;
 }) {
   const content = (
     <>
@@ -102,7 +98,6 @@ function InfoCard({
       <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
         {description}
       </p>
-      {children}
       {cta ? (
         <span
           className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.12em]"
@@ -130,22 +125,6 @@ function InfoCard({
     <div className={className} id={id}>
       {content}
     </div>
-  );
-}
-
-function RuleList({ items }: { items: readonly string[] }) {
-  return (
-    <ul className="mt-4 grid gap-2">
-      {items.map((item) => (
-        <li
-          className="rounded border border-white/10 bg-white/[0.035] px-3 py-2 text-sm leading-5"
-          key={item}
-          style={{ color: "rgba(244,240,230,0.76)", fontFamily: bodyFont }}
-        >
-          {item}
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -182,6 +161,25 @@ const urPlayCards = [
   {
     title: "Encontrar caminho",
     description: "Você pode seguir como atleta individual, entrar em uma equipe ou disputar eventos futuros.",
+  },
+] as const;
+
+const ecosystemCards = [
+  {
+    title: "Caminho",
+    description: "O atleta entende onde começa e como evolui.",
+  },
+  {
+    title: "Critério",
+    description: "Níveis, ranking e regulamento reduzem improviso.",
+  },
+  {
+    title: "Comunidade",
+    description: "Polos conectam atletas, equipes, quadras e parceiros.",
+  },
+  {
+    title: "Valor",
+    description: "Participação vira histórico, mídia, oportunidades e benefícios possíveis.",
   },
 ] as const;
 
@@ -249,51 +247,33 @@ const sprintCards = [
   },
 ] as const;
 
-const sprintRules = [
-  "Até 8 equipes por polo.",
-  "Todos passam pelo UR Play antes.",
-  "Equipes são organizadas por nível.",
-  "Jogos geram ranking.",
-  "Atletas também constroem histórico individual.",
-  "Os melhores avançam para o Regional.",
-] as const;
-
 const levelCards = [
   {
     title: "N1 — Elite",
-    description: "Equipes com mais ritmo, experiência, consistência e desempenho competitivo.",
+    description: "Atletas e equipes de maior desempenho, ritmo competitivo alto e maior exigência técnica.",
   },
   {
     title: "N2 — Avançado",
-    description: "Equipes com boa organização, presença competitiva e potencial real de disputar etapas maiores.",
+    description: "Atletas e equipes que já jogam com regularidade, competem em torneios e buscam evolução dentro de uma disputa organizada.",
   },
   {
     title: "N3 — Desenvolvimento",
-    description: "Equipes em evolução, formações novas, atletas iniciantes organizados ou grupos ganhando ritmo.",
+    description: "Atletas iniciantes, em formação ou retornando ao esporte, guiados para ganhar confiança, entender o jogo e entrar nas competições oficiais no momento certo.",
   },
-] as const;
-
-const regionalSlots = [
-  "Classificação por polo a partir do UR Sprint.",
-  "Critérios oficiais consideram nível, presença, desempenho e participação.",
-  "Belo Horizonte classifica representantes.",
-  "Betim classifica representantes.",
-  "Contagem classifica representantes.",
-  "O Regional reúne equipes de níveis diferentes conforme regra oficial.",
 ] as const;
 
 const regionalCards = [
   {
-    title: "Equipes",
-    description: "Cada equipe mantém sua pontuação própria e segue disputando sua classificação individual.",
+    title: "Classificação por polo",
+    description: "Cada polo classifica representantes a partir do UR Sprint, respeitando presença, desempenho, nível e regras oficiais.",
   },
   {
-    title: "Atletas",
-    description: "Cada atleta continua somando histórico pela própria presença, desempenho, evolução e postura.",
+    title: "Caminho competitivo",
+    description: "BH, Betim e Contagem se encontram para ampliar a disputa sem apagar a campanha própria de cada equipe.",
   },
   {
-    title: "Polos",
-    description: "Cada resultado ajuda a formar o Ranking dos Polos, fortalecendo a região representada.",
+    title: "Espaço para evolução",
+    description: "O Regional também abre espaço real para equipes em desenvolvimento que constroem caminho no nível certo.",
   },
 ] as const;
 
@@ -301,55 +281,27 @@ const rankingCards = [
   {
     id: "ranking-atletas",
     title: "Ranking dos Atletas",
-    description: "Mostra a trajetória individual de cada jogador. Mesmo dentro de uma equipe, cada atleta constrói sua própria história.",
+    description: "Mostra a trajetória individual de cada jogador, mesmo dentro de uma equipe.",
     meta: "Presença • desempenho • evolução • postura • fair play",
   },
   {
     id: "ranking-equipes",
     title: "Ranking das Equipes",
-    description: "Mostra a campanha própria de cada equipe. A equipe cresce quando seus atletas participam, evoluem e jogam com consistência.",
+    description: "Mostra a campanha própria de cada equipe, com jogos, vitórias, classificação e evolução coletiva.",
     meta: "Jogos • vitórias • classificação • evolução coletiva",
   },
   {
     id: "ranking-polos",
     title: "Ranking dos Polos",
-    description: "Mostra a força coletiva de cada região. O polo cresce quando a comunidade participa, compete e se envolve.",
+    description: "Mostra a força coletiva da região pela participação de atletas, equipes, eventos e comunidade.",
     meta: "Equipes • atletas • UR Play • engajamento • Legends",
   },
 ] as const;
 
-const rewardCards = [
-  {
-    title: "Para atletas",
-    description: "Benefícios individuais, produtos, experiências, descontos, conteúdos, treinos e destaques.",
-  },
-  {
-    title: "Para equipes",
-    description: "Orientações, análise de formação, apoio de desenvolvimento, mídia, benefícios e ativações.",
-  },
-  {
-    title: "Para polos",
-    description: "Treinos coletivos, clínicas, desafios, ativações, cobertura especial e recompensas comunitárias.",
-  },
-] as const;
-
-const rewardExamples = [
-  "treino especial para equipes do polo",
-  "orientação para capitães",
-  "clínica técnica",
-  "destaque de mídia",
-  "sessão de análise de equipe",
-  "descontos em eventos",
-  "benefícios no UR Market",
-  "brindes de patrocinadores",
-  "ativações com parceiros",
-  "apoio para equipes em desenvolvimento",
-] as const;
-
-const marketCards = [
+const benefitCards = [
   {
     title: "Atletas",
-    description: "Produtos, experiências, treinos, descontos e benefícios individuais.",
+    description: "Produtos, experiências, treinos, descontos, mídia e benefícios individuais possíveis.",
   },
   {
     title: "Equipes",
@@ -359,35 +311,6 @@ const marketCards = [
     title: "Polos",
     description: "Ativações, clínicas, desafios, cobertura especial, benefícios coletivos e ações com parceiros.",
   },
-] as const;
-
-const extraExamples = [
-  "equipe mais organizada",
-  "melhor torcida",
-  "capitão destaque",
-  "atleta revelação",
-  "evolução da rodada",
-  "fair play",
-  "presença completa",
-  "conteúdo enviado pela equipe",
-  "desafio entre polos",
-  "votação da comunidade",
-  "história da rodada",
-  "melhor jogada",
-  "melhor dupla",
-  "melhor formação",
-  "equipe que mais evoluiu",
-] as const;
-
-const legendsCriteria = [
-  "Ranking do atleta",
-  "Presença",
-  "Desempenho",
-  "Postura",
-  "Evolução",
-  "Fair Play",
-  "Elegibilidade",
-  "Participação na temporada",
 ] as const;
 
 const regulationCards = [
@@ -402,10 +325,6 @@ const regulationCards = [
   {
     title: "Fair Play",
     description: "Postura, respeito e compromisso também fazem parte da evolução.",
-  },
-  {
-    title: "Elegibilidade",
-    description: "Entenda quem pode participar de cada etapa e como avançar.",
   },
 ] as const;
 
@@ -423,8 +342,8 @@ const startCards = [
     cta: "Cadastrar equipe",
   },
   {
-    title: "Quero entender tudo",
-    description: "Veja como a temporada conecta UR Play, Sprint, Regional, Ranking, Market e Legends.",
+    title: "Quero entender a temporada",
+    description: "Veja como UR Play, Sprint, Regional, rankings, Market e Legends se conectam.",
     href: "/temporada",
     cta: "Entender temporada",
   },
@@ -433,7 +352,7 @@ const startCards = [
 export default function Home() {
   return (
     <main style={{ background: "#0A0A0B", color: "#F4F0E6" }}>
-      <section className="relative isolate overflow-hidden" style={{ background: "#0A0A0B" }}>
+      <section className="relative isolate overflow-hidden" id="hero" style={{ background: "#0A0A0B" }}>
         <div className="relative min-h-[560px] py-12 md:min-h-[680px] md:py-20">
           <EditorialImage
             className="absolute inset-0 -z-20 rounded-none border-0 opacity-32"
@@ -462,17 +381,15 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
               <div className="max-w-3xl">
-                <div className="mb-5 flex flex-wrap items-center gap-2">
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.1)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]"
-                    style={{ color: "#D4A437", fontFamily: bodyFont }}
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437]" />
-                    Temporada 1 UR
-                  </span>
-                </div>
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-sm border border-[rgba(212,164,55,0.35)] bg-[rgba(212,164,55,0.1)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em]"
+                  style={{ color: "#D4A437", fontFamily: bodyFont }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#D4A437]" />
+                  Temporada 1 UR
+                </span>
                 <h1
-                  className="text-[clamp(3.3rem,16vw,8rem)] font-bold uppercase leading-[0.82] tracking-[0.01em]"
+                  className="mt-5 text-[clamp(3.3rem,16vw,8rem)] font-bold uppercase leading-[0.82] tracking-[0.01em]"
                   style={{ color: "#F4F0E6", fontFamily: displayFont }}
                 >
                   Polos em<br />
@@ -484,7 +401,7 @@ export default function Home() {
                 >
                   A temporada começa no UR Play. Atletas individuais e equipes entram na jornada,
                   jogam no seu nível, somam histórico e ajudam Belo Horizonte, Betim e Contagem a
-                  crescerem no ranking dos polos.
+                  crescerem no Ranking dos Polos.
                 </p>
                 <p className="mt-4 max-w-2xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
                   Você não precisa ter equipe para começar. No UR Play, todo atleta entra, joga, é
@@ -495,7 +412,7 @@ export default function Home() {
                     Começar pelo UR Play
                     <ArrowRight aria-hidden className="h-4 w-4" />
                   </Button>
-                  <Button href="#temporada" variant="secondary">
+                  <Button href="#ur-play" variant="secondary">
                     Entender a temporada
                   </Button>
                 </div>
@@ -561,8 +478,7 @@ export default function Home() {
         </div>
       </section>
 
-      <S id="como-funciona" className="border-t border-[rgba(212,164,55,0.12)]" style={{ background: "#0A0A0B" }}>
-        <span aria-hidden className="block scroll-mt-0" id="ur-play" />
+      <S id="ur-play" className="border-t border-[rgba(212,164,55,0.12)]" style={{ background: "#0A0A0B" }}>
         <SectionHeading
           eyebrow="UR Play"
           title={<>A temporada começa<br />no UR Play.</>}
@@ -573,19 +489,28 @@ export default function Home() {
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
         </div>
-        <p className="mt-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          O UR Play é a porta de entrada oficial da temporada. É nele que atletas individuais começam,
-          equipes são observadas, níveis são ajustados e o caminho dentro do ecossistema fica mais claro.
-        </p>
         <ImpactLine>Nenhum atleta ou equipe entra direto nas etapas principais sem passar pelo UR Play.</ImpactLine>
+      </S>
+
+      <S id="ecossistema" style={{ background: "#0D0D12" }}>
+        <SectionHeading
+          eyebrow="Ecossistema UR"
+          title={<>O UR é mais<br />que um torneio.</>}
+          subtitle="É um ecossistema para organizar entrada, nivelamento, jogos, ranking, polos, mídia, recompensas e evolução."
+        />
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {ecosystemCards.map((card) => (
+            <InfoCard description={card.description} key={card.title} title={card.title} />
+          ))}
+        </div>
         <div className="mt-5">
-          <Button href="/ur-play" variant="secondary">
-            Conhecer o UR Play
+          <Button href="/ecossistema" variant="secondary">
+            Entender o ecossistema
           </Button>
         </div>
       </S>
 
-      <S id="participar" style={{ background: "#0D0D12" }}>
+      <S id="participacao" style={{ background: "#0A0A0B" }}>
         <SectionHeading
           eyebrow="Como participar"
           title={<>Você pode entrar<br />como atleta ou equipe.</>}
@@ -596,10 +521,9 @@ export default function Home() {
             <InfoCard description={card.description} href={card.href} key={card.title} title={card.title} cta={card.cta} />
           ))}
         </div>
-        <ImpactLine>No UR, você joga por você, pode crescer com uma equipe e ainda ajuda seu polo a ganhar força na temporada.</ImpactLine>
       </S>
 
-      <S id="modalidades" style={{ background: "#0A0A0B" }}>
+      <S id="modalidades" style={{ background: "#0D0D12" }}>
         <SectionHeading
           eyebrow="Modalidades oficiais"
           title={<>Escolha sua<br />modalidade.</>}
@@ -640,21 +564,23 @@ export default function Home() {
             );
           })}
         </div>
-        <p className="mt-4 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          As duas modalidades podem gerar histórico para atletas, equipes e polos conforme as regras oficiais da temporada.
-        </p>
       </S>
 
-      <S id="polos" style={{ background: "#0D0D12" }}>
-        <span aria-hidden className="block scroll-mt-0" id="territorios" />
+      <S id="polos" style={{ background: "#0A0A0B" }}>
         <SectionHeading
-          eyebrow="Polos oficiais"
+          eyebrow="Polos UR"
+          title={<>Polos: a sua comunidade<br />dentro da temporada.</>}
+          subtitle="BH, Betim e Contagem têm o mesmo peso, o mesmo formato e a mesma oportunidade. Cada polo constrói sua força pela participação dos atletas, equipes, jogos, ranking e engajamento da comunidade."
+        />
+        <ImpactLine>Sua equipe joga. Seu atleta evolui. Seu polo pontua.</ImpactLine>
+      </S>
+
+      <S id="territorios" style={{ background: "#0D0D12" }}>
+        <SectionHeading
+          eyebrow="Três polos"
           title={<>Três polos.<br />Uma temporada.</>}
           subtitle="Belo Horizonte, Betim e Contagem entram na disputa com atletas, equipes, histórias e comunidades próprias."
         />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          Cada polo representa uma região. As equipes disputam por seus próprios resultados, mas cada participação também ajuda o polo a crescer no ranking geral.
-        </p>
         <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 -mx-5 px-5 sm:mx-0 sm:px-0 md:grid md:grid-cols-3 md:overflow-visible">
           {season1.poles.map((pole) => {
             const details = poleDetails[pole.id];
@@ -695,98 +621,51 @@ export default function Home() {
             );
           })}
         </div>
-        <ImpactLine>Sua equipe joga. Seu atleta evolui. Seu polo pontua.</ImpactLine>
       </S>
 
-      <S id="temporada" style={{ background: "#0A0A0B" }}>
-        <span aria-hidden className="block scroll-mt-0" id="ur-sprint" />
+      <S id="ur-sprint" style={{ background: "#0A0A0B" }}>
         <SectionHeading
           eyebrow="UR Sprint"
           title={<>A primeira disputa<br />do polo.</>}
           subtitle="Depois do UR Play, cada polo inicia sua etapa competitiva com equipes niveladas, jogos organizados e pontuação para a temporada."
         />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          O UR Sprint é a etapa inicial do polo. Ele reúne até 8 equipes por região, valida níveis, cria confrontos internos e define quem avança para a próxima fase.
-        </p>
         <div className="grid gap-3 md:grid-cols-3">
           {sprintCards.map((card) => (
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
         </div>
-        <RuleList items={sprintRules} />
-        <p className="mt-4 text-xs font-bold uppercase leading-5 tracking-[0.12em]" style={{ color: "rgba(244,240,230,0.48)", fontFamily: bodyFont }}>
-          UR Sprint é o nome oficial da primeira etapa competitiva de cada polo.
-        </p>
       </S>
 
       <S id="niveis" style={{ background: "#0D0D12" }}>
         <SectionHeading
           eyebrow="Níveis de disputa"
           title={<>Níveis para deixar<br />a disputa mais justa.</>}
-          subtitle="A temporada precisa ser competitiva sem excluir quem está começando. Por isso, o nivelamento organiza as equipes de acordo com momento, presença e desempenho."
+          subtitle="O nivelamento organiza atletas e equipes por momento, presença e desempenho sem comunicar o N3 como inferior."
         />
         <div className="grid gap-3 md:grid-cols-3">
           {levelCards.map((card) => (
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
         </div>
-        <p className="mt-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          O objetivo não é separar para limitar. É organizar para que cada equipe encontre jogos mais justos,
-          evolua com clareza e tenha chance real dentro da temporada.
-        </p>
-        <ImpactLine>Equipes iniciantes também têm caminho. O N3 existe para valorizar desenvolvimento, participação e evolução.</ImpactLine>
       </S>
 
       <S id="regional" style={{ background: "#0A0A0B" }}>
         <SectionHeading
-          eyebrow="Classificação"
-          title={<>Do polo para<br />o Regional.</>}
-          subtitle="As melhores equipes de cada polo avançam para enfrentar representantes de outras regiões."
+          eyebrow="Regional"
+          title={<>Caminho<br />competitivo.</>}
+          subtitle="As melhores equipes de cada polo avançam para enfrentar representantes de outras regiões, mantendo espaço real para desenvolvimento."
         />
-        <div className="grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-lg border border-[rgba(212,164,55,0.14)] bg-[#14141A] p-4">
-            <h3 className="text-xl font-bold uppercase leading-[0.95]" style={{ color: "#F4F0E6", fontFamily: displayFont }}>
-              Cada polo classifica 4 equipes
-            </h3>
-            <RuleList items={regionalSlots} />
-          </div>
-          <div className="rounded-lg border border-[rgba(212,164,55,0.14)] bg-[#14141A] p-4">
-            <h3 className="text-xl font-bold uppercase leading-[0.95]" style={{ color: "#F4F0E6", fontFamily: displayFont }}>
-              Espaço real para evolução
-            </h3>
-            <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-              Esse formato mantém a temporada competitiva e também abre espaço real para equipes em desenvolvimento.
-              O Regional não é apenas para quem já está no topo: é para quem constrói caminho dentro do nível certo.
-            </p>
-            <div className="mt-5">
-              <Button href="#regional" variant="secondary">Ver caminho da classificação</Button>
-            </div>
-          </div>
-        </div>
-      </S>
-
-      <S id="ur-regional" style={{ background: "#0D0D12" }}>
-        <SectionHeading
-          eyebrow="UR Regional"
-          title={<>Os polos<br />se encontram.</>}
-          subtitle="No Regional, equipes classificadas de BH, Betim e Contagem se enfrentam em uma disputa que vale para equipes, atletas e polos."
-        />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          Aqui a temporada ganha outra dimensão. A equipe joga pela própria campanha, os atletas seguem construindo ranking individual e cada resultado fortalece o polo.
-        </p>
         <div className="grid gap-3 md:grid-cols-3">
           {regionalCards.map((card) => (
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
         </div>
-        <ImpactLine>No Regional, cada ponto conta para alguém: para o atleta, para a equipe e para o polo.</ImpactLine>
       </S>
 
-      <S id="rankings" style={{ background: "#0A0A0B" }}>
-        <span aria-hidden className="block scroll-mt-0" id="ranking" />
+      <S id="rankings" style={{ background: "#0D0D12" }}>
         <SectionHeading
-          eyebrow="Rankings da temporada"
-          title={<>Três rankings.<br />Uma temporada mais viva.</>}
+          eyebrow="Rankings"
+          title={<>Três rankings.<br />Uma temporada mais organizada.</>}
           subtitle="O ranking organiza a jornada, mostra evolução e transforma participação em histórico."
         />
         <div className="grid gap-3 md:grid-cols-3">
@@ -794,176 +673,57 @@ export default function Home() {
             <InfoCard description={card.description} id={card.id} key={card.title} meta={card.meta} title={card.title} />
           ))}
         </div>
-        <ImpactLine>
-          O Ranking dos Atletas e o Ranking das Equipes seguem regras próprias e não recebem multiplicador do Legends.
-        </ImpactLine>
-      </S>
-
-      <S id="recompensas" style={{ background: "#0D0D12" }}>
-        <span aria-hidden className="block scroll-mt-0" id="premiacoes" />
-        <SectionHeading
-          eyebrow="Recompensas do Polo"
-          title={<>Recompensas que<br />beneficiam a comunidade.</>}
-          subtitle="As recompensas da temporada não existem só para premiar quem já está no topo. Elas também podem apoiar atletas, equipes em desenvolvimento e polos que participam da jornada."
-        />
-        <div className="grid gap-3 md:grid-cols-3">
-          {rewardCards.map((card) => (
-            <InfoCard description={card.description} key={card.title} title={card.title} />
-          ))}
-        </div>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {rewardExamples.map((example) => (
-            <span
-              className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-white/58"
-              key={example}
-              style={{ fontFamily: bodyFont }}
-            >
-              {example}
-            </span>
-          ))}
-        </div>
-        <p className="mt-5 text-xs font-bold uppercase leading-5 tracking-[0.12em]" style={{ color: "rgba(244,240,230,0.48)", fontFamily: bodyFont }}>
-          Recompensas dependem de regras oficiais, disponibilidade, parceiros ativos e validação da temporada.
-        </p>
-      </S>
-
-      <S id="ur-market" style={{ background: "#0A0A0B" }}>
-        <SectionHeading
-          eyebrow="UR Market"
-          title={<>O UR Market também<br />pode fortalecer o polo.</>}
-          subtitle="O Market não precisa beneficiar apenas o atleta individual. Ele também pode oferecer vantagens para equipes e polos inteiros."
-        />
-        <div className="grid gap-3 md:grid-cols-3">
-          {marketCards.map((card) => (
-            <InfoCard description={card.description} key={card.title} title={card.title} />
-          ))}
-        </div>
-        <p className="mt-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          O UR Market deve funcionar como uma camada de valorização da temporada. Ele conecta participação,
-          mérito, comunidade e parceiros de forma clara e sustentável.
-        </p>
-        <ImpactLine>Benefícios não são promessa automática. Eles dependem das regras oficiais, parceiros ativos e disponibilidade operacional.</ImpactLine>
-      </S>
-
-      <S id="historias" style={{ background: "#0D0D12" }}>
-        <SectionHeading
-          eyebrow="Atividades extras"
-          title={<>A temporada também<br />é feita de histórias.</>}
-          subtitle="Além dos jogos, o UR valoriza presença, organização, fair play, evolução, torcida e participação da comunidade."
-        />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          As atividades extras deixam a temporada mais divertida, geram conteúdo e fortalecem o senso de pertencimento.
-          Elas podem gerar destaque, UR Coins, badges, benefícios simbólicos e pontos leves de engajamento.
-        </p>
-        <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 sm:mx-0 sm:flex-wrap sm:px-0">
-          {extraExamples.map((example) => (
-            <span
-              className="shrink-0 rounded-full border border-[rgba(212,164,55,0.16)] bg-[#14141A] px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-white/68"
-              key={example}
-              style={{ fontFamily: bodyFont }}
-            >
-              {example}
-            </span>
-          ))}
-        </div>
-        <ImpactLine>Atividades extras ajudam na diversão e no engajamento, mas não devem valer mais do que o desempenho esportivo.</ImpactLine>
+        <ImpactLine>O Ranking dos Atletas e o Ranking das Equipes seguem regras próprias e não recebem multiplicador.</ImpactLine>
       </S>
 
       <S id="legends" style={{ background: "#0A0A0B" }}>
         <SectionHeading
           eyebrow="UR Legends"
-          title={<>O evento<br />de espetáculo.</>}
-          subtitle="No Legends, cada polo envia duas equipes formadas por atletas de destaque do ranking para representar sua região em uma disputa especial."
+          title={<>O espetáculo<br />dos polos.</>}
+          subtitle="No Legends, atletas de destaque representam sua região em uma disputa especial, com mais jogos, histórias e rivalidade saudável."
         />
-        <div className="grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-lg border border-[rgba(212,164,55,0.14)] bg-[#14141A] p-4">
-            <h3 className="text-xl font-bold uppercase leading-[0.95]" style={{ color: "#F4F0E6", fontFamily: displayFont }}>
-              6 equipes no evento
-            </h3>
-            <RuleList
-              items={[
-                "2 equipes de Belo Horizonte.",
-                "2 equipes de Betim.",
-                "2 equipes de Contagem.",
-                "Mais jogos, histórias e rivalidade saudável.",
-              ]}
-            />
-          </div>
-          <div className="rounded-lg border border-[rgba(212,164,55,0.14)] bg-[#14141A] p-4">
-            <h3 className="text-xl font-bold uppercase leading-[0.95]" style={{ color: "#F4F0E6", fontFamily: displayFont }}>
-              Critérios sugeridos
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {legendsCriteria.map((criterion) => (
-                <span
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-white/62"
-                  key={criterion}
-                  style={{ fontFamily: bodyFont }}
-                >
-                  {criterion}
-                </span>
-              ))}
-            </div>
-          </div>
+        <div className="grid gap-3 lg:grid-cols-[0.8fr_1.2fr]">
+          <InfoCard title="6 equipes no evento" description="Belo Horizonte, Betim e Contagem enviam representantes para viver um momento de espetáculo da temporada." />
+          <InfoCard
+            title="Regra visível"
+            description="A pontuação especial vale apenas para o Ranking dos Polos. Ranking dos Atletas e Ranking das Equipes não recebem multiplicador."
+          />
+        </div>
+        <div className="mt-3">
+          <InfoCard
+            title="Diversão competitiva"
+            description="Atividades extras podem gerar história, mídia e engajamento, sem valer mais do que o desempenho esportivo."
+          />
         </div>
         <ImpactLine>No Legends, o atleta representa mais do que uma equipe. Ele representa seu polo.</ImpactLine>
       </S>
 
-      <S id="legends-pontuacao" style={{ background: "#0D0D12" }}>
+      <S id="beneficios" style={{ background: "#0D0D12" }}>
+        <span aria-hidden className="block scroll-mt-0" id="recompensas" />
+        <span aria-hidden className="block scroll-mt-0" id="ur-market" />
+        <span aria-hidden className="block scroll-mt-0" id="premiacoes" />
         <SectionHeading
-          eyebrow="Regra do Legends"
-          title={<>O Legends movimenta os polos,<br />sem quebrar a justiça da temporada.</>}
-          subtitle="A pontuação especial do Legends vale apenas para o Ranking dos Polos. O Ranking dos Atletas e o Ranking das Equipes continuam seguindo suas regras próprias, sem multiplicador."
+          eyebrow="Recompensas e UR Market"
+          title={<>Benefícios como consequência<br />da jornada.</>}
+          subtitle="Recompensas e Market podem valorizar atletas, equipes e polos, sempre conforme regras oficiais, parceiros ativos e disponibilidade."
         />
-        <div className="rounded-lg border border-[rgba(212,164,55,0.18)] bg-[#14141A] p-4">
-          <h3 className="text-xl font-bold uppercase leading-[0.95]" style={{ color: "#F4F0E6", fontFamily: displayFont }}>
-            Regra oficial
-          </h3>
-          <p className="mt-3 text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-            No UR Legends, a pontuação especial movimenta apenas o Ranking dos Polos. O Ranking Individual
-            dos Atletas e o Ranking das Equipes continuam seguindo suas regras próprias, sem multiplicador.
-          </p>
-        </div>
-        <ImpactLine>O Legends deixa a disputa mais emocionante, mas a consistência da temporada continua sendo o principal caminho.</ImpactLine>
-      </S>
-
-      <S id="diversao-competitiva" style={{ background: "#0A0A0B" }}>
-        <SectionHeading
-          eyebrow="Diversão competitiva"
-          title={<>Competir também<br />precisa ser divertido.</>}
-          subtitle="O UR é sério na organização, mas a experiência precisa ser leve, envolvente e boa de viver."
-        />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          A temporada existe para criar jogos melhores, histórias reais, rivalidades saudáveis, torcida,
-          mídia, evolução e comunidade. O ranking importa, mas a jornada também precisa ser divertida
-          para quem joga, assiste e participa.
-        </p>
         <div className="grid gap-3 md:grid-cols-3">
-          {[
-            "Você não precisa estar pronto para entrar. Precisa começar.",
-            "Você pode competir, evoluir e se divertir no mesmo caminho.",
-            "O UR valoriza desempenho, mas também presença, evolução e comunidade.",
-          ].map((phrase) => (
-            <div className="rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-4" key={phrase}>
-              <p className="text-sm font-bold uppercase leading-6 tracking-[0.08em]" style={{ color: "#F4F0E6", fontFamily: bodyFont }}>
-                {phrase}
-              </p>
-            </div>
+          {benefitCards.map((card) => (
+            <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
         </div>
+        <p className="mt-4 text-xs font-bold uppercase leading-5 tracking-[0.12em]" style={{ color: "rgba(244,240,230,0.5)", fontFamily: bodyFont }}>
+          Recompensas não são garantidas e dependem de regras oficiais, parceiros ativos e validação operacional.
+        </p>
       </S>
 
-      <S id="regulamento" style={{ background: "#0D0D12" }}>
+      <S id="regulamento" style={{ background: "#0A0A0B" }}>
         <SectionHeading
-          eyebrow="Regulamento e critérios"
+          eyebrow="Regulamento"
           title={<>Regras claras para<br />todo mundo jogar melhor.</>}
-          subtitle="O regulamento existe para proteger atletas, equipes, polos e a experiência da temporada."
+          subtitle="O regulamento protege atletas, equipes, polos e a experiência da temporada, reduzindo improviso e dúvida."
         />
-        <p className="-mt-2 mb-5 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: bodyFont }}>
-          Critérios claros reduzem confusão, evitam improviso e ajudam todos a entenderem como participar,
-          pontuar, evoluir e avançar.
-        </p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-3">
           {regulationCards.map((card) => (
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
@@ -973,9 +733,9 @@ export default function Home() {
         </div>
       </S>
 
-      <S id="cadastro" style={{ background: "#0A0A0B" }}>
+      <S id="comecar" style={{ background: "#0D0D12" }}>
         <SectionHeading
-          eyebrow="Como começar agora"
+          eyebrow="Como começar"
           title={<>Comece pelo<br />UR Play.</>}
           subtitle="Atleta individual ou equipe formada: o primeiro passo é entrar no UR Play, passar pelo nivelamento e começar sua trajetória na Temporada 1."
         />
@@ -985,38 +745,16 @@ export default function Home() {
           ))}
         </div>
         <ImpactLine>Todo mundo começa pelo UR Play. É ali que o sistema organiza o nível, registra histórico e direciona cada participante para o caminho certo.</ImpactLine>
-      </S>
-
-      <section className="overflow-hidden border-t border-[#ffd84d]/15 bg-black px-5 py-14 lg:px-8 lg:py-20">
-        <div className="mx-auto max-w-7xl rounded-lg border border-[#ffd84d]/25 bg-[radial-gradient(circle_at_20%_0%,rgba(255,216,77,0.18),transparent_28%),linear-gradient(135deg,#111218,#040405_66%,#241c07)] p-5 md:p-8 lg:p-10">
-          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.92fr)_minmax(320px,0.6fr)] lg:items-end">
-            <div>
-              <div className="text-[11px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
-                Temporada aberta
-              </div>
-              <h2 className="mt-4 max-w-4xl text-balance text-[clamp(2.6rem,11vw,5.6rem)] font-black uppercase leading-[0.86] text-white">
-                Sua temporada começa no primeiro jogo.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-lg">
-                Entre pelo UR Play, jogue no seu nível, construa ranking, represente sua equipe e ajude
-                seu polo a crescer dentro do Ultimate Rivals.
-              </p>
-            </div>
-            <div className="grid gap-3">
-              <Button href="/ur-play">
-                Começar pelo UR Play
-                <ArrowRight aria-hidden className="h-4 w-4" />
-              </Button>
-              <Button href="/cadastro" variant="secondary">
-                Fazer cadastro
-              </Button>
-              <p className="text-xs font-bold uppercase leading-5 tracking-[0.12em] text-white/48">
-                Atletas individuais, equipes iniciantes e equipes competitivas têm espaço. O UR organiza o caminho para cada nível.
-              </p>
-            </div>
-          </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <Button href="/ur-play">
+            Começar pelo UR Play
+            <ArrowRight aria-hidden className="h-4 w-4" />
+          </Button>
+          <Button href="/cadastro" variant="secondary">
+            Fazer cadastro
+          </Button>
         </div>
-      </section>
+      </S>
     </main>
   );
 }
