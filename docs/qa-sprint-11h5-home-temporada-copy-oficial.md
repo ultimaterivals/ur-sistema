@@ -182,3 +182,24 @@ Confirmacao de escopo:
 - Supabase, Apps Script, Sheets, CRM, endpoints, hashes e nomes de campos nao alterados.
 - `next-env.d.ts` nao foi incluido no commit.
 - Arquivos `.patch` nao foram incluidos no commit.
+
+## Polish posterior recomendado
+
+A Sprint 11J (`sprint-11j-home-order-anchor-ecosystem-polish`) corrigiu a ordem real da Home Temporada 1, revisou as ancoras do menu mobile, reposicionou o Ecossistema UR logo apos o UR Play e compactou blocos longos para reduzir a extensao mobile sem reescrever a copy oficial.
+
+Decisoes preservadas:
+
+- Hero oficial `TEMPORADA 1 UR / POLOS EM DISPUTA.` como primeiro bloco.
+- UR Play como porta obrigatoria para atletas e equipes.
+- Atletas individuais incluidos na entrada da temporada.
+- Modalidades oficiais `Dupla` e `Quarteto`.
+- Polos BH, Betim e Contagem com mesmo peso.
+- Niveis `N1 - Elite`, `N2 - Avancado` e `N3 - Desenvolvimento`.
+- Ranking dos Atletas, Ranking das Equipes e Ranking dos Polos separados.
+- Legends pontuando especialmente apenas o Ranking dos Polos.
+- Recompensas e UR Market como consequencia da jornada, sem promessa garantida.
+
+Arquivos de referencia:
+
+- `docs/qa-sprint-11j-home-order-anchor-ecosystem-polish.md`
+- `output/playwright/sprint-11j-home-order-anchor-ecosystem-polish-summary.json`
