@@ -162,3 +162,41 @@ Resultado do QA Playwright apos merge:
 - Screenshots:
   - `output/playwright/sprint-11j-merge-home-390x844.png`
   - `output/playwright/sprint-11j-merge-menu-390x844.png`
+
+## Rechecagem posterior do PR
+
+Comandos executados novamente:
+
+- `git fetch origin`.
+- `git checkout sprint-11j-home-order-anchor-ecosystem-polish`.
+- `git pull origin sprint-11j-home-order-anchor-ecosystem-polish`.
+- `git merge origin/main`.
+
+Resultado:
+
+- Branch ja estava atualizada com `origin/sprint-11j-home-order-anchor-ecosystem-polish`.
+- `git merge origin/main`: `Already up to date`.
+- Nenhum novo conflito foi aberto.
+- `app/page.tsx`, `lib/navigation.ts` e `docs/qa-sprint-11h5-home-temporada-copy-oficial.md` permaneceram na versao preservada da Sprint 11J.
+
+Validacoes da rechecagem:
+
+- `git grep -n "^<<<<<<<\|^=======$\|^>>>>>>>"`: sem marcadores de conflito.
+- `npm.cmd run lint`: aprovado, mantendo os 2 warnings ja conhecidos.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `set NODE_OPTIONS=--max-old-space-size=8192` + `npm.cmd run build`: aprovado.
+- QA Playwright em production build: aprovado.
+
+Resultado do QA Playwright da rechecagem:
+
+- Ambiente: `next start` em build de producao, `http://127.0.0.1:3043`.
+- Rotas: `/`, `/ur-play`, `/ecossistema`, `/ranking`, `/regulamento`, `/cadastro`.
+- Viewports: `390x844`, `430x932`, `768x1024`, `1366x768`, `1920x1080`.
+- Home checks: `5`.
+- Route checks: `30`.
+- Anchor checks mobile: `18`.
+- Console errors: `0`.
+- Evidencia: `output/playwright/sprint-11j-recheck-summary.json`.
+- Screenshots:
+  - `output/playwright/sprint-11j-recheck-home-390x844.png`
+  - `output/playwright/sprint-11j-recheck-menu-390x844.png`
