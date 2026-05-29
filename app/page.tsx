@@ -23,7 +23,7 @@ function S({
 }) {
   return (
     <section
-      className={`scroll-mt-24 overflow-hidden border-t border-white/10 px-5 py-8 md:py-14 lg:px-8 lg:py-16 ${className}`}
+      className={`scroll-mt-0 overflow-hidden border-t border-white/10 px-5 py-7 md:py-12 lg:px-8 lg:py-14 ${className}`}
       id={id}
       style={style}
     >
@@ -50,6 +50,48 @@ const howItWorksSteps = [
   {
     title: "Evolua com histórico",
     description: "Sua presença, desempenho e evolução ajudam a formar sua trajetória no UR.",
+  },
+] as const;
+
+const urPlayCards = [
+  {
+    title: "Jogar",
+    description: "Você entra em atividade real, no seu momento e com caminho claro.",
+  },
+  {
+    title: "Ser observado",
+    description: "Presença, postura e evolução começam a ganhar leitura.",
+  },
+  {
+    title: "Começar histórico",
+    description: "Cada participação ajuda a formar sua trajetória no UR.",
+  },
+] as const;
+
+const ecosystemCards = [
+  {
+    title: "Caminho claro",
+    description: "Você entende por onde começar e como evoluir dentro da temporada.",
+  },
+  {
+    title: "Nível mais justo",
+    description: "O sistema ajuda a organizar atletas por momento, presença e evolução.",
+  },
+  {
+    title: "Histórico do atleta",
+    description: "Cada participação ajuda a formar trajetória, dados e reputação.",
+  },
+  {
+    title: "Visibilidade",
+    description: "A mídia registra jogos, histórias, rankings e destaques.",
+  },
+  {
+    title: "Comunidade",
+    description: "Polos, equipes e eventos aproximam atletas da região.",
+  },
+  {
+    title: "Oportunidades",
+    description: "Benefícios e parceiros aparecem como consequência da participação.",
   },
 ] as const;
 
@@ -142,6 +184,21 @@ const benefitCards = [
     title: "Parceiros",
     description: "Produtos, serviços e ativações com validação.",
     icon: "/season-1/symbols/ur-series-line.svg",
+  },
+] as const;
+
+const regulationCards = [
+  {
+    title: "Regulamento",
+    description: "Entenda regras, critérios e funcionamento oficial.",
+  },
+  {
+    title: "Fair Play",
+    description: "Postura, respeito e conduta fazem parte da evolução.",
+  },
+  {
+    title: "Critérios",
+    description: "Pontuação, presença e participação seguem regras claras.",
   },
 ] as const;
 
@@ -357,7 +414,91 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 3. MODALIDADES ── */}
+      {/* ── 3. UR PLAY ── */}
+      <S id="ur-play" style={{ background: "#0D0D12" }}>
+        <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Porta de entrada</p>
+            <h2
+              className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+              style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+            >
+              UR Play é<br />a porta de entrada.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+              É onde você começa a participar, ser observado, entender seu nível e construir histórico antes de avançar para etapas maiores.
+            </p>
+            <div className="mt-5">
+              <Button href="/ur-play" variant="secondary">Conhecer UR Play</Button>
+            </div>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {urPlayCards.map((card, index) => (
+              <div
+                className="rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-4"
+                key={card.title}
+              >
+                <span
+                  className="text-xs font-bold uppercase tracking-[0.18em]"
+                  style={{ color: "#D4A437", fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3
+                  className="mt-3 text-xl font-bold uppercase leading-[0.95]"
+                  style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                >
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </S>
+
+      {/* ── 4. ECOSSISTEMA ── */}
+      <S id="ecossistema" style={{ background: "#0A0A0B" }}>
+        <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Ecossistema UR</p>
+            <h2
+              className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+              style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+            >
+              O ecossistema UR<br />organiza sua jornada.
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+              O Ultimate Rivals conecta jogos, ranking, níveis, equipes, mídia, polos, benefícios e desenvolvimento para que o atleta tenha caminho, histórico e clareza.
+            </p>
+          </div>
+          <Button className="w-full sm:w-auto" href="/ecossistema" variant="secondary">
+            Entender o ecossistema
+          </Button>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {ecosystemCards.map((card) => (
+            <div
+              className="rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-4"
+              key={card.title}
+            >
+              <h3
+                className="text-lg font-bold uppercase leading-[0.95]"
+                style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+              >
+                {card.title}
+              </h3>
+              <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                {card.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </S>
+
+      {/* ── 5. MODALIDADES ── */}
       <S id="modalidades" style={{ background: "#0D0D12" }}>
         <div className="mb-6">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Modalidades</p>
@@ -405,9 +546,9 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 4. POLOS ── */}
+      {/* ── 6. POLOS ── */}
       <S id="polos" style={{ background: "#0A0A0B" }}>
-        <span aria-hidden className="block scroll-mt-24" id="territorios" />
+        <span aria-hidden className="block scroll-mt-0" id="territorios" />
         <div className="mb-6">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Polos iniciais</p>
           <h2
@@ -440,7 +581,7 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 5. PRIMEIRO PASSO ── */}
+      {/* ── 7. PRIMEIRO PASSO ── */}
       <S id="primeiro-passo" style={{ background: "#0D0D12" }}>
         <div className="mb-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Próximos passos</p>
@@ -482,7 +623,7 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 6. EVOLUÇÃO ── */}
+      {/* ── 8. EVOLUÇÃO ── */}
       <S id="evolucao" style={{ background: "#0A0A0B" }}>
         <div className="mb-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Evolução</p>
@@ -524,9 +665,9 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 7. BENEFÍCIOS ── */}
+      {/* ── 9. BENEFÍCIOS ── */}
       <S id="recompensas" style={{ background: "#0D0D12" }}>
-        <span aria-hidden className="block scroll-mt-24" id="premiacoes" />
+        <span aria-hidden className="block scroll-mt-0" id="premiacoes" />
         <div className="mb-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>UR Coins · UR Market</p>
           <h2
@@ -565,7 +706,46 @@ export default function Home() {
         </div>
       </S>
 
-      {/* ── 8. CTA FINAL ── */}
+      {/* ── 10. REGULAMENTO E APOIO ── */}
+      <S id="regulamento" style={{ background: "#0A0A0B" }}>
+        <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: "#D4A437", fontFamily: "'Manrope', system-ui, sans-serif" }}>Regra e confiança</p>
+            <h2
+              className="mt-2 text-3xl md:text-4xl font-bold uppercase leading-[0.9]"
+              style={{ fontFamily: "'Oswald', sans-serif", color: "#F4F0E6", letterSpacing: "0.03em" }}
+            >
+              Regras claras para<br />jogar com segurança.
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+              O regulamento orienta conduta, critérios, pontuação, participação e Fair Play. Isso protege atletas, equipes e a experiência da temporada.
+            </p>
+            <div className="mt-5">
+              <Button href="/regulamento" variant="secondary">Ver regulamento</Button>
+            </div>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {regulationCards.map((card) => (
+              <div
+                className="rounded-lg border border-[rgba(212,164,55,0.12)] bg-[#14141A] p-4"
+                key={card.title}
+              >
+                <h3
+                  className="text-xl font-bold uppercase leading-[0.95]"
+                  style={{ color: "#F4F0E6", fontFamily: "'Oswald', sans-serif", letterSpacing: "0.04em" }}
+                >
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-5" style={{ color: "#8A8A93", fontFamily: "'Manrope', system-ui, sans-serif" }}>
+                  {card.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </S>
+
+      {/* ── 11. CTA FINAL ── */}
       <CTASectionPremium />
     </main>
   );
