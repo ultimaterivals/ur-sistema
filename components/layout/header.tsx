@@ -75,21 +75,21 @@ export function Header() {
 
       {mobileMenuOpen ? (
         <div
-          className="fixed inset-x-0 top-[72px] z-[9990] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-5 pb-[120px] pt-3 shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:hidden"
+          className="fixed inset-x-0 top-[72px] z-[9990] max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-white/10 bg-black/95 px-4 pb-20 pt-2 shadow-[0_24px_60px_rgba(0,0,0,0.55)] pointer-events-auto lg:hidden"
           data-testid="mobile-menu-panel"
           id={MOBILE_MENU_ID}
           role="menu"
         >
-          <nav className="grid gap-2 md:grid-cols-2">
+          <nav className="grid gap-1.5 md:grid-cols-2">
             {mobileNavigationGroups.map((group) => (
-              <div className="rounded-lg border border-white/10 bg-[#111218] p-2" key={group.label}>
-                <div className="px-2 pb-0.5 text-[9px] font-black uppercase tracking-[0.18em] text-[#ffe98b]">
+              <div className="rounded-lg border border-white/10 bg-[#111218] p-1.5" key={group.label}>
+                <div className="px-2 pb-0.5 text-[9px] font-black uppercase tracking-[0.16em] text-[#ffe98b]">
                   {group.label}
                 </div>
-                <div className="grid gap-1">
+                <div className="grid gap-0.5">
                   {group.items.map((item) => (
                     <Link
-                      className="rounded-md px-3 py-2 text-xs font-bold uppercase leading-4 tracking-[0.08em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
+                      className="flex min-h-[38px] items-center rounded-md px-3 py-1.5 text-xs font-bold uppercase leading-4 tracking-[0.07em] text-white/70 transition hover:bg-white/[0.06] hover:text-[#ffe98b]"
                       href={item.href}
                       key={item.href}
                       onClick={() => setMobileMenuOpen(false)}

@@ -12,7 +12,7 @@ export function Footer() {
 
   return (
     <footer className="overflow-hidden border-t border-[#ffd84d]/15 bg-black">
-      <div className="mx-auto grid max-w-7xl min-w-0 gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] lg:px-8 lg:py-14">
+      <div className="mx-auto grid max-w-7xl min-w-0 gap-6 px-5 py-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] lg:px-8 lg:py-14">
         <div className="min-w-0">
           <div className="flex min-w-0 items-center gap-3">
             <Image
@@ -31,11 +31,10 @@ export function Footer() {
               </div>
             </div>
           </div>
-          <p className="mt-5 max-w-sm text-[15px] leading-7 text-white/65 sm:text-sm sm:leading-6">
-            Plataforma esportiva para profissionalizar o esporte amador com ranking, temporadas,
-            equipes, mídia, recompensas e comunidade.
+          <p className="mt-4 max-w-sm text-sm leading-6 text-white/60">
+            Plataforma esportiva para organizar jornada, ranking, equipes, mídia e comunidade.
           </p>
-          <p className="mt-5 inline-flex max-w-full rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10 px-3 py-2 text-xs font-bold uppercase leading-4 tracking-[0.14em] text-[#ffe98b]">
+          <p className="mt-4 inline-flex max-w-full rounded-md border border-[#ffd84d]/20 bg-[#ffd84d]/10 px-3 py-2 text-[11px] font-bold uppercase leading-4 tracking-[0.12em] text-[#ffe98b]">
             Polo em formação • Expansão planejada
           </p>
         </div>
@@ -43,18 +42,18 @@ export function Footer() {
         <div className="grid gap-2 lg:hidden">
           {footerColumns.map((column) => (
             <details
-              className="group rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3"
+              className="group rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2.5"
               key={column.title}
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-black uppercase tracking-[0.14em] text-white">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-black uppercase tracking-[0.12em] text-white">
                 {column.title}
                 <span className="text-[#ffe98b] transition group-open:rotate-45">+</span>
               </summary>
-              <ul className="mt-4 grid gap-3 border-t border-white/10 pt-4">
+              <ul className="mt-3 grid gap-2 border-t border-white/10 pt-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     <Link
-                      className="block py-1 text-[15px] leading-6 text-white/65 transition hover:text-[#ffe98b]"
+                      className="block py-1 text-sm leading-5 text-white/65 transition hover:text-[#ffe98b]"
                       href={link.href}
                     >
                       {link.label}
