@@ -260,22 +260,26 @@ const sprintRules = [
 
 const levelCards = [
   {
-    title: "N1 — Competitivo",
+    title: "N1 — Elite",
     description: "Equipes com mais ritmo, experiência, consistência e desempenho competitivo.",
   },
   {
-    title: "N2 — Desenvolvimento",
+    title: "N2 — Avançado",
+    description: "Equipes com boa organização, presença competitiva e potencial real de disputar etapas maiores.",
+  },
+  {
+    title: "N3 — Desenvolvimento",
     description: "Equipes em evolução, formações novas, atletas iniciantes organizados ou grupos ganhando ritmo.",
   },
 ] as const;
 
 const regionalSlots = [
-  "2 melhores equipes N1 de cada polo.",
-  "2 melhores equipes N2 de cada polo.",
-  "4 equipes de Belo Horizonte.",
-  "4 equipes de Betim.",
-  "4 equipes de Contagem.",
-  "12 equipes classificadas no total.",
+  "Classificação por polo a partir do UR Sprint.",
+  "Critérios oficiais consideram nível, presença, desempenho e participação.",
+  "Belo Horizonte classifica representantes.",
+  "Betim classifica representantes.",
+  "Contagem classifica representantes.",
+  "O Regional reúne equipes de níveis diferentes conforme regra oficial.",
 ] as const;
 
 const regionalCards = [
@@ -721,7 +725,7 @@ export default function Home() {
           title={<>Níveis para deixar<br />a disputa mais justa.</>}
           subtitle="A temporada precisa ser competitiva sem excluir quem está começando. Por isso, o nivelamento organiza as equipes de acordo com momento, presença e desempenho."
         />
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-3">
           {levelCards.map((card) => (
             <InfoCard description={card.description} key={card.title} title={card.title} />
           ))}
@@ -730,7 +734,7 @@ export default function Home() {
           O objetivo não é separar para limitar. É organizar para que cada equipe encontre jogos mais justos,
           evolua com clareza e tenha chance real dentro da temporada.
         </p>
-        <ImpactLine>Equipes iniciantes também têm caminho. O N2 existe para valorizar desenvolvimento, participação e evolução.</ImpactLine>
+        <ImpactLine>Equipes iniciantes também têm caminho. O N3 existe para valorizar desenvolvimento, participação e evolução.</ImpactLine>
       </S>
 
       <S id="regional" style={{ background: "#0A0A0B" }}>

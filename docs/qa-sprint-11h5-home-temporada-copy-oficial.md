@@ -146,3 +146,39 @@ Resultado:
 
 - A documentacao complementar desta etapa nao altera Home, navegacao, componentes, formularios ou integracoes.
 - Os documentos oficiais consolidam a copy da Home Temporada 1 e a definicao dos Polos UR para orientar proximas sprints.
+
+## Resolucao de conflitos com main
+
+Conflitos resolvidos:
+
+- `app/page.tsx`
+- `lib/navigation.ts`
+
+Decisao aplicada:
+
+- Em `app/page.tsx`, foi preservada a Home oficial da Temporada 1 - Polos em Disputa da branch `sprint-11h5-home-temporada-copy-oficial`.
+- A resolucao manteve o hero `TEMPORADA 1 UR / POLOS EM DISPUTA.`, UR Play como porta obrigatoria para atletas e equipes, atletas individuais como participantes possiveis, modalidades `Dupla` e `Quarteto`, polos BH, Betim e Contagem com mesmo peso, UR Sprint por polo, classificacao para Regional, rankings separados, recompensas, UR Market, atividades extras, Legends, diversao competitiva, regulamento e CTA final pelo UR Play.
+- O trecho de niveis foi alinhado ao criterio oficial do PR: `N1 - Elite`, `N2 - Avancado` e `N3 - Desenvolvimento`.
+- Em `lib/navigation.ts`, foi preservada a navegacao da branch com desktop em `Comecar`, `UR Play`, `Temporada`, `Polos`, `Ranking`, `Legends`, `Regulamento` e `Cadastro`.
+- No mobile, foram preservados os grupos `Comecar`, `Temporada`, `Ranking`, `Beneficios` e `Apoio`, com anchors da Home mantidas.
+
+Validacoes apos resolucao:
+
+- `git grep -n "^<<<<<<<\|^=======$\|^>>>>>>>"`: sem marcadores de conflito.
+- `npm.cmd run lint`: aprovado, mantendo apenas warnings existentes.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `set NODE_OPTIONS=--max-old-space-size=8192` + `npm.cmd run build`: aprovado.
+- QA minimo Playwright executado nas rotas `/`, `/ur-play`, `/cadastro`, `/ranking`, `/regulamento` e `/ecossistema`.
+- Viewports testados: `390x844`, `430x932`, `768x1024`, `1366x768` e `1920x1080`.
+- Resultado do QA minimo: aprovado com 30 checagens.
+- Evidencia: `output/playwright/merge-11h5-home-temporada-summary.json`.
+- Screenshots: `output/playwright/merge-11h5-home-390x844.png` e `output/playwright/merge-11h5-menu-390x844.png`.
+- Critérios confirmados no QA: Home abre no topo, sem overflow horizontal, menu mobile abre e fecha, desktop mantem nav, Hero `TEMPORADA 1 UR / POLOS EM DISPUTA.`, UR Play como porta obrigatoria, atletas individuais incluidos, BH/Betim/Contagem presentes, niveis `N1 - Elite`, `N2 - Avancado` e `N3 - Desenvolvimento`, rankings separados, Legends pontuando especialmente apenas Ranking dos Polos e recompensas sem promessa garantida.
+
+Confirmacao de escopo:
+
+- Backend nao alterado.
+- Formularios nao alterados.
+- Supabase, Apps Script, Sheets, CRM, endpoints, hashes e nomes de campos nao alterados.
+- `next-env.d.ts` nao foi incluido no commit.
+- Arquivos `.patch` nao foram incluidos no commit.
