@@ -17,9 +17,9 @@ import { siteImages } from "@/lib/content/site-images";
 import { cycleCards, seasonFaq, seasonStatusCards } from "@/lib/content/temporada";
 
 export const metadata: Metadata = {
-  title: "Temporada UR | Territórios em Disputa Ultimate Rivals",
+  title: "Temporada 1 UR | Polos em Disputa Ultimate Rivals",
   description:
-    "Temporada UR conecta UR Play, Sprint, Series, Legends, ranking, UR Coins, polos, bracket, mídia e Virada de Ranking.",
+    "Página oficial da Temporada 1 Polos em Disputa, com UR Play, polos, níveis, ranking, Regional, Legends, recompensas e regras resumidas.",
 };
 
 const cycleSteps = [
@@ -83,12 +83,12 @@ export default function TemporadaPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Entrar na temporada" },
-          { href: "/eventos", label: "Ver eventos", variant: "secondary" },
+          { href: "/ur-play", label: "Começar pelo UR Play" },
+          { href: "#escada", label: "Entender a campanha", variant: "secondary" },
         ]}
-        badges={["UR Play", "Sprint", "Series", "Legends", "polos", "Virada de Ranking"]}
-        description="A Temporada 1 organiza entrada, UR Play, ranking, equipes, polos, mídia e recompensas para que atletas de diferentes níveis saibam como começar e evoluir."
-        eyebrow="Temporada 1 - Territórios em Disputa"
+        badges={["UR Play", "UR Sprint", "Regional", "Legends", "polos", "ranking"]}
+        description="A página oficial da campanha da Temporada 1 conecta UR Play, BH, Betim, Contagem, jornada competitiva, níveis, ranking, recompensas e regulamento resumido."
+        eyebrow="Temporada 1 UR"
         image={siteImages.wideServe}
         imagePosition="center 48%"
         stats={[
@@ -96,7 +96,7 @@ export default function TemporadaPage() {
           { label: "produtos", value: String(season1.ladder.length) },
           { label: "modalidades", value: String(season1.modalities.length) },
         ]}
-        title="Entre na temporada. Evolua no seu ritmo."
+        title="Temporada 1 — Polos em Disputa."
       />
 
       <SeasonSection
@@ -168,8 +168,8 @@ export default function TemporadaPage() {
       <SeasonSection
         description="Cada polo soma presença, escudos, atletas e histórias."
         eyebrow="Polos"
-        id="territorios"
-        title="Três territórios. Uma disputa."
+        id="polos"
+        title="Três polos. Uma disputa."
       >
         <div className="grid gap-4 sm:grid-cols-3">
           {season1.poles.map((pole, index) => (

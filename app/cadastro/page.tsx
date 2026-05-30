@@ -77,12 +77,12 @@ export default function CadastroPage() {
     <main className="bg-[#030405] text-[#f5efdd]">
       <PlatformHero
         actions={[
-          { href: "#caminhos", label: "Escolher perfil" },
-          { href: "#como-funciona", label: "Como funciona", variant: "secondary" },
+          { href: "#atleta", label: "Cadastrar atleta" },
+          { href: "#equipe", label: "Cadastrar equipe", variant: "secondary" },
         ]}
         badges={leadProfileOrder.map((profile) => leadFormConfigs[profile].cardTitle)}
-        description="Seu cadastro coloca você no radar do Ultimate Rivals. Depois disso, a equipe UR analisa seu perfil e orienta o melhor caminho: UR Play, equipe, ranking, parceria, quadra ou comunidade."
-        eyebrow="Porta de entrada UR"
+        description="Você pode entrar como atleta individual, cadastrar uma equipe ou demonstrar interesse em participar do ecossistema Ultimate Rivals."
+        eyebrow="Cadastro UR"
         image={siteImages.communityMoment}
         imagePosition="center 45%"
         metrics={[
@@ -93,7 +93,7 @@ export default function CadastroPage() {
         statusDescription="O cadastro é o primeiro passo. A entrada passa por avaliação para manter equilíbrio, respeito e organização."
         statusLabel="cadastro aberto"
         statusTitle="Você se cadastra, a equipe UR analisa seu perfil e orienta o melhor caminho."
-        title="Escolha seu perfil e dê o primeiro passo."
+        title="Escolha como você quer começar."
       />
 
       <LeadCaptureSection />

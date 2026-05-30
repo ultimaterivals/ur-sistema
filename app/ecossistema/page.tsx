@@ -190,7 +190,7 @@ export default function EcossistemaPage() {
           { href: "/ur-play", label: "Entrar pelo UR Play", variant: "secondary" },
         ]}
         badges={["UR Play", "ranking contínuo", "equipes", "mídia própria", "UR Market", "polos"]}
-        description="O Ultimate Rivals organiza atletas, equipes, quadras, mídia, parceiros e desenvolvimento em uma jornada contínua, clara e sustentável."
+        description="O Ultimate Rivals conecta entrada, nivelamento, jogos, ranking, polos, mídia, recompensas e desenvolvimento em uma jornada contínua para atletas, equipes, quadras e parceiros."
         eyebrow="Ecossistema UR"
         image={siteImages.teamEmbrace}
         imagePosition="center 45%"

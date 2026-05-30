@@ -95,12 +95,12 @@ export default function AtletasPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#atleta", label: "Cadastrar como atleta" },
-          { href: "/ur-play", label: "Conhecer UR Play", variant: "secondary" },
+          { href: "/cadastro#atleta", label: "Começar como atleta" },
+          { href: "#jornada", label: "Entender jornada", variant: "secondary" },
         ]}
         badges={["UR Play", "N1 a N3", "ranking", "UR Coins", "mídia", "Legends"]}
-        description="No Ultimate Rivals, cada atleta constrói histórico com presença, desempenho, evolução e atitude. O sistema foi criado para dar clareza ao caminho de quem quer jogar melhor e ser visto."
-        eyebrow="Jornada do atleta"
+        description="Com ou sem equipe, o atleta pode começar pelo UR Play, ser observado, construir histórico, entrar em rankings e encontrar seu espaço dentro da temporada."
+        eyebrow="Atletas UR"
         image={siteImages.athletePortrait}
         imagePosition="center 18%"
         stats={[
@@ -108,7 +108,7 @@ export default function AtletasPage() {
           { label: "níveis", value: "N1 / N2 / N3" },
           { label: "trajetória", value: "ranking" },
         ]}
-        title="Sua trajetória começa pelo primeiro jogo."
+        title="Todo atleta tem um caminho para evoluir."
       />
 
       <SeasonSection

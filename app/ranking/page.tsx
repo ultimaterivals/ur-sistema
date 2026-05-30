@@ -61,8 +61,8 @@ export default function RankingPage() {
           { href: "#criterios", label: "Entender pontuação", variant: "secondary" },
         ]}
         badges={["ranking individual", "formações", "polos", "níveis", "Legends"]}
-        description="O ranking do Ultimate Rivals organiza atletas, equipes e polos com base em participação, desempenho e critérios oficiais."
-        eyebrow="Central de evolução"
+        description="O ranking organiza a jornada de atletas, equipes e polos com critérios claros, separando desempenho individual, campanha coletiva e força da comunidade."
+        eyebrow="Ranking UR"
         image={siteImages.attackBlock}
         imagePosition="center 40%"
         stats={[
@@ -70,7 +70,7 @@ export default function RankingPage() {
           { label: "níveis", value: "N1 / N2 / N3" },
           { label: "disputa", value: "polos" },
         ]}
-        title="Ranking para dar clareza à evolução."
+        title="Sua evolução vira histórico."
       />
 
       <SeasonSection

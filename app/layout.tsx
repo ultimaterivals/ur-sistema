@@ -7,11 +7,11 @@ import { RouteScrollManager } from "@/components/layout/route-scroll-manager";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ultimaterivals.org"),
   title: {
-    default: "Ultimate Rivals | Temporada 1 — Territórios em Disputa",
+    default: "Ultimate Rivals | Temporada 1 — Polos em Disputa",
     template: "%s | Ultimate Rivals",
   },
   description:
-    "UR Temporada 1 — Entre na temporada. Evolua no seu ritmo. Atletas entram pelo UR Play, constroem histórico e avançam com critério.",
+    "UR Temporada 1 — Polos em Disputa. Atletas e equipes começam pelo UR Play, constroem histórico e fortalecem BH, Betim e Contagem.",
   icons: {
     icon: "/brand/logo-ur.png",
     shortcut: "/brand/logo-ur.png",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Ultimate Rivals — Temporada 1",
-    description: "Entre na temporada. Evolua no seu ritmo. O UR Play é a porta de entrada para atletas de diferentes níveis.",
+    description: "Polos em Disputa apresenta a Temporada 1 UR, com UR Play, ranking, polos e jornada progressiva para atletas e equipes.",
     images: ["/brand/logo-ur.png"],
     locale: "pt_BR",
     siteName: "Ultimate Rivals",

@@ -98,12 +98,12 @@ export default function CTURPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "#pilares", label: "Conhecer metodologia" },
+          { href: "#pilares", label: "Conhecer o CT UR" },
           { href: "/ur-play", label: "Entrar pelo UR Play", variant: "secondary" },
         ]}
         badges={["técnico", "físico", "mental", "liderança", "análise"]}
         description="O CT UR conecta desenvolvimento técnico, físico, mental e comportamental para atletas que querem evoluir com mais clareza."
-        eyebrow="CT UR - desenvolvimento"
+        eyebrow="CT UR"
         image={siteImages.timeoutTalk}
         imagePosition="center 42%"
         stats={[

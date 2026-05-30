@@ -173,11 +173,11 @@ export default function MidiaPage() {
       <SeasonPageHero
         actions={[
           { href: "#editorias", label: "Conhecer mídia UR" },
-          { href: "/patrocinadores", label: "Ver oportunidades", variant: "secondary" },
+          { href: "/temporada", label: "Ver temporada", variant: "secondary" },
         ]}
         badges={["histórias", "ranking", "bastidores", "transmissões", "patrocinadores"]}
-        description="A mídia oficial do UR transforma UR Play, jogos, atletas, equipes, rankings e bastidores em conteúdo para fortalecer o esporte amador."
-        eyebrow="Portal esportivo"
+        description="A mídia oficial transforma jogos, rankings, histórias, bastidores e evolução em conteúdo para valorizar atletas, equipes, polos e parceiros."
+        eyebrow="Mídia UR"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
         stats={[
@@ -185,7 +185,7 @@ export default function MidiaPage() {
           { label: "base", value: "histórias" },
           { label: "ritmo", value: "temporada" },
         ]}
-        title="A temporada também precisa ser contada."
+        title="A jornada do atleta também precisa ser contada."
       />
 
       <SeasonSection

@@ -78,12 +78,12 @@ export default function PatrocinadoresPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#patrocinador", label: "Solicitar proposta" },
-          { href: "#ativos", label: "Conhecer formatos", variant: "secondary" },
+          { href: "/cadastro#patrocinador", label: "Quero patrocinar" },
+          { href: "/ecossistema", label: "Conhecer o ecossistema", variant: "secondary" },
         ]}
         badges={["mídia", "eventos", "UR Market", "polos", "conteúdo", "benefícios"]}
-        description="O Ultimate Rivals conecta marcas a atletas, equipes, quadras e comunidades por meio de eventos, mídia, ranking, benefícios e experiências reais."
-        eyebrow="Proposta comercial"
+        description="O UR conecta marcas a atletas, equipes, polos, mídia, eventos, recompensas e comunidades esportivas com presença recorrente e contexto real."
+        eyebrow="Patrocinadores UR"
         image={siteImages.sponsorActivation}
         imagePosition="center 45%"
         stats={[
@@ -91,7 +91,7 @@ export default function PatrocinadoresPage() {
           { label: "presença", value: "eventos" },
           { label: "canal", value: "UR Market" },
         ]}
-        title="Sua marca dentro da jornada do atleta."
+        title="Sua marca entra na jornada do atleta."
       />
 
       <SeasonSection

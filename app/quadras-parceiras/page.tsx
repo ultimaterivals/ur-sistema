@@ -149,12 +149,12 @@ export default function QuadrasParceirasPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "/cadastro#quadra", label: "Cadastrar quadra" },
-          { href: "/contato", label: "Falar sobre parceria", variant: "secondary" },
+          { href: "/cadastro#quadra", label: "Quero ser parceira" },
+          { href: "/temporada#polos", label: "Entender polos", variant: "secondary" },
         ]}
         badges={["polo oficial", "ocupação", "eventos", "mídia", "comunidade", "patrocinadores"]}
-        description="O Ultimate Rivals ajuda quadras a gerar movimento, organizar eventos, fortalecer comunidade local e ganhar presença como território esportivo."
-        eyebrow="Polos oficiais"
+        description="As quadras parceiras ajudam a estruturar polos, eventos, treinos, calendário, mídia e desenvolvimento esportivo regional."
+        eyebrow="Quadras parceiras"
         image={siteImages.wideServe}
         imagePosition="center 47%"
         stats={[
@@ -162,7 +162,7 @@ export default function QuadrasParceirasPage() {
           { label: "força", value: "comunidade" },
           { label: "ritmo", value: "calendário" },
         ]}
-        title="Sua quadra como polo de uma temporada."
+        title="Sua quadra pode virar base de uma comunidade."
       />
 
       <SeasonSection

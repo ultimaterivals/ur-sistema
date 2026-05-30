@@ -1,11 +1,10 @@
 export const mainNavigation = [
   { label: "Começar", href: "/" },
   { label: "UR Play", href: "/ur-play" },
-  { label: "Temporada", href: "/#jornada" },
-  { label: "Polos", href: "/#polos" },
-  { label: "Ranking", href: "/#rankings" },
-  { label: "Legends", href: "/#legends" },
-  { label: "Regulamento", href: "/#regulamento" },
+  { label: "Temporada", href: "/temporada" },
+  { label: "Ecossistema", href: "/ecossistema" },
+  { label: "Ranking", href: "/ranking" },
+  { label: "Regulamento", href: "/regulamento" },
   { label: "Cadastro", href: "/cadastro" },
 ] as const;
 
@@ -13,58 +12,57 @@ export const mobileNavigationGroups = [
   {
     label: "Começar",
     items: [
-      { label: "Como funciona", href: "/#ur-play" },
-      { label: "UR Play", href: "/#ur-play" },
+      { label: "Home", href: "/" },
+      { label: "UR Play", href: "/ur-play" },
       { label: "Cadastro", href: "/cadastro" },
     ],
   },
   {
     label: "Temporada",
     items: [
-      { label: "Modalidades", href: "/#modalidades" },
-      { label: "Polos", href: "/#polos" },
-      { label: "UR Sprint", href: "/#jornada" },
-      { label: "Regional", href: "/#jornada" },
-      { label: "Legends", href: "/#legends" },
+      { label: "Temporada 1", href: "/temporada" },
+      { label: "Eventos", href: "/eventos" },
+      { label: "Polos", href: "/temporada#polos" },
+      { label: "Legends", href: "/temporada#legends" },
+    ],
+  },
+  {
+    label: "Ecossistema",
+    items: [
+      { label: "Visão geral", href: "/ecossistema" },
+      { label: "Atletas", href: "/atletas" },
+      { label: "Equipes", href: "/equipes" },
+      { label: "Quadras", href: "/quadras-parceiras" },
     ],
   },
   {
     label: "Ranking",
     items: [
-      { label: "Atletas", href: "/#ranking-atletas" },
-      { label: "Equipes", href: "/#ranking-equipes" },
-      { label: "Polos", href: "/#ranking-polos" },
+      { label: "Ranking", href: "/ranking" },
+      { label: "Regulamento", href: "/regulamento" },
     ],
   },
   {
     label: "Benefícios",
     items: [
-      { label: "Recompensas", href: "/#beneficios" },
-      { label: "UR Market", href: "/#beneficios" },
-      { label: "Parceiros", href: "/patrocinadores" },
-    ],
-  },
-  {
-    label: "Apoio",
-    items: [
-      { label: "Regulamento", href: "/#regulamento" },
-      { label: "Ecossistema", href: "/#ecossistema" },
-      { label: "Quadras", href: "/quadras-parceiras" },
+      { label: "UR Market", href: "/ur-market" },
+      { label: "Patrocinadores", href: "/patrocinadores" },
     ],
   },
 ] as const;
 
 export const mobileNavigation = [
   { label: "Começar", href: "/" },
-  { label: "UR Play", href: "/#ur-play" },
-  { label: "Temporada", href: "/#jornada" },
-  { label: "Polos", href: "/#polos" },
-  { label: "Ranking", href: "/#rankings" },
-  { label: "Legends", href: "/#legends" },
-  { label: "Regulamento", href: "/#regulamento" },
+  { label: "UR Play", href: "/ur-play" },
+  { label: "Temporada", href: "/temporada" },
+  { label: "Ecossistema", href: "/ecossistema" },
+  { label: "Ranking", href: "/ranking" },
+  { label: "Regulamento", href: "/regulamento" },
   { label: "Cadastro", href: "/cadastro" },
-  { label: "Recompensas", href: "/#beneficios" },
-  { label: "UR Market", href: "/#beneficios" },
+  { label: "UR Market", href: "/ur-market" },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Atletas", href: "/atletas" },
+  { label: "Equipes", href: "/equipes" },
   { label: "Patrocinadores", href: "/patrocinadores" },
   { label: "Quadras Parceiras", href: "/quadras-parceiras" },
   { label: "Contato", href: "/contato" },
@@ -74,10 +72,10 @@ export const footerColumns = [
   {
     title: "Temporada",
     links: [
-      { label: "Polos em Disputa", href: "/" },
+      { label: "Polos em Disputa", href: "/temporada" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "UR Sprint", href: "/#jornada" },
-      { label: "UR Legends", href: "/#legends" },
+      { label: "Eventos", href: "/eventos" },
+      { label: "UR Legends", href: "/temporada#legends" },
     ],
   },
   {
@@ -92,10 +90,10 @@ export const footerColumns = [
   {
     title: "Rankings e benefícios",
     links: [
-      { label: "Ranking dos Atletas", href: "/#ranking-atletas" },
-      { label: "Ranking das Equipes", href: "/#ranking-equipes" },
-      { label: "Ranking dos Polos", href: "/#ranking-polos" },
-      { label: "UR Market", href: "/#beneficios" },
+      { label: "Ranking dos Atletas", href: "/ranking" },
+      { label: "Ranking das Equipes", href: "/ranking" },
+      { label: "Ranking dos Polos", href: "/ranking" },
+      { label: "UR Market", href: "/ur-market" },
     ],
   },
   {

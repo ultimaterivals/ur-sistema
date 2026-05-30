@@ -64,11 +64,11 @@ export default function EquipesPage() {
       <SeasonPageHero
         actions={[
           { href: "/cadastro#equipe", label: "Cadastrar equipe" },
-          { href: "/ranking", label: "Ver ranking coletivo", variant: "secondary" },
+          { href: "#estrutura", label: "Entender níveis", variant: "secondary" },
         ]}
         badges={["escudo", "formações", "Quarteto", "Dupla", "polos", "Legends"]}
-        description="As equipes dão identidade à temporada. Elas organizam atletas, criam pertencimento, fortalecem polos e transformam jogos em rivalidades saudáveis."
-        eyebrow="Equipes e formações"
+        description="Equipes passam pelo UR Play, são niveladas, disputam eventos, constroem ranking próprio e podem representar um polo na temporada."
+        eyebrow="Equipes UR"
         image={siteImages.teamHuddle}
         imagePosition="center 42%"
         stats={[
@@ -76,7 +76,7 @@ export default function EquipesPage() {
           { label: "disputa", value: "formações" },
           { label: "força", value: "polo" },
         ]}
-        title="Forme sua equipe. Represente sua história."
+        title="Sua equipe pode construir uma campanha."
       />
 
       <SeasonSection
