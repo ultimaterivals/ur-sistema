@@ -72,12 +72,12 @@ export default function URMarketPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "#catalogo", label: "Conhecer benefícios" },
-          { href: "/cadastro#atleta", label: "Entrar na temporada", variant: "secondary" },
+          { href: "#catalogo", label: "Ver benefícios" },
+          { href: "#coins", label: "Entender UR Coins", variant: "secondary" },
         ]}
         badges={["UR Coins", "benefícios aprovados", "catálogo em expansão", "regras oficiais"]}
-        description="O UR Market conecta participação, mérito e parceiros em um sistema de benefícios controlado, progressivo e sustentável."
-        eyebrow="Consequência da temporada"
+        description="O UR Market conecta participação, mérito, parceiros e recompensas possíveis para atletas, equipes e polos, sempre conforme regras oficiais e disponibilidade."
+        eyebrow="UR Market"
         image={siteImages.mediaCoverage}
         imagePosition="center 45%"
         stats={[
@@ -85,7 +85,7 @@ export default function URMarketPage() {
           { label: "status", value: "em expansão" },
           { label: "regra", value: "oficial" },
         ]}
-        title="Recompensas que acompanham a jornada."
+        title="Benefícios como consequência da jornada."
       />
 
       <SeasonSection

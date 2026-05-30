@@ -81,12 +81,12 @@ export default function EventosPage() {
     <main className="bg-[#0A0A0B] text-[#F4F0E6]">
       <SeasonPageHero
         actions={[
-          { href: "#eventos", label: "Ver próximos eventos" },
-          { href: "#formatos", label: "Entender formatos", variant: "secondary" },
+          { href: "#eventos", label: "Ver eventos" },
+          { href: "/temporada", label: "Entender temporada", variant: "secondary" },
         ]}
         badges={["UR Play", "UR Sprint", "UR Series", "UR Legends", "bracket", "polos"]}
-        description="A temporada combina entradas abertas, disputas curtas, etapas maiores e momentos de destaque. Cada evento tem uma função dentro da jornada."
-        eyebrow="Calendário competitivo"
+        description="Os eventos organizam a jornada competitiva do UR, conectando UR Play, UR Sprint, Regional, Legends e ativações especiais."
+        eyebrow="Eventos UR"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"
         stats={[
@@ -94,7 +94,7 @@ export default function EventosPage() {
           { label: "entrada", value: "UR Play" },
           { label: "ápice", value: "Legends" },
         ]}
-        title="Eventos para cada etapa da temporada."
+        title="A temporada acontece em jogos, etapas e histórias."
       />
 
       <SeasonSection

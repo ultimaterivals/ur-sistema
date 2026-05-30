@@ -101,11 +101,11 @@ export default function URPlayPage() {
       <SeasonPageHero
         actions={[
           { href: "/cadastro#atleta", label: "Entrar no UR Play" },
-          { href: "/ranking", label: "Ver ranking", variant: "secondary" },
+          { href: "#jornada", label: "Entender nivelamento", variant: "secondary" },
         ]}
         badges={["presença", "pontuação", "UR Coins", "nivelamento", "mídia", "Legends"]}
-        description="O UR Play é a porta de entrada do Ultimate Rivals. É onde o atleta participa, é observado, começa a formar histórico e entende como pode evoluir dentro do ecossistema."
-        eyebrow="Porta de entrada"
+        description="O UR Play é a porta de entrada para atletas e equipes. É aqui que você participa, é observado, entende seu nível e começa a construir histórico dentro do Ultimate Rivals."
+        eyebrow="UR Play"
         image={siteImages.urPlayAction}
         imagePosition="center 42%"
         stats={[
@@ -113,7 +113,7 @@ export default function URPlayPage() {
           { label: "impacto", value: "ranking" },
           { label: "progressão", value: "Legends" },
         ]}
-        title="O primeiro passo da sua temporada."
+        title="Comece jogando. Evolua com critério."
       />
 
       <SeasonSection

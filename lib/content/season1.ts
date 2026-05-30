@@ -2,8 +2,8 @@
 
 export const season1 = {
   name: "UR Temporada 1",
-  subtitle: "Territórios em Disputa",
-  slogan: "Entre na temporada. Evolua no seu ritmo.",
+  subtitle: "Polos em Disputa",
+  slogan: "A temporada começa no UR Play.",
   message: "Cada presença conta. Cada jogo constrói histórico. Cada atleta tem um caminho.",
   poles: [
     {
