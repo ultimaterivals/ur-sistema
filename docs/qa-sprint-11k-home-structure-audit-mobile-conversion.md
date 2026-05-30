@@ -163,3 +163,40 @@ Resultado:
 - Integracoes nao alteradas.
 - `next-env.d.ts` nao foi alterado.
 - Arquivos `.patch` nao foram commitados.
+
+## Resolucao de conflitos com main
+
+Conflitos resolvidos nesta etapa:
+
+- `app/page.tsx`
+- `lib/navigation.ts`
+- `docs/qa-sprint-11j-home-order-anchor-ecosystem-polish.md`
+
+Decisao aplicada:
+
+- Em `app/page.tsx`, foi preservada a versao da Sprint 11K com 12 blocos principais.
+- Em `lib/navigation.ts`, foi preservada a navegacao da Sprint 11K, apontando `Temporada`, `UR Sprint` e `Regional` para `/#jornada`, e mantendo beneficios/regulamento na estrutura compactada.
+- Em `docs/qa-sprint-11j-home-order-anchor-ecosystem-polish.md`, foi preservado o historico da 11J com a observacao posterior da Sprint 11K.
+- A resolucao nao restaurou a Home longa da 11J, nao separou novamente `Polos + Tres polos`, nao separou `UR Sprint + Regional` e nao reabriu `Recompensas`, `UR Market` e `Regulamento` como secoes extensas.
+
+Validacoes executadas apos esta resolucao:
+
+- `git grep -n "^<<<<<<<\|^=======$\|^>>>>>>>"`: sem marcadores de conflito.
+- `npm.cmd run lint`: aprovado com 1 warning existente em `app/layout.tsx` sobre fonte customizada.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `set NODE_OPTIONS=--max-old-space-size=8192` + `npm.cmd run build`: aprovado.
+- QA Playwright em production build: aprovado.
+
+Resultado do QA Playwright apos merge:
+
+- Ambiente: `next start` em build de producao, `http://127.0.0.1:3045`.
+- Rotas: `/`, `/ur-play`, `/ecossistema`, `/ranking`, `/regulamento`, `/cadastro`.
+- Viewports: `390x844`, `430x932`, `768x1024`, `1366x768`, `1920x1080`.
+- Home checks: `5`.
+- Route checks: `30`.
+- Anchor checks mobile: `27`.
+- Console errors: `0`.
+- Evidencia: `output/playwright/sprint-11k-merge-main-summary.json`.
+- Screenshots:
+  - `output/playwright/sprint-11k-merge-home-390x844.png`
+  - `output/playwright/sprint-11k-merge-menu-390x844.png`
