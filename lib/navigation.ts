@@ -1,11 +1,11 @@
 export const mainNavigation = [
   { label: "Começar", href: "/" },
   { label: "UR Play", href: "/ur-play" },
-  { label: "Temporada", href: "/#ur-sprint" },
+  { label: "Temporada", href: "/#jornada" },
   { label: "Polos", href: "/#polos" },
   { label: "Ranking", href: "/#rankings" },
   { label: "Legends", href: "/#legends" },
-  { label: "Regulamento", href: "/regulamento" },
+  { label: "Regulamento", href: "/#regulamento" },
   { label: "Cadastro", href: "/cadastro" },
 ] as const;
 
@@ -23,8 +23,8 @@ export const mobileNavigationGroups = [
     items: [
       { label: "Modalidades", href: "/#modalidades" },
       { label: "Polos", href: "/#polos" },
-      { label: "UR Sprint", href: "/#ur-sprint" },
-      { label: "Regional", href: "/#regional" },
+      { label: "UR Sprint", href: "/#jornada" },
+      { label: "Regional", href: "/#jornada" },
       { label: "Legends", href: "/#legends" },
     ],
   },
@@ -57,7 +57,7 @@ export const mobileNavigationGroups = [
 export const mobileNavigation = [
   { label: "Começar", href: "/" },
   { label: "UR Play", href: "/#ur-play" },
-  { label: "Temporada", href: "/#ur-sprint" },
+  { label: "Temporada", href: "/#jornada" },
   { label: "Polos", href: "/#polos" },
   { label: "Ranking", href: "/#rankings" },
   { label: "Legends", href: "/#legends" },
@@ -76,7 +76,7 @@ export const footerColumns = [
     links: [
       { label: "Polos em Disputa", href: "/" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "UR Sprint", href: "/#ur-sprint" },
+      { label: "UR Sprint", href: "/#jornada" },
       { label: "UR Legends", href: "/#legends" },
     ],
   },

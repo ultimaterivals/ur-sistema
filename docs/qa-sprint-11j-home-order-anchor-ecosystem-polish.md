@@ -200,3 +200,16 @@ Resultado do QA Playwright da rechecagem:
 - Screenshots:
   - `output/playwright/sprint-11j-recheck-home-390x844.png`
   - `output/playwright/sprint-11j-recheck-menu-390x844.png`
+
+## Sprint 11K posterior
+
+A Sprint 11K (`sprint-11k-home-structure-audit-mobile-conversion`) fez uma auditoria estrutural da Home e compactou a pagina para 12 blocos principais, preservando a narrativa oficial da Temporada 1 e reduzindo a sensacao de documento operacional no mobile.
+
+Principais mudancas posteriores:
+
+- Auditoria registrada em `docs/audit-home-structure-sprint-11k.md`.
+- `polos` e `territorios` foram unidos em uma unica secao.
+- `ur-sprint` e `regional` foram compactados em `Jornada da Temporada`.
+- `beneficios`, `UR Market` e `regulamento` foram reunidos em `Beneficios com regra e criterio`.
+- A Home manteve Hero primeiro, UR Play, Ecossistema, Participacao, Modalidades, Polos, Jornada, Niveis, Ranking, Legends, Beneficios/Regulamento e CTA final.
+- Evidencia de QA: `output/playwright/sprint-11k-home-structure-summary.json`.
