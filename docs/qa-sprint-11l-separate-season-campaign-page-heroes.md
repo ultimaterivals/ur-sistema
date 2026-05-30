@@ -150,3 +150,45 @@ Resultados Playwright:
 - `next-env.d.ts` não alterado.
 - Arquivos `.patch` não adicionados.
 - `package.json` não alterado.
+
+## Resolução de conflito com main
+
+Conflito resolvido em:
+
+- `lib/navigation.ts`
+
+Decisão aplicada:
+
+- Preservada a navegação da Sprint 11L.
+- Menu principal mantido com rotas próprias: `/`, `/ur-play`, `/temporada`, `/ecossistema`, `/ranking`, `/regulamento` e `/cadastro`.
+- Menu mobile mantido com páginas específicas sempre que existem páginas próprias.
+- `UR Play` permanece apontando para `/ur-play`.
+- `Ranking` permanece apontando para `/ranking`.
+- `Regulamento` permanece apontando para `/regulamento`.
+- `Ecossistema` permanece apontando para `/ecossistema`.
+- `Polos` permanece como `/temporada#polos`.
+- `Legends` permanece como `/temporada#legends`.
+- Não foi restaurada a navegação antiga baseada majoritariamente em âncoras da Home.
+
+Validações executadas após o conflito:
+
+- `npm.cmd run lint`: aprovado com o warning já registrado de fonte customizada em `app/layout.tsx`.
+- `npx.cmd tsc --noEmit`: aprovado.
+- `$env:NODE_OPTIONS='--max-old-space-size=8192'; npm.cmd run build`: aprovado.
+- QA Playwright em production build: rotas, viewports, menu mobile, rotas próprias e ausência de overflow/console errors validados novamente.
+
+Escopo preservado na resolução:
+
+- Nenhuma página interna foi alterada.
+- `app/page.tsx` não foi alterado.
+- Backend não alterado.
+- Formulários não alterados.
+- Supabase não alterado.
+- Apps Script não alterado.
+- Sheets não alterado.
+- CRM não alterado.
+- Endpoints não alterados.
+- Hashes de formulário preservados.
+- Nomes de campos preservados.
+- `next-env.d.ts` não alterado.
+- Arquivos `.patch` não adicionados.
