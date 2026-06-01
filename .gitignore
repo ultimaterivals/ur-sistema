@@ -28,5 +28,9 @@ Thumbs.db
 
 .vercel
 
-# Claude Code
-.claude/
+# Claude Code - ignore config but track skills
+.claude/*
+!.claude/skills
+!.claude/skills/**
+.claude/skills/**/__pycache__/
+.claude/skills/**/*.pyc
