@@ -53,13 +53,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4 group" aria-label="Ultimate Rivals">
-              <div className="w-9 h-9 bg-ur-gold rounded-sm flex items-center justify-center">
-                <span className="font-display font-black text-ur-black text-sm">UR</span>
-              </div>
-              <span className="font-display font-black text-ur-white uppercase tracking-wide text-sm">
-                Ultimate<br />Rivals
-              </span>
+            <Link href="/" className="inline-flex mb-5" aria-label="Ultimate Rivals">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-ur-icon.svg" alt="UR" className="h-10 w-auto" />
             </Link>
             <p className="text-ur-muted text-sm leading-relaxed mb-6">
               Ecossistema esportivo para organizar, profissionalizar e valorizar o esporte amador.

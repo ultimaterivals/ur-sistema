@@ -72,15 +72,13 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group" aria-label="Ultimate Rivals — Página inicial">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-ur-gold rounded-sm flex items-center justify-center">
-                <span className="font-display font-black text-ur-black text-sm tracking-tight">UR</span>
-              </div>
-              <span className="font-display font-black text-ur-white uppercase tracking-wide text-base hidden sm:block group-hover:text-ur-gold transition-colors duration-200">
-                Ultimate Rivals
-              </span>
-            </div>
+          <Link href="/" className="flex items-center" aria-label="Ultimate Rivals — Página inicial">
+            {/* Icon only on mobile */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-ur-icon.svg" alt="UR" className="h-9 w-auto sm:hidden" />
+            {/* Full wordmark on sm+ */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-ur.svg" alt="Ultimate Rivals" className="hidden sm:block h-9 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
