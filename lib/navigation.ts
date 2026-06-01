@@ -1,51 +1,41 @@
 export const mainNavigation = [
-  { label: "Começar", href: "/" },
+  { label: "Começar", href: "/#hero" },
   { label: "UR Play", href: "/ur-play" },
   { label: "Temporada", href: "/temporada" },
-  { label: "Ecossistema", href: "/ecossistema" },
   { label: "Ranking", href: "/ranking" },
-  { label: "Regulamento", href: "/regulamento" },
-  { label: "Cadastro", href: "/cadastro" },
+  { label: "UR Market", href: "/ur-market" },
+  { label: "Mídia", href: "/midia" },
 ] as const;
 
 export const mobileNavigationGroups = [
   {
-    label: "Começar",
+    label: "Principal",
     items: [
-      { label: "Home", href: "/" },
+      { label: "Começar", href: "/" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "Cadastro", href: "/cadastro" },
-    ],
-  },
-  {
-    label: "Temporada",
-    items: [
-      { label: "Temporada 1", href: "/temporada" },
-      { label: "Eventos", href: "/eventos" },
-      { label: "Polos", href: "/temporada#polos" },
-      { label: "Legends", href: "/temporada#legends" },
-    ],
-  },
-  {
-    label: "Ecossistema",
-    items: [
-      { label: "Visão geral", href: "/ecossistema" },
-      { label: "Atletas", href: "/atletas" },
-      { label: "Equipes", href: "/equipes" },
-      { label: "Quadras", href: "/quadras-parceiras" },
-    ],
-  },
-  {
-    label: "Ranking",
-    items: [
+      { label: "Temporada", href: "/temporada" },
       { label: "Ranking", href: "/ranking" },
-      { label: "Regulamento", href: "/regulamento" },
+      { label: "Entrar", href: "/cadastro" },
     ],
   },
   {
-    label: "Benefícios",
+    label: "Explorar",
     items: [
+      { label: "Ecossistema", href: "/ecossistema" },
+      { label: "Atletas", href: "/atletas" },
+      { label: "Equipes e Duplas", href: "/equipes" },
+      { label: "Polos e Quadras", href: "/quadras-parceiras" },
       { label: "UR Market", href: "/ur-market" },
+      { label: "Mídia", href: "/midia" },
+    ],
+  },
+  {
+    label: "Institucional",
+    items: [
+      { label: "Metodologia Hunter", href: "/hunter" },
+      { label: "Blog", href: "/blog" },
+      { label: "Regulamento", href: "/regulamento" },
+      { label: "Cadastro", href: "/cadastro" },
       { label: "Patrocinadores", href: "/patrocinadores" },
     ],
   },
@@ -55,40 +45,40 @@ export const mobileNavigation = [
   { label: "Começar", href: "/" },
   { label: "UR Play", href: "/ur-play" },
   { label: "Temporada", href: "/temporada" },
-  { label: "Ecossistema", href: "/ecossistema" },
   { label: "Ranking", href: "/ranking" },
-  { label: "Regulamento", href: "/regulamento" },
-  { label: "Cadastro", href: "/cadastro" },
   { label: "UR Market", href: "/ur-market" },
-  { label: "Eventos", href: "/eventos" },
+  { label: "Mídia", href: "/midia" },
+  { label: "Ecossistema", href: "/ecossistema" },
   { label: "Atletas", href: "/atletas" },
   { label: "Equipes", href: "/equipes" },
   { label: "Patrocinadores", href: "/patrocinadores" },
   { label: "Quadras Parceiras", href: "/quadras-parceiras" },
+  { label: "Regulamento", href: "/regulamento" },
+  { label: "Cadastro", href: "/cadastro" },
   { label: "Contato", href: "/contato" },
 ] as const;
 
 export const footerColumns = [
   {
-    title: "Temporada",
+    title: "Jornada",
     links: [
-      { label: "Polos em Disputa", href: "/temporada" },
       { label: "UR Play", href: "/ur-play" },
-      { label: "Eventos", href: "/eventos" },
+      { label: "UR Sprint", href: "/temporada" },
+      { label: "UR Series", href: "/temporada" },
       { label: "UR Legends", href: "/temporada#legends" },
     ],
   },
   {
-    title: "Participar",
+    title: "Ecossistema",
     links: [
       { label: "Cadastro UR", href: "/cadastro" },
-      { label: "Cadastro de atleta", href: "/cadastro#atleta" },
-      { label: "Cadastrar equipe", href: "/cadastro#equipe" },
-      { label: "Regulamento", href: "/regulamento" },
+      { label: "Atletas", href: "/atletas" },
+      { label: "Equipes e Duplas", href: "/equipes" },
+      { label: "Polos e Quadras", href: "/quadras-parceiras" },
     ],
   },
   {
-    title: "Rankings e benefícios",
+    title: "Ranking e Market",
     links: [
       { label: "Ranking dos Atletas", href: "/ranking" },
       { label: "Ranking das Equipes", href: "/ranking" },
@@ -97,12 +87,12 @@ export const footerColumns = [
     ],
   },
   {
-    title: "Comunidade",
+    title: "Institucional",
     links: [
-      { label: "Ecossistema", href: "/ecossistema" },
-      { label: "Mídia UR", href: "/midia" },
+      { label: "Metodologia Hunter", href: "/hunter" },
+      { label: "Blog", href: "/blog" },
+      { label: "Regulamento", href: "/regulamento" },
       { label: "Patrocinadores", href: "/patrocinadores" },
-      { label: "Quadras parceiras", href: "/quadras-parceiras" },
     ],
   },
 ] as const;
