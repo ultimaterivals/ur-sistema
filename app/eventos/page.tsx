@@ -85,7 +85,7 @@ export default function EventosPage() {
           { href: "/temporada", label: "Entender temporada", variant: "secondary" },
         ]}
         badges={["UR Play", "UR Sprint", "UR Series", "UR Legends", "bracket", "polos"]}
-        description="Os eventos organizam a jornada competitiva do UR, conectando UR Play, UR Sprint, Regional, Legends e ativações especiais."
+        description="Os eventos organizam a jornada competitiva do UR, conectando UR Play, UR Sprint, UR Series, Legends e ativações especiais."
         eyebrow="Eventos UR"
         image={siteImages.fairPlayLine}
         imagePosition="center 46%"

@@ -19,7 +19,7 @@ import { cycleCards, seasonFaq, seasonStatusCards } from "@/lib/content/temporad
 export const metadata: Metadata = {
   title: "Temporada 1 UR | Polos em Disputa Ultimate Rivals",
   description:
-    "Página oficial da Temporada 1 Polos em Disputa, com UR Play, polos, níveis, ranking, Regional, Legends, recompensas e regras resumidas.",
+    "Página oficial da Temporada 1 Polos em Disputa, com UR Play, polos, níveis, ranking, UR Series, Legends, recompensas e regras resumidas.",
 };
 
 const cycleSteps = [
@@ -86,7 +86,7 @@ export default function TemporadaPage() {
           { href: "/ur-play", label: "Começar pelo UR Play" },
           { href: "#escada", label: "Entender a campanha", variant: "secondary" },
         ]}
-        badges={["UR Play", "UR Sprint", "Regional", "Legends", "polos", "ranking"]}
+        badges={["UR Play", "UR Sprint", "UR Series", "Legends", "polos", "ranking"]}
         description="A página oficial da campanha da Temporada 1 conecta UR Play, BH, Betim, Contagem, jornada competitiva, níveis, ranking, recompensas e regulamento resumido."
         eyebrow="Temporada 1 UR"
         image={siteImages.wideServe}
