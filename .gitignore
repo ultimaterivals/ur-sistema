@@ -31,3 +31,8 @@ Thumbs.db
 # Claude Code
 .claude/*
 !.claude/skills/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
