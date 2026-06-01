@@ -51,7 +51,7 @@ export default function HeroCinematic() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-4 mb-10">
-            <Link href="/cadastro" className="btn-primary text-sm">
+            <Link href="/ur-play" className="btn-primary text-sm">
               Começar pelo UR Play
               <ArrowRight size={16} />
             </Link>
@@ -79,20 +79,19 @@ export default function HeroCinematic() {
         <div className="hidden lg:block">
           <div className="relative">
             {/* Main card */}
-            <div className="bg-card rounded-lg p-6 border border-white/5 shadow-card-premium">
+            <div className="bg-card rounded-sm p-6 border border-white/5 shadow-card-premium">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <p className="section-label text-[10px] mb-1">Ranking dos Polos</p>
-                  <p className="text-ur-muted text-[10px] font-body">Dados ilustrativos</p>
                 </div>
                 <span className="chip-gold text-[10px]">Temporada 1</span>
               </div>
 
               {/* Polo rankings */}
               {[
-                { pos: 1, name: "Belo Horizonte", short: "BH", pts: 8920, bar: 100 },
-                { pos: 2, name: "Betim", short: "BT", pts: 8410, bar: 94 },
-                { pos: 3, name: "Contagem", short: "CG", pts: 7980, bar: 89 },
+                { pos: 1, name: "Belo Horizonte", pts: 8920, bar: 100 },
+                { pos: 2, name: "Betim", pts: 8410, bar: 94 },
+                { pos: 3, name: "Contagem", pts: 7980, bar: 89 },
               ].map((polo) => (
                 <div key={polo.name} className="flex items-center gap-3 mb-3 last:mb-0">
                   <div className="w-6 h-6 rounded-sm bg-ur-gold/10 border border-ur-gold/20 flex items-center justify-center flex-shrink-0">
@@ -115,20 +114,20 @@ export default function HeroCinematic() {
             </div>
 
             {/* Floating chips */}
-            <div className="absolute -bottom-4 -left-4 bg-ur-graphite-2 border border-white/5 rounded-lg p-3 shadow-card-premium">
-              <p className="section-label text-[9px] mb-2">Polos Ativos</p>
+            <div className="absolute -bottom-4 -left-4 bg-ur-graphite-2 border border-white/5 rounded-sm p-3 shadow-card-premium">
+              <p className="section-label text-[10px] mb-2">Polos Ativos</p>
               <div className="flex gap-1.5">
                 {poloChips.map((p) => (
-                  <span key={p} className="chip-gold text-[9px] py-0.5">{p}</span>
+                  <span key={p} className="chip-gold text-[10px] py-0.5">{p}</span>
                 ))}
               </div>
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-ur-graphite-2 border border-white/5 rounded-lg p-3 shadow-card-premium">
-              <p className="section-label text-[9px] mb-2">Modalidades</p>
+            <div className="absolute -top-4 -right-4 bg-ur-graphite-2 border border-white/5 rounded-sm p-3 shadow-card-premium">
+              <p className="section-label text-[10px] mb-2">Modalidades</p>
               <div className="flex gap-1.5">
                 {modalidadeChips.map((m) => (
-                  <span key={m} className="chip-sand text-[9px] py-0.5">{m}</span>
+                  <span key={m} className="chip-sand text-[10px] py-0.5">{m}</span>
                 ))}
               </div>
             </div>

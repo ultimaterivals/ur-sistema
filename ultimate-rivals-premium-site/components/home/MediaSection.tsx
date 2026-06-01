@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Play, Radio, Film, Camera, ArrowRight } from "lucide-react";
+import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 
 const featured = {
   type: "Transmissão ao Vivo",
@@ -32,22 +33,26 @@ export default function MediaSection() {
 
         <div className="grid lg:grid-cols-3 gap-6 mb-10">
           {/* Featured */}
-          <div className="lg:col-span-1 bg-card-gold rounded-xl p-8 border border-ur-gold/20 shadow-gold-glow flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                <span className="chip-gold text-[10px]">{featured.tag}</span>
+          <div className="lg:col-span-1 bg-card-gold rounded-sm border border-ur-gold/20 shadow-gold-glow flex flex-col justify-between overflow-hidden">
+            {/* @asset-slot: mídia/featured-thumbnail */}
+            <ImagePlaceholder label="Transmissão" aspectRatio="aspect-video" className="rounded-none border-0 border-b border-ur-gold/10" />
+            <div className="p-6 flex flex-col flex-1 justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                  <span className="chip-gold text-[10px]">{featured.tag}</span>
+                </div>
+                <p className="section-label text-[10px] mb-2 opacity-60">{featured.type}</p>
+                <h3 className="font-display font-black uppercase text-xl text-ur-white mb-3">{featured.title}</h3>
+                <p className="text-ur-sand text-sm leading-relaxed font-body">{featured.desc}</p>
               </div>
-              <p className="section-label text-[9px] mb-2 opacity-60">{featured.type}</p>
-              <h3 className="font-display font-black uppercase text-xl text-ur-white mb-3">{featured.title}</h3>
-              <p className="text-ur-sand text-sm leading-relaxed font-body">{featured.desc}</p>
+              <Link
+                href="/midia"
+                className="mt-6 inline-flex items-center gap-2 text-ur-gold font-display font-bold text-xs uppercase tracking-wider hover:gap-3 transition-all duration-200 cursor-pointer"
+              >
+                Assistir <ArrowRight size={12} />
+              </Link>
             </div>
-            <Link
-              href="/midia"
-              className="mt-6 inline-flex items-center gap-2 text-ur-gold font-display font-bold text-xs uppercase tracking-wider hover:gap-3 transition-all duration-200 cursor-pointer"
-            >
-              Assistir <ArrowRight size={12} />
-            </Link>
           </div>
 
           {/* Grid */}
@@ -55,10 +60,10 @@ export default function MediaSection() {
             {items.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="bg-card rounded-lg p-5 border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group">
+                <div key={item.title} className="bg-card rounded-sm p-5 border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group">
                   <div className="flex items-center justify-between mb-3">
                     <Icon size={16} className="text-ur-gold opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
-                    <span className="chip-sand text-[9px] py-0 px-1.5">{item.tag}</span>
+                    <span className="chip-sand text-[10px] py-0 px-1.5">{item.tag}</span>
                   </div>
                   <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{item.title}</h3>
                   <p className="text-ur-muted text-xs font-body leading-relaxed">{item.desc}</p>

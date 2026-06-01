@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Play, Video, Film, Mic, Camera, Eye, Radio, Globe, Rss } from "lucide-react";
+import { ArrowRight, Play, Video, Film, Mic, Camera, Eye, Radio, Globe } from "lucide-react";
 
 const contentCategories = [
   {

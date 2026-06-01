@@ -47,7 +47,7 @@ export default function RankingSpectacle() {
             </div>
 
             {/* Legends rule */}
-            <div className="bg-card-gold rounded-lg p-4 border border-ur-gold/15 text-xs font-body text-ur-sand leading-relaxed">
+            <div className="bg-card-gold rounded-sm p-4 border border-ur-gold/15 text-xs font-body text-ur-sand leading-relaxed">
               <span className="text-ur-gold font-display font-bold uppercase tracking-wider text-[10px]">Regra UR Legends · </span>
               A pontuação especial do UR Legends vale apenas para o Ranking dos Polos. Demais rankings seguem regras próprias.
             </div>
@@ -62,11 +62,11 @@ export default function RankingSpectacle() {
 
           {/* Right — ranking panel */}
           <div>
-            <div className="bg-card rounded-xl p-6 border border-white/5 shadow-card-premium">
+            <div className="bg-card rounded-sm p-6 border border-white/5 shadow-card-premium">
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <p className="font-display font-black text-sm uppercase text-ur-white">Ranking dos Atletas</p>
-                  <p className="text-ur-muted text-[10px] font-body mt-0.5">Dados ilustrativos · Temporada 1</p>
+                  <p className="text-ur-muted text-[10px] font-body mt-0.5">Temporada 1</p>
                 </div>
                 <span className="chip-gold text-[10px]">N1 · N2 · N3</span>
               </div>
@@ -106,7 +106,7 @@ export default function RankingSpectacle() {
                     </div>
                     <div className="flex items-center gap-2">
                       <span
-                        className="chip text-[9px] py-0 px-1.5 border"
+                        className="chip text-[10px] py-0 px-1.5 border"
                         style={{
                           backgroundColor: `${a.nivel === "N1" ? "#D4A437" : "#F0C060"}15`,
                           borderColor: `${a.nivel === "N1" ? "#D4A437" : "#F0C060"}30`,
@@ -115,7 +115,7 @@ export default function RankingSpectacle() {
                       >
                         {a.nivel}
                       </span>
-                      <span className="chip-sand text-[9px] py-0 px-1.5">{a.polo}</span>
+                      <span className="chip-sand text-[10px] py-0 px-1.5">{a.polo}</span>
                       <span className="font-display font-bold text-xs text-ur-gold">{a.pontos.toLocaleString()}</span>
                       <TrendIcon trend={a.trend} />
                     </div>

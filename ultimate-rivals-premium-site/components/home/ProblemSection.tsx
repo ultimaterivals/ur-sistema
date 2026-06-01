@@ -1,3 +1,5 @@
+import ScrollReveal from "@/components/ui/ScrollReveal";
+
 const problems = [
   "Sem ranking público",
   "Sem histórico de performance",
@@ -28,18 +30,19 @@ export default function ProblemSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            {problems.map((p, i) => (
-              <div
-                key={p}
-                className="bg-card rounded-lg p-4 border border-white/5 flex items-start gap-3 group hover:border-ur-gold/20 transition-all duration-300"
-                style={{ animationDelay: `${i * 80}ms` }}
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-ur-muted mt-1.5 flex-shrink-0 group-hover:bg-ur-gold transition-colors duration-300" />
-                <span className="text-ur-muted text-sm font-body group-hover:text-ur-sand transition-colors duration-300">{p}</span>
-              </div>
-            ))}
-          </div>
+          <ScrollReveal>
+            <div className="grid grid-cols-2 gap-3">
+              {problems.map((p) => (
+                <div
+                  key={p}
+                  className="bg-card rounded-sm p-4 border border-white/5 flex items-start gap-3 group hover:border-ur-gold/20 transition-all duration-300"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-ur-muted mt-1.5 flex-shrink-0 group-hover:bg-ur-gold transition-colors duration-300" />
+                  <span className="text-ur-muted text-sm font-body group-hover:text-ur-sand transition-colors duration-300">{p}</span>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -47,7 +47,7 @@ export default function EntryModalities() {
             return (
               <div
                 key={m.title}
-                className={`rounded-lg p-6 border transition-all duration-300 group ${
+                className={`rounded-sm p-6 border transition-all duration-300 group ${
                   m.featured
                     ? "bg-card-gold border-ur-gold/30 shadow-gold-glow"
                     : "bg-card border-white/5 hover:border-ur-gold/20"

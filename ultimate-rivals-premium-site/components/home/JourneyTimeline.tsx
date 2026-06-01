@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const steps = [
   {
@@ -52,13 +53,14 @@ export default function JourneyTimeline() {
         </div>
 
         {/* Timeline */}
+        <ScrollReveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {/* Connector line (desktop) */}
           <div className="absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent hidden lg:block" />
 
           {steps.map((step, i) => (
             <div key={step.id} className="relative">
-              <div className="bg-card-gold rounded-lg p-6 border border-ur-gold/15 hover:border-ur-gold/40 transition-all duration-300 group h-full">
+              <div className="bg-card-gold rounded-sm p-6 border border-ur-gold/15 hover:border-ur-gold/40 transition-all duration-300 group h-full">
                 {/* Number */}
                 <div className="flex items-center justify-between mb-4">
                   <span
@@ -86,6 +88,7 @@ export default function JourneyTimeline() {
             </div>
           ))}
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

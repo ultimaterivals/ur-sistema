@@ -30,14 +30,14 @@ export default function DashboardPanel() {
           {nodes.map((node) => (
             <div
               key={node.id}
-              className="bg-card rounded-lg p-5 border border-white/5 hover:border-ur-gold/30 transition-all duration-300 group cursor-default"
+              className="bg-card rounded-sm p-5 border border-white/5 hover:border-ur-gold/30 transition-all duration-300 group cursor-default"
               style={{ borderLeft: `2px solid ${node.color}30` }}
             >
               <div
                 className="w-2 h-2 rounded-full mb-3 group-hover:scale-125 transition-transform duration-200"
                 style={{ backgroundColor: node.color }}
               />
-              <p className="section-label text-[9px] mb-1 opacity-60">{node.sublabel}</p>
+              <p className="section-label text-[10px] mb-1 opacity-60">{node.sublabel}</p>
               <p className="font-display font-bold text-sm uppercase text-ur-white group-hover:text-ur-gold transition-colors duration-200">
                 {node.label}
               </p>

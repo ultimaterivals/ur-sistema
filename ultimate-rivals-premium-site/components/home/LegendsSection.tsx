@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { Star, ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 
 const cards = [
   { title: "Representar o Polo", desc: "Você não vai apenas como atleta. Vai como símbolo da comunidade que construiu." },
@@ -16,6 +17,13 @@ export default function LegendsSection() {
       <div className="absolute inset-0 court-lines opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        {/* @asset-slot: legends/event-hero — replace with event photo when available */}
+        <ImagePlaceholder
+          label="UR Legends · Evento"
+          aspectRatio="aspect-[21/9]"
+          className="rounded-sm mb-16 border-ur-gold/10"
+        />
+
         <div className="text-center mb-16">
           <Star size={24} className="text-ur-gold mx-auto mb-4 opacity-80" />
           <p className="section-label mb-4">UR Legends</p>
@@ -31,22 +39,24 @@ export default function LegendsSection() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {cards.map((card, i) => (
-            <div
-              key={card.title}
-              className="bg-card-gold rounded-lg p-6 border border-ur-gold/15 hover:border-ur-gold/40 hover:shadow-gold-glow transition-all duration-300 group"
-            >
-              <div className="w-6 h-6 rounded-sm bg-ur-gold/15 border border-ur-gold/30 flex items-center justify-center mb-4">
-                <Star size={12} className="text-ur-gold" />
+        <ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {cards.map((card) => (
+              <div
+                key={card.title}
+                className="bg-card-gold rounded-sm p-6 border border-ur-gold/15 hover:border-ur-gold/40 hover:shadow-gold-glow transition-all duration-300 group"
+              >
+                <div className="w-6 h-6 rounded-sm bg-ur-gold/15 border border-ur-gold/30 flex items-center justify-center mb-4">
+                  <Star size={12} className="text-ur-gold" />
+                </div>
+                <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{card.title}</h3>
+                <p className="text-ur-muted text-xs font-body leading-relaxed">{card.desc}</p>
               </div>
-              <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{card.title}</h3>
-              <p className="text-ur-muted text-xs font-body leading-relaxed">{card.desc}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
-        <div className="text-center bg-card border border-ur-gold/10 rounded-xl p-6 max-w-lg mx-auto">
+        <div className="text-center bg-card border border-ur-gold/10 rounded-sm p-6 max-w-lg mx-auto">
           <p className="text-ur-muted text-xs font-body leading-relaxed">
             <span className="text-ur-gold font-display font-bold uppercase tracking-wider text-[10px]">Regra · </span>
             A pontuação especial do UR Legends movimenta apenas o Ranking dos Polos.

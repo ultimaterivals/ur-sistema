@@ -22,7 +22,7 @@ export default function FinalCTA() {
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center mb-12">
-          <Link href="/cadastro" className="btn-primary">
+          <Link href="/ur-play" className="btn-primary">
             Começar pelo UR Play
             <ArrowRight size={18} />
           </Link>

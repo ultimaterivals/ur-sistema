@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, TrendingUp, Award, Star, Users, User, Zap, Heart, ChevronUp, ChevronDown, Minus } from "lucide-react";
+import { ArrowRight, TrendingUp, Award, Star, User, Zap, Heart, ChevronUp, ChevronDown, Minus } from "lucide-react";
 import { useState } from "react";
 
 const tabs = [

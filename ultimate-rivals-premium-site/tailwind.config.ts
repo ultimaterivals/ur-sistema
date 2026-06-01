@@ -19,7 +19,7 @@ const config: Config = {
         'ur-sand': '#C8B99A',
         'ur-cream': '#F4F0E6',
         'ur-white': '#FAFAFA',
-        'ur-muted': '#5A5A62',
+        'ur-muted': '#7A7A85',
       },
       fontFamily: {
         display: ['Barlow Condensed', 'sans-serif'],

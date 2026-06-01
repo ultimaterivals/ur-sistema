@@ -27,7 +27,7 @@ export default function MarketShowcase() {
               Produtos, serviços, experiências e possibilidades para atletas, equipes e polos.
             </p>
 
-            <div className="bg-ur-graphite-2 border border-white/5 rounded-lg p-4 text-xs text-ur-muted font-body leading-relaxed mb-8">
+            <div className="bg-ur-graphite-2 border border-white/5 rounded-sm p-4 text-xs text-ur-muted font-body leading-relaxed mb-8">
               Benefícios dependem de regras oficiais, parceiros ativos e disponibilidade. O UR Market é uma vitrine de possibilidades, não uma promessa automática.
             </div>
 
@@ -41,16 +41,16 @@ export default function MarketShowcase() {
             {items.map((item) => (
               <div
                 key={item.title}
-                className={`bg-card rounded-lg p-5 border transition-all duration-300 group ${
+                className={`bg-card rounded-sm p-5 border transition-all duration-300 group ${
                   item.status === "em-breve"
                     ? "border-white/3 opacity-70"
                     : "border-white/5 hover:border-ur-gold/25"
                 }`}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <p className="section-label text-[9px] opacity-60">{item.cat}</p>
+                  <p className="section-label text-[10px] opacity-60">{item.cat}</p>
                   {item.status === "em-breve" ? (
-                    <span className="chip chip-sand text-[9px] py-0 px-1.5 opacity-60">Em breve</span>
+                    <span className="chip chip-sand text-[10px] py-0 px-1.5 opacity-60">Em breve</span>
                   ) : (
                     <Tag size={12} className="text-ur-gold opacity-50" />
                   )}

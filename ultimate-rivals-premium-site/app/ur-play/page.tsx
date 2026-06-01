@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Play, Users, User, Shield, CheckCircle, Calendar, BarChart2, Star, Layers } from "lucide-react";
+import { ArrowRight, Play, Users, User, Shield, CheckCircle, Calendar, BarChart2, Star } from "lucide-react";
 
 const steps = [
   {
