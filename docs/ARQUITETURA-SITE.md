@@ -105,17 +105,20 @@ A Home usa o padrão **Scroll-Triggered Storytelling** — uma narrativa em cap�
 
 ### Seção 1 — Hero (acima do scroll)
 
-**Função:** impactar, identificar e gerar o primeiro CTA.
+**Função:** impactar, identificar e gerar o primeiro CTA. Campanha oficial da Temporada 1.
 
 ```
 [Imagem/vídeo de fundo: quadra de areia, atleta em ação]
 [Overlay escuro com textura sutil de areia]
 
-EYEBROW: "Temporada em andamento"
-HEADLINE: "Eleve o jogo."
-SUBHEADLINE: "Supere seus limites."
-BODY: "O Ultimate Rivals organiza, valoriza e dá visibilidade
-       ao esporte amador de quadra de areia em BH, Betim e Contagem."
+EYEBROW: "TEMPORADA 1 ULTIMATE RIVALS"
+HEADLINE: "POLOS EM DISPUTA."
+SUBHEADLINE: "Entre pelo UR Play, jogue no seu nível, construa ranking,
+              represente seu polo e viva uma temporada feita para evoluir
+              atletas, equipes e comunidades."
+TEXTO DE APOIO: "Você não precisa ter equipe para começar. No Ultimate
+                 Rivals, atletas individuais, duplas e equipes entram
+                 pela mesma porta: o UR Play."
 
 CTA primário:  [Quero começar]  →  /ur-play
 CTA secundário: [Ver a temporada]  →  /temporada
@@ -123,6 +126,11 @@ CTA secundário: [Ver a temporada]  →  /temporada
 PROVA SOCIAL (badges inline):
   [Três polos ativos]  [Ranking público]  [UR Coins]  [Temporada ativa]
 ```
+
+**Nota de copy:**
+- "POLOS EM DISPUTA." é a headline oficial da campanha Temporada 1 — não substituir na Home
+- "Eleve o jogo. Supere seus limites." é frase secundária aprovada — nunca usar como headline principal da Home
+- Eyebrow em uppercase fixo — identidade da campanha
 
 **Regras visuais:**
 - Headline em Barlow Condensed 900, uppercase, ~72px mobile / ~120px desktop
@@ -134,11 +142,11 @@ PROVA SOCIAL (badges inline):
 
 ### Seção 2 — O Problema (Capítulo 1)
 
-**Função:** criar identificação com o atleta amador.
+**Função:** criar identificação com o atleta amador e conectar rapidamente à solução.
 
 ```
 EYEBROW: "Por que o Ultimate Rivals existe"
-HEADLINE: "O esporte amador não precisa ser desorganizado."
+HEADLINE: "O esporte amador merece mais."
 
 GRID DE PROBLEMAS (6 cards, 2 colunas mobile / 3 desktop):
   [Ícone] Sem ranking público
@@ -148,9 +156,14 @@ GRID DE PROBLEMAS (6 cards, 2 colunas mobile / 3 desktop):
   [Ícone] Sem critério para competir por nível
   [Ícone] Sem métricas para parceiros
 
-TEXTO ÂNCORA: "Atletas que treinam, evoluem e competem
-               merecem mais do que um torneio avulso."
+PONTE PARA A SOLUÇÃO:
+  "O Ultimate Rivals transforma jogos soltos em uma jornada contínua."
 ```
+
+**Regras de seção:**
+- Tom: empático, não negativo demais — apresentar a dor e logo conectar à solução
+- Não deve parecer institucional fria nem catálogo de problemas sem saída
+- A frase de fechamento é a ponte direta para a próxima seção (A Jornada)
 
 **Regras visuais:**
 - Cards com borda `1px solid rgba(255,255,255,0.08)` — quase invisível, só para definir espaço
@@ -170,22 +183,23 @@ HEADLINE: "Uma jornada completa começa no UR Play."
 TIMELINE HORIZONTAL (scroll snap em mobile):
 
   [1] UR Play
-      Sessão de entrada. Jogar no seu nível.
-      Avaliação técnica. Primeiro histórico.
-      → Dupla ou individual — você decide.
+      Entrada oficial. Cadastro, jogos semanais,
+      observação, nivelamento e primeiro histórico.
 
   [2] UR Sprint
-      Torneios rápidos. Pontos no ranking.
-      Visibilidade. Construção de trajetória.
-      Belo Horizonte, Betim, Contagem.
+      Primeira disputa oficial dos polos.
+      Pontos no ranking, visibilidade
+      e construção de trajetória.
 
   [3] UR Series
-      Disputas por nível. Equipes e duplas.
-      Ranking consolidado. Status no polo.
+      Classificados dos polos se encontram
+      em uma disputa entre comunidades,
+      com equipes e duplas disputando por nível.
 
   [4] UR Legends
-      O evento principal da temporada.
-      Os melhores. O espetáculo.
+      Evento principal da temporada.
+      Atletas de destaque representam seus polos
+      no maior espetáculo da jornada.
       [Badge: EVENTO ASPIRACIONAL]
 
 CTA: [Ver a Temporada]  →  /temporada
@@ -198,13 +212,54 @@ CTA: [Ver a Temporada]  →  /temporada
 
 ---
 
-### Seção 4 — Os Polos (Capítulo 3)
+### Seção 4 — Atleta, Dupla ou Equipe? (Entrada para segmentos)
+
+**Função:** resolver rapidamente a dúvida de entrada — qualquer forma de participação tem um caminho próprio. Posicionada logo após a Jornada para antecipar a pergunta óbvia do visitante.
+
+```
+HEADLINE: "Você não precisa ter equipe para começar."
+
+3 CAMINHOS (cards de segmento):
+
+  [ATLETA INDIVIDUAL]
+  Comece pelo UR Play.
+  Construa seu ranking.
+  Forme dupla quando quiser.
+  → [Quero começar]
+
+  [DUPLA]
+  Dois atletas. Um caminho.
+  Ranking de duplas. Modalidade oficial.
+  → [Entrar com dupla]
+
+  [QUARTETO / EQUIPE]
+  Identidade. Rivalidade. Estratégia.
+  Draft e mercado interno.
+  → [Montar equipe]
+```
+
+**Nota de copy:**
+- "Você não precisa ter equipe para começar." é o texto-chave desta seção — deve estar em destaque
+- Os três caminhos têm peso visual igual — nenhum é "melhor" que outro
+
+**Regras visuais:**
+- Cards com ícone de destaque no topo
+- Tamanhos iguais — nenhum caminho é mais importante que outro
+- Cor de destaque diferente por card: dourado / prata / bronze (não verde/vermelho)
+
+---
+
+### Seção 5 — Os Polos (Capítulo 3)
 
 **Função:** mostrar que os três polos têm o mesmo peso e criar pertencimento local.
 
 ```
 EYEBROW: "Onde acontece"
 HEADLINE: "Três polos. Uma temporada."
+
+FRASE DE PERTENCIMENTO:
+  "O polo não é só onde você joga.
+   É a comunidade que você ajuda a construir."
 
 3 CARDS IGUAIS (peso visual idêntico):
 
@@ -225,13 +280,22 @@ NOTA: Nenhum polo aparece em primeiro ou maior que outro.
 
 ---
 
-### Seção 5 — Ranking (Capítulo 4)
+### Seção 6 — Ranking (Capítulo 4)
 
 **Função:** tornar o ranking aspiracional, mostrar que o sistema é público e real.
 
 ```
 EYEBROW: "Sistema de mérito"
 HEADLINE: "Ranking não é tabela. É trajetória."
+
+CATEGORIAS OFICIAIS (7 rankings):
+  [1] Ranking dos Atletas
+  [2] Ranking das Equipes
+  [3] Ranking de Duplas
+  [4] Ranking dos Polos
+  [5] Ranking por Função
+  [6] Ranking de Evolução
+  [7] Fair Play
 
 PREVIEW DO RANKING (estilo painel de mídia esportiva):
   [Top 3 com tratamento visual de pódio — 1º maior]
@@ -245,6 +309,10 @@ NOTA INLINE: "Dados ilustrativos. Modelo visual."
 CTA: [Ver ranking completo]  →  /ranking
 ```
 
+**Regra de pontuação especial — UR Legends:**
+> A pontuação especial do UR Legends vale **apenas** para o Ranking dos Polos.
+> Ranking dos Atletas, Ranking das Equipes e Ranking de Duplas seguem regras próprias, sem multiplicador do UR Legends.
+
 **Regras visuais:**
 - 1º lugar: badge dourado grande, nome em Barlow Condensed 700
 - 2º/3º: prata e bronze discretos
@@ -253,7 +321,7 @@ CTA: [Ver ranking completo]  →  /ranking
 
 ---
 
-### Seção 6 — UR Market Preview
+### Seção 7 — UR Market Preview
 
 **Função:** mostrar que existe um mercado de benefícios dentro do ecossistema — sem prometer preço, valor ou retorno.
 
@@ -273,6 +341,21 @@ COPY ÂNCORA: "Dentro do ecossistema, sua participação
 CTA: [Explorar o Market]  →  /ur-market
 ```
 
+**PROIBIDO nesta seção (e em todo o site):**
+- `R$` ou qualquer valor monetário
+- Palavra "preço" em contexto de promessa
+- "Prêmio garantido" ou "benefício garantido"
+- Qualquer promessa de retorno específico
+
+**PERMITIDO nesta seção:**
+- Produtos oficiais
+- Serviços esportivos
+- Parceiros
+- Experiências
+- Para equipes / Para polos
+- Em breve
+- Dados ilustrativos
+
 **Regras visuais:**
 - Sem R$, sem preços, sem valores monetários
 - Cards com estética de vitrine premium — não e-commerce genérico
@@ -281,7 +364,7 @@ CTA: [Explorar o Market]  →  /ur-market
 
 ---
 
-### Seção 7 — Mídia Preview
+### Seção 8 — Mídia Preview
 
 **Função:** mostrar que o ecossistema produz conteúdo — o esporte vira história.
 
@@ -307,42 +390,9 @@ CTA: [Acessar a mídia]  →  /midia
 
 ---
 
-### Seção 8 — Atleta, Equipe ou Dupla? (Entrada para segmentos)
-
-**Função:** deixar claro que qualquer forma de participação tem um caminho próprio.
-
-```
-HEADLINE: "Você decide como entrar."
-
-3 CAMINHOS (cards de segmento):
-
-  [ATLETA INDIVIDUAL]
-  Comece pelo UR Play.
-  Construa seu ranking.
-  Forme dupla quando quiser.
-  → [Quero começar]
-
-  [DUPLA]
-  Dois atletas. Um caminho.
-  Ranking de duplas. Modalidade oficial.
-  → [Entrar com dupla]
-
-  [QUARTETO / EQUIPE]
-  Identidade. Rivalidade. Estratégia.
-  Draft e mercado interno.
-  → [Montar equipe]
-```
-
-**Regras visuais:**
-- Cards com ícone de destaque no topo
-- Tamanhos iguais — nenhum caminho é mais importante que outro
-- Cor de destaque diferente por card: dourado / prata / bronze (não verde/vermelho)
-
----
-
 ### Seção 9 — Metodologia Hunter
 
-**Função:** posicionar a mentalidade UR como diferencial de formação — não como serviço de scout.
+**Função:** posicionar a mentalidade UR como diferencial de formação — não como serviço de scout nem promessa profissional.
 
 ```
 EYEBROW: "Metodologia"
@@ -351,15 +401,30 @@ HEADLINE: "Hunter não é olheiro. É mentalidade."
 BODY: "O Ultimate Rivals valoriza atletas que caçam evolução.
        Que leem o jogo. Que buscam o próximo nível.
        A Metodologia Hunter é o padrão de comportamento
-       e desenvolvimento do ecossistema."
+       e desenvolvimento do ecossistema UR."
 
 3 PILARES (ícone + título + 1 linha):
   [Leitura de jogo]  Análise tática e consciência esportiva
   [Mentalidade]      Disciplina, constância e evolução contínua
   [Desenvolvimento]  Treino, feedback e progressão por nível
 
+EQUIPES HUNTERS:
+  "Equipes que adotam a mentalidade Hunter constroem
+   trajetórias mais sólidas dentro da temporada —
+   na quadra e no ranking."
+
+APLICAÇÃO NA TEMPORADA:
+  A metodologia guia as avaliações no UR Play, os feedbacks
+  do CT UR e o comportamento esperado em todas as etapas da jornada.
+
 CTA: [Conhecer a metodologia]  →  /hunter
 ```
+
+**Regras de copy:**
+- Nunca comunicar como promessa de carreira profissional
+- Nunca usar linguagem de infoproduto ou coach motivacional
+- Hunter é mentalidade e desenvolvimento — não seleção, olheiro ou scout
+- "Equipes Hunters" é um conceito válido: equipes que adotam a metodologia na temporada
 
 ---
 
@@ -384,11 +449,13 @@ CTA secundário: [Falar com o time]  →  /contato
 Coluna 1: Logo + tagline + redes sociais
 Coluna 2: Navegação principal (links)
 Coluna 3: Polos (3 endereços)
-Coluna 4: Institucional (Regulamento, Termos, Privacidade, Patrocinadores)
+Coluna 4: Institucional (Regulamento, Termos, Privacidade, Patrocinadores, Blog)
 
 Base: © Ultimate Rivals | Todos os direitos reservados
       Dados ilustrativos — modelo visual em construção
 ```
+
+**Nota:** Blog aparece no footer (coluna Institucional) e no menu mobile (divisor "Institucional"). Não deve aparecer como seção destacada na Home — é uma página estratégica de SEO, autoridade e aquisição de leads, acessível pela navegação.
 
 ---
 
@@ -453,21 +520,33 @@ Base: © Ultimate Rivals | Todos os direitos reservados
 1. Hero: "Ranking não é tabela. É trajetória."
    Eyebrow: "Sistema de mérito — atualizado por evento"
 
-2. Filtros:
-   [Todos] [N1 Elite] [N2 Avançado] [N3 Desenvolvimento]
-   [BH] [Betim] [Contagem]
-   [Individual] [Dupla] [Quarteto]
+2. Categorias oficiais (tabs ou seletor):
+   [Ranking dos Atletas]
+   [Ranking das Equipes]
+   [Ranking de Duplas]
+   [Ranking dos Polos]
+   [Ranking por Função]
+   [Ranking de Evolução]
+   [Fair Play]
 
-3. Top 3 (pódio visual):
+3. Filtros (dentro de cada categoria):
+   [N1 Elite] [N2 Avançado] [N3 Desenvolvimento]
+   [BH] [Betim] [Contagem]
+
+4. Top 3 (pódio visual):
    Tratamento especial — maior, mais destaque, badge de posição
 
-4. Lista completa (posições 4+):
+5. Lista completa (posições 4+):
    Posição / Nome / Polo / Nível / Pontos / Variação (+/-)
 
-5. Legenda de pontuação:
+6. Regra de pontuação especial (nota visível):
+   "A pontuação especial do UR Legends vale apenas para o
+    Ranking dos Polos. Outros rankings seguem regras próprias."
+
+7. Legenda de pontuação:
    "Como os pontos são calculados — sem prometer resultados"
 
-6. Nota de rodapé:
+8. Nota de rodapé:
    "Dados ilustrativos. Modelo visual. Ranking real disponível
     após a primeira temporada validada."
 ```
@@ -634,24 +713,31 @@ Base: © Ultimate Rivals | Todos os direitos reservados
 ### /hunter — Metodologia Hunter
 
 ```
-1. Hero: "Hunter não é olheiro. É quem não para de evoluir."
-   Copy clara sobre o conceito correto
+1. Hero: "Hunter não é olheiro. É mentalidade."
+   Copy clara sobre o conceito: mentalidade, desenvolvimento, evolução contínua
 
 2. O que é ser Hunter:
    3 pilares: Leitura de jogo / Mentalidade / Desenvolvimento
-   Cada pilar com descrição rica, sem prometer carreira
+   Cada pilar com descrição rica, sem prometer carreira profissional
 
-3. Como o UR aplica:
-   Avaliações / Feedbacks / Sessões de desenvolvimento / CT UR
+3. Equipes Hunters:
+   O que são: equipes que adotam a mentalidade Hunter na temporada
+   Como se manifesta: cultura interna, comportamento, leitura coletiva
+   Nota: equipe Hunter não é um título oficial — é uma forma de jogar
 
-4. CT UR (Centro de Treinamento):
+4. Como o UR aplica na temporada:
+   Avaliações no UR Play / Feedbacks do CT UR /
+   Sessões de desenvolvimento / Comportamento esperado em todas as etapas
+
+5. CT UR (Centro de Treinamento):
    O que é, o que oferece, sem prometer resultado específico
 
-5. O atleta Hunter:
+6. O atleta Hunter:
    Comportamentos esperados (list visual com ícones)
    Sem linguagem de infoproduto ou coach motivacional
+   Sem promessa de carreira profissional
 
-6. CTA: [Quero desenvolver meu jogo]  →  /ur-play
+7. CTA: [Quero desenvolver meu jogo]  →  /ur-play
 ```
 
 ---
@@ -826,16 +912,23 @@ Base: © Ultimate Rivals | Todos os direitos reservados
 ### Frases oficiais aprovadas (usar ou adaptar)
 
 ```
-"Eleve o jogo. Supere seus limites."
+"POLOS EM DISPUTA."               ← headline oficial da Temporada 1 (Home)
+"Eleve o jogo. Supere seus limites."  ← frase secundária — nunca headline da Home
 "Cada jogo conta."
 "Ranking não é tabela. É trajetória."
 "Sua jornada começa no UR Play."
+"Você não precisa ter equipe para começar."
+"O Ultimate Rivals transforma jogos soltos em uma jornada contínua."
+"O polo não é só onde você joga. É a comunidade que você ajuda a construir."
 "Competir é só o começo."
 "No Ultimate Rivals, atleta não é número. É trajetória."
 "O ecossistema está em movimento."
 "Aqui, presença vira histórico."
 "Aqui, desempenho vira narrativa."
+"Hunter não é olheiro. É mentalidade."
 ```
+
+**Nota:** "POLOS EM DISPUTA." é a headline oficial da campanha Temporada 1 e deve ser preservada na Home. "Eleve o jogo. Supere seus limites." pode aparecer em seções internas, CTAs de apoio ou materiais secundários — nunca como headline principal da Home.
 
 ### Regras de copy obrigatórias
 
@@ -846,7 +939,9 @@ Base: © Ultimate Rivals | Todos os direitos reservados
 - "ROI garantido", "retorno assegurado"
 - "o melhor torneio", "o maior", "o único"
 - "100%", "sempre", "nunca falha"
-- Preços, R$, valores monetários no Market
+- Preços, R$, valores monetários no Market ou em qualquer seção
+- "prêmio garantido" ou qualquer promessa de prêmio específico
+- "Hunter" como promessa de seleção profissional ou scout
 
 **OBRIGATÓRIO usar:**
 - "Ultimate Rivals" como marca principal (não só "UR")
@@ -1002,23 +1097,33 @@ Objetivo: elevar a qualidade visual e experiência.
 ### Estrutura
 - [ ] Home clara — não virou manual
 - [ ] Todas as 15 páginas existem e abrem no topo
+- [ ] Blog aparece apenas no menu, footer e sua página própria — não como seção da Home
 - [ ] Mídia e Blog são páginas separadas
 - [ ] UR Market é vitrine, não loja com preço
-- [ ] Metodologia Hunter posicionada como mentalidade
+- [ ] Metodologia Hunter posicionada como mentalidade — sem promessa profissional
+- [ ] Equipes Hunters tratadas como conceito de mentalidade, não título oficial
 - [ ] Ranking aspiracional — não tabela comum
+- [ ] 7 categorias de ranking presentes (Atletas, Equipes, Duplas, Polos, Função, Evolução, Fair Play)
+- [ ] Regra do UR Legends visível: multiplicador vale apenas para Ranking dos Polos
 - [ ] UR Legends com destaque visual máximo
 - [ ] Três polos com peso visual igual
+- [ ] Frase de pertencimento dos polos presente: "O polo não é só onde você joga..."
 - [ ] Dupla, Quarteto e individual têm caminhos explícitos
+- [ ] Seção Atleta/Dupla/Equipe posicionada após A Jornada na Home
 
 ### Copy
 - [ ] "Regional" não aparece em nenhum lugar
 - [ ] Sem "carreira profissional" como promessa
-- [ ] Sem R$, preços ou valores monetários
+- [ ] Sem R$, preços ou valores monetários (em especial no Market)
 - [ ] Sem "garantido" ou promessas absolutas
+- [ ] Sem "prêmio garantido" ou "benefício garantido"
+- [ ] "POLOS EM DISPUTA." preservado como headline oficial da Home (Temporada 1)
+- [ ] "Eleve o jogo. Supere seus limites." usado apenas como frase secundária
 - [ ] Placeholders marcados como "Dados ilustrativos" ou "Em breve"
 - [ ] "Ultimate Rivals" usado como marca principal
 - [ ] "UR" apenas nos produtos oficiais
 - [ ] N3 não descrito como "inferior"
+- [ ] Hunter não comunicado como promessa de seleção ou carreira profissional
 
 ### Visual
 - [ ] Preto/grafite/dourado dominam
@@ -1073,5 +1178,18 @@ npx tsc --noEmit
 ---
 
 *Documento gerado em: 2026-06-01*
-*Versão: 1.0*
+*Última revisão: 2026-06-01*
+*Versão: 1.1*
 *Status: Aprovado para implementação*
+
+**Alterações v1.1:**
+- Hero: campanha oficial Temporada 1 — "POLOS EM DISPUTA." como headline; "Eleve o jogo" demovido para frase secundária
+- O Problema: seção encurtada, headline ajustada para "O esporte amador merece mais.", frase de fechamento: "O Ultimate Rivals transforma jogos soltos em uma jornada contínua."
+- Jornada: descrições oficiais de UR Play, UR Sprint, UR Series e UR Legends atualizadas
+- Home: seção Atleta/Dupla/Equipe movida para Seção 4 (após A Jornada) — resolve dúvida de entrada mais cedo
+- Polos: frase de pertencimento adicionada — "O polo não é só onde você joga. É a comunidade que você ajuda a construir."
+- Ranking: 7 categorias oficiais documentadas; regra explícita: multiplicador UR Legends vale apenas para Ranking dos Polos
+- UR Market: listas PROIBIDO/PERMITIDO tornadas explícitas na seção
+- Metodologia Hunter: "Equipes Hunters" e aplicação na temporada adicionados; regra de não-promessa profissional reforçada
+- Blog: removido como seção da Home — mantido no menu mobile (Institucional), footer e página própria
+- Footer: Blog adicionado à coluna Institucional
