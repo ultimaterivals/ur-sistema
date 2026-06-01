@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --ur-black: #0A0A0B;
+  --ur-graphite: #141416;
+  --ur-graphite-2: #1C1C1F;
+  --ur-graphite-3: #252528;
+  --ur-gold: #D4A437;
+  --ur-gold-light: #F0C060;
+  --ur-gold-dim: #8B6A1A;
+  --ur-sand: #C8B99A;
+  --ur-cream: #F4F0E6;
+  --ur-white: #FAFAFA;
+  --ur-muted: #5A5A62;
+  --ur-border: rgba(212, 164, 55, 0.15);
+  --ur-border-2: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ur-black);
+  color: var(--ur-white);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background: rgba(212, 164, 55, 0.3);
+  color: #FAFAFA;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ur-black); }
+::-webkit-scrollbar-thumb { background: rgba(212,164,55,0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ur-gold); }
+
+/* Typography utilities */
+@layer components {
+  .font-display { font-family: 'Barlow Condensed', sans-serif; }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #D4A437 0%, #F0C060 50%, #D4A437 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gold-subtle { border-color: rgba(212,164,55,0.2); }
+  .border-white-subtle { border-color: rgba(255,255,255,0.07); }
+
+  .bg-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .bg-card-gold {
+    background: linear-gradient(135deg, rgba(212,164,55,0.08) 0%, rgba(212,164,55,0.02) 100%);
+    border: 1px solid rgba(212,164,55,0.2);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-ur-gold text-ur-black font-display font-bold text-sm uppercase tracking-widest rounded-sm cursor-pointer transition-all duration-200 hover:bg-ur-gold-light hover:shadow-gold-glow-sm active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-ur-gold text-ur-gold font-display font-bold text-sm uppercase tracking-widest rounded-sm cursor-pointer transition-all duration-200 hover:bg-ur-gold hover:text-ur-black active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-ur-sand font-display font-medium text-sm uppercase tracking-wider cursor-pointer transition-all duration-200 hover:text-ur-gold;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .chip-gold {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border bg-ur-gold/10 border-ur-gold/30 text-ur-gold;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .chip-sand {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border bg-white/5 border-white/10 text-ur-sand;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .section-label {
+    @apply font-display font-semibold text-xs uppercase tracking-[0.2em] text-ur-gold;
+  }
+
+  .section-heading {
+    @apply font-display font-black uppercase text-ur-white;
+  }
+
+  .divider-gold {
+    @apply w-12 h-0.5 bg-ur-gold;
+  }
+}
+
+/* Sand texture overlay */
+.texture-sand::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Court line pattern */
+.court-lines {
+  background-image:
+    linear-gradient(rgba(212,164,55,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,164,55,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Animated entrance */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
