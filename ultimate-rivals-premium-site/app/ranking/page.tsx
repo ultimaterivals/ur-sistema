@@ -55,10 +55,10 @@ export default function RankingPage() {
     <div className="bg-ur-black text-ur-white min-h-dvh">
 
       {/* HERO */}
-      <section className="relative min-h-[68vh] flex items-center pt-20 bg-ur-black overflow-hidden">
-
-
-
+      <section className="relative min-h-[68vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 court-lines opacity-25" />
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[300px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -101,7 +101,7 @@ export default function RankingPage() {
       </div>
 
       {/* TAB CONTENT */}
-      <section className="py-16 bg-ur-black overflow-hidden">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
           {/* Atletas */}
@@ -222,8 +222,8 @@ export default function RankingPage() {
       </section>
 
       {/* BADGES */}
-      <section className="py-20 bg-ur-graphite/40 relative overflow-hidden">
-
+      <section className="py-20 bg-ur-graphite/40 relative">
+        <div className="absolute inset-0 court-lines opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
             <span className="section-label block mb-3">Reconhecimento</span>
@@ -238,8 +238,8 @@ export default function RankingPage() {
       </section>
 
       {/* CRITÉRIOS */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
-
+      <section className="py-24 relative">
+        <div className="absolute inset-0 court-lines opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Como os Pontos São Calculados</span>
@@ -288,10 +288,10 @@ export default function RankingPage() {
       </section>
 
       {/* CTA — CORRIDA PARA O LEGENDS */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
-
-
-
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute inset-0 court-lines opacity-20" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 mb-6 bg-ur-gold/10 border border-ur-gold/30 rounded-sm px-4 py-2">

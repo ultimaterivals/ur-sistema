@@ -48,10 +48,10 @@ export default function AtletasPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-ur-black overflow-hidden">
-
-
-
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 court-lines opacity-25" />
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[400px] glow-orb pointer-events-none" />
         <div className="absolute bottom-0 left-1/3 w-px h-1/2 bg-gradient-to-b from-transparent via-ur-gold/15 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
@@ -89,7 +89,7 @@ export default function AtletasPage() {
       </section>
 
       {/* ATLETA SEM EQUIPE */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -117,7 +117,7 @@ export default function AtletasPage() {
               </div>
             </div>
 
-            <div className="bg-card rounded-sm p-8 relative">
+            <div className="bg-card rounded-sm p-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-16 h-16 bg-ur-graphite-2 border border-ur-gold/20 rounded-full flex items-center justify-center">
@@ -154,8 +154,8 @@ export default function AtletasPage() {
       </section>
 
       {/* FUNÇÕES EM QUADRA */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
+      <section className="py-24 bg-ur-graphite/30 relative">
+        <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Você Joga Melhor</span>
@@ -170,7 +170,7 @@ export default function AtletasPage() {
             {roles.map((role) => {
               const Icon = role.icon;
               return (
-                <div key={role.label} className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all duration-300 group relative">
+                <div key={role.label} className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all duration-300 group relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent group-hover:via-ur-gold/50 transition-all" />
                   <div className="w-12 h-12 bg-ur-gold/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-ur-gold/20 transition-all">
                     <Icon size={22} className="text-ur-gold" />
@@ -188,7 +188,7 @@ export default function AtletasPage() {
       </section>
 
       {/* TRAJETÓRIA */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Começa e Onde Pode Chegar</span>
@@ -207,7 +207,7 @@ export default function AtletasPage() {
                   className={`lg:mb-8 ${index % 2 === 0 ? "lg:text-right" : "lg:mt-16"}`}
                 >
                   <div
-                    className={`bg-card rounded-sm p-6 hover:shadow-card-hover transition-all group relative ${
+                    className={`bg-card rounded-sm p-6 hover:shadow-card-hover transition-all group relative overflow-hidden ${
                       index === 0 ? "border-ur-gold/30 bg-card-gold" : ""
                     }`}
                   >
@@ -232,8 +232,8 @@ export default function AtletasPage() {
       </section>
 
       {/* MÍDIA E VISIBILIDADE */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
+      <section className="py-24 bg-ur-graphite/30 relative">
+        <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Além da Quadra</span>
@@ -262,9 +262,9 @@ export default function AtletasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
-
-
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Para todo atleta</span>
           <h2 className="section-heading text-[clamp(2.5rem,6vw,4.5rem)] mb-6">

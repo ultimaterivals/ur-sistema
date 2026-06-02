@@ -29,7 +29,7 @@ const polos = [
 
 export default function PolosArena() {
   return (
-    <section className="py-24 bg-ur-graphite overflow-hidden">
+    <section className="py-24 bg-ur-graphite">
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
@@ -48,7 +48,7 @@ export default function PolosArena() {
             {polos.map((polo) => (
               <div
                 key={polo.name}
-                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group overflow-hidden"
+                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group"
               >
                 {/* @asset-slot: polo image */}
                 <ImagePlaceholder

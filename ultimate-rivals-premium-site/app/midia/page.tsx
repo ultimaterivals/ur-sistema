@@ -56,10 +56,10 @@ export default function MidiaPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center pt-20 bg-ur-black overflow-hidden">
-
-
-
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 court-lines opacity-25" />
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute top-0 right-0 w-[700px] h-[500px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -96,7 +96,7 @@ export default function MidiaPage() {
       </section>
 
       {/* DESTAQUE */}
-      <section className="py-20 relative bg-ur-black overflow-hidden">
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
             <span className="section-label block mb-3">Ao Vivo / Em Destaque</span>
@@ -107,8 +107,8 @@ export default function MidiaPage() {
           <div className="grid lg:grid-cols-5 gap-6">
             {/* Featured */}
             <div className="lg:col-span-3 group cursor-pointer">
-              <div className="relative aspect-video bg-ur-graphite-2 rounded-sm border border-white/8 hover:border-ur-gold/30 transition-all">
-                <div className="absolute inset-0 bg-gradient-to-t from-ur-graphite/80 to-transparent" />
+              <div className="relative aspect-video bg-ur-graphite-2 rounded-sm overflow-hidden border border-white/8 hover:border-ur-gold/30 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-br from-ur-gold/10 via-transparent to-ur-graphite/80 court-lines opacity-60" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 bg-ur-gold/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-gold-glow">
                     <Play size={24} className="text-ur-black ml-1" fill="currentColor" />
@@ -157,8 +157,8 @@ export default function MidiaPage() {
       </section>
 
       {/* GRADE DE CONTEÚDO */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
+      <section className="py-24 bg-ur-graphite/30 relative">
+        <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">O Que Você Encontra Aqui</span>
@@ -172,7 +172,7 @@ export default function MidiaPage() {
               return (
                 <div
                   key={cat.label}
-                  className={`rounded-sm p-6 transition-all duration-300 group relative ${
+                  className={`rounded-sm p-6 transition-all duration-300 group relative overflow-hidden ${
                     cat.active
                       ? "bg-card hover:shadow-card-hover cursor-pointer"
                       : "bg-ur-graphite/20 border border-white/5"
@@ -201,7 +201,7 @@ export default function MidiaPage() {
       </section>
 
       {/* CONTEÚDO PARA REDES */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Nos Encontrar</span>
@@ -216,7 +216,7 @@ export default function MidiaPage() {
             {socialFormats.map((sf) => {
               const Icon = sf.icon;
               return (
-                <div key={sf.label} className="bg-card-gold rounded-sm p-8 hover:shadow-card-hover transition-all group relative">
+                <div key={sf.label} className="bg-card-gold rounded-sm p-8 hover:shadow-card-hover transition-all group relative overflow-hidden">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/30 to-transparent" />
                   <div className="w-12 h-12 bg-ur-gold/15 rounded-sm flex items-center justify-center mb-5 group-hover:bg-ur-gold/25 transition-all">
                     <Icon size={22} className="text-ur-gold" />

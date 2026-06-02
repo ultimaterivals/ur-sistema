@@ -3,7 +3,7 @@ import { ArrowRight, UserPlus } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="py-32 bg-ur-graphite overflow-hidden">
+    <section className="py-32 bg-ur-graphite">
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p className="section-label mb-6 tracking-[0.3em]">Temporada 1 — Começa Agora</p>
 

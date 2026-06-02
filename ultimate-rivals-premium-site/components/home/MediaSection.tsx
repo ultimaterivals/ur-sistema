@@ -18,7 +18,7 @@ const items = [
 
 export default function MediaSection() {
   return (
-    <section className="py-24 bg-ur-black overflow-hidden">
+    <section className="py-24 bg-ur-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="section-label mb-4">Mídia</p>
@@ -33,7 +33,7 @@ export default function MediaSection() {
 
         <div className="grid lg:grid-cols-3 gap-6 mb-10">
           {/* Featured */}
-          <div className="lg:col-span-1 bg-card-gold rounded-sm border border-ur-gold/20 shadow-gold-glow flex flex-col justify-between overflow-hidden">
+          <div className="lg:col-span-1 bg-card-gold rounded-sm border border-ur-gold/20 shadow-gold-glow flex flex-col justify-between">
             {/* @asset-slot: mídia/featured-thumbnail */}
             <ImagePlaceholder label="Transmissão" aspectRatio="aspect-video" className="rounded-none border-0 border-b border-ur-gold/10" />
             <div className="p-6 flex flex-col flex-1 justify-between">

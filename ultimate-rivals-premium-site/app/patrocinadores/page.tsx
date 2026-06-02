@@ -77,10 +77,10 @@ export default function PatrocinadoresPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20 bg-ur-black overflow-hidden">
-
-
-
+      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 court-lines opacity-20" />
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute top-0 right-0 w-[600px] h-[500px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -113,7 +113,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* AUDIENCE STATS */}
-      <section className="py-16 bg-ur-graphite/60 border-y border-white/5 relative overflow-hidden">
+      <section className="py-16 bg-ur-graphite/60 border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {audienceStats.map((stat) => (
@@ -131,7 +131,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Por Que o UR</span>
@@ -145,7 +145,7 @@ export default function PatrocinadoresPage() {
             {valueProps.map((vp) => {
               const Icon = vp.icon;
               return (
-                <div key={vp.label} className="bg-card rounded-sm p-6 relative hover:shadow-card-hover transition-all group">
+                <div key={vp.label} className="bg-card rounded-sm p-6 relative overflow-hidden hover:shadow-card-hover transition-all group">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/15 to-transparent group-hover:via-ur-gold/40 transition-all" />
                   <div className="w-10 h-10 bg-ur-gold/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-ur-gold/20 transition-all">
                     <Icon size={18} className="text-ur-gold" />
@@ -160,8 +160,8 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* PARTNERSHIP TIERS */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
+      <section className="py-24 bg-ur-graphite/30 relative">
+        <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
             <span className="section-label block mb-3">Modelos de Parceria</span>
@@ -181,7 +181,7 @@ export default function PatrocinadoresPage() {
               return (
                 <div
                   key={tier.label}
-                  className={`rounded-sm p-8 relative hover:shadow-card-hover transition-all group ${
+                  className={`rounded-sm p-8 relative overflow-hidden hover:shadow-card-hover transition-all group ${
                     tier.highlight ? "bg-card-gold" : "bg-card"
                   }`}
                 >
@@ -225,7 +225,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* CURRENT PARTNERS PLACEHOLDER */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
             <span className="section-label block mb-3">Parceiros Oficiais</span>
@@ -258,8 +258,8 @@ export default function PatrocinadoresPage() {
 
       {/* CONTACT CTA */}
       <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
-
+        <div className="absolute inset-0 court-lines opacity-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Fale com a Gente</span>

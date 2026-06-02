@@ -28,7 +28,7 @@ const modalities = [
 
 export default function EntryModalities() {
   return (
-    <section className="py-24 bg-ur-black overflow-hidden">
+    <section className="py-24 bg-ur-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="section-label mb-4">Formas de Entrar</p>

@@ -12,7 +12,7 @@ const pilares = [
 
 export default function HunterSection() {
   return (
-    <section className="py-24 bg-ur-graphite overflow-hidden">
+    <section className="py-24 bg-ur-graphite">
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">

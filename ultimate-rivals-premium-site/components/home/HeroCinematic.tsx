@@ -8,7 +8,7 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20 overflow-hidden">
+    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}
         <div>
@@ -92,7 +92,7 @@ export default function HeroCinematic() {
                       <span className="font-display font-bold text-xs uppercase text-ur-white">{polo.name}</span>
                       <span className="font-display font-bold text-xs text-ur-gold">{polo.pts.toLocaleString()}</span>
                     </div>
-                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-1 bg-white/5 rounded-full">
                       <div
                         className="h-full bg-gradient-to-r from-ur-gold to-ur-gold-light rounded-full"
                         style={{ width: `${polo.bar}%` }}

@@ -116,11 +116,11 @@ export default function TemporadaPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-ur-black overflow-hidden">
-
-
-
-
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
+        <div className="absolute inset-0 court-lines opacity-25" />
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] glow-orb pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-4xl">
@@ -170,7 +170,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* JORNADA DA TEMPORADA */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Estrutura da Competição</span>
@@ -222,8 +222,8 @@ export default function TemporadaPage() {
       </section>
 
       {/* MODALIDADES E NÍVEIS */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-
+      <section className="py-24 bg-ur-graphite/30 relative">
+        <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Como Competir</span>
@@ -281,7 +281,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* POLOS */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Acontece</span>
@@ -294,7 +294,7 @@ export default function TemporadaPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {polos.map((polo) => (
-              <div key={polo.name} className="bg-card-gold rounded-sm p-8 hover:shadow-card-hover transition-all duration-300 group relative">
+              <div key={polo.name} className="bg-card-gold rounded-sm p-8 hover:shadow-card-hover transition-all duration-300 group relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent group-hover:via-ur-gold/70 transition-all" />
                 <div className="absolute top-4 right-4">
                   <MapPin size={16} className="text-ur-gold/40" />
@@ -320,9 +320,9 @@ export default function TemporadaPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative bg-ur-black overflow-hidden">
-
-
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-arena-gradient" />
+        <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Temporada 1</span>
           <h2 className="section-heading text-[clamp(2.5rem,6vw,4.5rem)] mb-6">
