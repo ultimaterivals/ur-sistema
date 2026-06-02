@@ -79,12 +79,12 @@ export default function RegulamentoPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[55vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[45vh] sm:min-h-[55vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -134,7 +134,7 @@ export default function RegulamentoPage() {
       </section>
 
       {/* CHAPTERS */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="mb-12">
             <span className="section-label block mb-3">Estrutura do Regulamento</span>
@@ -218,7 +218,7 @@ export default function RegulamentoPage() {
       </section>
 
       {/* DISCLAIMER + CTA */}
-      <section className="py-20 bg-ur-graphite/30 relative">
+      <section className="py-10 sm:py-20 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-10" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <div className="bg-card rounded-sm p-8 mb-10 relative overflow-hidden border border-white/7">

@@ -116,13 +116,13 @@ export default function TemporadaPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-0 right-0 w-[600px] h-[600px] glow-orb pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 mb-8">
               <span className="section-label tracking-[0.3em]">Temporada 1 · Ultimate Rivals</span>
@@ -170,7 +170,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* JORNADA DA TEMPORADA */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Estrutura da Competição</span>
@@ -222,7 +222,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* MODALIDADES E NÍVEIS */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -281,7 +281,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* POLOS */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Acontece</span>
@@ -320,7 +320,7 @@ export default function TemporadaPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

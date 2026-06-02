@@ -95,12 +95,12 @@ export default function BlogPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[50vh] sm:min-h-[65vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -153,7 +153,7 @@ export default function BlogPage() {
 
       {/* POST DESTAQUE */}
       {!activeCategory && (
-        <section className="py-20 relative">
+        <section className="py-10 sm:py-20 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="mb-10">
               <span className="section-label block mb-3">Em Destaque</span>
@@ -259,7 +259,7 @@ export default function BlogPage() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Fique por dentro</span>

@@ -61,12 +61,12 @@ export default function MetodologiaHunterPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[45vh] sm:min-h-[55vh] sm:min-h-[70vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -101,7 +101,7 @@ export default function MetodologiaHunterPage() {
       </section>
 
       {/* WHAT HUNTER IS */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -148,7 +148,7 @@ export default function MetodologiaHunterPage() {
       </section>
 
       {/* 6 PILLARS */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
@@ -187,7 +187,7 @@ export default function MetodologiaHunterPage() {
       </section>
 
       {/* HOW IT WORKS IN PRACTICE */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Na Prática</span>
@@ -226,7 +226,7 @@ export default function MetodologiaHunterPage() {
       </section>
 
       {/* DISCLAIMER + CTA */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
+      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative overflow-hidden">
         <div className="absolute inset-0 court-lines opacity-15" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] glow-orb pointer-events-none" />
 

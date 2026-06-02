@@ -34,7 +34,7 @@ const criteria = [
 
 function EmBreve({ label }: { label: string }) {
   return (
-    <div className="flex flex-col items-center justify-center py-24 text-center">
+    <div className="flex flex-col items-center justify-center py-12 sm:py-24 text-center">
       <div className="w-14 h-14 bg-ur-gold/10 rounded-sm flex items-center justify-center mb-5 border border-ur-gold/20">
         <Star size={22} className="text-ur-gold/60" />
       </div>
@@ -55,7 +55,7 @@ export default function RankingPage() {
     <div className="bg-ur-black text-ur-white min-h-dvh">
 
       {/* HERO */}
-      <section className="relative min-h-[55vh] sm:min-h-[68vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[45vh] sm:min-h-[55vh] sm:min-h-[45vh] sm:min-h-[55vh] sm:min-h-[68vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[300px] glow-orb pointer-events-none" />
@@ -222,7 +222,7 @@ export default function RankingPage() {
       </section>
 
       {/* BADGES */}
-      <section className="py-20 bg-ur-graphite/40 relative">
+      <section className="py-10 sm:py-20 bg-ur-graphite/40 relative">
         <div className="absolute inset-0 court-lines opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
@@ -238,7 +238,7 @@ export default function RankingPage() {
       </section>
 
       {/* CRITÉRIOS */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="absolute inset-0 court-lines opacity-10" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -288,7 +288,7 @@ export default function RankingPage() {
       </section>
 
       {/* CTA — CORRIDA PARA O LEGENDS */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] glow-orb pointer-events-none" />
