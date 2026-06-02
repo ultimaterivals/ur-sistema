@@ -3,11 +3,11 @@ import { ArrowRight, UserPlus } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="py-32 bg-ur-graphite">
+    <section className="py-16 sm:py-32 bg-ur-graphite relative">
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <p className="section-label mb-6 tracking-[0.3em]">Temporada 1 — Começa Agora</p>
 
-        <h2 className="font-display font-black uppercase text-[clamp(2.5rem,7vw,5.5rem)] text-ur-white leading-none mb-6">
+        <h2 className="font-display font-black uppercase text-[clamp(2rem,7vw,5.5rem)] text-ur-white leading-none mb-6">
           SUA TEMPORADA<br />
           <span className="text-gold-gradient">COMEÇA NO</span><br />
           PRIMEIRO JOGO.

@@ -55,12 +55,12 @@ export default function RankingPage() {
     <div className="bg-ur-black text-ur-white min-h-dvh">
 
       {/* HERO */}
-      <section className="relative min-h-[68vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[55vh] sm:min-h-[68vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[300px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -68,9 +68,9 @@ export default function RankingPage() {
             </div>
 
             <h1 className="font-display font-black uppercase leading-none mb-6">
-              <span className="block text-[clamp(3rem,7vw,6rem)] text-ur-white">VISIBILIDADE,</span>
-              <span className="block text-[clamp(2rem,5vw,4rem)] text-ur-sand">HISTÓRICO E</span>
-              <span className="block text-[clamp(2.5rem,6vw,5rem)] text-gold-gradient">STATUS COMPETITIVO.</span>
+              <span className="block text-[clamp(2rem,7vw,6rem)] text-ur-white">VISIBILIDADE,</span>
+              <span className="block text-[clamp(1.6rem,5vw,4rem)] text-ur-sand">HISTÓRICO E</span>
+              <span className="block text-[clamp(1.8rem,6vw,5rem)] text-gold-gradient">STATUS COMPETITIVO.</span>
             </h1>
 
             <p className="text-ur-sand text-base sm:text-lg leading-relaxed mb-4 max-w-2xl font-body">

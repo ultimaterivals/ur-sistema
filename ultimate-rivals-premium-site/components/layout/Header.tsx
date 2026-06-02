@@ -74,17 +74,17 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 min-h-[56px] ${
           isScrolled
-            ? "bg-ur-black/95 backdrop-blur-xl border-b border-white/5 py-3"
-            : "bg-transparent py-5"
+            ? "bg-ur-black/98 border-b border-white/5 py-3"
+            : "bg-transparent py-4 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Ultimate Rivals — Página inicial">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-ur-icon.svg" alt="UR" className="h-9 w-auto sm:hidden" />
+            <img src="/logo-ur-icon.svg" alt="UR" className="h-8 w-auto sm:hidden" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-ur.svg" alt="Ultimate Rivals" className="hidden sm:block h-9 w-auto" />
           </Link>
@@ -142,7 +142,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-ur-black/80 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-ur-black/90 lg:hidden"
           onClick={() => setMobileOpen(false)}
           aria-hidden="true"
         />

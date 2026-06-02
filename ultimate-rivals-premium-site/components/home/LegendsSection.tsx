@@ -11,7 +11,7 @@ const cards = [
 
 export default function LegendsSection() {
   return (
-    <section className="py-24 bg-ur-black">
+    <section className="py-14 sm:py-24 bg-ur-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* @asset-slot: legends/event-hero — replace with event photo when available */}
         <ImagePlaceholder
@@ -23,7 +23,7 @@ export default function LegendsSection() {
         <div className="text-center mb-16">
           <Star size={24} className="text-ur-gold mx-auto mb-4 opacity-80" />
           <p className="section-label mb-4">UR Legends</p>
-          <h2 className="font-display font-black uppercase text-[clamp(2.5rem,6vw,5rem)] text-ur-white leading-none mb-4">
+          <h2 className="font-display font-black uppercase text-[clamp(1.8rem,6vw,5rem)] text-ur-white leading-none mb-4">
             O EVENTO QUE TODO<br />
             <span className="text-gold-gradient">ATLETA QUER ALCANÇAR.</span>
           </h2>

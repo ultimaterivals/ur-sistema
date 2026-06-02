@@ -56,12 +56,12 @@ export default function MidiaPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[60vh] sm:min-h-[75vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute top-0 right-0 w-[700px] h-[500px] glow-orb pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />

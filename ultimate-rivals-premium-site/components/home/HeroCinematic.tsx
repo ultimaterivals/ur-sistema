@@ -8,8 +8,8 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
+    <section className="relative min-h-[90dvh] sm:min-h-dvh flex items-center bg-ur-black pt-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}
         <div>
           {/* Eyebrow */}
@@ -20,10 +20,10 @@ export default function HeroCinematic() {
 
           {/* Headline */}
           <h1 className="font-display font-black uppercase leading-none mb-6">
-            <span className="block text-[clamp(3.5rem,9vw,7.5rem)] text-ur-white">
+            <span className="block text-[clamp(2.5rem,9vw,7.5rem)] text-ur-white">
               POLOS EM
             </span>
-            <span className="block text-[clamp(3.5rem,9vw,7.5rem)] text-gold-gradient">
+            <span className="block text-[clamp(2.5rem,9vw,7.5rem)] text-gold-gradient">
               DISPUTA.
             </span>
             <span className="block text-[clamp(1.75rem,4vw,3rem)] text-ur-sand mt-2">
