@@ -53,15 +53,7 @@ body {
   .font-display { font-family: 'Barlow Condensed', sans-serif; }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, #D4A437 0%, #F0C060 50%, #D4A437 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* Força layer própria no iOS — evita falha de clip no screenshot de página inteira */
-    will-change: transform;
-    isolation: isolate;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    color: var(--ur-gold);
   }
 
   .border-gold-subtle { border-color: rgba(212,164,55,0.2); }
