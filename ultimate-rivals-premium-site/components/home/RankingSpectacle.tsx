@@ -31,8 +31,6 @@ const podiumColors = ["#C8B99A", "#D4A437", "#8B7355"];
 export default function RankingSpectacle() {
   return (
     <section className="py-24 bg-ur-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-arena-gradient opacity-60" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-full pointer-events-none" style={{background: "radial-gradient(ellipse at 50% 40%, rgba(212,164,55,0.06) 0%, transparent 60%)"}} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">

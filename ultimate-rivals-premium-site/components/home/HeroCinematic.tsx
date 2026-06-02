@@ -11,13 +11,6 @@ export default function HeroCinematic() {
     <section className="relative min-h-dvh flex items-center overflow-hidden bg-ur-black pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 court-lines opacity-40" />
-      <div className="absolute inset-0 bg-arena-gradient" />
-
-      {/* Diagonal accent line */}
-      <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/20 to-transparent" />
-
-      {/* Glow orb */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none" style={{background: "radial-gradient(ellipse at 50% 30%, rgba(212,164,55,0.09) 0%, transparent 65%)"}} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}

@@ -125,11 +125,11 @@ body {
   background: radial-gradient(ellipse at 50% 50%, rgba(212,164,55,0.09) 0%, transparent 65%);
 }
 
-/* Court line pattern */
+/* Court line pattern — usa branco para evitar rendering dourado em capturas iOS */
 .court-lines {
   background-image:
-    linear-gradient(rgba(212,164,55,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,164,55,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
