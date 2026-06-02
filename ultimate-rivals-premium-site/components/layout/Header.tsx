@@ -58,9 +58,17 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
+    if (mobileOpen) {
+      document.body.style.overflowY = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflowY = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflowY = "";
+      document.body.style.touchAction = "";
+    };
   }, [mobileOpen]);
 
   return (
