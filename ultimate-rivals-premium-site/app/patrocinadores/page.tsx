@@ -77,7 +77,7 @@ export default function PatrocinadoresPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20">
+      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -113,7 +113,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* AUDIENCE STATS */}
-      <section className="py-16 bg-ur-graphite/60 border-y border-white/5 relative">
+      <section className="py-16 bg-ur-graphite/60 border-y border-white/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {audienceStats.map((stat) => (
@@ -131,7 +131,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Por Que o UR</span>
@@ -160,7 +160,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* PARTNERSHIP TIERS */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
@@ -225,7 +225,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* CURRENT PARTNERS PLACEHOLDER */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
             <span className="section-label block mb-3">Parceiros Oficiais</span>
@@ -257,7 +257,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* CONTACT CTA */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
 
 

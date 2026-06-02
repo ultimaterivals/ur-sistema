@@ -12,7 +12,7 @@ const items = [
 
 export default function MarketShowcase() {
   return (
-    <section className="py-24 bg-ur-graphite">
+    <section className="py-24 bg-ur-graphite overflow-hidden">
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-3 gap-12 items-start">

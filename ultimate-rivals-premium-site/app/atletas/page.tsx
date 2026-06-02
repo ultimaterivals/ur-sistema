@@ -48,7 +48,7 @@ export default function AtletasPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20">
+      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -89,7 +89,7 @@ export default function AtletasPage() {
       </section>
 
       {/* ATLETA SEM EQUIPE */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -154,7 +154,7 @@ export default function AtletasPage() {
       </section>
 
       {/* FUNÇÕES EM QUADRA */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -188,7 +188,7 @@ export default function AtletasPage() {
       </section>
 
       {/* TRAJETÓRIA */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Começa e Onde Pode Chegar</span>
@@ -232,7 +232,7 @@ export default function AtletasPage() {
       </section>
 
       {/* MÍDIA E VISIBILIDADE */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -262,7 +262,7 @@ export default function AtletasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
 
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

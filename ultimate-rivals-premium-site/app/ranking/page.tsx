@@ -55,7 +55,7 @@ export default function RankingPage() {
     <div className="bg-ur-black text-ur-white min-h-dvh">
 
       {/* HERO */}
-      <section className="relative min-h-[68vh] flex items-center pt-20">
+      <section className="relative min-h-[68vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -101,7 +101,7 @@ export default function RankingPage() {
       </div>
 
       {/* TAB CONTENT */}
-      <section className="py-16">
+      <section className="py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
           {/* Atletas */}
@@ -222,7 +222,7 @@ export default function RankingPage() {
       </section>
 
       {/* BADGES */}
-      <section className="py-20 bg-ur-graphite/40 relative">
+      <section className="py-20 bg-ur-graphite/40 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
@@ -238,7 +238,7 @@ export default function RankingPage() {
       </section>
 
       {/* CRITÉRIOS */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -288,7 +288,7 @@ export default function RankingPage() {
       </section>
 
       {/* CTA — CORRIDA PARA O LEGENDS */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
 
 
 

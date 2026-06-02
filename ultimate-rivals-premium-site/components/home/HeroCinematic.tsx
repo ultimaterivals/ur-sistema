@@ -8,7 +8,7 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20">
+    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}
         <div>

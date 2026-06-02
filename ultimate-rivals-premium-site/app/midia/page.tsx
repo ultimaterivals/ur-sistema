@@ -56,7 +56,7 @@ export default function MidiaPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center pt-20">
+      <section className="relative min-h-[75vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -96,7 +96,7 @@ export default function MidiaPage() {
       </section>
 
       {/* DESTAQUE */}
-      <section className="py-20 relative">
+      <section className="py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
             <span className="section-label block mb-3">Ao Vivo / Em Destaque</span>
@@ -157,7 +157,7 @@ export default function MidiaPage() {
       </section>
 
       {/* GRADE DE CONTEÚDO */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -201,7 +201,7 @@ export default function MidiaPage() {
       </section>
 
       {/* CONTEÚDO PARA REDES */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Nos Encontrar</span>

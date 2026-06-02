@@ -30,7 +30,7 @@ const podiumColors = ["#C8B99A", "#D4A437", "#8B7355"];
 
 export default function RankingSpectacle() {
   return (
-    <section className="py-24 bg-ur-black">
+    <section className="py-24 bg-ur-black overflow-hidden">
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">

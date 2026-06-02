@@ -95,7 +95,7 @@ export default function BlogPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20">
+      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -121,7 +121,7 @@ export default function BlogPage() {
       </section>
 
       {/* CATEGORIAS */}
-      <section className="py-8 bg-ur-graphite/60 border-b border-white/5 sticky top-16 z-30">
+      <section className="py-8 bg-ur-graphite/60 border-b border-white/5 sticky top-16 z-30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-2">
             <button
@@ -153,7 +153,7 @@ export default function BlogPage() {
 
       {/* POST DESTAQUE */}
       {!activeCategory && (
-        <section className="py-20 relative">
+        <section className="py-20 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="mb-10">
               <span className="section-label block mb-3">Em Destaque</span>
@@ -196,7 +196,7 @@ export default function BlogPage() {
       )}
 
       {/* GRID DE POSTS */}
-      <section className="py-12 pb-24 relative">
+      <section className="py-12 pb-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {!activeCategory && (
             <div className="mb-10">
@@ -259,7 +259,7 @@ export default function BlogPage() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Fique por dentro</span>

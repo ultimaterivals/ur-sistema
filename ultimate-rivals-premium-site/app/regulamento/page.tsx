@@ -79,7 +79,7 @@ export default function RegulamentoPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[55vh] flex items-center pt-20">
+      <section className="relative min-h-[55vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -111,7 +111,7 @@ export default function RegulamentoPage() {
       </section>
 
       {/* DOWNLOAD + META */}
-      <section className="py-8 bg-ur-graphite/50 border-y border-white/5">
+      <section className="py-8 bg-ur-graphite/50 border-y border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-6">
@@ -134,7 +134,7 @@ export default function RegulamentoPage() {
       </section>
 
       {/* CHAPTERS */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="mb-12">
             <span className="section-label block mb-3">Estrutura do Regulamento</span>
@@ -218,7 +218,7 @@ export default function RegulamentoPage() {
       </section>
 
       {/* DISCLAIMER + CTA */}
-      <section className="py-20 bg-ur-graphite/30 relative">
+      <section className="py-20 bg-ur-graphite/30 relative overflow-hidden">
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <div className="bg-card rounded-sm p-8 mb-10 relative border border-white/7">

@@ -90,7 +90,7 @@ export default function URPlayPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[80vh] flex items-center pt-20">
+      <section className="relative min-h-[80vh] flex items-center pt-20 overflow-hidden">
 
 
 
@@ -131,7 +131,7 @@ export default function URPlayPage() {
       </section>
 
       {/* COMO FUNCIONA */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Processo</span>
@@ -161,7 +161,7 @@ export default function URPlayPage() {
       </section>
 
       {/* QUEM PODE ENTRAR */}
-      <section className="py-24 bg-ur-graphite/40 relative">
+      <section className="py-24 bg-ur-graphite/40 relative overflow-hidden">
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -200,7 +200,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CONEXÃO COM A TEMPORADA */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Jornada Completa</span>
@@ -245,7 +245,7 @@ export default function URPlayPage() {
       </section>
 
       {/* NÍVEIS */}
-      <section className="py-16 bg-ur-graphite/30 relative">
+      <section className="py-16 bg-ur-graphite/30 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -266,7 +266,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
 
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
