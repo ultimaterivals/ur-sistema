@@ -29,8 +29,8 @@ const polos = [
 
 export default function PolosArena() {
   return (
-    <section className="py-24 bg-ur-graphite relative overflow-hidden">
-      <div className="absolute inset-0 court-lines opacity-20" />
+    <section className="py-24 bg-ur-graphite">
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="section-label mb-4">Os Polos</p>

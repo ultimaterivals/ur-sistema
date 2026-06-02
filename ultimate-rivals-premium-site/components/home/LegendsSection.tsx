@@ -11,9 +11,7 @@ const cards = [
 
 export default function LegendsSection() {
   return (
-    <section className="py-24 bg-ur-black relative overflow-hidden">
-      <div className="absolute inset-0 court-lines opacity-30" />
-
+    <section className="py-24 bg-ur-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* @asset-slot: legends/event-hero — replace with event photo when available */}
         <ImagePlaceholder

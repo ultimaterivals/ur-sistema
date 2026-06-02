@@ -8,10 +8,7 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-dvh flex items-center overflow-hidden bg-ur-black pt-20">
-      {/* Background layers */}
-      <div className="absolute inset-0 court-lines opacity-40" />
-
+    <section className="relative min-h-dvh flex items-center bg-ur-black pt-20">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}
         <div>
@@ -128,8 +125,6 @@ export default function HeroCinematic() {
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ur-black to-transparent pointer-events-none" />
     </section>
   );
 }
