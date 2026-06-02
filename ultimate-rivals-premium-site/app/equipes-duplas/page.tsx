@@ -36,7 +36,7 @@ export default function EquipesDuplasPage() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-ur-gold/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] glow-orb pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/10 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">

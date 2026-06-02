@@ -79,7 +79,7 @@ export default function CadastroPage() {
       <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[400px] bg-ur-gold/6 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -225,7 +225,7 @@ export default function CadastroPage() {
       {/* INFO BOX + CTA */}
       <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
         <div className="absolute inset-0 court-lines opacity-15" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <div className="bg-card-gold rounded-sm p-8 sm:p-12 mb-10 relative overflow-hidden">

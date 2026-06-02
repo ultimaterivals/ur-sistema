@@ -17,7 +17,7 @@ export default function HeroCinematic() {
       <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/20 to-transparent" />
 
       {/* Glow orb */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-ur-gold/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none" style={{background: "radial-gradient(ellipse at 50% 30%, rgba(212,164,55,0.09) 0%, transparent 65%)"}} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}

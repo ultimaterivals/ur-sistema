@@ -65,7 +65,7 @@ export default function PolosQuadrasPage() {
       <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-30" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/3 right-0 w-[600px] h-[400px] bg-ur-gold/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[600px] h-[400px] glow-orb pointer-events-none" />
         <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/10 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">

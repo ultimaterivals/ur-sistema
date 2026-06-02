@@ -5,7 +5,7 @@ export default function FinalCTA() {
   return (
     <section className="py-32 bg-ur-graphite relative overflow-hidden">
       <div className="absolute inset-0 court-lines opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-ur-gold/8 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" style={{background: "radial-gradient(ellipse at 50% 50%, rgba(212,164,55,0.1) 0%, transparent 60%)"}} />
       <div className="h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

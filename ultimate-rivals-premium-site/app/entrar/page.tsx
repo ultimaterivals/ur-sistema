@@ -16,7 +16,7 @@ export default function EntrarPage() {
       <div className="flex-1 flex items-center justify-center pt-24 pb-16 px-4 relative">
         <div className="absolute inset-0 court-lines opacity-10" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[300px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[300px] glow-orb pointer-events-none" />
 
         <div className="relative w-full max-w-5xl">
           {/* HERO HEADLINE */}

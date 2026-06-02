@@ -98,7 +98,7 @@ export default function BlogPage() {
       <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-ur-gold/4 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">

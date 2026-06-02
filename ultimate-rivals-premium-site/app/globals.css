@@ -120,6 +120,11 @@ body {
   opacity: 0.3;
 }
 
+/* Decorative glow orb — radial gradient only, sem filter:blur() para evitar GPU layer leak no iOS Safari */
+.glow-orb {
+  background: radial-gradient(ellipse at 50% 50%, rgba(212,164,55,0.09) 0%, transparent 65%);
+}
+
 /* Court line pattern */
 .court-lines {
   background-image:

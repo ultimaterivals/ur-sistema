@@ -13,7 +13,7 @@ export default function LegendsSection() {
   return (
     <section className="py-24 bg-ur-black relative overflow-hidden">
       {/* Dramatic glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] pointer-events-none" style={{background: "radial-gradient(ellipse at 50% 0%, rgba(212,164,55,0.08) 0%, transparent 55%)"}} />
       <div className="absolute inset-0 court-lines opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">

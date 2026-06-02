@@ -93,7 +93,7 @@ export default function URPlayPage() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-30" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] glow-orb pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/15 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">

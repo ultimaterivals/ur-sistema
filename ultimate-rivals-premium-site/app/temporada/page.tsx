@@ -119,8 +119,8 @@ export default function TemporadaPage() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-ur-gold/4 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-ur-gold/3 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] glow-orb pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] glow-orb pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-4xl">
