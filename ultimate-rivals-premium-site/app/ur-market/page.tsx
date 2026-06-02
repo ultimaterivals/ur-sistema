@@ -76,7 +76,7 @@ export default function URMarketPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[75vh] flex items-center pt-20 bg-ur-black overflow-hidden">
 
 
 
@@ -140,7 +140,7 @@ export default function URMarketPage() {
       </section>
 
       {/* CARDS */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-10">
             <div className="flex items-center justify-between">
@@ -245,7 +245,7 @@ export default function URMarketPage() {
       </section>
 
       {/* DISCLAIMER */}
-      <section className="py-8 relative overflow-hidden">
+      <section className="py-8 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="bg-ur-graphite/40 border border-white/5 rounded-sm p-6">
             <p className="text-ur-muted text-sm font-body leading-relaxed text-center">
@@ -256,7 +256,7 @@ export default function URMarketPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
 
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

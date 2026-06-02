@@ -77,7 +77,7 @@ export default function PatrocinadoresPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[65vh] flex items-center pt-20 bg-ur-black overflow-hidden">
 
 
 
@@ -131,7 +131,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Por Que o UR</span>
@@ -225,7 +225,7 @@ export default function PatrocinadoresPage() {
       </section>
 
       {/* CURRENT PARTNERS PLACEHOLDER */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
             <span className="section-label block mb-3">Parceiros Oficiais</span>

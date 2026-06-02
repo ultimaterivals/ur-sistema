@@ -76,7 +76,7 @@ export default function CadastroPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[65vh] flex items-center pt-20 bg-ur-black overflow-hidden">
 
 
 
@@ -115,7 +115,7 @@ export default function CadastroPage() {
       </section>
 
       {/* MODALITIES */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Modalidades Disponíveis</span>
@@ -196,7 +196,7 @@ export default function CadastroPage() {
       </section>
 
       {/* LEVELS */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Nivelamento</span>

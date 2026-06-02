@@ -90,7 +90,7 @@ export default function URPlayPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[80vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center pt-20 bg-ur-black overflow-hidden">
 
 
 
@@ -131,7 +131,7 @@ export default function URPlayPage() {
       </section>
 
       {/* COMO FUNCIONA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Processo</span>
@@ -200,7 +200,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CONEXÃO COM A TEMPORADA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Jornada Completa</span>
@@ -266,7 +266,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative bg-ur-black overflow-hidden">
 
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

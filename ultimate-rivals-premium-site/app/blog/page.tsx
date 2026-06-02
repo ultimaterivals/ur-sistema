@@ -95,7 +95,7 @@ export default function BlogPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[65vh] flex items-center pt-20 bg-ur-black overflow-hidden">
 
 
 
@@ -153,7 +153,7 @@ export default function BlogPage() {
 
       {/* POST DESTAQUE */}
       {!activeCategory && (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-20 relative bg-ur-black overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="mb-10">
               <span className="section-label block mb-3">Em Destaque</span>
@@ -196,7 +196,7 @@ export default function BlogPage() {
       )}
 
       {/* GRID DE POSTS */}
-      <section className="py-12 pb-24 relative overflow-hidden">
+      <section className="py-12 pb-24 relative bg-ur-black overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {!activeCategory && (
             <div className="mb-10">
