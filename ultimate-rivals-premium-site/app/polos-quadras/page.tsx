@@ -62,10 +62,10 @@ export default function PolosQuadrasPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-30" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/3 right-0 w-[600px] h-[400px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[75vh] flex items-center pt-20">
+
+
+
         <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/10 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
@@ -118,7 +118,7 @@ export default function PolosQuadrasPage() {
             {polos.map((polo) => (
               <div
                 key={polo.name}
-                className={`rounded-sm p-8 bg-gradient-to-br ${polo.bg} border ${polo.color} hover:shadow-card-hover transition-all duration-300 group relative overflow-hidden`}
+                className={`rounded-sm p-8 bg-gradient-to-br ${polo.bg} border ${polo.color} hover:shadow-card-hover transition-all duration-300 group`}
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-20 group-hover:opacity-50 transition-all" />
                 <div className="absolute top-4 right-4">
@@ -154,7 +154,7 @@ export default function PolosQuadrasPage() {
 
       {/* QUADRAS PARCEIRAS */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-20" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde As Partidas Acontecem</span>
@@ -221,7 +221,7 @@ export default function PolosQuadrasPage() {
               </div>
             </div>
 
-            <div className="bg-card-gold rounded-sm p-8 relative overflow-hidden">
+            <div className="bg-card-gold rounded-sm p-8 relative">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/50 to-transparent" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-ur-gold/15 border border-ur-gold/30 rounded-sm flex items-center justify-center">
@@ -267,9 +267,9 @@ export default function PolosQuadrasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute inset-0 court-lines opacity-20" />
+      <section className="py-24 relative">
+
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Escolha seu polo</span>
           <h2 className="section-heading text-[clamp(2.5rem,6vw,4.5rem)] mb-6">

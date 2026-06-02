@@ -33,10 +33,10 @@ export default function EquipesDuplasPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-25" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[80vh] flex items-center pt-20">
+
+
+
         <div className="absolute bottom-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/10 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
@@ -106,7 +106,7 @@ export default function EquipesDuplasPage() {
               </div>
             </div>
 
-            <div className="bg-card-gold rounded-sm p-8 relative overflow-hidden">
+            <div className="bg-card-gold rounded-sm p-8 relative">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="flex -space-x-2">
@@ -142,10 +142,10 @@ export default function EquipesDuplasPage() {
 
       {/* EQUIPES / QUARTETO */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-20" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="order-2 lg:order-1 bg-card rounded-sm p-8 relative overflow-hidden">
+            <div className="order-2 lg:order-1 bg-card rounded-sm p-8 relative">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="flex -space-x-3">
@@ -223,7 +223,7 @@ export default function EquipesDuplasPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step) => (
-              <div key={step.number} className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all group relative overflow-hidden">
+              <div key={step.number} className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all group relative">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent group-hover:via-ur-gold/50 transition-all" />
                 <span className="font-display font-black text-[3.5rem] leading-none text-ur-gold/12 group-hover:text-ur-gold/22 transition-all block mb-4">
                   {step.number}
@@ -238,7 +238,7 @@ export default function EquipesDuplasPage() {
 
       {/* IDENTIDADE DA EQUIPE */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-15" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">O que Você Constrói</span>
@@ -266,9 +266,9 @@ export default function EquipesDuplasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute inset-0 court-lines opacity-20" />
+      <section className="py-24 relative">
+
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Pronto para formar seu grupo?</span>
           <h2 className="section-heading text-[clamp(2.5rem,6vw,4.5rem)] mb-6">

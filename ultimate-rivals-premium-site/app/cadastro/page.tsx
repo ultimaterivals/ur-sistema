@@ -76,10 +76,10 @@ export default function CadastroPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-20" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[65vh] flex items-center pt-20">
+
+
+
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -132,7 +132,7 @@ export default function CadastroPage() {
               return (
                 <div
                   key={mod.label}
-                  className={`rounded-sm p-8 relative overflow-hidden transition-all group hover:shadow-card-hover ${
+                  className={`rounded-sm p-8 relative transition-all group hover:shadow-card-hover ${
                     mod.highlight ? "bg-card-gold" : "bg-card"
                   }`}
                 >
@@ -165,7 +165,7 @@ export default function CadastroPage() {
 
       {/* HOW IT WORKS */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-15" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Processo de Inscrição</span>
@@ -181,7 +181,7 @@ export default function CadastroPage() {
                 {i < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-ur-gold/30 to-transparent z-10 -translate-x-4" />
                 )}
-                <div className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all h-full relative overflow-hidden">
+                <div className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all h-full relative">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent group-hover:via-ur-gold/40 transition-all" />
                   <span className="font-display font-black text-5xl text-ur-gold/20 leading-none block mb-4">
                     {step.num}
@@ -209,7 +209,7 @@ export default function CadastroPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {levels.map((level) => (
-              <div key={level.code} className="bg-card-gold rounded-sm p-8 relative overflow-hidden hover:shadow-card-hover transition-all group">
+              <div key={level.code} className="bg-card-gold rounded-sm p-8 relative hover:shadow-card-hover transition-all group">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/30 to-transparent" />
                 <div className="flex items-center gap-3 mb-4">
                   <span className="font-display font-black text-4xl text-gold-gradient">{level.code}</span>
@@ -223,12 +223,12 @@ export default function CadastroPage() {
       </section>
 
       {/* INFO BOX + CTA */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-        <div className="absolute inset-0 court-lines opacity-15" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] glow-orb pointer-events-none" />
+      <section className="py-24 bg-ur-graphite/30 relative">
+
+
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="bg-card-gold rounded-sm p-8 sm:p-12 mb-10 relative overflow-hidden">
+          <div className="bg-card-gold rounded-sm p-8 sm:p-12 mb-10 relative">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent" />
             <h3 className="font-display font-black text-2xl uppercase text-ur-white mb-6">Informações Importantes</h3>
             <div className="grid sm:grid-cols-2 gap-8">

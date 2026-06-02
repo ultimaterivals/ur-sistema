@@ -95,10 +95,10 @@ export default function BlogPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[65vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-20" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[65vh] flex items-center pt-20">
+
+
+
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -161,7 +161,7 @@ export default function BlogPage() {
             </div>
 
             <Link href={featuredPost.slug} className="block group">
-              <div className="bg-card-gold rounded-sm p-8 sm:p-12 hover:shadow-card-hover transition-all duration-300 relative overflow-hidden">
+              <div className="bg-card-gold rounded-sm p-8 sm:p-12 hover:shadow-card-hover transition-all duration-300 relative">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent" />
                 <div className="absolute bottom-0 right-0 font-display font-black text-[8rem] leading-none text-white/2 select-none pointer-events-none">
                   UR
@@ -218,7 +218,7 @@ export default function BlogPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPosts.map((post) => (
               <Link key={post.title} href={post.slug} className="group block">
-                <div className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all duration-300 h-full flex flex-col relative overflow-hidden">
+                <div className="bg-card rounded-sm p-6 hover:shadow-card-hover transition-all duration-300 h-full flex flex-col relative">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/15 to-transparent group-hover:via-ur-gold/40 transition-all" />
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <span className={`chip text-xs ${categoryColors[post.category] ?? "chip-sand"}`}>
@@ -260,7 +260,7 @@ export default function BlogPage() {
 
       {/* NEWSLETTER */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-15" />
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Fique por dentro</span>
           <h2 className="section-heading text-[clamp(2rem,5vw,3.5rem)] mb-4">

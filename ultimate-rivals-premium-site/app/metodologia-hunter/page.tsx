@@ -61,10 +61,10 @@ export default function MetodologiaHunterPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-25" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[70vh] flex items-center pt-20">
+
+
+
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -131,7 +131,7 @@ export default function MetodologiaHunterPage() {
                 { q: "Hunter = só para atletas avançados?", a: "Não. Os princípios se aplicam igualmente a atletas N3 (Desenvolvimento), N2 (Avançado) e N1 (Elite)." },
                 { q: "Hunter = regras rígidas?", a: "Não. É uma filosofia de desenvolvimento. Cada atleta a incorpora no seu próprio ritmo e estilo de jogo." },
               ].map((item) => (
-                <div key={item.q} className="bg-card rounded-sm p-5 relative overflow-hidden hover:shadow-card-hover transition-all group">
+                <div key={item.q} className="bg-card rounded-sm p-5 relative hover:shadow-card-hover transition-all group">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/15 to-transparent group-hover:via-ur-gold/35 transition-all" />
                   <div className="flex items-start gap-3">
                     <ChevronRight size={14} className="text-ur-gold mt-0.5 shrink-0" />
@@ -149,7 +149,7 @@ export default function MetodologiaHunterPage() {
 
       {/* 6 PILLARS */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-15" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14 text-center">
             <span className="section-label block mb-3">Os Fundamentos</span>
@@ -166,7 +166,7 @@ export default function MetodologiaHunterPage() {
               return (
                 <div
                   key={pillar.label}
-                  className="bg-card rounded-sm p-8 relative overflow-hidden hover:shadow-card-hover transition-all group"
+                  className="bg-card rounded-sm p-8 relative hover:shadow-card-hover transition-all group"
                 >
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent group-hover:via-ur-gold/40 transition-all" />
                   <div className="absolute top-4 right-4 font-display font-black text-6xl text-white/3 leading-none select-none">
@@ -204,7 +204,7 @@ export default function MetodologiaHunterPage() {
             {practiceSteps.map((step, index) => (
               <div
                 key={step.label}
-                className="bg-card-gold rounded-sm p-6 sm:p-8 relative overflow-hidden hover:shadow-card-hover transition-all group"
+                className="bg-card-gold rounded-sm p-6 sm:p-8 relative hover:shadow-card-hover transition-all group"
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/30 to-transparent" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
@@ -226,13 +226,13 @@ export default function MetodologiaHunterPage() {
       </section>
 
       {/* DISCLAIMER + CTA */}
-      <section className="py-24 bg-ur-graphite/30 relative overflow-hidden">
-        <div className="absolute inset-0 court-lines opacity-15" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] glow-orb pointer-events-none" />
+      <section className="py-24 bg-ur-graphite/30 relative">
+
+
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           {/* Disclaimer */}
-          <div className="bg-ur-graphite-2 rounded-sm p-6 mb-12 border border-white/8 relative overflow-hidden">
+          <div className="bg-ur-graphite-2 rounded-sm p-6 mb-12 border border-white/8 relative">
             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-ur-gold/30" />
             <p className="text-ur-muted text-xs font-body leading-relaxed pl-4">
               <strong className="text-ur-sand">Nota:</strong> A Metodologia Hunter é uma filosofia de desenvolvimento esportivo aplicada ao contexto do Ultimate Rivals. Não representa garantias de progressão profissional, acesso a times, contratos ou qualquer forma de carreira esportiva. O UR é um ecossistema de esporte amador organizado.

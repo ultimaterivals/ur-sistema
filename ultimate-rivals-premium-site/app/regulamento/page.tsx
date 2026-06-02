@@ -79,10 +79,10 @@ export default function RegulamentoPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[55vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-20" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[500px] h-[400px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[55vh] flex items-center pt-20">
+
+
+
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -150,7 +150,7 @@ export default function RegulamentoPage() {
               return (
                 <div
                   key={chapter.num}
-                  className={`rounded-sm border transition-all duration-300 overflow-hidden ${
+                  className={`rounded-sm border transition-all duration-300 ${
                     isOpen
                       ? "bg-card-gold border-ur-gold/30"
                       : "bg-card border-white/7 hover:border-white/15"
@@ -219,9 +219,9 @@ export default function RegulamentoPage() {
 
       {/* DISCLAIMER + CTA */}
       <section className="py-20 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-10" />
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="bg-card rounded-sm p-8 mb-10 relative overflow-hidden border border-white/7">
+          <div className="bg-card rounded-sm p-8 mb-10 relative border border-white/7">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent" />
             <div className="flex items-start gap-4">
               <Shield size={20} className="text-ur-gold mt-0.5 shrink-0" />

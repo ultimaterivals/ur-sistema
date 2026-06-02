@@ -76,10 +76,10 @@ export default function URMarketPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20">
-        <div className="absolute inset-0 court-lines opacity-25" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-0 right-0 w-[600px] h-[500px] glow-orb pointer-events-none" />
+      <section className="relative min-h-[75vh] flex items-center pt-20">
+
+
+
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
@@ -157,7 +157,7 @@ export default function URMarketPage() {
               return (
                 <div
                   key={card.title}
-                  className={`rounded-sm p-6 transition-all duration-300 group relative overflow-hidden ${
+                  className={`rounded-sm p-6 transition-all duration-300 group relative ${
                     card.available
                       ? "bg-card hover:shadow-card-hover cursor-pointer"
                       : "bg-ur-graphite/20 border border-white/5 opacity-70"
@@ -193,7 +193,7 @@ export default function URMarketPage() {
 
       {/* UR COINS */}
       <section className="py-24 bg-ur-graphite/30 relative">
-        <div className="absolute inset-0 court-lines opacity-15" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -213,7 +213,7 @@ export default function URMarketPage() {
               </div>
             </div>
 
-            <div className="bg-card rounded-sm p-8 relative overflow-hidden">
+            <div className="bg-card rounded-sm p-8 relative">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/30 to-transparent" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-16 h-16 bg-ur-gold/15 border border-ur-gold/30 rounded-full flex items-center justify-center">
@@ -256,9 +256,9 @@ export default function URMarketPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute inset-0 court-lines opacity-20" />
+      <section className="py-24 relative">
+
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="section-label block mb-4">Acesso ao Market</span>
           <h2 className="section-heading text-[clamp(2.5rem,6vw,4.5rem)] mb-6">

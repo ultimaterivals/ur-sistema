@@ -14,9 +14,9 @@ export default function EntrarPage() {
 
       {/* MAIN CONTENT */}
       <div className="flex-1 flex items-center justify-center pt-24 pb-16 px-4 relative">
-        <div className="absolute inset-0 court-lines opacity-10" />
-        <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[300px] glow-orb pointer-events-none" />
+
+
+
 
         <div className="relative w-full max-w-5xl">
           {/* HERO HEADLINE */}
@@ -34,7 +34,7 @@ export default function EntrarPage() {
           {/* TWO COLUMN LAYOUT */}
           <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
             {/* LEFT: LOGIN FORM */}
-            <div className="bg-card-gold rounded-sm p-8 relative overflow-hidden">
+            <div className="bg-card-gold rounded-sm p-8 relative">
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent" />
               <h2 className="font-display font-black text-2xl uppercase text-ur-white mb-2">Entrar na sua conta</h2>
               <p className="text-ur-muted text-sm font-body mb-8">Acesse seu perfil, histórico e próximos jogos.</p>
@@ -112,7 +112,7 @@ export default function EntrarPage() {
             {/* RIGHT: NEW PLAYER CTA */}
             <div className="flex flex-col gap-6">
               {/* New player card */}
-              <div className="bg-card rounded-sm p-8 relative overflow-hidden hover:shadow-card-hover transition-all group">
+              <div className="bg-card rounded-sm p-8 relative hover:shadow-card-hover transition-all group">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ur-gold/20 to-transparent group-hover:via-ur-gold/40 transition-all" />
                 <div className="w-12 h-12 bg-ur-gold/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-ur-gold/20 transition-all">
                   <Users size={22} className="text-ur-gold" />
@@ -143,7 +143,7 @@ export default function EntrarPage() {
               </div>
 
               {/* Trust signal */}
-              <div className="bg-ur-graphite-2 rounded-sm p-6 border border-white/5 relative overflow-hidden">
+              <div className="bg-ur-graphite-2 rounded-sm p-6 border border-white/5 relative">
                 <div className="flex items-start gap-3">
                   <Shield size={18} className="text-ur-gold mt-0.5 shrink-0" />
                   <div>
