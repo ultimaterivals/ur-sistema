@@ -11,7 +11,14 @@ const cards = [
 
 export default function LegendsSection() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-black">
+    <section className="py-14 sm:py-24 bg-ur-black relative overflow-hidden">
+      {/* Dramatic glow — radial-gradient, sem filter:blur (iOS compat) */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center top, rgba(212,164,55,0.07) 0%, transparent 70%)" }}
+      />
+      <div className="absolute inset-0 court-lines opacity-30" />
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* @asset-slot: legends/event-hero — replace with event photo when available */}
         <ImagePlaceholder
@@ -23,7 +30,7 @@ export default function LegendsSection() {
         <div className="text-center mb-16">
           <Star size={24} className="text-ur-gold mx-auto mb-4 opacity-80" />
           <p className="section-label mb-4">UR Legends</p>
-          <h2 className="font-display font-black uppercase text-[clamp(1.8rem,6vw,5rem)] text-ur-white leading-none mb-4">
+          <h2 className="font-display font-black uppercase text-[clamp(2.5rem,6vw,5rem)] text-ur-white leading-none mb-4">
             O EVENTO QUE TODO<br />
             <span className="text-gold-gradient">ATLETA QUER ALCANÇAR.</span>
           </h2>
@@ -36,25 +43,24 @@ export default function LegendsSection() {
         </div>
 
         <ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {cards.map((card) => (
               <div
                 key={card.title}
-                className="bg-card-gold rounded-sm p-7 sm:p-8 border border-ur-gold/15 hover:border-ur-gold/40 hover:shadow-gold-glow transition-all duration-300 group"
+                className="bg-card-gold rounded-sm p-6 border border-ur-gold/15 hover:border-ur-gold/40 hover:shadow-gold-glow transition-all duration-300 group"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-sm bg-ur-gold/15 border border-ur-gold/30 flex items-center justify-center mb-5">
-                  <Star size={18} className="text-ur-gold" />
+                <div className="w-6 h-6 rounded-sm bg-ur-gold/15 border border-ur-gold/30 flex items-center justify-center mb-4">
+                  <Star size={12} className="text-ur-gold" />
                 </div>
-                <h3 className="font-display font-bold text-base uppercase text-ur-white mb-3 group-hover:text-ur-gold transition-colors duration-200">{card.title}</h3>
-                <p className="text-ur-muted text-sm font-body leading-relaxed">{card.desc}</p>
+                <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{card.title}</h3>
+                <p className="text-ur-muted text-xs font-body leading-relaxed">{card.desc}</p>
               </div>
             ))}
           </div>
         </ScrollReveal>
 
-        <div className="text-center bg-card-gold border border-ur-gold/20 rounded-sm p-6 sm:p-7 max-w-lg mx-auto shadow-card-premium">
-          <Star size={14} className="text-ur-gold mx-auto mb-3 opacity-70" />
-          <p className="text-ur-sand text-sm font-body leading-relaxed">
+        <div className="text-center bg-card border border-ur-gold/10 rounded-sm p-6 max-w-lg mx-auto">
+          <p className="text-ur-muted text-xs font-body leading-relaxed">
             <span className="text-ur-gold font-display font-bold uppercase tracking-wider text-[10px]">Regra · </span>
             A pontuação especial do UR Legends movimenta apenas o Ranking dos Polos.
           </p>

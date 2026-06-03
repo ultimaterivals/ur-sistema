@@ -12,8 +12,8 @@ const pilares = [
 
 export default function HunterSection() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-graphite">
-
+    <section className="py-14 sm:py-24 bg-ur-graphite relative overflow-hidden">
+      <div className="absolute inset-0 court-lines opacity-20" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
@@ -35,17 +35,17 @@ export default function HunterSection() {
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="grid sm:grid-cols-2 gap-4">
             {pilares.map((p, i) => (
               <div
                 key={p.title}
-                className="bg-card rounded-sm p-6 border border-white/5 hover:border-ur-gold/20 hover:shadow-card-hover transition-all duration-300 group"
+                className="bg-card rounded-lg p-5 border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group"
               >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-sm bg-ur-gold/10 border border-ur-gold/20 flex items-center justify-center mb-4">
-                  <span className="font-display font-black text-xs text-ur-gold">{String(i + 1).padStart(2, "0")}</span>
+                <div className="w-6 h-6 rounded-sm bg-ur-gold/10 border border-ur-gold/20 flex items-center justify-center mb-3">
+                  <span className="font-display font-black text-[10px] text-ur-gold">{String(i + 1).padStart(2, "0")}</span>
                 </div>
-                <h3 className="font-display font-bold text-sm sm:text-base uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{p.title}</h3>
-                <p className="text-ur-muted text-xs sm:text-sm font-body leading-relaxed">{p.desc}</p>
+                <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">{p.title}</h3>
+                <p className="text-ur-muted text-xs font-body leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>

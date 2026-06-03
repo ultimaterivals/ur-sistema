@@ -38,8 +38,8 @@ const steps = [
 
 export default function JourneyTimeline() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-graphite">
-
+    <section className="py-14 sm:py-24 bg-ur-graphite relative overflow-hidden">
+      <div className="absolute inset-0 court-lines opacity-20" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="section-label mb-4">A Jornada</p>
@@ -60,24 +60,24 @@ export default function JourneyTimeline() {
 
           {steps.map((step, i) => (
             <div key={step.id} className="relative">
-              <div className="bg-card-gold rounded-sm p-7 sm:p-8 border border-ur-gold/15 hover:border-ur-gold/40 hover:shadow-gold-glow transition-all duration-300 group h-full">
+              <div className="bg-card-gold rounded-sm p-6 border border-ur-gold/15 hover:border-ur-gold/40 transition-all duration-300 group h-full">
                 {/* Number */}
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-4">
                   <span
-                    className="font-display font-black text-5xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
+                    className="font-display font-black text-4xl opacity-20 group-hover:opacity-40 transition-opacity duration-300"
                     style={{ color: step.color }}
                   >
                     {step.number}
                   </span>
                   {i < steps.length - 1 && (
-                    <ArrowRight size={16} className="text-ur-gold opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
+                    <ArrowRight size={14} className="text-ur-gold opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
                   )}
                 </div>
 
-                <p className="font-display font-black uppercase text-xl sm:text-2xl text-ur-white mb-3 group-hover:text-ur-gold transition-colors duration-200">
+                <p className="font-display font-black uppercase text-lg text-ur-white mb-3 group-hover:text-ur-gold transition-colors duration-200">
                   {step.label}
                 </p>
-                <p className="text-ur-sand text-sm sm:text-base leading-relaxed font-body mb-5">{step.desc}</p>
+                <p className="text-ur-sand text-sm leading-relaxed font-body mb-4">{step.desc}</p>
 
                 <div className="flex flex-wrap gap-1.5">
                   {step.tags.map((tag) => (

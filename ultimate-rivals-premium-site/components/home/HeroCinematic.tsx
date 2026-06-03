@@ -8,13 +8,18 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-[90dvh] sm:min-h-dvh flex items-center bg-ur-black pt-20">
-      {/* Subtle gold gradient at top */}
+    <section className="relative min-h-[90dvh] sm:min-h-dvh flex items-center overflow-hidden bg-ur-black pt-20">
+      {/* Background layers */}
+      <div className="absolute inset-0 court-lines opacity-40" />
+      <div className="absolute inset-0 bg-arena-gradient" />
+
+      {/* Diagonal accent line */}
+      <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/20 to-transparent" />
+
+      {/* Glow orb — radial-gradient, sem filter:blur (iOS compat) */}
       <div
-        className="absolute inset-x-0 top-0 h-[50%] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 0%, rgba(212,164,55,0.05) 0%, transparent 65%)",
-        }}
+        className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, rgba(212,164,55,0.07) 0%, transparent 70%)" }}
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
@@ -28,26 +33,23 @@ export default function HeroCinematic() {
 
           {/* Headline */}
           <h1 className="font-display font-black uppercase leading-none mb-6">
-            <span className="block text-[clamp(2.2rem,8vw,7.5rem)] text-ur-white">
+            <span className="block text-[clamp(3rem,9vw,7.5rem)] text-ur-white">
               POLOS EM
             </span>
-            <span className="block text-[clamp(2.2rem,8vw,7.5rem)] text-gold-gradient">
+            <span className="block text-[clamp(3rem,9vw,7.5rem)] text-gold-gradient">
               DISPUTA.
             </span>
-            <span className="block text-[clamp(1.5rem,3.5vw,2.75rem)] text-ur-sand mt-2">
+            <span className="block text-[clamp(1.5rem,4vw,3rem)] text-ur-sand mt-2">
               A TEMPORADA COMEÇA NA AREIA.
             </span>
           </h1>
 
-          {/* Gold accent line */}
-          <div className="w-16 h-0.5 bg-gradient-to-r from-ur-gold to-ur-gold-light mb-6" />
-
           {/* Sub */}
           <p className="text-ur-sand text-base sm:text-lg leading-relaxed mb-4 max-w-xl font-body">
-            Comece pelo UR Play, jogue no seu nível, construa ranking, represente seu polo e viva uma temporada feita para evoluir atletas, equipes e comunidades.
+            Entre pelo UR Play, jogue no seu nível, construa ranking, represente seu polo e viva uma temporada feita para evoluir atletas, equipes e comunidades.
           </p>
           <p className="text-ur-muted text-sm leading-relaxed mb-8 max-w-lg font-body">
-            Você não precisa ter equipe para começar. No Ultimate Rivals, atletas individuais, duplas e equipes entram pela mesma porta.
+            Você não precisa ter equipe para começar. No Ultimate Rivals, atletas individuais, duplas e equipes entram pela mesma porta: o UR Play.
           </p>
 
           {/* CTAs */}
@@ -103,7 +105,7 @@ export default function HeroCinematic() {
                       <span className="font-display font-bold text-xs uppercase text-ur-white">{polo.name}</span>
                       <span className="font-display font-black text-sm text-ur-gold">{polo.pts.toLocaleString()}</span>
                     </div>
-                    <div className="h-1.5 bg-white/5 rounded-full">
+                    <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-ur-gold to-ur-gold-light rounded-full"
                         style={{ width: `${polo.bar}%` }}
@@ -136,6 +138,8 @@ export default function HeroCinematic() {
         </div>
       </div>
 
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ur-black to-transparent pointer-events-none" />
     </section>
   );
 }

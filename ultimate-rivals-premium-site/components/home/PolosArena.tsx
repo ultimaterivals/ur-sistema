@@ -29,8 +29,8 @@ const polos = [
 
 export default function PolosArena() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-graphite">
-
+    <section className="py-14 sm:py-24 bg-ur-graphite relative overflow-hidden">
+      <div className="absolute inset-0 court-lines opacity-20" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="section-label mb-4">Os Polos</p>
@@ -48,7 +48,7 @@ export default function PolosArena() {
             {polos.map((polo) => (
               <div
                 key={polo.name}
-                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 hover:shadow-card-hover transition-all duration-300 group"
+                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group overflow-hidden"
               >
                 {/* @asset-slot: polo image */}
                 <ImagePlaceholder

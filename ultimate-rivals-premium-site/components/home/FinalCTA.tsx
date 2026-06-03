@@ -3,37 +3,26 @@ import { ArrowRight, UserPlus } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="py-16 sm:py-32 bg-ur-black relative overflow-hidden">
-      {/* Arena gradient overlay */}
+    <section className="py-16 sm:py-32 bg-ur-graphite relative overflow-hidden">
+      <div className="absolute inset-0 court-lines opacity-30" />
+      {/* Glow orb — radial-gradient, sem filter:blur (iOS compat) */}
       <div
-        className="absolute inset-x-0 top-0 h-[60%] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 0%, rgba(212,164,55,0.10) 0%, transparent 65%)",
-        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, rgba(212,164,55,0.09) 0%, transparent 70%)" }}
       />
+      <div className="h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        {/* Eyebrow pulse */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
-          <p className="section-label tracking-[0.3em]">Temporada 1 — Começa Agora</p>
-          <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
-        </div>
+        <p className="section-label mb-6 tracking-[0.3em]">Temporada 1 — Começa Agora</p>
 
-        <h2 className="font-display font-black uppercase text-[clamp(2rem,7vw,5.5rem)] text-ur-white leading-none mb-6">
+        <h2 className="font-display font-black uppercase text-[clamp(2.5rem,7vw,5.5rem)] text-ur-white leading-none mb-6">
           SUA TEMPORADA<br />
           <span className="text-gold-gradient">COMEÇA NO</span><br />
           PRIMEIRO JOGO.
         </h2>
 
-        {/* Gold accent line */}
-        <div className="w-20 h-0.5 bg-gradient-to-r from-ur-gold to-ur-gold-light mx-auto mb-8" />
-
-        <p className="text-ur-sand text-lg font-body max-w-xl mx-auto mb-3 leading-relaxed">
+        <p className="text-ur-sand text-lg font-body max-w-xl mx-auto mb-4 leading-relaxed">
           Entre pelo UR Play, jogue no seu nível, construa ranking, represente seu polo e faça parte da Temporada 1.
-        </p>
-        <p className="text-ur-muted text-sm font-body max-w-lg mx-auto mb-12">
-          Você não precisa de equipe para começar. Atletas individuais, duplas e equipes entram pela mesma porta.
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center mb-12">

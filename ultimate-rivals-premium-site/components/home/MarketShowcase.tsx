@@ -12,8 +12,8 @@ const items = [
 
 export default function MarketShowcase() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-graphite">
-
+    <section className="py-14 sm:py-24 bg-ur-graphite relative overflow-hidden">
+      <div className="absolute inset-0 court-lines opacity-20" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-3 gap-12 items-start">
           <div>
@@ -37,28 +37,28 @@ export default function MarketShowcase() {
             </Link>
           </div>
 
-          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4 sm:gap-5">
+          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
             {items.map((item) => (
               <div
                 key={item.title}
-                className={`bg-card rounded-sm p-6 sm:p-7 border transition-all duration-300 group ${
+                className={`bg-card rounded-sm p-5 border transition-all duration-300 group ${
                   item.status === "em-breve"
-                    ? "border-white/3 opacity-60"
-                    : "border-white/5 hover:border-ur-gold/25 hover:shadow-card-hover"
+                    ? "border-white/3 opacity-70"
+                    : "border-white/5 hover:border-ur-gold/25"
                 }`}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <p className="section-label text-[11px] opacity-60">{item.cat}</p>
+                <div className="flex items-start justify-between mb-3">
+                  <p className="section-label text-[10px] opacity-60">{item.cat}</p>
                   {item.status === "em-breve" ? (
                     <span className="chip chip-sand text-[10px] py-0 px-1.5 opacity-60">Em breve</span>
                   ) : (
-                    <Tag size={14} className="text-ur-gold opacity-50 group-hover:opacity-80 transition-opacity duration-200" />
+                    <Tag size={12} className="text-ur-gold opacity-50" />
                   )}
                 </div>
-                <h3 className="font-display font-bold text-base uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">
+                <h3 className="font-display font-bold text-sm uppercase text-ur-white mb-2 group-hover:text-ur-gold transition-colors duration-200">
                   {item.title}
                 </h3>
-                <p className="text-ur-muted text-sm font-body leading-relaxed">{item.desc}</p>
+                <p className="text-ur-muted text-xs font-body leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
