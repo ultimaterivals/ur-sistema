@@ -11,7 +11,7 @@ const nodes = [
 
 export default function DashboardPanel() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-black relative overflow-hidden">
+    <section className="py-24 bg-ur-black relative overflow-hidden">
       <div className="absolute inset-0 bg-arena-gradient opacity-50" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">

@@ -8,7 +8,7 @@ const journeySteps = ["UR Play", "UR Sprint", "UR Series", "UR Legends"];
 
 export default function HeroCinematic() {
   return (
-    <section className="relative min-h-[90dvh] sm:min-h-dvh flex items-center overflow-hidden bg-ur-black pt-20">
+    <section className="relative min-h-dvh flex items-center overflow-hidden bg-ur-black pt-20">
       {/* Background layers */}
       <div className="absolute inset-0 court-lines opacity-40" />
       <div className="absolute inset-0 bg-arena-gradient" />
@@ -16,13 +16,10 @@ export default function HeroCinematic() {
       {/* Diagonal accent line */}
       <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/20 to-transparent" />
 
-      {/* Glow orb — radial-gradient, sem filter:blur (iOS compat) */}
-      <div
-        className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(212,164,55,0.07) 0%, transparent 70%)" }}
-      />
+      {/* Glow orb */}
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-ur-gold/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 grid lg:grid-cols-2 gap-12 items-center w-full">
         {/* Left — copy */}
         <div>
           {/* Eyebrow */}
@@ -33,13 +30,13 @@ export default function HeroCinematic() {
 
           {/* Headline */}
           <h1 className="font-display font-black uppercase leading-none mb-6">
-            <span className="block text-[clamp(3rem,9vw,7.5rem)] text-ur-white">
+            <span className="block text-[clamp(3.5rem,9vw,7.5rem)] text-ur-white">
               POLOS EM
             </span>
-            <span className="block text-[clamp(3rem,9vw,7.5rem)] text-gold-gradient">
+            <span className="block text-[clamp(3.5rem,9vw,7.5rem)] text-gold-gradient">
               DISPUTA.
             </span>
-            <span className="block text-[clamp(1.5rem,4vw,3rem)] text-ur-sand mt-2">
+            <span className="block text-[clamp(1.75rem,4vw,3rem)] text-ur-sand mt-2">
               A TEMPORADA COMEÇA NA AREIA.
             </span>
           </h1>
@@ -81,8 +78,8 @@ export default function HeroCinematic() {
         {/* Right — illustrative panel */}
         <div className="hidden lg:block">
           <div className="relative">
-            {/* Main card — glow border for presence */}
-            <div className="bg-card rounded-sm p-6 ring-1 ring-ur-gold/20 shadow-card-premium">
+            {/* Main card */}
+            <div className="bg-card rounded-sm p-6 border border-white/5 shadow-card-premium">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <p className="section-label text-[10px] mb-1">Ranking dos Polos</p>
@@ -103,9 +100,9 @@ export default function HeroCinematic() {
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-display font-bold text-xs uppercase text-ur-white">{polo.name}</span>
-                      <span className="font-display font-black text-sm text-ur-gold">{polo.pts.toLocaleString()}</span>
+                      <span className="font-display font-bold text-xs text-ur-gold">{polo.pts.toLocaleString()}</span>
                     </div>
-                    <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-ur-gold to-ur-gold-light rounded-full"
                         style={{ width: `${polo.bar}%` }}
@@ -117,7 +114,7 @@ export default function HeroCinematic() {
             </div>
 
             {/* Floating chips */}
-            <div className="absolute -bottom-4 -left-4 bg-ur-graphite-2 border border-white/8 rounded-sm p-3 shadow-card-premium">
+            <div className="absolute -bottom-4 -left-4 bg-ur-graphite-2 border border-white/5 rounded-sm p-3 shadow-card-premium">
               <p className="section-label text-[10px] mb-2">Polos Ativos</p>
               <div className="flex gap-1.5">
                 {poloChips.map((p) => (
@@ -126,7 +123,7 @@ export default function HeroCinematic() {
               </div>
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-ur-graphite-2 border border-white/8 rounded-sm p-3 shadow-card-premium">
+            <div className="absolute -top-4 -right-4 bg-ur-graphite-2 border border-white/5 rounded-sm p-3 shadow-card-premium">
               <p className="section-label text-[10px] mb-2">Modalidades</p>
               <div className="flex gap-1.5">
                 {modalidadeChips.map((m) => (

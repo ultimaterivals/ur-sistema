@@ -90,13 +90,13 @@ export default function URPlayPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[60vh] sm:min-h-[80vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-30" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] glow-orb pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-ur-gold/15 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -131,7 +131,7 @@ export default function URPlayPage() {
       </section>
 
       {/* COMO FUNCIONA */}
-      <section className="py-12 sm:py-24 relative">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Processo</span>
@@ -161,7 +161,7 @@ export default function URPlayPage() {
       </section>
 
       {/* QUEM PODE ENTRAR */}
-      <section className="py-12 sm:py-24 bg-ur-graphite/40 relative">
+      <section className="py-24 bg-ur-graphite/40 relative">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -200,7 +200,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CONEXÃO COM A TEMPORADA */}
-      <section className="py-12 sm:py-24 relative">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Jornada Completa</span>
@@ -266,7 +266,7 @@ export default function URPlayPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-12 sm:py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

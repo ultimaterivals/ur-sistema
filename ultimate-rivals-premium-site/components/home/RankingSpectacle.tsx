@@ -30,7 +30,9 @@ const podiumColors = ["#C8B99A", "#D4A437", "#8B7355"];
 
 export default function RankingSpectacle() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-black">
+    <section className="py-24 bg-ur-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-arena-gradient opacity-60" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-ur-gold/3 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -78,7 +80,7 @@ export default function RankingSpectacle() {
 
           {/* Right — ranking panel */}
           <div>
-            <div className="bg-card rounded-sm border border-white/5 shadow-card-premium">
+            <div className="bg-card rounded-sm border border-white/5 shadow-card-premium overflow-hidden">
               {/* Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
                 <div>

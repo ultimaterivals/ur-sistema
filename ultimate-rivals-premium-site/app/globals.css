@@ -13,7 +13,7 @@
   --ur-sand: #C8B99A;
   --ur-cream: #F4F0E6;
   --ur-white: #FAFAFA;
-  --ur-muted: #5A5A62;
+  --ur-muted: #7A7A85;
   --ur-border: rgba(212, 164, 55, 0.15);
   --ur-border-2: rgba(255, 255, 255, 0.07);
 }
@@ -26,14 +26,13 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0A0A0B;
 }
 
 body {
   background-color: var(--ur-black);
   color: var(--ur-white);
   font-family: 'Barlow', sans-serif;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 /* Selection */
@@ -121,11 +120,6 @@ body {
   background-size: 200px;
   pointer-events: none;
   opacity: 0.3;
-}
-
-/* Decorative glow orb — radial gradient only, sem filter:blur() para evitar GPU layer leak no iOS Safari */
-.glow-orb {
-  background: radial-gradient(ellipse at 50% 50%, rgba(212,164,55,0.09) 0%, transparent 65%);
 }
 
 /* Court line pattern */

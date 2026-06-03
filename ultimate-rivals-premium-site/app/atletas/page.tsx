@@ -48,13 +48,13 @@ export default function AtletasPage() {
   return (
     <div className="bg-ur-black text-ur-white min-h-dvh">
       {/* HERO */}
-      <section className="relative min-h-[60vh] sm:min-h-[85vh] flex items-center overflow-hidden pt-20">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 court-lines opacity-25" />
         <div className="absolute inset-0 bg-arena-gradient" />
-        <div className="absolute top-1/4 right-0 w-[600px] h-[400px] glow-orb pointer-events-none" />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[400px] bg-ur-gold/5 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/3 w-px h-1/2 bg-gradient-to-b from-transparent via-ur-gold/15 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-24 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 w-full">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-2 h-2 rounded-full bg-ur-gold animate-pulse" />
@@ -89,7 +89,7 @@ export default function AtletasPage() {
       </section>
 
       {/* ATLETA SEM EQUIPE */}
-      <section className="py-12 sm:py-24 relative">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -154,7 +154,7 @@ export default function AtletasPage() {
       </section>
 
       {/* FUNÇÕES EM QUADRA */}
-      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -188,7 +188,7 @@ export default function AtletasPage() {
       </section>
 
       {/* TRAJETÓRIA */}
-      <section className="py-12 sm:py-24 relative">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
             <span className="section-label block mb-3">Onde Começa e Onde Pode Chegar</span>
@@ -232,7 +232,7 @@ export default function AtletasPage() {
       </section>
 
       {/* MÍDIA E VISIBILIDADE */}
-      <section className="py-12 sm:py-24 bg-ur-graphite/30 relative">
+      <section className="py-24 bg-ur-graphite/30 relative">
         <div className="absolute inset-0 court-lines opacity-15" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="mb-14">
@@ -262,7 +262,7 @@ export default function AtletasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 sm:py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-arena-gradient" />
         <div className="absolute inset-0 court-lines opacity-20" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">

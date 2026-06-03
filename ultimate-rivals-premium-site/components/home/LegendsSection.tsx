@@ -11,12 +11,9 @@ const cards = [
 
 export default function LegendsSection() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-black relative overflow-hidden">
-      {/* Dramatic glow — radial-gradient, sem filter:blur (iOS compat) */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center top, rgba(212,164,55,0.07) 0%, transparent 70%)" }}
-      />
+    <section className="py-24 bg-ur-black relative overflow-hidden">
+      {/* Dramatic glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-ur-gold/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute inset-0 court-lines opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">

@@ -11,7 +11,7 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section className="py-14 sm:py-24 bg-ur-graphite relative overflow-hidden">
+    <section className="py-24 bg-ur-graphite relative overflow-hidden">
       <div className="absolute inset-0 court-lines opacity-20" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

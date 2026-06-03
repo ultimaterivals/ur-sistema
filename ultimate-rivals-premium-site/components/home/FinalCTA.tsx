@@ -3,13 +3,9 @@ import { ArrowRight, UserPlus } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="py-16 sm:py-32 bg-ur-graphite relative overflow-hidden">
+    <section className="py-32 bg-ur-graphite relative overflow-hidden">
       <div className="absolute inset-0 court-lines opacity-30" />
-      {/* Glow orb — radial-gradient, sem filter:blur (iOS compat) */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at center, rgba(212,164,55,0.09) 0%, transparent 70%)" }}
-      />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-ur-gold/8 rounded-full blur-[80px] pointer-events-none" />
       <div className="h-px bg-gradient-to-r from-transparent via-ur-gold/40 to-transparent absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
