@@ -41,29 +41,29 @@ export default function EntryModalities() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10">
           {modalities.map((m) => {
             const Icon = m.icon;
             return (
               <div
                 key={m.title}
-                className={`rounded-sm p-6 border transition-all duration-300 group ${
+                className={`rounded-sm p-7 sm:p-8 border transition-all duration-300 group ${
                   m.featured
-                    ? "bg-card-gold border-ur-gold/30 shadow-gold-glow"
-                    : "bg-card border-white/5 hover:border-ur-gold/20"
+                    ? "bg-card-gold border-ur-gold/30 shadow-gold-glow hover:shadow-card-hover"
+                    : "bg-card border-white/5 hover:border-ur-gold/20 hover:shadow-card-hover"
                 }`}
               >
                 {m.featured && (
-                  <div className="mb-3">
+                  <div className="mb-4">
                     <span className="chip-gold text-[10px]">Mais popular</span>
                   </div>
                 )}
-                <div className="w-10 h-10 rounded-sm bg-ur-gold/10 border border-ur-gold/20 flex items-center justify-center mb-4 group-hover:bg-ur-gold/15 transition-colors duration-200">
-                  <Icon size={18} className="text-ur-gold" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-sm bg-ur-gold/10 border border-ur-gold/20 flex items-center justify-center mb-5 group-hover:bg-ur-gold/15 transition-colors duration-200">
+                  <Icon size={22} className="text-ur-gold" />
                 </div>
-                <h3 className="font-display font-black uppercase text-lg text-ur-white mb-3">{m.title}</h3>
-                <p className="text-ur-sand text-sm leading-relaxed font-body mb-4">{m.desc}</p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <h3 className="font-display font-black uppercase text-xl sm:text-2xl text-ur-white mb-3">{m.title}</h3>
+                <p className="text-ur-sand text-sm sm:text-base leading-relaxed font-body mb-5">{m.desc}</p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
                   {m.tags.map((tag) => (
                     <span key={tag} className="chip-sand text-[10px] py-0.5">{tag}</span>
                   ))}
@@ -72,7 +72,7 @@ export default function EntryModalities() {
                   href={m.href}
                   className="inline-flex items-center gap-1.5 text-ur-gold font-display font-semibold text-xs uppercase tracking-wider hover:gap-2.5 transition-all duration-200 cursor-pointer"
                 >
-                  Saiba mais <ArrowRight size={12} />
+                  Saiba mais <ArrowRight size={13} />
                 </Link>
               </div>
             );

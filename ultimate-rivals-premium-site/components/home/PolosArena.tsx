@@ -48,7 +48,7 @@ export default function PolosArena() {
             {polos.map((polo) => (
               <div
                 key={polo.name}
-                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 transition-all duration-300 group"
+                className="bg-card rounded-sm border border-white/5 hover:border-ur-gold/20 hover:shadow-card-hover transition-all duration-300 group"
               >
                 {/* @asset-slot: polo image */}
                 <ImagePlaceholder

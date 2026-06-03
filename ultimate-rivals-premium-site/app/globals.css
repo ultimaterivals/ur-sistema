@@ -109,6 +109,21 @@ body {
   }
 }
 
+/* Shadow utilities for premium depth */
+.shadow-card-premium {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
+}
+.shadow-gold-glow {
+  box-shadow: 0 0 24px rgba(212,164,55,0.2);
+}
+.shadow-gold-glow-sm {
+  box-shadow: 0 0 12px rgba(212,164,55,0.15);
+}
+/* Gradient backgrounds */
+.bg-arena-gradient-subtle {
+  background: radial-gradient(ellipse at 50% 0%, rgba(212,164,55,0.06) 0%, transparent 60%);
+}
+
 /* Sand texture overlay */
 .texture-sand::after {
   content: '';

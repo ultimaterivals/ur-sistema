@@ -31,14 +31,14 @@ export default function ProblemSection() {
           </div>
 
           <ScrollReveal>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {problems.map((p) => (
                 <div
                   key={p}
-                  className="bg-card rounded-sm p-4 border border-white/5 flex items-start gap-3 group hover:border-ur-gold/20 transition-all duration-300"
+                  className="bg-card rounded-sm p-5 sm:p-6 border border-white/5 border-l-2 border-l-ur-muted/20 flex items-start gap-3 group hover:border-ur-gold/20 hover:border-l-ur-gold/50 hover:shadow-card-hover transition-all duration-300"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-ur-muted mt-1.5 flex-shrink-0 group-hover:bg-ur-gold transition-colors duration-300" />
-                  <span className="text-ur-muted text-sm font-body group-hover:text-ur-sand transition-colors duration-300">{p}</span>
+                  <div className="w-2 h-2 rounded-full bg-ur-muted/60 mt-1 flex-shrink-0 group-hover:bg-ur-gold transition-colors duration-300" />
+                  <span className="text-ur-muted text-sm font-body leading-relaxed group-hover:text-ur-sand transition-colors duration-300">{p}</span>
                 </div>
               ))}
             </div>

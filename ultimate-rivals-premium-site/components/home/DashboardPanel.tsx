@@ -25,19 +25,19 @@ export default function DashboardPanel() {
         </div>
 
         {/* Dashboard grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
           {nodes.map((node) => (
             <div
               key={node.id}
-              className="bg-card rounded-sm p-5 border border-white/5 hover:border-ur-gold/30 transition-all duration-300 group cursor-default"
-              style={{ borderLeft: `2px solid ${node.color}30` }}
+              className="bg-card rounded-sm p-5 sm:p-6 border border-white/5 hover:border-ur-gold/30 hover:shadow-card-hover transition-all duration-300 group cursor-default"
+              style={{ borderLeft: `3px solid ${node.color}40` }}
             >
               <div
-                className="w-2 h-2 rounded-full mb-3 group-hover:scale-125 transition-transform duration-200"
-                style={{ backgroundColor: node.color }}
+                className="w-3 h-3 sm:w-4 sm:h-4 rounded-full mb-3 sm:mb-4 group-hover:scale-125 transition-transform duration-200"
+                style={{ backgroundColor: node.color, boxShadow: `0 0 8px ${node.color}60` }}
               />
-              <p className="section-label text-[10px] mb-1 opacity-60">{node.sublabel}</p>
-              <p className="font-display font-bold text-sm uppercase text-ur-white group-hover:text-ur-gold transition-colors duration-200">
+              <p className="section-label text-[11px] mb-1 opacity-60">{node.sublabel}</p>
+              <p className="font-display font-bold text-sm sm:text-base uppercase text-ur-white group-hover:text-ur-gold transition-colors duration-200">
                 {node.label}
               </p>
             </div>
