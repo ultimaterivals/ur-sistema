@@ -13,7 +13,7 @@
   --ur-sand: #C8B99A;
   --ur-cream: #F4F0E6;
   --ur-white: #FAFAFA;
-  --ur-muted: #7A7A85;
+  --ur-muted: #5A5A62;
   --ur-border: rgba(212, 164, 55, 0.15);
   --ur-border-2: rgba(255, 255, 255, 0.07);
 }
@@ -53,7 +53,10 @@ body {
   .font-display { font-family: 'Barlow Condensed', sans-serif; }
 
   .text-gold-gradient {
-    color: var(--ur-gold);
+    background: linear-gradient(135deg, #D4A437 0%, #F0C060 50%, #D4A437 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .border-gold-subtle { border-color: rgba(212,164,55,0.2); }
@@ -109,21 +112,6 @@ body {
   }
 }
 
-/* Shadow utilities for premium depth */
-.shadow-card-premium {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
-}
-.shadow-gold-glow {
-  box-shadow: 0 0 24px rgba(212,164,55,0.2);
-}
-.shadow-gold-glow-sm {
-  box-shadow: 0 0 12px rgba(212,164,55,0.15);
-}
-/* Gradient backgrounds */
-.bg-arena-gradient-subtle {
-  background: radial-gradient(ellipse at 50% 0%, rgba(212,164,55,0.06) 0%, transparent 60%);
-}
-
 /* Sand texture overlay */
 .texture-sand::after {
   content: '';
@@ -140,11 +128,11 @@ body {
   background: radial-gradient(ellipse at 50% 50%, rgba(212,164,55,0.09) 0%, transparent 65%);
 }
 
-/* Court line pattern — usa branco para evitar rendering dourado em capturas iOS */
+/* Court line pattern */
 .court-lines {
   background-image:
-    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    linear-gradient(rgba(212,164,55,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,164,55,0.03) 1px, transparent 1px);
   background-size: 80px 80px;
 }
 
