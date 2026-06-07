@@ -29,4 +29,6 @@ Thumbs.db
 .vercel
 
 # Claude Code
-.claude/
+.claude/*
+!.claude/skills/
+.claude/settings.local.json
