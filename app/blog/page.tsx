@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/pages/placeholder-page";
+import { PageHero } from "@/components/site/page-hero";
+import { Blog } from "@/components/site/home/blog";
 
-export const metadata: Metadata = {
-  title: "Blog | Ultimate Rivals",
-  description:
-    "Vôlei de areia, futevôlei e beach tennis — técnica, estratégia, desenvolvimento e comunidade no blog do Ultimate Rivals.",
-};
+export const metadata: Metadata = { title: "Blog Oficial" };
 
 export default function BlogPage() {
   return (
-    <PlaceholderPage
-      cta="Voltar ao início"
-      description="Vôlei de areia, futevôlei e beach tennis — técnica, estratégia, desenvolvimento e comunidade. O blog do Ultimate Rivals é um espaço de conteúdo para atletas e parceiros da temporada."
-      eyebrow="Blog Ultimate Rivals"
-      status="Conteúdo em preparação"
-      title="Conteúdo que evolui com a temporada."
-    />
+    <>
+      <PageHero
+        eyebrow="Blog oficial"
+        title="Acompanhe a história sendo escrita"
+        lead="Resultados, bastidores, entrevistas, conteúdos educativos e notícias da temporada. Tudo em um só lugar."
+      />
+      <Blog />
+    </>
   );
 }

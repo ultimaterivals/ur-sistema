@@ -1,58 +1,52 @@
-﻿import Link from "next/link";
-import type { ReactNode } from "react";
-import { cn } from "@/lib/utils/cn";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+import { cn } from "@/lib/utils";
 
-type ButtonProps = {
-  children: ReactNode;
-  href?: string;
-  variant?: ButtonVariant;
-  className?: string;
-  type?: "button" | "submit" | "reset";
-  ariaLabel?: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
-  rel?: string;
-};
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground shadow-sm shadow-black/5 hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm shadow-black/5 hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background shadow-sm shadow-black/5 hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-lg px-3 text-xs",
+        lg: "h-10 rounded-lg px-8",
+        icon: "h-9 w-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
 
-const variants: Record<ButtonVariant, string> = {
-  primary:
-    "border-transparent bg-[linear-gradient(135deg,#ffd84d,#c9a84c)] text-black shadow-[0_0_24px_rgba(255,216,77,0.18)] hover:brightness-110",
-  secondary:
-    "border-[#ffd84d]/35 bg-[#ffd84d]/10 text-[#ffe98b] hover:border-[#ffd84d]/55 hover:bg-[#ffd84d]/15",
-  ghost:
-    "border-white/10 bg-white/[0.045] text-white/80 hover:border-white/25 hover:bg-white/[0.075]",
-};
-
-export function Button({
-  children,
-  href,
-  variant = "primary",
-  className,
-  type = "button",
-  ariaLabel,
-  target,
-  rel,
-}: ButtonProps) {
-  const classes = cn(
-    "inline-flex min-h-10 max-w-full items-center justify-center gap-2 rounded-lg border px-4 py-2.5 text-center text-xs font-extrabold uppercase leading-5 tracking-[0.08em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd84d] sm:min-h-12 sm:px-5 sm:py-3 sm:text-sm",
-    variants[variant],
-    className,
-  );
-
-  if (href) {
-    const safeRel = target === "_blank" ? (rel ?? "noopener noreferrer") : rel;
-
-    return (
-      <Link aria-label={ariaLabel} className={classes} href={href} rel={safeRel} target={target}>
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <button aria-label={ariaLabel} className={classes} type={type}>
-      {children}
-    </button>
-  );
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+    );
+  },
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };

@@ -1,82 +1,244 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ULTIMATE RIVALS — DESIGN BIBLE V1 tokens
+  Dark-first. The UR palette is mapped onto the shadcn token names so every
+  21st.dev component inherits the league look automatically.
+*/
 :root {
-  --background: #030405;
-  --foreground: #f5efdd;
-  --gold: #ffd84d;
-  --gold-deep: #c9a84c;
-  --panel: #111218;
+  /* Brand palette — COWORK spec */
+  --ur-black: #030405;        /* base */
+  --ur-black-deep: #000000;   /* hero / legends / premiações */
+  --ur-graphite: #0e1015;     /* cards / containers */
+  --ur-graphite-2: #181b22;   /* hover / separations */
+  --ur-gold: #d4a437;         /* conquista / liderança */
+  --ur-gold-bright: #e6bd55;  /* badges / destaques */
+  --ur-sand: #f5ead7;         /* texto secundário esportivo */
+  --ur-white: #f5efe2;
+  --ur-mute: #8a8d97;
+  --ur-pos: #34d27b;          /* indicador positivo (uso mínimo) */
+  --ur-neg: #ff4d4d;          /* indicador negativo (uso mínimo) */
+  --ur-live: #ff3b3b;
+
+  /* Lines, glows, shadows */
+  --ur-line: rgba(255, 255, 255, 0.08);
+  --ur-line-strong: rgba(255, 255, 255, 0.14);
+  --ur-gold-dim: rgba(212, 164, 55, 0.14);
+  --ur-gold-glow: rgba(212, 164, 55, 0.28);
+  --ur-overlay: rgba(8, 8, 8, 0.86);
+  --ur-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --ur-shadow-hover: 0 16px 56px rgba(212, 164, 55, 0.16);
+  --ur-shadow-glow: 0 0 48px rgba(212, 164, 55, 0.3);
+  --ur-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* shadcn tokens → UR (dark-first, applied to :root) */
+  --radius: 0.875rem;
+  --background: var(--ur-black);
+  --foreground: var(--ur-white);
+  --card: var(--ur-graphite);
+  --card-foreground: var(--ur-white);
+  --popover: #101010;
+  --popover-foreground: var(--ur-white);
+  --primary: var(--ur-gold);
+  --primary-foreground: #0a0a0a;
+  --secondary: var(--ur-graphite-2);
+  --secondary-foreground: var(--ur-sand);
+  --muted: #161616;
+  --muted-foreground: var(--ur-mute);
+  --accent: var(--ur-graphite-2);
+  --accent-foreground: var(--ur-gold-bright);
+  --destructive: #e5484d;
+  --border: var(--ur-line);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: var(--ur-gold);
+  --chart-1: var(--ur-gold);
+  --chart-2: var(--ur-gold-bright);
+  --chart-3: #b98a23;
+  --chart-4: #6b6b73;
+  --chart-5: #2c2c30;
+  --sidebar: #0c0c0c;
+  --sidebar-foreground: var(--ur-white);
+  --sidebar-primary: var(--ur-gold);
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: var(--ur-graphite-2);
+  --sidebar-accent-foreground: var(--ur-gold-bright);
+  --sidebar-border: var(--ur-line);
+  --sidebar-ring: var(--ur-gold);
 }
 
-/* ── Season 1 design tokens ── */
-:root {
-  --ur-ink: #0A0A0B;
-  --ur-panel: #14141A;
-  --ur-gold: #D4A437;
-  --ur-cream: #F4F0E6;
-  --ur-mute: #8A8A93;
-  --ur-sand: #1C1610;
-  --ur-live: #FF4D4D;
-  --ur-line: rgba(255,255,255,0.10);
-  --ur-gold-dim: rgba(212,164,55,0.15);
-  --ur-gold-glow: rgba(212,164,55,0.25);
-  --ur-overlay: rgba(10,10,11,0.85);
-  --ur-shadow-card: 0 4px 24px rgba(0,0,0,0.30);
-  --ur-shadow-hover: 0 8px 48px rgba(212,164,55,0.15);
-  --ur-shadow-glow: 0 0 40px rgba(212,164,55,0.30);
-  --ur-easing: cubic-bezier(0.4,0,0.2,1);
+@theme inline {
+  /* Typography (wired to next/font in layout.tsx) — Oswald + Manrope */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+  --font-condensed: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-heading: var(--font-oswald), Impact, sans-serif;
+
+  /* Brand color utilities (text-ur-gold, bg-ur-graphite, …) */
+  --color-ur-black: var(--ur-black);
+  --color-ur-black-deep: var(--ur-black-deep);
+  --color-ur-graphite: var(--ur-graphite);
+  --color-ur-graphite-2: var(--ur-graphite-2);
+  --color-ur-gold: var(--ur-gold);
+  --color-ur-gold-bright: var(--ur-gold-bright);
+  --color-ur-sand: var(--ur-sand);
+  --color-ur-white: var(--ur-white);
+  --color-ur-mute: var(--ur-mute);
+  --color-ur-pos: var(--ur-pos);
+  --color-ur-neg: var(--ur-neg);
+  --color-ur-live: var(--ur-live);
+
+  /* shadcn token bridges */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.55);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.9);
+  --radius-3xl: calc(var(--radius) * 2.4);
 }
+
+/* The site is dark-first; .dark inherits the same UR palette. */
+.dark {
+  --background: var(--ur-black);
+  --foreground: var(--ur-white);
+  --card: var(--ur-graphite);
+  --card-foreground: var(--ur-white);
+  --popover: #101010;
+  --popover-foreground: var(--ur-white);
+  --primary: var(--ur-gold);
+  --primary-foreground: #0a0a0a;
+  --secondary: var(--ur-graphite-2);
+  --secondary-foreground: var(--ur-sand);
+  --muted: #161616;
+  --muted-foreground: var(--ur-mute);
+  --accent: var(--ur-graphite-2);
+  --accent-foreground: var(--ur-gold-bright);
+  --border: var(--ur-line);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: var(--ur-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(80rem 40rem at 50% -10%, rgba(212, 164, 55, 0.06), transparent 60%),
+      radial-gradient(60rem 30rem at 100% 0%, rgba(212, 164, 55, 0.04), transparent 55%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: rgba(212, 164, 55, 0.3); color: #fff; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+/* ── Utilities ── */
+.ur-display { font-family: var(--font-display); text-transform: uppercase; }
+.ur-condensed { font-family: var(--font-condensed); }
+.ur-eyebrow {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+}
+.ur-gold-text {
+  background: linear-gradient(180deg, var(--ur-gold-bright), var(--ur-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ur-hairline { border-color: var(--ur-line); }
+.ur-card {
+  background: linear-gradient(180deg, #14171e, var(--ur-graphite));
+  border: 1px solid var(--ur-line);
+  box-shadow: var(--ur-shadow-card);
+}
+.ur-card-hover {
+  transition: transform 0.4s var(--ur-ease), box-shadow 0.4s var(--ur-ease), border-color 0.4s var(--ur-ease);
+}
+.ur-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--ur-gold-dim);
+  box-shadow: var(--ur-shadow-hover);
+}
+
+/* Continuous sports ticker */
+@keyframes ur-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ur-ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ur-ticker 38s linear infinite;
+}
+@keyframes ur-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ur-rise { animation: ur-rise 0.7s var(--ur-ease) both; }
+
+@keyframes ur-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.ur-live-dot { animation: ur-pulse 1.4s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; transform: none !important; }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
-@media (min-width: 768px) {
-  html {
-    scroll-padding-top: 96px;
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  overflow-x: hidden;
-  font-family:
-    Inter, Barlow, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-h1,
-h2,
-h3,
-.font-display {
-  font-family:
-    "Barlow Condensed", "Arial Narrow", Impact, ui-sans-serif, system-ui, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-summary::marker {
-  content: "";
-}
-
-::selection {
-  background: rgba(255, 216, 77, 0.28);
-  color: #ffffff;
+  .ur-ticker-track { animation: none; }
 }

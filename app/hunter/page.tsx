@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/pages/placeholder-page";
+import { PageHero } from "@/components/site/page-hero";
+import { Hunter } from "@/components/site/home/hunter";
 
-export const metadata: Metadata = {
-  title: "Metodologia Hunter | Ultimate Rivals",
-  description:
-    "Hunter não é olheiro. É mentalidade. Conheça a metodologia de desenvolvimento do Ultimate Rivals.",
-};
+export const metadata: Metadata = { title: "Mentalidade Hunter" };
 
-export default function HunterPage() {
+export default function Page() {
   return (
-    <PlaceholderPage
-      cta="Voltar ao início"
-      description="Hunter não é olheiro. É mentalidade. A Metodologia Hunter orienta o desenvolvimento de atletas e equipes dentro do ecossistema Ultimate Rivals — com critério, direção e evolução contínua."
-      eyebrow="Metodologia"
-      status="Conteúdo em preparação"
-      title="Hunter não é olheiro. É mentalidade."
-    />
+    <>
+      <PageHero eyebrow="Mentalidade Hunter" title="Hunter não é olheiro. É mentalidade." lead="Evolução contínua, disciplina e desenvolvimento técnico e comportamental através do Hunter Program." />
+      <Hunter />
+    </>
   );
 }
