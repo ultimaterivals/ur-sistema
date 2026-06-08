@@ -10,16 +10,16 @@
   21st.dev component inherits the league look automatically.
 */
 :root {
-  /* Brand palette */
-  --ur-black: #080808;        /* base */
+  /* Brand palette — COWORK spec */
+  --ur-black: #030405;        /* base */
   --ur-black-deep: #000000;   /* hero / legends / premiações */
-  --ur-graphite: #151515;     /* cards / containers */
-  --ur-graphite-2: #222222;   /* hover / separations */
-  --ur-gold: #e0a82e;         /* conquista / liderança */
-  --ur-gold-bright: #f3c95c;  /* badges / destaques */
+  --ur-graphite: #0e1015;     /* cards / containers */
+  --ur-graphite-2: #181b22;   /* hover / separations */
+  --ur-gold: #d4a437;         /* conquista / liderança */
+  --ur-gold-bright: #e6bd55;  /* badges / destaques */
   --ur-sand: #f5ead7;         /* texto secundário esportivo */
-  --ur-white: #f7f4ec;
-  --ur-mute: #8a8a93;
+  --ur-white: #f5efe2;
+  --ur-mute: #8a8d97;
   --ur-pos: #34d27b;          /* indicador positivo (uso mínimo) */
   --ur-neg: #ff4d4d;          /* indicador negativo (uso mínimo) */
   --ur-live: #ff3b3b;
@@ -27,12 +27,12 @@
   /* Lines, glows, shadows */
   --ur-line: rgba(255, 255, 255, 0.08);
   --ur-line-strong: rgba(255, 255, 255, 0.14);
-  --ur-gold-dim: rgba(224, 168, 46, 0.14);
-  --ur-gold-glow: rgba(224, 168, 46, 0.28);
+  --ur-gold-dim: rgba(212, 164, 55, 0.14);
+  --ur-gold-glow: rgba(212, 164, 55, 0.28);
   --ur-overlay: rgba(8, 8, 8, 0.86);
   --ur-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
-  --ur-shadow-hover: 0 16px 56px rgba(224, 168, 46, 0.16);
-  --ur-shadow-glow: 0 0 48px rgba(224, 168, 46, 0.3);
+  --ur-shadow-hover: 0 16px 56px rgba(212, 164, 55, 0.16);
+  --ur-shadow-glow: 0 0 48px rgba(212, 164, 55, 0.3);
   --ur-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* shadcn tokens → UR (dark-first, applied to :root) */
@@ -71,11 +71,11 @@
 }
 
 @theme inline {
-  /* Typography (wired to next/font in layout.tsx) */
-  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-anton), "Arial Narrow Bold", Impact, sans-serif;
-  --font-condensed: var(--font-barlow), "Arial Narrow", sans-serif;
-  --font-heading: var(--font-anton), Impact, sans-serif;
+  /* Typography (wired to next/font in layout.tsx) — Oswald + Manrope */
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+  --font-condensed: var(--font-oswald), "Arial Narrow", sans-serif;
+  --font-heading: var(--font-oswald), Impact, sans-serif;
 
   /* Brand color utilities (text-ur-gold, bg-ur-graphite, …) */
   --color-ur-black: var(--ur-black);
@@ -167,8 +167,8 @@
     margin: 0;
     overflow-x: hidden;
     background-image:
-      radial-gradient(80rem 40rem at 50% -10%, rgba(224, 168, 46, 0.06), transparent 60%),
-      radial-gradient(60rem 30rem at 100% 0%, rgba(224, 168, 46, 0.04), transparent 55%);
+      radial-gradient(80rem 40rem at 50% -10%, rgba(212, 164, 55, 0.06), transparent 60%),
+      radial-gradient(60rem 30rem at 100% 0%, rgba(212, 164, 55, 0.04), transparent 55%);
     background-attachment: fixed;
   }
   h1, h2, h3, .font-display {
@@ -177,7 +177,7 @@
     line-height: 0.95;
   }
   a { color: inherit; text-decoration: none; }
-  ::selection { background: rgba(224, 168, 46, 0.3); color: #fff; }
+  ::selection { background: rgba(212, 164, 55, 0.3); color: #fff; }
   summary::-webkit-details-marker { display: none; }
 }
 
@@ -198,7 +198,7 @@
 }
 .ur-hairline { border-color: var(--ur-line); }
 .ur-card {
-  background: linear-gradient(180deg, #181818, var(--ur-graphite));
+  background: linear-gradient(180deg, #14171e, var(--ur-graphite));
   border: 1px solid var(--ur-line);
   box-shadow: var(--ur-shadow-card);
 }

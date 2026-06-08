@@ -1,26 +1,19 @@
 import type { Metadata } from "next";
-import { Anton, Barlow_Condensed, Sora } from "next/font/google";
+import { Oswald, Manrope } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
 
-const anton = Anton({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-anton",
-  display: "swap",
-});
-
-const barlow = Barlow_Condensed({
+const oswald = Oswald({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-barlow",
+  variable: "--font-oswald",
   display: "swap",
 });
 
-const sora = Sora({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -52,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="pt-BR"
-      className={`dark ${anton.variable} ${barlow.variable} ${sora.variable}`}
+      className={`dark ${oswald.variable} ${manrope.variable}`}
       suppressHydrationWarning
     >
       <body>

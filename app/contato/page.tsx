@@ -1,161 +1,25 @@
 import type { Metadata } from "next";
-import { Handshake, MapPin, Megaphone, ShieldCheck, Users, Zap } from "lucide-react";
-import { PlatformHero } from "@/components/editorial/platform-hero";
-import { CommercialAssetPanel, ImageFeaturePanel, ProcessTimeline } from "@/components/editorial/sports-platform-modules";
-import { PageSection } from "@/components/site/page-section";
-import { SegmentCtaPanel } from "@/components/site/segment-cta-panel";
-import { Button } from "@/components/ui/button";
-import { siteImages } from "@/lib/content/site-images";
+import { PageHero } from "@/components/site/page-hero";
+import { Container, Section } from "@/components/site/primitives";
 
-export const metadata: Metadata = {
-  title: "Contato UR | Ultimate Rivals",
-  description:
-    "Entre em contato com o Ultimate Rivals para cadastro de atleta, equipe, patrocinador, quadra parceira, comunidade, imprensa e parcerias.",
-};
+export const metadata: Metadata = { title: "Contato" };
 
-const contactPaths = [
-  {
-    label: "Atleta",
-    title: "Entrar no UR Play",
-    description: "Registro de interesse para orientação e próximos passos como atleta.",
-    icon: Zap,
-  },
-  {
-    label: "Equipe",
-    title: "Cadastrar equipe",
-    description: "Caminho para identidade, capitão, elenco e ranking coletivo.",
-    icon: ShieldCheck,
-  },
-  {
-    label: "Comercial",
-    title: "Patrocinar o UR",
-    description: "Contato para marcas, mídia, ativações, UR Market e propostas comerciais.",
-    icon: Handshake,
-  },
-  {
-    label: "Quadra",
-    title: "Virar polo parceiro",
-    description: "Análise de estrutura, agenda recorrente, eventos e comunidade local.",
-    icon: MapPin,
-  },
-  {
-    label: "Comunidade",
-    title: "Acompanhar novidades",
-    description: "Receber avisos sobre mídia, eventos, ranking e próximos passos.",
-    icon: Users,
-  },
-  {
-    label: "Imprensa",
-    title: "Parcerias e mídia",
-    description: "Caminho institucional para imprensa, conteúdo e relacionamento.",
-    icon: Megaphone,
-  },
-] as const;
-
-const contactFlow = [
-  {
-    label: "Caminho",
-    title: "Escolher caminho",
-    description: "Atleta, equipe, patrocinador, quadra, comunidade ou parceria.",
-  },
-  {
-    label: "Cadastro",
-    title: "Registrar interesse",
-    description: "A central de cadastro organiza a entrada sem criar promessa automática.",
-  },
-  {
-    label: "Análise",
-    title: "Receber análise",
-    description: "A equipe UR entende contexto, prioridade e próximo passo.",
-  },
-  {
-    label: "Retorno",
-    title: "Receber orientação",
-    description: "Participação, parceria ou contato comercial seguem com critério.",
-  },
-] as const;
-
-export default function ContatoPage() {
+export default function Page() {
   return (
-    <main className="bg-[#030405] text-[#f5efdd]">
-      <PlatformHero
-        actions={[
-          { href: "/cadastro", label: "Ir para cadastro" },
-          { href: "/cadastro#patrocinador", label: "Contato comercial", variant: "secondary" },
-        ]}
-        badges={["Atletas", "Equipes", "Patrocinadores", "Quadras", "Comunidade"]}
-        description="A forma mais rápida de falar com o Ultimate Rivals é escolher o caminho correto na central de cadastro. Assim a equipe UR entende melhor cada interesse."
-        eyebrow="Contato UR • canais oficiais"
-        image={siteImages.communityMoment}
-        imagePosition="center 44%"
-        metrics={[
-          { label: "Principal", value: "central de cadastro" },
-          { label: "Comercial", value: "patrocinadores e quadras" },
-          { label: "Retorno", value: "orientação UR" },
-        ]}
-        statusDescription="O cadastro não garante vaga, parceria, patrocínio ou participação imediata. A entrada tem critério para manter equilíbrio, respeito e organização."
-        statusLabel="caminhos oficiais"
-        statusTitle="Contato bom começa pelo caminho certo."
-        title="Fale com o UR sem perder o contexto."
-      />
-
-      <PageSection id="caminhos">
-        <CommercialAssetPanel
-          assets={contactPaths}
-          description="Cada perfil tem uma entrada própria para evitar ruído e ajudar a equipe UR a responder com contexto."
-          eyebrow="Caminhos de contato"
-          title="Escolha o canal certo para o seu objetivo."
-        />
-      </PageSection>
-
-      <PageSection className="bg-[#07080c]" id="caminho">
-        <ProcessTimeline
-          description="O contato precisa ser simples: escolher caminho, registrar interesse, receber análise e entender o próximo passo."
-          eyebrow="Como funciona"
-          steps={contactFlow}
-          title="Da mensagem ao próximo passo."
-        />
-      </PageSection>
-
-      <PageSection id="orientacao">
-        <ImageFeaturePanel
-          actions={[
-            { href: "/cadastro#quadra", label: "Tenho uma quadra", variant: "secondary" },
-            { href: "/cadastro#comunidade", label: "Acompanhar comunidade", variant: "ghost" },
-          ]}
-          description="Se você ainda não sabe qual caminho escolher, comece pela central de cadastro. A equipe UR direciona o interesse para esporte, comercial, comunidade ou parcerias."
-          eyebrow="Orientação rápida"
-          image={siteImages.timeoutTalk}
-          imagePosition="center 42%"
-          points={[
-            {
-              title: "Entrada centralizada",
-              description: "A página de contato orienta. A entrada oficial continua na central de cadastro.",
-            },
-            {
-              title: "Contato com contexto",
-              description: "Dados básicos ajudam a equipe UR entender prioridade e próximo passo.",
-            },
-          ]}
-          title="Menos ruído, mais clareza para responder."
-        />
-      </PageSection>
-
-      <SegmentCtaPanel
-        actions={
-          <>
-            <Button href="/cadastro">Abrir central de cadastro</Button>
-            <Button href="/cadastro#patrocinador" variant="secondary">
-              Quero falar de parceria
-            </Button>
-          </>
-        }
-        description="Atletas, equipes, patrocinadores, quadras e comunidade entram pela mesma central, cada um com seu caminho claro."
-        eyebrow="Central oficial"
-        items={["cadastro", "análise", "orientação", "próximo passo"]}
-        statusLabel="cadastro de interesse aberto"
-        title="Escolha seu caminho e receba um retorno com contexto."
-      />
-    </main>
+    <>
+      <PageHero eyebrow="Fale com a gente" title="Vamos conversar" lead="Atletas, quadras, parceiros e imprensa: entre em contato com o time Ultimate Rivals." />
+      <Section>
+        <Container>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Atletas</li>
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Quadras</li>
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Patrocinadores</li>
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Imprensa</li>
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Comunidade</li>
+        <li className="ur-card rounded-2xl p-5 ur-condensed text-base font-medium text-ur-white">Suporte</li>
+          </ul>
+        </Container>
+      </Section>
+    </>
   );
 }
