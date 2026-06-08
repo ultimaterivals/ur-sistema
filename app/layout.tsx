@@ -1,12 +1,28 @@
 import type { Metadata } from "next";
+import { Anton, Barlow_Condensed, Sora } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { RouteScrollManager } from "@/components/layout/route-scroll-manager";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { SiteHeader } from "@/components/site/site-header";
+import { SiteFooter } from "@/components/site/site-footer";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const barlow = Barlow_Condensed({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ultimaterivals.org"),
@@ -15,15 +31,16 @@ export const metadata: Metadata = {
     template: "%s | Ultimate Rivals",
   },
   description:
-    "UR Temporada 1 — Polos em Disputa. Atletas e equipes começam pelo UR Play, constroem histórico e fortalecem BH, Betim e Contagem.",
+    "Jogue, pontue e defenda seu polo. Entre pelo UR Play, suba no ranking oficial, conquiste UR Coins, dispute premiações e construa seu caminho até o UR Legends.",
   icons: {
     icon: "/brand/logo-ur.png",
     shortcut: "/brand/logo-ur.png",
     apple: "/brand/logo-ur.png",
   },
   openGraph: {
-    title: "Ultimate Rivals — Temporada 1",
-    description: "Polos em Disputa apresenta a Temporada 1 UR, com UR Play, ranking, polos e jornada progressiva para atletas e equipes.",
+    title: "Ultimate Rivals — Temporada 1 • Polos em Disputa",
+    description:
+      "Infraestrutura esportiva: ranking, premiações, UR Coins, mídia oficial e UR Legends. Eleve o jogo, supere seus limites.",
     images: ["/brand/logo-ur.png"],
     locale: "pt_BR",
     siteName: "Ultimate Rivals",
@@ -33,20 +50,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={cn("font-sans", geist.variable)}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="pt-BR"
+      className={`dark ${anton.variable} ${barlow.variable} ${sora.variable}`}
+      suppressHydrationWarning
+    >
       <body>
-        <RouteScrollManager />
-        <Header />
-        {children}
-        <Footer />
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );
