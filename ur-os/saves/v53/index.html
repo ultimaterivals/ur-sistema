@@ -1,0 +1,145 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>UR OS V53 — Foco e Esferas</title><style>*{box-sizing:border-box}body{margin:0;background:#080f18;color:#eaf1f4;font:14px -apple-system,BlinkMacSystemFont,Arial}header{display:flex;justify-content:space-between;align-items:center;background:#0c1825;border-bottom:1px solid #a77c42;padding:12px 16px}header strong{font-size:16px;letter-spacing:.14em}header em{color:#c9a368;font-style:normal}header small{display:block;color:#aa915f;font-size:10px;letter-spacing:.12em}button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid #e9bd7e}main{max-width:1300px;margin:auto;padding:10px}.status{font-size:11px;color:#d6bf91;padding:5px 8px;background:#152337;border-radius:7px}.workspace{display:grid;gap:10px}.stage{height:64dvh;min-height:470px;max-height:750px;position:relative;overflow:hidden;border:1px solid #42566a;border-radius:17px;background:radial-gradient(ellipse at 50% 40%,#18344a,#050e1b 73%);touch-action:none}.stage canvas{width:100%;height:100%;display:block}.sky{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#d5b16b88 .6px,transparent .9px);background-size:51px 61px;opacity:.24}.top{position:absolute;left:12px;top:12px;pointer-events:none}.kicker{font-size:10px;color:#c9a168;letter-spacing:.13em}.top h2{margin:4px 0;font-size:18px;text-shadow:0 2px 12px #050e18}.nav{position:absolute;right:10px;top:10px;display:grid;gap:7px}.nav button{width:42px;height:40px;border:1px solid #9b793e;background:#0c2338d9;color:#fff;border-radius:10px;font-size:20px}.bar{position:absolute;bottom:8px;left:9px;right:9px;border-radius:9px;background:#091825d9;color:#c8d1d7;font-size:11px;padding:9px}.node-label{position:absolute;pointer-events:none;transform:translate(-50%,0);background:#142e46dd;color:#fff;border:1px solid #a27e45;border-radius:7px;font-size:10px;font-weight:700;padding:5px 7px;max-width:115px;text-align:center;line-height:1.15;white-space:normal}.panel{background:#101f30;border:1px solid #42536b;border-radius:16px;padding:16px}.panel h2{font-size:20px;margin:8px 0}.crumbs{display:flex;gap:4px;flex-wrap:wrap}.crumbs button{border:0;background:none;color:#dabd87;text-decoration:underline;padding:5px}.muted{font-size:12px;color:#9cafbf;line-height:1.6}.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:13px 0}.chip{color:#eef2f3;background:#1b344c;border:1px solid #456079;border-radius:10px;text-align:left;padding:12px;min-height:54px;font-size:12px}.chip.active{border-color:#f0c987;background:#51442e}.btn{border:1px solid #a68551;background:#233b50;color:white;border-radius:10px;padding:10px 12px}.actionbar{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}.tab{border:1px solid #566677;border-radius:9px;color:#cdd8e1;padding:9px;background:transparent}.tab.active{background:#c39b5b;color:#101e2a;border-color:#c39b5b}details{border:1px solid #43586c;border-radius:10px;padding:11px;margin:8px 0}summary{font-weight:700;cursor:pointer}.step{display:flex;gap:9px;align-items:center;padding:12px 0;border-bottom:1px solid #334657;font-size:13px}.step input{accent-color:#d1ac6d}.meta{font-size:11px;color:#9eacc0;border-left:3px solid #c4a168;padding:9px;background:#182b40}a{color:#e8c58d}.fallback{position:absolute;inset:18% 9% 22%;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;align-content:center}.fallback button{border:1px solid #b78b4b;color:#fff;background:radial-gradient(circle at 30% 20%,#c29853,#203f57 65%,#0d2032);border-radius:50%;aspect-ratio:1;font-size:10px;padding:5px}.fallback[hidden]{display:none}.compact{font-size:11px;color:#9bacbd;padding:7px 4px} @media(min-width:820px){.workspace{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr)}.stage{height:83dvh}.panel{max-height:83dvh;overflow:auto}.chips{grid-template-columns:repeat(3,minmax(0,1fr))}} </style><style>
+:root{--ur-accent:#d8ae6c}
+.panel{background:linear-gradient(145deg,#122c43 0%,#0b1929 100%);box-shadow:inset 0 1px 0 #43627a55}
+.chips{gap:9px}
+.chip{display:flex;align-items:center;gap:12px;background:linear-gradient(110deg,#193c56,#112b42);border:1px solid #476a7f;min-height:61px;border-radius:12px;transition:border-color .2s,transform .2s}
+.chip:active{transform:scale(.98);border-color:#e0b979}
+.ur-sector-icon{flex-shrink:0;width:37px;height:37px;border-radius:50%;border:1px solid #d5a55c;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#584522,#092035 75%);box-shadow:0 0 9px #bc8c4250}
+.ur-sector-icon svg{width:20px;height:20px;stroke:#f2ca82;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ur-sector-name{flex:1;font-weight:650;line-height:1.25}
+.ur-sector-chevron{color:#eac88e;font-size:20px}
+@media(max-width:400px){.chips{grid-template-columns:1fr 1fr}.chip{padding:8px;gap:7px;font-size:11px}.ur-sector-icon{width:31px;height:31px}.ur-sector-icon svg{width:17px;height:17px}}
+</style><style>.stage{background:radial-gradient(ellipse at 50% 44%,#1a3d59,#061423 73%)}
+.node-label{font-size:11px;font-weight:750;background:#0c233add;border:1px solid #d7aa65;box-shadow:0 3px 12px #07111a88;padding:6px 9px;max-width:114px}
+@media(max-width:600px){.stage{height:69dvh;min-height:510px;max-height:790px}.top h2{font-size:18px}.node-label{font-size:10px;max-width:105px;padding:5px 7px}}
+</style></head><body><header><div><strong>ULTIMATE <em>RIVALS</em></strong><small>UNIVERSO VIVO · V53 FOCO E ESFERAS</small></div><span class="status" id="engine">Carregando 3D</span></header><main><div class="workspace"><section><div class="stage" id="stage"><div class="sky"></div><div id="labels"></div><div class="top"><span class="kicker" id="depth">RAIZ · ECOSSISTEMA</span><h2 id="headline">Ultimate Rivals</h2></div><div class="nav"><button id="zin">+</button><button id="zout">−</button><button id="reset">⌂</button><button id="up">←</button></div><div class="bar">Arraste para orbitar em 360° · pinça para aproximar · toque nos globos para expandir</div><div class="fallback" id="fallback" hidden></div></div><div class="compact">Estrutura: Ultimate Rivals → Setor → Subnúcleo → Guia. Os ancestrais permanecem visíveis.</div></section><aside class="panel"><div class="crumbs" id="crumbs"></div><h2 id="title">Universo Ultimate Rivals</h2><p class="muted" id="description">Explore os núcleos e abra a operação sem perder o contexto espacial.</p><div class="actionbar"><button class="tab active" data-mode="nucleos">Núcleos</button><button class="tab" data-mode="guia">Guia</button><button class="tab" data-mode="documentos">Documentos</button><button class="tab" data-mode="delegacao">Delegação</button></div><div id="content"></div></aside></div><p class="meta">Preview demonstrativo. Sem sincronização com Notion ou Supabase; tarefas e guias não representam registros oficiais.</p></main>
+<script>const A=["Liga","Mídia","Desenvolvimento","Comercial","Financeiro","Operações","Tecnologia","Comunidade","Mercado","Marca","Dados","Governança"],M=[["Temporadas","UR Play","UR Sprint","UR Series","UR Legends","Ranking"],["Transmissões","Documentários","Streams","Editorial","Cobertura","Acervo"],["PDI","Treinos","Hunter","Avaliações","Evidências","Review"],["CRM","Propostas","Contratos","Ativações","Entregas","Relatórios"],["Orçamento","Receitas","Despesas","Repasses","Premiações","Projeções"],["Eventos","Arenas","Check-in","Court Ops","Equipamentos","Logística"],["Athlete App","UR OS","Site","Integrações","QA","Segurança"],["Atletas","Equipes","Atendimento","Jornada","Feedback","Experiências"],["UR Market","Produtos","Serviços","Parceiros","Benefícios","Resgates"],["Identidade","Campanhas","Materiais","Comunicação","Pitch","Diretrizes"],["KPIs","Relatórios","Auditoria","Qualidade","Análises","Decisões"],["Pessoas","Papéis","Academy","Onboarding","Permissões","Políticas"]],D=["3f0137a30cc381768b0cf46a4366a720","3f0137a30cc3817f9c23d513a808f2e5","3f0137a30cc38199a51adc6334a13ab4","3f0137a30cc381de8f49d26aef003e33",null,null,null,null,null,null,null,"3f0137a30cc3815fbb52f32cfc82546f"];let selected=-1,child=-1,mode='nucleos';const $=s=>document.getElementById(s);const status=$('engine'),stage=$('stage');let renderer=null,scene=null,camera=null,meshList=[],lineGroup=[],nav={a:.4,b:.22,dist:24},running=false,lib=null,labels=[];
+function select(a,b=-1){selected=a;child=b;window._sector=a;window._branch=b;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));panel();if(window.rebuild3D)window.rebuild3D();fallback();}
+const ICON_PATHS=[
+'<path d="M8 21h8M12 17v4M7 4h10v7a5 5 0 0 1-10 0V4ZM7 6H4v3a4 4 0 0 0 4 4M17 6h3v3a4 4 0 0 1-4 4"/>',
+'<rect x="3" y="6" width="14" height="12" rx="2"/><path d="m17 10 4-3v10l-4-3M9 10l4 2-4 2z"/>',
+'<path d="m7 21 3-6 3 2 4-6M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM10 10l3-2 3 2M5 17l3-4 2-3"/>',
+'<path d="m2 12 5-5 4 3 2-2 9 5-5 6-4-2-3 2-8-7Z"/><path d="m7 7 3-2 5 1 4 5"/>',
+'<path d="M4 20V12M10 20V8M16 20V4M22 20H2"/>',
+'<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v2M8 11l2 2 4-4M8 17h8"/>',
+'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M2 20v-3a6 6 0 0 1 12 0v3M14 20v-3a4 4 0 0 1 8 0v3"/>',
+'<path d="M3 4h2l2 12h12l2-9H6M9 21h.01M18 21h.01"/>',
+'<path d="m3 10 8-4v12l-8-4zM11 9l6-3v12l-6-3M17 10h3M17 14h3"/>',
+'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 2 16 2 16 0V5M4 12v7c0 2 16 2 16 0v-7"/>',
+'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M15 15a5 5 0 0 1 6 5"/>',
+'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 9h6v6H9zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'
+];
+const ICON_INDEX={'Liga':0,'Mídia':1,'Desenvolvimento':2,'Comercial':3,'Financeiro':4,'Operações':5,'Comunidade':6,'Mercado':7,'Marca':8,'Dados':9,'Pessoas':10,'Tecnologia':11};
+function urIcon(name){const p=ICON_PATHS[ICON_INDEX[name]??11];return '<span class="ur-sector-icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+p+'</svg></span>'}
+function panel(){let title=selected<0?'Ultimate Rivals':child<0?A[selected]:M[selected][child];$('title').textContent=title;$('headline').textContent=title;$('depth').textContent=selected<0?'RAIZ · ECOSSISTEMA':child<0?'SETOR · '+M[selected].length+' SUBNÚCLEOS':'SUBNÚCLEO · EXECUÇÃO';$('description').textContent=selected<0?'Selecione um dos doze setores.':child<0?'Abra um subnúcleo ou consulte o guia do setor.':'Visualização contextual deste subnúcleo, com acesso ao guia e às fontes relacionadas.';let cr=$('crumbs');cr.replaceChildren();function bread(t,fn){let x=document.createElement('button');x.textContent=t;x.onclick=fn;cr.append(x)}bread('UR',()=>select(-1));if(selected>=0)bread('› '+A[selected],()=>select(selected));if(child>=0)bread('› '+M[selected][child],()=>{});
+let box=$('content');box.replaceChildren();if(mode==='nucleos'){let grid=document.createElement('div');grid.className='chips';(selected<0?A:M[selected]).forEach((t,i)=>{let b=document.createElement('button');b.className='chip'+(child===i?' active':'');if(selected<0){b.innerHTML=urIcon(t)+'<span class="ur-sector-name">'+t+'</span><span class="ur-sector-chevron" aria-hidden="true">›</span>'}else{b.textContent=t}b.onclick=()=>selected<0?select(i):select(selected,i);grid.append(b)});box.append(grid)}else if(mode==='guia'){let msg=document.createElement('p');msg.className='muted';msg.textContent='Sequência ilustrativa. O procedimento real deverá ser carregado da biblioteca oficial do UR OS.';box.append(msg);['Preparar: definir objetivo, responsáveis e recursos','Validar pré-requisitos e condições de segurança','Executar conforme roteiro homologado','Registrar evidências, ocorrências e resultados','Confirmar conclusão e acionar próxima etapa'].forEach((text,i)=>{let l=document.createElement('label');l.className='step';let c=document.createElement('input');c.type='checkbox';let key='ur45:'+selected+':'+child+':'+i;try{c.checked=localStorage.getItem(key)==='1'}catch(e){}c.onchange=()=>{try{localStorage.setItem(key,c.checked?'1':'0')}catch(e){}};l.append(c,document.createTextNode(text));box.append(l)})}else if(mode==='documentos'){let p=document.createElement('p');p.className='muted';p.textContent='Fontes oficiais autorizadas para consulta.';box.append(p);if(D[selected]){let l=document.createElement('a');l.href='https://app.notion.com/p/'+D[selected];l.target='_blank';l.rel='noopener';l.textContent='Abrir documentação do setor no Notion ↗';box.append(l)}else{let msg=document.createElement('p');msg.textContent='Fonte do setor ainda não vinculada neste Preview.';box.append(msg)}}else{let p=document.createElement('p');p.className='muted';p.textContent='Atribuições, prazos, critérios de aceite, evidências, permissões e automações serão conectados às bases oficiais; ainda não estão ativos.';box.append(p)}}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));panel()});$('up').onclick=()=>child>=0?select(selected):select(-1);$('reset').onclick=()=>{nav={a:.4,b:.22,dist:16};window.updateCamera&&window.updateCamera()};$('zin').onclick=()=>{nav.dist=Math.max(5,nav.dist*.82);window.updateCamera&&window.updateCamera()};$('zout').onclick=()=>{nav.dist=Math.min(28,nav.dist*1.2);window.updateCamera&&window.updateCamera()};
+function fallback(){let b=$('fallback');b.replaceChildren();(selected<0?A:M[selected]).forEach((t,i)=>{let x=document.createElement('button');x.textContent=t;x.onclick=()=>selected<0?select(i):select(selected,i);b.append(x)})}fallback();panel();
+window.__UR={A,M,select,stage,status,nav};</script>
+<script type="module">
+import * as THREE from 'https://esm.sh/three@0.180.0';
+const S=window.__UR, stage=S.stage;
+try {
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(48,1,.1,160);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+stage.prepend(renderer.domElement);
+scene.add(new THREE.AmbientLight(0xbacfe8,1.65));
+const key=new THREE.DirectionalLight(0xffdfa4,4.8);key.position.set(-3,7,11);scene.add(key);
+const spheres=[],wires=[],labels=[];
+const round=new THREE.SphereGeometry(1,32,24);
+const frame=new THREE.IcosahedronGeometry(1,2);
+const origin=new THREE.Vector3(0,0,0);
+const sectorPos=i=>{const t=-Math.PI/2+i*Math.PI/6;const portrait=stage.clientWidth<650;const radius=1+[.02,-.06,.09,-.03,.04,-.08,.05,0,-.04,.07,-.05,.03][i];return new THREE.Vector3(Math.cos(t)*(portrait?4.3:6.6)*radius,Math.sin(t)*(portrait?5.1:5.9)*radius,Math.sin(i*1.74)*(portrait?1.45:2.3))};
+const childPos=(s,j)=>{let a=-Math.PI/2+2*Math.PI*j/S.M[s].length;return sectorPos(s).add(new THREE.Vector3(Math.cos(a)*(stage.clientWidth<650?2.6:3.6),Math.sin(a)*(stage.clientWidth<650?2.6:3.4),Math.cos(j*1.37)*.8))};
+function sphere(id,name,pos,r,color,action,opacity=1){
+ const group=new THREE.Group(); group.position.copy(pos);
+ const mat=new THREE.MeshStandardMaterial({color,metalness:.62,roughness:.19,emissive:id==='root'?0x805820:0x123452,emissiveIntensity:id==='root'?.4:.24,transparent:opacity<1,opacity});
+ const mesh=new THREE.Mesh(round,mat);mesh.scale.setScalar(r);group.add(mesh);
+ const cage=new THREE.LineSegments(new THREE.EdgesGeometry(frame),new THREE.LineBasicMaterial({color:0xdab36f,transparent:true,opacity:.78*opacity}));cage.scale.setScalar(r*1.009);group.add(cage);
+ scene.add(group);
+ const label=document.createElement('div');label.className='node-label';label.textContent=name;stage.append(label);
+ spheres.push({id,group,mesh,label,pos,r,action});
+}
+function link(a,b,opacity=.42){const points=new THREE.QuadraticBezierCurve3(a,a.clone().lerp(b,.5).add(new THREE.Vector3(0,0,1.2)),b).getPoints(32);const geometry=new THREE.BufferGeometry().setFromPoints(points);const line=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:0xd2a565,transparent:true,opacity}));scene.add(line);wires.push(line)}
+function clear(){for(const n of spheres){scene.remove(n.group);n.label.remove();n.mesh.material.dispose();n.group.children[1].geometry.dispose();n.group.children[1].material.dispose()}for(const l of wires){scene.remove(l);l.geometry.dispose();l.material.dispose()}spheres.length=0;wires.length=0;}
+let goal=new THREE.Vector3(),target=new THREE.Vector3(),distance=20,goalDistance=20,angleX=.08,angleY=.03;
+let activeSector=-1,activeChild=-1;
+function rebuild(){
+ clear();
+ activeSector=window._sector??-1;activeChild=window._branch??-1;
+ sphere('root','Ultimate Rivals',origin,activeSector<0?1.53:.43,0xb58b50,()=>S.select(-1),activeSector<0?1:.35);
+ for(let i=0;i<S.A.length;i++){
+  const p=sectorPos(i),isActive=i===activeSector,dim=activeSector>=0&&!isActive;
+  sphere('sector'+i,S.A[i],p,isActive?.84:dim?.21:.65,0x284c68,()=>S.select(i),dim?.22:1);
+  link(origin,p,dim?.12:.5);
+  if(isActive){
+   S.M[i].forEach((name,j)=>{
+    const cp=childPos(i,j),focus=activeChild===j;
+    sphere('child'+j,name,cp,focus?.75:.55,0x285b7a,()=>S.select(i,j),activeChild>=0&&!focus?.52:1);
+    link(p,cp,activeChild>=0&&!focus?.18:.66);
+   });
+  }
+ }
+ target=activeSector<0?origin.clone():activeChild<0?sectorPos(activeSector):sectorPos(activeSector).clone().lerp(childPos(activeSector,activeChild),.65);
+ goalDistance=activeSector<0?(stage.clientWidth<650?20:24):activeChild<0?15:12.5;
+ if(activeSector<0){angleX=.08;angleY=.03}
+ S.status.textContent='WebGL 3D ativo';
+}
+window.rebuild3D=rebuild;
+function resize(){const r=stage.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()}
+new ResizeObserver(resize).observe(stage);resize();
+function updateCam(){S.nav.dist=goalDistance;target.copy(target)}
+window.updateCamera=()=>{goalDistance=Math.max(7,Math.min(55,S.nav.dist));angleX=S.nav.a;angleY=S.nav.b};
+function projectLabels(){
+ const r=stage.getBoundingClientRect(),used=[];
+ for(const n of spheres){
+  let show=activeSector<0?n.id.startsWith('sector'):n.id==='sector'+activeSector||(activeChild<0?n.id.startsWith('child'):n.id==='child'+activeChild);
+  if(activeSector>=0&&n.id==='root')show=false;
+  let p=n.pos.clone().add(new THREE.Vector3(0,n.id==='root'?0:-n.r-.20,0)).project(camera);
+  const x=(p.x+1)*r.width/2,y=(1-p.y)*r.height/2;
+  const visible=show&&p.z<1&&p.z>-1&&x>55&&x<r.width-55&&y>98&&y<r.height-83&&!used.some(a=>Math.abs(a.x-x)<92&&Math.abs(a.y-y)<31);
+  n.label.style.display=visible?'block':'none';
+  if(visible){n.label.style.left=x+'px';n.label.style.top=y+'px';used.push({x,y})}
+ }
+}
+function tick(){
+ requestAnimationFrame(tick);
+ goal.lerp(target,.095);
+ distance+=(goalDistance-distance)*.09;
+ const cos=Math.cos(angleY);
+ camera.position.set(goal.x+distance*Math.sin(angleX)*cos,goal.y+distance*Math.sin(angleY),goal.z+distance*Math.cos(angleX)*cos);
+ camera.lookAt(goal);
+ for(const n of spheres){n.group.rotation.y+=.0016;n.group.rotation.x+=.00028}
+ renderer.render(scene,camera);projectLabels();
+}
+rebuild();goal.copy(target);distance=goalDistance;tick();
+const canvas=renderer.domElement;canvas.style.touchAction='none';
+const fingers=new Map();let moved=0,oldDist=0;
+canvas.addEventListener('pointerdown',e=>{fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=0;canvas.setPointerCapture(e.pointerId)});
+canvas.addEventListener('pointermove',e=>{
+ if(!fingers.has(e.pointerId))return;
+ const prior=fingers.get(e.pointerId);fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ if(fingers.size>=2){const pts=[...fingers.values()],d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);if(oldDist)goalDistance=Math.max(7,Math.min(55,goalDistance*oldDist/d));oldDist=d;moved=100;return}
+ oldDist=0; const dx=e.clientX-prior.x,dy=e.clientY-prior.y;moved+=Math.abs(dx)+Math.abs(dy);
+ angleX-=dx*.006;angleY=Math.max(-1.2,Math.min(1.2,angleY+dy*.006));
+});
+canvas.addEventListener('pointerup',e=>{
+ const wasTap=moved<12&&fingers.size===1;fingers.delete(e.pointerId);oldDist=0;
+ if(!wasTap)return;
+ const r=canvas.getBoundingClientRect(),p=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
+ const ray=new THREE.Raycaster();ray.setFromCamera(p,camera);
+ const candidates=spheres.filter(n=>activeSector<0?n.id==='root'||n.id.startsWith('sector'):n.id==='sector'+activeSector||n.id.startsWith('child'));
+ const hit=ray.intersectObjects(candidates.map(n=>n.mesh))[0];
+ if(hit){const n=candidates.find(n=>n.mesh===hit.object);if(n)n.action()}
+});
+canvas.addEventListener('pointercancel',e=>{fingers.delete(e.pointerId);oldDist=0});
+canvas.addEventListener('wheel',e=>{e.preventDefault();goalDistance=Math.max(7,Math.min(55,goalDistance*(e.deltaY>0?1.08:.92)))},{passive:false});
+document.getElementById('zin').addEventListener('click',()=>{goalDistance=Math.max(7,goalDistance*.81);S.nav.dist=goalDistance});
+document.getElementById('zout').addEventListener('click',()=>{goalDistance=Math.min(55,goalDistance*1.2);S.nav.dist=goalDistance});
+document.getElementById('reset').addEventListener('click',()=>{goalDistance=activeSector<0?(stage.clientWidth<650?20:24):activeChild<0?15:12.5;angleX=0;angleY=0;S.nav.dist=goalDistance});
+document.getElementById('fallback').hidden=true;
+}catch(err){S.status.textContent='Modo compatível';document.getElementById('fallback').hidden=false}
+</script></body></html>
