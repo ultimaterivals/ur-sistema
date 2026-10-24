@@ -1,0 +1,195 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>UR OS V67 — Navegação Espacial Desktop</title><style>*{box-sizing:border-box}body{margin:0;background:#080f18;color:#eaf1f4;font:14px -apple-system,BlinkMacSystemFont,Arial}header{display:flex;justify-content:space-between;align-items:center;background:#0c1825;border-bottom:1px solid #a77c42;padding:12px 16px}header strong{font-size:16px;letter-spacing:.14em}header em{color:#c9a368;font-style:normal}header small{display:block;color:#aa915f;font-size:10px;letter-spacing:.12em}button{font:inherit;cursor:pointer}button:focus-visible{outline:2px solid #e9bd7e}main{max-width:1300px;margin:auto;padding:10px}.status{font-size:11px;color:#d6bf91;padding:5px 8px;background:#152337;border-radius:7px}.workspace{display:grid;gap:10px}.stage{height:64dvh;min-height:470px;max-height:750px;position:relative;overflow:hidden;border:1px solid #42566a;border-radius:17px;background:radial-gradient(ellipse at 50% 40%,#18344a,#050e1b 73%);touch-action:none}.stage canvas{width:100%;height:100%;display:block}.sky{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#d5b16b88 .6px,transparent .9px);background-size:51px 61px;opacity:.24}.top{position:absolute;left:12px;top:12px;pointer-events:none}.kicker{font-size:10px;color:#c9a168;letter-spacing:.13em}.top h2{margin:4px 0;font-size:18px;text-shadow:0 2px 12px #050e18}.nav{position:absolute;right:10px;top:10px;display:grid;gap:7px}.nav button{width:42px;height:40px;border:1px solid #9b793e;background:#0c2338d9;color:#fff;border-radius:10px;font-size:20px}.bar{position:absolute;bottom:8px;left:9px;right:9px;border-radius:9px;background:#091825d9;color:#c8d1d7;font-size:11px;padding:9px}.node-label{position:absolute;pointer-events:none;transform:translate(-50%,0);background:#142e46dd;color:#fff;border:1px solid #a27e45;border-radius:7px;font-size:10px;font-weight:700;padding:5px 7px;max-width:115px;text-align:center;line-height:1.15;white-space:normal}.panel{background:#101f30;border:1px solid #42536b;border-radius:16px;padding:16px}.panel h2{font-size:20px;margin:8px 0}.crumbs{display:flex;gap:4px;flex-wrap:wrap}.crumbs button{border:0;background:none;color:#dabd87;text-decoration:underline;padding:5px}.muted{font-size:12px;color:#9cafbf;line-height:1.6}.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:13px 0}.chip{color:#eef2f3;background:#1b344c;border:1px solid #456079;border-radius:10px;text-align:left;padding:12px;min-height:54px;font-size:12px}.chip.active{border-color:#f0c987;background:#51442e}.btn{border:1px solid #a68551;background:#233b50;color:white;border-radius:10px;padding:10px 12px}.actionbar{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}.tab{border:1px solid #566677;border-radius:9px;color:#cdd8e1;padding:9px;background:transparent}.tab.active{background:#c39b5b;color:#101e2a;border-color:#c39b5b}details{border:1px solid #43586c;border-radius:10px;padding:11px;margin:8px 0}summary{font-weight:700;cursor:pointer}.step{display:flex;gap:9px;align-items:center;padding:12px 0;border-bottom:1px solid #334657;font-size:13px}.step input{accent-color:#d1ac6d}.meta{font-size:11px;color:#9eacc0;border-left:3px solid #c4a168;padding:9px;background:#182b40}a{color:#e8c58d}.fallback{position:absolute;inset:18% 9% 22%;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;align-content:center}.fallback button{border:1px solid #b78b4b;color:#fff;background:radial-gradient(circle at 30% 20%,#c29853,#203f57 65%,#0d2032);border-radius:50%;aspect-ratio:1;font-size:10px;padding:5px}.fallback[hidden]{display:none}.compact{font-size:11px;color:#9bacbd;padding:7px 4px} @media(min-width:820px){.workspace{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr)}.stage{height:83dvh}.panel{max-height:83dvh;overflow:auto}.chips{grid-template-columns:repeat(3,minmax(0,1fr))}} </style><style>
+:root{--ur-accent:#d8ae6c}
+.panel{background:linear-gradient(145deg,#122c43 0%,#0b1929 100%);box-shadow:inset 0 1px 0 #43627a55}
+.chips{gap:9px}
+.chip{display:flex;align-items:center;gap:12px;background:linear-gradient(110deg,#193c56,#112b42);border:1px solid #476a7f;min-height:61px;border-radius:12px;transition:border-color .2s,transform .2s}
+.chip:active{transform:scale(.98);border-color:#e0b979}
+.ur-sector-icon{flex-shrink:0;width:37px;height:37px;border-radius:50%;border:1px solid #d5a55c;display:grid;place-items:center;background:radial-gradient(circle at 40% 30%,#584522,#092035 75%);box-shadow:0 0 9px #bc8c4250}
+.ur-sector-icon svg{width:20px;height:20px;stroke:#f2ca82;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ur-sector-name{flex:1;font-weight:650;line-height:1.25}
+.ur-sector-chevron{color:#eac88e;font-size:20px}
+@media(max-width:400px){.chips{grid-template-columns:1fr 1fr}.chip{padding:8px;gap:7px;font-size:11px}.ur-sector-icon{width:31px;height:31px}.ur-sector-icon svg{width:17px;height:17px}}
+</style><style>.stage{background:radial-gradient(ellipse at 50% 44%,#1a3d59,#061423 73%)}
+.node-label{font-size:11px;font-weight:750;background:#0c233add;border:1px solid #d7aa65;box-shadow:0 3px 12px #07111a88;padding:6px 9px;max-width:114px}
+@media(max-width:600px){.stage{height:69dvh;min-height:510px;max-height:790px}.top h2{font-size:18px}.node-label{font-size:10px;max-width:105px;padding:5px 7px}}
+</style><style>.stage{height:70dvh;min-height:480px;max-height:710px}@media(max-width:600px){.stage{height:66dvh;min-height:450px;max-height:670px}.node-label{font-size:10px;max-width:106px}}</style><style>@media(max-width:600px){.node-label{max-width:93px;font-size:9px;padding:5px 6px}.stage{height:64dvh;min-height:440px}}</style><style>
+:root{--ur-gold:#ffc66d;--ur-blue:#78c5ff}
+body{background:radial-gradient(ellipse at 50% 10%,#102a46 0%,#06111f 50%,#030810 100%);color:#eef6ff}
+header{background:linear-gradient(90deg,#040d1b,#0c2335);border-bottom:1px solid #c49553;box-shadow:0 0 32px #b78c3b23;padding:17px}
+header strong{font-size:clamp(16px,3vw,24px);letter-spacing:.18em}header em{color:#e4b26b}header small{letter-spacing:.16em;color:#d9b97e}
+.status{background:#0a2135;border:1px solid #3d6583;border-radius:12px;color:#e8e9db;padding:9px;font-size:11px;box-shadow:inset 0 0 18px #1c558033}
+.status:before{content:'●';color:#38efaa;margin-right:6px;text-shadow:0 0 9px #34ffa8}
+main{padding:12px}
+.stage{height:min(72vw,640px);min-height:390px;max-height:640px;border:1px solid #6f8fab;border-radius:19px;background:radial-gradient(circle at 50% 47%,#20476c 0%,#0a1e33 37%,#020913 83%)!important;box-shadow:inset 0 0 0 2px #315a7b35,0 0 28px #103e5d45;isolation:isolate}
+.stage:before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.68;background-image:radial-gradient(1px 1px at 13% 12%,#fff,transparent),radial-gradient(2px 2px at 79% 18%,#8fc3f9,transparent),radial-gradient(1px 1px at 28% 68%,#fff,transparent),radial-gradient(2px 2px at 61% 82%,#dfbd81,transparent),radial-gradient(1px 1px at 90% 57%,#a4d7fa,transparent),radial-gradient(1px 1px at 48% 25%,#a3c6ff,transparent);background-size:220px 270px}
+.stage:after{content:'';position:absolute;inset:5%;border:1px solid #436a8640;border-radius:50%;pointer-events:none;box-shadow:0 0 0 26px #9a77450b,0 0 0 64px #5986a50a;z-index:0}
+.stage canvas{position:relative;z-index:1}
+.orbital-hud{position:absolute;inset:12% 6% 13%;pointer-events:none;z-index:2;opacity:.55}
+.orbital-hud svg{width:100%;height:100%}
+.orbital-hud circle{fill:none;stroke:#bb9459;stroke-width:.6;stroke-dasharray:2 7}
+.orbital-hud path{fill:none;stroke:#7aaad2;stroke-width:.42;opacity:.45}
+.top{z-index:3;left:15px;top:15px}.top .kicker{font-size:10px;letter-spacing:.17em;color:#edc47e}.top h2{font-size:19px}
+.nav{z-index:5;right:10px;top:13px}.nav button{height:45px;width:44px;background:linear-gradient(130deg,#12283d,#06111e);border:1px solid #e0aa5d;box-shadow:inset 0 0 14px #bd985323}
+.node-label{z-index:4;background:linear-gradient(#07182fef,#091727ee);border:1px solid #e6bb76;color:#fff;border-radius:9px;padding:6px 9px;font-size:11px;box-shadow:0 0 12px #f1c66f40,0 3px 12px #0009;max-width:125px}
+.bar{z-index:4;background:#071a30eb;border:1px solid #376380;border-radius:11px;padding:12px;color:#d2e5f3}
+.panel{background:linear-gradient(155deg,#112940,#051323 80%)!important;border:1px solid #739cc2;border-radius:18px;box-shadow:inset 0 0 0 1px #d5ac5040,0 0 24px #235b8030;padding:17px}
+.tab{border-color:#4b7695;min-height:43px;border-radius:10px}.tab.active{background:linear-gradient(120deg,#f5d292,#c39851);color:#102438}
+.chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.chip{position:relative;overflow:hidden;min-height:67px;background:radial-gradient(ellipse at 87% 110%,#325d7d 0%,#0d2c45 35%,#061525 100%)!important;border:1px solid #5a86a7;box-shadow:inset 0 0 14px #3b66802f}
+.chip:after{content:'';position:absolute;width:88px;height:88px;right:-39px;bottom:-51px;border-radius:50%;border:1px solid #cdb47a66;box-shadow:0 0 22px #639fc03e,inset 9px 8px 24px #92baca3c;pointer-events:none}
+.ur-sector-icon{border-color:#f1c87a;background:radial-gradient(circle at 30% 20%,#5c4c32,#081521 73%);box-shadow:0 0 12px #d5a75844}
+.meta{background:#0c2135;color:#b9cfe1;border-left-color:#fac67c}
+.mission-telemetry{position:absolute;bottom:66px;left:11px;z-index:4;color:#b6c8db;border:1px solid #416a89;background:#07182cbd;padding:8px 10px;border-radius:8px;letter-spacing:.1em;font-size:9px;line-height:1.7;pointer-events:none}
+@media(max-width:600px){.stage{height:min(118vw,570px);min-height:420px}.mission-telemetry{font-size:8px;bottom:69px;max-width:150px}.node-label{font-size:10px;max-width:105px}.chips{gap:7px}}
+</style><style>
+.stage{overflow:hidden!important}
+.orbital-hud{inset:8% 6% 8%;opacity:.23}
+.stage:after{inset:12% 8%;box-shadow:0 0 0 18px #9a77450b,0 0 0 40px #5986a50a}
+.mission-telemetry{bottom:69px;left:10px;opacity:.8;font-size:8px}
+.top{background:linear-gradient(90deg,#061b30ec,#061b3000);border-left:2px solid #ddac62;border-radius:8px;padding:9px 12px}
+.node-label{max-width:94px;line-height:1.1;box-shadow:0 0 9px #f1c66f24}
+@media(min-width:820px){.stage{height:min(75vh,690px);max-height:690px}}
+</style><style>
+.stage{height:min(120vw,670px)!important;min-height:430px!important;background:radial-gradient(circle at 50% 45%,#193856 0%,#06182a 48%,#020916 95%)!important}
+.stage:before{background-size:280px 250px;opacity:.35}.stage:after{display:none}.orbital-hud{display:none}.mission-telemetry{bottom:66px;left:12px;background:#08182cbd;border-color:#425a6f;opacity:.9}
+.top{background:transparent;border:0;padding:0}.node-label{border-color:#e2ad61;background:#061a2ef2;box-shadow:0 0 10px #e9b66f45;max-width:115px}
+.nav{right:9px;top:9px}.nav button{height:43px;width:42px}
+.panel{box-shadow:0 0 0 1px #ba904d30,inset 0 0 32px #18426435}
+@media(min-width:820px){.stage{height:710px!important;max-height:710px!important}}
+</style><style>.stage{height: min(143vw,650px)!important;min-height:480px!important}.mission-telemetry{display:none}.stage:before{opacity:.17}.node-label{max-width:93px;font-size:9px;padding:4px 5px}@media(min-width:820px){.stage{height:690px!important}}</style><style>@media(max-width:600px){.stage{height:min(140vw,635px)!important;min-height:475px!important}.node-label{font-size:10px;max-width:99px;line-height:1.12;padding:5px 6px}.bar{left:8px;right:8px;font-size:10px}.top{max-width:64%}}</style><style>.stage{background:radial-gradient(ellipse at 50% 45%,#132b45,#06111f 75%)!important}.orbital-hud{display:none}.stage:after{display:none}.node-label{font-size:10px;max-width:105px}.mission-telemetry{display:none}</style><style>.stage{background:radial-gradient(ellipse at 55% 42%,#153653,#061220 77%)!important}.stage:before{opacity:.4}.node-label{max-width:116px}@media(min-width:820px){.workspace{grid-template-columns:minmax(0,1.9fr) minmax(320px,1fr)}.stage{height:calc(100dvh - 150px)!important;max-height:960px!important;min-height:620px!important}.panel{max-height:calc(100dvh - 150px);overflow:auto}}</style><style>@media(min-width:820px){.workspace{grid-template-columns:minmax(0,2.15fr) minmax(350px,1fr);gap:16px}.stage{height:calc(100dvh - 145px)!important;min-height:680px!important}.node-label{font-size:12px;max-width:140px;padding:6px 10px}.panel{max-height:calc(100dvh - 145px)}}.stage:after{display:none}</style></head><body><header><div><strong>ULTIMATE <em>RIVALS</em></strong><small>UNIVERSO VIVO · V67 NAVEGAÇÃO ESPACIAL</small></div><span class="status" id="engine">Carregando 3D</span></header><main><div class="workspace"><section><div class="stage" id="stage"><div class="sky"></div><div class="orbital-hud"><svg viewBox="0 0 400 480" preserveAspectRatio="none" aria-hidden="true"><circle cx="200" cy="240" r="158"/><circle cx="200" cy="240" r="185"/><circle cx="200" cy="240" r="116"/><path d="M0 240H400M200 0V480"/></svg></div><div class="mission-telemetry">SISTEMA ORBITAL<br>12 SETORES · REDE VIVA<br>NAVEGAÇÃO HIERÁRQUICA</div><div id="labels"></div><div class="top"><span class="kicker" id="depth">RAIZ · ECOSSISTEMA</span><h2 id="headline">Ultimate Rivals</h2></div><div class="nav"><button id="zin">+</button><button id="zout">−</button><button id="reset">⌂</button><button id="up">←</button></div><div class="bar">Arraste para orbitar em 360° · pinça para aproximar · toque nos globos para expandir</div><div class="fallback" id="fallback" hidden></div></div><div class="compact">Estrutura: Ultimate Rivals → Setor → Subnúcleo → Guia. Os ancestrais permanecem visíveis.</div></section><aside class="panel"><div class="crumbs" id="crumbs"></div><h2 id="title">Universo Ultimate Rivals</h2><p class="muted" id="description">Explore os núcleos e abra a operação sem perder o contexto espacial.</p><div class="actionbar"><button class="tab active" data-mode="nucleos">Núcleos</button><button class="tab" data-mode="guia">Guia</button><button class="tab" data-mode="documentos">Documentos</button><button class="tab" data-mode="delegacao">Delegação</button></div><div id="content"></div></aside></div><p class="meta">Preview demonstrativo. Sem sincronização com Notion ou Supabase; tarefas e guias não representam registros oficiais.</p></main>
+<script>const A=["Liga","Mídia","Desenvolvimento","Comercial","Financeiro","Operações","Tecnologia","Comunidade","Mercado","Marca","Dados","Governança"],M=[["Temporadas","UR Play","UR Sprint","UR Series","UR Legends","Ranking"],["Transmissões","Documentários","Streams","Editorial","Cobertura","Acervo"],["PDI","Treinos","Hunter","Avaliações","Evidências","Review"],["CRM","Propostas","Contratos","Ativações","Entregas","Relatórios"],["Orçamento","Receitas","Despesas","Repasses","Premiações","Projeções"],["Eventos","Arenas","Check-in","Court Ops","Equipamentos","Logística"],["Athlete App","UR OS","Site","Integrações","QA","Segurança"],["Atletas","Equipes","Atendimento","Jornada","Feedback","Experiências"],["UR Market","Produtos","Serviços","Parceiros","Benefícios","Resgates"],["Identidade","Campanhas","Materiais","Comunicação","Pitch","Diretrizes"],["KPIs","Relatórios","Auditoria","Qualidade","Análises","Decisões"],["Pessoas","Papéis","Academy","Onboarding","Permissões","Políticas"]],D=["3f0137a30cc381768b0cf46a4366a720","3f0137a30cc3817f9c23d513a808f2e5","3f0137a30cc38199a51adc6334a13ab4","3f0137a30cc381de8f49d26aef003e33",null,null,null,null,null,null,null,"3f0137a30cc3815fbb52f32cfc82546f"];let selected=-1,child=-1,mode='nucleos';const $=s=>document.getElementById(s);const status=$('engine'),stage=$('stage');let renderer=null,scene=null,camera=null,meshList=[],lineGroup=[],nav={a:.4,b:.22,dist:24},running=false,lib=null,labels=[];
+let operation=-1,guide=-1;const PROCESSOS=['Planejamento','Preparação','Execução','Verificação','Registro','Encerramento'];const GUIAS=['Objetivo','Responsáveis','Materiais','Passo a passo','Evidências','Critério de aceite'];function select(a,b=-1,c=-1,d=-1){selected=a;child=b;operation=c;guide=d;window._sector=a;window._branch=b;window._process=c;window._guide=d;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));panel();if(window.rebuild3D)window.rebuild3D();fallback();}
+const ICON_PATHS=[
+'<path d="M8 21h8M12 17v4M7 4h10v7a5 5 0 0 1-10 0V4ZM7 6H4v3a4 4 0 0 0 4 4M17 6h3v3a4 4 0 0 1-4 4"/>',
+'<rect x="3" y="6" width="14" height="12" rx="2"/><path d="m17 10 4-3v10l-4-3M9 10l4 2-4 2z"/>',
+'<path d="m7 21 3-6 3 2 4-6M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM10 10l3-2 3 2M5 17l3-4 2-3"/>',
+'<path d="m2 12 5-5 4 3 2-2 9 5-5 6-4-2-3 2-8-7Z"/><path d="m7 7 3-2 5 1 4 5"/>',
+'<path d="M4 20V12M10 20V8M16 20V4M22 20H2"/>',
+'<rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v2M8 11l2 2 4-4M8 17h8"/>',
+'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M2 20v-3a6 6 0 0 1 12 0v3M14 20v-3a4 4 0 0 1 8 0v3"/>',
+'<path d="M3 4h2l2 12h12l2-9H6M9 21h.01M18 21h.01"/>',
+'<path d="m3 10 8-4v12l-8-4zM11 9l6-3v12l-6-3M17 10h3M17 14h3"/>',
+'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 2 16 2 16 0V5M4 12v7c0 2 16 2 16 0v-7"/>',
+'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M15 15a5 5 0 0 1 6 5"/>',
+'<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 9h6v6H9zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'
+];
+const ICON_INDEX={'Liga':0,'Mídia':1,'Desenvolvimento':2,'Comercial':3,'Financeiro':4,'Operações':5,'Comunidade':6,'Mercado':7,'Marca':8,'Dados':9,'Pessoas':10,'Tecnologia':11};
+function urIcon(name){const p=ICON_PATHS[ICON_INDEX[name]??11];return '<span class="ur-sector-icon" aria-hidden="true"><svg viewBox="0 0 24 24">'+p+'</svg></span>'}
+function panel(){let title=selected<0?'Ultimate Rivals':child<0?A[selected]:operation<0?M[selected][child]:guide<0?PROCESSOS[operation]:GUIAS[guide];$('title').textContent=title;$('headline').textContent=title;$('depth').textContent=selected<0?'RAIZ · ECOSSISTEMA':child<0?'SETOR · '+M[selected].length+' SUBNÚCLEOS':operation<0?'SUBNÚCLEO · 6 PROCESSOS':guide<0?'PROCESSO · 6 GUIAS':'GUIA · EXECUÇÃO';$('description').textContent=selected<0?'Selecione um dos doze setores.':child<0?'Abra um subnúcleo ou consulte o guia do setor.':'Visualização contextual deste subnúcleo, com acesso ao guia e às fontes relacionadas.';let cr=$('crumbs');cr.replaceChildren();function bread(t,fn){let x=document.createElement('button');x.textContent=t;x.onclick=fn;cr.append(x)}bread('UR',()=>select(-1));if(selected>=0)bread('› '+A[selected],()=>select(selected));if(child>=0)bread('› '+M[selected][child],()=>select(selected,child));if(operation>=0)bread('› '+PROCESSOS[operation],()=>select(selected,child,operation));if(guide>=0)bread('› '+GUIAS[guide],()=>{});
+let box=$('content');box.replaceChildren();if(mode==='nucleos'){let grid=document.createElement('div');grid.className='chips';(selected<0?A:child<0?M[selected]:operation<0?PROCESSOS:GUIAS).forEach((t,i)=>{let b=document.createElement('button');b.className='chip'+(child===i?' active':'');if(selected<0){b.innerHTML=urIcon(t)+'<span class="ur-sector-name">'+t+'</span><span class="ur-sector-chevron" aria-hidden="true">›</span>'}else{b.textContent=t}b.onclick=()=>selected<0?select(i):child<0?select(selected,i):operation<0?select(selected,child,i):select(selected,child,operation,i);grid.append(b)});box.append(grid)}else if(mode==='guia'){let msg=document.createElement('p');msg.className='muted';msg.textContent='Sequência ilustrativa. O procedimento real deverá ser carregado da biblioteca oficial do UR OS.';box.append(msg);['Preparar: definir objetivo, responsáveis e recursos','Validar pré-requisitos e condições de segurança','Executar conforme roteiro homologado','Registrar evidências, ocorrências e resultados','Confirmar conclusão e acionar próxima etapa'].forEach((text,i)=>{let l=document.createElement('label');l.className='step';let c=document.createElement('input');c.type='checkbox';let key='ur45:'+selected+':'+child+':'+i;try{c.checked=localStorage.getItem(key)==='1'}catch(e){}c.onchange=()=>{try{localStorage.setItem(key,c.checked?'1':'0')}catch(e){}};l.append(c,document.createTextNode(text));box.append(l)})}else if(mode==='documentos'){let p=document.createElement('p');p.className='muted';p.textContent='Fontes oficiais autorizadas para consulta.';box.append(p);if(D[selected]){let l=document.createElement('a');l.href='https://app.notion.com/p/'+D[selected];l.target='_blank';l.rel='noopener';l.textContent='Abrir documentação do setor no Notion ↗';box.append(l)}else{let msg=document.createElement('p');msg.textContent='Fonte do setor ainda não vinculada neste Preview.';box.append(msg)}}else{let p=document.createElement('p');p.className='muted';p.textContent='Atribuições, prazos, critérios de aceite, evidências, permissões e automações serão conectados às bases oficiais; ainda não estão ativos.';box.append(p)}}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));panel()});$('up').onclick=()=>child>=0?select(selected):select(-1);$('reset').onclick=()=>{nav={a:.4,b:.22,dist:16};window.updateCamera&&window.updateCamera()};$('zin').onclick=()=>{nav.dist=Math.max(5,nav.dist*.82);window.updateCamera&&window.updateCamera()};$('zout').onclick=()=>{nav.dist=Math.min(28,nav.dist*1.2);window.updateCamera&&window.updateCamera()};
+function fallback(){let b=$('fallback');b.replaceChildren();(selected<0?A:M[selected]).forEach((t,i)=>{let x=document.createElement('button');x.textContent=t;x.onclick=()=>selected<0?select(i):select(selected,i);b.append(x)})}fallback();panel();
+window.__UR={A,M,select,stage,status,nav};</script>
+<script type="module">
+import * as THREE from 'https://esm.sh/three@0.180.0';
+window.PROCESSOS_UR=['Planejamento','Preparação','Execução','Verificação','Registro','Encerramento'];window.GUIAS_UR=['Objetivo','Responsáveis','Materiais','Passo a passo','Evidências','Critério de aceite'];const S=window.__UR, stage=S.stage;
+try {
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(47,1,.1,160);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+stage.prepend(renderer.domElement);
+scene.add(new THREE.AmbientLight(0xbacfe8,1.65));
+const key=new THREE.DirectionalLight(0xffdfa4,4.3);key.position.set(-3,7,11);scene.add(key);
+const spheres=[],wires=[],labels=[];const ambience=new THREE.Group();scene.add(ambience);
+const round=new THREE.SphereGeometry(1,32,24);
+const frame=new THREE.IcosahedronGeometry(1,2);const innerFrame=new THREE.IcosahedronGeometry(1,1);
+const origin=new THREE.Vector3(0,0,0);
+const ringMaterial=new THREE.MeshBasicMaterial({color:0xb78b49,transparent:true,opacity:.025,depthWrite:false,side:THREE.DoubleSide});
+for(const rad of [5.4,7.2]){let ring=new THREE.Mesh(new THREE.RingGeometry(rad,rad+.012,180),ringMaterial);ring.position.z=-.46;ambience.add(ring)}
+const stars=new Float32Array(280*3);for(let i=0;i<280;i++){let a=i*2.39996;let r=8+(i%17)*.43;stars[3*i]=Math.sin(a)*r;stars[3*i+1]=Math.cos(a)*r;stars[3*i+2]=-3-(i%11)*.5}
+let sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(stars,3));ambience.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xbad7f5,size:.038,transparent:true,opacity:.72})));
+const rim=new THREE.PointLight(0xffc36b,22,15);rim.position.set(-1,1,3);scene.add(rim);
+const ROOT_POS=[[-6.3,4.9,-1.9],[.2,6.8,1.2],[7.1,4.1,-2.5],[-3.1,2.6,-2.7],[5.2,1.6,1.7],[-7.6,-.1,-1.6],[1.8,-2.3,2.1],[-5.2,-3.7,1.3],[7.4,-3.6,-2.3],[-7.3,-6.4,-3.3],[3.8,-7.2,-1.2],[-1.2,-8.3,1.2]];const sectorPos=i=>new THREE.Vector3(...ROOT_POS[i]);
+const childPos=(s,j)=>{const a=j*2.39996+s*.37;return sectorPos(s).add(new THREE.Vector3(2.05*Math.sin(a),2.45-1.02*j,1.5*Math.cos(a)))};
+function sphere(id,name,pos,r,color,action,opacity=1){
+ const group=new THREE.Group(); group.position.copy(pos);
+ const mat=new THREE.MeshPhysicalMaterial({color:id==='root'?0x614016:0x102f51,metalness:id==='root'?.75:.65,roughness:id==='root'?.18:.24,clearcoat:.85,clearcoatRoughness:.15,emissive:id==='root'?0xb87924:0x245f96,emissiveIntensity:id==='root'?.54:.28,transparent:opacity<1,opacity});
+ const mesh=new THREE.Mesh(round,mat);mesh.scale.setScalar(r);group.add(mesh);
+ const cage=new THREE.LineSegments(new THREE.EdgesGeometry(frame),new THREE.LineBasicMaterial({color:id==='root'?0xffdf89:0xbcd9f5,transparent:true,opacity:(id==='root'?.98:.86)*opacity}));cage.scale.setScalar(r*1.014);group.add(cage);const subCage=new THREE.LineSegments(new THREE.EdgesGeometry(innerFrame),new THREE.LineBasicMaterial({color:id==='root'?0xf6c575:0x4e9fd2,transparent:true,opacity:.4*opacity}));subCage.scale.setScalar(r*1.021);group.add(subCage);
+ if(id==='root'){const inner=new THREE.Mesh(new THREE.SphereGeometry(1,28,20),new THREE.MeshBasicMaterial({color:0xffd17c,transparent:true,opacity:.09,depthWrite:false}));inner.scale.setScalar(r*1.24);group.add(inner)}
+ scene.add(group);
+ const label=document.createElement('div');label.className='node-label';label.textContent=name;stage.append(label);
+ spheres.push({id,group,mesh,label,pos,r,action});
+}
+function link(a,b,opacity=.42){const points=new THREE.QuadraticBezierCurve3(a,a.clone().lerp(b,.5).add(new THREE.Vector3(0,0,1.2)),b).getPoints(32);const geometry=new THREE.BufferGeometry().setFromPoints(points);const line=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:0xd2a565,transparent:true,opacity}));scene.add(line);wires.push(line)}
+function clear(){for(const n of spheres){scene.remove(n.group);n.label.remove();n.mesh.material.dispose();n.group.children[1].geometry.dispose();n.group.children[1].material.dispose();n.group.children[2]?.material.dispose();n.group.children[2]?.geometry?.dispose()}for(const l of wires){scene.remove(l);l.geometry.dispose();l.material.dispose()}spheres.length=0;wires.length=0;}
+let goal=new THREE.Vector3(),target=new THREE.Vector3(),distance=24,goalDistance=24,angleX=.08,angleY=.03;
+let activeSector=-1,activeChild=-1,activeProcess=-1,activeGuide=-1;
+function rebuild(){
+ clear();
+ activeSector=window._sector??-1;activeChild=window._branch??-1;activeProcess=window._process??-1;activeGuide=window._guide??-1;
+ sphere('root','Ultimate Rivals',origin,activeSector<0?1.25:.43,0xb58b50,()=>S.select(-1),activeSector<0?1:.35);
+ for(let i=0;i<S.A.length;i++){
+  const p=sectorPos(i),isActive=i===activeSector,dim=activeSector>=0&&!isActive;
+  sphere('sector'+i,S.A[i],p,isActive?.84:dim?.21:.65,0x284c68,()=>S.select(i),dim?.22:1);
+  link(origin,p,dim?.12:.5);
+  if(isActive){
+   S.M[i].forEach((name,j)=>{
+    const cp=childPos(i,j),focus=activeChild===j;
+    sphere('child'+j,name,cp,focus?.75:.55,0x285b7a,()=>S.select(i,j),activeChild>=0&&!focus?.52:1);
+    link(p,cp,activeChild>=0&&!focus?.18:.66);
+   });
+  }
+ }
+ if(activeSector>=0&&activeChild>=0){const originChild=childPos(activeSector,activeChild);const processRadius=1.9;for(let k=0;k<6;k++){let t=-Math.PI/2+k*Math.PI/3;const processPos=originChild.clone().add(new THREE.Vector3(Math.cos(t)*processRadius,1.85-.73*k,1.25*Math.sin(k*1.5)));const dimmed=activeProcess>=0&&k!==activeProcess;sphere('process'+k,window.PROCESSOS_UR[k],processPos,activeProcess===k?.49:.34,0x3c728f,()=>S.select(activeSector,activeChild,k),dimmed?.23:1);link(originChild,processPos,dimmed?.14:.65);if(k===activeProcess){for(let q=0;q<6;q++){let u=-Math.PI/2+q*Math.PI/3;const guidePos=processPos.clone().add(new THREE.Vector3(1.6*Math.cos(u),1.6-.62*q,.8*Math.sin(q*2)));const gdim=activeGuide>=0&&q!==activeGuide;sphere('guide'+q,window.GUIAS_UR[q],guidePos,activeGuide===q?.42:.25,0x497a83,()=>S.select(activeSector,activeChild,k,q),gdim?.20:1);link(processPos,guidePos,gdim?.12:.55)}}}}
+ target=activeSector<0?origin.clone():activeChild<0?sectorPos(activeSector).clone():activeProcess<0?childPos(activeSector,activeChild).clone():activeGuide<0?childPos(activeSector,activeChild).clone().lerp(childPos(activeSector,activeChild).clone().add(new THREE.Vector3(0,1.7,.4)),.55):childPos(activeSector,activeChild).clone();
+ goalDistance=activeSector<0?24:activeChild<0?12:activeProcess<0?11.8:activeGuide<0?10.5:10.5;
+ if(activeSector<0){angleX=.08;angleY=.03}
+ S.status.textContent='WebGL 3D ativo';
+}
+window.rebuild3D=rebuild;
+function resize(){const w=Math.max(1,stage.clientWidth),h=Math.max(1,stage.clientHeight);renderer.setSize(w,h,true);renderer.domElement.style.width=w+'px';renderer.domElement.style.height=h+'px';camera.aspect=w/h;camera.updateProjectionMatrix()}
+new ResizeObserver(resize).observe(stage);resize();
+function updateCam(){S.nav.dist=goalDistance;target.copy(target)}
+window.updateCamera=()=>{goalDistance=Math.max(7,Math.min(55,S.nav.dist));angleX=S.nav.a;angleY=S.nav.b};
+function projectLabels(){
+ const r=stage.getBoundingClientRect(),used=[];
+ for(const n of spheres){
+  let show=activeSector<0?n.id.startsWith('sector'):n.id==='sector'+activeSector||(activeChild<0?n.id.startsWith('child'):activeProcess<0?n.id==='child'+activeChild||n.id.startsWith('process'):activeGuide<0?n.id==='child'+activeChild||n.id==='process'+activeProcess||n.id.startsWith('guide'):n.id==='process'+activeProcess||n.id==='guide'+activeGuide);
+  if(activeSector>=0&&n.id==='root')show=false;
+  let p=n.pos.clone().add(new THREE.Vector3(0,n.id==='root'?0:-n.r-.13,0)).project(camera);
+  const x=(p.x+1)*r.width/2,y=(1-p.y)*r.height/2;
+  const edge=activeSector<0?54:35;const visible=show&&p.z<1&&p.z>-1&&x>edge&&x<r.width-edge&&y>86&&y<r.height-108&&!used.some(a=>Math.abs(a.x-x)<(activeSector<0?86:72)&&Math.abs(a.y-y)<33);
+  n.label.style.display=visible?'block':'none';
+  if(visible){n.label.style.left=Math.max(55,Math.min(r.width-55,x))+'px';n.label.style.top=y+'px';used.push({x,y})}
+ }
+}
+function tick(){
+ requestAnimationFrame(tick);
+ goal.lerp(target,.095);
+ distance+=(goalDistance-distance)*.09;
+ const cos=Math.cos(angleY);
+ camera.position.set(goal.x+distance*Math.sin(angleX)*cos,goal.y+distance*Math.sin(angleY),goal.z+distance*Math.cos(angleX)*cos);
+ camera.lookAt(goal);
+ for(const n of spheres){n.group.rotation.y+=.0012;n.group.rotation.x+=.00021}ambience.rotation.z+=.00005;
+ renderer.render(scene,camera);projectLabels();
+}
+rebuild();goal.copy(target);distance=goalDistance;tick();
+const canvas=renderer.domElement;canvas.style.touchAction='none';
+const fingers=new Map();let moved=0,oldDist=0;
+canvas.addEventListener('pointerdown',e=>{fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=0;canvas.setPointerCapture(e.pointerId)});
+canvas.addEventListener('pointermove',e=>{
+ if(!fingers.has(e.pointerId))return;
+ const prior=fingers.get(e.pointerId);fingers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ if(fingers.size>=2){const pts=[...fingers.values()],d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);if(oldDist)goalDistance=Math.max(7,Math.min(55,goalDistance*oldDist/d));oldDist=d;moved=100;return}
+ oldDist=0; const dx=e.clientX-prior.x,dy=e.clientY-prior.y;moved+=Math.abs(dx)+Math.abs(dy);
+ angleX-=dx*.006;angleY=Math.max(-1.2,Math.min(1.2,angleY+dy*.006));
+});
+canvas.addEventListener('pointerup',e=>{
+ const wasTap=moved<12&&fingers.size===1;fingers.delete(e.pointerId);oldDist=0;
+ if(!wasTap)return;
+ const r=canvas.getBoundingClientRect(),p=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);
+ const ray=new THREE.Raycaster();ray.setFromCamera(p,camera);
+ const candidates=spheres.filter(n=>activeSector<0?n.id==='root'||n.id.startsWith('sector'):n.id==='sector'+activeSector||n.id.startsWith('child'));
+ const hit=ray.intersectObjects(candidates.map(n=>n.mesh))[0];
+ if(hit){const n=candidates.find(n=>n.mesh===hit.object);if(n)n.action()}
+});
+canvas.addEventListener('pointercancel',e=>{fingers.delete(e.pointerId);oldDist=0});
+canvas.addEventListener('wheel',e=>{e.preventDefault();goalDistance=Math.max(7,Math.min(55,goalDistance*(e.deltaY>0?1.08:.92)))},{passive:false});
+document.getElementById('zin').addEventListener('click',()=>{goalDistance=Math.max(7,goalDistance*.81);S.nav.dist=goalDistance});
+document.getElementById('zout').addEventListener('click',()=>{goalDistance=Math.min(55,goalDistance*1.2);S.nav.dist=goalDistance});
+document.getElementById('reset').addEventListener('click',()=>{goalDistance=activeSector<0?24:activeChild<0?12:activeProcess<0?11.8:10.5;angleX=0;angleY=0;S.nav.dist=goalDistance});
+document.getElementById('fallback').hidden=true;
+}catch(err){S.status.textContent='Modo compatível';document.getElementById('fallback').hidden=false}
+</script></body></html>
